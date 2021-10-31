@@ -1,0 +1,14 @@
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\bin\Debug\CapaPresentaciones.exe.config
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\bin\Debug\CapaPresentaciones.exe
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\bin\Debug\CapaPresentaciones.pdb
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\bin\Debug\CapaEntidades.dll
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\bin\Debug\CapaNegocios.dll
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\bin\Debug\CapaEntidades.pdb
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\bin\Debug\CapaNegocios.pdb
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.csproj.AssemblyReference.cache
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.Properties.Resources.resources
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.csproj.GenerateResource.cache
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.csproj.CoreCompileInputs.cache
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.csproj.CopyComplete
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.exe
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.pdb
