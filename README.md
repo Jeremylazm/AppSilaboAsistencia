@@ -2,7 +2,7 @@
 
 ## Creado por estudiantes de la Universidad Nacional de San Antonio Abad del Cusco
 
-### Datos Académicos 📖
+#### Datos Académicos 📖
 
 - **Institución:** Universidad Nacional de San Antonio Abad del Cusco
 - **Facultad:** Facultad de Ingeniería Eléctrica, Electrónica, Informática y Mecánica
@@ -16,7 +16,7 @@
 
 - Realizar un Sistema de Gestión de Sílabos y Control de Asistencia para el Departamento Académico de Ing. Informática y de Sistemas.
 
-## Descripción:
+#### Descripción:
 
 - El Sistema de Gestión de Sílabos y Control de Asistencia es un programa para facilitar la organización y distribución de docentes en el Departamento Académico de Ing. Informática y de Sistemas para la elaboración de sus sílabos y la asistencia de los estudiantes posterior a ella, tomando el control de los mismos.
 
