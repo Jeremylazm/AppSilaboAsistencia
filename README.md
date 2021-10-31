@@ -12,14 +12,6 @@
 
 - **Robert Wilbert Alzamora Paredes** - _Docente_
 
-#### Trabajo:
-
-- Realizar un Sistema de Gestión de Sílabos y Control de Asistencia para el Departamento Académico de Ing. Informática y de Sistemas.
-
-#### Descripción:
-
-- El Sistema de Gestión de Sílabos y Control de Asistencia es un programa para facilitar la organización y distribución de docentes en el Departamento Académico de Ing. Informática y de Sistemas para la elaboración de sus sílabos y la asistencia de los estudiantes posterior a ella, tomando el control de los mismos.
-
 #### Autores:✒️
 
 - **Castillo Lopez Ricardo Jorge** - _Estudiante_ - [RicardoJorge](https://github.com/rjcastillolopez)
@@ -28,6 +20,14 @@
 - **Huaman Mendoza Elvis Jorge** - _Estudiante_ - [ElvisJorge](https://github.com/ElvisJorge17)
 - **Lazo Mendoza Jeremy Axl** - _Estudiante_ - [JeremyAxl](https://github.com/Jeremylazm)
 - **Soncco Cachura David** - _Estudiante_ - [David](https://github.com/Mr-dvd2020)
+
+#### Trabajo:
+
+- Realizar un Sistema de Gestión de Sílabos y Control de Asistencia para el Departamento Académico de Ing. Informática y de Sistemas.
+
+#### Descripción:
+
+- El Sistema de Gestión de Sílabos y Control de Asistencia es un programa para facilitar la organización y distribución de docentes en el Departamento Académico de Ing. Informática y de Sistemas para la elaboración de sus sílabos y la asistencia de los estudiantes posterior a ella, tomando el control de los mismos.
 ---
 
 ## Empezamos... 🚀
