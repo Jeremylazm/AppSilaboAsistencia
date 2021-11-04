@@ -698,3 +698,98 @@ BEGIN
 		WHERE Usuario = @CodDocente
 END;
 GO
+
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ASIGNATURA ****************** */
+
+-- Procedimiento para mostrar las asignaturas de una escuela profesional.
+CREATE PROCEDURE spuMostrarAsignaturas @CodEscuelaP VARCHAR(4)
+AS
+BEGIN
+	-- Mostrar la tabla TAsignatura
+	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica
+		FROM TAsignatura
+	    WHERE CodEscuelaP = @CodEscuelaP
+END;
+GO
+
+-- Procedimiento para buscar una asignatura de una escuela profesional.
+CREATE PROCEDURE spuBuscarAsignatura @CodEscuelaP VARCHAR(4),
+									 @CodAsignatura VARCHAR(8)
+AS
+BEGIN
+	-- Mostrar la tabla TAsignatura por el texto que se desea buscar
+	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica
+		FROM TAsignatura
+		WHERE CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura
+END;
+GO
+
+-- Procedimiento para buscar por cualquier atributo las asignaturas de una escuela profesional.
+CREATE PROCEDURE spuBuscarAsignaturas @CodEscuelaP VARCHAR(4),
+									  @Texto VARCHAR(20)
+AS
+BEGIN
+	-- Mostrar la tabla TAsignatura por el texto que se desea buscar
+	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica
+		FROM TAsignatura
+		WHERE CodEscuelaP = @CodEscuelaP AND 
+			 (CodAsignatura LIKE (@Texto + '%') OR
+			  NombreAsignatura LIKE (@Texto + '%') OR
+			  Creditos LIKE (@Texto + '%') OR
+			  Categoria LIKE (@Texto + '%') OR
+			  HorasTeoria LIKE (@Texto + '%') OR
+			  HorasPractica LIKE (@Texto + '%'))
+END;
+GO
+
+-- Procedimiento para insertar una asignatura.
+CREATE PROCEDURE spuInsertarAsignatura @CodEscuelaP VARCHAR(4),
+									   @CodAsignatura VARCHAR(8),
+									   @NombreAsignatura VARCHAR(50),
+									   @Creditos INT,
+									   @Categoria VARCHAR(5),
+									   @HorasTeoria INT,
+									   @HorasPractica INT
+AS
+BEGIN
+	-- Insertar una asignatura en la tabla TAsignatura
+	INSERT INTO TAsignatura
+		VALUES (@CodEscuelaP, @CodAsignatura, @NombreAsignatura, @Creditos, @Categoria, @HorasTeoria, @HorasPractica)
+END;
+GO
+
+-- Procedimiento para actualizar una asignatura.
+CREATE PROCEDURE spuActualizarAsignatura @CodEscuelaP VARCHAR(4),
+									     @CodAsignatura VARCHAR(8),
+									     @NombreAsignatura VARCHAR(50),
+									     @Creditos INT,
+									     @Categoria VARCHAR(5),
+									     @HorasTeoria INT,
+									     @HorasPractica INT	
+AS
+BEGIN
+	-- Actualizar una asignatura de la tabla TAsignatura
+	UPDATE TAsignatura
+		SET CodEscuelaP = @CodEscuelaP,
+		    CodAsignatura = @CodAsignatura,
+			NombreAsignatura = @NombreAsignatura,
+		    Creditos = @Creditos,
+			Categoria = @Categoria,
+			HorasTeoria = @HorasTeoria, 
+			HorasPractica = @HorasPractica 
+
+		WHERE CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura
+END;
+GO
+
+-- Procedimiento para eliminar una asignatura.
+CREATE PROCEDURE spuEliminarAsignatura @CodEscuelaP VARCHAR(4),
+									   @CodAsignatura VARCHAR(8)					
+AS
+BEGIN
+	-- Eliminar una asignatura de la tabla TAsignatura
+	DELETE FROM TAsignatura
+		WHERE CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura
+END;
+GO
+
