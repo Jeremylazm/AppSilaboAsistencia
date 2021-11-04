@@ -793,3 +793,119 @@ BEGIN
 END;
 GO
 
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA CATALOGO ****************** */
+
+-- Procedimiento para mostrar el catálogo de asignaturas de una escuela profesional.
+CREATE PROCEDURE spuMostrarCatalogo @CodSemestre VARCHAR(7),
+									@CodEscuelaP VARCHAR(4)
+AS
+BEGIN
+	-- Mostrar la tabla de TCatalogo
+	SELECT C.CodAsignatura, A.NombreAsignatura, A.Creditos, A.Categoria, C.CodDocente,
+	       Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre)
+		FROM (TCatalogo C INNER JOIN TAsignatura A ON
+			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
+			 C.CodDocente = D.CodDocente
+	    WHERE C.CodSemestre = @CodSemestre AND C.CodEscuelaP = @CodEscuelaP
+END;
+GO
+
+-- Procedimiento para buscar los docentes que enseñan una asignatura. 
+CREATE PROCEDURE spuBuscarDocentesAsignatura @CodSemestre VARCHAR(7),
+											 @CodEscuelaP VARCHAR(4),
+										     @Texto VARCHAR(20) -- código o nombre de la asignatura
+AS
+BEGIN
+	-- Mostrar la tabla TCatalogo por el texto que se desea buscar
+	SELECT DISTINCT C.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre)
+		FROM (TCatalogo C INNER JOIN TAsignatura A ON
+			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
+			 C.CodDocente = D.CodDocente
+		WHERE C.CodSemestre = @CodSemestre AND C.CodEscuelaP = @CodEscuelaP AND
+		      (C.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%'))
+END;
+GO
+
+-- Procedimiento para buscar las asignaturas asignadas a un docente.
+CREATE PROCEDURE spuBuscarAsignaturasDocente @CodSemestre VARCHAR(7),
+											 @CodEscuelaP VARCHAR(4),
+										     @Texto VARCHAR(20) -- código o nombre del docente
+AS
+BEGIN
+	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
+	SELECT DISTINCT C.CodAsignatura, A.NombreAsignatura, A.Creditos, A.Categoria
+		FROM (TCatalogo C INNER JOIN TAsignatura A ON
+			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
+			 C.CodDocente = D.CodDocente
+		WHERE C.CodSemestre = @CodSemestre AND C.CodEscuelaP = @CodEscuelaP AND
+		      (C.CodDocente LIKE (@Texto + '%') OR
+			   D.Nombre LIKE (@Texto + '%') OR
+			   D.APaterno LIKE (@Texto + '%') OR
+			   D.AMaterno LIKE (@Texto + '%'))
+END;
+GO
+
+-- Procedimiento para buscar el silabo de una asignatura.
+CREATE PROCEDURE spuBuscarSilaboAsignatura @CodSemestre VARCHAR(7),
+										   @CodEscuelaP VARCHAR(4),
+										   @Texto VARCHAR(20) -- código o nombre de la asignatura
+AS
+BEGIN
+	-- Mostrar el silabo
+	SELECT DISTINCT C.Silabo
+		FROM TCatalogo C INNER JOIN TAsignatura A ON
+		     C.CodAsignatura = A.CodAsignatura
+		WHERE C.CodSemestre = @CodSemestre AND C.CodEscuelaP = @CodEscuelaP AND
+		      (C.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%')) AND
+			  C.Silabo IS NOT NULL
+END;
+GO
+
+-- Procedimiento para insertar una asignatura en un catálogo.
+CREATE PROCEDURE spuInsertarAsignaturaCatalogo @CodSemestre VARCHAR(7),
+											   @CodEscuelaP VARCHAR(4),
+											   @CodAsignatura VARCHAR(8),
+											   @CodDocente VARCHAR(5),
+											   @Silabo VARBINARY(MAX)
+AS
+BEGIN
+	-- Insertar una asignatura en la tabla TCatalogo
+	INSERT INTO TCatalogo
+		VALUES (@CodSemestre, @CodEscuelaP, @CodAsignatura, @CodDocente, @Silabo)
+END;
+GO
+
+-- Procedimiento para actualizar una asignatura de un catálogo.
+CREATE PROCEDURE spuActualizarAsignaturaCatalogo @CodSemestre VARCHAR(7),
+											     @CodEscuelaP VARCHAR(4),
+											     @CodAsignatura VARCHAR(8),
+											     @CodDocente VARCHAR(5),
+											     @Silabo VARBINARY(MAX)
+AS
+BEGIN
+	-- Actualizar una asignatura de la tabla TCatalogo
+	UPDATE TCatalogo
+		SET CodSemestre = @CodSemestre, 
+		    CodEscuelaP = @CodEscuelaP, 
+			CodAsignatura = @CodAsignatura, 
+			CodDocente = @CodDocente,
+		    Silabo = @Silabo
+		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND   
+		      CodAsignatura = @CodAsignatura AND CodDocente = @CodDocente
+END;
+GO
+
+-- Procedimiento para eliminar una asignatura de un catálogo
+CREATE PROCEDURE spuEliminarAsignaturaCatalogo @CodSemestre VARCHAR(7),
+											   @CodEscuelaP VARCHAR(4),
+											   @CodAsignatura VARCHAR(8),
+											   @CodDocente VARCHAR(5)
+AS
+BEGIN
+	-- Eliminar una asignatura de la tabla TCatalogo
+	DELETE FROM TCatalogo
+		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND   
+		      CodAsignatura = @CodAsignatura AND CodDocente = @CodDocente
+END;
+GO
+
