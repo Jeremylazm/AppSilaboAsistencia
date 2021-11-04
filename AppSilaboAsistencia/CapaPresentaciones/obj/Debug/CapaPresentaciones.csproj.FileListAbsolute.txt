@@ -82,3 +82,5 @@ C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\Cap
 C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\bin\Debug\Bunifu.UI.WinForms.BunifuUserControl.xml
 C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.exe.licenses
 C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.P_InicioSesion.resources
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.P_Menu.resources
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\bin\Debug\WinFormAnimation.dll
