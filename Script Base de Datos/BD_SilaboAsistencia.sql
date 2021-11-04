@@ -429,3 +429,272 @@ BEGIN
 		WHERE Usuario = @Usuario
 END;
 GO
+
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ESCUELA PROFESIONAL ****************** */
+
+CREATE FUNCTION fnObtenerEscuelaEstudiante (@CodEstudiante VARCHAR(6))
+RETURNS VARCHAR(4)
+AS
+BEGIN
+	-- Declarar una variable para el codigo de la escuela profesional
+	DECLARE @CodEscuelaP VARCHAR(4);
+
+	-- Obtener la escuela profesional del estudiante
+	SELECT @CodEscuelaP = CodEscuelaP
+		FROM TEstudiante
+		WHERE CodEstudiante = @CodEstudiante
+
+	-- Retornar la escuela profesional del estudiante
+    RETURN @CodEscuelaP;
+END;
+GO
+
+CREATE FUNCTION fnObtenerEscuelaDocente (@CodDocente VARCHAR(5))
+RETURNS VARCHAR(4)
+AS
+BEGIN
+	-- Declarar una variable para el codigo de la escuela profesional
+	DECLARE @CodEscuelaP VARCHAR(4);
+
+	-- Obtener la escuela profesional del docente
+	SELECT @CodEscuelaP = CodEscuelaP
+		FROM TDocente
+		WHERE CodDocente = @CodDocente
+
+	-- Retornar la escuela profesional del docente
+    RETURN @CodEscuelaP;
+END;
+GO
+
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ESTUDIANTE ****************** */
+
+-- Procedimiento para mostrar los estudiantes de una escuela profesional. 
+CREATE PROCEDURE spuMostrarEstudiantes @CodEscuelaP VARCHAR(4)
+AS
+BEGIN
+	-- Mostrar la tabla TEstudiante
+	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodEstudiante, APaterno, AMaterno, Nombre, Email, Direccion, Telefono
+		FROM TEstudiante 
+	    WHERE CodEscuelaP = @CodEscuelaP
+END;
+GO
+
+-- Procedimiento para buscar un estudiante (por su código) de una escuela profesional.
+CREATE PROCEDURE spuBuscarEstudiante @CodEscuelaP VARCHAR(4),
+									 @CodEstudiante VARCHAR(6)
+AS
+BEGIN
+	-- Mostrar la información del estudiante
+	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodEstudiante, APaterno, AMaterno, Nombre, Email, Direccion, Telefono
+		FROM TEstudiante
+		WHERE CodEscuelaP = @CodEscuelaP AND CodEstudiante = @CodEstudiante
+END;
+GO
+
+-- Procedimiento para buscar por cualquier atributo los estudiantes de una escuela profesional.
+CREATE PROCEDURE spuBuscarEstudiantes @CodEscuelaP VARCHAR(4),
+									  @Texto VARCHAR(20)
+AS
+BEGIN
+	-- Mostrar la tabla TEstudiante por el texto que se desea buscar
+	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodEstudiante, APaterno, AMaterno, Nombre, Email, Direccion, Telefono
+		FROM TEstudiante
+		WHERE CodEscuelaP = @CodEscuelaP AND
+		     (CodEstudiante LIKE (@Texto + '%') OR
+			  APaterno LIKE (@Texto + '%') OR
+			  AMaterno LIKE (@Texto + '%') OR
+			  Nombre LIKE (@Texto + '%') OR
+			  Email LIKE (@Texto + '%') OR
+			  Direccion LIKE (@Texto + '%') OR
+			  Telefono LIKE (@Texto + '%'))
+END;
+GO
+
+-- Procedimiento para insertar un estudiante.
+CREATE PROCEDURE spuInsertarEstudiante @Perfil VARBINARY(MAX),
+									   @CodEstudiante VARCHAR(6),
+									   @APaterno VARCHAR(15),
+									   @AMaterno VARCHAR(15),
+									   @Nombre VARCHAR(20),
+									   @Email VARCHAR(50),
+									   @Direccion VARCHAR(50),
+									   @Telefono VARCHAR(15),
+									   @CodEscuelaP VARCHAR(4)
+AS
+BEGIN
+	-- Insertar un estudiante en la tabla TEstudiante
+	INSERT INTO TEstudiante
+		VALUES (@Perfil, @CodEstudiante, @APaterno, @AMaterno, @Nombre, @Email, @Direccion, @Telefono, @CodEscuelaP)
+END;
+GO
+
+-- Procedimiento para actualizar un estudiante.
+CREATE PROCEDURE spuActualizarEstudiante @Perfil VARBINARY(MAX),
+										 @CodEstudiante VARCHAR(6),
+										 @APaterno VARCHAR(15),
+										 @AMaterno VARCHAR(15),
+										 @Nombre VARCHAR(20),
+										 @Email VARCHAR(50),
+										 @Direccion VARCHAR(50),
+										 @Telefono VARCHAR(15),
+										 @CodEscuelaP VARCHAR(4)					
+AS
+BEGIN
+	-- Actualizar un estudiante de la tabla TEstudiante
+	UPDATE TEstudiante
+		SET Perfil = @Perfil,
+		    CodEstudiante = @CodEstudiante,
+			APaterno = @APaterno,
+			AMaterno = @AMaterno,
+			Nombre = @Nombre, 
+		    Email = @Email,
+			Direccion = @Direccion,
+			Telefono = @Telefono,
+			CodEscuelaP = @CodEscuelaP
+
+		WHERE CodEstudiante = @CodEstudiante
+END;
+GO
+
+-- Procedimiento para eliminar un estudiante.
+CREATE PROCEDURE spuEliminarEstudiante @CodEstudiante VARCHAR(6)					
+AS
+BEGIN
+	-- Eliminar un estudiante de la tabla TEstudiante
+	DELETE FROM TEstudiante
+		WHERE CodEstudiante = @CodEstudiante
+END;
+GO
+
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA DOCENTE ****************** */
+
+-- Procedimiento para mostrar los docentes de una escuela profesional.
+CREATE PROCEDURE spuMostrarDocentes @CodEscuelaP VARCHAR(4)
+AS
+BEGIN
+	-- Mostrar la tabla TDocente
+	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
+	       Subcategoria, Regimen
+		FROM TDocente
+	    WHERE CodEscuelaP = @CodEscuelaP
+END;
+GO
+
+-- Procedimiento para buscar un docente (por su código) de una escuela profesional.
+CREATE PROCEDURE spuBuscarDocente @CodEscuelaP VARCHAR(4),
+								  @CodDocente VARCHAR(5)
+AS
+BEGIN
+	-- Mostrar la información del docente
+	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
+	       Subcategoria, Regimen
+		FROM TDocente
+		WHERE CodEscuelaP = @CodEscuelaP AND CodDocente = @CodDocente
+END;
+GO
+
+-- Procedimiento para buscar por cualquier atributo los docentes de una escuela profesional.
+CREATE PROCEDURE spuBuscarDocentes @CodEscuelaP VARCHAR(4),
+								   @Texto VARCHAR(20)
+AS
+BEGIN
+	-- Mostrar la tabla TDocente por el texto que se desea buscar
+	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
+	       Subcategoria, Regimen
+		FROM TDocente
+		WHERE CodEscuelaP = @CodEscuelaP AND
+		     (CodDocente LIKE (@Texto + '%') OR
+			  APaterno LIKE (@Texto + '%') OR
+			  AMaterno LIKE (@Texto + '%') OR
+			  Nombre LIKE (@Texto + '%') OR
+			  Email LIKE (@Texto + '%') OR
+			  Direccion LIKE (@Texto + '%') OR
+			  Telefono LIKE (@Texto + '%') OR
+			  Categoria LIKE (@Texto + '%') OR
+			  Subcategoria LIKE (@Texto + '%') OR
+			  Regimen LIKE (@Texto + '%'))
+END;
+GO
+
+-- Procedimiento para insertar un docente.
+CREATE PROCEDURE spuInsertarDocente @Perfil VARBINARY(MAX),
+									@CodDocente VARCHAR(5),
+									@APaterno VARCHAR(15),
+									@AMaterno VARCHAR(15),
+									@Nombre VARCHAR(20),
+									@Email VARCHAR(50),
+									@Direccion VARCHAR(50),
+									@Telefono VARCHAR(15),
+									@Categoria VARCHAR(10),
+									@Subcategoria VARCHAR(9),
+									@Regimen VARCHAR(20),
+									@CodEscuelaP VARCHAR(4)
+AS
+BEGIN
+	-- Insertar un docente en la tabla TDocente
+	INSERT INTO TDocente
+		VALUES (@Perfil, @CodDocente, @APaterno, @AMaterno, @Nombre, @Email, @Direccion, @Telefono, @Categoria, @Subcategoria,
+         		@Regimen, @CodEscuelaP)
+
+	-- Insertar un usuario con el codigo del docente en la tabla TUsuario
+	DECLARE @Datos VARCHAR(53);
+	DECLARE @Contraseña VARCHAR(8);
+	SET @Datos = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre);
+	SET @Contraseña = @CodDocente;
+	EXEC DBO.spuInsertarUsuario @Perfil, @CodDocente, @Contraseña, 'Docente', @Datos
+END;
+GO
+
+-- Procedimiento para actualizar un docente.
+CREATE PROCEDURE spuActualizarDocente @Perfil VARBINARY(MAX),
+									  @CodDocente VARCHAR(5),
+									  @APaterno VARCHAR(15),
+									  @AMaterno VARCHAR(15),
+									  @Nombre VARCHAR(20),
+									  @Email VARCHAR(50),
+									  @Direccion VARCHAR(50),
+									  @Telefono VARCHAR(15),
+									  @Categoria VARCHAR(10),
+									  @Subcategoria VARCHAR(9),
+									  @Regimen VARCHAR(20),
+									  @CodEscuelaP VARCHAR(4)				
+AS
+BEGIN
+	-- Actualizar un docente de la tabla TDocente
+	UPDATE TDocente
+		SET Perfil = @Perfil,
+		    CodDocente = @CodDocente,
+			APaterno = @APaterno,
+			AMaterno = @AMaterno,
+			Nombre = @Nombre, 
+		    Email = @Email,
+			Direccion = @Direccion,
+			Telefono = @Telefono,
+			Categoria = @Categoria,
+			Subcategoria = @Subcategoria, 
+			Regimen = @Regimen,
+			CodEscuelaP = @CodEscuelaP
+
+		WHERE CodDocente = @CodDocente
+
+	-- Actualizar un docente de la tabla TUsuario
+	UPDATE TUsuario
+		SET Perfil = @Perfil, Usuario = @CodDocente, 
+			Datos = @APaterno + ' ' + @AMaterno + ', ' + @Nombre
+		WHERE Usuario = @CodDocente
+END;
+GO
+
+-- Procedimiento para eliminar un docente.
+CREATE PROCEDURE spuEliminarDocente @CodDocente VARCHAR(5)					
+AS
+BEGIN
+	-- Eliminar un docente de la tabla TDocente
+	DELETE FROM TDocente
+		WHERE CodDocente = @CodDocente
+
+	-- Eliminar el usuario docente de la tabla TUsuario
+	DELETE FROM TUsuario
+		WHERE Usuario = @CodDocente
+END;
+GO
