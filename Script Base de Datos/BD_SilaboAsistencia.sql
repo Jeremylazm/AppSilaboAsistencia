@@ -311,3 +311,121 @@ CREATE TABLE Historial
 	PRIMARY KEY(IdHistorial)	
 )
 GO
+
+/* **************************************************************************************************
+   ******************* FUNCIONES Y PROCEDIMIENTOS ALMACENADOS DE LA BASE DE DATOS********************
+   ************************************************************************************************** */
+
+/* ****************** FUNCIONES PARA LA ENCRIPTACION DE LA CONTRASEÑA ****************** */
+USE BDSistemaGestion
+GO
+-- Crear una llave asimetrica
+CREATE ASYMMETRIC KEY AppSistemaGestionAsymKey01
+    WITH ALGORITHM = RSA_2048
+    ENCRYPTION BY PASSWORD = 'IngenieriaSoftwareI';   
+GO
+
+-- Funcion encriptar --
+CREATE FUNCTION fnEncriptarContraseña(@Contraseña Varchar(8))
+RETURNS VARBINARY(max)
+AS
+BEGIN
+	-- Declarar las variables
+    DECLARE @EncryptedText VARBINARY(max)
+
+	-- Generar contraseña encriptada
+	SET @EncryptedText=ENCRYPTBYASYMKEY(ASYMKEY_ID(N'AppSistemaGestionAsymKey01'), @Contraseña)
+
+	-- Retornar una contrasenia varbinary
+    RETURN (@EncryptedText);
+END;
+GO
+-- Funcion desencriptar --
+CREATE FUNCTION fnDesencriptarContraseña(@EncryptedText VARBINARY(max))
+RETURNS VARCHAR(8)
+AS
+BEGIN
+	-- Declarar las variables
+    DECLARE @DecryptedText VARCHAR(MAX)
+
+	-- Generar contraseña desencriptada
+	SET @DecryptedText=DECRYPTBYASYMKEY (ASYMKEY_ID(N'AppSistemaGestionAsymKey01'),@EncryptedText, N'IngenieriaSoftwareI')
+
+	-- Retornar una contrasenia desencriptada
+    RETURN (@DecryptedText);
+END;
+GO
+
+/* ************************** FUNCION PARA GENERAR UNA CONTRASEÑA ************************** */
+
+CREATE VIEW viAleatorio
+AS
+	-- Generar un numero aleatorio
+	SELECT RAND() AS ValorAleatorio
+GO 
+
+CREATE FUNCTION fnGenerarContraseña ()
+RETURNS VARCHAR(8)
+AS
+BEGIN
+	-- Declarar las variables necesarias
+	DECLARE @Indice INT;
+    DECLARE @Contador INT;
+    DECLARE @Caracteres VARCHAR(37);      
+    DECLARE @Contraseña VARCHAR(8);
+
+	-- Establecer los valores iniciales
+	SET @Contador = 0
+	SET @Caracteres = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789'
+	SET @Contraseña = ''
+    
+	-- Tomar un indice aleatorio de los caracteres para generar una contraseña
+    WHILE (@Contador < 8)
+    BEGIN
+        SET @Indice = CEILING((SELECT ValorAleatorio FROM viAleatorio) * (LEN(@Caracteres)))
+        SET @Contraseña = @Contraseña + SUBSTRING(@Caracteres, @Indice, 1)
+        SET @Contador = @Contador + 1
+    END;
+
+	-- Retornar una contraseña de 8 caracteres
+    RETURN (@Contraseña);
+END;
+GO
+
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA USUARIO ****************** */
+USE BDSistemaGestion
+GO
+-- Procedimiento insertar nuevo usuario, encripta la contraseña
+CREATE PROCEDURE spuInsertarUsuario	@Perfil VARBINARY(MAX),
+									@Usuario VARCHAR(6),
+									@Contraseña VARCHAR(8),
+									@Acceso VARCHAR(20),
+									@Datos VARCHAR(53)
+AS
+BEGIN
+	-- Actualizar un estudiante de la tabla de TEstudiante
+	Insert INTO TUsuario values(@Perfil,@Usuario, DBO.fnEncriptarContraseña(@Contraseña),@Acceso,@Datos)
+END;
+GO
+
+-- Cambiar contraseña de usuario --
+CREATE PROCEDURE spuCambiarContraseña @Usuario VARCHAR(6),
+									  @NuevaContrasenia VARCHAR(8)
+AS
+BEGIN
+	-- Actualizar contraseña de Usuario
+	UPDATE TUsuario
+		SET Contraseña = DBO.fnEncriptarContraseña(@NuevaContrasenia)
+		WHERE Usuario = @Usuario
+END;
+GO
+-- Retornar contraseña desencriptada
+CREATE PROCEDURE spuRetornarContraseña @Usuario VARCHAR(6)			
+AS
+BEGIN
+	-- Actualizar un estudiante de la tabla de TEstudiante
+	SELECT DBO.fnDesencriptarContraseña(Contraseña) as 'Contraseña'
+		FROM TUsuario
+		WHERE Usuario = @Usuario
+END;
+GO
