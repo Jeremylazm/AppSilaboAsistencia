@@ -19,21 +19,6 @@ namespace CapaPresentaciones
 
         bool DrawerOpen = true;
 
-        private void btnDashboard_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAsignaturas_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbLogo_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnContraer_Click(object sender, EventArgs e)
         {
             DrawerOpen = !DrawerOpen;
