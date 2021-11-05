@@ -909,3 +909,105 @@ BEGIN
 END;
 GO
 
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA HORARIO-ASIGNATURA ****************** */
+
+-- Procedimiento para buscar el horario de una asignatura en un catálogo. 
+CREATE PROCEDURE spuBuscarHorarioAsignatura @CodSemestre VARCHAR(7),
+										    @CodEscuelaP VARCHAR(4),
+										    @Texto VARCHAR(20) -- código o nombre de la asignatura
+AS
+BEGIN
+	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
+	SELECT D.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), HA.Dia, HA.Horario, HA.Tipo, HA.Aula,
+	       HA.Horas, HA.Modalidad
+		FROM (THorarioAsignatura HA INNER JOIN TAsignatura A ON
+			 HA.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
+			 HA.CodDocente = D.CodDocente
+		WHERE HA.CodSemestre = @CodSemestre AND HA.CodEscuelaP = @CodEscuelaP AND 
+		      (HA.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%'))
+END;
+GO
+
+-- Procedimiento para obtener el horario semanal de las asignaturas asignadas a un docente.
+CREATE PROCEDURE spuHorarioSemanalDocente @CodSemestre VARCHAR(7),
+										  @CodEscuelaP VARCHAR(4),
+										  @Texto VARCHAR(20) -- código o nombre del docente
+AS
+BEGIN
+	-- Mostrar las asignaturas y los horarios:
+	SELECT HA.CodAsignatura, A.NombreAsignatura, HA.Dia, HA.Horario, HA.Tipo, HA.Aula
+		FROM (THorarioAsignatura HA INNER JOIN TAsignatura A ON
+			 HA.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
+			 HA.CodDocente = D.CodDocente
+		WHERE HA.CodSemestre = @CodSemestre AND HA.CodEscuelaP = @CodEscuelaP AND
+		      (HA.CodDocente LIKE (@Texto + '%') OR
+			   D.Nombre LIKE (@Texto + '%') OR
+			   D.APaterno LIKE (@Texto + '%') OR
+			   D.AMaterno LIKE (@Texto + '%'))
+END;
+GO
+
+-- Procedimiento para insertar el horario de una asignatura.
+CREATE PROCEDURE spuInsertarHorarioAsignatura @CodSemestre VARCHAR(7),
+											  @CodEscuelaP VARCHAR(4),
+											  @CodAsignatura VARCHAR(8),
+											  @CodDocente VARCHAR(5),
+											  @Dia VARCHAR(2),
+											  @Horario VARCHAR(6),
+											  @Tipo CHAR(1),
+									          @Aula VARCHAR(10),
+										      @Horas INT,
+											  @Modalidad VARCHAR(10)
+AS
+BEGIN
+	-- Insertar el horario de una asignatura en la tabla THorarioAsignatura
+	INSERT INTO THorarioAsignatura
+		VALUES (@CodSemestre, @CodEscuelaP, @CodAsignatura, @CodDocente, @Dia, @Horario, @Tipo, @Aula, @Horas, @Modalidad)
+END;
+GO
+
+-- Procedimiento para actualizar el horario de una asignatura.
+CREATE PROCEDURE spuActualizarHorarioAsignatura @CodSemestre VARCHAR(7),
+											    @CodEscuelaP VARCHAR(4),
+											    @CodAsignatura VARCHAR(8),
+											    @CodDocente VARCHAR(5),
+											    @Dia VARCHAR(2),
+											    @Horario VARCHAR(6),
+											    @Tipo CHAR(1),
+									            @Aula VARCHAR(10),
+										        @Horas INT,
+											    @Modalidad VARCHAR(10)		
+AS
+BEGIN
+	-- Actualizar una asignatura de la tabla THorarioAsignatura
+	UPDATE THorarioAsignatura
+		SET CodSemestre = @CodSemestre,
+		    CodEscuelaP = @CodEscuelaP,
+			CodAsignatura = @CodAsignatura,
+			CodDocente = @CodDocente,
+		    Dia = @Dia,
+			Horario = @Horario,
+			Tipo = @Tipo,
+			Aula = @Aula,
+			Horas = @Horas,
+			Modalidad = @Modalidad
+
+		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura AND 
+      		  CodDocente = @CodDocente AND Dia = @Dia
+END;
+GO
+
+-- Procedimiento para eliminar el horario de una asignatura.
+CREATE PROCEDURE spuEliminarHorarioAsignatura @CodSemestre VARCHAR(7),
+											  @CodEscuelaP VARCHAR(4),
+											  @CodAsignatura VARCHAR(8),
+											  @CodDocente VARCHAR(5),
+											  @Dia VARCHAR(2)
+AS
+BEGIN
+	-- Eliminar una asignatura de la tabla THorarioAsignatura
+	DELETE FROM THorarioAsignatura
+		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura AND 
+      		  CodDocente = @CodDocente AND Dia = @Dia
+END;
+GO
