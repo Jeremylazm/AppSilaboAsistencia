@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaNegocios
+namespace CapaEntidades
 {
-    public class Class1
+    public class E_AsistenciaDocente
     {
     }
 }

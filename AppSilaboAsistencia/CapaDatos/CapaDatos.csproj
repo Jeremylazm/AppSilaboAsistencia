@@ -31,7 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Magick.NET-Q16-AnyCPU, Version=8.4.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Magick.NET-Q16-AnyCPU.8.4.0\lib\net20\Magick.NET-Q16-AnyCPU.dll</HintPath>
+    </Reference>
+    <Reference Include="Magick.NET.Core, Version=8.4.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Magick.NET.Core.8.4.0\lib\net20\Magick.NET.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,7 +48,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="D_Asignatura.cs" />
+    <Compile Include="D_AsistenciaDocente.cs" />
+    <Compile Include="D_AsistenciaEstudiante.cs" />
+    <Compile Include="D_Catalogo.cs" />
+    <Compile Include="D_Docente.cs" />
+    <Compile Include="D_EscuelaProfesional.cs" />
+    <Compile Include="D_Estudiante.cs" />
+    <Compile Include="D_HorarioAsignatura.cs" />
+    <Compile Include="D_InicioSesion.cs" />
+    <Compile Include="D_Matricula.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +65,9 @@
       <Project>{1334264a-91ac-45d4-bc3d-eaed78834ed4}</Project>
       <Name>CapaEntidades</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
