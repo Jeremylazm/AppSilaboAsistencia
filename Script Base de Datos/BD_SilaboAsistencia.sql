@@ -182,7 +182,7 @@ CREATE TABLE THorarioAsignatura
 	CodDocente tyCodDocente,
 	Dia VARCHAR(2), -- LU, MA, MI, JU, VI
 	Horario VARCHAR(6) NOT NULL,-- Formato: 07-09
-	Tipo CHAR(1) NOT NULL, -- T: Teoria, P: Práctica
+	Tipo VARCHAR(1) NOT NULL, -- T: Teoria, P: Práctica
 	Aula VARCHAR(10) NOT NULL,
 	Horas INT NOT NULL,
 	Modalidad VARCHAR(10) NOT NULL, -- VIRTUAL, PRESENCIAL
@@ -463,6 +463,15 @@ BEGIN
 
 	-- Retornar la escuela profesional del docente
     RETURN @CodEscuelaP;
+END;
+GO
+
+-- Procedimiento para mostrar las escuelas profesionales
+CREATE PROCEDURE spuMostrarEscuelas 
+AS
+BEGIN
+	-- Mostrar la tabla de TEscuela_Profesional
+	SELECT * FROM TEscuela_Profesional
 END;
 GO
 
@@ -954,7 +963,7 @@ CREATE PROCEDURE spuInsertarHorarioAsignatura @CodSemestre VARCHAR(7),
 											  @CodDocente VARCHAR(5),
 											  @Dia VARCHAR(2),
 											  @Horario VARCHAR(6),
-											  @Tipo CHAR(1),
+											  @Tipo VARCHAR(1),
 									          @Aula VARCHAR(10),
 										      @Horas INT,
 											  @Modalidad VARCHAR(10)
@@ -973,7 +982,7 @@ CREATE PROCEDURE spuActualizarHorarioAsignatura @CodSemestre VARCHAR(7),
 											    @CodDocente VARCHAR(5),
 											    @Dia VARCHAR(2),
 											    @Horario VARCHAR(6),
-											    @Tipo CHAR(1),
+											    @Tipo VARCHAR(1),
 									            @Aula VARCHAR(10),
 										        @Horas INT,
 											    @Modalidad VARCHAR(10)		
