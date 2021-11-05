@@ -1020,3 +1020,107 @@ BEGIN
       		  CodDocente = @CodDocente AND Dia = @Dia
 END;
 GO
+
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA MATRICULA ****************** */
+
+-- Procedimiento para mostrar los estudiantes matriculados en un determinado semestre de una escuela profesional.
+CREATE PROCEDURE spuMostrarEstudiantesMatriculados @CodSemestre VARCHAR(7),
+												   @CodEscuelaP VARCHAR(4)
+AS
+BEGIN
+	-- Mostrar la tabla de TMatricula
+	SELECT M.IdMatricula, M.CodAsignatura, A.NombreAsignatura, M.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
+		FROM (TMatricula M INNER JOIN TAsignatura A ON
+			 M.CodAsignatura = A.CodAsignatura) INNER JOIN TEstudiante ET ON
+			 M.CodEstudiante = ET.CodEstudiante
+	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP
+END;
+GO
+
+-- Procedimiento para buscar las asignaturas a los que esta matriculado un estudiante de una escuela profesional.
+CREATE PROCEDURE spuBuscarAsignaturasEstudiante @CodSemestre VARCHAR(7),
+										        @CodEscuelaP VARCHAR(4),
+											    @CodEstudiante VARCHAR(6)
+AS
+BEGIN
+	-- Mostrar la tabla de TMatricula
+	SELECT M.CodAsignatura, A.NombreAsignatura, A.Categoria, A.Creditos
+		FROM TMatricula M INNER JOIN TAsignatura A ON
+			 M.CodAsignatura = A.CodAsignatura
+	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP AND M.CodEstudiante = @CodEstudiante
+END;
+GO
+
+-- Procedimiento para buscar los estudiantes matriculados en una asignatura de un determinado semestre.
+CREATE PROCEDURE spuBuscarEstudiantesAsignatura @CodSemestre VARCHAR(7),
+										        @CodEscuelaP VARCHAR(4),
+											    @Texto VARCHAR(20) -- código o nombre de la asignatura
+AS
+BEGIN
+	-- Mostrar la tabla de TMatricula
+	SELECT ROW_NUMBER() OVER (ORDER BY ET.APaterno ASC) AS Id, M.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
+		FROM (TMatricula M INNER JOIN TAsignatura A ON
+			 M.CodAsignatura = A.CodAsignatura) INNER JOIN TEstudiante ET ON
+			 M.CodEstudiante = ET.CodEstudiante
+	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP AND
+		      (M.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%'))
+END;
+GO
+
+EXEC spuBuscarEstudiantesAsignatura '2021-II','IN','IF468AIN'
+
+-- Procedimiento para insertar la matricula de un estudiante en una asignatura.
+CREATE PROCEDURE spuInsertarMatricula @CodSemestre VARCHAR(7),
+									  @CodEscuelaP VARCHAR(4),
+								      @CodAsignatura VARCHAR(8),
+									  @CodEstudiante VARCHAR(6)
+AS
+BEGIN
+	-- Insertar una matricula en la tabla de TMatricula
+	INSERT INTO TMatricula
+		VALUES (@CodSemestre, @CodEscuelaP, @CodAsignatura, @CodEstudiante)
+END;
+GO
+
+-- Procedimiento para actualizar la matricula de un estudiante.
+CREATE PROCEDURE spuActualizarMatricula @CodSemestre VARCHAR(7),
+									    @CodEscuelaP VARCHAR(4),
+								        @CodAsignatura VARCHAR(8),
+									    @CodEstudiante VARCHAR(6)
+AS
+BEGIN
+	-- Actualizar una matricula de la tabla de TMatricula
+	UPDATE TMatricula
+		SET CodSemestre = @CodSemestre, CodEscuelaP = @CodEscuelaP, CodAsignatura = @CodAsignatura, CodEstudiante = @CodEstudiante
+		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND 
+		      CodAsignatura = @CodAsignatura AND CodEstudiante = @CodEstudiante
+END;
+GO
+
+-- Procedimiento para eliminar la matricula de un estudiante en una asignatura.
+CREATE PROCEDURE spuEliminarMatricula @CodSemestre VARCHAR(7),
+									  @CodEscuelaP VARCHAR(4),
+								      @CodAsignatura VARCHAR(8),
+									  @CodEstudiante VARCHAR(6)					
+AS
+BEGIN
+	-- Eliminar una asignatura de la tabla de TMatricula
+	DELETE FROM TMatricula
+		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND 
+		      CodAsignatura = @CodAsignatura AND CodEstudiante = @CodEstudiante
+END;
+GO
+
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA USUARIO ****************** */
+
+-- Procedimiento para el inicio de sesión.
+CREATE PROCEDURE spuIniciarSesion @Usuario VARCHAR(6),
+                                  @Contraseña VARCHAR(20)
+AS
+BEGIN
+	-- Seleccionar los datos del usuario valido
+	SELECT Perfil, Usuario, DBO.fnDesencriptarContraseña(Contraseña), Acceso, Datos
+		FROM TUsuario
+		WHERE Usuario = @Usuario AND DBO.fnDesencriptarContraseña(Contraseña) = @Contraseña
+END;
+GO
