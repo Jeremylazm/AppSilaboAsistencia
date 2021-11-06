@@ -3,3 +3,8 @@ C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\Cap
 C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.csproj.CoreCompileInputs.cache
 C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.dll
 C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.pdb
+C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaEntidades\bin\Debug\CapaEntidades.dll
+C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaEntidades\bin\Debug\CapaEntidades.pdb
+C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.csproj.CoreCompileInputs.cache
+C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.dll
+C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.pdb
