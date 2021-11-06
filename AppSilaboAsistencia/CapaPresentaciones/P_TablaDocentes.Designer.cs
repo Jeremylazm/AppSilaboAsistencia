@@ -29,6 +29,7 @@ namespace CapaPresentaciones
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaDocentes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -42,6 +43,7 @@ namespace CapaPresentaciones
             this.lblBuscar = new System.Windows.Forms.Label();
             this.dgvTabla = new System.Windows.Forms.DataGridView();
             this.btnCerrar = new Bunifu.Framework.UI.BunifuImageButton();
+            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
@@ -296,6 +298,11 @@ namespace CapaPresentaciones
             this.btnCerrar.TabStop = false;
             this.btnCerrar.Zoom = 10;
             // 
+            // Bordeado
+            // 
+            this.Bordeado.ElipseRadius = 15;
+            this.Bordeado.TargetControl = this;
+            // 
             // P_TablaDocentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,7 +320,9 @@ namespace CapaPresentaciones
             this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_TablaDocentes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P_TablaDocentes";
+            this.Load += new System.EventHandler(this.P_TablaDocentes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTabla)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             this.ResumeLayout(false);
@@ -333,5 +342,6 @@ namespace CapaPresentaciones
         private System.Windows.Forms.Label lblBuscar;
         private System.Windows.Forms.DataGridView dgvTabla;
         private Bunifu.Framework.UI.BunifuImageButton btnCerrar;
+        private Bunifu.Framework.UI.BunifuElipse Bordeado;
     }
 }
