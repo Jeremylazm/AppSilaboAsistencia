@@ -142,7 +142,7 @@ namespace CapaPresentaciones
             this.btnRestaurar.FadeWhenInactive = false;
             this.btnRestaurar.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
             this.btnRestaurar.Image = global::CapaPresentaciones.Properties.Resources.Restaurar_2;
-            this.btnRestaurar.ImageActive = null;
+            this.btnRestaurar.ActiveImage = null;
             this.btnRestaurar.ImageLocation = null;
             this.btnRestaurar.ImageMargin = 10;
             this.btnRestaurar.ImageSize = new System.Drawing.Size(20, 20);
@@ -159,7 +159,7 @@ namespace CapaPresentaciones
             this.btnRestaurar.TabIndex = 14;
             this.btnRestaurar.ToolTipText = "";
             this.btnRestaurar.WaitOnLoad = false;
-            this.btnRestaurar.Zoom = 10;
+            this.btnRestaurar.ImageMargin = 10;
             this.btnRestaurar.ZoomSpeed = 10;
             this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
             // 
@@ -179,7 +179,7 @@ namespace CapaPresentaciones
             this.btnMinimizar.FadeWhenInactive = false;
             this.btnMinimizar.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
             this.btnMinimizar.Image = global::CapaPresentaciones.Properties.Resources.Minimizar_2;
-            this.btnMinimizar.ImageActive = null;
+            this.btnMinimizar.ActiveImage = null;
             this.btnMinimizar.ImageLocation = null;
             this.btnMinimizar.ImageMargin = 10;
             this.btnMinimizar.ImageSize = new System.Drawing.Size(20, 20);
@@ -196,7 +196,7 @@ namespace CapaPresentaciones
             this.btnMinimizar.TabIndex = 13;
             this.btnMinimizar.ToolTipText = "";
             this.btnMinimizar.WaitOnLoad = false;
-            this.btnMinimizar.Zoom = 10;
+            this.btnMinimizar.ImageMargin = 10;
             this.btnMinimizar.ZoomSpeed = 10;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             // 
@@ -216,7 +216,7 @@ namespace CapaPresentaciones
             this.btnMaximizar.FadeWhenInactive = false;
             this.btnMaximizar.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
             this.btnMaximizar.Image = global::CapaPresentaciones.Properties.Resources.Maximizar_2;
-            this.btnMaximizar.ImageActive = null;
+            this.btnMaximizar.ActiveImage = null;
             this.btnMaximizar.ImageLocation = null;
             this.btnMaximizar.ImageMargin = 10;
             this.btnMaximizar.ImageSize = new System.Drawing.Size(20, 20);
@@ -233,7 +233,7 @@ namespace CapaPresentaciones
             this.btnMaximizar.TabIndex = 12;
             this.btnMaximizar.ToolTipText = "";
             this.btnMaximizar.WaitOnLoad = false;
-            this.btnMaximizar.Zoom = 10;
+            this.btnMaximizar.ImageMargin = 10;
             this.btnMaximizar.ZoomSpeed = 10;
             this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
             // 
@@ -253,7 +253,7 @@ namespace CapaPresentaciones
             this.btnCerrar.FadeWhenInactive = false;
             this.btnCerrar.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
             this.btnCerrar.Image = global::CapaPresentaciones.Properties.Resources.Cerrar_2;
-            this.btnCerrar.ImageActive = null;
+            this.btnCerrar.ActiveImage = null;
             this.btnCerrar.ImageLocation = null;
             this.btnCerrar.ImageMargin = 10;
             this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
@@ -270,7 +270,7 @@ namespace CapaPresentaciones
             this.btnCerrar.TabIndex = 11;
             this.btnCerrar.ToolTipText = "";
             this.btnCerrar.WaitOnLoad = false;
-            this.btnCerrar.Zoom = 10;
+            this.btnCerrar.ImageMargin = 10;
             this.btnCerrar.ZoomSpeed = 10;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
@@ -290,7 +290,7 @@ namespace CapaPresentaciones
             this.pbLogo.FadeWhenInactive = false;
             this.pbLogo.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
             this.pbLogo.Image = global::CapaPresentaciones.Properties.Resources.Logo_UNSAAC1;
-            this.pbLogo.ImageActive = null;
+            this.pbLogo.ActiveImage = null;
             this.pbLogo.ImageLocation = null;
             this.pbLogo.ImageMargin = 0;
             this.pbLogo.ImageSize = new System.Drawing.Size(30, 36);
@@ -307,7 +307,7 @@ namespace CapaPresentaciones
             this.pbLogo.TabIndex = 10;
             this.pbLogo.ToolTipText = "";
             this.pbLogo.WaitOnLoad = false;
-            this.pbLogo.Zoom = 0;
+            this.pbLogo.ImageMargin = 0;
             this.pbLogo.ZoomSpeed = 10;
             // 
             // lblInferior
@@ -390,7 +390,7 @@ namespace CapaPresentaciones
             this.btnContraer.FadeWhenInactive = false;
             this.btnContraer.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
             this.btnContraer.Image = global::CapaPresentaciones.Properties.Resources.Cerrar;
-            this.btnContraer.ImageActive = null;
+            this.btnContraer.ActiveImage = null;
             this.btnContraer.ImageLocation = null;
             this.btnContraer.ImageMargin = 10;
             this.btnContraer.ImageSize = new System.Drawing.Size(20, 20);
@@ -407,7 +407,7 @@ namespace CapaPresentaciones
             this.btnContraer.TabIndex = 16;
             this.btnContraer.ToolTipText = "";
             this.btnContraer.WaitOnLoad = false;
-            this.btnContraer.Zoom = 10;
+            this.btnContraer.ImageMargin = 10;
             this.btnContraer.ZoomSpeed = 10;
             this.btnContraer.Click += new System.EventHandler(this.btnContraer_Click);
             // 

@@ -442,7 +442,7 @@ namespace CapaPresentaciones
             this.btnCerrar.FadeWhenInactive = false;
             this.btnCerrar.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
             this.btnCerrar.Image = global::CapaPresentaciones.Properties.Resources.Cerrar_2;
-            this.btnCerrar.ImageActive = null;
+            this.btnCerrar.ActiveImage = null;
             this.btnCerrar.ImageLocation = null;
             this.btnCerrar.ImageMargin = 10;
             this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
@@ -459,7 +459,7 @@ namespace CapaPresentaciones
             this.btnCerrar.TabIndex = 10;
             this.btnCerrar.ToolTipText = "";
             this.btnCerrar.WaitOnLoad = false;
-            this.btnCerrar.Zoom = 10;
+            this.btnCerrar.ImageMargin = 10;
             this.btnCerrar.ZoomSpeed = 10;
             // 
             // lblUniversidad
@@ -496,7 +496,7 @@ namespace CapaPresentaciones
             this.pbLogo.FadeWhenInactive = false;
             this.pbLogo.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
             this.pbLogo.Image = global::CapaPresentaciones.Properties.Resources.Logo_UNSAAC1;
-            this.pbLogo.ImageActive = null;
+            this.pbLogo.ActiveImage = null;
             this.pbLogo.ImageLocation = null;
             this.pbLogo.ImageMargin = 10;
             this.pbLogo.ImageSize = new System.Drawing.Size(202, 262);
@@ -513,7 +513,7 @@ namespace CapaPresentaciones
             this.pbLogo.TabIndex = 9;
             this.pbLogo.ToolTipText = "";
             this.pbLogo.WaitOnLoad = false;
-            this.pbLogo.Zoom = 10;
+            this.pbLogo.ImageMargin = 10;
             this.pbLogo.ZoomSpeed = 10;
             // 
             // btnOlvidarContraseña
