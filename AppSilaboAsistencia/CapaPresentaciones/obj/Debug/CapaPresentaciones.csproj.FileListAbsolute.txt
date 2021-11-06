@@ -88,6 +88,7 @@ C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaP
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.csproj.GenerateResource.cache
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.exe.licenses
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.csproj.CoreCompileInputs.cache
-C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.csproj.CopyComplete
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.exe
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.pdb
+C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.P_TablaDocentes.resources
+C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.P_DatosDocente.resources

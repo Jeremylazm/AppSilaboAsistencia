@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace CapaPresentaciones
 {
@@ -23,7 +24,6 @@ namespace CapaPresentaciones
             {
                 pnOpciones.Width = 173;
                 pbLogo.Location = new Point(178, 6);
-                SeparadorMenu.Width = 161;
                 pbPerfil.Visible = true;
                 btnEditarPerfil.Visible = true;
                 pbEditarPerfil.Visible = false;
@@ -39,7 +39,6 @@ namespace CapaPresentaciones
             {
                 pnOpciones.Width = 44;
                 pbLogo.Location = new Point(49, 6);
-                SeparadorMenu.Width = 35;
                 pbPerfil.Visible = false;
                 btnEditarPerfil.Visible = false;
                 pbEditarPerfil.Visible = true;
@@ -131,6 +130,11 @@ namespace CapaPresentaciones
             WindowState = FormWindowState.Minimized;
         }
 
+        private void btnDocentes_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios<P_TablaDocentes>();
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Desea salir de la aplicación?", "¡Alerta!", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -138,5 +142,30 @@ namespace CapaPresentaciones
                 Application.Exit();
             }
         }
+
+        // Abrir Formularios
+        private void AbrirFormularios<FormularioAbrir>() where FormularioAbrir : Form, new()
+        {
+            Form Formularios = pnContenedor.Controls.OfType<FormularioAbrir>().FirstOrDefault();
+
+            if (Formularios == null)
+            {
+                Formularios = new FormularioAbrir
+                {
+                    TopLevel = false,
+                    Dock = DockStyle.Fill
+                };
+
+                pnContenedor.Controls.Add(Formularios);
+                pnContenedor.Tag = Formularios;
+                Formularios.Show();
+                Formularios.BringToFront();
+            }
+            else
+            {
+                Formularios.BringToFront();
+            }
+        }
+
     }
 }
