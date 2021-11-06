@@ -178,5 +178,25 @@ namespace CapaPresentaciones
             }
             EditarRegistro.Dispose();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvTabla.SelectedRows.Count > 0)
+            {
+                DialogResult Opcion;
+                Opcion = MessageBox.Show("¿Realmente desea eliminar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (Opcion == DialogResult.OK)
+                {
+                    ObjEntidad.CodDocente = dgvTabla.CurrentRow.Cells[0].Value.ToString();
+                    ObjNegocio.EliminarDocente(ObjEntidad);
+                    MensajeConfirmacion("Registro eliminado exitosamente");
+                    MostrarRegistros();
+                }
+            }
+            else
+            {
+                MensajeError("Debe seleccionar una fila");
+            }
+        }
     }
 }
