@@ -17,6 +17,5 @@ C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaD
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\bin\Debug\CapaEntidades.pdb
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\bin\Debug\Magick.NET-Q16-AnyCPU.xml
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\bin\Debug\Magick.NET.Core.xml
-C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.dll
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.pdb
