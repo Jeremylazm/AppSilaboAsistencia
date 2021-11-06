@@ -38,3 +38,7 @@ C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaN
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaNegocios\obj\Debug\CapaNegocios.csproj.CoreCompileInputs.cache
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaNegocios\obj\Debug\CapaNegocios.dll
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaNegocios\obj\Debug\CapaNegocios.pdb
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaNegocios\bin\Debug\Magick.NET-Q16-AnyCPU.dll
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaNegocios\bin\Debug\Magick.NET.Core.dll
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaNegocios\bin\Debug\Magick.NET-Q16-AnyCPU.xml
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaNegocios\bin\Debug\Magick.NET.Core.xml

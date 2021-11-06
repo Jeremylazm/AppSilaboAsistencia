@@ -20,3 +20,7 @@ C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaD
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.dll
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.pdb
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\bin\Debug\Magick.NET-Q16-AnyCPU.dll
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\bin\Debug\Magick.NET.Core.dll
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\bin\Debug\Magick.NET-Q16-AnyCPU.xml
+C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\bin\Debug\Magick.NET.Core.xml

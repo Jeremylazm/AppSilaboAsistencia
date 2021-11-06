@@ -1068,6 +1068,7 @@ END;
 GO
 
 EXEC spuBuscarEstudiantesAsignatura '2021-II','IN','IF468AIN'
+GO
 
 -- Procedimiento para insertar la matricula de un estudiante en una asignatura.
 CREATE PROCEDURE spuInsertarMatricula @CodSemestre VARCHAR(7),
