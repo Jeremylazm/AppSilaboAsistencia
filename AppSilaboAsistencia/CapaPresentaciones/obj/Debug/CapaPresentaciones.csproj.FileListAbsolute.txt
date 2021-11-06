@@ -177,4 +177,3 @@ C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaP
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\bin\Debug\Magick.NET-Q16-AnyCPU.xml
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\bin\Debug\Magick.NET.Core.xml
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.csproj.CoreCompileInputs.cache
-C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaPresentaciones\obj\Debug\CapaPresentaciones.csproj.CopyComplete
