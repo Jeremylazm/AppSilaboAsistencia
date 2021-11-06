@@ -175,6 +175,6 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodEstudiante", Estudiante.CodEstudiante);
             Comando.ExecuteNonQuery();
             Conectar.Close();
-        }       
+        }
     }
 }

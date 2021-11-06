@@ -1,8 +1,4 @@
-﻿using CapaDatos;
-using CapaEntidades;
-using System.Data;
-
-namespace CapaNegocios
+﻿namespace CapaNegocios
 {
     public class N_AsistenciaEstudiante
     {

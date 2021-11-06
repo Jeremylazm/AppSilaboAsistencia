@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 namespace CapaDatos
-{ 
+{
     public class D_EscuelaProfesional
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
