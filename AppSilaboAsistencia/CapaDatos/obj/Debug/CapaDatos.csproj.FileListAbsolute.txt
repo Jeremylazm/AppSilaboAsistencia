@@ -7,3 +7,16 @@ C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\Cap
 C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
 C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.dll
 C:\Users\Jeremylazm\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\Ricardo\Desktop\AppSilaboAsistencia\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\Ricardo\Desktop\AppSilaboAsistencia\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\Ricardo\Desktop\AppSilaboAsistencia\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\bin\Debug\CapaEntidades.dll
+C:\Users\Ricardo\Desktop\AppSilaboAsistencia\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\bin\Debug\Magick.NET-Q16-AnyCPU.dll
+C:\Users\Ricardo\Desktop\AppSilaboAsistencia\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\bin\Debug\Magick.NET.Core.dll
+C:\Users\Ricardo\Desktop\AppSilaboAsistencia\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\bin\Debug\CapaEntidades.pdb
+C:\Users\Ricardo\Desktop\AppSilaboAsistencia\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\bin\Debug\Magick.NET-Q16-AnyCPU.xml
+C:\Users\Ricardo\Desktop\AppSilaboAsistencia\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\bin\Debug\Magick.NET.Core.xml
+C:\Users\Ricardo\Desktop\AppSilaboAsistencia\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+C:\Users\Ricardo\Desktop\AppSilaboAsistencia\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\Ricardo\Desktop\AppSilaboAsistencia\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+C:\Users\Ricardo\Desktop\AppSilaboAsistencia\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\Ricardo\Desktop\AppSilaboAsistencia\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.pdb
