@@ -8,6 +8,9 @@ namespace CapaPresentaciones
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+
+        public static int Evento = 0;
+
         [STAThread]
         static void Main()
         {

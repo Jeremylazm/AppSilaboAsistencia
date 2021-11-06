@@ -22,11 +22,6 @@ namespace CapaPresentaciones
             InitializeComponent();
         }
 
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void P_TablaDocentes_Load(object sender, EventArgs e)
         {
             MostrarRegistros();
@@ -50,13 +45,30 @@ namespace CapaPresentaciones
             dgvTabla.Columns[11].HeaderText = "Subcategoría";
             dgvTabla.Columns[12].HeaderText = "Régimen";
             dgvTabla.Columns[14].HeaderText = "Escuela Profesional";
-            dgvTabla.Columns[15].HeaderText = "Horario";
         }
 
         public void MostrarRegistros()
         {
             dgvTabla.DataSource = N_Docente.MostrarDocentes("IN");
             AccionesTabla();
+        }
+
+        private void ActualizarDatos(object sender, FormClosedEventArgs e)
+        {
+            MostrarRegistros();
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            P_DatosDocente NuevoRegistro = new P_DatosDocente();
+            NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+            NuevoRegistro.ShowDialog();
+            NuevoRegistro.Dispose();
         }
     }
 }
