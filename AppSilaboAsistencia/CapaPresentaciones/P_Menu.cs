@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace CapaPresentaciones
 {
@@ -138,5 +139,30 @@ namespace CapaPresentaciones
                 Application.Exit();
             }
         }
+
+        // Abrir Formularios
+        private void AbrirFormularios<FormularioAbrir>() where FormularioAbrir : Form, new()
+        {
+            Form Formularios = pnContenedor.Controls.OfType<FormularioAbrir>().FirstOrDefault();
+
+            if (Formularios == null)
+            {
+                Formularios = new FormularioAbrir
+                {
+                    TopLevel = false,
+                    Dock = DockStyle.Fill
+                };
+
+                pnContenedor.Controls.Add(Formularios);
+                pnContenedor.Tag = Formularios;
+                Formularios.Show();
+                Formularios.BringToFront();
+            }
+            else
+            {
+                Formularios.BringToFront();
+            }
+        }
+
     }
 }
