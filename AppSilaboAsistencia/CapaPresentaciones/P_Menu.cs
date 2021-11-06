@@ -24,7 +24,6 @@ namespace CapaPresentaciones
             {
                 pnOpciones.Width = 173;
                 pbLogo.Location = new Point(178, 6);
-                SeparadorMenu.Width = 161;
                 pbPerfil.Visible = true;
                 btnEditarPerfil.Visible = true;
                 pbEditarPerfil.Visible = false;
@@ -40,7 +39,6 @@ namespace CapaPresentaciones
             {
                 pnOpciones.Width = 44;
                 pbLogo.Location = new Point(49, 6);
-                SeparadorMenu.Width = 35;
                 pbPerfil.Visible = false;
                 btnEditarPerfil.Visible = false;
                 pbEditarPerfil.Visible = true;
@@ -130,6 +128,11 @@ namespace CapaPresentaciones
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnDocentes_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios<P_TablaDocentes>();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
