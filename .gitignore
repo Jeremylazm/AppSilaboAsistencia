@@ -398,3 +398,5 @@ AppSilaboAsistencia/CapaDatos/obj/Debug/CapaDatos.csproj.AssemblyReference.cache
 *.cache
 *.cache
 *.cache
+*.exe
+*.cache
