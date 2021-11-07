@@ -364,6 +364,7 @@ MigrationBackup/
 FodyWeavers.xsd
 /AppSilaboAsistencia/.vs/AppSilaboAsistencia/v16/.suo
 *.cache
+AppSilaboAsistencia/.vs
 AppSilaboAsistencia/.vs/AppSilaboAsistencia/v16/.suo
 AppSilaboAsistencia/CapaEntidades/obj/Debug/CapaEntidades.csproj.FileListAbsolute.txt
 AppSilaboAsistencia/.vs/AppSilaboAsistencia/v16/.suo
