@@ -362,7 +362,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-AppSilaboAsistencia/.vs/AppSilaboAsistencia/v16/.suo
+/AppSilaboAsistencia/.vs/AppSilaboAsistencia/v16/.suo
 *.cache
 AppSilaboAsistencia/.vs/AppSilaboAsistencia/v16/.suo
 AppSilaboAsistencia/CapaEntidades/obj/Debug/CapaEntidades.csproj.FileListAbsolute.txt
