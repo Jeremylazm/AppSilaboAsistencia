@@ -362,8 +362,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-AppSilaboAsistencia/.vs/AppSilaboAsistencia/v16/.suo
+/AppSilaboAsistencia/.vs/AppSilaboAsistencia/v16/.suo
 *.cache
+AppSilaboAsistencia/.vs
 AppSilaboAsistencia/.vs/AppSilaboAsistencia/v16/.suo
 AppSilaboAsistencia/CapaEntidades/obj/Debug/CapaEntidades.csproj.FileListAbsolute.txt
 AppSilaboAsistencia/.vs/AppSilaboAsistencia/v16/.suo
@@ -381,6 +382,7 @@ AppSilaboAsistencia/CapaDatos/obj/Debug/CapaDatos.csproj.CoreCompileInputs.cache
 AppSilaboAsistencia/CapaDatos/obj/Debug/CapaDatos.csproj.AssemblyReference.cache
 AppSilaboAsistencia/.vs/AppSilaboAsistencia/v16/.suo
 AppSilaboAsistencia/.vs/AppSilaboAsistencia/v16/.suo
+AppSilaboAsistencia\AppSilaboAsistencia\.vs\AppSilaboAsistencia\v16\.suo
 *.cache
 *.cache
 AppSilaboAsistencia/.vs/AppSilaboAsistencia/v16/.suo
@@ -396,4 +398,6 @@ AppSilaboAsistencia/CapaDatos/obj/Debug/CapaDatos.csproj.AssemblyReference.cache
 *.resources
 *.cache
 *.cache
+*.cache
+*.exe
 *.cache
