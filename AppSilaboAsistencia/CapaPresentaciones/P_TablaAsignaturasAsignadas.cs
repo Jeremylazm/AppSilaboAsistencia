@@ -9,8 +9,6 @@ namespace CapaPresentaciones
         {
             InitializeComponent();
 
-
-
             DataTable dt = new DataTable();
             dt.Columns.Add("Name", typeof(string));
             dt.Columns.Add("Age", typeof(int));
