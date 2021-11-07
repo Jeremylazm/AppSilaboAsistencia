@@ -15,5 +15,7 @@
         public string Subcategoria { get; set; }
         public string Regimen { get; set; }
         public string CodEscuelaP { get; set; }
+
+        // Reemplazar con CoDDepartamento
     }
 }

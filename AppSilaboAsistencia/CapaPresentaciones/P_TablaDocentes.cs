@@ -42,21 +42,19 @@ namespace CapaPresentaciones
         public void AccionesTabla()
         {
             dgvTabla.Columns[0].Visible = false;
-            dgvTabla.Columns[3].Visible = false;
-            dgvTabla.Columns[4].Visible = false;
-            dgvTabla.Columns[5].Visible = false;
-            dgvTabla.Columns[13].Visible = false;
 
             dgvTabla.Columns[1].HeaderText = "";
             dgvTabla.Columns[2].HeaderText = "Cod. Docente";
-            dgvTabla.Columns[6].HeaderText = "Docente";
-            dgvTabla.Columns[7].HeaderText = "Email";
-            dgvTabla.Columns[8].HeaderText = "Dirección";
-            dgvTabla.Columns[9].HeaderText = "Teléfono";
-            dgvTabla.Columns[10].HeaderText = "Categoría";
-            dgvTabla.Columns[11].HeaderText = "Subcategoría";
-            dgvTabla.Columns[12].HeaderText = "Régimen";
-            dgvTabla.Columns[14].HeaderText = "Escuela Profesional";
+            dgvTabla.Columns[3].HeaderText = "Ap. Paterno";
+            dgvTabla.Columns[4].HeaderText = "Ap. Materno";
+            dgvTabla.Columns[5].HeaderText = "Nombres";
+            dgvTabla.Columns[6].HeaderText = "Email";
+            dgvTabla.Columns[7].HeaderText = "Dirección";
+            dgvTabla.Columns[8].HeaderText = "Teléfono";
+            dgvTabla.Columns[9].HeaderText = "Categoría";
+            dgvTabla.Columns[10].HeaderText = "Subcategoría";
+            dgvTabla.Columns[11].HeaderText = "Régimen";
+            // dgvTabla.Columns[14].HeaderText = "Escuela Profesional";
         }
 
         public void MostrarRegistros()
@@ -133,18 +131,17 @@ namespace CapaPresentaciones
                 EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
                 EditarRegistro.txtAMaterno.Text = dgvTabla.CurrentRow.Cells[4].Value.ToString();
                 EditarRegistro.txtNombre.Text = dgvTabla.CurrentRow.Cells[5].Value.ToString();
-                EditarRegistro.txtEmail.Text = dgvTabla.CurrentRow.Cells[7].Value.ToString().Substring(0, dgvTabla.CurrentRow.Cells[7].Value.ToString().Length - 14);
-                EditarRegistro.txtDireccion.Text = dgvTabla.CurrentRow.Cells[8].Value.ToString();
-                EditarRegistro.txtTelefono.Text = dgvTabla.CurrentRow.Cells[9].Value.ToString();
+                EditarRegistro.txtEmail.Text = dgvTabla.CurrentRow.Cells[6].Value.ToString();
+                EditarRegistro.txtDireccion.Text = dgvTabla.CurrentRow.Cells[7].Value.ToString();
+                EditarRegistro.txtTelefono.Text = dgvTabla.CurrentRow.Cells[8].Value.ToString();
 
                 EditarRegistro.cxtSubcategoria.Items.Clear();
                 EditarRegistro.cxtRegimen.Items.Clear();
                 EditarRegistro.cxtRegimen.Items.Add("TIEMPO COMPLETO");
                 EditarRegistro.cxtRegimen.Items.Add("TIEMPO PARCIAL");
 
-                if (dgvTabla.CurrentRow.Cells[10].Value.ToString() == "NOMBRADO")
+                if (dgvTabla.CurrentRow.Cells[9].Value.ToString() == "NOMBRADO")
                 {
-
                     EditarRegistro.cxtSubcategoria.Items.Add("PRINCIPAL");
                     EditarRegistro.cxtSubcategoria.Items.Add("ASOCIADO");
                     EditarRegistro.cxtSubcategoria.Items.Add("AUXILIAR");
@@ -164,11 +161,11 @@ namespace CapaPresentaciones
                     EditarRegistro.cxtRegimen.Enabled = false;
                 }
 
-                EditarRegistro.cxtCategoria.SelectedItem = dgvTabla.CurrentRow.Cells[10].Value.ToString();
-                EditarRegistro.cxtSubcategoria.SelectedItem = dgvTabla.CurrentRow.Cells[11].Value.ToString();
-                EditarRegistro.cxtRegimen.SelectedItem = dgvTabla.CurrentRow.Cells[12].Value.ToString();
+                EditarRegistro.cxtCategoria.SelectedItem = dgvTabla.CurrentRow.Cells[9].Value.ToString();
+                EditarRegistro.cxtSubcategoria.SelectedItem = dgvTabla.CurrentRow.Cells[10].Value.ToString();
+                EditarRegistro.cxtRegimen.SelectedItem = dgvTabla.CurrentRow.Cells[11].Value.ToString();
 
-                EditarRegistro.cxtEscuela.SelectedValue = dgvTabla.CurrentRow.Cells[13].Value.ToString();
+                // EditarRegistro.cxtEscuela.SelectedValue = dgvTabla.CurrentRow.Cells[13].Value.ToString();
 
                 EditarRegistro.ShowDialog();
             }
