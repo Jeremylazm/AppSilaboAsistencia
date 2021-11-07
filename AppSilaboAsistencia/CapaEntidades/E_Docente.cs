@@ -16,6 +16,8 @@
         public string Regimen { get; set; }
         public string CodEscuelaP { get; set; }
 
+        // public string CodDepartamento { get; set; }
+
         // Reemplazar con CoDDepartamento
     }
 }
