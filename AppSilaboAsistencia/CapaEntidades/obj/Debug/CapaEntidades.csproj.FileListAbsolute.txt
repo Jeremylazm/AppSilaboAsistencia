@@ -14,3 +14,4 @@ C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaE
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.csproj.CoreCompileInputs.cache
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.dll
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.pdb
+C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.csproj.AssemblyReference.cache
