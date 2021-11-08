@@ -65,6 +65,7 @@ namespace CapaPresentaciones
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.Redimension = new Bunifu.UI.WinForms.BunifuFormDock();
             this.Transicion = new Bunifu.UI.WinForms.BunifuTransition(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.pnPrincipal.SuspendLayout();
             this.pnFondo.SuspendLayout();
             this.pnOpciones.SuspendLayout();
@@ -80,6 +81,7 @@ namespace CapaPresentaciones
             this.pnPrincipal.BorderColor = System.Drawing.Color.White;
             this.pnPrincipal.BorderRadius = 0;
             this.pnPrincipal.BorderThickness = 0;
+            this.pnPrincipal.Controls.Add(this.button1);
             this.pnPrincipal.Controls.Add(this.btnMaximizar);
             this.pnPrincipal.Controls.Add(this.btnRestaurar);
             this.pnPrincipal.Controls.Add(this.pnFondo);
@@ -1121,6 +1123,17 @@ namespace CapaPresentaciones
             this.Transicion.DefaultAnimation = animation1;
             this.Transicion.TimeStep = 1F;
             // 
+            // button1
+            // 
+            this.Transicion.SetDecoration(this.button1, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.button1.Location = new System.Drawing.Point(232, 9);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(84, 28);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // P_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1172,5 +1185,6 @@ namespace CapaPresentaciones
         private System.Windows.Forms.Panel pnFondo;
         private Bunifu.UI.WinForms.BunifuPanel pnContenedor;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnDocentes;
+        private System.Windows.Forms.Button button1;
     }
 }

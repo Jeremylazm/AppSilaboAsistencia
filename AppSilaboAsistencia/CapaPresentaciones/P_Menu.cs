@@ -135,6 +135,12 @@ namespace CapaPresentaciones
             AbrirFormularios<P_TablaDocentes>();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            P_Editar_Catálogo form = new P_Editar_Catálogo();
+            form.Show();
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Desea salir de la aplicación?", "¡Alerta!", MessageBoxButtons.YesNo) == DialogResult.Yes)

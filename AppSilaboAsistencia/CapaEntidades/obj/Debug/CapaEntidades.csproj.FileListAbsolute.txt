@@ -14,3 +14,9 @@ C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaE
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.csproj.CoreCompileInputs.cache
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.dll
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.pdb
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaEntidades\bin\Debug\CapaEntidades.dll
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaEntidades\bin\Debug\CapaEntidades.pdb
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.csprojAssemblyReference.cache
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.csproj.CoreCompileInputs.cache
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.dll
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaEntidades\obj\Debug\CapaEntidades.pdb

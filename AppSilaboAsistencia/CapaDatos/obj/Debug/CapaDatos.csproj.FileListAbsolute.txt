@@ -20,3 +20,16 @@ C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaD
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.dll
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.pdb
 C:\Users\deniswin\Documents\GitHub\AppSilaboAsistencia\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaDatos\bin\Debug\CapaDatos.dll
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaDatos\bin\Debug\CapaDatos.pdb
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaDatos\bin\Debug\CapaEntidades.dll
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaDatos\bin\Debug\Magick.NET-Q16-AnyCPU.dll
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaDatos\bin\Debug\Magick.NET.Core.dll
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaDatos\bin\Debug\CapaEntidades.pdb
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaDatos\bin\Debug\Magick.NET-Q16-AnyCPU.xml
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaDatos\bin\Debug\Magick.NET.Core.xml
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.csprojAssemblyReference.cache
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.dll
+D:\Visual Studio\Visual Studio Programas\Ingeniería del Software\Aplicación_SA\AppSilaboAsistencia\CapaDatos\obj\Debug\CapaDatos.pdb
