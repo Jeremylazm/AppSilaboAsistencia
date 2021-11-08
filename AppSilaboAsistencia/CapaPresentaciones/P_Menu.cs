@@ -10,6 +10,8 @@ namespace CapaPresentaciones
         public P_Menu()
         {
             InitializeComponent();
+            Control[] Controles = { pnOpciones, pnContenedor, lblSuperior, lblInferior, pbLogo, pbPerfil, lblDatos, lblAcceso, lblUsuario };
+            Docker.SubscribeControlsToDragEvents(Controles);
         }
 
         bool DrawerOpen = true;
@@ -137,8 +139,13 @@ namespace CapaPresentaciones
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            P_Editar_Catálogo form = new P_Editar_Catálogo();
-            form.Show();
+            //P_Editar_Catálogo form = new P_Editar_Catálogo();
+            //form.Show();
+        }
+
+        private void btnAsignaturas_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios<P_TablaAsignaturasAsignadas>();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

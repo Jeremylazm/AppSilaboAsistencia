@@ -41,8 +41,7 @@ namespace CapaPresentaciones
             this.pnPrincipal = new Bunifu.UI.WinForms.BunifuPanel();
             this.btnMaximizar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.btnRestaurar = new Bunifu.UI.WinForms.BunifuImageButton();
-            this.pnFondo = new System.Windows.Forms.Panel();
-            this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
+            this.pnContenedor = new System.Windows.Forms.Panel();
             this.btnMinimizar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.pbLogo = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -59,14 +58,12 @@ namespace CapaPresentaciones
             this.lblUsuario = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblAcceso = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblDatos = new Bunifu.UI.WinForms.BunifuLabel();
-            this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.Redimension = new Bunifu.UI.WinForms.BunifuFormDock();
+            this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.Transicion = new Bunifu.UI.WinForms.BunifuTransition(this.components);
             this.pbEditarPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.pbPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.pnPrincipal.SuspendLayout();
-            this.pnFondo.SuspendLayout();
             this.pnOpciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbEditarPerfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).BeginInit();
@@ -82,7 +79,7 @@ namespace CapaPresentaciones
             this.pnPrincipal.BorderThickness = 0;
             this.pnPrincipal.Controls.Add(this.btnMaximizar);
             this.pnPrincipal.Controls.Add(this.btnRestaurar);
-            this.pnPrincipal.Controls.Add(this.pnFondo);
+            this.pnPrincipal.Controls.Add(this.pnContenedor);
             this.pnPrincipal.Controls.Add(this.btnMinimizar);
             this.pnPrincipal.Controls.Add(this.btnCerrar);
             this.pnPrincipal.Controls.Add(this.pbLogo);
@@ -172,34 +169,15 @@ namespace CapaPresentaciones
             this.btnRestaurar.ZoomSpeed = 10;
             this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
             // 
-            // pnFondo
-            // 
-            this.pnFondo.BackColor = System.Drawing.Color.White;
-            this.pnFondo.Controls.Add(this.pnContenedor);
-            this.Transicion.SetDecoration(this.pnFondo, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.pnFondo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnFondo.Location = new System.Drawing.Point(173, 46);
-            this.pnFondo.Name = "pnFondo";
-            this.pnFondo.Size = new System.Drawing.Size(827, 508);
-            this.pnFondo.TabIndex = 16;
-            // 
             // pnContenedor
             // 
-            this.pnContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnContenedor.BackgroundColor = System.Drawing.Color.White;
-            this.pnContenedor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnContenedor.BackgroundImage")));
-            this.pnContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnContenedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.pnContenedor.BorderRadius = 15;
-            this.pnContenedor.BorderThickness = 1;
+            this.pnContenedor.BackColor = System.Drawing.Color.White;
             this.Transicion.SetDecoration(this.pnContenedor, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.pnContenedor.Location = new System.Drawing.Point(4, 3);
+            this.pnContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnContenedor.Location = new System.Drawing.Point(173, 46);
             this.pnContenedor.Name = "pnContenedor";
-            this.pnContenedor.ShowBorders = true;
-            this.pnContenedor.Size = new System.Drawing.Size(819, 502);
-            this.pnContenedor.TabIndex = 0;
+            this.pnContenedor.Size = new System.Drawing.Size(827, 508);
+            this.pnContenedor.TabIndex = 16;
             // 
             // btnMinimizar
             // 
@@ -953,6 +931,7 @@ namespace CapaPresentaciones
             this.btnAsignaturas.TextMarginLeft = 0;
             this.btnAsignaturas.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnAsignaturas.UseDefaultRadiusAndThickness = true;
+            this.btnAsignaturas.Click += new System.EventHandler(this.btnAsignaturas_Click);
             // 
             // lblUsuario
             // 
@@ -1011,57 +990,50 @@ namespace CapaPresentaciones
             this.lblDatos.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblDatos.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // Movimiento
-            // 
-            this.Movimiento.Fixed = true;
-            this.Movimiento.Horizontal = true;
-            this.Movimiento.TargetControl = this.lblSuperior;
-            this.Movimiento.Vertical = true;
-            // 
             // Bordeado
             // 
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this;
             // 
-            // Redimension
+            // Docker
             // 
-            this.Redimension.AllowFormDragging = true;
-            this.Redimension.AllowFormDropShadow = true;
-            this.Redimension.AllowFormResizing = true;
-            this.Redimension.AllowHidingBottomRegion = true;
-            this.Redimension.AllowOpacityChangesWhileDragging = false;
-            this.Redimension.BorderOptions.BottomBorder.BorderColor = System.Drawing.Color.Silver;
-            this.Redimension.BorderOptions.BottomBorder.BorderThickness = 1;
-            this.Redimension.BorderOptions.BottomBorder.ShowBorder = true;
-            this.Redimension.BorderOptions.LeftBorder.BorderColor = System.Drawing.Color.Silver;
-            this.Redimension.BorderOptions.LeftBorder.BorderThickness = 1;
-            this.Redimension.BorderOptions.LeftBorder.ShowBorder = true;
-            this.Redimension.BorderOptions.RightBorder.BorderColor = System.Drawing.Color.Silver;
-            this.Redimension.BorderOptions.RightBorder.BorderThickness = 1;
-            this.Redimension.BorderOptions.RightBorder.ShowBorder = true;
-            this.Redimension.BorderOptions.TopBorder.BorderColor = System.Drawing.Color.Silver;
-            this.Redimension.BorderOptions.TopBorder.BorderThickness = 1;
-            this.Redimension.BorderOptions.TopBorder.ShowBorder = true;
-            this.Redimension.ContainerControl = this;
-            this.Redimension.DockingIndicatorsColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(215)))), ((int)(((byte)(233)))));
-            this.Redimension.DockingIndicatorsOpacity = 0.5D;
-            this.Redimension.DockingOptions.DockAll = true;
-            this.Redimension.DockingOptions.DockBottomLeft = true;
-            this.Redimension.DockingOptions.DockBottomRight = true;
-            this.Redimension.DockingOptions.DockFullScreen = true;
-            this.Redimension.DockingOptions.DockLeft = true;
-            this.Redimension.DockingOptions.DockRight = true;
-            this.Redimension.DockingOptions.DockTopLeft = true;
-            this.Redimension.DockingOptions.DockTopRight = true;
-            this.Redimension.FormDraggingOpacity = 0.9D;
-            this.Redimension.ParentForm = this;
-            this.Redimension.ShowCursorChanges = true;
-            this.Redimension.ShowDockingIndicators = true;
-            this.Redimension.TitleBarOptions.AllowFormDragging = true;
-            this.Redimension.TitleBarOptions.BunifuFormDock = this.Redimension;
-            this.Redimension.TitleBarOptions.DoubleClickToExpandWindow = true;
-            this.Redimension.TitleBarOptions.TitleBarControl = null;
-            this.Redimension.TitleBarOptions.UseBackColorOnDockingIndicators = false;
+            this.Docker.AllowFormDragging = true;
+            this.Docker.AllowFormDropShadow = true;
+            this.Docker.AllowFormResizing = true;
+            this.Docker.AllowHidingBottomRegion = true;
+            this.Docker.AllowOpacityChangesWhileDragging = false;
+            this.Docker.BorderOptions.BottomBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.BottomBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.BottomBorder.ShowBorder = true;
+            this.Docker.BorderOptions.LeftBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.LeftBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.LeftBorder.ShowBorder = true;
+            this.Docker.BorderOptions.RightBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.RightBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.RightBorder.ShowBorder = true;
+            this.Docker.BorderOptions.TopBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.TopBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.TopBorder.ShowBorder = true;
+            this.Docker.ContainerControl = this;
+            this.Docker.DockingIndicatorsColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(215)))), ((int)(((byte)(233)))));
+            this.Docker.DockingIndicatorsOpacity = 0.5D;
+            this.Docker.DockingOptions.DockAll = false;
+            this.Docker.DockingOptions.DockBottomLeft = false;
+            this.Docker.DockingOptions.DockBottomRight = false;
+            this.Docker.DockingOptions.DockFullScreen = false;
+            this.Docker.DockingOptions.DockLeft = false;
+            this.Docker.DockingOptions.DockRight = false;
+            this.Docker.DockingOptions.DockTopLeft = false;
+            this.Docker.DockingOptions.DockTopRight = false;
+            this.Docker.FormDraggingOpacity = 0.9D;
+            this.Docker.ParentForm = this;
+            this.Docker.ShowCursorChanges = true;
+            this.Docker.ShowDockingIndicators = false;
+            this.Docker.TitleBarOptions.AllowFormDragging = true;
+            this.Docker.TitleBarOptions.BunifuFormDock = this.Docker;
+            this.Docker.TitleBarOptions.DoubleClickToExpandWindow = true;
+            this.Docker.TitleBarOptions.TitleBarControl = null;
+            this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
             // Transicion
             // 
@@ -1126,7 +1098,7 @@ namespace CapaPresentaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1000, 600);
             this.Controls.Add(this.pnPrincipal);
             this.Transicion.SetDecoration(this, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
@@ -1136,7 +1108,6 @@ namespace CapaPresentaciones
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Principal";
             this.pnPrincipal.ResumeLayout(false);
-            this.pnFondo.ResumeLayout(false);
             this.pnOpciones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbEditarPerfil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).EndInit();
@@ -1147,7 +1118,6 @@ namespace CapaPresentaciones
         #endregion
 
         private Bunifu.UI.WinForms.BunifuPanel pnPrincipal;
-        private Bunifu.Framework.UI.BunifuDragControl Movimiento;
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private Bunifu.UI.WinForms.BunifuLabel lblInferior;
         private Bunifu.UI.WinForms.BunifuLabel lblSuperior;
@@ -1156,7 +1126,7 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuImageButton btnMinimizar;
         private Bunifu.UI.WinForms.BunifuImageButton btnMaximizar;
         private Bunifu.UI.WinForms.BunifuImageButton btnCerrar;
-        private Bunifu.UI.WinForms.BunifuFormDock Redimension;
+        private Bunifu.UI.WinForms.BunifuFormDock Docker;
         private System.Windows.Forms.Panel pnOpciones;
         private Otros_Controles.JALMCircularPictureBox pbPerfil;
         private Bunifu.UI.WinForms.BunifuLabel lblUsuario;
@@ -1170,8 +1140,7 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuTransition Transicion;
         private Otros_Controles.JALMCircularPictureBox pbEditarPerfil;
         private Bunifu.UI.WinForms.BunifuImageButton btnContraer;
-        private System.Windows.Forms.Panel pnFondo;
-        private Bunifu.UI.WinForms.BunifuPanel pnContenedor;
+        private System.Windows.Forms.Panel pnContenedor;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnDocentes;
     }
 }

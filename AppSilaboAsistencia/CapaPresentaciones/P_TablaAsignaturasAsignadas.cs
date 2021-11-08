@@ -8,7 +8,6 @@ namespace CapaPresentaciones
         public P_TablaAsignaturasAsignadas()
         {
             InitializeComponent();
-            Docker.SubscribeControlToDragEvents(lblTitulo);
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
         }
 
