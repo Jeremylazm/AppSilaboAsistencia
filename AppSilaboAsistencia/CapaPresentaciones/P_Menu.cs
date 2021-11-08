@@ -137,8 +137,8 @@ namespace CapaPresentaciones
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            P_Editar_Catálogo form = new P_Editar_Catálogo();
-            form.Show();
+            /*P_Editar_Catálogo form = new P_Editar_Catálogo();
+            form.Show();*/
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

@@ -15,16 +15,16 @@ namespace CapaDatos
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
 
-        // Método para mostrar los docentes de una escuela profesional.
-        public DataTable MostrarDocentes(string CodEscuelaP)
+        // Método para mostrar los docentes de un departamento académico
+        public DataTable MostrarDocentes(string CodDepartamentoA)
         {
             DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("spuMostrarDocentes", Conectar)
+            SqlCommand Comando = new SqlCommand("spuMostrarDocentesDepartamento", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
 

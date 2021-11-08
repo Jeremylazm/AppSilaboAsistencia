@@ -600,7 +600,7 @@ AS
 BEGIN
 	-- Mostrar la tabla TDocente
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
-	       Subcategoria, Regimen
+	       Subcategoria, Regimen, CodDepartamentoA, CodEscuelaP
 		FROM TDocente
 	    WHERE CodEscuelaP = @CodEscuelaP
 		ORDER BY APaterno
@@ -613,7 +613,7 @@ AS
 BEGIN
 	-- Mostrar la tabla TDocente
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
-	       Subcategoria, Regimen
+	       Subcategoria, Regimen, CodDepartamentoA
 		FROM TDocente
 	    WHERE CodDepartamentoA = @CodDepartamentoA
 		ORDER BY APaterno

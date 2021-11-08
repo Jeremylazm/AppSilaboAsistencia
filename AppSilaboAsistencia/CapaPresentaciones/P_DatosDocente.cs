@@ -24,6 +24,8 @@ namespace CapaPresentaciones
         public P_DatosDocente()
         {
             InitializeComponent();
+            LlenarComboBox();
+            ValidarPerfil();
         }
 
         private void MensajeConfirmacion(string Mensaje)
@@ -46,6 +48,49 @@ namespace CapaPresentaciones
             txtDireccion.Clear();
             txtTelefono.Clear();
             txtCodigo.Focus();
+        }
+
+        private void ValidarPerfil()
+        {
+            if (imgPerfil.Image == (Properties.Resources.Perfil_Docente as Image))
+            {
+                btnRestablecerPerfil.Visible = false;
+            }
+        }
+
+        private void LlenarComboBox()
+        {
+            cxtCategoria.SelectedIndex = 0;
+            cxtSubcategoria.SelectedIndex = 0;
+            cxtRegimen.SelectedIndex = 0;
+
+            if (E_InicioSesion.Acceso == "Administrador")
+            {
+                cxtEscuela.DataSource = N_EscuelaProfesional.MostrarEscuelas();
+            }
+            else
+            {
+                cxtEscuela.DataSource = N_EscuelaProfesional.MostrarEscuelas();
+                //cxtEscuela.DataSource = N_EscuelaProfesional.MostrarEscuelas(E_InicioSesion.Usuario);
+                cxtEscuela.Enabled = false;
+            }
+
+            cxtEscuela.ValueMember = "CodEscuelaP";
+            cxtEscuela.DisplayMember = "Nombre";
+
+
+            if (E_InicioSesion.Acceso == "Administrador")
+            {
+                cxtDepartamento.DataSource = N_DepartamentoAcademico.MostrarDepartamentos();
+            }
+            else
+            {
+                cxtDepartamento.DataSource = N_DepartamentoAcademico.MostrarDepartamentos();
+                cxtDepartamento.Enabled = false;
+            }
+
+            cxtDepartamento.ValueMember = "CodDepartamentoA";
+            cxtDepartamento.DisplayMember = "Nombre";
         }
 
         public string VerificarDatosDocente(out bool EsValido, string Codigo, string APaterno, string AMaterno,
