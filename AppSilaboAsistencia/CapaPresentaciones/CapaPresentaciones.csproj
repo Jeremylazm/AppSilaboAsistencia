@@ -154,7 +154,7 @@
       <HintPath>..\packages\Bunifu.UI.WinForms.5.2.3\lib\net40\Bunifu.UI.WinForms.Deprecated.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Bunifu.Utils.1.0.6\lib\net\Bunifu.Utils.dll</HintPath>
+      <HintPath>..\packages\Bunifu.Utils.1.0.0\lib\net45\Bunifu.Utils.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

@@ -16,13 +16,13 @@ USE BDSistemaGestion
 
 -- Crear tipos de datos para las claves primarias
 USE BDSistemaGestion
-	EXEC SP_ADDTYPE tyCodEscuelaP,				'VARCHAR(4)', 'NOT NULL'
+	EXEC SP_ADDTYPE tyCodEscuelaP,				'VARCHAR(3)', 'NOT NULL'
+	EXEC SP_ADDTYPE tyCodDepartamentoA,		    'VARCHAR(3)', 'NOT NULL'
 	EXEC SP_ADDTYPE tyCodDocente,				'VARCHAR(5)', 'NOT NULL'
 	EXEC SP_ADDTYPE tyCodEstudiante,			'VARCHAR(6)', 'NOT NULL'
-	EXEC SP_ADDTYPE tyCodAsignatura,			'VARCHAR(8)', 'NOT NULL'
+	EXEC SP_ADDTYPE tyCodAsignatura,			'VARCHAR(6)', 'NOT NULL'
 	EXEC sp_addtype tyCodSemestre,				'VARCHAR(7)', 'NOT NULL'
 	EXEC SP_ADDTYPE tyCodSilabo,				'VARCHAR(4)', 'NOT NULL'
-	EXEC SP_ADDTYPE tyCodControlAsistencia,		'VARCHAR(5)', 'NOT NULL'
 GO 
 
 /* ********************************************************************
@@ -31,13 +31,13 @@ GO
 USE BDSistemaGestion
 GO
 
-/* *************************** TABLA ESCUELA PROFESIONAL *************************** */
+/* ********************* TABLA ESCUELA-PROFESIONAL ********************* */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
-				WHERE NAME = 'TEscuela_Profesional')
-	DROP TABLE TEscuela_Profesional
+				WHERE NAME = 'TEscuelaProfesional')
+	DROP TABLE TEscuelaProfesional
 GO
-CREATE TABLE TEscuela_Profesional
+CREATE TABLE TEscuelaProfesional
 (
 	-- Lista de atributos
 	CodEscuelaP tyCodEscuelaP,
@@ -48,7 +48,24 @@ CREATE TABLE TEscuela_Profesional
 );
 GO
 
-/* *************************** TABLA ESTUDIANTE *************************** */
+/* ********************* TABLA DEPARTAMENTO-ACADEMICO ********************* */
+IF EXISTS (SELECT * 
+				FROM SYSOBJECTS
+				WHERE NAME = 'TDepartamentoAcademico')
+	DROP TABLE TDepartamentoAcademico
+GO
+CREATE TABLE TDepartamentoAcademico
+(
+	-- Lista de atributos
+	CodDepartamentoA tyCodDepartamentoA,
+	Nombre VARCHAR(40) NOT NULL,
+
+	-- Determinar las claves 
+	PRIMARY KEY (CodDepartamentoA)
+);
+GO
+
+/* ************************* TABLA ESTUDIANTE ************************** */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
 				WHERE NAME = 'TEstudiante')
@@ -65,12 +82,12 @@ CREATE TABLE TEstudiante
 	Email VARCHAR(50) NOT NULL,
 	Direccion VARCHAR(50) NOT NULL,
 	Telefono VARCHAR(15) NOT NULL,
-	CodEscuelaP tyCodEscuelaP,
+	CodEscuelaP tyCodEscuelaP
 
 	-- Determinar las claves 
 	PRIMARY KEY (CodEstudiante),
-	CONSTRAINT FK_CodEscuelaPE FOREIGN KEY (CodEscuelaP)
-		REFERENCES TEscuela_Profesional
+	CONSTRAINT FKE_CodEscuelaP FOREIGN KEY (CodEscuelaP)
+		REFERENCES TEscuelaProfesional
 		ON UPDATE CASCADE
 );
 GO
@@ -106,17 +123,21 @@ CREATE TABLE TDocente
 	Regimen VARCHAR(20) NOT NULL CHECK (Regimen IN ('TIEMPO COMPLETO', 
 													'DEDICACIÓN EXCLUSIVA',
 													'TIEMPO PARCIAL')),
-	CodEscuelaP tyCodEscuelaP,
+	CodDepartamentoA tyCodDepartamentoA,
+	CodEscuelaP tyCodEscuelaP
 
 	-- Determinar las claves 
 	PRIMARY KEY (CodDocente),
-	CONSTRAINT FK_CodEscuelaPD FOREIGN KEY (CodEscuelaP)
-		REFERENCES TEscuela_Profesional
+	CONSTRAINT FK_CodDepartamentoA FOREIGN KEY (CodDepartamentoA)
+		REFERENCES TDepartamentoAcademico
+		ON UPDATE CASCADE,
+	CONSTRAINT FKD_CodEscuelaP FOREIGN KEY (CodEscuelaP)
+		REFERENCES TEscuelaProfesional
 		ON UPDATE CASCADE
 );
 GO
 
-/* *************************** TABLA ASIGNATURA *************************** */
+/* ************************** TABLA ASIGNATURA ************************* */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
 				WHERE NAME = 'TAsignatura')
@@ -125,23 +146,20 @@ GO
 CREATE TABLE TAsignatura
 (
 	-- Lista de atributos
-	CodEscuelaP tyCodEscuelaP,
-	CodAsignatura tyCodAsignatura,
+	CodAsignatura tyCodAsignatura, -- ej. IF085
 	NombreAsignatura VARCHAR(50) NOT NULL,
 	Creditos INT NOT NULL,
 	Categoria VARCHAR(5) NOT NULL,
 	HorasTeoria INT NOT NULL,
 	HorasPractica INT NOT NULL,
+	Prerrequisito VARCHAR(25)
 
 	-- Determinar las claves
-	PRIMARY KEY (CodEscuelaP, CodAsignatura),
-	CONSTRAINT FK_CodEscuelaPA FOREIGN KEY (CodEscuelaP)
-		REFERENCES TEscuela_Profesional
-		ON UPDATE CASCADE
+	PRIMARY KEY (CodAsignatura)
 );
 GO
 
-/* *************************** TABLA CATALOGO *************************** */
+/* ************************** TABLA CATALOGO *************************** */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
 				WHERE NAME = 'TCatalogo')
@@ -151,14 +169,15 @@ CREATE TABLE TCatalogo
 (
 	-- Lista de atributos
 	CodSemestre tyCodSemestre,
-	CodEscuelaP tyCodEscuelaP,
-	CodAsignatura tyCodAsignatura,
+	CodEscuelaP tyCodEscuelaP, -- EP donde se enseña la asignatura
+	CodAsignatura tyCodAsignatura, -- ej. IF085
+	Grupo VARCHAR(1) NOT NULL,
 	CodDocente tyCodDocente, -- Puede ser uno o más
-	Silabo VARBINARY(MAX)
+	CodSilabo VARCHAR(4)
 
 	-- Determinar las claves
-	PRIMARY KEY (CodSemestre, CodEscuelaP, CodAsignatura, CodDocente),
-	CONSTRAINT FKC_CodAsignatura FOREIGN KEY (CodEscuelaP, CodAsignatura)
+	PRIMARY KEY (CodSemestre, CodEscuelaP, CodAsignatura, Grupo, CodDocente),
+	CONSTRAINT FK_CodAsignatura FOREIGN KEY (CodAsignatura)
 		REFERENCES TAsignatura
 		ON UPDATE CASCADE,
 	CONSTRAINT FKC_CodDocente FOREIGN KEY (CodDocente)
@@ -167,7 +186,7 @@ CREATE TABLE TCatalogo
 );
 GO
 
-/* *************************** TABLA HORARIO-ASIGNATURA *************************** */
+/* ********************** TABLA HORARIO-ASIGNATURA ********************* */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
 				WHERE NAME = 'THorarioAsignatura')
@@ -177,25 +196,26 @@ CREATE TABLE THorarioAsignatura
 (
 	-- Lista de atributos
 	CodSemestre tyCodSemestre,
-	CodEscuelaP tyCodEscuelaP,
-	CodAsignatura tyCodAsignatura,
+	CodEscuelaP tyCodEscuelaP, -- EP donde se enseña la asignatura
+	CodAsignatura tyCodAsignatura, -- ej. IF085
+	Grupo VARCHAR(1),
 	CodDocente tyCodDocente,
 	Dia VARCHAR(2), -- LU, MA, MI, JU, VI
 	Horario VARCHAR(6) NOT NULL,-- Formato: 07-09
 	Tipo VARCHAR(1) NOT NULL, -- T: Teoria, P: Práctica
 	Aula VARCHAR(10) NOT NULL,
 	Horas INT NOT NULL,
-	Modalidad VARCHAR(10) NOT NULL, -- VIRTUAL, PRESENCIAL
+	Modalidad VARCHAR(10) NOT NULL -- VIRTUAL, PRESENCIAL
 
 	-- Determinar las claves
-	PRIMARY KEY (CodSemestre, CodEscuelaP, CodAsignatura, CodDocente, Dia),
-	CONSTRAINT FKHA_CodCatalogo FOREIGN KEY (CodSemestre, CodEscuelaP, CodAsignatura, CodDocente)
+	PRIMARY KEY (CodSemestre, CodEscuelaP, CodAsignatura, Grupo, CodDocente, Dia),
+	CONSTRAINT FKHA_CodCatalogo FOREIGN KEY (CodSemestre, CodEscuelaP, CodAsignatura, Grupo, CodDocente)
 		REFERENCES TCatalogo
 		ON UPDATE CASCADE,
 );
 GO
 
-/* *************************** TABLA MATRICULA *************************** */
+/* ************************** TABLA MATRICULA ************************** */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
 				WHERE NAME = 'TMatricula')
@@ -207,13 +227,13 @@ CREATE TABLE TMatricula
 	IdMatricula INT IDENTITY(1,1),
 	CodSemestre tyCodSemestre,
 	CodEscuelaP tyCodEscuelaP,
-	CodAsignatura tyCodAsignatura,
-	CodEstudiante tyCodEstudiante,
+	CodAsignatura VARCHAR(9), -- ej. IF085AIN
+	CodEstudiante tyCodEstudiante
 
 	-- Determinar las claves
 	PRIMARY KEY (IdMatricula),
-	CONSTRAINT FKM_CodAsignatura FOREIGN KEY (CodEscuelaP, CodAsignatura)
-		REFERENCES TAsignatura
+	CONSTRAINT FKM_CodEscuelaP FOREIGN KEY (CodEscuelaP)
+		REFERENCES TEscuelaProfesional
 		ON UPDATE CASCADE,
 	CONSTRAINT FK_CodEstudiante FOREIGN KEY (CodEstudiante)
 		REFERENCES TEstudiante
@@ -221,7 +241,7 @@ CREATE TABLE TMatricula
 );
 GO
 
-/* *************************** TABLA ASISTENCIA-DOCENTE *************************** */
+/* ********************* TABLA ASISTENCIA-DOCENTE ********************** */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
 				WHERE NAME = 'TAsistenciaDocente')
@@ -231,21 +251,20 @@ CREATE TABLE TAsistenciaDocente
 (
 	-- Lista de atributos
 	CodSemestre tyCodSemestre,
-	CodEscuelaP tyCodEscuelaP,
-	CodAsignatura tyCodAsignatura,
+	CodAsignatura VARCHAR(9), -- ej. IF085AIN
 	Fecha DATE NOT NULL,
 	CodDocente tyCodDocente,
-	NombreTema VARCHAR(100),
+	NombreTema VARCHAR(100)
 
 	-- Determinar las claves
-	PRIMARY KEY (CodSemestre, CodEscuelaP, CodAsignatura, Fecha),
-	CONSTRAINT FKR_CodCatalogo FOREIGN KEY (CodSemestre, CodEscuelaP, CodAsignatura, CodDocente)
-		REFERENCES TCatalogo
-		ON UPDATE CASCADE
+	PRIMARY KEY (CodSemestre, CodAsignatura, Fecha),
+	CONSTRAINT FKAD_CodDocente FOREIGN KEY (CodDocente)
+		REFERENCES TDocente
+		ON UPDATE NO ACTION
 );
 GO
 
-/* *************************** TABLA ASISTENCIA-ESTUDIANTE*************************** */
+/* ********************* TABLA ASISTENCIA-ESTUDIANTE ******************** */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
 				WHERE NAME = 'TAsistenciaEstudiante')
@@ -255,16 +274,15 @@ CREATE TABLE TAsistenciaEstudiante
 (
 	-- Lista de atributos
 	CodSemestre tyCodSemestre,
-	CodEscuelaP tyCodEscuelaP,
-	CodAsignatura tyCodAsignatura,
+	CodAsignatura VARCHAR(9), -- ej. IF085AIN
 	Fecha DATE NOT NULL,
 	CodEstudiante tyCodEstudiante,
 	Estado VARCHAR(2) NOT NULL,  --SI/NO (Presente/No presente)
 	Observación VARCHAR(25) -- tardanza, permisos
 
 	-- Determinar las claves
-	PRIMARY KEY (CodSemestre, CodEscuelaP, CodAsignatura, Fecha, CodEstudiante),
-	CONSTRAINT FK_CodAsistenciaDocente FOREIGN KEY (CodSemestre, CodEscuelaP, CodAsignatura, Fecha)
+	PRIMARY KEY (CodSemestre, CodAsignatura, Fecha, CodEstudiante),
+	CONSTRAINT FK_CodAsistenciaDocente FOREIGN KEY (CodSemestre, CodAsignatura, Fecha)
 		REFERENCES TAsistenciaDocente
 		ON UPDATE CASCADE,
 );
@@ -283,14 +301,14 @@ CREATE TABLE TUsuario
 	Usuario VARCHAR(6) NOT NULL,
 	Contraseña VARBINARY(MAX) NOT NULL,
 	Acceso VARCHAR(20) NOT NULL,
-	Datos VARCHAR(53) NOT NULL,
+	Datos VARCHAR(53) NOT NULL
 
 	-- Definir la clave primaria
 	PRIMARY KEY(Usuario)
 )
 GO
 
-/* *************************** TABLA HISTORIAL *************************** */
+/* ************************** TABLA HISTORIAL ************************** */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
 				WHERE NAME = 'Historial')
@@ -432,53 +450,52 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ESCUELA PROFESIONAL ****************** */
 
-CREATE FUNCTION fnObtenerEscuelaEstudiante (@CodEstudiante VARCHAR(6))
-RETURNS VARCHAR(4)
-AS
-BEGIN
-	-- Declarar una variable para el codigo de la escuela profesional
-	DECLARE @CodEscuelaP VARCHAR(4);
-
-	-- Obtener la escuela profesional del estudiante
-	SELECT @CodEscuelaP = CodEscuelaP
-		FROM TEstudiante
-		WHERE CodEstudiante = @CodEstudiante
-
-	-- Retornar la escuela profesional del estudiante
-    RETURN @CodEscuelaP;
-END;
-GO
-
-CREATE FUNCTION fnObtenerEscuelaDocente (@CodDocente VARCHAR(5))
-RETURNS VARCHAR(4)
-AS
-BEGIN
-	-- Declarar una variable para el codigo de la escuela profesional
-	DECLARE @CodEscuelaP VARCHAR(4);
-
-	-- Obtener la escuela profesional del docente
-	SELECT @CodEscuelaP = CodEscuelaP
-		FROM TDocente
-		WHERE CodDocente = @CodDocente
-
-	-- Retornar la escuela profesional del docente
-    RETURN @CodEscuelaP;
-END;
-GO
-
--- Procedimiento para mostrar las escuelas profesionales
+-- Procedimiento para mostrar la lista de escuelas profesionales.
 CREATE PROCEDURE spuMostrarEscuelas 
 AS
 BEGIN
-	-- Mostrar la tabla de TEscuela_Profesional
-	SELECT * FROM TEscuela_Profesional
+	-- Mostrar la tabla TEscuelaProfesional
+	SELECT * FROM TEscuelaProfesional
+END;
+GO
+
+-- Procedimiento para buscar el nombre de una escuela profesional.
+CREATE PROCEDURE spuBuscarNombreEscuela @CodEscuelaP VARCHAR(3) 
+AS
+BEGIN
+	-- Mostrar el nombre de la escuela profesional
+	SELECT Nombre
+		FROM TEscuelaProfesional
+		WHERE CodEscuelaP = @CodEscuelaP
+END;
+GO
+
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA DEPARTAMENTO ACADEMICO ****************** */
+
+-- Procedimiento para mostrar la lista de departamentos académicos.
+CREATE PROCEDURE spuMostrarDepartamentos 
+AS
+BEGIN
+	-- Mostrar la tabla TDepartamentoAcademico
+	SELECT * FROM TDepartamentoAcademico
+END;
+GO
+
+-- Procedimiento para buscar el nombre de un departamento académico.
+CREATE PROCEDURE spuBuscarNombreDepartamento @CodDepartamentoA VARCHAR(3) 
+AS
+BEGIN
+	-- Mostrar el nombre del departamento académico.
+	SELECT Nombre
+		FROM TDepartamentoAcademico
+		WHERE CodDepartamentoA = @CodDepartamentoA
 END;
 GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ESTUDIANTE ****************** */
 
 -- Procedimiento para mostrar los estudiantes de una escuela profesional. 
-CREATE PROCEDURE spuMostrarEstudiantes @CodEscuelaP VARCHAR(4)
+CREATE PROCEDURE spuMostrarEstudiantes @CodEscuelaP VARCHAR(3)
 AS
 BEGIN
 	-- Mostrar la tabla TEstudiante
@@ -489,7 +506,7 @@ END;
 GO
 
 -- Procedimiento para buscar un estudiante (por su código) de una escuela profesional.
-CREATE PROCEDURE spuBuscarEstudiante @CodEscuelaP VARCHAR(4),
+CREATE PROCEDURE spuBuscarEstudiante @CodEscuelaP VARCHAR(3),
 									 @CodEstudiante VARCHAR(6)
 AS
 BEGIN
@@ -501,7 +518,7 @@ END;
 GO
 
 -- Procedimiento para buscar por cualquier atributo los estudiantes de una escuela profesional.
-CREATE PROCEDURE spuBuscarEstudiantes @CodEscuelaP VARCHAR(4),
+CREATE PROCEDURE spuBuscarEstudiantes @CodEscuelaP VARCHAR(3),
 									  @Texto VARCHAR(20)
 AS
 BEGIN
@@ -528,7 +545,7 @@ CREATE PROCEDURE spuInsertarEstudiante @Perfil VARBINARY(MAX),
 									   @Email VARCHAR(50),
 									   @Direccion VARCHAR(50),
 									   @Telefono VARCHAR(15),
-									   @CodEscuelaP VARCHAR(4)
+									   @CodEscuelaP VARCHAR(3)
 AS
 BEGIN
 	-- Insertar un estudiante en la tabla TEstudiante
@@ -546,7 +563,7 @@ CREATE PROCEDURE spuActualizarEstudiante @Perfil VARBINARY(MAX),
 										 @Email VARCHAR(50),
 										 @Direccion VARCHAR(50),
 										 @Telefono VARCHAR(15),
-										 @CodEscuelaP VARCHAR(4)					
+										 @CodEscuelaP VARCHAR(3)					
 AS
 BEGIN
 	-- Actualizar un estudiante de la tabla TEstudiante
@@ -578,7 +595,7 @@ GO
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA DOCENTE ****************** */
 
 -- Procedimiento para mostrar los docentes de una escuela profesional.
-CREATE PROCEDURE spuMostrarDocentes @CodEscuelaP VARCHAR(4)
+CREATE PROCEDURE spuMostrarDocentesEscuela @CodEscuelaP VARCHAR(3)
 AS
 BEGIN
 	-- Mostrar la tabla TDocente
@@ -586,11 +603,25 @@ BEGIN
 	       Subcategoria, Regimen
 		FROM TDocente
 	    WHERE CodEscuelaP = @CodEscuelaP
+		ORDER BY APaterno
 END;
 GO
 
--- Procedimiento para buscar un docente (por su código) de una escuela profesional.
-CREATE PROCEDURE spuBuscarDocente @CodEscuelaP VARCHAR(4),
+-- Procedimiento para mostrar los docentes de un departamento académico.
+CREATE PROCEDURE spuMostrarDocentesDepartamento @CodDepartamentoA VARCHAR(3)
+AS
+BEGIN
+	-- Mostrar la tabla TDocente
+	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
+	       Subcategoria, Regimen
+		FROM TDocente
+	    WHERE CodDepartamentoA = @CodDepartamentoA
+		ORDER BY APaterno
+END;
+GO
+
+-- Procedimiento para buscar un docente (por su código) de un departamento académico.
+CREATE PROCEDURE spuBuscarDocente @CodDepartamentoA VARCHAR(3),
 								  @CodDocente VARCHAR(5)
 AS
 BEGIN
@@ -598,12 +629,12 @@ BEGIN
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
 	       Subcategoria, Regimen
 		FROM TDocente
-		WHERE CodEscuelaP = @CodEscuelaP AND CodDocente = @CodDocente
+		WHERE CodDepartamentoA = @CodDepartamentoA AND CodDocente = @CodDocente
 END;
 GO
 
 -- Procedimiento para buscar por cualquier atributo los docentes de una escuela profesional.
-CREATE PROCEDURE spuBuscarDocentes @CodEscuelaP VARCHAR(4),
+CREATE PROCEDURE spuBuscarDocentes @CodDepartamentoA VARCHAR(3),
 								   @Texto VARCHAR(20)
 AS
 BEGIN
@@ -611,7 +642,7 @@ BEGIN
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
 	       Subcategoria, Regimen
 		FROM TDocente
-		WHERE CodEscuelaP = @CodEscuelaP AND
+		WHERE CodDepartamentoA = @CodDepartamentoA AND
 		     (CodDocente LIKE (@Texto + '%') OR
 			  APaterno LIKE (@Texto + '%') OR
 			  AMaterno LIKE (@Texto + '%') OR
@@ -621,7 +652,8 @@ BEGIN
 			  Telefono LIKE (@Texto + '%') OR
 			  Categoria LIKE (@Texto + '%') OR
 			  Subcategoria LIKE (@Texto + '%') OR
-			  Regimen LIKE (@Texto + '%'))
+			  Regimen LIKE (@Texto + '%') OR
+			  CodEscuelaP LIKE (@Texto + '%') )
 END;
 GO
 
@@ -637,13 +669,14 @@ CREATE PROCEDURE spuInsertarDocente @Perfil VARBINARY(MAX),
 									@Categoria VARCHAR(10),
 									@Subcategoria VARCHAR(9),
 									@Regimen VARCHAR(20),
-									@CodEscuelaP VARCHAR(4)
+									@CodDepartamentoA VARCHAR(3),
+									@CodEscuelaP VARCHAR(3)
 AS
 BEGIN
 	-- Insertar un docente en la tabla TDocente
 	INSERT INTO TDocente
 		VALUES (@Perfil, @CodDocente, @APaterno, @AMaterno, @Nombre, @Email, @Direccion, @Telefono, @Categoria, @Subcategoria,
-         		@Regimen, @CodEscuelaP)
+         		@Regimen, @CodDepartamentoA, @CodEscuelaP)
 
 	-- Insertar un usuario con el codigo del docente en la tabla TUsuario
 	DECLARE @Datos VARCHAR(53);
@@ -666,7 +699,8 @@ CREATE PROCEDURE spuActualizarDocente @Perfil VARBINARY(MAX),
 									  @Categoria VARCHAR(10),
 									  @Subcategoria VARCHAR(9),
 									  @Regimen VARCHAR(20),
-									  @CodEscuelaP VARCHAR(4)				
+									  @CodDepartamentoA VARCHAR(3),
+									  @CodEscuelaP VARCHAR(3)				
 AS
 BEGIN
 	-- Actualizar un docente de la tabla TDocente
@@ -682,6 +716,7 @@ BEGIN
 			Categoria = @Categoria,
 			Subcategoria = @Subcategoria, 
 			Regimen = @Regimen,
+			CodDepartamentoA = @CodDepartamentoA,
 			CodEscuelaP = @CodEscuelaP
 
 		WHERE CodDocente = @CodDocente
@@ -710,119 +745,123 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ASIGNATURA ****************** */
 
--- Procedimiento para mostrar las asignaturas de una escuela profesional.
-CREATE PROCEDURE spuMostrarAsignaturas @CodEscuelaP VARCHAR(4)
+-- Procedimiento para mostrar las asignaturas de un departamento académico.
+CREATE PROCEDURE spuMostrarAsignaturas @CodDepartamento VARCHAR(3)
 AS
-BEGIN
+BEGIN	
 	-- Mostrar la tabla TAsignatura
-	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica
+	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica, Prerrequisito
 		FROM TAsignatura
-	    WHERE CodEscuelaP = @CodEscuelaP
+	    WHERE SUBSTRING(CodAsignatura,1,2) = @CodDepartamento
+		ORDER BY NombreAsignatura
 END;
 GO
 
--- Procedimiento para buscar una asignatura de una escuela profesional.
-CREATE PROCEDURE spuBuscarAsignatura @CodEscuelaP VARCHAR(4),
-									 @CodAsignatura VARCHAR(8)
+-- Procedimiento para buscar una asignatura.
+CREATE PROCEDURE spuBuscarAsignatura @CodDepartamento VARCHAR(3),
+									 @CodAsignatura VARCHAR(6)
 AS
 BEGIN
 	-- Mostrar la tabla TAsignatura por el texto que se desea buscar
-	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica
+	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica, Prerrequisito
 		FROM TAsignatura
-		WHERE CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura
+		WHERE SUBSTRING(CodAsignatura,1,2) = @CodDepartamento AND CodAsignatura = @CodAsignatura
 END;
 GO
 
--- Procedimiento para buscar por cualquier atributo las asignaturas de una escuela profesional.
-CREATE PROCEDURE spuBuscarAsignaturas @CodEscuelaP VARCHAR(4),
+-- Procedimiento para buscar por cualquier atributo las asignaturas de un departamento académico.
+CREATE PROCEDURE spuBuscarAsignaturas @CodDepartamento VARCHAR(3),
 									  @Texto VARCHAR(20)
 AS
 BEGIN
 	-- Mostrar la tabla TAsignatura por el texto que se desea buscar
-	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica
+	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica, Prerrequisito
 		FROM TAsignatura
-		WHERE CodEscuelaP = @CodEscuelaP AND 
+		WHERE SUBSTRING(CodAsignatura,1,2) = @CodDepartamento AND 
 			 (CodAsignatura LIKE (@Texto + '%') OR
 			  NombreAsignatura LIKE (@Texto + '%') OR
 			  Creditos LIKE (@Texto + '%') OR
 			  Categoria LIKE (@Texto + '%') OR
 			  HorasTeoria LIKE (@Texto + '%') OR
-			  HorasPractica LIKE (@Texto + '%'))
+			  HorasPractica LIKE (@Texto + '%') OR
+			  Prerrequisito LIKE (@Texto + '%'))
 END;
 GO
 
 -- Procedimiento para insertar una asignatura.
-CREATE PROCEDURE spuInsertarAsignatura @CodEscuelaP VARCHAR(4),
-									   @CodAsignatura VARCHAR(8),
+CREATE PROCEDURE spuInsertarAsignatura @CodAsignatura VARCHAR(6),
 									   @NombreAsignatura VARCHAR(50),
 									   @Creditos INT,
 									   @Categoria VARCHAR(5),
 									   @HorasTeoria INT,
-									   @HorasPractica INT
+									   @HorasPractica INT,
+									   @Prerrequisito VARCHAR(25)
 AS
 BEGIN
 	-- Insertar una asignatura en la tabla TAsignatura
 	INSERT INTO TAsignatura
-		VALUES (@CodEscuelaP, @CodAsignatura, @NombreAsignatura, @Creditos, @Categoria, @HorasTeoria, @HorasPractica)
+		VALUES (@CodAsignatura, @NombreAsignatura, @Creditos, @Categoria, @HorasTeoria, @HorasPractica, @Prerrequisito)
 END;
 GO
 
 -- Procedimiento para actualizar una asignatura.
-CREATE PROCEDURE spuActualizarAsignatura @CodEscuelaP VARCHAR(4),
-									     @CodAsignatura VARCHAR(8),
+CREATE PROCEDURE spuActualizarAsignatura @CodAsignatura VARCHAR(6),
 									     @NombreAsignatura VARCHAR(50),
 									     @Creditos INT,
 									     @Categoria VARCHAR(5),
 									     @HorasTeoria INT,
-									     @HorasPractica INT	
+									     @HorasPractica INT,
+									     @Prerrequisito VARCHAR(25)
 AS
 BEGIN
 	-- Actualizar una asignatura de la tabla TAsignatura
 	UPDATE TAsignatura
-		SET CodEscuelaP = @CodEscuelaP,
-		    CodAsignatura = @CodAsignatura,
+		SET CodAsignatura = @CodAsignatura,
 			NombreAsignatura = @NombreAsignatura,
 		    Creditos = @Creditos,
 			Categoria = @Categoria,
 			HorasTeoria = @HorasTeoria, 
-			HorasPractica = @HorasPractica 
+			HorasPractica = @HorasPractica,
+			Prerrequisito = @Prerrequisito
 
-		WHERE CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura
+		WHERE CodAsignatura = @CodAsignatura
 END;
 GO
 
 -- Procedimiento para eliminar una asignatura.
-CREATE PROCEDURE spuEliminarAsignatura @CodEscuelaP VARCHAR(4),
-									   @CodAsignatura VARCHAR(8)					
+CREATE PROCEDURE spuEliminarAsignatura @CodAsignatura VARCHAR(6)					
 AS
 BEGIN
 	-- Eliminar una asignatura de la tabla TAsignatura
 	DELETE FROM TAsignatura
-		WHERE CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura
+		WHERE CodAsignatura = @CodAsignatura
 END;
 GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA CATALOGO ****************** */
 
--- Procedimiento para mostrar el catálogo de asignaturas de una escuela profesional.
+-- Procedimiento para mostrar el catálogo de asignaturas asignadas de una escuela profesional.
 CREATE PROCEDURE spuMostrarCatalogo @CodSemestre VARCHAR(7),
-									@CodEscuelaP VARCHAR(4)
+									@CodDepartamentoA VARCHAR(3) -- Atrib. Docente (Jefe de Dep.) 
 AS
 BEGIN
 	-- Mostrar la tabla de TCatalogo
-	SELECT C.CodAsignatura, A.NombreAsignatura, A.Creditos, A.Categoria, C.CodDocente,
-	       Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre)
+	SELECT CodAsignatura = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), A.NombreAsignatura, A.Creditos, A.Categoria, 
+	       C.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre)
 		FROM (TCatalogo C INNER JOIN TAsignatura A ON
 			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
-	    WHERE C.CodSemestre = @CodSemestre AND C.CodEscuelaP = @CodEscuelaP
+	    WHERE C.CodSemestre = @CodSemestre AND SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA
+		ORDER BY A.NombreAsignatura
 END;
 GO
 
 -- Procedimiento para buscar los docentes que enseñan una asignatura. 
 CREATE PROCEDURE spuBuscarDocentesAsignatura @CodSemestre VARCHAR(7),
-											 @CodEscuelaP VARCHAR(4),
-										     @Texto VARCHAR(20) -- código o nombre de la asignatura
+											 @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
+											 @CodEscuelaP VARCHAR(3), -- EP donde se enseña la asignatura
+										     @Texto VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
+											 @Grupo VARCHAR(1)
 AS
 BEGIN
 	-- Mostrar la tabla TCatalogo por el texto que se desea buscar
@@ -831,22 +870,25 @@ BEGIN
 			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
 		WHERE C.CodSemestre = @CodSemestre AND C.CodEscuelaP = @CodEscuelaP AND
-		      (C.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%'))
+			  SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
+		      (C.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%')) AND
+			   C.Grupo = @Grupo
 END;
 GO
 
 -- Procedimiento para buscar las asignaturas asignadas a un docente.
 CREATE PROCEDURE spuBuscarAsignaturasDocente @CodSemestre VARCHAR(7),
-											 @CodEscuelaP VARCHAR(4),
+                                             @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
 										     @Texto VARCHAR(20) -- código o nombre del docente
 AS
 BEGIN
 	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
-	SELECT DISTINCT C.CodAsignatura, A.NombreAsignatura, A.Creditos, A.Categoria
+	SELECT DISTINCT CodAsignatura = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), A.NombreAsignatura, A.Creditos, A.Categoria
 		FROM (TCatalogo C INNER JOIN TAsignatura A ON
 			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
-		WHERE C.CodSemestre = @CodSemestre AND C.CodEscuelaP = @CodEscuelaP AND
+		WHERE C.CodSemestre = @CodSemestre AND
+			  SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
 		      (C.CodDocente LIKE (@Texto + '%') OR
 			   D.Nombre LIKE (@Texto + '%') OR
 			   D.APaterno LIKE (@Texto + '%') OR
@@ -856,40 +898,45 @@ GO
 
 -- Procedimiento para buscar el silabo de una asignatura.
 CREATE PROCEDURE spuBuscarSilaboAsignatura @CodSemestre VARCHAR(7),
-										   @CodEscuelaP VARCHAR(4),
-										   @Texto VARCHAR(20) -- código o nombre de la asignatura
+                                           @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
+										   @CodEscuelaP VARCHAR(3), -- EP donde se enseña la asignatura
+										   @Texto VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
+										   @Grupo VARCHAR(1)
 AS
 BEGIN
 	-- Mostrar el silabo
-	SELECT DISTINCT C.Silabo
+	SELECT DISTINCT C.CodSilabo
 		FROM TCatalogo C INNER JOIN TAsignatura A ON
 		     C.CodAsignatura = A.CodAsignatura
 		WHERE C.CodSemestre = @CodSemestre AND C.CodEscuelaP = @CodEscuelaP AND
-		      (C.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%')) AND
-			  C.Silabo IS NOT NULL
+              SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
+		      (C.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%')) AND 
+			  C.Grupo = @Grupo AND C.CodSilabo IS NOT NULL
 END;
 GO
 
 -- Procedimiento para insertar una asignatura en un catálogo.
 CREATE PROCEDURE spuInsertarAsignaturaCatalogo @CodSemestre VARCHAR(7),
-											   @CodEscuelaP VARCHAR(4),
-											   @CodAsignatura VARCHAR(8),
+											   @CodEscuelaP VARCHAR(3),
+											   @CodAsignatura VARCHAR(6),
+											   @Grupo VARCHAR(1),
 											   @CodDocente VARCHAR(5),
-											   @Silabo VARBINARY(MAX)
+											   @CodSilabo VARCHAR(4)
 AS
 BEGIN
 	-- Insertar una asignatura en la tabla TCatalogo
 	INSERT INTO TCatalogo
-		VALUES (@CodSemestre, @CodEscuelaP, @CodAsignatura, @CodDocente, @Silabo)
+		VALUES (@CodSemestre, @CodEscuelaP, @CodAsignatura, @Grupo, @CodDocente, @CodSilabo)
 END;
 GO
 
 -- Procedimiento para actualizar una asignatura de un catálogo.
 CREATE PROCEDURE spuActualizarAsignaturaCatalogo @CodSemestre VARCHAR(7),
-											     @CodEscuelaP VARCHAR(4),
-											     @CodAsignatura VARCHAR(8),
+											     @CodEscuelaP VARCHAR(3),
+											     @CodAsignatura VARCHAR(6),
+											     @Grupo VARCHAR(1),
 											     @CodDocente VARCHAR(5),
-											     @Silabo VARBINARY(MAX)
+											     @CodSilabo VARCHAR(4)
 AS
 BEGIN
 	-- Actualizar una asignatura de la tabla TCatalogo
@@ -897,24 +944,26 @@ BEGIN
 		SET CodSemestre = @CodSemestre, 
 		    CodEscuelaP = @CodEscuelaP, 
 			CodAsignatura = @CodAsignatura, 
+			Grupo = @Grupo,
 			CodDocente = @CodDocente,
-		    Silabo = @Silabo
-		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND   
-		      CodAsignatura = @CodAsignatura AND CodDocente = @CodDocente
+		    CodSilabo = @CodSilabo
+		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura AND 
+		      Grupo = @Grupo AND CodDocente = @CodDocente
 END;
 GO
 
 -- Procedimiento para eliminar una asignatura de un catálogo
 CREATE PROCEDURE spuEliminarAsignaturaCatalogo @CodSemestre VARCHAR(7),
-											   @CodEscuelaP VARCHAR(4),
-											   @CodAsignatura VARCHAR(8),
+											   @CodEscuelaP VARCHAR(3),
+											   @CodAsignatura VARCHAR(6),
+											   @Grupo VARCHAR(1),
 											   @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Eliminar una asignatura de la tabla TCatalogo
 	DELETE FROM TCatalogo
-		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND   
-		      CodAsignatura = @CodAsignatura AND CodDocente = @CodDocente
+		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura AND 
+		      Grupo = @Grupo AND CodDocente = @CodDocente
 END;
 GO
 
@@ -922,33 +971,36 @@ GO
 
 -- Procedimiento para buscar el horario de una asignatura en un catálogo. 
 CREATE PROCEDURE spuBuscarHorarioAsignatura @CodSemestre VARCHAR(7),
-										    @CodEscuelaP VARCHAR(4),
-										    @Texto VARCHAR(20) -- código o nombre de la asignatura
+											@CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
+										    @CodEscuelaP VARCHAR(3), -- EP donde se enseña la asignatura
+										    @Texto VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura,
+											@Grupo VARCHAR(1)
 AS
 BEGIN
 	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
-	SELECT D.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), HA.Dia, HA.Horario, HA.Tipo, HA.Aula,
+	SELECT HA.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), HA.Dia, HA.Horario, HA.Tipo, HA.Aula,
 	       HA.Horas, HA.Modalidad
 		FROM (THorarioAsignatura HA INNER JOIN TAsignatura A ON
 			 HA.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
 			 HA.CodDocente = D.CodDocente
-		WHERE HA.CodSemestre = @CodSemestre AND HA.CodEscuelaP = @CodEscuelaP AND 
-		      (HA.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%'))
+		WHERE HA.CodSemestre = @CodSemestre AND HA.CodEscuelaP = @CodEscuelaP AND
+              SUBSTRING(HA.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
+		      (HA.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%')) AND
+			  HA.Grupo = @Grupo
 END;
 GO
 
 -- Procedimiento para obtener el horario semanal de las asignaturas asignadas a un docente.
 CREATE PROCEDURE spuHorarioSemanalDocente @CodSemestre VARCHAR(7),
-										  @CodEscuelaP VARCHAR(4),
 										  @Texto VARCHAR(20) -- código o nombre del docente
 AS
 BEGIN
 	-- Mostrar las asignaturas y los horarios:
-	SELECT HA.CodAsignatura, A.NombreAsignatura, HA.Dia, HA.Horario, HA.Tipo, HA.Aula
+	SELECT CodAsignatura = (HA.CodAsignatura + HA.Grupo + HA.CodEscuelaP), A.NombreAsignatura, HA.Dia, HA.Horario, HA.Tipo, HA.Aula
 		FROM (THorarioAsignatura HA INNER JOIN TAsignatura A ON
 			 HA.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
 			 HA.CodDocente = D.CodDocente
-		WHERE HA.CodSemestre = @CodSemestre AND HA.CodEscuelaP = @CodEscuelaP AND
+		WHERE HA.CodSemestre = @CodSemestre AND 
 		      (HA.CodDocente LIKE (@Texto + '%') OR
 			   D.Nombre LIKE (@Texto + '%') OR
 			   D.APaterno LIKE (@Texto + '%') OR
@@ -958,8 +1010,9 @@ GO
 
 -- Procedimiento para insertar el horario de una asignatura.
 CREATE PROCEDURE spuInsertarHorarioAsignatura @CodSemestre VARCHAR(7),
-											  @CodEscuelaP VARCHAR(4),
-											  @CodAsignatura VARCHAR(8),
+											  @CodEscuelaP VARCHAR(3),
+											  @CodAsignatura VARCHAR(6),
+											  @Grupo VARCHAR(1),
 											  @CodDocente VARCHAR(5),
 											  @Dia VARCHAR(2),
 											  @Horario VARCHAR(6),
@@ -971,21 +1024,22 @@ AS
 BEGIN
 	-- Insertar el horario de una asignatura en la tabla THorarioAsignatura
 	INSERT INTO THorarioAsignatura
-		VALUES (@CodSemestre, @CodEscuelaP, @CodAsignatura, @CodDocente, @Dia, @Horario, @Tipo, @Aula, @Horas, @Modalidad)
+		VALUES (@CodSemestre, @CodEscuelaP, @CodAsignatura, @Grupo, @CodDocente, @Dia, @Horario, @Tipo, @Aula, @Horas, @Modalidad)
 END;
 GO
 
 -- Procedimiento para actualizar el horario de una asignatura.
 CREATE PROCEDURE spuActualizarHorarioAsignatura @CodSemestre VARCHAR(7),
-											    @CodEscuelaP VARCHAR(4),
-											    @CodAsignatura VARCHAR(8),
+											    @CodEscuelaP VARCHAR(3),
+											    @CodAsignatura VARCHAR(6),
+											    @Grupo VARCHAR(1),
 											    @CodDocente VARCHAR(5),
 											    @Dia VARCHAR(2),
 											    @Horario VARCHAR(6),
 											    @Tipo VARCHAR(1),
 									            @Aula VARCHAR(10),
 										        @Horas INT,
-											    @Modalidad VARCHAR(10)		
+											    @Modalidad VARCHAR(10)	
 AS
 BEGIN
 	-- Actualizar una asignatura de la tabla THorarioAsignatura
@@ -993,6 +1047,7 @@ BEGIN
 		SET CodSemestre = @CodSemestre,
 		    CodEscuelaP = @CodEscuelaP,
 			CodAsignatura = @CodAsignatura,
+			Grupo = @Grupo,
 			CodDocente = @CodDocente,
 		    Dia = @Dia,
 			Horario = @Horario,
@@ -1002,14 +1057,15 @@ BEGIN
 			Modalidad = @Modalidad
 
 		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura AND 
-      		  CodDocente = @CodDocente AND Dia = @Dia
+      		  Grupo = @Grupo AND CodDocente = @CodDocente AND Dia = @Dia
 END;
 GO
 
 -- Procedimiento para eliminar el horario de una asignatura.
 CREATE PROCEDURE spuEliminarHorarioAsignatura @CodSemestre VARCHAR(7),
-											  @CodEscuelaP VARCHAR(4),
-											  @CodAsignatura VARCHAR(8),
+											  @CodEscuelaP VARCHAR(3),
+											  @CodAsignatura VARCHAR(6),
+											  @Grupo VARCHAR(1),
 											  @CodDocente VARCHAR(5),
 											  @Dia VARCHAR(2)
 AS
@@ -1017,98 +1073,7 @@ BEGIN
 	-- Eliminar una asignatura de la tabla THorarioAsignatura
 	DELETE FROM THorarioAsignatura
 		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura AND 
-      		  CodDocente = @CodDocente AND Dia = @Dia
-END;
-GO
-
-/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA MATRICULA ****************** */
-
--- Procedimiento para mostrar los estudiantes matriculados en un determinado semestre de una escuela profesional.
-CREATE PROCEDURE spuMostrarEstudiantesMatriculados @CodSemestre VARCHAR(7),
-												   @CodEscuelaP VARCHAR(4)
-AS
-BEGIN
-	-- Mostrar la tabla de TMatricula
-	SELECT M.IdMatricula, M.CodAsignatura, A.NombreAsignatura, M.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
-		FROM (TMatricula M INNER JOIN TAsignatura A ON
-			 M.CodAsignatura = A.CodAsignatura) INNER JOIN TEstudiante ET ON
-			 M.CodEstudiante = ET.CodEstudiante
-	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP
-END;
-GO
-
--- Procedimiento para buscar las asignaturas a los que esta matriculado un estudiante de una escuela profesional.
-CREATE PROCEDURE spuBuscarAsignaturasEstudiante @CodSemestre VARCHAR(7),
-										        @CodEscuelaP VARCHAR(4),
-											    @CodEstudiante VARCHAR(6)
-AS
-BEGIN
-	-- Mostrar la tabla de TMatricula
-	SELECT M.CodAsignatura, A.NombreAsignatura, A.Categoria, A.Creditos
-		FROM TMatricula M INNER JOIN TAsignatura A ON
-			 M.CodAsignatura = A.CodAsignatura
-	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP AND M.CodEstudiante = @CodEstudiante
-END;
-GO
-
--- Procedimiento para buscar los estudiantes matriculados en una asignatura de un determinado semestre.
-CREATE PROCEDURE spuBuscarEstudiantesAsignatura @CodSemestre VARCHAR(7),
-										        @CodEscuelaP VARCHAR(4),
-											    @Texto VARCHAR(20) -- código o nombre de la asignatura
-AS
-BEGIN
-	-- Mostrar la tabla de TMatricula
-	SELECT ROW_NUMBER() OVER (ORDER BY ET.APaterno ASC) AS Id, M.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
-		FROM (TMatricula M INNER JOIN TAsignatura A ON
-			 M.CodAsignatura = A.CodAsignatura) INNER JOIN TEstudiante ET ON
-			 M.CodEstudiante = ET.CodEstudiante
-	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP AND
-		      (M.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%'))
-END;
-GO
-
-EXEC spuBuscarEstudiantesAsignatura '2021-II','IN','IF468AIN'
-GO
-
--- Procedimiento para insertar la matricula de un estudiante en una asignatura.
-CREATE PROCEDURE spuInsertarMatricula @CodSemestre VARCHAR(7),
-									  @CodEscuelaP VARCHAR(4),
-								      @CodAsignatura VARCHAR(8),
-									  @CodEstudiante VARCHAR(6)
-AS
-BEGIN
-	-- Insertar una matricula en la tabla de TMatricula
-	INSERT INTO TMatricula
-		VALUES (@CodSemestre, @CodEscuelaP, @CodAsignatura, @CodEstudiante)
-END;
-GO
-
--- Procedimiento para actualizar la matricula de un estudiante.
-CREATE PROCEDURE spuActualizarMatricula @CodSemestre VARCHAR(7),
-									    @CodEscuelaP VARCHAR(4),
-								        @CodAsignatura VARCHAR(8),
-									    @CodEstudiante VARCHAR(6)
-AS
-BEGIN
-	-- Actualizar una matricula de la tabla de TMatricula
-	UPDATE TMatricula
-		SET CodSemestre = @CodSemestre, CodEscuelaP = @CodEscuelaP, CodAsignatura = @CodAsignatura, CodEstudiante = @CodEstudiante
-		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND 
-		      CodAsignatura = @CodAsignatura AND CodEstudiante = @CodEstudiante
-END;
-GO
-
--- Procedimiento para eliminar la matricula de un estudiante en una asignatura.
-CREATE PROCEDURE spuEliminarMatricula @CodSemestre VARCHAR(7),
-									  @CodEscuelaP VARCHAR(4),
-								      @CodAsignatura VARCHAR(8),
-									  @CodEstudiante VARCHAR(6)					
-AS
-BEGIN
-	-- Eliminar una asignatura de la tabla de TMatricula
-	DELETE FROM TMatricula
-		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND 
-		      CodAsignatura = @CodAsignatura AND CodEstudiante = @CodEstudiante
+      		  Grupo = @Grupo AND CodDocente = @CodDocente AND Dia = @Dia
 END;
 GO
 
