@@ -73,7 +73,7 @@ namespace CapaPresentaciones
             this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblTitulo.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
@@ -135,12 +135,12 @@ namespace CapaPresentaciones
             this.lblUsuario.AutoEllipsis = false;
             this.lblUsuario.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblUsuario.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblUsuario.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblUsuario.Location = new System.Drawing.Point(21, 107);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblUsuario.Size = new System.Drawing.Size(55, 21);
+            this.lblUsuario.Size = new System.Drawing.Size(63, 23);
             this.lblUsuario.TabIndex = 2;
             this.lblUsuario.Text = "Usuario";
             this.lblUsuario.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -164,7 +164,7 @@ namespace CapaPresentaciones
             this.txtUsuario.BorderThickness = 1;
             this.txtUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtUsuario.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtUsuario.DefaultFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuario.DefaultFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.DefaultText = "";
             this.txtUsuario.FillColor = System.Drawing.Color.White;
             this.txtUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -242,7 +242,7 @@ namespace CapaPresentaciones
             this.txtContraseña.BorderThickness = 1;
             this.txtContraseña.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtContraseña.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtContraseña.DefaultFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContraseña.DefaultFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContraseña.DefaultText = "";
             this.txtContraseña.FillColor = System.Drawing.Color.White;
             this.txtContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -307,12 +307,12 @@ namespace CapaPresentaciones
             this.lblContraseña.AutoEllipsis = false;
             this.lblContraseña.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblContraseña.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblContraseña.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblContraseña.Location = new System.Drawing.Point(21, 185);
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblContraseña.Size = new System.Drawing.Size(83, 21);
+            this.lblContraseña.Size = new System.Drawing.Size(96, 23);
             this.lblContraseña.TabIndex = 4;
             this.lblContraseña.Text = "Contraseña";
             this.lblContraseña.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -347,7 +347,7 @@ namespace CapaPresentaciones
             this.btnIngresar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.btnIngresar.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
             this.btnIngresar.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresar.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnIngresar.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnIngresar.IconLeftCursor = System.Windows.Forms.Cursors.Default;
@@ -442,7 +442,7 @@ namespace CapaPresentaciones
             this.btnCerrar.FadeWhenInactive = false;
             this.btnCerrar.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
             this.btnCerrar.Image = global::CapaPresentaciones.Properties.Resources.Cerrar_2;
-            this.btnCerrar.ActiveImage = null;
+            this.btnCerrar.ImageActive = null;
             this.btnCerrar.ImageLocation = null;
             this.btnCerrar.ImageMargin = 10;
             this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
@@ -459,7 +459,7 @@ namespace CapaPresentaciones
             this.btnCerrar.TabIndex = 10;
             this.btnCerrar.ToolTipText = "";
             this.btnCerrar.WaitOnLoad = false;
-            this.btnCerrar.ImageMargin = 10;
+            this.btnCerrar.Zoom = 10;
             this.btnCerrar.ZoomSpeed = 10;
             // 
             // lblUniversidad
@@ -470,7 +470,7 @@ namespace CapaPresentaciones
             this.lblUniversidad.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblUniversidad.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblUniversidad.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblUniversidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblUniversidad.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblUniversidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblUniversidad.Location = new System.Drawing.Point(0, 281);
             this.lblUniversidad.Name = "lblUniversidad";
@@ -496,7 +496,7 @@ namespace CapaPresentaciones
             this.pbLogo.FadeWhenInactive = false;
             this.pbLogo.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
             this.pbLogo.Image = global::CapaPresentaciones.Properties.Resources.Logo_UNSAAC1;
-            this.pbLogo.ActiveImage = null;
+            this.pbLogo.ImageActive = null;
             this.pbLogo.ImageLocation = null;
             this.pbLogo.ImageMargin = 10;
             this.pbLogo.ImageSize = new System.Drawing.Size(202, 262);
@@ -513,19 +513,19 @@ namespace CapaPresentaciones
             this.pbLogo.TabIndex = 9;
             this.pbLogo.ToolTipText = "";
             this.pbLogo.WaitOnLoad = false;
-            this.pbLogo.ImageMargin = 10;
+            this.pbLogo.Zoom = 10;
             this.pbLogo.ZoomSpeed = 10;
             // 
             // btnOlvidarContraseña
             // 
             this.btnOlvidarContraseña.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnOlvidarContraseña.AutoSize = true;
-            this.btnOlvidarContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOlvidarContraseña.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOlvidarContraseña.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.btnOlvidarContraseña.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnOlvidarContraseña.Location = new System.Drawing.Point(90, 318);
+            this.btnOlvidarContraseña.Location = new System.Drawing.Point(64, 319);
             this.btnOlvidarContraseña.Name = "btnOlvidarContraseña";
-            this.btnOlvidarContraseña.Size = new System.Drawing.Size(156, 20);
+            this.btnOlvidarContraseña.Size = new System.Drawing.Size(184, 22);
             this.btnOlvidarContraseña.TabIndex = 9;
             this.btnOlvidarContraseña.TabStop = true;
             this.btnOlvidarContraseña.Text = "Olvidé mi contraseña";

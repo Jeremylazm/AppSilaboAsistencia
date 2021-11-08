@@ -321,7 +321,7 @@ namespace CapaPresentaciones
             this.lblInferior.CursorType = System.Windows.Forms.Cursors.Default;
             this.Transicion.SetDecoration(this.lblInferior, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lblInferior.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblInferior.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblInferior.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblInferior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblInferior.Location = new System.Drawing.Point(173, 554);
             this.lblInferior.Name = "lblInferior";
@@ -343,7 +343,7 @@ namespace CapaPresentaciones
             this.lblSuperior.CursorType = System.Windows.Forms.Cursors.Default;
             this.Transicion.SetDecoration(this.lblSuperior, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lblSuperior.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblSuperior.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblSuperior.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblSuperior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblSuperior.Location = new System.Drawing.Point(173, 0);
             this.lblSuperior.Name = "lblSuperior";
@@ -406,7 +406,7 @@ namespace CapaPresentaciones
             this.btnDocentes.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.btnDocentes.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
             this.btnDocentes.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            this.btnDocentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDocentes.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDocentes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnDocentes.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDocentes.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
@@ -533,7 +533,7 @@ namespace CapaPresentaciones
             this.btnEditarPerfil.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.btnEditarPerfil.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
             this.btnEditarPerfil.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            this.btnEditarPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarPerfil.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarPerfil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEditarPerfil.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEditarPerfil.IconLeftCursor = System.Windows.Forms.Cursors.Default;
@@ -642,7 +642,7 @@ namespace CapaPresentaciones
             this.btnDashboard.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.btnDashboard.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
             this.btnDashboard.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            this.btnDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnDashboard.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDashboard.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
@@ -732,7 +732,7 @@ namespace CapaPresentaciones
             this.btnReportes.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.btnReportes.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
             this.btnReportes.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReportes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnReportes.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReportes.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
@@ -822,7 +822,7 @@ namespace CapaPresentaciones
             this.btnAsistencia.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.btnAsistencia.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
             this.btnAsistencia.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            this.btnAsistencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAsistencia.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAsistencia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnAsistencia.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAsistencia.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
@@ -912,7 +912,7 @@ namespace CapaPresentaciones
             this.btnAsignaturas.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.btnAsignaturas.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
             this.btnAsignaturas.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            this.btnAsignaturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAsignaturas.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAsignaturas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnAsignaturas.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAsignaturas.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
@@ -998,7 +998,7 @@ namespace CapaPresentaciones
             this.lblUsuario.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblUsuario.CursorType = System.Windows.Forms.Cursors.Default;
             this.Transicion.SetDecoration(this.lblUsuario, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblUsuario.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.lblUsuario.Location = new System.Drawing.Point(5, 207);
             this.lblUsuario.Name = "lblUsuario";
@@ -1017,7 +1017,7 @@ namespace CapaPresentaciones
             this.lblAcceso.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblAcceso.CursorType = System.Windows.Forms.Cursors.Default;
             this.Transicion.SetDecoration(this.lblAcceso, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.lblAcceso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblAcceso.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblAcceso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.lblAcceso.Location = new System.Drawing.Point(5, 173);
             this.lblAcceso.Name = "lblAcceso";
@@ -1036,7 +1036,7 @@ namespace CapaPresentaciones
             this.lblDatos.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblDatos.CursorType = System.Windows.Forms.Cursors.Default;
             this.Transicion.SetDecoration(this.lblDatos, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.lblDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblDatos.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblDatos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.lblDatos.Location = new System.Drawing.Point(5, 108);
             this.lblDatos.Name = "lblDatos";
