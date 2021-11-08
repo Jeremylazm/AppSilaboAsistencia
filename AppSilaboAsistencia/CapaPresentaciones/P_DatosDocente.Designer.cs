@@ -75,6 +75,9 @@ namespace CapaPresentaciones
             this.lblCodigo = new System.Windows.Forms.Label();
             this.lblDominioEmail = new System.Windows.Forms.Label();
             this.imgPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
+            this.cxtDepartamento = new System.Windows.Forms.ComboBox();
+            this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.lblDepartamento = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogoUNSAAC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
@@ -219,7 +222,7 @@ namespace CapaPresentaciones
             this.cxtEscuela.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.cxtEscuela.FormattingEnabled = true;
             this.cxtEscuela.ItemHeight = 19;
-            this.cxtEscuela.Location = new System.Drawing.Point(158, 583);
+            this.cxtEscuela.Location = new System.Drawing.Point(158, 620);
             this.cxtEscuela.MaxDropDownItems = 50;
             this.cxtEscuela.Name = "cxtEscuela";
             this.cxtEscuela.Size = new System.Drawing.Size(204, 27);
@@ -230,7 +233,7 @@ namespace CapaPresentaciones
             this.Separador11.BackColor = System.Drawing.Color.Transparent;
             this.Separador11.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.Separador11.LineThickness = 1;
-            this.Separador11.Location = new System.Drawing.Point(158, 608);
+            this.Separador11.Location = new System.Drawing.Point(158, 645);
             this.Separador11.Name = "Separador11";
             this.Separador11.Size = new System.Drawing.Size(204, 10);
             this.Separador11.TabIndex = 171;
@@ -261,7 +264,7 @@ namespace CapaPresentaciones
             this.lblEscuela.AutoSize = true;
             this.lblEscuela.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEscuela.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblEscuela.Location = new System.Drawing.Point(35, 586);
+            this.lblEscuela.Location = new System.Drawing.Point(35, 623);
             this.lblEscuela.Name = "lblEscuela";
             this.lblEscuela.Size = new System.Drawing.Size(121, 19);
             this.lblEscuela.TabIndex = 170;
@@ -716,11 +719,52 @@ namespace CapaPresentaciones
             this.imgPerfil.TabIndex = 134;
             this.imgPerfil.TabStop = false;
             // 
+            // cxtDepartamento
+            // 
+            this.cxtDepartamento.BackColor = System.Drawing.Color.White;
+            this.cxtDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cxtDepartamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cxtDepartamento.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cxtDepartamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.cxtDepartamento.FormattingEnabled = true;
+            this.cxtDepartamento.ItemHeight = 19;
+            this.cxtDepartamento.Location = new System.Drawing.Point(158, 584);
+            this.cxtDepartamento.MaxDropDownItems = 50;
+            this.cxtDepartamento.Name = "cxtDepartamento";
+            this.cxtDepartamento.Size = new System.Drawing.Size(204, 27);
+            this.cxtDepartamento.TabIndex = 173;
+            // 
+            // bunifuSeparator1
+            // 
+            this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.bunifuSeparator1.LineThickness = 1;
+            this.bunifuSeparator1.Location = new System.Drawing.Point(158, 609);
+            this.bunifuSeparator1.Name = "bunifuSeparator1";
+            this.bunifuSeparator1.Size = new System.Drawing.Size(204, 10);
+            this.bunifuSeparator1.TabIndex = 175;
+            this.bunifuSeparator1.Transparency = 255;
+            this.bunifuSeparator1.Vertical = false;
+            // 
+            // lblDepartamento
+            // 
+            this.lblDepartamento.AutoSize = true;
+            this.lblDepartamento.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDepartamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblDepartamento.Location = new System.Drawing.Point(35, 587);
+            this.lblDepartamento.Name = "lblDepartamento";
+            this.lblDepartamento.Size = new System.Drawing.Size(126, 19);
+            this.lblDepartamento.TabIndex = 174;
+            this.lblDepartamento.Text = "Dep. Académico: ";
+            // 
             // P_DatosDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 755);
+            this.Controls.Add(this.cxtDepartamento);
+            this.Controls.Add(this.bunifuSeparator1);
+            this.Controls.Add(this.lblDepartamento);
             this.Controls.Add(this.lblDominioEmail);
             this.Controls.Add(this.cxtEscuela);
             this.Controls.Add(this.Separador11);
@@ -821,5 +865,8 @@ namespace CapaPresentaciones
         private Bunifu.Framework.UI.BunifuImageButton imgLogoUNSAAC;
         private Bunifu.Framework.UI.BunifuImageButton btnCerrar;
         private System.Windows.Forms.Label lblTitulo;
+        public System.Windows.Forms.ComboBox cxtDepartamento;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
+        private System.Windows.Forms.Label lblDepartamento;
     }
 }

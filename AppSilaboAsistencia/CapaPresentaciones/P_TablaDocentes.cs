@@ -54,12 +54,13 @@ namespace CapaPresentaciones
             dgvTabla.Columns[9].HeaderText = "Categoría";
             dgvTabla.Columns[10].HeaderText = "Subcategoría";
             dgvTabla.Columns[11].HeaderText = "Régimen";
-            // dgvTabla.Columns[14].HeaderText = "Escuela Profesional";
+            dgvTabla.Columns[12].HeaderText = "Departamento A.";
+            dgvTabla.Columns[13].HeaderText = "Escuela P.";
         }
 
         public void MostrarRegistros()
         {
-            dgvTabla.DataSource = N_Docente.MostrarDocentes("IN");
+            dgvTabla.DataSource = N_Docente.MostrarDocentes("IF"); // El filtro es por departamento
             AccionesTabla();
         }
 

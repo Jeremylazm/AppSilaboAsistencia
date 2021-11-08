@@ -54,6 +54,7 @@
     <Compile Include="D_AsistenciaDocente.cs" />
     <Compile Include="D_AsistenciaEstudiante.cs" />
     <Compile Include="D_Catalogo.cs" />
+    <Compile Include="D_DepartamentoAcademico.cs" />
     <Compile Include="D_Docente.cs" />
     <Compile Include="D_EscuelaProfesional.cs" />
     <Compile Include="D_Estudiante.cs" />
