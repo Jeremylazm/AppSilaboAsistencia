@@ -10,7 +10,7 @@ namespace CapaDatos
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
 
         // Método para mostrar el catálogo de asignaturas de una escuela profesional.
-        public DataTable MostrarCatalogo(string CodSemestre, string CodEscuelaP)
+        public DataTable MostrarCatalogo(string CodSemestre, string CodDepartamentoA)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuMostrarCatalogo", Conectar)
@@ -19,14 +19,14 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA); // Atrib.Docente(Jefe de Dep.)
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
         }
 
         // Método para buscar los docentes que enseñan una asignatura. 
-        public DataTable BuscarDocentesAsignatura(string CodSemestre, string CodEscuelaP, string Texto)
+        public DataTable BuscarDocentesAsignatura(string CodSemestre, string CodDepartamentoA, string CodEscuelaP, string Texto, string Grupo)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarDocentesAsignatura", Conectar)
@@ -35,15 +35,17 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
-            Comando.Parameters.AddWithValue("@Texto", Texto); // código o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA); //Atrib. Docente (Jefe de Dep.)
+            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP); // EP donde se enseña la asignatura
+            Comando.Parameters.AddWithValue("@Texto", Texto); // código (ej. IF065) o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@Grupo", Grupo);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
         }
 
         // Método para buscar las asignaturas asignadas a un docente.
-        public DataTable BuscarAsignaturasDocente(string CodSemestre, string CodEscuelaP, string Texto)
+        public DataTable BuscarAsignaturasDocente(string CodSemestre, string CodDepartamentoA, string Texto)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarAsignaturasDocente", Conectar)
@@ -52,7 +54,7 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA); // Atrib. Docente (Jefe de Dep.)
             Comando.Parameters.AddWithValue("@Texto", Texto); // código o nombre del docente
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
@@ -60,7 +62,7 @@ namespace CapaDatos
         }
 
         // Método para buscar el silabo de una asignatura.
-        public DataTable BuscarSilaboAsignatura(string CodSemestre, string CodEscuelaP, string Texto)
+        public DataTable BuscarSilaboAsignatura(string CodSemestre, string CodDepartamentoA, string CodEscuelaP, string Texto, string Grupo)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarSilaboAsignatura", Conectar)
@@ -69,8 +71,10 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
-            Comando.Parameters.AddWithValue("@Texto", Texto); // código o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA); //Atrib. Docente (Jefe de Dep.)
+            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP); // EP donde se enseña la asignatura
+            Comando.Parameters.AddWithValue("@Texto", Texto); // código (ej. IF065) o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@Grupo", Grupo);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
@@ -88,6 +92,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodSemestre", Catalogo.CodSemestre);
             Comando.Parameters.AddWithValue("@CodEscuelaP", Catalogo.CodEscuelaP);
             Comando.Parameters.AddWithValue("@CodAsignatura", Catalogo.CodAsignatura);
+            Comando.Parameters.AddWithValue("@Grupo", Catalogo.Grupo);
             Comando.Parameters.AddWithValue("@CodDocente", Catalogo.CodDocente);
             Comando.Parameters.AddWithValue("@Silabo", Catalogo.Silabo);
             Comando.ExecuteNonQuery();
@@ -106,6 +111,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodSemestre", Catalogo.CodSemestre);
             Comando.Parameters.AddWithValue("@CodEscuelaP", Catalogo.CodEscuelaP);
             Comando.Parameters.AddWithValue("@CodAsignatura", Catalogo.CodAsignatura);
+            Comando.Parameters.AddWithValue("@Grupo", Catalogo.Grupo);
             Comando.Parameters.AddWithValue("@CodDocente", Catalogo.CodDocente);
             Comando.Parameters.AddWithValue("@Silabo", Catalogo.Silabo);
             Comando.ExecuteNonQuery();
@@ -124,6 +130,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodSemestre", Catalogo.CodSemestre);
             Comando.Parameters.AddWithValue("@CodEscuelaP", Catalogo.CodEscuelaP);
             Comando.Parameters.AddWithValue("@CodAsignatura", Catalogo.CodAsignatura);
+            Comando.Parameters.AddWithValue("@Grupo", Catalogo.Grupo);
             Comando.Parameters.AddWithValue("@CodDocente", Catalogo.CodDocente);
             Comando.ExecuteNonQuery();
             Conectar.Close();

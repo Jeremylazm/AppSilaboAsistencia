@@ -60,7 +60,7 @@ namespace CapaPresentaciones
 
         public void MostrarRegistros()
         {
-            dgvTabla.DataSource = N_Docente.MostrarDocentes("IF"); // El filtro es por departamento
+            dgvTabla.DataSource = N_Docente.MostrarDocentesDepartamento("IF"); // El filtro es por departamento
             AccionesTabla();
         }
 
