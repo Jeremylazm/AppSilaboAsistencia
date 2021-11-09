@@ -6,6 +6,7 @@
         public string CodSemestre { get; set; }
         public string CodEscuelaP { get; set; }
         public string CodAsignatura { get; set; }
+        public string Grupo { get; set; }
         public string CodDocente { get; set; }
         public string Dia { get; set; }
         public string Horario { get; set; }

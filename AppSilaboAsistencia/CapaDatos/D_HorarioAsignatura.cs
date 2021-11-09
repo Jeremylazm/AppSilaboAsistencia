@@ -10,7 +10,7 @@ namespace CapaDatos
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
 
         // Método para buscar el horario de una asignatura en un catálogo. 
-        public DataTable BuscarHorarioAsignatura(string CodSemestre, string CodEscuelaP, string Texto)
+        public DataTable BuscarHorarioAsignatura(string CodSemestre, string CodDepartamentoA, string CodEscuelaP, string Texto, string Grupo)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarHorarioAsignatura", Conectar)
@@ -19,15 +19,17 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
-            Comando.Parameters.AddWithValue("@Texto", Texto); // código o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA); // Atrib. Docente (Jefe de Dep.)
+            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP); // EP donde se enseña la asignatura
+            Comando.Parameters.AddWithValue("@Texto", Texto); // código (ej. IF065) o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@Grupo", Grupo);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
         }
 
         // Método para obtener el horario semanal de las asignaturas asignadas a un docente. 
-        public DataTable HorarioSemanalDocente(string CodSemestre, string CodEscuelaP, string Texto)
+        public DataTable HorarioSemanalDocente(string CodSemestre, string Texto)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuHorarioSemanalDocente", Conectar)
@@ -36,7 +38,6 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
             Comando.Parameters.AddWithValue("@Texto", Texto); // código o nombre de un docente
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
@@ -55,6 +56,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodSemestre", HorarioAsignatura.CodSemestre);
             Comando.Parameters.AddWithValue("@CodEscuelaP", HorarioAsignatura.CodEscuelaP);
             Comando.Parameters.AddWithValue("@CodAsignatura", HorarioAsignatura.CodAsignatura);
+            Comando.Parameters.AddWithValue("@Grupo", HorarioAsignatura.Grupo);
             Comando.Parameters.AddWithValue("@CodDocente", HorarioAsignatura.CodDocente);
             Comando.Parameters.AddWithValue("@Dia", HorarioAsignatura.Dia);
             Comando.Parameters.AddWithValue("@Horario", HorarioAsignatura.Horario);
@@ -78,6 +80,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodSemestre", HorarioAsignatura.CodSemestre);
             Comando.Parameters.AddWithValue("@CodEscuelaP", HorarioAsignatura.CodEscuelaP);
             Comando.Parameters.AddWithValue("@CodAsignatura", HorarioAsignatura.CodAsignatura);
+            Comando.Parameters.AddWithValue("@Grupo", HorarioAsignatura.Grupo);
             Comando.Parameters.AddWithValue("@CodDocente", HorarioAsignatura.CodDocente);
             Comando.Parameters.AddWithValue("@Dia", HorarioAsignatura.Dia);
             Comando.Parameters.AddWithValue("@Horario", HorarioAsignatura.Horario);
@@ -101,6 +104,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodSemestre", HorarioAsignatura.CodSemestre);
             Comando.Parameters.AddWithValue("@CodEscuelaP", HorarioAsignatura.CodEscuelaP);
             Comando.Parameters.AddWithValue("@CodAsignatura", HorarioAsignatura.CodAsignatura);
+            Comando.Parameters.AddWithValue("@Grupo", HorarioAsignatura.Grupo);
             Comando.Parameters.AddWithValue("@CodDocente", HorarioAsignatura.CodDocente);
             Comando.Parameters.AddWithValue("@Dia", HorarioAsignatura.Dia);
             Comando.ExecuteNonQuery();

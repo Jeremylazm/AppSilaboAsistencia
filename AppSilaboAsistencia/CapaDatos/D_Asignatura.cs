@@ -10,7 +10,7 @@ namespace CapaDatos
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
 
         // Método para mostrar las asignaturas de una escuela profesional.
-        public DataTable MostrarAsignaturas(string CodEscuelaP)
+        public DataTable MostrarAsignaturas(string CodDepartamentoA)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuMostrarAsignaturas", Conectar)
@@ -18,14 +18,14 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
         }
 
         // Método para buscar una asignatura de una escuela profesional.
-        public DataTable BuscarAsignatura(string CodEscuelaP, string CodAsignatura)
+        public DataTable BuscarAsignatura(string CodDepartamentoA, string CodAsignatura)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarAsignatura", Conectar)
@@ -33,7 +33,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
             Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
@@ -41,7 +41,7 @@ namespace CapaDatos
         }
 
         // Método para buscar por cualquier atributo las asignaturas de una escuela profesional.
-        public DataTable BuscarAsignaturas(string CodEscuelaP, string Texto)
+        public DataTable BuscarAsignaturas(string CodDepartamentoA, string Texto)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarAsignaturas", Conectar)
@@ -49,7 +49,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
             Comando.Parameters.AddWithValue("@Texto", Texto);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
@@ -65,13 +65,13 @@ namespace CapaDatos
             };
 
             Conectar.Open();
-            Comando.Parameters.AddWithValue("@CodEscuelaP", Asignatura.CodEscuelaP);
             Comando.Parameters.AddWithValue("@CodAsignatura", Asignatura.CodAsignatura);
             Comando.Parameters.AddWithValue("@NombreAsignatura", Asignatura.NombreAsignatura);
             Comando.Parameters.AddWithValue("@Creditos", Asignatura.Creditos);
             Comando.Parameters.AddWithValue("@Categoria", Asignatura.Categoria);
             Comando.Parameters.AddWithValue("@HorasTeoria", Asignatura.HorasTeoria);
             Comando.Parameters.AddWithValue("@HorasPractica", Asignatura.HorasPractica);
+            Comando.Parameters.AddWithValue("@Prerrequisito", Asignatura.Prerrequisito);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }
@@ -85,13 +85,13 @@ namespace CapaDatos
             };
 
             Conectar.Open();
-            Comando.Parameters.AddWithValue("@CodEscuelaP", Asignatura.CodEscuelaP);
             Comando.Parameters.AddWithValue("@CodAsignatura", Asignatura.CodAsignatura);
             Comando.Parameters.AddWithValue("@NombreAsignatura", Asignatura.NombreAsignatura);
             Comando.Parameters.AddWithValue("@Creditos", Asignatura.Creditos);
             Comando.Parameters.AddWithValue("@Categoria", Asignatura.Categoria);
             Comando.Parameters.AddWithValue("@HorasTeoria", Asignatura.HorasTeoria);
             Comando.Parameters.AddWithValue("@HorasPractica", Asignatura.HorasPractica);
+            Comando.Parameters.AddWithValue("@Prerrequisito", Asignatura.Prerrequisito);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }
@@ -105,7 +105,6 @@ namespace CapaDatos
             };
 
             Conectar.Open();
-            Comando.Parameters.AddWithValue("@CodEscuelaP", Asignatura.CodEscuelaP);
             Comando.Parameters.AddWithValue("@CodAsignatura", Asignatura.CodAsignatura);
             Comando.ExecuteNonQuery();
             Conectar.Close();
