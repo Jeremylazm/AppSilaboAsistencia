@@ -22,6 +22,7 @@ namespace CapaPresentaciones
         public P_TablaDocentes()
         {
             InitializeComponent();
+            btnExportar.Visible = false;
         }
 
         private void MensajeConfirmacion(string Mensaje)
