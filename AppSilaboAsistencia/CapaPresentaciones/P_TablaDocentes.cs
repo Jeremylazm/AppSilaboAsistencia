@@ -137,7 +137,7 @@ namespace CapaPresentaciones
                 EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
                 EditarRegistro.txtAMaterno.Text = dgvTabla.CurrentRow.Cells[4].Value.ToString();
                 EditarRegistro.txtNombre.Text = dgvTabla.CurrentRow.Cells[5].Value.ToString();
-                EditarRegistro.txtEmail.Text = dgvTabla.CurrentRow.Cells[6].Value.ToString();
+                EditarRegistro.txtEmail.Text = dgvTabla.CurrentRow.Cells[6].Value.ToString().Split('@')[0];
                 EditarRegistro.txtDireccion.Text = dgvTabla.CurrentRow.Cells[7].Value.ToString();
                 EditarRegistro.txtTelefono.Text = dgvTabla.CurrentRow.Cells[8].Value.ToString();
 
@@ -190,7 +190,7 @@ namespace CapaPresentaciones
                 Opcion = MessageBox.Show("¿Realmente desea eliminar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (Opcion == DialogResult.OK)
                 {
-                    ObjEntidad.CodDocente = dgvTabla.CurrentRow.Cells[0].Value.ToString();
+                    ObjEntidad.CodDocente = dgvTabla.CurrentRow.Cells[2].Value.ToString();
                     ObjNegocio.EliminarDocente(ObjEntidad);
                     MensajeConfirmacion("Registro eliminado exitosamente");
                     MostrarRegistros();
