@@ -9,6 +9,8 @@ namespace CapaPresentaciones
     {
         public P_Menu()
         {
+            //wwwwwww 
+            //rr
             InitializeComponent();
             Control[] Controles = { pnOpciones, pnContenedor, lblSuperior, lblInferior, pbLogo, pbPerfil, lblDatos, lblAcceso, lblUsuario };
             Docker.SubscribeControlsToDragEvents(Controles);
@@ -146,7 +148,12 @@ namespace CapaPresentaciones
             AbrirFormularios<P_TablaAsignaturasAsignadas>();
         }
 
-        private void btnCerrar_Click(object sender, EventArgs e)
+		private void pnContenedor_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+
+		private void btnCerrar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Desea salir de la aplicación?", "¡Alerta!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
