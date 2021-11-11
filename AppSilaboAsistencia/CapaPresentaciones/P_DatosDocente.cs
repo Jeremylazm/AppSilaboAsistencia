@@ -23,6 +23,9 @@ namespace CapaPresentaciones
 
         public P_DatosDocente()
         {
+            ObjEntidad = new E_Docente();
+            ObjNegocio = new N_Docente();
+
             InitializeComponent();
             LlenarComboBox();
             ValidarPerfil();
@@ -86,7 +89,7 @@ namespace CapaPresentaciones
             else
             {
                 cxtDepartamento.DataSource = N_DepartamentoAcademico.MostrarDepartamentos();
-                cxtDepartamento.Enabled = false;
+                //cxtDepartamento.Enabled = false;
             }
 
             cxtDepartamento.ValueMember = "CodDepartamentoA";
@@ -194,7 +197,7 @@ namespace CapaPresentaciones
                     {
                         try
                         {
-                            DataTable Resultado = N_Docente.BuscarDocente(cxtEscuela.Text, txtCodigo.Text);
+                            DataTable Resultado = N_Docente.BuscarDocente("IF", txtCodigo.Text);
 
                             if (Resultado.Rows.Count == 0)
                             {
@@ -215,6 +218,7 @@ namespace CapaPresentaciones
                                 ObjEntidad.Categoria = cxtCategoria.SelectedItem.ToString();
                                 ObjEntidad.Subcategoria = cxtSubcategoria.SelectedItem.ToString();
                                 ObjEntidad.Regimen = cxtRegimen.SelectedItem.ToString();
+                                ObjEntidad.CodDepartamentoA = cxtDepartamento.SelectedValue.ToString();
                                 ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
 
                                 ObjNegocio.InsertarDocente(ObjEntidad);
@@ -269,7 +273,7 @@ namespace CapaPresentaciones
                             Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                             if (Opcion == DialogResult.OK)
                             {
-                                DataTable Resultado = N_Docente.BuscarDocente(cxtEscuela.Text, txtCodigo.Text);
+                                DataTable Resultado = N_Docente.BuscarDocente("IF", txtCodigo.Text);
 
                                 if (Resultado.Rows.Count != 0)
                                 {
@@ -290,6 +294,7 @@ namespace CapaPresentaciones
                                     ObjEntidad.Categoria = cxtCategoria.SelectedItem.ToString();
                                     ObjEntidad.Subcategoria = cxtSubcategoria.SelectedItem.ToString();
                                     ObjEntidad.Regimen = cxtRegimen.SelectedItem.ToString();
+                                    ObjEntidad.CodDepartamentoA = cxtDepartamento.SelectedValue.ToString();
                                     ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
 
                                     ObjNegocio.ActualizarDocente(ObjEntidad);

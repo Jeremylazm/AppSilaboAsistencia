@@ -55,13 +55,18 @@ namespace CapaPresentaciones
             dgvTabla.Columns[10].HeaderText = "Subcategoría";
             dgvTabla.Columns[11].HeaderText = "Régimen";
             dgvTabla.Columns[12].HeaderText = "Departamento A.";
-            dgvTabla.Columns[13].HeaderText = "Escuela P.";
+            //dgvTabla.Columns[13].HeaderText = "Escuela P.";
         }
 
         public void MostrarRegistros()
         {
             dgvTabla.DataSource = N_Docente.MostrarDocentesDepartamento("IF"); // El filtro es por departamento
             AccionesTabla();
+        }
+
+        public void BuscarRegistros()
+        {
+            dgvTabla.DataSource = N_Docente.BuscarDocentes("IF", txtBuscar.Text);
         }
 
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
@@ -132,7 +137,7 @@ namespace CapaPresentaciones
                 EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
                 EditarRegistro.txtAMaterno.Text = dgvTabla.CurrentRow.Cells[4].Value.ToString();
                 EditarRegistro.txtNombre.Text = dgvTabla.CurrentRow.Cells[5].Value.ToString();
-                EditarRegistro.txtEmail.Text = dgvTabla.CurrentRow.Cells[6].Value.ToString();
+                EditarRegistro.txtEmail.Text = dgvTabla.CurrentRow.Cells[6].Value.ToString().Split('@')[0];
                 EditarRegistro.txtDireccion.Text = dgvTabla.CurrentRow.Cells[7].Value.ToString();
                 EditarRegistro.txtTelefono.Text = dgvTabla.CurrentRow.Cells[8].Value.ToString();
 
@@ -185,7 +190,7 @@ namespace CapaPresentaciones
                 Opcion = MessageBox.Show("¿Realmente desea eliminar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (Opcion == DialogResult.OK)
                 {
-                    ObjEntidad.CodDocente = dgvTabla.CurrentRow.Cells[0].Value.ToString();
+                    ObjEntidad.CodDocente = dgvTabla.CurrentRow.Cells[2].Value.ToString();
                     ObjNegocio.EliminarDocente(ObjEntidad);
                     MensajeConfirmacion("Registro eliminado exitosamente");
                     MostrarRegistros();
@@ -194,6 +199,23 @@ namespace CapaPresentaciones
             else
             {
                 MensajeError("Debe seleccionar una fila");
+            }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BuscarRegistros();
+        }
+
+        private void dgvTabla_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvTabla.Columns[e.ColumnIndex].HeaderText == "")
+            {
+                byte[] bits = new byte[0];
+                bits = (byte[])e.Value;
+                MemoryStream ms = new MemoryStream(bits);
+                Image imgSave = Image.FromStream(ms);
+                e.Value = HacerImagenCircular(imgSave);
             }
         }
     }
