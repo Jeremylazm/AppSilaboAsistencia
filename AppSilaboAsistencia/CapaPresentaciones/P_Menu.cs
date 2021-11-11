@@ -145,7 +145,7 @@ namespace CapaPresentaciones
 
         private void btnAsignaturas_Click(object sender, EventArgs e)
         {
-            AbrirFormularios<P_TablaAsignaturasAsignadas>();
+            AbrirFormularios<P_TablaAsigaturas>();
         }
 
 		private void pnContenedor_Paint(object sender, PaintEventArgs e)

@@ -9,6 +9,6 @@
         public string Categoria { get; set; }
         public int HorasTeoria { get; set; }
         public int HorasPractica { get; set; }
-        public int Prerrequisito { get; set; }
+        public string Prerrequisito { get; set; }
     }
 }

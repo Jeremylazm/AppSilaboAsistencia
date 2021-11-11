@@ -55,7 +55,7 @@ namespace CapaPresentaciones
             dgvTabla.Columns[10].HeaderText = "Subcategoría";
             dgvTabla.Columns[11].HeaderText = "Régimen";
             dgvTabla.Columns[12].HeaderText = "Departamento A.";
-            dgvTabla.Columns[13].HeaderText = "Escuela P.";
+            //dgvTabla.Columns[13].HeaderText = "Escuela P.";
         }
 
         public void MostrarRegistros()

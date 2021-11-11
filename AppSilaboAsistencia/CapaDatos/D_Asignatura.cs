@@ -18,7 +18,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
+            Comando.Parameters.AddWithValue("@CodDepartamento", CodDepartamentoA);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
@@ -33,7 +33,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
+            Comando.Parameters.AddWithValue("@CodDepartamento", CodDepartamentoA);
             Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
@@ -49,7 +49,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
+            Comando.Parameters.AddWithValue("@CodDepartamento", CodDepartamentoA);
             Comando.Parameters.AddWithValue("@Texto", Texto);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
