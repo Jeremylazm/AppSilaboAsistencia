@@ -55,13 +55,18 @@ namespace CapaPresentaciones
             dgvTabla.Columns[10].HeaderText = "Subcategoría";
             dgvTabla.Columns[11].HeaderText = "Régimen";
             dgvTabla.Columns[12].HeaderText = "Departamento A.";
-            dgvTabla.Columns[13].HeaderText = "Escuela P.";
+            //dgvTabla.Columns[13].HeaderText = "Escuela P.";
         }
 
         public void MostrarRegistros()
         {
             dgvTabla.DataSource = N_Docente.MostrarDocentesDepartamento("IF"); // El filtro es por departamento
             AccionesTabla();
+        }
+
+        public void BuscarRegistros()
+        {
+            dgvTabla.DataSource = N_Docente.BuscarDocentes("IF", txtBuscar.Text);
         }
 
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
@@ -194,6 +199,23 @@ namespace CapaPresentaciones
             else
             {
                 MensajeError("Debe seleccionar una fila");
+            }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BuscarRegistros();
+        }
+
+        private void dgvTabla_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvTabla.Columns[e.ColumnIndex].HeaderText == "")
+            {
+                byte[] bits = new byte[0];
+                bits = (byte[])e.Value;
+                MemoryStream ms = new MemoryStream(bits);
+                Image imgSave = Image.FromStream(ms);
+                e.Value = HacerImagenCircular(imgSave);
             }
         }
     }

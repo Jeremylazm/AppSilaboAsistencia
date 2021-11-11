@@ -20,7 +20,7 @@ namespace CapaNegocios
 
         public static DataTable BuscarDocentes(string CodDepartamentoA, string Texto)
         {
-            return new D_Docente().BuscarDocente(CodDepartamentoA, Texto);
+            return new D_Docente().BuscarDocentes(CodDepartamentoA, Texto);
         }
 
         public void InsertarDocente(E_Docente Docente)
