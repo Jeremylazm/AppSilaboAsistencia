@@ -50,8 +50,6 @@ namespace CapaPresentaciones
                 btnContraer.Image = Properties.Resources.Ingresar as Image;
                 Transicion.ShowSync(pnOpciones);
                 Transicion.ShowSync(pnContenedor);
-
-
             }
         }
 
