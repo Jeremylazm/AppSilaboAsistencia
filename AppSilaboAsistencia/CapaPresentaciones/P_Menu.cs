@@ -9,8 +9,6 @@ namespace CapaPresentaciones
     {
         public P_Menu()
         {
-            //wwwwwww 
-            //rr
             InitializeComponent();
             Control[] Controles = { pnOpciones, pnContenedor, lblSuperior, lblInferior, pbLogo, pbPerfil, lblDatos, lblAcceso, lblUsuario };
             Docker.SubscribeControlsToDragEvents(Controles);
@@ -155,7 +153,7 @@ namespace CapaPresentaciones
 
 		private void btnCerrar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea salir de la aplicación?", "¡Alerta!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("¿Desea salir de la aplicación?", "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Application.Exit();
             }

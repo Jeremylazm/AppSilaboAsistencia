@@ -6,7 +6,7 @@ namespace CapaPresentaciones
     static class Program
     {
         /// <summary>
-        /// The main entry point for the application. :v
+        /// The main entry point for the application.
         /// </summary>
 
         public static int Evento = 0;

@@ -16,58 +16,64 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaDocentes : Form
     {
-        readonly E_Docente ObjEntidad = new E_Docente();
-        readonly N_Docente ObjNegocio = new N_Docente();
+        readonly E_Docente ObjEntidad;
+        readonly N_Docente ObjNegocio;
+
+        public void MoverIndiceColumna()
+        {
+            dgvDatos.Columns[0].DisplayIndex = 14;
+            dgvDatos.Columns[1].DisplayIndex = 14;
+        }
 
         public P_TablaDocentes()
         {
+            ObjEntidad = new E_Docente();
+            ObjNegocio = new N_Docente();
             InitializeComponent();
-            btnExportar.Visible = false;
+            MostrarRegistros();
+            MoverIndiceColumna();
+            Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
+            //btnExportar.Visible = false;
         }
 
         private void MensajeConfirmacion(string Mensaje)
         {
-            MessageBox.Show(Mensaje, "Sistema de Tutoría", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void MensajeError(string Mensaje)
         {
-            MessageBox.Show(Mensaje, "Sistema de Tutoría", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void P_TablaDocentes_Load(object sender, EventArgs e)
-        {
-            MostrarRegistros();
+            MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void AccionesTabla()
         {
-            dgvTabla.Columns[0].Visible = false;
+            dgvDatos.Columns[2].Visible = false;
 
-            dgvTabla.Columns[1].HeaderText = "";
-            dgvTabla.Columns[2].HeaderText = "Cod. Docente";
-            dgvTabla.Columns[3].HeaderText = "Ap. Paterno";
-            dgvTabla.Columns[4].HeaderText = "Ap. Materno";
-            dgvTabla.Columns[5].HeaderText = "Nombres";
-            dgvTabla.Columns[6].HeaderText = "Email";
-            dgvTabla.Columns[7].HeaderText = "Dirección";
-            dgvTabla.Columns[8].HeaderText = "Teléfono";
-            dgvTabla.Columns[9].HeaderText = "Categoría";
-            dgvTabla.Columns[10].HeaderText = "Subcategoría";
-            dgvTabla.Columns[11].HeaderText = "Régimen";
-            dgvTabla.Columns[12].HeaderText = "Departamento A.";
-            //dgvTabla.Columns[13].HeaderText = "Escuela P.";
+            dgvDatos.Columns[3].HeaderText = "";
+            dgvDatos.Columns[4].HeaderText = "Cod. Docente";
+            dgvDatos.Columns[5].HeaderText = "Ap. Paterno";
+            dgvDatos.Columns[6].HeaderText = "Ap. Materno";
+            dgvDatos.Columns[7].HeaderText = "Nombres";
+            dgvDatos.Columns[8].HeaderText = "Email";
+            dgvDatos.Columns[9].HeaderText = "Dirección";
+            dgvDatos.Columns[10].HeaderText = "Teléfono";
+            dgvDatos.Columns[11].HeaderText = "Categoría";
+            dgvDatos.Columns[12].HeaderText = "Subcategoría";
+            dgvDatos.Columns[13].HeaderText = "Régimen";
+            dgvDatos.Columns[14].HeaderText = "Departamento A.";
+            //dgvDatos.Columns[13].HeaderText = "Escuela P.";
         }
 
         public void MostrarRegistros()
         {
-            dgvTabla.DataSource = N_Docente.MostrarDocentesDepartamento("IF"); // El filtro es por departamento
+            dgvDatos.DataSource = N_Docente.MostrarDocentesDepartamento("IF"); // El filtro es por departamento
             AccionesTabla();
         }
 
         public void BuscarRegistros()
         {
-            dgvTabla.DataSource = N_Docente.BuscarDocentes("IF", txtBuscar.Text);
+            dgvDatos.DataSource = N_Docente.BuscarDocentes("IF", txtBuscar.Text);
         }
 
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
@@ -111,43 +117,49 @@ namespace CapaPresentaciones
             NuevoRegistro.Dispose();
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            P_DatosDocente EditarRegistro = new P_DatosDocente();
-            EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+            BuscarRegistros();
+        }
 
-            if (dgvTabla.SelectedRows.Count > 0)
+        private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDatos.Rows[e.RowIndex].Cells["editar"].Selected)
             {
+                P_DatosDocente EditarRegistro = new P_DatosDocente();
+                EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+
+                //editar
                 Program.Evento = 1;
 
-                if (dgvTabla.CurrentRow.Cells[0].Value.GetType() == Type.GetType("System.DBNull"))
+                if (dgvDatos.Rows[e.RowIndex].Cells[2].Value.GetType() == Type.GetType("System.DBNull"))
                 {
-                    EditarRegistro.imgPerfil.Image = Properties.Resources.Perfil_Docente as Image;
+                    EditarRegistro.pbPerfil.Image = Properties.Resources.Perfil_Docente as Image;
                 }
                 else
                 {
                     byte[] Perfil = new byte[0];
-                    Perfil = (byte[])dgvTabla.CurrentRow.Cells[0].Value;
+                    Perfil = (byte[])dgvDatos.Rows[e.RowIndex].Cells[2].Value;
                     MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
-                    EditarRegistro.imgPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
+                    EditarRegistro.pbPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
                     MemoriaPerfil = null;
                     MemoriaPerfil = null;
                 }
 
-                EditarRegistro.txtCodigo.Text = dgvTabla.CurrentRow.Cells[2].Value.ToString();
-                EditarRegistro.txtAPaterno.Text = dgvTabla.CurrentRow.Cells[3].Value.ToString();
-                EditarRegistro.txtAMaterno.Text = dgvTabla.CurrentRow.Cells[4].Value.ToString();
-                EditarRegistro.txtNombre.Text = dgvTabla.CurrentRow.Cells[5].Value.ToString();
-                EditarRegistro.txtEmail.Text = dgvTabla.CurrentRow.Cells[6].Value.ToString().Split('@')[0];
-                EditarRegistro.txtDireccion.Text = dgvTabla.CurrentRow.Cells[7].Value.ToString();
-                EditarRegistro.txtTelefono.Text = dgvTabla.CurrentRow.Cells[8].Value.ToString();
+                EditarRegistro.txtCodigo.Text = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                EditarRegistro.txtAPaterno.Text = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
+                EditarRegistro.txtAMaterno.Text = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
+                EditarRegistro.txtNombre.Text = dgvDatos.Rows[e.RowIndex].Cells[7].Value.ToString();
+                EditarRegistro.txtEmail.Text = dgvDatos.Rows[e.RowIndex].Cells[8].Value.ToString().Split('@')[0];
+                EditarRegistro.txtDireccion.Text = dgvDatos.Rows[e.RowIndex].Cells[9].Value.ToString();
+                EditarRegistro.txtTelefono.Text = dgvDatos.Rows[e.RowIndex].Cells[10].Value.ToString();
 
                 EditarRegistro.cxtSubcategoria.Items.Clear();
                 EditarRegistro.cxtRegimen.Items.Clear();
                 EditarRegistro.cxtRegimen.Items.Add("TIEMPO COMPLETO");
                 EditarRegistro.cxtRegimen.Items.Add("TIEMPO PARCIAL");
 
-                if (dgvTabla.CurrentRow.Cells[9].Value.ToString() == "NOMBRADO")
+                if (dgvDatos.Rows[e.RowIndex].Cells[11].Value.Equals("NOMBRADO"))
                 {
                     EditarRegistro.cxtSubcategoria.Items.Add("PRINCIPAL");
                     EditarRegistro.cxtSubcategoria.Items.Add("ASOCIADO");
@@ -168,49 +180,35 @@ namespace CapaPresentaciones
                     EditarRegistro.cxtRegimen.Enabled = false;
                 }
 
-                EditarRegistro.cxtCategoria.SelectedItem = dgvTabla.CurrentRow.Cells[9].Value.ToString();
-                EditarRegistro.cxtSubcategoria.SelectedItem = dgvTabla.CurrentRow.Cells[10].Value.ToString();
-                EditarRegistro.cxtRegimen.SelectedItem = dgvTabla.CurrentRow.Cells[11].Value.ToString();
+                EditarRegistro.cxtCategoria.SelectedItem = dgvDatos.Rows[e.RowIndex].Cells[11].Value.ToString();
+                EditarRegistro.cxtSubcategoria.SelectedItem = dgvDatos.Rows[e.RowIndex].Cells[12].Value.ToString();
+                EditarRegistro.cxtRegimen.SelectedItem = dgvDatos.Rows[e.RowIndex].Cells[13].Value.ToString();
 
                 // EditarRegistro.cxtEscuela.SelectedValue = dgvTabla.CurrentRow.Cells[13].Value.ToString();
 
                 EditarRegistro.ShowDialog();
-            }
-            else
-            {
-                MensajeError("Debe seleccionar una fila");
-            }
-            EditarRegistro.Dispose();
-        }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (dgvTabla.SelectedRows.Count > 0)
+                EditarRegistro.Dispose();
+
+            }
+
+            if (dgvDatos.Rows[e.RowIndex].Cells["eliminar"].Selected)
             {
                 DialogResult Opcion;
                 Opcion = MessageBox.Show("¿Realmente desea eliminar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (Opcion == DialogResult.OK)
                 {
-                    ObjEntidad.CodDocente = dgvTabla.CurrentRow.Cells[2].Value.ToString();
+                    ObjEntidad.CodDocente = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
                     ObjNegocio.EliminarDocente(ObjEntidad);
                     MensajeConfirmacion("Registro eliminado exitosamente");
                     MostrarRegistros();
                 }
             }
-            else
-            {
-                MensajeError("Debe seleccionar una fila");
-            }
         }
 
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        private void dgvDatos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            BuscarRegistros();
-        }
-
-        private void dgvTabla_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dgvTabla.Columns[e.ColumnIndex].HeaderText == "")
+            if (dgvDatos.Columns[e.ColumnIndex].HeaderText == "")
             {
                 byte[] bits = new byte[0];
                 bits = (byte[])e.Value;

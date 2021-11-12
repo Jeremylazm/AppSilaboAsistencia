@@ -14,127 +14,116 @@ namespace CapaPresentaciones
 {
 	public partial class P_TablaAsignaturas : Form
 	{
-		readonly E_Asignatura ObjEntidad = new E_Asignatura();
-		readonly N_Asignatura ObjNegocio = new N_Asignatura();
-		public void OcultarMoverAncharColumnas()
-		{
-			dgvMostrarAsignatura.Columns[0].DisplayIndex = 8;//0
-			dgvMostrarAsignatura.Columns[1].DisplayIndex = 7;//1
+		readonly E_Asignatura ObjEntidad;
+		readonly N_Asignatura ObjNegocio;
 
+		public void MoverIndiceColumna()
+		{
+			dgvDatos.Columns[0].DisplayIndex = 8;
+			dgvDatos.Columns[1].DisplayIndex = 8;
 		}
 		public void AccionesTabla()
 		{
-
-
-			//dgvMostrarAsignatura.Columns[0].HeaderText = "CodAsignatura";
-			//dgvMostrarAsignatura.Columns[1].HeaderText = "NombreAsignatura";
-			//dgvMostrarAsignatura.Columns[2].HeaderText = "Credito";
-			//dgvMostrarAsignatura.Columns[3].HeaderText = "Categoria";
-			//dgvMostrarAsignatura.Columns[4].HeaderText = "HorasTeoria";
-			//dgvMostrarAsignatura.Columns[5].HeaderText = "HorasPractica";
-			//dgvMostrarAsignatura.Columns[6].HeaderText = "Prerrequisitos";
+			dgvDatos.Columns[2].HeaderText = "Código";
+			dgvDatos.Columns[3].HeaderText = "Nombre";
+			dgvDatos.Columns[4].HeaderText = "Nro. Créditos";
+			dgvDatos.Columns[5].HeaderText = "Categoría";
+			dgvDatos.Columns[6].HeaderText = "Horas de Teoria";
+			dgvDatos.Columns[7].HeaderText = "Horas de Práctica";
+			dgvDatos.Columns[8].HeaderText = "Prerrequisitos";
 		}
 		public P_TablaAsignaturas()
 		{
+			ObjEntidad = new E_Asignatura();
+			ObjNegocio = new N_Asignatura();
 			InitializeComponent();
 			MostrarRegistros();
-			OcultarMoverAncharColumnas();
+			MoverIndiceColumna();
+			Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
 		}
 		private void MensajeConfirmacion(string Mensaje)
 		{
-			MessageBox.Show(Mensaje, "Sistema de Tutoría", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void MensajeError(string Mensaje)
 		{
-			MessageBox.Show(Mensaje, "Sistema de Tutoría", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
+
 		public void MostrarRegistros()
 		{
-			dgvMostrarAsignatura.DataSource = N_Asignatura.MostrarAsignaturas("IF");
+			dgvDatos.DataSource = N_Asignatura.MostrarAsignaturas("IF");
 			AccionesTabla();
 		}
+
 		private void ActualizarDatos(object sender, FormClosedEventArgs e)
 		{
 			MostrarRegistros();
 		}
+
 		public void BuscarRegistros()
 		{
-			dgvMostrarAsignatura.DataSource = N_Asignatura.BuscarAsignaturas("IF", tbxBuscar.Text);
-		}
-		private void tbxBuscar_TextChanged(object sender, EventArgs e)
-		{
-			BuscarRegistros();
+			dgvDatos.DataSource = N_Asignatura.BuscarAsignaturas("IF", txtBuscar.Text);
 		}
 
-		private void btnAgregar_Click(object sender, EventArgs e)
-		{
-			P_DatosAsignatura NuevoRegistro = new P_DatosAsignatura();
-			NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-			NuevoRegistro.ShowDialog();
-			NuevoRegistro.Dispose();
-		}
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
-		private void dgvMostrarAsignatura_CellClick(object sender, DataGridViewCellEventArgs e)
-		{
-			
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BuscarRegistros();
+        }
 
-			////
-			
-		}
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            P_DatosAsignatura NuevoRegistro = new P_DatosAsignatura();
+            NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+            NuevoRegistro.ShowDialog();
+            NuevoRegistro.Dispose();
+        }
 
-		private void P_TablaAsigaturas_Load(object sender, EventArgs e)
-		{
-			
-		}
+        private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDatos.Rows[e.RowIndex].Cells["editar"].Selected)
+            {
+                //editar
 
-		private void dgvMostrarAsignatura_CellContentClick(object sender, DataGridViewCellEventArgs e)
-		{
-			if (dgvMostrarAsignatura.Rows[e.RowIndex].Cells["editar"].Selected)
-			{
-				//editar
+                P_DatosAsignatura EditarRegistro = new P_DatosAsignatura();
+                EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
 
-				P_DatosAsignatura EditarRegistro = new P_DatosAsignatura();
-				EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-
-				Program.Evento = 1;
+                Program.Evento = 1;
 
 
-				EditarRegistro.txtCod.Text = dgvMostrarAsignatura.Rows[e.RowIndex].Cells[2].Value.ToString();
-				EditarRegistro.txtNombre.Text = dgvMostrarAsignatura.Rows[e.RowIndex].Cells[3].Value.ToString();
-				EditarRegistro.txtCredito.Text = dgvMostrarAsignatura.Rows[e.RowIndex].Cells[4].Value.ToString();
-				EditarRegistro.txtCategoria.Text = dgvMostrarAsignatura.Rows[e.RowIndex].Cells[5].Value.ToString();
-				EditarRegistro.txthteoria.Text = dgvMostrarAsignatura.Rows[e.RowIndex].Cells[6].Value.ToString();
-				EditarRegistro.txthpractica.Text = dgvMostrarAsignatura.Rows[e.RowIndex].Cells[7].Value.ToString();
-				EditarRegistro.txtPrerreq.Text = dgvMostrarAsignatura.Rows[e.RowIndex].Cells[8].Value.ToString();
+                EditarRegistro.txtCodigo.Text = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
+                EditarRegistro.txtNombre.Text = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
+                EditarRegistro.txtCreditos.Text = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                EditarRegistro.txtCategoria.Text = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
+                EditarRegistro.txtHorasTeoria.Text = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
+                EditarRegistro.txtHorasPractica.Text = dgvDatos.Rows[e.RowIndex].Cells[7].Value.ToString();
+                EditarRegistro.txtPrerrequisito.Text = dgvDatos.Rows[e.RowIndex].Cells[8].Value.ToString();
 
 
-				EditarRegistro.ShowDialog();
-			
-				EditarRegistro.Dispose();
+                EditarRegistro.ShowDialog();
 
-			}
-			///
+                EditarRegistro.Dispose();
 
-			if (dgvMostrarAsignatura.Rows[e.RowIndex].Cells["eliminar"].Selected)
-			{
-				DialogResult Opcion;
-				Opcion = MessageBox.Show("¿Realmente desea eliminar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-				if (Opcion == DialogResult.OK)
-				{
-					ObjEntidad.CodAsignatura = dgvMostrarAsignatura.Rows[e.RowIndex].Cells[2].Value.ToString();
-					ObjNegocio.EliminarAsignatura(ObjEntidad);
-					MensajeConfirmacion("Registro eliminado exitosamente");
-					MostrarRegistros();
-				}
+            }
 
-			}
-
-		}
-
-		private void panel2_Paint(object sender, PaintEventArgs e)
-		{
-
-		}
-	}
+            if (dgvDatos.Rows[e.RowIndex].Cells["eliminar"].Selected)
+            {
+                DialogResult Opcion;
+                Opcion = MessageBox.Show("¿Realmente desea eliminar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (Opcion == DialogResult.OK)
+                {
+                    ObjEntidad.CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    ObjNegocio.EliminarAsignatura(ObjEntidad);
+                    MensajeConfirmacion("Registro eliminado exitosamente");
+                    MostrarRegistros();
+                }
+            }
+        }
+    }
 }

@@ -18,15 +18,16 @@ namespace CapaPresentaciones
 {
     public partial class P_DatosDocente : Form
     {
-        readonly E_Docente ObjEntidad;// = new E_Docente();
-        readonly N_Docente ObjNegocio;// = new N_Docente();
+        readonly E_Docente ObjEntidad;
+        readonly N_Docente ObjNegocio;
 
         public P_DatosDocente()
         {
             ObjEntidad = new E_Docente();
             ObjNegocio = new N_Docente();
-
             InitializeComponent();
+            Control[] Controles = { lblTitulo, pbLogo };
+            Docker.SubscribeControlsToDragEvents(Controles);
             LlenarComboBox();
             ValidarPerfil();
         }
@@ -55,7 +56,7 @@ namespace CapaPresentaciones
 
         private void ValidarPerfil()
         {
-            if (imgPerfil.Image == (Properties.Resources.Perfil_Docente as Image))
+            if (pbPerfil.Image == (Properties.Resources.Perfil_Docente as Image))
             {
                 btnRestablecerPerfil.Visible = false;
             }
@@ -76,11 +77,12 @@ namespace CapaPresentaciones
                 cxtEscuela.DataSource = N_EscuelaProfesional.MostrarEscuelas();
                 //cxtEscuela.DataSource = N_EscuelaProfesional.MostrarEscuelas(E_InicioSesion.Usuario);
                 //cxtEscuela.Enabled = false;
+                cxtEscuela.SelectedIndex = 2;
+                cxtEscuela.Enabled = false;
             }
 
             cxtEscuela.ValueMember = "CodEscuelaP";
             cxtEscuela.DisplayMember = "Nombre";
-
 
             if (E_InicioSesion.Acceso == "Administrador")
             {
@@ -89,6 +91,7 @@ namespace CapaPresentaciones
             else
             {
                 cxtDepartamento.DataSource = N_DepartamentoAcademico.MostrarDepartamentos();
+                cxtDepartamento.SelectedIndex = 4;
                 cxtDepartamento.Enabled = false;
             }
 
@@ -151,6 +154,11 @@ namespace CapaPresentaciones
             return tmp;
         }
 
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarCajas();
+        }
+
         private void btnSubirPerfil_Click(object sender, EventArgs e)
         {
             try
@@ -161,7 +169,7 @@ namespace CapaPresentaciones
 
                 if (Archivo.ShowDialog() == DialogResult.OK)
                 {
-                    imgPerfil.Image = HacerImagenCircular(Image.FromFile(Archivo.FileName));
+                    pbPerfil.Image = HacerImagenCircular(Image.FromFile(Archivo.FileName));
                 }
             }
             catch (Exception)
@@ -172,7 +180,7 @@ namespace CapaPresentaciones
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
-            imgPerfil.Image = Properties.Resources.Perfil_Docente as Image;
+            pbPerfil.Image = Properties.Resources.Perfil_Docente as Image;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -204,7 +212,7 @@ namespace CapaPresentaciones
                                 byte[] Perfil = new byte[0];
                                 using (MemoryStream MemoriaPerfil = new MemoryStream())
                                 {
-                                    imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
+                                    pbPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
                                     Perfil = MemoriaPerfil.ToArray();
                                 }
                                 ObjEntidad.Perfil = Perfil;
@@ -280,7 +288,7 @@ namespace CapaPresentaciones
                                     byte[] Perfil = new byte[0];
                                     using (MemoryStream MemoriaPerfil = new MemoryStream())
                                     {
-                                        imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
+                                        pbPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
                                         Perfil = MemoriaPerfil.ToArray();
                                     }
                                     ObjEntidad.Perfil = Perfil;
@@ -319,7 +327,6 @@ namespace CapaPresentaciones
                 {
                     MensajeError("Debe llenar los campos");
                 }
-                //MensajeError(msg);
             }
             else
             {
