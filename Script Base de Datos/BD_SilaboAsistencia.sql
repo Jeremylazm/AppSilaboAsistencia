@@ -787,7 +787,7 @@ BEGIN
 			  Prerrequisito LIKE (@Texto + '%'))
 END;
 GO
-
+select *from TAsignatura
 -- Procedimiento para insertar una asignatura.
 CREATE PROCEDURE spuInsertarAsignatura @CodAsignatura VARCHAR(6),
 									   @NombreAsignatura VARCHAR(50),

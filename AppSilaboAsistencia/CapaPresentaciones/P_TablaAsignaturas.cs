@@ -12,13 +12,13 @@ using CapaEntidades;
 
 namespace CapaPresentaciones
 {
-	public partial class P_TablaAsigaturas : Form
+	public partial class P_TablaAsignaturas : Form
 	{
 		readonly E_Asignatura ObjEntidad = new E_Asignatura();
 		readonly N_Asignatura ObjNegocio = new N_Asignatura();
 		public void OcultarMoverAncharColumnas()
 		{
-			dgvMostrarAsignatura.Columns[0].DisplayIndex = 7;//0
+			dgvMostrarAsignatura.Columns[0].DisplayIndex = 8;//0
 			dgvMostrarAsignatura.Columns[1].DisplayIndex = 7;//1
 
 		}
@@ -34,7 +34,7 @@ namespace CapaPresentaciones
 			//dgvMostrarAsignatura.Columns[5].HeaderText = "HorasPractica";
 			//dgvMostrarAsignatura.Columns[6].HeaderText = "Prerrequisitos";
 		}
-		public P_TablaAsigaturas()
+		public P_TablaAsignaturas()
 		{
 			InitializeComponent();
 			MostrarRegistros();
@@ -129,6 +129,11 @@ namespace CapaPresentaciones
 				}
 
 			}
+
+		}
+
+		private void panel2_Paint(object sender, PaintEventArgs e)
+		{
 
 		}
 	}

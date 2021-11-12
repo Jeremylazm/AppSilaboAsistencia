@@ -201,11 +201,11 @@
     <Compile Include="P_Menu.Designer.cs">
       <DependentUpon>P_Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="P_TablaAsigaturas.cs">
+    <Compile Include="P_TablaAsignaturas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="P_TablaAsigaturas.Designer.cs">
-      <DependentUpon>P_TablaAsigaturas.cs</DependentUpon>
+    <Compile Include="P_TablaAsignaturas.Designer.cs">
+      <DependentUpon>P_TablaAsignaturas.cs</DependentUpon>
     </Compile>
     <Compile Include="P_TablaAsignaturasAsignadas.cs">
       <SubType>Form</SubType>
@@ -242,8 +242,8 @@
     <EmbeddedResource Include="P_Menu.resx">
       <DependentUpon>P_Menu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="P_TablaAsigaturas.resx">
-      <DependentUpon>P_TablaAsigaturas.cs</DependentUpon>
+    <EmbeddedResource Include="P_TablaAsignaturas.resx">
+      <DependentUpon>P_TablaAsignaturas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaAsignaturasAsignadas.resx">
       <DependentUpon>P_TablaAsignaturasAsignadas.cs</DependentUpon>

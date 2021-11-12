@@ -1,7 +1,7 @@
 ﻿
 namespace CapaPresentaciones
 {
-	partial class P_TablaAsigaturas
+	partial class P_TablaAsignaturas
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -30,17 +30,16 @@ namespace CapaPresentaciones
 		private void InitializeComponent()
 		{
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaAsigaturas));
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.dgvMostrarAsignatura = new System.Windows.Forms.DataGridView();
+			this.ELIMINAR = new System.Windows.Forms.DataGridViewButtonColumn();
+			this.EDITAR = new System.Windows.Forms.DataGridViewButtonColumn();
 			this.lbBuscar = new System.Windows.Forms.Label();
 			this.tbxBuscar = new System.Windows.Forms.TextBox();
 			this.btnAgregar = new System.Windows.Forms.Button();
-			this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
-			this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvMostrarAsignatura)).BeginInit();
@@ -82,6 +81,7 @@ namespace CapaPresentaciones
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(824, 343);
 			this.panel2.TabIndex = 0;
+			this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
 			// 
 			// dgvMostrarAsignatura
 			// 
@@ -98,8 +98,8 @@ namespace CapaPresentaciones
 			this.dgvMostrarAsignatura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvMostrarAsignatura.ColumnHeadersVisible = false;
 			this.dgvMostrarAsignatura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.EDITAR,
-            this.ELIMINAR});
+            this.ELIMINAR,
+            this.EDITAR});
 			this.dgvMostrarAsignatura.GridColor = System.Drawing.Color.White;
 			this.dgvMostrarAsignatura.Location = new System.Drawing.Point(25, 76);
 			this.dgvMostrarAsignatura.MultiSelect = false;
@@ -113,6 +113,36 @@ namespace CapaPresentaciones
 			this.dgvMostrarAsignatura.TabIndex = 0;
 			this.dgvMostrarAsignatura.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMostrarAsignatura_CellClick);
 			this.dgvMostrarAsignatura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMostrarAsignatura_CellContentClick);
+			// 
+			// ELIMINAR
+			// 
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.Red;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+			this.ELIMINAR.DefaultCellStyle = dataGridViewCellStyle1;
+			this.ELIMINAR.HeaderText = "Eliminar";
+			this.ELIMINAR.Name = "ELIMINAR";
+			this.ELIMINAR.ReadOnly = true;
+			this.ELIMINAR.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.ELIMINAR.Text = "Eliminar";
+			// 
+			// EDITAR
+			// 
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Green;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+			this.EDITAR.DefaultCellStyle = dataGridViewCellStyle2;
+			this.EDITAR.HeaderText = "Editar";
+			this.EDITAR.Name = "EDITAR";
+			this.EDITAR.ReadOnly = true;
+			this.EDITAR.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.EDITAR.Text = "Editar";
 			// 
 			// lbBuscar
 			// 
@@ -151,44 +181,14 @@ namespace CapaPresentaciones
 			this.btnAgregar.UseVisualStyleBackColor = false;
 			this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
 			// 
-			// EDITAR
-			// 
-			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-			dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle1.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle1.NullValue")));
-			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Green;
-			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-			this.EDITAR.DefaultCellStyle = dataGridViewCellStyle1;
-			this.EDITAR.HeaderText = "Editar";
-			this.EDITAR.Name = "EDITAR";
-			this.EDITAR.ReadOnly = true;
-			this.EDITAR.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-			// 
-			// ELIMINAR
-			// 
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewCellStyle2.BackColor = System.Drawing.Color.Red;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle2.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle2.NullValue")));
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-			this.ELIMINAR.DefaultCellStyle = dataGridViewCellStyle2;
-			this.ELIMINAR.HeaderText = "Eliminar";
-			this.ELIMINAR.Name = "ELIMINAR";
-			this.ELIMINAR.ReadOnly = true;
-			this.ELIMINAR.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-			// 
-			// P_TablaAsigaturas
+			// P_TablaAsignaturas
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(909, 512);
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.panel1);
-			this.Name = "P_TablaAsigaturas";
+			this.Name = "P_TablaAsignaturas";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "CrudAsignatura";
 			this.Load += new System.EventHandler(this.P_TablaAsigaturas_Load);
@@ -210,7 +210,7 @@ namespace CapaPresentaciones
 		private System.Windows.Forms.Button btnAgregar;
 		private System.Windows.Forms.Label lbBuscar;
 		private System.Windows.Forms.DataGridView dgvMostrarAsignatura;
-		private System.Windows.Forms.DataGridViewImageColumn EDITAR;
-		private System.Windows.Forms.DataGridViewImageColumn ELIMINAR;
+		private System.Windows.Forms.DataGridViewButtonColumn ELIMINAR;
+		private System.Windows.Forms.DataGridViewButtonColumn EDITAR;
 	}
 }
