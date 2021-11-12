@@ -76,9 +76,9 @@ namespace CapaPresentaciones
             {
                 cxtEscuela.DataSource = N_EscuelaProfesional.MostrarEscuelas();
                 //cxtEscuela.DataSource = N_EscuelaProfesional.MostrarEscuelas(E_InicioSesion.Usuario);
-                //cxtEscuela.Enabled = false;
+
                 cxtEscuela.SelectedIndex = 2;
-                cxtEscuela.Enabled = false;
+                //cxtEscuela.Enabled = false;
             }
 
             cxtEscuela.ValueMember = "CodEscuelaP";
