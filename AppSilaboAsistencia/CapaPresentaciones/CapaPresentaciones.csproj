@@ -177,6 +177,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="P_DatosAsignatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_DatosAsignatura.Designer.cs">
+      <DependentUpon>P_DatosAsignatura.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_DatosDocente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +200,12 @@
     </Compile>
     <Compile Include="P_Menu.Designer.cs">
       <DependentUpon>P_Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_TablaAsignaturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_TablaAsignaturas.Designer.cs">
+      <DependentUpon>P_TablaAsignaturas.cs</DependentUpon>
     </Compile>
     <Compile Include="P_TablaAsignaturasAsignadas.cs">
       <SubType>Form</SubType>
@@ -218,6 +230,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="P_DatosAsignatura.resx">
+      <DependentUpon>P_DatosAsignatura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="P_DatosDocente.resx">
       <DependentUpon>P_DatosDocente.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_Menu.resx">
       <DependentUpon>P_Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_TablaAsignaturas.resx">
+      <DependentUpon>P_TablaAsignaturas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaAsignaturasAsignadas.resx">
       <DependentUpon>P_TablaAsignaturasAsignadas.cs</DependentUpon>
