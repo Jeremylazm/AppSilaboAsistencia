@@ -46,10 +46,10 @@ namespace CapaPresentaciones
             this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
-            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.btnAgregar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.btnEditar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnEliminar = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.pnContenedor.SuspendLayout();
             this.SuspendLayout();
@@ -221,8 +221,8 @@ namespace CapaPresentaciones
             this.dgvDatos.ColumnHeadersHeight = 28;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.EDITAR,
-            this.ELIMINAR});
+            this.btnEditar,
+            this.btnEliminar});
             this.dgvDatos.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(93)))), ((int)(((byte)(95)))));
             this.dgvDatos.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvDatos.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -276,7 +276,7 @@ namespace CapaPresentaciones
             this.dgvDatos.Size = new System.Drawing.Size(763, 346);
             this.dgvDatos.TabIndex = 14;
             this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
-            this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             // 
             // sbDatos
             // 
@@ -341,11 +341,6 @@ namespace CapaPresentaciones
             this.pnContenedor.ShowBorders = true;
             this.pnContenedor.Size = new System.Drawing.Size(791, 453);
             this.pnContenedor.TabIndex = 17;
-            // 
-            // Bordeado
-            // 
-            this.Bordeado.ElipseRadius = 15;
-            this.Bordeado.TargetControl = this.pnContenedor;
             // 
             // btnAgregar
             // 
@@ -438,21 +433,26 @@ namespace CapaPresentaciones
             this.btnAgregar.UseDefaultRadiusAndThickness = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // EDITAR
+            // Bordeado
             // 
-            this.EDITAR.HeaderText = "Editar";
-            this.EDITAR.Image = global::CapaPresentaciones.Properties.Resources.Maximizar_2;
-            this.EDITAR.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.EDITAR.Name = "EDITAR";
-            this.EDITAR.ReadOnly = true;
+            this.Bordeado.ElipseRadius = 15;
+            this.Bordeado.TargetControl = this.pnContenedor;
             // 
-            // ELIMINAR
+            // btnEditar
             // 
-            this.ELIMINAR.HeaderText = "Eliminar";
-            this.ELIMINAR.Image = global::CapaPresentaciones.Properties.Resources.Restaurar_2;
-            this.ELIMINAR.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.ELIMINAR.Name = "ELIMINAR";
-            this.ELIMINAR.ReadOnly = true;
+            this.btnEditar.HeaderText = "Editar";
+            this.btnEditar.Image = global::CapaPresentaciones.Properties.Resources.Maximizar_2;
+            this.btnEditar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.ReadOnly = true;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.HeaderText = "Eliminar";
+            this.btnEliminar.Image = global::CapaPresentaciones.Properties.Resources.Restaurar_2;
+            this.btnEliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.ReadOnly = true;
             // 
             // P_TablaAsignaturas
             // 
@@ -481,7 +481,7 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuPanel pnContenedor;
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnAgregar;
-        private System.Windows.Forms.DataGridViewImageColumn EDITAR;
-        private System.Windows.Forms.DataGridViewImageColumn ELIMINAR;
+        private System.Windows.Forms.DataGridViewImageColumn btnEditar;
+        private System.Windows.Forms.DataGridViewImageColumn btnEliminar;
     }
 }
