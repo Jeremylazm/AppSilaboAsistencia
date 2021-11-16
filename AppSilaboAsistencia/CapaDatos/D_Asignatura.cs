@@ -9,7 +9,7 @@ namespace CapaDatos
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
 
-        // Método para mostrar las asignaturas de una escuela profesional.
+        // Método para mostrar las asignaturas de un departamento académico..
         public DataTable MostrarAsignaturas(string CodDepartamentoA)
         {
             DataTable Resultado = new DataTable();
@@ -24,7 +24,7 @@ namespace CapaDatos
             return Resultado;
         }
 
-        // Método para buscar una asignatura de una escuela profesional.
+        // Método para buscar una asignatura.
         public DataTable BuscarAsignatura(string CodDepartamentoA, string CodAsignatura)
         {
             DataTable Resultado = new DataTable();
