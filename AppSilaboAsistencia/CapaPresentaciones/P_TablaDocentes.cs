@@ -19,21 +19,13 @@ namespace CapaPresentaciones
         readonly E_Docente ObjEntidad;
         readonly N_Docente ObjNegocio;
 
-        public void MoverIndiceColumna()
-        {
-            dgvDatos.Columns[0].DisplayIndex = 14;
-            dgvDatos.Columns[1].DisplayIndex = 14;
-        }
-
         public P_TablaDocentes()
         {
             ObjEntidad = new E_Docente();
             ObjNegocio = new N_Docente();
             InitializeComponent();
             MostrarRegistros();
-            MoverIndiceColumna();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
-            //btnExportar.Visible = false;
         }
 
         private void MensajeConfirmacion(string Mensaje)
@@ -48,6 +40,8 @@ namespace CapaPresentaciones
 
         public void AccionesTabla()
         {
+            dgvDatos.Columns[0].DisplayIndex = 14;
+            dgvDatos.Columns[1].DisplayIndex = 14;
             dgvDatos.Columns[2].Visible = false;
 
             dgvDatos.Columns[3].HeaderText = "";
@@ -122,9 +116,21 @@ namespace CapaPresentaciones
             BuscarRegistros();
         }
 
-        private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvDatos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvDatos.Rows[e.RowIndex].Cells["editar"].Selected)
+            if (dgvDatos.Columns[e.ColumnIndex].HeaderText == "")
+            {
+                byte[] bits = new byte[0];
+                bits = (byte[])e.Value;
+                MemoryStream ms = new MemoryStream(bits);
+                Image imgSave = Image.FromStream(ms);
+                e.Value = HacerImagenCircular(imgSave);
+            }
+        }
+
+        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
                 P_DatosDocente EditarRegistro = new P_DatosDocente();
                 EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
@@ -189,10 +195,9 @@ namespace CapaPresentaciones
                 EditarRegistro.ShowDialog();
 
                 EditarRegistro.Dispose();
-
             }
 
-            if (dgvDatos.Rows[e.RowIndex].Cells["eliminar"].Selected)
+            if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
                 DialogResult Opcion;
                 Opcion = MessageBox.Show("¿Realmente desea eliminar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -203,18 +208,6 @@ namespace CapaPresentaciones
                     MensajeConfirmacion("Registro eliminado exitosamente");
                     MostrarRegistros();
                 }
-            }
-        }
-
-        private void dgvDatos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dgvDatos.Columns[e.ColumnIndex].HeaderText == "")
-            {
-                byte[] bits = new byte[0];
-                bits = (byte[])e.Value;
-                MemoryStream ms = new MemoryStream(bits);
-                Image imgSave = Image.FromStream(ms);
-                e.Value = HacerImagenCircular(imgSave);
             }
         }
     }
