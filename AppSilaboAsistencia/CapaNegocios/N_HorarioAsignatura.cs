@@ -8,9 +8,9 @@ namespace CapaNegocios
     {
         readonly D_HorarioAsignatura ObjHorarioAsignatura = new D_HorarioAsignatura();
 
-        public static DataTable BuscarHorarioAsignatura(string CodSemestre, string CodDepartamentoA, string CodEscuelaP, string Texto, string Grupo)
+        public static DataTable BuscarHorarioAsignatura(string CodSemestre, string Texto1, string Texto2, string Grupo)
         {
-            return new D_HorarioAsignatura().BuscarHorarioAsignatura(CodSemestre, CodDepartamentoA, CodEscuelaP, Texto, Grupo);
+            return new D_HorarioAsignatura().BuscarHorarioAsignatura(CodSemestre, Texto1, Texto2, Grupo);
         }
 
         public static DataTable HorarioSemanalDocente(string CodSemestre, string Texto)

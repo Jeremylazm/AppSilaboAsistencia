@@ -10,7 +10,7 @@ namespace CapaDatos
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
 
         // Método para buscar el horario de una asignatura en un catálogo. 
-        public DataTable BuscarHorarioAsignatura(string CodSemestre, string CodDepartamentoA, string CodEscuelaP, string Texto, string Grupo)
+        public DataTable BuscarHorarioAsignatura(string CodSemestre, string Texto1, string Texto2, string Grupo)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarHorarioAsignatura", Conectar)
@@ -19,9 +19,8 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA); // Atrib. Docente (Jefe de Dep.)
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP); // EP donde se enseña la asignatura
-            Comando.Parameters.AddWithValue("@Texto", Texto); // código (ej. IF065) o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@CodEscuelaP", Texto1); // EP donde se enseña la asignatura
+            Comando.Parameters.AddWithValue("@Texto", Texto2); // código (ej. IF065) o nombre de la asignatura
             Comando.Parameters.AddWithValue("@Grupo", Grupo);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
@@ -54,15 +53,18 @@ namespace CapaDatos
 
             Conectar.Open();
             Comando.Parameters.AddWithValue("@CodSemestre", HorarioAsignatura.CodSemestre);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", HorarioAsignatura.CodEscuelaP);
             Comando.Parameters.AddWithValue("@CodAsignatura", HorarioAsignatura.CodAsignatura);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", HorarioAsignatura.CodEscuelaP);
             Comando.Parameters.AddWithValue("@Grupo", HorarioAsignatura.Grupo);
             Comando.Parameters.AddWithValue("@CodDocente", HorarioAsignatura.CodDocente);
             Comando.Parameters.AddWithValue("@Dia", HorarioAsignatura.Dia);
-            Comando.Parameters.AddWithValue("@Horario", HorarioAsignatura.Horario);
             Comando.Parameters.AddWithValue("@Tipo", HorarioAsignatura.Tipo);
+            Comando.Parameters.AddWithValue("@HorasTeoria", HorarioAsignatura.HorasTeoria);
+            Comando.Parameters.AddWithValue("@HorasPractica", HorarioAsignatura.HorasPractica);
+            Comando.Parameters.AddWithValue("@HoraInicio", HorarioAsignatura.HoraInicio);
+            Comando.Parameters.AddWithValue("@HoraFin", HorarioAsignatura.HoraFin);
+            Comando.Parameters.AddWithValue("@Matriculados", HorarioAsignatura.Matriculados);
             Comando.Parameters.AddWithValue("@Aula", HorarioAsignatura.Aula);
-            Comando.Parameters.AddWithValue("@Horas", HorarioAsignatura.Horas);
             Comando.Parameters.AddWithValue("@Modalidad", HorarioAsignatura.Modalidad);
             Comando.ExecuteNonQuery();
             Conectar.Close();
@@ -78,15 +80,18 @@ namespace CapaDatos
 
             Conectar.Open();
             Comando.Parameters.AddWithValue("@CodSemestre", HorarioAsignatura.CodSemestre);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", HorarioAsignatura.CodEscuelaP);
             Comando.Parameters.AddWithValue("@CodAsignatura", HorarioAsignatura.CodAsignatura);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", HorarioAsignatura.CodEscuelaP);
             Comando.Parameters.AddWithValue("@Grupo", HorarioAsignatura.Grupo);
             Comando.Parameters.AddWithValue("@CodDocente", HorarioAsignatura.CodDocente);
             Comando.Parameters.AddWithValue("@Dia", HorarioAsignatura.Dia);
-            Comando.Parameters.AddWithValue("@Horario", HorarioAsignatura.Horario);
             Comando.Parameters.AddWithValue("@Tipo", HorarioAsignatura.Tipo);
+            Comando.Parameters.AddWithValue("@HorasTeoria", HorarioAsignatura.HorasTeoria);
+            Comando.Parameters.AddWithValue("@HorasPractica", HorarioAsignatura.HorasPractica);
+            Comando.Parameters.AddWithValue("@HoraInicio", HorarioAsignatura.HoraInicio);
+            Comando.Parameters.AddWithValue("@HoraFin", HorarioAsignatura.HoraFin);
+            Comando.Parameters.AddWithValue("@Matriculados", HorarioAsignatura.Matriculados);
             Comando.Parameters.AddWithValue("@Aula", HorarioAsignatura.Aula);
-            Comando.Parameters.AddWithValue("@Horas", HorarioAsignatura.Horas);
             Comando.Parameters.AddWithValue("@Modalidad", HorarioAsignatura.Modalidad);
             Comando.ExecuteNonQuery();
             Conectar.Close();
@@ -102,8 +107,8 @@ namespace CapaDatos
 
             Conectar.Open();
             Comando.Parameters.AddWithValue("@CodSemestre", HorarioAsignatura.CodSemestre);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", HorarioAsignatura.CodEscuelaP);
             Comando.Parameters.AddWithValue("@CodAsignatura", HorarioAsignatura.CodAsignatura);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", HorarioAsignatura.CodEscuelaP);
             Comando.Parameters.AddWithValue("@Grupo", HorarioAsignatura.Grupo);
             Comando.Parameters.AddWithValue("@CodDocente", HorarioAsignatura.CodDocente);
             Comando.Parameters.AddWithValue("@Dia", HorarioAsignatura.Dia);
