@@ -169,14 +169,15 @@ CREATE TABLE TCatalogo
 (
 	-- Lista de atributos
 	CodSemestre tyCodSemestre,
-	CodEscuelaP tyCodEscuelaP, -- EP donde se enseña la asignatura
 	CodAsignatura tyCodAsignatura, -- ej. IF085
+	CodEscuelaP tyCodEscuelaP, -- EP donde se enseña la asignatura
 	Grupo VARCHAR(1) NOT NULL,
 	CodDocente tyCodDocente, -- Puede ser uno o más
-	CodSilabo VARCHAR(4)
+	Silabo VARBINARY(MAX),
+	PlanSesiones VARBINARY(MAX)
 
 	-- Determinar las claves
-	PRIMARY KEY (CodSemestre, CodEscuelaP, CodAsignatura, Grupo, CodDocente),
+	PRIMARY KEY (CodSemestre, CodAsignatura, CodEscuelaP, Grupo, CodDocente),
 	CONSTRAINT FK_CodAsignatura FOREIGN KEY (CodAsignatura)
 		REFERENCES TAsignatura
 		ON UPDATE CASCADE,
@@ -196,20 +197,23 @@ CREATE TABLE THorarioAsignatura
 (
 	-- Lista de atributos
 	CodSemestre tyCodSemestre,
-	CodEscuelaP tyCodEscuelaP, -- EP donde se enseña la asignatura
 	CodAsignatura tyCodAsignatura, -- ej. IF085
-	Grupo VARCHAR(1),
-	CodDocente tyCodDocente,
+	CodEscuelaP tyCodEscuelaP, -- EP donde se enseña la asignatura
+	Grupo VARCHAR(1) NOT NULL,
+	CodDocente tyCodDocente, -- Puede ser uno o más
 	Dia VARCHAR(2), -- LU, MA, MI, JU, VI
-	Horario VARCHAR(6) NOT NULL,-- Formato: 07-09
 	Tipo VARCHAR(1) NOT NULL, -- T: Teoria, P: Práctica
+	HorasTeoria INT NOT NULL,
+	HorasPractica INT NOT NULL,
+	HoraInicio VARCHAR(2) NOT NULL, -- Formato: 00-23
+	HoraFin VARCHAR(2) NOT NULL, -- Formato: 00-23
+	Matriculados INT NOT NULL,
 	Aula VARCHAR(10) NOT NULL,
-	Horas INT NOT NULL,
 	Modalidad VARCHAR(10) NOT NULL -- VIRTUAL, PRESENCIAL
 
 	-- Determinar las claves
-	PRIMARY KEY (CodSemestre, CodEscuelaP, CodAsignatura, Grupo, CodDocente, Dia),
-	CONSTRAINT FKHA_CodCatalogo FOREIGN KEY (CodSemestre, CodEscuelaP, CodAsignatura, Grupo, CodDocente)
+	PRIMARY KEY (CodSemestre, CodAsignatura, CodEscuelaP, Grupo, CodDocente, Dia),
+	CONSTRAINT FKHA_CodCatalogo FOREIGN KEY (CodSemestre, CodAsignatura, CodEscuelaP, Grupo, CodDocente)
 		REFERENCES TCatalogo
 		ON UPDATE CASCADE,
 );
@@ -600,7 +604,7 @@ AS
 BEGIN
 	-- Mostrar la tabla TDocente
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
-	       Subcategoria, Regimen, CodDepartamentoA, CodEscuelaP
+	       Subcategoria, Regimen
 		FROM TDocente
 	    WHERE CodEscuelaP = @CodEscuelaP
 		ORDER BY APaterno
@@ -613,7 +617,7 @@ AS
 BEGIN
 	-- Mostrar la tabla TDocente
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
-	       Subcategoria, Regimen, CodDepartamentoA
+	       Subcategoria, Regimen
 		FROM TDocente
 	    WHERE CodDepartamentoA = @CodDepartamentoA
 		ORDER BY APaterno
@@ -787,7 +791,7 @@ BEGIN
 			  Prerrequisito LIKE (@Texto + '%'))
 END;
 GO
-select *from TAsignatura
+
 -- Procedimiento para insertar una asignatura.
 CREATE PROCEDURE spuInsertarAsignatura @CodAsignatura VARCHAR(6),
 									   @NombreAsignatura VARCHAR(50),
@@ -840,16 +844,17 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA CATALOGO ****************** */
 
--- Procedimiento para mostrar el catálogo de asignaturas asignadas de una escuela profesional.
+-- Procedimiento para mostrar el catálogo de asignaturas asignadas de un departamento académico.
 CREATE PROCEDURE spuMostrarCatalogo @CodSemestre VARCHAR(7),
 									@CodDepartamentoA VARCHAR(3) -- Atrib. Docente (Jefe de Dep.) 
 AS
 BEGIN
 	-- Mostrar la tabla de TCatalogo
-	SELECT CodAsignatura = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), A.NombreAsignatura, A.Creditos, A.Categoria, 
-	       C.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre)
-		FROM (TCatalogo C INNER JOIN TAsignatura A ON
-			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
+	SELECT CodAsignatura = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), A.NombreAsignatura, EscuelaProfesional = EP.Nombre, 
+	       C.Grupo, C.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre)
+		FROM ((TCatalogo C INNER JOIN TAsignatura A ON
+			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
+			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
 	    WHERE C.CodSemestre = @CodSemestre AND SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA
 		ORDER BY A.NombreAsignatura
@@ -858,34 +863,35 @@ GO
 
 -- Procedimiento para buscar los docentes que enseñan una asignatura. 
 CREATE PROCEDURE spuBuscarDocentesAsignatura @CodSemestre VARCHAR(7),
-											 @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
-											 @CodEscuelaP VARCHAR(3), -- EP donde se enseña la asignatura
-										     @Texto VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
+										     @Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
+											 @Texto2 VARCHAR(3), -- EP donde se enseña la asignatura
 											 @Grupo VARCHAR(1)
 AS
 BEGIN
 	-- Mostrar la tabla TCatalogo por el texto que se desea buscar
 	SELECT DISTINCT C.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre)
-		FROM (TCatalogo C INNER JOIN TAsignatura A ON
-			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
+		FROM ((TCatalogo C INNER JOIN TAsignatura A ON
+			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
+			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
-		WHERE C.CodSemestre = @CodSemestre AND C.CodEscuelaP = @CodEscuelaP AND
-			  SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
-		      (C.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%')) AND
-			   C.Grupo = @Grupo
+		WHERE C.CodSemestre = @CodSemestre AND
+		     (C.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND
+			 (C.CodEscuelaP LIKE (@Texto2 + '%') OR EP.Nombre LIKE (@Texto2 + '%')) AND
+			  C.Grupo = @Grupo
 END;
 GO
 
 -- Procedimiento para buscar las asignaturas asignadas a un docente.
 CREATE PROCEDURE spuBuscarAsignaturasDocente @CodSemestre VARCHAR(7),
-                                             @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
+                                             @CodDepartamentoA VARCHAR(3), -- Atrib. Docente
 										     @Texto VARCHAR(20) -- código o nombre del docente
 AS
 BEGIN
 	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
-	SELECT DISTINCT CodAsignatura = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), A.NombreAsignatura, A.Creditos, A.Categoria
-		FROM (TCatalogo C INNER JOIN TAsignatura A ON
-			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
+	SELECT DISTINCT CodAsignatura = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), A.NombreAsignatura, EscuelaProfesional = EP.Nombre, C.Grupo
+		FROM ((TCatalogo C INNER JOIN TAsignatura A ON
+			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
+			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
 		WHERE C.CodSemestre = @CodSemestre AND
 			  SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
@@ -898,71 +904,93 @@ GO
 
 -- Procedimiento para buscar el silabo de una asignatura.
 CREATE PROCEDURE spuBuscarSilaboAsignatura @CodSemestre VARCHAR(7),
-                                           @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
-										   @CodEscuelaP VARCHAR(3), -- EP donde se enseña la asignatura
-										   @Texto VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
+										   @Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
+										   @Texto2 VARCHAR(3), -- EP donde se enseña la asignatura
 										   @Grupo VARCHAR(1)
 AS
 BEGIN
 	-- Mostrar el silabo
-	SELECT DISTINCT C.CodSilabo
-		FROM TCatalogo C INNER JOIN TAsignatura A ON
-		     C.CodAsignatura = A.CodAsignatura
-		WHERE C.CodSemestre = @CodSemestre AND C.CodEscuelaP = @CodEscuelaP AND
-              SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
-		      (C.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%')) AND 
-			  C.Grupo = @Grupo AND C.CodSilabo IS NOT NULL
+	SELECT DISTINCT C.Silabo
+		FROM (TCatalogo C INNER JOIN TAsignatura A ON
+			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
+			 C.CodEscuelaP = EP.CodEscuelaP
+		WHERE C.CodSemestre = @CodSemestre AND
+			 (C.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND 
+			 (C.CodEscuelaP LIKE (@Texto2 + '%') OR EP.Nombre LIKE (@Texto2 + '%')) AND
+			  C.Grupo = @Grupo AND C.Silabo IS NOT NULL
+END;
+GO
+
+-- Procedimiento para buscar el plan de sesiones de un docente para una asignatura.
+CREATE PROCEDURE spuBuscarPlanSesionesAsignatura @CodSemestre VARCHAR(7),
+												 @Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
+										         @Texto2 VARCHAR(3), -- EP donde se enseña la asignatura     
+										         @Grupo VARCHAR(1)
+AS
+BEGIN
+	-- Mostrar el silabo
+	SELECT DISTINCT C.PlanSesiones
+		FROM (TCatalogo C INNER JOIN TAsignatura A ON
+			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
+			 C.CodEscuelaP = EP.CodEscuelaP
+		WHERE C.CodSemestre = @CodSemestre AND
+		     (C.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND
+			 (C.CodEscuelaP LIKE (@Texto2 + '%') OR EP.Nombre LIKE (@Texto2 + '%')) AND
+			  C.Grupo = @Grupo AND C.PlanSesiones IS NOT NULL
 END;
 GO
 
 -- Procedimiento para insertar una asignatura en un catálogo.
 CREATE PROCEDURE spuInsertarAsignaturaCatalogo @CodSemestre VARCHAR(7),
-											   @CodEscuelaP VARCHAR(3),
 											   @CodAsignatura VARCHAR(6),
+											   @CodEscuelaP VARCHAR(3),
 											   @Grupo VARCHAR(1),
 											   @CodDocente VARCHAR(5),
-											   @CodSilabo VARCHAR(4)
+											   @Silabo VARBINARY,
+											   @PlanSesiones VARBINARY
 AS
 BEGIN
 	-- Insertar una asignatura en la tabla TCatalogo
 	INSERT INTO TCatalogo
-		VALUES (@CodSemestre, @CodEscuelaP, @CodAsignatura, @Grupo, @CodDocente, @CodSilabo)
+		VALUES (@CodSemestre, @CodAsignatura, @CodEscuelaP, @Grupo, @CodDocente, @Silabo, @PlanSesiones)
 END;
 GO
 
 -- Procedimiento para actualizar una asignatura de un catálogo.
 CREATE PROCEDURE spuActualizarAsignaturaCatalogo @CodSemestre VARCHAR(7),
-											     @CodEscuelaP VARCHAR(3),
 											     @CodAsignatura VARCHAR(6),
+											     @CodEscuelaP VARCHAR(3),
 											     @Grupo VARCHAR(1),
 											     @CodDocente VARCHAR(5),
-											     @CodSilabo VARCHAR(4)
+											     @Silabo VARBINARY,
+											     @PlanSesiones VARBINARY
 AS
 BEGIN
 	-- Actualizar una asignatura de la tabla TCatalogo
 	UPDATE TCatalogo
-		SET CodSemestre = @CodSemestre, 
-		    CodEscuelaP = @CodEscuelaP, 
+		SET CodSemestre = @CodSemestre,  
 			CodAsignatura = @CodAsignatura, 
+			CodEscuelaP = @CodEscuelaP,
 			Grupo = @Grupo,
 			CodDocente = @CodDocente,
-		    CodSilabo = @CodSilabo
-		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura AND 
+		    Silabo = @Silabo,
+			PlanSesiones = @PlanSesiones
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND CodEscuelaP = @CodEscuelaP AND 
 		      Grupo = @Grupo AND CodDocente = @CodDocente
 END;
 GO
 
 -- Procedimiento para eliminar una asignatura de un catálogo
 CREATE PROCEDURE spuEliminarAsignaturaCatalogo @CodSemestre VARCHAR(7),
-											   @CodEscuelaP VARCHAR(3),
 											   @CodAsignatura VARCHAR(6),
+											   @CodEscuelaP VARCHAR(3),
 											   @Grupo VARCHAR(1),
 											   @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Eliminar una asignatura de la tabla TCatalogo
 	DELETE FROM TCatalogo
-		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura AND 
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND CodEscuelaP = @CodEscuelaP AND 
 		      Grupo = @Grupo AND CodDocente = @CodDocente
 END;
 GO
@@ -971,21 +999,21 @@ GO
 
 -- Procedimiento para buscar el horario de una asignatura en un catálogo. 
 CREATE PROCEDURE spuBuscarHorarioAsignatura @CodSemestre VARCHAR(7),
-											@CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
-										    @CodEscuelaP VARCHAR(3), -- EP donde se enseña la asignatura
-										    @Texto VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura,
+										    @Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
+											@Texto2 VARCHAR(3), -- EP donde se enseña la asignatura
 											@Grupo VARCHAR(1)
 AS
 BEGIN
 	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
-	SELECT HA.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), HA.Dia, HA.Horario, HA.Tipo, HA.Aula,
-	       HA.Horas, HA.Modalidad
-		FROM (THorarioAsignatura HA INNER JOIN TAsignatura A ON
-			 HA.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
+	SELECT HA.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), HA.Dia, HA.Tipo, HA.HorasTeoria, HA.HorasPractica,
+	       HA.HoraInicio, HA.HoraFin, HA.Matriculados, HA.Aula, HA.Modalidad
+		FROM ((THorarioAsignatura HA INNER JOIN TAsignatura A ON
+			 HA.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
+			 HA.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
 			 HA.CodDocente = D.CodDocente
-		WHERE HA.CodSemestre = @CodSemestre AND HA.CodEscuelaP = @CodEscuelaP AND
-              SUBSTRING(HA.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
-		      (HA.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%')) AND
+		WHERE HA.CodSemestre = @CodSemestre AND
+		     (HA.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND
+			 (HA.CodEscuelaP LIKE (@Texto2 + '%') OR EP.Nombre LIKE (@Texto2 + '%')) AND
 			  HA.Grupo = @Grupo
 END;
 GO
@@ -996,7 +1024,8 @@ CREATE PROCEDURE spuHorarioSemanalDocente @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar las asignaturas y los horarios:
-	SELECT CodAsignatura = (HA.CodAsignatura + HA.Grupo + HA.CodEscuelaP), A.NombreAsignatura, HA.Dia, HA.Horario, HA.Tipo, HA.Aula
+	SELECT CodAsignatura = (HA.CodAsignatura + HA.Grupo + HA.CodEscuelaP), HA.Dia, HA.Tipo, HA.HorasTeoria, HA.HorasPractica,
+	       HA.HoraInicio, HA.HoraFin, HA.Aula, HA.Modalidad
 		FROM (THorarioAsignatura HA INNER JOIN TAsignatura A ON
 			 HA.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
 			 HA.CodDocente = D.CodDocente
@@ -1010,61 +1039,71 @@ GO
 
 -- Procedimiento para insertar el horario de una asignatura.
 CREATE PROCEDURE spuInsertarHorarioAsignatura @CodSemestre VARCHAR(7),
-											  @CodEscuelaP VARCHAR(3),
 											  @CodAsignatura VARCHAR(6),
+											  @CodEscuelaP VARCHAR(3),
 											  @Grupo VARCHAR(1),
 											  @CodDocente VARCHAR(5),
 											  @Dia VARCHAR(2),
-											  @Horario VARCHAR(6),
 											  @Tipo VARCHAR(1),
+											  @HorasTeoria INT,
+											  @HorasPractica INT,
+											  @HoraInicio VARCHAR(2),
+											  @HoraFin VARCHAR(2),
+											  @Matriculados INT,
 									          @Aula VARCHAR(10),
-										      @Horas INT,
 											  @Modalidad VARCHAR(10)
 AS
 BEGIN
 	-- Insertar el horario de una asignatura en la tabla THorarioAsignatura
 	INSERT INTO THorarioAsignatura
-		VALUES (@CodSemestre, @CodEscuelaP, @CodAsignatura, @Grupo, @CodDocente, @Dia, @Horario, @Tipo, @Aula, @Horas, @Modalidad)
+		VALUES (@CodSemestre, @CodAsignatura, @CodEscuelaP, @Grupo, @CodDocente, @Dia, @Tipo, @HorasTeoria, @HorasPractica,
+		        @HoraInicio, @HoraFin, @Matriculados, @Aula, @Modalidad)
 END;
 GO
 
 -- Procedimiento para actualizar el horario de una asignatura.
 CREATE PROCEDURE spuActualizarHorarioAsignatura @CodSemestre VARCHAR(7),
-											    @CodEscuelaP VARCHAR(3),
 											    @CodAsignatura VARCHAR(6),
+											    @CodEscuelaP VARCHAR(3),
 											    @Grupo VARCHAR(1),
 											    @CodDocente VARCHAR(5),
 											    @Dia VARCHAR(2),
-											    @Horario VARCHAR(6),
-											    @Tipo VARCHAR(1),
+												@Tipo VARCHAR(1),
+											    @HorasTeoria INT,
+											    @HorasPractica INT,
+											    @HoraInicio VARCHAR(2),
+											    @HoraFin VARCHAR(2),
+											    @Matriculados INT,
 									            @Aula VARCHAR(10),
-										        @Horas INT,
 											    @Modalidad VARCHAR(10)	
 AS
 BEGIN
 	-- Actualizar una asignatura de la tabla THorarioAsignatura
 	UPDATE THorarioAsignatura
 		SET CodSemestre = @CodSemestre,
-		    CodEscuelaP = @CodEscuelaP,
 			CodAsignatura = @CodAsignatura,
+		    CodEscuelaP = @CodEscuelaP,
 			Grupo = @Grupo,
 			CodDocente = @CodDocente,
 		    Dia = @Dia,
-			Horario = @Horario,
 			Tipo = @Tipo,
+			HorasTeoria = @HorasTeoria,
+			HorasPractica = @HorasPractica,
+			HoraInicio = @HoraInicio,
+			HoraFin = @HoraFin,
+			Matriculados = @Matriculados,
 			Aula = @Aula,
-			Horas = @Horas,
 			Modalidad = @Modalidad
 
-		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura AND 
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND CodEscuelaP = @CodEscuelaP AND
       		  Grupo = @Grupo AND CodDocente = @CodDocente AND Dia = @Dia
 END;
 GO
 
 -- Procedimiento para eliminar el horario de una asignatura.
 CREATE PROCEDURE spuEliminarHorarioAsignatura @CodSemestre VARCHAR(7),
-											  @CodEscuelaP VARCHAR(3),
 											  @CodAsignatura VARCHAR(6),
+											  @CodEscuelaP VARCHAR(3),
 											  @Grupo VARCHAR(1),
 											  @CodDocente VARCHAR(5),
 											  @Dia VARCHAR(2)
@@ -1072,7 +1111,7 @@ AS
 BEGIN
 	-- Eliminar una asignatura de la tabla THorarioAsignatura
 	DELETE FROM THorarioAsignatura
-		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura AND 
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND CodEscuelaP = @CodEscuelaP AND
       		  Grupo = @Grupo AND CodDocente = @CodDocente AND Dia = @Dia
 END;
 GO
