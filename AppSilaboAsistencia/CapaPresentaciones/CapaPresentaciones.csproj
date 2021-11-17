@@ -207,17 +207,41 @@
     <Compile Include="P_TablaAsignaturas.Designer.cs">
       <DependentUpon>P_TablaAsignaturas.cs</DependentUpon>
     </Compile>
-    <Compile Include="P_TablaAsignaturasAsignadas.cs">
+    <Compile Include="P_TablaAsignaturasAsignadasAsistencias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="P_TablaAsignaturasAsignadas.Designer.cs">
-      <DependentUpon>P_TablaAsignaturasAsignadas.cs</DependentUpon>
+    <Compile Include="P_TablaAsignaturasAsignadasAsistencias.Designer.cs">
+      <DependentUpon>P_TablaAsignaturasAsignadasAsistencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_TablaAsignaturasAsignadasEstudiantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_TablaAsignaturasAsignadasEstudiantes.Designer.cs">
+      <DependentUpon>P_TablaAsignaturasAsignadasEstudiantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_TablaAsignaturasAsignadasSesiones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_TablaAsignaturasAsignadasSesiones.Designer.cs">
+      <DependentUpon>P_TablaAsignaturasAsignadasSesiones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_TablaAsignaturasAsignadasSilabos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_TablaAsignaturasAsignadasSilabos.Designer.cs">
+      <DependentUpon>P_TablaAsignaturasAsignadasSilabos.cs</DependentUpon>
     </Compile>
     <Compile Include="P_TablaDocentes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="P_TablaDocentes.Designer.cs">
       <DependentUpon>P_TablaDocentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_TablaEstudiantesAsignatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_TablaEstudiantesAsignatura.Designer.cs">
+      <DependentUpon>P_TablaEstudiantesAsignatura.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -245,11 +269,23 @@
     <EmbeddedResource Include="P_TablaAsignaturas.resx">
       <DependentUpon>P_TablaAsignaturas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="P_TablaAsignaturasAsignadas.resx">
-      <DependentUpon>P_TablaAsignaturasAsignadas.cs</DependentUpon>
+    <EmbeddedResource Include="P_TablaAsignaturasAsignadasAsistencias.resx">
+      <DependentUpon>P_TablaAsignaturasAsignadasAsistencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_TablaAsignaturasAsignadasEstudiantes.resx">
+      <DependentUpon>P_TablaAsignaturasAsignadasEstudiantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_TablaAsignaturasAsignadasSesiones.resx">
+      <DependentUpon>P_TablaAsignaturasAsignadasSesiones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_TablaAsignaturasAsignadasSilabos.resx">
+      <DependentUpon>P_TablaAsignaturasAsignadasSilabos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaDocentes.resx">
       <DependentUpon>P_TablaDocentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_TablaEstudiantesAsignatura.resx">
+      <DependentUpon>P_TablaEstudiantesAsignatura.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
