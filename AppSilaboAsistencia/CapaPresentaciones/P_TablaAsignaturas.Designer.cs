@@ -46,10 +46,10 @@ namespace CapaPresentaciones
             this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
             this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.btnEditar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnEliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnAgregar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.btnEditar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnEliminar = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
@@ -135,7 +135,7 @@ namespace CapaPresentaciones
             this.txtBuscar.FillColor = System.Drawing.Color.White;
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtBuscar.HideSelection = true;
-            this.txtBuscar.IconLeft = global::CapaPresentaciones.Properties.Resources.Usuario;
+            this.txtBuscar.IconLeft = global::CapaPresentaciones.Properties.Resources.Buscar_2;
             this.txtBuscar.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.IconPadding = 8;
             this.txtBuscar.IconRight = null;
@@ -342,22 +342,6 @@ namespace CapaPresentaciones
             this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             // 
-            // btnEditar
-            // 
-            this.btnEditar.HeaderText = "Editar";
-            this.btnEditar.Image = global::CapaPresentaciones.Properties.Resources.Maximizar_2;
-            this.btnEditar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.ReadOnly = true;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.HeaderText = "Eliminar";
-            this.btnEliminar.Image = global::CapaPresentaciones.Properties.Resources.Restaurar_2;
-            this.btnEliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.ReadOnly = true;
-            // 
             // btnAgregar
             // 
             this.btnAgregar.AllowAnimations = true;
@@ -403,7 +387,7 @@ namespace CapaPresentaciones
             this.btnAgregar.IdleBorderRadius = 15;
             this.btnAgregar.IdleBorderThickness = 1;
             this.btnAgregar.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAgregar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Ingresar;
+            this.btnAgregar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Agregar;
             this.btnAgregar.IdleIconRightImage = null;
             this.btnAgregar.IndicateFocus = false;
             this.btnAgregar.Location = new System.Drawing.Point(613, 52);
@@ -430,7 +414,7 @@ namespace CapaPresentaciones
             this.btnAgregar.OnIdleState.BorderThickness = 1;
             this.btnAgregar.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnAgregar.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAgregar.OnIdleState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Ingresar;
+            this.btnAgregar.OnIdleState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Agregar;
             this.btnAgregar.OnIdleState.IconRightImage = null;
             this.btnAgregar.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnAgregar.OnPressedState.BorderRadius = 15;
@@ -453,6 +437,22 @@ namespace CapaPresentaciones
             // 
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this.pnContenedor;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.HeaderText = "Editar";
+            this.btnEditar.Image = global::CapaPresentaciones.Properties.Resources.Editar_2;
+            this.btnEditar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.ReadOnly = true;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.HeaderText = "Eliminar";
+            this.btnEliminar.Image = global::CapaPresentaciones.Properties.Resources.Eliminar_2;
+            this.btnEliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.ReadOnly = true;
             // 
             // P_TablaAsignaturas
             // 

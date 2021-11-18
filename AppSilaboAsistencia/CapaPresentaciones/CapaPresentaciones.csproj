@@ -327,9 +327,6 @@
     <None Include="Resources\Cerrar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Contorno.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Contraseña.png" />
   </ItemGroup>
   <ItemGroup>
@@ -339,16 +336,10 @@
     <None Include="Resources\Correo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dashboard Gráficos.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Docentes.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Eliminar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Estudiantes.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Excel.png" />
@@ -381,9 +372,6 @@
     <None Include="Resources\Minimizar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Modificar.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Perfil Docente.png" />
   </ItemGroup>
   <ItemGroup>
@@ -399,13 +387,7 @@
     <None Include="Resources\Restaurar 2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Solicitud.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Subir Perfil.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Tutorias.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Usuario.png" />
@@ -511,6 +493,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Reportes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buscar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Asistencias.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Asistencias 2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
