@@ -1,11 +1,13 @@
-﻿using System.Data;
+﻿using System;
 using System.Windows.Forms;
+using CapaNegocios;
+using CapaEntidades;
 
 namespace CapaPresentaciones
 {
-    public partial class P_TablaAsignaturasAsignadas : Form
+    public partial class P_TablaAsignaturasAsignadasEstudiantes : Form
     {
-        public P_TablaAsignaturasAsignadas()
+        public P_TablaAsignaturasAsignadasEstudiantes()
         {
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);

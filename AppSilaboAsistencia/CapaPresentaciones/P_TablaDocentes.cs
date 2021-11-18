@@ -1,16 +1,10 @@
-﻿using CapaEntidades;
-using CapaNegocios;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaNegocios;
+using CapaEntidades;
 
 namespace CapaPresentaciones
 {
@@ -45,17 +39,17 @@ namespace CapaPresentaciones
             dgvDatos.Columns[2].Visible = false;
 
             dgvDatos.Columns[3].HeaderText = "";
-            dgvDatos.Columns[4].HeaderText = "Cod. Docente";
-            dgvDatos.Columns[5].HeaderText = "Ap. Paterno";
-            dgvDatos.Columns[6].HeaderText = "Ap. Materno";
-            dgvDatos.Columns[7].HeaderText = "Nombres";
+            dgvDatos.Columns[4].HeaderText = "Código";
+            dgvDatos.Columns[5].HeaderText = "A. Paterno";
+            dgvDatos.Columns[6].HeaderText = "A. Materno";
+            dgvDatos.Columns[7].HeaderText = "Nombre";
             dgvDatos.Columns[8].HeaderText = "Email";
             dgvDatos.Columns[9].HeaderText = "Dirección";
             dgvDatos.Columns[10].HeaderText = "Teléfono";
             dgvDatos.Columns[11].HeaderText = "Categoría";
             dgvDatos.Columns[12].HeaderText = "Subcategoría";
             dgvDatos.Columns[13].HeaderText = "Régimen";
-            dgvDatos.Columns[14].HeaderText = "Departamento A.";
+            dgvDatos.Columns[14].HeaderText = "D. Académico";
             //dgvDatos.Columns[13].HeaderText = "Escuela P.";
         }
 

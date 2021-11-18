@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
@@ -45,8 +38,8 @@ namespace CapaPresentaciones
 			dgvDatos.Columns[3].HeaderText = "Nombre";
 			dgvDatos.Columns[4].HeaderText = "Nro. Créditos";
 			dgvDatos.Columns[5].HeaderText = "Categoría";
-			dgvDatos.Columns[6].HeaderText = "Horas de Teoria";
-			dgvDatos.Columns[7].HeaderText = "Horas de Práctica";
+			dgvDatos.Columns[6].HeaderText = "Hrs. Teoria";
+			dgvDatos.Columns[7].HeaderText = "Hrs. Práctica";
 			dgvDatos.Columns[8].HeaderText = "Prerrequisitos";
 		}
 
@@ -86,8 +79,8 @@ namespace CapaPresentaciones
 
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-			if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
-			{
+            if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
+            {
                 P_DatosAsignatura EditarRegistro = new P_DatosAsignatura();
                 EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
 
@@ -105,8 +98,8 @@ namespace CapaPresentaciones
                 EditarRegistro.Dispose();
             }
 
-			if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
-			{
+            if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
+            {
                 DialogResult Opcion;
                 Opcion = MessageBox.Show("¿Realmente desea eliminar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (Opcion == DialogResult.OK)

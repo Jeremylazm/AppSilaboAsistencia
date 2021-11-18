@@ -1,25 +1,25 @@
 ﻿
 namespace CapaPresentaciones
 {
-	partial class P_TablaAsignaturas
-	{
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.IContainer components = null;
+    partial class P_TablaAsignaturasAsignadasEstudiantes
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && (components != null))
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
         #region Windows Form Designer generated code
 
@@ -30,7 +30,7 @@ namespace CapaPresentaciones
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaAsignaturas));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaAsignaturasAsignadasEstudiantes));
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -39,17 +39,14 @@ namespace CapaPresentaciones
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.txtBuscar = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
+            this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.btnAgregar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.btnEditar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnEliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnEstudiantes = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
@@ -70,7 +67,7 @@ namespace CapaPresentaciones
             this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblTitulo.Size = new System.Drawing.Size(791, 46);
             this.lblTitulo.TabIndex = 1;
-            this.lblTitulo.Text = "Tabla de Asignaturas";
+            this.lblTitulo.Text = "Tabla de Asignaturas Asignadas - Estudiantes";
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -85,7 +82,7 @@ namespace CapaPresentaciones
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnCerrar.ErrorImage = null;
+            this.btnCerrar.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnCerrar.ErrorImage")));
             this.btnCerrar.FadeWhenInactive = false;
             this.btnCerrar.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
             this.btnCerrar.Image = global::CapaPresentaciones.Properties.Resources.Cerrar;
@@ -94,7 +91,7 @@ namespace CapaPresentaciones
             this.btnCerrar.ImageMargin = 10;
             this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
             this.btnCerrar.ImageZoomSize = new System.Drawing.Size(30, 30);
-            this.btnCerrar.InitialImage = null;
+            this.btnCerrar.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnCerrar.InitialImage")));
             this.btnCerrar.Location = new System.Drawing.Point(753, 7);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Rotation = 0;
@@ -135,7 +132,7 @@ namespace CapaPresentaciones
             this.txtBuscar.FillColor = System.Drawing.Color.White;
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtBuscar.HideSelection = true;
-            this.txtBuscar.IconLeft = global::CapaPresentaciones.Properties.Resources.Buscar_2;
+            this.txtBuscar.IconLeft = global::CapaPresentaciones.Properties.Resources.Usuario;
             this.txtBuscar.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.IconPadding = 8;
             this.txtBuscar.IconRight = null;
@@ -179,7 +176,7 @@ namespace CapaPresentaciones
             this.txtBuscar.SelectionLength = 0;
             this.txtBuscar.SelectionStart = 0;
             this.txtBuscar.ShortcutsEnabled = true;
-            this.txtBuscar.Size = new System.Drawing.Size(589, 40);
+            this.txtBuscar.Size = new System.Drawing.Size(773, 40);
             this.txtBuscar.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtBuscar.TabIndex = 12;
             this.txtBuscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -189,7 +186,28 @@ namespace CapaPresentaciones
             this.txtBuscar.TextPlaceholder = "Buscar...";
             this.txtBuscar.UseSystemPasswordChar = false;
             this.txtBuscar.WordWrap = true;
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
+            // pnContenedor
+            // 
+            this.pnContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnContenedor.BackgroundColor = System.Drawing.Color.White;
+            this.pnContenedor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnContenedor.BackgroundImage")));
+            this.pnContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnContenedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pnContenedor.BorderRadius = 20;
+            this.pnContenedor.BorderThickness = 1;
+            this.pnContenedor.Controls.Add(this.sbDatos);
+            this.pnContenedor.Controls.Add(this.dgvDatos);
+            this.pnContenedor.Controls.Add(this.btnCerrar);
+            this.pnContenedor.Controls.Add(this.txtBuscar);
+            this.pnContenedor.Controls.Add(this.lblTitulo);
+            this.pnContenedor.Location = new System.Drawing.Point(6, 5);
+            this.pnContenedor.Name = "pnContenedor";
+            this.pnContenedor.ShowBorders = true;
+            this.pnContenedor.Size = new System.Drawing.Size(791, 453);
+            this.pnContenedor.TabIndex = 17;
             // 
             // sbDatos
             // 
@@ -225,35 +243,12 @@ namespace CapaPresentaciones
             this.sbDatos.ShrinkSizeLimit = 3;
             this.sbDatos.Size = new System.Drawing.Size(10, 320);
             this.sbDatos.SmallChange = 1;
-            this.sbDatos.TabIndex = 16;
+            this.sbDatos.TabIndex = 31;
             this.sbDatos.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.sbDatos.ThumbLength = 31;
             this.sbDatos.ThumbMargin = 1;
             this.sbDatos.ThumbStyle = Bunifu.UI.WinForms.BunifuVScrollBar.ThumbStyles.Inset;
             this.sbDatos.Value = 0;
-            // 
-            // pnContenedor
-            // 
-            this.pnContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnContenedor.BackgroundColor = System.Drawing.Color.White;
-            this.pnContenedor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnContenedor.BackgroundImage")));
-            this.pnContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnContenedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.pnContenedor.BorderRadius = 20;
-            this.pnContenedor.BorderThickness = 1;
-            this.pnContenedor.Controls.Add(this.sbDatos);
-            this.pnContenedor.Controls.Add(this.dgvDatos);
-            this.pnContenedor.Controls.Add(this.btnAgregar);
-            this.pnContenedor.Controls.Add(this.btnCerrar);
-            this.pnContenedor.Controls.Add(this.txtBuscar);
-            this.pnContenedor.Controls.Add(this.lblTitulo);
-            this.pnContenedor.Location = new System.Drawing.Point(6, 5);
-            this.pnContenedor.Name = "pnContenedor";
-            this.pnContenedor.ShowBorders = true;
-            this.pnContenedor.Size = new System.Drawing.Size(791, 453);
-            this.pnContenedor.TabIndex = 17;
             // 
             // dgvDatos
             // 
@@ -285,8 +280,7 @@ namespace CapaPresentaciones
             this.dgvDatos.ColumnHeadersHeight = 28;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.btnEditar,
-            this.btnEliminar});
+            this.btnEstudiantes});
             this.dgvDatos.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
             this.dgvDatos.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvDatos.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -338,123 +332,23 @@ namespace CapaPresentaciones
             this.dgvDatos.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvDatos.Size = new System.Drawing.Size(773, 346);
-            this.dgvDatos.TabIndex = 30;
+            this.dgvDatos.TabIndex = 32;
             this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
-            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.AllowAnimations = true;
-            this.btnAgregar.AllowMouseEffects = true;
-            this.btnAgregar.AllowToggling = false;
-            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregar.AnimationSpeed = 200;
-            this.btnAgregar.AutoGenerateColors = false;
-            this.btnAgregar.AutoRoundBorders = false;
-            this.btnAgregar.AutoSizeLeftIcon = true;
-            this.btnAgregar.AutoSizeRightIcon = true;
-            this.btnAgregar.BackColor = System.Drawing.Color.Transparent;
-            this.btnAgregar.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAgregar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAgregar.BackgroundImage")));
-            this.btnAgregar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnAgregar.ButtonText = "Agregar";
-            this.btnAgregar.ButtonTextMarginLeft = 0;
-            this.btnAgregar.ColorContrastOnClick = 45;
-            this.btnAgregar.ColorContrastOnHover = 45;
-            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnAgregar.CustomizableEdges = borderEdges1;
-            this.btnAgregar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnAgregar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnAgregar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnAgregar.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnAgregar.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            this.btnAgregar.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAgregar.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregar.IconLeftCursor = System.Windows.Forms.Cursors.Default;
-            this.btnAgregar.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.btnAgregar.IconMarginLeft = 11;
-            this.btnAgregar.IconPadding = 10;
-            this.btnAgregar.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAgregar.IconRightCursor = System.Windows.Forms.Cursors.Default;
-            this.btnAgregar.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
-            this.btnAgregar.IconSize = 25;
-            this.btnAgregar.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAgregar.IdleBorderRadius = 15;
-            this.btnAgregar.IdleBorderThickness = 1;
-            this.btnAgregar.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAgregar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Agregar;
-            this.btnAgregar.IdleIconRightImage = null;
-            this.btnAgregar.IndicateFocus = false;
-            this.btnAgregar.Location = new System.Drawing.Point(613, 52);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnAgregar.OnDisabledState.BorderRadius = 15;
-            this.btnAgregar.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnAgregar.OnDisabledState.BorderThickness = 1;
-            this.btnAgregar.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnAgregar.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnAgregar.OnDisabledState.IconLeftImage = null;
-            this.btnAgregar.OnDisabledState.IconRightImage = null;
-            this.btnAgregar.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAgregar.onHoverState.BorderRadius = 15;
-            this.btnAgregar.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnAgregar.onHoverState.BorderThickness = 1;
-            this.btnAgregar.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAgregar.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAgregar.onHoverState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Ingresar_2;
-            this.btnAgregar.onHoverState.IconRightImage = null;
-            this.btnAgregar.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAgregar.OnIdleState.BorderRadius = 15;
-            this.btnAgregar.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnAgregar.OnIdleState.BorderThickness = 1;
-            this.btnAgregar.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAgregar.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAgregar.OnIdleState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Agregar;
-            this.btnAgregar.OnIdleState.IconRightImage = null;
-            this.btnAgregar.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAgregar.OnPressedState.BorderRadius = 15;
-            this.btnAgregar.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnAgregar.OnPressedState.BorderThickness = 1;
-            this.btnAgregar.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAgregar.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAgregar.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Ingresar_2;
-            this.btnAgregar.OnPressedState.IconRightImage = null;
-            this.btnAgregar.Size = new System.Drawing.Size(170, 39);
-            this.btnAgregar.TabIndex = 29;
-            this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnAgregar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnAgregar.TextMarginLeft = 0;
-            this.btnAgregar.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnAgregar.UseDefaultRadiusAndThickness = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // Bordeado
             // 
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this.pnContenedor;
             // 
-            // btnEditar
+            // btnEstudiantes
             // 
-            this.btnEditar.HeaderText = "Editar";
-            this.btnEditar.Image = global::CapaPresentaciones.Properties.Resources.Editar_2;
-            this.btnEditar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.ReadOnly = true;
+            this.btnEstudiantes.HeaderText = "Estudiantes";
+            this.btnEstudiantes.Image = global::CapaPresentaciones.Properties.Resources.Maximizar_2;
+            this.btnEstudiantes.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.btnEstudiantes.Name = "btnEstudiantes";
+            this.btnEstudiantes.ReadOnly = true;
             // 
-            // btnEliminar
-            // 
-            this.btnEliminar.HeaderText = "Eliminar";
-            this.btnEliminar.Image = global::CapaPresentaciones.Properties.Resources.Eliminar_2;
-            this.btnEliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.ReadOnly = true;
-            // 
-            // P_TablaAsignaturas
+            // P_TablaAsignaturasAsignadasEstudiantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -463,9 +357,9 @@ namespace CapaPresentaciones
             this.ClientSize = new System.Drawing.Size(803, 463);
             this.Controls.Add(this.pnContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "P_TablaAsignaturas";
+            this.Name = "P_TablaAsignaturasAsignadasEstudiantes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Tabla de Asignaturas";
+            this.Text = "Tabla de Asignaturas Asignadas - Estudiantes";
             this.pnContenedor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
@@ -476,12 +370,10 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
         private Bunifu.UI.WinForms.BunifuImageButton btnCerrar;
         private Bunifu.UI.WinForms.BunifuTextBox txtBuscar;
-        private Bunifu.UI.WinForms.BunifuVScrollBar sbDatos;
         private Bunifu.UI.WinForms.BunifuPanel pnContenedor;
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnAgregar;
+        private Bunifu.UI.WinForms.BunifuVScrollBar sbDatos;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvDatos;
-        private System.Windows.Forms.DataGridViewImageColumn btnEditar;
-        private System.Windows.Forms.DataGridViewImageColumn btnEliminar;
+        private System.Windows.Forms.DataGridViewImageColumn btnEstudiantes;
     }
 }
