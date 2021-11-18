@@ -32,7 +32,7 @@ namespace CapaPresentaciones
                 lblDatos.Visible = true;
                 lblAcceso.Visible = true;
                 lblUsuario.Visible = true;
-                btnContraer.Image = Properties.Resources.Cerrar as Image;
+                //btnContraer.Image = Properties.Resources.Cerrar as Image;
                 Transicion.ShowSync(pnOpciones);
                 Transicion.ShowSync(pnContenedor);
 
@@ -47,7 +47,7 @@ namespace CapaPresentaciones
                 lblDatos.Visible = false;
                 lblAcceso.Visible = false;
                 lblUsuario.Visible = false;
-                btnContraer.Image = Properties.Resources.Ingresar as Image;
+                //btnContraer.Image = Properties.Resources.Ingresar as Image;
                 Transicion.ShowSync(pnOpciones);
                 Transicion.ShowSync(pnContenedor);
             }
@@ -146,12 +146,7 @@ namespace CapaPresentaciones
             AbrirFormularios<P_TablaAsignaturas>();
         }
 
-		private void pnContenedor_Paint(object sender, PaintEventArgs e)
-		{
-
-		}
-
-		private void btnCerrar_Click(object sender, EventArgs e)
+        private void btnCerrar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Desea salir de la aplicación?", "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {

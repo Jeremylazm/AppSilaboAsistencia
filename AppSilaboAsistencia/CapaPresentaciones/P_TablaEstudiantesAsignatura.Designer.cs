@@ -120,7 +120,7 @@ namespace CapaPresentaciones
             this.pbLogo.ErrorImage = null;
             this.pbLogo.FadeWhenInactive = false;
             this.pbLogo.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            this.pbLogo.Image = global::CapaPresentaciones.Properties.Resources.Logo_UNSAAC1;
+            this.pbLogo.Image = global::CapaPresentaciones.Properties.Resources.Logo_UNSAAC3;
             this.pbLogo.ImageActive = null;
             this.pbLogo.ImageLocation = null;
             this.pbLogo.ImageMargin = 0;

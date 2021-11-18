@@ -177,6 +177,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="P_DatosAsignatura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,14 +251,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="P_DatosAsignatura.resx">
       <DependentUpon>P_DatosAsignatura.cs</DependentUpon>
     </EmbeddedResource>
@@ -421,6 +421,96 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Ingresar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Menú.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Descargar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Subir 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Asistencia 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plantilla 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Estudiantes 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Principal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Principal 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Docentes 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reportes 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Asignaturas 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Agregar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eliminar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Editar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cambiar Contraseña 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Limpiar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Guardar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Planes de Sesiones.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Planes de Sesiones 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sílabos 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sílabos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Restaurar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Modificar_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maximizar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eliminar_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Agregar_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Asignaturas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reportes.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
