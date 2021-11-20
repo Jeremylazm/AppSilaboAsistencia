@@ -949,7 +949,7 @@ namespace CapaPresentaciones
             this.btnPrincipal.onHoverState.BorderThickness = 1;
             this.btnPrincipal.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnPrincipal.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnPrincipal.onHoverState.IconLeftImage = null;
+            this.btnPrincipal.onHoverState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Principal_2;
             this.btnPrincipal.onHoverState.IconRightImage = null;
             this.btnPrincipal.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnPrincipal.OnIdleState.BorderRadius = 1;
@@ -965,7 +965,7 @@ namespace CapaPresentaciones
             this.btnPrincipal.OnPressedState.BorderThickness = 1;
             this.btnPrincipal.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnPrincipal.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnPrincipal.OnPressedState.IconLeftImage = null;
+            this.btnPrincipal.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Principal;
             this.btnPrincipal.OnPressedState.IconRightImage = null;
             this.btnPrincipal.Size = new System.Drawing.Size(173, 39);
             this.btnPrincipal.TabIndex = 55;
@@ -974,6 +974,7 @@ namespace CapaPresentaciones
             this.btnPrincipal.TextMarginLeft = 0;
             this.btnPrincipal.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnPrincipal.UseDefaultRadiusAndThickness = true;
+            this.btnPrincipal.Click += new System.EventHandler(this.btnPrincipal_Click);
             // 
             // btnSilabos
             // 
