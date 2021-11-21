@@ -26,6 +26,7 @@ namespace CapaPresentaciones
             {
                 pnOpciones.Width = 173;
                 pbLogo.Location = new Point(178, 6);
+                SeparadorMenu.Width = 161;
                 pbPerfil.Visible = true;
                 btnEditarPerfil.Visible = true;
                 pbEditarPerfil.Visible = false;
@@ -41,6 +42,7 @@ namespace CapaPresentaciones
             {
                 pnOpciones.Width = 44;
                 pbLogo.Location = new Point(49, 6);
+                SeparadorMenu.Width = 35;
                 pbPerfil.Visible = false;
                 btnEditarPerfil.Visible = false;
                 pbEditarPerfil.Visible = true;
@@ -144,6 +146,15 @@ namespace CapaPresentaciones
         private void btnAsignaturas_Click(object sender, EventArgs e)
         {
             AbrirFormularios<P_TablaAsignaturas>();
+        }
+
+        private void btnPrincipal_Click(object sender, EventArgs e)
+        {
+            
+            btnPrincipal.OnPressedState.IconLeftImage = Properties.Resources.Principal;
+            btnPrincipal.OnIdleState.IconLeftImage = Properties.Resources.Principal;
+            btnPrincipal.onHoverState.IconLeftImage = Properties.Resources.Principal_2;
+            btnPrincipal.LeftIcon.Image = Properties.Resources.Principal_2;
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
