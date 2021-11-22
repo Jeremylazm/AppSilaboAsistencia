@@ -946,8 +946,8 @@ CREATE PROCEDURE spuInsertarAsignaturaCatalogo @CodSemestre VARCHAR(7),
 											   @CodEscuelaP VARCHAR(3),
 											   @Grupo VARCHAR(1),
 											   @CodDocente VARCHAR(5),
-											   @Silabo VARBINARY,
-											   @PlanSesiones VARBINARY
+											   @Silabo VARBINARY(MAX),
+											   @PlanSesiones VARBINARY(MAX)
 AS
 BEGIN
 	-- Insertar una asignatura en la tabla TCatalogo
