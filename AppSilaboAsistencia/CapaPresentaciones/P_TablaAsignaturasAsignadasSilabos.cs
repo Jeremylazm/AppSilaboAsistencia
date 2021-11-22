@@ -2,6 +2,9 @@
 using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
+using System.IO;
+using System.Diagnostics;
+using System.Data;
 
 namespace CapaPresentaciones
 {
@@ -30,6 +33,11 @@ namespace CapaPresentaciones
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }
