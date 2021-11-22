@@ -49,6 +49,7 @@ namespace CapaPresentaciones
             this.btnDescargar = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnSubir = new System.Windows.Forms.DataGridViewImageColumn();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.pnContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
@@ -398,5 +399,6 @@ namespace CapaPresentaciones
         private System.Windows.Forms.DataGridViewImageColumn btnPlantilla;
         private System.Windows.Forms.DataGridViewImageColumn btnDescargar;
         private System.Windows.Forms.DataGridViewImageColumn btnSubir;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
