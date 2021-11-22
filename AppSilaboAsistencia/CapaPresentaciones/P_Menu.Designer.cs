@@ -1065,6 +1065,7 @@ namespace CapaPresentaciones
             this.btnSilabos.TextMarginLeft = 0;
             this.btnSilabos.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnSilabos.UseDefaultRadiusAndThickness = true;
+            this.btnSilabos.Click += new System.EventHandler(this.btnSilabos_Click);
             // 
             // btnAsignaturasAsignadas
             // 

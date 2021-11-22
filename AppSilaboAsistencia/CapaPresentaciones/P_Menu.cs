@@ -157,6 +157,11 @@ namespace CapaPresentaciones
             btnPrincipal.LeftIcon.Image = Properties.Resources.Principal_2;
         }
 
+        private void btnSilabos_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios<P_TablaAsignaturasAsignadasSilabos>();
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Desea salir de la aplicación?", "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.YesNo) == DialogResult.Yes)
