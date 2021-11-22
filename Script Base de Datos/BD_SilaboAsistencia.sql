@@ -152,7 +152,8 @@ CREATE TABLE TAsignatura
 	Categoria VARCHAR(5) NOT NULL,
 	HorasTeoria INT NOT NULL,
 	HorasPractica INT NOT NULL,
-	Prerrequisito VARCHAR(25)
+	Prerrequisito VARCHAR(25),
+	Sumilla VARCHAR(2000) NOT NULL
 
 	-- Determinar las claves
 	PRIMARY KEY (CodAsignatura)
@@ -207,7 +208,6 @@ CREATE TABLE THorarioAsignatura
 	HorasPractica INT NOT NULL,
 	HoraInicio VARCHAR(2) NOT NULL, -- Formato: 00-23
 	HoraFin VARCHAR(2) NOT NULL, -- Formato: 00-23
-	Matriculados INT NOT NULL,
 	Aula VARCHAR(10) NOT NULL,
 	Modalidad VARCHAR(10) NOT NULL -- VIRTUAL, PRESENCIAL
 
@@ -245,51 +245,22 @@ CREATE TABLE TMatricula
 );
 GO
 
-/* ********************* TABLA ASISTENCIA-DOCENTE ********************** */
+/* *************************** TABLA RECURSOS *************************** */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
-				WHERE NAME = 'TAsistenciaDocente')
-	DROP TABLE TAsistenciaDocente
+				WHERE NAME = 'TRecursos')
+	DROP TABLE TRecursos
 GO
-CREATE TABLE TAsistenciaDocente
+CREATE TABLE TRecursos
 (
 	-- Lista de atributos
-	CodSemestre tyCodSemestre,
-	CodAsignatura VARCHAR(9), -- ej. IF085AIN
-	Fecha DATE NOT NULL,
-	CodDocente tyCodDocente,
-	NombreTema VARCHAR(100)
+	IdRecurso INT IDENTITY(1,1),
+	PlantillaSilabo VARBINARY(MAX),
+	PlantillaPlanSesiones VARBINARY(MAX)
 
-	-- Determinar las claves
-	PRIMARY KEY (CodSemestre, CodAsignatura, Fecha),
-	CONSTRAINT FKAD_CodDocente FOREIGN KEY (CodDocente)
-		REFERENCES TDocente
-		ON UPDATE NO ACTION
-);
-GO
-
-/* ********************* TABLA ASISTENCIA-ESTUDIANTE ******************** */
-IF EXISTS (SELECT * 
-				FROM SYSOBJECTS
-				WHERE NAME = 'TAsistenciaEstudiante')
-	DROP TABLE TAsistenciaEstudiante
-GO
-CREATE TABLE TAsistenciaEstudiante
-(
-	-- Lista de atributos
-	CodSemestre tyCodSemestre,
-	CodAsignatura VARCHAR(9), -- ej. IF085AIN
-	Fecha DATE NOT NULL,
-	CodEstudiante tyCodEstudiante,
-	Estado VARCHAR(2) NOT NULL,  --SI/NO (Presente/No presente)
-	Observación VARCHAR(25) -- tardanza, permisos
-
-	-- Determinar las claves
-	PRIMARY KEY (CodSemestre, CodAsignatura, Fecha, CodEstudiante),
-	CONSTRAINT FK_CodAsistenciaDocente FOREIGN KEY (CodSemestre, CodAsignatura, Fecha)
-		REFERENCES TAsistenciaDocente
-		ON UPDATE CASCADE,
-);
+	-- Definir la clave primaria
+	PRIMARY KEY(IdRecurso)
+)
 GO
 
 /* *************************** TABLA USUARIO *************************** */
@@ -761,6 +732,18 @@ BEGIN
 END;
 GO
 
+-- Procedimiento para mostrar la sumilla de una asignatura
+CREATE PROCEDURE spuMostrarSumilla @CodDepartamento VARCHAR(3),
+								   @CodAsignatura VARCHAR(6)
+AS
+BEGIN	
+	-- Mostrar la tabla TAsignatura
+	SELECT Sumilla
+		FROM TAsignatura
+	    WHERE SUBSTRING(CodAsignatura,1,2) = @CodDepartamento AND CodAsignatura = @CodAsignatura
+END;
+GO
+
 -- Procedimiento para buscar una asignatura.
 CREATE PROCEDURE spuBuscarAsignatura @CodDepartamento VARCHAR(3),
 									 @CodAsignatura VARCHAR(6)
@@ -799,12 +782,13 @@ CREATE PROCEDURE spuInsertarAsignatura @CodAsignatura VARCHAR(6),
 									   @Categoria VARCHAR(5),
 									   @HorasTeoria INT,
 									   @HorasPractica INT,
-									   @Prerrequisito VARCHAR(25)
+									   @Prerrequisito VARCHAR(25),
+									   @Sumilla VARCHAR(2000)
 AS
 BEGIN
 	-- Insertar una asignatura en la tabla TAsignatura
 	INSERT INTO TAsignatura
-		VALUES (@CodAsignatura, @NombreAsignatura, @Creditos, @Categoria, @HorasTeoria, @HorasPractica, @Prerrequisito)
+		VALUES (@CodAsignatura, @NombreAsignatura, @Creditos, @Categoria, @HorasTeoria, @HorasPractica, @Prerrequisito, @Sumilla)
 END;
 GO
 
@@ -815,7 +799,8 @@ CREATE PROCEDURE spuActualizarAsignatura @CodAsignatura VARCHAR(6),
 									     @Categoria VARCHAR(5),
 									     @HorasTeoria INT,
 									     @HorasPractica INT,
-									     @Prerrequisito VARCHAR(25)
+									     @Prerrequisito VARCHAR(25),
+										 @Sumilla VARCHAR(2000)
 AS
 BEGIN
 	-- Actualizar una asignatura de la tabla TAsignatura
@@ -826,7 +811,8 @@ BEGIN
 			Categoria = @Categoria,
 			HorasTeoria = @HorasTeoria, 
 			HorasPractica = @HorasPractica,
-			Prerrequisito = @Prerrequisito
+			Prerrequisito = @Prerrequisito,
+			Sumilla = @Sumilla
 
 		WHERE CodAsignatura = @CodAsignatura
 END;
@@ -902,11 +888,29 @@ BEGIN
 END;
 GO
 
+-- Procedimiento para buscar los silabos de una asignatura.
+CREATE PROCEDURE spuBuscarSilabosAsignatura @Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
+										    @Texto2 VARCHAR(3) -- EP donde se enseña la asignatura
+AS
+BEGIN
+	-- Mostrar el silabo
+	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, D.Nombre
+		FROM ((TCatalogo C INNER JOIN TAsignatura A ON
+			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
+			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
+			 C.CodDocente = D.CodDocente
+		WHERE C.CodSemestre = @CodSemestre AND
+			 (C.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND 
+			 (C.CodEscuelaP LIKE (@Texto2 + '%') OR EP.Nombre LIKE (@Texto2 + '%')) AND
+			  C.Grupo = @Grupo AND C.Silabo IS NOT NULL
+END;
+GO
+
 -- Procedimiento para buscar el silabo de una asignatura.
-CREATE PROCEDURE spuBuscarSilaboAsignatura @CodSemestre VARCHAR(7),
-										   @Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
-										   @Texto2 VARCHAR(3), -- EP donde se enseña la asignatura
-										   @Grupo VARCHAR(1)
+CREATE PROCEDURE spuMostrarSilaboAsignatura @CodSemestre VARCHAR(7),
+										    @Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
+										    @Texto2 VARCHAR(3), -- EP donde se enseña la asignatura
+										    @Grupo VARCHAR(1)
 AS
 BEGIN
 	-- Mostrar el silabo
@@ -1006,7 +1010,7 @@ AS
 BEGIN
 	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
 	SELECT HA.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), HA.Dia, HA.Tipo, HA.HorasTeoria, HA.HorasPractica,
-	       HA.HoraInicio, HA.HoraFin, HA.Matriculados, HA.Aula, HA.Modalidad
+	       HA.HoraInicio, HA.HoraFin, HA.Aula, HA.Modalidad
 		FROM ((THorarioAsignatura HA INNER JOIN TAsignatura A ON
 			 HA.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
 			 HA.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
@@ -1049,7 +1053,6 @@ CREATE PROCEDURE spuInsertarHorarioAsignatura @CodSemestre VARCHAR(7),
 											  @HorasPractica INT,
 											  @HoraInicio VARCHAR(2),
 											  @HoraFin VARCHAR(2),
-											  @Matriculados INT,
 									          @Aula VARCHAR(10),
 											  @Modalidad VARCHAR(10)
 AS
@@ -1057,7 +1060,7 @@ BEGIN
 	-- Insertar el horario de una asignatura en la tabla THorarioAsignatura
 	INSERT INTO THorarioAsignatura
 		VALUES (@CodSemestre, @CodAsignatura, @CodEscuelaP, @Grupo, @CodDocente, @Dia, @Tipo, @HorasTeoria, @HorasPractica,
-		        @HoraInicio, @HoraFin, @Matriculados, @Aula, @Modalidad)
+		        @HoraInicio, @HoraFin, @Aula, @Modalidad)
 END;
 GO
 
@@ -1073,7 +1076,6 @@ CREATE PROCEDURE spuActualizarHorarioAsignatura @CodSemestre VARCHAR(7),
 											    @HorasPractica INT,
 											    @HoraInicio VARCHAR(2),
 											    @HoraFin VARCHAR(2),
-											    @Matriculados INT,
 									            @Aula VARCHAR(10),
 											    @Modalidad VARCHAR(10)	
 AS
@@ -1091,7 +1093,6 @@ BEGIN
 			HorasPractica = @HorasPractica,
 			HoraInicio = @HoraInicio,
 			HoraFin = @HoraFin,
-			Matriculados = @Matriculados,
 			Aula = @Aula,
 			Modalidad = @Modalidad
 
@@ -1201,6 +1202,48 @@ BEGIN
 	DELETE FROM TMatricula
 		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND 
 		      CodAsignatura = @CodAsignatura AND CodEstudiante = @CodEstudiante
+END;
+GO
+
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA RECURSOS ****************** */
+
+-- Procedimiento para el descargar la plantilla del silabo
+CREATE PROCEDURE spuDescargarPlantillaSilabo
+AS
+BEGIN
+	-- Mostrar la plantilla en la tabla TRecursos
+	SELECT PlantillaSilabo FROM TRecursos WHERE IdRecurso = 1
+END;
+GO
+
+-- Procedimiento para el descargar la plantilla del plan de sesiones
+CREATE PROCEDURE spuDescargarPlantillaPlanSesiones
+AS
+BEGIN
+	-- Mostrar la plantilla en la tabla TRecursos
+	SELECT PlantillaPlanSesiones FROM TRecursos WHERE IdRecurso = 1
+END;
+GO
+
+-- Procedimiento para el actualizar la plantilla del silabo (solo el Director de Escuela)
+CREATE PROCEDURE spuActualizarPlantillaSilabo @PlantillaSilabo VARBINARY(MAX)
+AS
+BEGIN
+	-- Actualizar la plantilla en la tabla TRecursos
+	UPDATE TRecursos
+		SET PlantillaSilabo = @PlantillaSilabo
+		WHERE IdRecurso = 1
+END;
+GO
+
+-- Procedimiento para el actualizar la plantilla del plan de sesiones (solo el Director de Escuela)
+CREATE PROCEDURE spuActualizarPlantillaPlanSesiones @PlantillaPlanSesiones VARBINARY(MAX)
+AS
+BEGIN
+	-- Actualizar la plantilla en la tabla TRecursos
+	UPDATE TRecursos
+		SET PlantillaPlanSesiones = @PlantillaPlanSesiones
+		WHERE IdRecurso = 1
 END;
 GO
 
