@@ -1165,6 +1165,27 @@ BEGIN
 END;
 GO
 
+-- Procedimiento para buscar por sus datos de los estudiantes matriculados a una asignatura
+CREATE PROCEDURE spuBuscarEstudiantesMatriculadosAsignatura @CodSemestre VARCHAR(7),
+															@CodEscuelaP VARCHAR(3),
+															@Texto1 VARCHAR(20), -- código (ej. IF085AIN) o nombre de la asignatura
+															@Texto2 VARCHAR(20)
+AS
+BEGIN
+	-- Mostrar la tabla de TMatricula
+	SELECT ROW_NUMBER() OVER (ORDER BY ET.APaterno ASC) AS Id, M.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
+		FROM (TMatricula M INNER JOIN TAsignatura A ON
+			 SUBSTRING(M.CodAsignatura,1,5) = A.CodAsignatura) INNER JOIN TEstudiante ET ON
+			 M.CodEstudiante = ET.CodEstudiante
+	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP AND
+		      (M.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND
+			  (M.CodEstudiante LIKE (@Texto2 + '%') OR
+			   ET.APaterno LIKE (@Texto2 + '%') OR
+			   ET.AMaterno LIKE (@Texto2 + '%') OR
+			   ET.Nombre LIKE (@Texto2 + '%'))
+END;
+GO
+
 -- Procedimiento para insertar la matricula de un estudiante en una asignatura.
 CREATE PROCEDURE spuInsertarMatricula @CodSemestre VARCHAR(7),
 									  @CodEscuelaP VARCHAR(3),
