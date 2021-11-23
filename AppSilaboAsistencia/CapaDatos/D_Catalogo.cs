@@ -60,6 +60,24 @@ namespace CapaDatos
             return Resultado;
         }
 
+        // Método para buscar por un filtro las asignaturas asignadas a un docente.
+        public DataTable BuscarAsignaturasAsignadasDocente(string CodSemestre, string CodDepartamentoA, string Texto1, string Texto2)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuBuscarAsignaturasAsignadasDocente", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA); // Atrib. Docente (Jefe de Dep.)
+            Comando.Parameters.AddWithValue("@Texto1", Texto1); // código o nombre del docente
+            Comando.Parameters.AddWithValue("@Texto2", Texto2); // campo de asignatura
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
         // Método para buscar los silabos de una asignatura.
         public DataTable BuscarSilabosAsignatura(string Texto1, string Texto2)
         {

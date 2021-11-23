@@ -20,7 +20,11 @@ namespace CapaPresentaciones
 
         private void AccionesTabla()
         {
-            dgvDatos.Columns[0].DisplayIndex = 4;
+            dgvDatos.Columns[0].HeaderText = "Id.";
+            dgvDatos.Columns[1].HeaderText = "Código";
+            dgvDatos.Columns[2].HeaderText = "Apellido Paterno";
+            dgvDatos.Columns[3].HeaderText = "Apellido Materno";
+            dgvDatos.Columns[4].HeaderText = "Nombre";
         }
 
         private void MostrarEstudiantes()

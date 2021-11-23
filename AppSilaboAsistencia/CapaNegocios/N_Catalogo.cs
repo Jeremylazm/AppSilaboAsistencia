@@ -23,6 +23,11 @@ namespace CapaNegocios
             return new D_Catalogo().BuscarAsignaturasDocente(CodSemestre, CodDepartamentoA, Texto);
         }
 
+        public static DataTable BuscarAsignaturasAsignadasDocente(string CodSemestre, string CodDepartamentoA, string Texto1, string Texto2)
+        {
+            return new D_Catalogo().BuscarAsignaturasAsignadasDocente(CodSemestre, CodDepartamentoA, Texto1, Texto2);
+        }
+
         public static DataTable BuscarSilabosAsignatura(string Texto1, string Texto2)
         {
             return new D_Catalogo().BuscarSilabosAsignatura(Texto1, Texto2);

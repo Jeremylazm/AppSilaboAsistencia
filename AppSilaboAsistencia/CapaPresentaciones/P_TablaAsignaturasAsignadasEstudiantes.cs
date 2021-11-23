@@ -17,6 +17,11 @@ namespace CapaPresentaciones
         private void AccionesTabla()
         {
             dgvDatos.Columns[0].DisplayIndex = 4;
+
+            dgvDatos.Columns[1].HeaderText = "Código";
+            dgvDatos.Columns[2].HeaderText = "Nombre";
+            dgvDatos.Columns[3].HeaderText = "Escuela Profesional";
+            dgvDatos.Columns[4].HeaderText = "Grupo";
         }
 
         private void MostrarAsignaturas()
@@ -27,7 +32,7 @@ namespace CapaPresentaciones
 
         public void BuscarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente("2021-II","IF", txtBuscar.Text);
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente("2021-II", "IF", "10134", txtBuscar.Text);
         }
 
         private void btnCerrar_Click(object sender, System.EventArgs e)
