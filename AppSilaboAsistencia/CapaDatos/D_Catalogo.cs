@@ -35,8 +35,8 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", Texto1); // EP donde se enseña la asignatura
-            Comando.Parameters.AddWithValue("@Texto", Texto2); // código (ej. IF065) o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@Texto1", Texto1); // EP donde se enseña la asignatura
+            Comando.Parameters.AddWithValue("@Texto2", Texto2); // código (ej. IF065) o nombre de la asignatura
             Comando.Parameters.AddWithValue("@Grupo", Grupo);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
@@ -60,8 +60,8 @@ namespace CapaDatos
             return Resultado;
         }
 
-        // Método para buscar el silabo de una asignatura.
-        public DataTable BuscarSilaboAsignatura(string CodSemestre, string Texto1, string Texto2, string Grupo)
+        // Método para buscar los silabos de una asignatura.
+        public DataTable BuscarSilabosAsignatura(string Texto1, string Texto2)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarSilaboAsignatura", Conectar)
@@ -69,9 +69,25 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
+            Comando.Parameters.AddWithValue("@Texto1", Texto1); // código (ej. IF065) o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@Texto2", Texto2); // EP donde se enseña la asignatura
+            SqlDataAdapter Data = new SqlDataAdapter(Comando); 
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
+        // Método para buscar el silabo de una asignatura.
+        public DataTable MostrarSilaboAsignatura(string CodSemestre, string Texto1, string Texto2, string Grupo)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuMostrarSilaboAsignatura", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@Texto1", Texto1); // EP donde se enseña la asignatura
-            Comando.Parameters.AddWithValue("@Texto2", Texto2); // código (ej. IF065) o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@Texto1", Texto1); // código (ej. IF065) o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@Texto2", Texto2); // EP donde se enseña la asignatura
             Comando.Parameters.AddWithValue("@Grupo", Grupo);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
@@ -88,8 +104,8 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", Texto1); // EP donde se enseña la asignatura
-            Comando.Parameters.AddWithValue("@Texto", Texto2); // código (ej. IF065) o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@Texto1", Texto1); // código (ej. IF065) o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@Texto2", Texto2); // EP donde se enseña la asignatura
             Comando.Parameters.AddWithValue("@Grupo", Grupo);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
