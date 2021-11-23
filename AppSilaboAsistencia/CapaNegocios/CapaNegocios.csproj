@@ -52,6 +52,7 @@
     <Compile Include="N_HorarioAsignatura.cs" />
     <Compile Include="N_InicioSesion.cs" />
     <Compile Include="N_Matricula.cs" />
+    <Compile Include="N_Recursos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
