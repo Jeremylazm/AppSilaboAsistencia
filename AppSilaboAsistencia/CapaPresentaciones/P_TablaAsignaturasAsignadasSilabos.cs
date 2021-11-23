@@ -48,9 +48,9 @@ namespace CapaPresentaciones
                 saveFileDialog.FilterIndex = 1;
 
                 // El registro de la plantilla
-                DataTable A = N_Catalogo.MostrarSilaboAsignatura("2021-II", dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(0, 5), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());
+                /*DataTable A = N_Catalogo.MostrarSilaboAsignatura("2021-II", dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(0, 5), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());*/
 
-                //DataTable ab = N_recusos.recuperarplanti
+                DataTable PlantillaSilabo = N_Recursos.DescargarPlantillaSilabo();
 
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 string folder = path + "/temp/";
@@ -66,7 +66,7 @@ namespace CapaPresentaciones
                     File.Delete(fullFilePath);
                 }
 
-                byte[] archivo = A.Rows[0]["Silabo"] as byte[];
+                byte[] archivo = PlantillaSilabo.Rows[0]["PlantillaSilabo"] as byte[];
 
                 File.WriteAllBytes(fullFilePath, archivo);
 
@@ -79,7 +79,7 @@ namespace CapaPresentaciones
 
                 // Completar información de la asignatura
                 wb.Worksheet(1).Cell("C6").Value = dtDatosAsignatura.Rows[0]["NombreAsignatura"].ToString();
-                wb.Worksheet(1).Cell("C7").Value = dtDatosAsignatura.Rows[0]["CodAsignatura"].ToString();
+                wb.Worksheet(1).Cell("C7").Value = CodAsignatura;
                 wb.Worksheet(1).Cell("C8").Value = dtDatosAsignatura.Rows[0]["Categoria"].ToString();
                 wb.Worksheet(1).Cell("C9").Value = dtDatosAsignatura.Rows[0]["Creditos"].ToString();
 

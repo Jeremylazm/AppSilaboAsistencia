@@ -19,6 +19,9 @@ namespace CapaPresentaciones
         readonly N_Catalogo ObjNegocio;
         readonly E_Catalogo ObjEntidad;
 
+        readonly N_Recursos ObjNegocioRecursos;
+        readonly E_Recursos ObjEntidadRecursos;
+
         public string CodAsignatura;
         public string CodDocente;
         public string NombreAsignatura;
@@ -31,6 +34,9 @@ namespace CapaPresentaciones
         {
             ObjEntidad = new E_Catalogo();
             ObjNegocio = new N_Catalogo();
+
+            ObjEntidadRecursos = new E_Recursos();
+            ObjNegocioRecursos = new N_Recursos();
             InitializeComponent();
         }
 
@@ -90,10 +96,17 @@ namespace CapaPresentaciones
             ObjEntidad.Silabo = archivo;
             ObjEntidad.PlanSesiones = new byte[1];
 
+            /*
+            ////////////////////////////////////////////////////////////
+            // Subir la plantilla a recursos
+            ObjEntidadRecursos.PlantillaSilabo = archivo;
+            ObjNegocioRecursos.ActualizarPlantillaSilabo(ObjEntidadRecursos);
+
             ObjNegocio.ActualizarAsignaturaCatalogo(ObjEntidad);
             MensajeConfirmacion("Archivo subido exitosamente");
+            ////////////////////////////////////////////////////////////
+            */
 
-            
             // Abrir el archivo subido
             /*string path = AppDomain.CurrentDomain.BaseDirectory;
             string folder = path + "/temp/";
