@@ -889,8 +889,10 @@ END;
 GO
 
 -- Procedimiento para buscar los silabos de una asignatura.
-CREATE PROCEDURE spuBuscarSilabosAsignatura @Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
-										    @Texto2 VARCHAR(3) -- EP donde se enseña la asignatura
+CREATE PROCEDURE spuBuscarSilabosAsignatura @CodSemestre VARCHAR(7),
+											@Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
+										    @Texto2 VARCHAR(3), -- EP donde se enseña la asignatura
+											@Grupo VARCHAR(1)
 AS
 BEGIN
 	-- Mostrar el silabo
@@ -899,10 +901,8 @@ BEGIN
 			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
 			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
-		WHERE C.CodSemestre = @CodSemestre AND
-			 (C.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND 
-			 (C.CodEscuelaP LIKE (@Texto2 + '%') OR EP.Nombre LIKE (@Texto2 + '%')) AND
-			  C.Grupo = @Grupo AND C.Silabo IS NOT NULL
+		WHERE (C.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND 
+			  (C.CodEscuelaP LIKE (@Texto2 + '%') OR EP.Nombre LIKE (@Texto2 + '%'))
 END;
 GO
 
@@ -1160,6 +1160,27 @@ BEGIN
 			 M.CodEstudiante = ET.CodEstudiante
 	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP AND
 		      (M.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%'))
+END;
+GO
+
+-- Procedimiento para buscar por sus datos de los estudiantes matriculados a una asignatura
+CREATE PROCEDURE spuBuscarEstudiantesMatriculadosAsignatura @CodSemestre VARCHAR(7),
+															@CodEscuelaP VARCHAR(3),
+															@Texto1 VARCHAR(20), -- código (ej. IF085AIN) o nombre de la asignatura
+															@Texto2 VARCHAR(20)
+AS
+BEGIN
+	-- Mostrar la tabla de TMatricula
+	SELECT ROW_NUMBER() OVER (ORDER BY ET.APaterno ASC) AS Id, M.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre
+		FROM (TMatricula M INNER JOIN TAsignatura A ON
+			 SUBSTRING(M.CodAsignatura,1,5) = A.CodAsignatura) INNER JOIN TEstudiante ET ON
+			 M.CodEstudiante = ET.CodEstudiante
+	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP AND
+		      (M.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND
+			  (M.CodEstudiante LIKE (@Texto2 + '%') OR
+			   ET.APaterno LIKE (@Texto2 + '%') OR
+			   ET.AMaterno LIKE (@Texto2 + '%') OR
+			   ET.Nombre LIKE (@Texto2 + '%'))
 END;
 GO
 
