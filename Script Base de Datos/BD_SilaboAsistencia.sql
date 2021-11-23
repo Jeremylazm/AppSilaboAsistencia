@@ -892,7 +892,7 @@ GO
 CREATE PROCEDURE spuBuscarAsignaturasAsignadasDocente @CodSemestre VARCHAR(7),
 													  @CodDepartamentoA VARCHAR(3), -- Atrib. Docente
 													  @Texto1 VARCHAR(20), -- código o nombre del docente
-													  @Texto2 VARCHAR(20)
+													  @Texto2 VARCHAR(20) -- filtro (código o nombre de la asignatura, EP, grupo)
 AS
 BEGIN
 	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
@@ -1048,7 +1048,7 @@ BEGIN
 END;
 GO
 
--- Procedimiento para obtener el horario semanal de las asignaturas asignadas a un docente.
+-- Procedimiento para obtener el horario semanal (por registros) de las asignaturas asignadas a un docente.
 CREATE PROCEDURE spuHorarioSemanalDocente @CodSemestre VARCHAR(7),
 										  @Texto VARCHAR(20) -- código o nombre del docente
 AS
@@ -1064,6 +1064,62 @@ BEGIN
 			   D.Nombre LIKE (@Texto + '%') OR
 			   D.APaterno LIKE (@Texto + '%') OR
 			   D.AMaterno LIKE (@Texto + '%'))
+END;
+GO
+
+-- Procedimiento para obtener el horario (concatenado) de una asignatura asignada a un docente.
+-- Formato salida: IF614AIN T:MA 7 -9 VIRT 7 IN; T:VI 8 -9 VIRT 7 IN; P:JU 7 -9 VIRT 7 IN
+CREATE PROCEDURE spuHorarioAsignaturaDocente @CodSemestre VARCHAR(7),
+											 @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
+											 @CodDocente VARCHAR(5)
+AS
+BEGIN
+	-- Crear tabla de resultados
+	DECLARE @taHorarioAsignatura TABLE(CodAsignatura VARCHAR(9),
+									   HorarioGeneral VARCHAR(100));
+	-- Declarar cursor
+	DECLARE cu_RegHorario CURSOR
+	FOR 
+		SELECT Dia, Tipo, HoraInicio, HoraFin, Aula
+		FROM THorarioAsignatura
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura + Grupo + CodEscuelaP = @CodAsignatura AND CodDocente = @CodDocente
+
+	-- Declarar variables que utilizará el cursor
+	DECLARE @Dia VARCHAR(2),  
+			@Tipo CHAR(1),
+		    @HoraInicio VARCHAR(2),
+			@HoraFin VARCHAR(2),
+			@Aula VARCHAR(10),
+			@HorarioGeneral VARCHAR(100)
+			
+	-- Abrir el cursor
+	OPEN cu_RegHorario
+	-- Recuperar valores del primer registro
+	FETCH NEXT FROM cu_RegHorario
+		INTO @Dia, @Tipo, @HoraInicio, @HoraFin, @Aula
+	
+	-- Inicializar variables @HorarioGeneral
+	SET @HorarioGeneral = ''
+
+	-- Procesar tupla
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		-- Concatenar:
+		SET @HorarioGeneral = @HorarioGeneral + @Tipo + ':' + @Dia + ' ' + @HoraInicio + '-' + @HoraFin + ' ' + @Aula + '; '
+		-- Siguiente tupla
+		FETCH NEXT FROM cu_RegHorario
+			INTO @Dia, @Tipo, @HoraInicio, @HoraFin, @Aula
+	END
+
+	SET @HorarioGeneral = SUBSTRING(@HorarioGeneral, 1, LEN(@HorarioGeneral)-1)
+	INSERT INTO @taHorarioAsignatura  VALUES (@CodAsignatura, @HorarioGeneral)
+
+	-- Cerrar cursor
+	CLOSE cu_RegHorario
+	DEALLOCATE cu_RegHorario
+
+	-- Mostrar la tabla se asignaturas
+	SELECT * FROM @taHorarioAsignatura
 END;
 GO
 
