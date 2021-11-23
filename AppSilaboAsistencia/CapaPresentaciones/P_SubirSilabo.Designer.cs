@@ -71,7 +71,7 @@ namespace CapaPresentaciones
             this.pnContenedor.Location = new System.Drawing.Point(0, 0);
             this.pnContenedor.Name = "pnContenedor";
             this.pnContenedor.ShowBorders = true;
-            this.pnContenedor.Size = new System.Drawing.Size(808, 216);
+            this.pnContenedor.Size = new System.Drawing.Size(808, 199);
             this.pnContenedor.TabIndex = 20;
             // 
             // btnSubir
@@ -122,7 +122,7 @@ namespace CapaPresentaciones
             this.btnSubir.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Ingresar;
             this.btnSubir.IdleIconRightImage = null;
             this.btnSubir.IndicateFocus = false;
-            this.btnSubir.Location = new System.Drawing.Point(607, 149);
+            this.btnSubir.Location = new System.Drawing.Point(607, 138);
             this.btnSubir.Name = "btnSubir";
             this.btnSubir.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSubir.OnDisabledState.BorderRadius = 15;
@@ -215,7 +215,7 @@ namespace CapaPresentaciones
             this.txtRuta.BorderThickness = 1;
             this.txtRuta.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtRuta.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtRuta.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.txtRuta.DefaultFont = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRuta.DefaultText = "";
             this.txtRuta.FillColor = System.Drawing.Color.White;
             this.txtRuta.HideSelection = true;
@@ -261,7 +261,7 @@ namespace CapaPresentaciones
             this.txtRuta.SelectionLength = 0;
             this.txtRuta.SelectionStart = 0;
             this.txtRuta.ShortcutsEnabled = true;
-            this.txtRuta.Size = new System.Drawing.Size(765, 47);
+            this.txtRuta.Size = new System.Drawing.Size(765, 45);
             this.txtRuta.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.txtRuta.TabIndex = 12;
             this.txtRuta.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -339,7 +339,7 @@ namespace CapaPresentaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 216);
+            this.ClientSize = new System.Drawing.Size(808, 199);
             this.Controls.Add(this.pnContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_SubirSilabo";
