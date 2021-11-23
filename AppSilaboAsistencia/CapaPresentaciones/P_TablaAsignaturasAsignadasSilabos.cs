@@ -48,7 +48,9 @@ namespace CapaPresentaciones
                 saveFileDialog.FilterIndex = 1;
 
                 // El registro de la plantilla
-                DataTable A = N_Catalogo.MostrarSilaboAsignatura("2021-II", dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(0, 5), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());   
+                DataTable A = N_Catalogo.MostrarSilaboAsignatura("2021-II", dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(0, 5), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());
+
+                //DataTable ab = N_recusos.recuperarplanti
 
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 string folder = path + "/temp/";
@@ -80,6 +82,11 @@ namespace CapaPresentaciones
                 wb.Worksheet(1).Cell("C7").Value = dtDatosAsignatura.Rows[0]["CodAsignatura"].ToString();
                 wb.Worksheet(1).Cell("C8").Value = dtDatosAsignatura.Rows[0]["Categoria"].ToString();
                 wb.Worksheet(1).Cell("C9").Value = dtDatosAsignatura.Rows[0]["Creditos"].ToString();
+
+                // Sumilla
+                DataTable dtSumilla = N_Asignatura.MostrarSumilla(CodAsignatura.Substring(0, 2), CodAsignatura.Substring(0, 5));
+
+                wb.Worksheet(1).Cell("A21").Value = dtSumilla.Rows[0]["Sumilla"].ToString();
 
                 // Horario de la asignatura
                 DataTable dtHorarioAsignatura = N_HorarioAsignatura.BuscarHorarioAsignatura("2021-II", CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());
@@ -135,8 +142,6 @@ namespace CapaPresentaciones
 
                 // Escuela profesional
                 wb.Worksheet(1).Cell("C18").Value = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
-
-                // Sumilla
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
