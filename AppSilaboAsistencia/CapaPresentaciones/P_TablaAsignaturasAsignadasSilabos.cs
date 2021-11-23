@@ -57,6 +57,7 @@ namespace CapaPresentaciones
                     archivo = ms.ToArray();
                 }*/
 
+
                 // El registro de la plantilla
                 DataTable A = N_Catalogo.MostrarSilaboAsignatura("2021-II", dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(0, 5), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString());
 
@@ -81,6 +82,8 @@ namespace CapaPresentaciones
                 //MessageBox.Show(archivo.Length.ToString());
 
                 File.WriteAllBytes(fullFilePath, archivo);
+
+                // Se crea un archivo temporal, para después abrirlo con ClosedXML
 
                 XLWorkbook wb = new XLWorkbook(fullFilePath);
 
