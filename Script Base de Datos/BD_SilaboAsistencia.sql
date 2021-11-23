@@ -974,6 +974,29 @@ BEGIN
 END;
 GO
 
+-- Procedimiento para actualizar una la información de asignatura de un catálogo.
+CREATE PROCEDURE spuActualizarAsignaturaCatalogo @CodSemestre VARCHAR(7),
+											     @CodAsignatura VARCHAR(6),
+											     @CodEscuelaP VARCHAR(3),
+											     @Grupo VARCHAR(1),
+											     @CodDocente VARCHAR(5),
+												 @ACodSemestre VARCHAR(7), -- Nuevo CodSemestre
+												 @ACodEscuelaP VARCHAR(3), -- Nuevo CodEscuelaP
+												 @AGrupo VARCHAR(1), -- Nuevo Grupo
+												 @ACodDocente VARCHAR(5) -- Nuevo CodDocente
+AS
+BEGIN
+	-- Actualizar una asignatura de la tabla TCatalogo
+	UPDATE TCatalogo
+		SET CodSemestre = @ACodSemestre,   
+			CodEscuelaP = @ACodEscuelaP,
+			Grupo = @AGrupo,
+			CodDocente = @ACodDocente
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND CodEscuelaP = @CodEscuelaP AND 
+		      Grupo = @Grupo AND CodDocente = @CodDocente
+END;
+GO
+
 -- Procedimiento para actualizar el silabo de una asignatura.
 CREATE PROCEDURE spuActualizarSilaboAsignatura @CodSemestre VARCHAR(7),
 											   @CodAsignatura VARCHAR(6),
