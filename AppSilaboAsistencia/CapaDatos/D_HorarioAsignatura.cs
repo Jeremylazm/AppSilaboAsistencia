@@ -54,7 +54,7 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodAsignatura", CodSemestre); // código(ej.IF065AIN), obtener de BuscarAsignaturasDocente
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); // código(ej.IF065AIN), obtener de BuscarAsignaturasDocente
             Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
