@@ -889,8 +889,10 @@ END;
 GO
 
 -- Procedimiento para buscar los silabos de una asignatura.
-CREATE PROCEDURE spuBuscarSilabosAsignatura @Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
-										    @Texto2 VARCHAR(3) -- EP donde se enseña la asignatura
+CREATE PROCEDURE spuBuscarSilabosAsignatura @CodSemestre VARCHAR(7),
+											@Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
+										    @Texto2 VARCHAR(3), -- EP donde se enseña la asignatura
+											@Grupo VARCHAR(1)
 AS
 BEGIN
 	-- Mostrar el silabo

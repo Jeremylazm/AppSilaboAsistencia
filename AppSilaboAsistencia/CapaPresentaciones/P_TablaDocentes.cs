@@ -34,8 +34,8 @@ namespace CapaPresentaciones
 
         public void AccionesTabla()
         {
-            dgvDatos.Columns[0].DisplayIndex = 14;
-            dgvDatos.Columns[1].DisplayIndex = 14;
+            dgvDatos.Columns[0].DisplayIndex = 13;
+            dgvDatos.Columns[1].DisplayIndex = 13;
             dgvDatos.Columns[2].Visible = false;
 
             dgvDatos.Columns[3].HeaderText = "";
@@ -49,7 +49,7 @@ namespace CapaPresentaciones
             dgvDatos.Columns[11].HeaderText = "Categoría";
             dgvDatos.Columns[12].HeaderText = "Subcategoría";
             dgvDatos.Columns[13].HeaderText = "Régimen";
-            dgvDatos.Columns[14].HeaderText = "D. Académico";
+            //dgvDatos.Columns[14].HeaderText = "D. Académico";
             //dgvDatos.Columns[13].HeaderText = "Escuela P.";
         }
 

@@ -162,6 +162,11 @@ namespace CapaPresentaciones
             AbrirFormularios<P_TablaAsignaturasAsignadasSilabos>();
         }
 
+        private void btnAsignaturasAsignadas_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios<P_TablaAsignaturasAsignadasEstudiantes>();
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Desea salir de la aplicación?", "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.YesNo) == DialogResult.Yes)
