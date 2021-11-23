@@ -45,8 +45,8 @@ namespace CapaPresentaciones
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
             this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.btnAsistencia = new System.Windows.Forms.DataGridViewImageColumn();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.btnAsistencia = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
@@ -132,7 +132,7 @@ namespace CapaPresentaciones
             this.txtBuscar.FillColor = System.Drawing.Color.White;
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtBuscar.HideSelection = true;
-            this.txtBuscar.IconLeft = global::CapaPresentaciones.Properties.Resources.Usuario;
+            this.txtBuscar.IconLeft = global::CapaPresentaciones.Properties.Resources.Buscar_2;
             this.txtBuscar.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.IconPadding = 8;
             this.txtBuscar.IconRight = null;
@@ -335,18 +335,18 @@ namespace CapaPresentaciones
             this.dgvDatos.TabIndex = 32;
             this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             // 
-            // btnAsistencia
-            // 
-            this.btnAsistencia.HeaderText = "Asistencia";
-            this.btnAsistencia.Image = global::CapaPresentaciones.Properties.Resources.Maximizar_2;
-            this.btnAsistencia.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.btnAsistencia.Name = "btnAsistencia";
-            this.btnAsistencia.ReadOnly = true;
-            // 
             // Bordeado
             // 
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this.pnContenedor;
+            // 
+            // btnAsistencia
+            // 
+            this.btnAsistencia.HeaderText = "Asistencia";
+            this.btnAsistencia.Image = global::CapaPresentaciones.Properties.Resources.Asistencia_2;
+            this.btnAsistencia.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.btnAsistencia.Name = "btnAsistencia";
+            this.btnAsistencia.ReadOnly = true;
             // 
             // P_TablaAsignaturasAsignadasAsistencias
             // 

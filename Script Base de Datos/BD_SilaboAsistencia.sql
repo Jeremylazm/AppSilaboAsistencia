@@ -1,4 +1,4 @@
-USE MASTER
+		USE MASTER
 GO
 
 /* ********************************************************************
@@ -885,6 +885,32 @@ BEGIN
 			   D.Nombre LIKE (@Texto + '%') OR
 			   D.APaterno LIKE (@Texto + '%') OR
 			   D.AMaterno LIKE (@Texto + '%'))
+END;
+GO
+
+-- Procedimiento para buscar por un filtro las asignaturas asignadas a un docente.
+CREATE PROCEDURE spuBuscarAsignaturasAsignadasDocente @CodSemestre VARCHAR(7),
+													  @CodDepartamentoA VARCHAR(3), -- Atrib. Docente
+													  @Texto1 VARCHAR(20), -- código o nombre del docente
+													  @Texto2 VARCHAR(20)
+AS
+BEGIN
+	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
+	SELECT DISTINCT CodAsignatura = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), A.NombreAsignatura, EscuelaProfesional = EP.Nombre, C.Grupo
+		FROM ((TCatalogo C INNER JOIN TAsignatura A ON
+			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
+			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
+			 C.CodDocente = D.CodDocente
+		WHERE C.CodSemestre = @CodSemestre AND
+			  SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
+		      (C.CodDocente LIKE (@Texto1 + '%') OR
+			   D.Nombre LIKE (@Texto1 + '%') OR
+			   D.APaterno LIKE (@Texto1 + '%') OR
+			   D.AMaterno LIKE (@Texto1 + '%')) AND
+			  ((C.CodAsignatura + C.Grupo + C.CodEscuelaP) LIKE (@Texto2 + '%') OR
+			   A.NombreAsignatura LIKE (@Texto2 + '%') OR
+			   EP.Nombre LIKE (@Texto2 + '%') OR
+			   C.Grupo LIKE (@Texto2 + '%'))
 END;
 GO
 

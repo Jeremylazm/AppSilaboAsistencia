@@ -54,6 +54,11 @@ namespace CapaPresentaciones
             txtCodigo.Focus();
         }
 
+        private void ActualizarColor()
+        {
+            lblTitulo.Focus();
+        }
+
         private void ValidarPerfil()
         {
             if (pbPerfil.Image == (Properties.Resources.Perfil_Docente as Image))
@@ -156,11 +161,13 @@ namespace CapaPresentaciones
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             LimpiarCajas();
         }
 
         private void btnSubirPerfil_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             try
             {
                 OpenFileDialog Archivo = new OpenFileDialog();
@@ -180,11 +187,13 @@ namespace CapaPresentaciones
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             pbPerfil.Image = Properties.Resources.Perfil_Docente as Image;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             //Validar datos ingresados
             bool EsValido;
             string msg = VerificarDatosDocente(out EsValido, txtCodigo.Text, txtAPaterno.Text.ToUpper(), txtAMaterno.Text.ToUpper(), txtNombre.Text.ToUpper()

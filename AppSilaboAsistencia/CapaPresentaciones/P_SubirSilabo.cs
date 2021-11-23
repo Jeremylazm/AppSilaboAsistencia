@@ -39,6 +39,11 @@ namespace CapaPresentaciones
             MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void ActualizarColor()
+        {
+            lblTitulo.Focus();
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
@@ -46,6 +51,7 @@ namespace CapaPresentaciones
 
         private void btnBuscarArchivo_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             openFileDialog.InitialDirectory = @"C:\";
             openFileDialog.Filter = "Archivos de Excel | *.xlsx";
             openFileDialog.FilterIndex = 1;
@@ -61,6 +67,7 @@ namespace CapaPresentaciones
 
         private void btnSubir_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             if (txtRuta.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Selecciona un archivo");

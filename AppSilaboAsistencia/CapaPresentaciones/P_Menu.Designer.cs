@@ -442,7 +442,7 @@ namespace CapaPresentaciones
             this.btnAsignaturas.onHoverState.BorderThickness = 1;
             this.btnAsignaturas.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnAsignaturas.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAsignaturas.onHoverState.IconLeftImage = null;
+            this.btnAsignaturas.onHoverState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Asignaturas_2;
             this.btnAsignaturas.onHoverState.IconRightImage = null;
             this.btnAsignaturas.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnAsignaturas.OnIdleState.BorderRadius = 1;
@@ -458,7 +458,7 @@ namespace CapaPresentaciones
             this.btnAsignaturas.OnPressedState.BorderThickness = 1;
             this.btnAsignaturas.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnAsignaturas.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAsignaturas.OnPressedState.IconLeftImage = null;
+            this.btnAsignaturas.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Asignaturas;
             this.btnAsignaturas.OnPressedState.IconRightImage = null;
             this.btnAsignaturas.Size = new System.Drawing.Size(173, 39);
             this.btnAsignaturas.TabIndex = 60;
@@ -533,7 +533,7 @@ namespace CapaPresentaciones
             this.btnAsistencia.onHoverState.BorderThickness = 1;
             this.btnAsistencia.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnAsistencia.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAsistencia.onHoverState.IconLeftImage = null;
+            this.btnAsistencia.onHoverState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Asistencias_2;
             this.btnAsistencia.onHoverState.IconRightImage = null;
             this.btnAsistencia.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnAsistencia.OnIdleState.BorderRadius = 1;
@@ -549,7 +549,7 @@ namespace CapaPresentaciones
             this.btnAsistencia.OnPressedState.BorderThickness = 1;
             this.btnAsistencia.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnAsistencia.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAsistencia.OnPressedState.IconLeftImage = null;
+            this.btnAsistencia.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Asistencias;
             this.btnAsistencia.OnPressedState.IconRightImage = null;
             this.btnAsistencia.Size = new System.Drawing.Size(173, 39);
             this.btnAsistencia.TabIndex = 59;
@@ -623,7 +623,7 @@ namespace CapaPresentaciones
             this.btnSesiones.onHoverState.BorderThickness = 1;
             this.btnSesiones.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnSesiones.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnSesiones.onHoverState.IconLeftImage = null;
+            this.btnSesiones.onHoverState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Planes_de_Sesiones_2;
             this.btnSesiones.onHoverState.IconRightImage = null;
             this.btnSesiones.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSesiones.OnIdleState.BorderRadius = 1;
@@ -639,7 +639,7 @@ namespace CapaPresentaciones
             this.btnSesiones.OnPressedState.BorderThickness = 1;
             this.btnSesiones.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSesiones.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnSesiones.OnPressedState.IconLeftImage = null;
+            this.btnSesiones.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Planes_de_Sesiones;
             this.btnSesiones.OnPressedState.IconRightImage = null;
             this.btnSesiones.Size = new System.Drawing.Size(173, 39);
             this.btnSesiones.TabIndex = 58;
@@ -713,7 +713,7 @@ namespace CapaPresentaciones
             this.btnDocentes.onHoverState.BorderThickness = 1;
             this.btnDocentes.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnDocentes.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnDocentes.onHoverState.IconLeftImage = null;
+            this.btnDocentes.onHoverState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Docentes_2;
             this.btnDocentes.onHoverState.IconRightImage = null;
             this.btnDocentes.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnDocentes.OnIdleState.BorderRadius = 1;
@@ -729,7 +729,7 @@ namespace CapaPresentaciones
             this.btnDocentes.OnPressedState.BorderThickness = 1;
             this.btnDocentes.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnDocentes.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnDocentes.OnPressedState.IconLeftImage = null;
+            this.btnDocentes.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Docentes;
             this.btnDocentes.OnPressedState.IconRightImage = null;
             this.btnDocentes.Size = new System.Drawing.Size(173, 39);
             this.btnDocentes.TabIndex = 57;
@@ -850,12 +850,12 @@ namespace CapaPresentaciones
             this.btnEditarPerfil.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEditarPerfil.OnIdleState.IconLeftImage = null;
             this.btnEditarPerfil.OnIdleState.IconRightImage = null;
-            this.btnEditarPerfil.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnEditarPerfil.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEditarPerfil.OnPressedState.BorderRadius = 15;
             this.btnEditarPerfil.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             this.btnEditarPerfil.OnPressedState.BorderThickness = 1;
-            this.btnEditarPerfil.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnEditarPerfil.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnEditarPerfil.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnEditarPerfil.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEditarPerfil.OnPressedState.IconLeftImage = null;
             this.btnEditarPerfil.OnPressedState.IconRightImage = null;
             this.btnEditarPerfil.Size = new System.Drawing.Size(161, 39);
@@ -865,6 +865,7 @@ namespace CapaPresentaciones
             this.btnEditarPerfil.TextMarginLeft = 0;
             this.btnEditarPerfil.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnEditarPerfil.UseDefaultRadiusAndThickness = true;
+            this.btnEditarPerfil.Click += new System.EventHandler(this.btnEditarPerfil_Click);
             // 
             // btnPrincipal
             // 
@@ -1021,7 +1022,7 @@ namespace CapaPresentaciones
             this.btnSilabos.onHoverState.BorderThickness = 1;
             this.btnSilabos.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnSilabos.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnSilabos.onHoverState.IconLeftImage = null;
+            this.btnSilabos.onHoverState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Sílabos_2;
             this.btnSilabos.onHoverState.IconRightImage = null;
             this.btnSilabos.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSilabos.OnIdleState.BorderRadius = 1;
@@ -1037,7 +1038,7 @@ namespace CapaPresentaciones
             this.btnSilabos.OnPressedState.BorderThickness = 1;
             this.btnSilabos.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSilabos.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnSilabos.OnPressedState.IconLeftImage = null;
+            this.btnSilabos.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Sílabos;
             this.btnSilabos.OnPressedState.IconRightImage = null;
             this.btnSilabos.Size = new System.Drawing.Size(173, 39);
             this.btnSilabos.TabIndex = 53;
@@ -1112,7 +1113,7 @@ namespace CapaPresentaciones
             this.btnAsignaturasAsignadas.onHoverState.BorderThickness = 1;
             this.btnAsignaturasAsignadas.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnAsignaturasAsignadas.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAsignaturasAsignadas.onHoverState.IconLeftImage = null;
+            this.btnAsignaturasAsignadas.onHoverState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Asignaturas_2;
             this.btnAsignaturasAsignadas.onHoverState.IconRightImage = null;
             this.btnAsignaturasAsignadas.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnAsignaturasAsignadas.OnIdleState.BorderRadius = 1;
@@ -1128,7 +1129,7 @@ namespace CapaPresentaciones
             this.btnAsignaturasAsignadas.OnPressedState.BorderThickness = 1;
             this.btnAsignaturasAsignadas.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnAsignaturasAsignadas.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAsignaturasAsignadas.OnPressedState.IconLeftImage = null;
+            this.btnAsignaturasAsignadas.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Asignaturas;
             this.btnAsignaturasAsignadas.OnPressedState.IconRightImage = null;
             this.btnAsignaturasAsignadas.Size = new System.Drawing.Size(173, 39);
             this.btnAsignaturasAsignadas.TabIndex = 52;

@@ -45,11 +45,11 @@ namespace CapaPresentaciones
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
             this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.btnPlantilla = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnDescargar = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnSubir = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.pnContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
@@ -135,7 +135,7 @@ namespace CapaPresentaciones
             this.txtBuscar.FillColor = System.Drawing.Color.White;
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtBuscar.HideSelection = true;
-            this.txtBuscar.IconLeft = global::CapaPresentaciones.Properties.Resources.Usuario;
+            this.txtBuscar.IconLeft = global::CapaPresentaciones.Properties.Resources.Buscar_2;
             this.txtBuscar.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.IconPadding = 8;
             this.txtBuscar.IconRight = null;
@@ -341,10 +341,15 @@ namespace CapaPresentaciones
             this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             // 
+            // Bordeado
+            // 
+            this.Bordeado.ElipseRadius = 15;
+            this.Bordeado.TargetControl = this.pnContenedor;
+            // 
             // btnPlantilla
             // 
             this.btnPlantilla.HeaderText = "Plantilla";
-            this.btnPlantilla.Image = global::CapaPresentaciones.Properties.Resources.Maximizar_2;
+            this.btnPlantilla.Image = global::CapaPresentaciones.Properties.Resources.Plantilla_2;
             this.btnPlantilla.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.btnPlantilla.Name = "btnPlantilla";
             this.btnPlantilla.ReadOnly = true;
@@ -352,7 +357,7 @@ namespace CapaPresentaciones
             // btnDescargar
             // 
             this.btnDescargar.HeaderText = "Descargar";
-            this.btnDescargar.Image = global::CapaPresentaciones.Properties.Resources.Minimizar_2;
+            this.btnDescargar.Image = global::CapaPresentaciones.Properties.Resources.Descargar_2;
             this.btnDescargar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.btnDescargar.Name = "btnDescargar";
             this.btnDescargar.ReadOnly = true;
@@ -360,15 +365,10 @@ namespace CapaPresentaciones
             // btnSubir
             // 
             this.btnSubir.HeaderText = "Subir";
-            this.btnSubir.Image = global::CapaPresentaciones.Properties.Resources.Restaurar_2;
+            this.btnSubir.Image = global::CapaPresentaciones.Properties.Resources.Subir_2;
             this.btnSubir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.btnSubir.Name = "btnSubir";
             this.btnSubir.ReadOnly = true;
-            // 
-            // Bordeado
-            // 
-            this.Bordeado.ElipseRadius = 15;
-            this.Bordeado.TargetControl = this.pnContenedor;
             // 
             // P_TablaAsignaturasAsignadasSilabos
             // 
@@ -396,9 +396,9 @@ namespace CapaPresentaciones
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private Bunifu.UI.WinForms.BunifuVScrollBar sbDatos;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvDatos;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.DataGridViewImageColumn btnPlantilla;
         private System.Windows.Forms.DataGridViewImageColumn btnDescargar;
         private System.Windows.Forms.DataGridViewImageColumn btnSubir;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

@@ -59,6 +59,11 @@ namespace CapaPresentaciones
 			dgvDatos.DataSource = N_Asignatura.BuscarAsignaturas("IF", txtBuscar.Text);
 		}
 
+        private void ActualizarColor()
+        {
+            lblTitulo.Focus();
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
@@ -71,6 +76,7 @@ namespace CapaPresentaciones
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             P_DatosAsignatura NuevoRegistro = new P_DatosAsignatura();
             NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
             NuevoRegistro.ShowDialog();

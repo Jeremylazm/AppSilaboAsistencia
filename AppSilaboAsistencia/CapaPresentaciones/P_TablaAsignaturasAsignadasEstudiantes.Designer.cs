@@ -45,8 +45,8 @@ namespace CapaPresentaciones
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
             this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.btnEstudiantes = new System.Windows.Forms.DataGridViewImageColumn();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.btnEstudiantes = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
@@ -132,7 +132,7 @@ namespace CapaPresentaciones
             this.txtBuscar.FillColor = System.Drawing.Color.White;
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtBuscar.HideSelection = true;
-            this.txtBuscar.IconLeft = global::CapaPresentaciones.Properties.Resources.Usuario;
+            this.txtBuscar.IconLeft = global::CapaPresentaciones.Properties.Resources.Buscar_2;
             this.txtBuscar.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.IconPadding = 8;
             this.txtBuscar.IconRight = null;
@@ -337,18 +337,18 @@ namespace CapaPresentaciones
             this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             // 
-            // btnEstudiantes
-            // 
-            this.btnEstudiantes.HeaderText = "Estudiantes";
-            this.btnEstudiantes.Image = global::CapaPresentaciones.Properties.Resources.Maximizar_2;
-            this.btnEstudiantes.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.btnEstudiantes.Name = "btnEstudiantes";
-            this.btnEstudiantes.ReadOnly = true;
-            // 
             // Bordeado
             // 
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this.pnContenedor;
+            // 
+            // btnEstudiantes
+            // 
+            this.btnEstudiantes.HeaderText = "Estudiantes";
+            this.btnEstudiantes.Image = global::CapaPresentaciones.Properties.Resources.Estudiantes_2;
+            this.btnEstudiantes.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.btnEstudiantes.Name = "btnEstudiantes";
+            this.btnEstudiantes.ReadOnly = true;
             // 
             // P_TablaAsignaturasAsignadasEstudiantes
             // 

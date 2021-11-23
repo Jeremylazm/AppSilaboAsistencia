@@ -132,39 +132,43 @@ namespace CapaPresentaciones
             WindowState = FormWindowState.Minimized;
         }
 
-        private void btnDocentes_Click(object sender, EventArgs e)
+        private void ActualizarColor()
         {
-            AbrirFormularios<P_TablaDocentes>();
+            lblSuperior.Focus();
         }
 
-        private void btnDashboard_Click(object sender, EventArgs e)
+        private void btnDocentes_Click(object sender, EventArgs e)
         {
-            //P_Editar_Catálogo form = new P_Editar_Catálogo();
-            //form.Show();
+            ActualizarColor();
+            AbrirFormularios<P_TablaDocentes>();
         }
 
         private void btnAsignaturas_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             AbrirFormularios<P_TablaAsignaturas>();
         }
 
         private void btnPrincipal_Click(object sender, EventArgs e)
         {
-            
-            btnPrincipal.OnPressedState.IconLeftImage = Properties.Resources.Principal;
-            btnPrincipal.OnIdleState.IconLeftImage = Properties.Resources.Principal;
-            btnPrincipal.onHoverState.IconLeftImage = Properties.Resources.Principal_2;
-            btnPrincipal.LeftIcon.Image = Properties.Resources.Principal_2;
+            ActualizarColor();
         }
 
         private void btnSilabos_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             AbrirFormularios<P_TablaAsignaturasAsignadasSilabos>();
         }
 
         private void btnAsignaturasAsignadas_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             AbrirFormularios<P_TablaAsignaturasAsignadasEstudiantes>();
+        }
+
+        private void btnEditarPerfil_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

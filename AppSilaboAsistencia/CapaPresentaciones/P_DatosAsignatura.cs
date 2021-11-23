@@ -48,8 +48,14 @@ namespace CapaPresentaciones
             txtCodigo.Focus();
         }
 
+        private void ActualizarColor()
+        {
+            lblTitulo.Focus();
+        }
+
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             LimpiarCajas();
         }
 
@@ -61,6 +67,7 @@ namespace CapaPresentaciones
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             if ((txtCodigo.Text.Trim() != "") &&
                 (txtNombre.Text.Trim() != "") &&
                 (txtCreditos.Text.Trim() != "") &&
