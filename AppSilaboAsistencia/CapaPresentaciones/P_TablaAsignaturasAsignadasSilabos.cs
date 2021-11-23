@@ -5,6 +5,7 @@ using CapaEntidades;
 using System.IO;
 using System.Diagnostics;
 using System.Data;
+using ClosedXML.Excel;
 
 namespace CapaPresentaciones
 {
@@ -46,26 +47,90 @@ namespace CapaPresentaciones
                 saveFileDialog.DefaultExt = "xlsx";
                 saveFileDialog.FilterIndex = 1;
 
+                // El registro de la plantilla
+                DataTable A = N_Catalogo.MostrarSilaboAsignatura("2021-II", dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(0, 5), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());   
 
-                byte[] archivo = null;
+                string path = AppDomain.CurrentDomain.BaseDirectory;
+                string folder = path + "/temp/";
+                string fullFilePath = folder + "temp.xlsx";
 
-                // ruta de la plantilla
-                Stream myStream = File.OpenRead(@"C:\Users\deniswin\Desktop\plantilla.xlsx");
-                using (MemoryStream ms = new MemoryStream())
+                if (!Directory.Exists(folder))
                 {
-                    myStream.CopyTo(ms);
-                    archivo = ms.ToArray();
-                } 
+                    Directory.CreateDirectory(folder);
+                }
+
+                if (File.Exists(fullFilePath))
+                {
+                    File.Delete(fullFilePath);
+                }
+
+                byte[] archivo = A.Rows[0]["Silabo"] as byte[];
+
+                File.WriteAllBytes(fullFilePath, archivo);
+
+                // Se crea un archivo temporal, para después abrirlo con ClosedXML
+                string CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
+
+                DataTable dtDatosAsignatura = N_Asignatura.BuscarAsignatura(CodAsignatura.Substring(0, 2), CodAsignatura.Substring(0, 5));
+
+                XLWorkbook wb = new XLWorkbook(fullFilePath);
+
+                // Completar información de la asignatura
+                wb.Worksheet(1).Cell("D6").Value = dtDatosAsignatura.Rows[0]["NombreAsignatura"].ToString();
+                wb.Worksheet(1).Cell("D7").Value = dtDatosAsignatura.Rows[0]["CodAsignatura"].ToString();
+                wb.Worksheet(1).Cell("D8").Value = dtDatosAsignatura.Rows[0]["Categoria"].ToString();
+                wb.Worksheet(1).Cell("D9").Value = dtDatosAsignatura.Rows[0]["Creditos"].ToString();
+
+                // Horario de la asignatura
+                DataTable dtHorarioAsignatura = N_HorarioAsignatura.BuscarHorarioAsignatura("2021-II", CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());
+
+                wb.Worksheet(1).Cell("D14").Value = dtHorarioAsignatura.Rows[0]["Modalidad"].ToString();
+
+                // Aula y horario
+
+                // Completar información del docente
+                DataTable dtDatosDocente = N_Docente.BuscarDocente(CodAsignatura.Substring(0, 2), "10134");
+                string Nombre = dtDatosDocente.Rows[0]["Nombre"].ToString();
+                string APaterno = dtDatosDocente.Rows[0]["APaterno"].ToString();
+                string AMaterno = dtDatosDocente.Rows[0]["AMaterno"].ToString();
+
+                wb.Worksheet(1).Cell("D15").Value = "2021-II";
+
+                wb.Worksheet(1).Cell("D16").Value = APaterno + "-" + AMaterno + "-" + Nombre;
+                wb.Worksheet(1).Cell("D17").Value = dtDatosDocente.Rows[0]["Email"].ToString();
+
+                // Escuela profesional
+                wb.Worksheet(1).Cell("D18").Value = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+                // Sumilla
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    File.WriteAllBytes(saveFileDialog.FileName, archivo);
+                    wb.SaveAs(saveFileDialog.FileName);
+                }
+
+                if (Directory.Exists(folder))
+                {
+                    Directory.Delete(folder, true);
                 }
             }
 
             // Descargar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
+                /*
+                --Procedimiento para buscar los silabos de una asignatura.
+                CREATE PROCEDURE spuBuscarSilabosAsignatura @Texto1 VARCHAR(20), --código(ej.IF065) o nombre de la asignatura
+                                         @Texto2 VARCHAR(3)-- EP donde se enseña la asignatura
+                AS
+                BEGIN
+
+                --Mostrar el silabo
+
+                SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, D.Nombre
+                */
+
+
                 /*DataTable A = N_Catalogo.BuscarSilaboAsignatura("2021-II", dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(0, 5), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());
 
                 if (A.Rows.Count != 0)
@@ -99,7 +164,6 @@ namespace CapaPresentaciones
                         MessageBox.Show("Se eliminará un folder");
                         Directory.Delete(folder);
                     }
-
                 }
                 else
                 {
