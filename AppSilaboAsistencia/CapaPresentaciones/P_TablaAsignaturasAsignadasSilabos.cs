@@ -5,6 +5,7 @@ using CapaEntidades;
 using System.IO;
 using System.Diagnostics;
 using System.Data;
+using ClosedXML.Excel;
 
 namespace CapaPresentaciones
 {
@@ -47,17 +48,45 @@ namespace CapaPresentaciones
                 saveFileDialog.FilterIndex = 1;
 
 
-                byte[] archivo = null;
-
+                /*byte[] archivo = null;
                 // ruta de la plantilla
                 Stream myStream = File.OpenRead(@"C:\Users\deniswin\Desktop\plantilla.xlsx");
                 using (MemoryStream ms = new MemoryStream())
                 {
                     myStream.CopyTo(ms);
                     archivo = ms.ToArray();
-                } 
+                }*/
 
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                // El registro de la plantilla
+                DataTable A = N_Catalogo.MostrarSilaboAsignatura("2021-II", dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(0, 5), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString());
+
+                string path = AppDomain.CurrentDomain.BaseDirectory;
+                string folder = path + "/temp/";
+                string fullFilePath = folder + "temp.xlsx";
+                MessageBox.Show(fullFilePath);
+
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+
+                if (File.Exists(fullFilePath))
+                {
+                    File.Delete(fullFilePath);
+                }
+
+                MessageBox.Show(A.Rows[0][0].GetType().ToString());
+
+                byte[] archivo = A.Rows[0]["Silabo"] as byte[];
+                //MessageBox.Show(archivo.Length.ToString());
+
+                File.WriteAllBytes(fullFilePath, archivo);
+
+                XLWorkbook wb = new XLWorkbook(fullFilePath);
+
+                wb.SaveAs(@"C:\Users\deniswin\Desktop\test.xlsx");
+
+                /*if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     File.WriteAllBytes(saveFileDialog.FileName, archivo);
                 }
@@ -66,6 +95,19 @@ namespace CapaPresentaciones
             // Descargar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
+                /*
+                --Procedimiento para buscar los silabos de una asignatura.
+                CREATE PROCEDURE spuBuscarSilabosAsignatura @Texto1 VARCHAR(20), --código(ej.IF065) o nombre de la asignatura
+                                         @Texto2 VARCHAR(3)-- EP donde se enseña la asignatura
+                AS
+                BEGIN
+
+                --Mostrar el silabo
+
+                SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, D.Nombre
+                */
+
+
                 /*DataTable A = N_Catalogo.BuscarSilaboAsignatura("2021-II", dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(0, 5), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());
 
                 if (A.Rows.Count != 0)
