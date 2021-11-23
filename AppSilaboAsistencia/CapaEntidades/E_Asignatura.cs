@@ -10,5 +10,6 @@
         public int HorasTeoria { get; set; }
         public int HorasPractica { get; set; }
         public string Prerrequisito { get; set; }
+        public string Sumilla { get; set; }
     }
 }

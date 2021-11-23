@@ -12,6 +12,10 @@ namespace CapaNegocios
         {
             return new D_Asignatura().MostrarAsignaturas(CodDepartamentoA);
         }
+        public static DataTable MostrarSumilla(string CodDepartamentoA, string CodAsignatura)
+        {
+            return new D_Asignatura().MostrarSumilla(CodDepartamentoA, CodAsignatura);
+        }
 
         public static DataTable BuscarAsignatura(string CodDepartamentoA, string CodAsignatura)
         {

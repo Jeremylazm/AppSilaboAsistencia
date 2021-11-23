@@ -19,8 +19,8 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", Texto1); // EP donde se enseña la asignatura
-            Comando.Parameters.AddWithValue("@Texto", Texto2); // código (ej. IF065) o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@Texto1", Texto1); // código (ej. IF065) o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@Texto2", Texto2); // EP donde se enseña la asignatura
             Comando.Parameters.AddWithValue("@Grupo", Grupo);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
@@ -63,7 +63,6 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@HorasPractica", HorarioAsignatura.HorasPractica);
             Comando.Parameters.AddWithValue("@HoraInicio", HorarioAsignatura.HoraInicio);
             Comando.Parameters.AddWithValue("@HoraFin", HorarioAsignatura.HoraFin);
-            Comando.Parameters.AddWithValue("@Matriculados", HorarioAsignatura.Matriculados);
             Comando.Parameters.AddWithValue("@Aula", HorarioAsignatura.Aula);
             Comando.Parameters.AddWithValue("@Modalidad", HorarioAsignatura.Modalidad);
             Comando.ExecuteNonQuery();
@@ -90,7 +89,6 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@HorasPractica", HorarioAsignatura.HorasPractica);
             Comando.Parameters.AddWithValue("@HoraInicio", HorarioAsignatura.HoraInicio);
             Comando.Parameters.AddWithValue("@HoraFin", HorarioAsignatura.HoraFin);
-            Comando.Parameters.AddWithValue("@Matriculados", HorarioAsignatura.Matriculados);
             Comando.Parameters.AddWithValue("@Aula", HorarioAsignatura.Aula);
             Comando.Parameters.AddWithValue("@Modalidad", HorarioAsignatura.Modalidad);
             Comando.ExecuteNonQuery();

@@ -14,7 +14,6 @@
         public int HorasPractica { get; set; }
         public string HoraInicio { get; set; }
         public string HoraFin { get; set; }
-        public int Matriculados { get; set; }
         public string Aula { get; set; }
         public string Modalidad { get; set; }
     }
