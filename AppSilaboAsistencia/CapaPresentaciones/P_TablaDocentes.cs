@@ -69,6 +69,11 @@ namespace CapaPresentaciones
             MostrarRegistros();
         }
 
+        private void ActualizarColor()
+        {
+            lblTitulo.Focus();
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
@@ -99,6 +104,7 @@ namespace CapaPresentaciones
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             P_DatosDocente NuevoRegistro = new P_DatosDocente();
             NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
             NuevoRegistro.ShowDialog();

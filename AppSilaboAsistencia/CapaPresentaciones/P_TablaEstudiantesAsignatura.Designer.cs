@@ -211,7 +211,7 @@ namespace CapaPresentaciones
             this.txtBuscar.FillColor = System.Drawing.Color.White;
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtBuscar.HideSelection = true;
-            this.txtBuscar.IconLeft = global::CapaPresentaciones.Properties.Resources.Usuario;
+            this.txtBuscar.IconLeft = global::CapaPresentaciones.Properties.Resources.Buscar_2;
             this.txtBuscar.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.IconPadding = 8;
             this.txtBuscar.IconRight = null;
