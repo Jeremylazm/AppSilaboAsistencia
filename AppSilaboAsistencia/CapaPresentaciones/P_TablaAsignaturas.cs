@@ -41,7 +41,7 @@ namespace CapaPresentaciones
 			dgvDatos.Columns[6].HeaderText = "Hrs. Teoria";
 			dgvDatos.Columns[7].HeaderText = "Hrs. Práctica";
 			dgvDatos.Columns[8].HeaderText = "Prerrequisitos";
-		}
+        }
 
 		public void MostrarRegistros()
 		{
@@ -95,10 +95,12 @@ namespace CapaPresentaciones
                 EditarRegistro.txtCodigo.Text = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
                 EditarRegistro.txtNombre.Text = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
                 EditarRegistro.txtCreditos.Text = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
-                EditarRegistro.txtCategoria.Text = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
+                //EditarRegistro.txtCategoria.Text = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
+                EditarRegistro.cxtCategoriaAsg.SelectedItem = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
                 EditarRegistro.txtHorasTeoria.Text = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
                 EditarRegistro.txtHorasPractica.Text = dgvDatos.Rows[e.RowIndex].Cells[7].Value.ToString();
                 EditarRegistro.txtPrerrequisito.Text = dgvDatos.Rows[e.RowIndex].Cells[8].Value.ToString();
+                //EditarRegistro.txtSumilla.Text = dgvDatos.DataSource.Equals("Sumilla");
                 EditarRegistro.ShowDialog();
 
                 EditarRegistro.Dispose();
