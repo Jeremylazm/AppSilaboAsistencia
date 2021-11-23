@@ -76,31 +76,65 @@ namespace CapaPresentaciones
                 XLWorkbook wb = new XLWorkbook(fullFilePath);
 
                 // Completar información de la asignatura
-                wb.Worksheet(1).Cell("D6").Value = dtDatosAsignatura.Rows[0]["NombreAsignatura"].ToString();
-                wb.Worksheet(1).Cell("D7").Value = dtDatosAsignatura.Rows[0]["CodAsignatura"].ToString();
-                wb.Worksheet(1).Cell("D8").Value = dtDatosAsignatura.Rows[0]["Categoria"].ToString();
-                wb.Worksheet(1).Cell("D9").Value = dtDatosAsignatura.Rows[0]["Creditos"].ToString();
+                wb.Worksheet(1).Cell("C6").Value = dtDatosAsignatura.Rows[0]["NombreAsignatura"].ToString();
+                wb.Worksheet(1).Cell("C7").Value = dtDatosAsignatura.Rows[0]["CodAsignatura"].ToString();
+                wb.Worksheet(1).Cell("C8").Value = dtDatosAsignatura.Rows[0]["Categoria"].ToString();
+                wb.Worksheet(1).Cell("C9").Value = dtDatosAsignatura.Rows[0]["Creditos"].ToString();
 
                 // Horario de la asignatura
                 DataTable dtHorarioAsignatura = N_HorarioAsignatura.BuscarHorarioAsignatura("2021-II", CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());
 
-                wb.Worksheet(1).Cell("D14").Value = dtHorarioAsignatura.Rows[0]["Modalidad"].ToString();
+                wb.Worksheet(1).Cell("C14").Value = dtHorarioAsignatura.Rows[0]["Modalidad"].ToString();
+
+                // Número de horas 3T 2P
+                string NumeroHoras;
+                int T = 0;
+                int P = 0;
+                foreach (DataRow dr in dtHorarioAsignatura.Rows)
+                {
+                    if (dr["Tipo"].ToString() == "T")
+                    {
+                        T += Convert.ToInt32(dr["HorasTeoria"].ToString());
+                    }
+                    else
+                    {
+                        P += Convert.ToInt32(dr["HorasPractica"].ToString());
+                    }
+                }
+
+                if (T == 0)
+                {
+                    NumeroHoras = P.ToString() + "P";
+                }
+                else if (P == 0)
+                {
+                    NumeroHoras = T.ToString() + "T";
+                }
+                else
+                {
+                    NumeroHoras = T.ToString() + "T" + " " + P.ToString() + "P";
+                }
+
+                wb.Worksheet(1).Cell("C12").Value = NumeroHoras;
 
                 // Aula y horario
+                DataTable dtAulaHorario = N_HorarioAsignatura.HorarioAsignaturaDocente("2021-II", CodAsignatura, "10134");
 
+                wb.Worksheet(1).Cell("C13").Value = dtAulaHorario.Rows[0]["HorarioGeneral"].ToString();
+                
                 // Completar información del docente
                 DataTable dtDatosDocente = N_Docente.BuscarDocente(CodAsignatura.Substring(0, 2), "10134");
                 string Nombre = dtDatosDocente.Rows[0]["Nombre"].ToString();
                 string APaterno = dtDatosDocente.Rows[0]["APaterno"].ToString();
                 string AMaterno = dtDatosDocente.Rows[0]["AMaterno"].ToString();
 
-                wb.Worksheet(1).Cell("D15").Value = "2021-II";
+                wb.Worksheet(1).Cell("C15").Value = "2021-II";
 
-                wb.Worksheet(1).Cell("D16").Value = APaterno + "-" + AMaterno + "-" + Nombre;
-                wb.Worksheet(1).Cell("D17").Value = dtDatosDocente.Rows[0]["Email"].ToString();
+                wb.Worksheet(1).Cell("C16").Value = APaterno + "-" + AMaterno + "-" + Nombre;
+                wb.Worksheet(1).Cell("C17").Value = dtDatosDocente.Rows[0]["Email"].ToString();
 
                 // Escuela profesional
-                wb.Worksheet(1).Cell("D18").Value = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
+                wb.Worksheet(1).Cell("C18").Value = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
 
                 // Sumilla
 
