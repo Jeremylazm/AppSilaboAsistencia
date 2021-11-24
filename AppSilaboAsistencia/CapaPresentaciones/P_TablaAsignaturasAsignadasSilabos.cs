@@ -11,6 +11,8 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasSilabos : Form
     {
+        private string CodDocente = "10134";
+
         public P_TablaAsignaturasAsignadasSilabos()
         {
             InitializeComponent();
@@ -27,7 +29,7 @@ namespace CapaPresentaciones
 
         private void MostrarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente("2021-II", "IF", "10134");
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente("2021-II", "IF", CodDocente);
             AccionesTabla();
         }
 
@@ -48,7 +50,9 @@ namespace CapaPresentaciones
                 saveFileDialog.FilterIndex = 1;
 
                 // El registro de la plantilla
-                DataTable A = N_Catalogo.MostrarSilaboAsignatura("2021-II", dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(0, 5), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());   
+                /*DataTable A = N_Catalogo.MostrarSilaboAsignatura("2021-II", dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(0, 5), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());*/
+
+                DataTable PlantillaSilabo = N_Recursos.DescargarPlantillaSilabo();
 
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 string folder = path + "/temp/";
@@ -64,7 +68,7 @@ namespace CapaPresentaciones
                     File.Delete(fullFilePath);
                 }
 
-                byte[] archivo = A.Rows[0]["Silabo"] as byte[];
+                byte[] archivo = PlantillaSilabo.Rows[0]["PlantillaSilabo"] as byte[];
 
                 File.WriteAllBytes(fullFilePath, archivo);
 
@@ -77,9 +81,13 @@ namespace CapaPresentaciones
 
                 // Completar información de la asignatura
                 wb.Worksheet(1).Cell("C6").Value = dtDatosAsignatura.Rows[0]["NombreAsignatura"].ToString();
-                wb.Worksheet(1).Cell("C7").Value = dtDatosAsignatura.Rows[0]["CodAsignatura"].ToString();
+                wb.Worksheet(1).Cell("C7").Value = CodAsignatura;
                 wb.Worksheet(1).Cell("C8").Value = dtDatosAsignatura.Rows[0]["Categoria"].ToString();
                 wb.Worksheet(1).Cell("C9").Value = dtDatosAsignatura.Rows[0]["Creditos"].ToString();
+
+                // Sumilla
+                //DataTable dtSumilla = N_Asignatura.MostrarSumilla(CodAsignatura.Substring(0, 2), CodAsignatura.Substring(0, 5));
+                wb.Worksheet(1).Cell("A21").Value = dtDatosAsignatura.Rows[0]["Sumilla"].ToString();
 
                 // Horario de la asignatura
                 DataTable dtHorarioAsignatura = N_HorarioAsignatura.BuscarHorarioAsignatura("2021-II", CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());
@@ -118,12 +126,12 @@ namespace CapaPresentaciones
                 wb.Worksheet(1).Cell("C12").Value = NumeroHoras;
 
                 // Aula y horario
-                DataTable dtAulaHorario = N_HorarioAsignatura.HorarioAsignaturaDocente("2021-II", CodAsignatura, "10134");
+                DataTable dtAulaHorario = N_HorarioAsignatura.HorarioAsignaturaDocente("2021-II", CodAsignatura, CodDocente);
 
                 wb.Worksheet(1).Cell("C13").Value = dtAulaHorario.Rows[0]["HorarioGeneral"].ToString();
                 
                 // Completar información del docente
-                DataTable dtDatosDocente = N_Docente.BuscarDocente(CodAsignatura.Substring(0, 2), "10134");
+                DataTable dtDatosDocente = N_Docente.BuscarDocente(CodAsignatura.Substring(0, 2), CodDocente);
                 string Nombre = dtDatosDocente.Rows[0]["Nombre"].ToString();
                 string APaterno = dtDatosDocente.Rows[0]["APaterno"].ToString();
                 string AMaterno = dtDatosDocente.Rows[0]["AMaterno"].ToString();
@@ -135,8 +143,6 @@ namespace CapaPresentaciones
 
                 // Escuela profesional
                 wb.Worksheet(1).Cell("C18").Value = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
-
-                // Sumilla
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -216,7 +222,7 @@ namespace CapaPresentaciones
                 SubirArchivo.NombreAsignatura = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
                 SubirArchivo.EscuelaProfesional = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
                 SubirArchivo.Grupo = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
-                SubirArchivo.CodDocente = "10134";
+                SubirArchivo.CodDocente = CodDocente;
 
                 SubirArchivo.ShowDialog();
                 SubirArchivo.Dispose();
