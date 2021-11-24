@@ -82,7 +82,7 @@ namespace CapaDatos
         public DataTable BuscarSilabosAsignatura(string CodSemestre, string Texto1, string Texto2)
         {
             DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("spuBuscarSilaboAsignatura", Conectar)
+            SqlCommand Comando = new SqlCommand("spuBuscarSilabosAsignatura", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };

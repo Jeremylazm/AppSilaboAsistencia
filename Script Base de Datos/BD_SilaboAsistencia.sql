@@ -909,14 +909,15 @@ CREATE PROCEDURE spuBuscarSilabosAsignatura @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar el silabo
-	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, D.Nombre
+	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, D.Nombre, C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.Silabo
 		FROM ((TCatalogo C INNER JOIN TAsignatura A ON
 			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
 			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
 		WHERE C.CodSemestre = @CodSemestre AND
 		      (C.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND 
-			  (C.CodEscuelaP LIKE (@Texto2 + '%') OR EP.Nombre LIKE (@Texto2 + '%'))
+			  (C.CodEscuelaP LIKE (@Texto2 + '%') OR EP.Nombre LIKE (@Texto2 + '%')) AND
+			  C.Silabo IS NOT NULL
 END;
 GO
 
