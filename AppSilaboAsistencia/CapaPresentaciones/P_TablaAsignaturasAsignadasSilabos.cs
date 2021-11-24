@@ -11,6 +11,8 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasSilabos : Form
     {
+        private string CodDocente = "10134";
+
         public P_TablaAsignaturasAsignadasSilabos()
         {
             InitializeComponent();
@@ -27,7 +29,7 @@ namespace CapaPresentaciones
 
         private void MostrarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente("2021-II", "IF", "10134");
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente("2021-II", "IF", CodDocente);
             AccionesTabla();
         }
 
@@ -125,12 +127,12 @@ namespace CapaPresentaciones
                 wb.Worksheet(1).Cell("C12").Value = NumeroHoras;
 
                 // Aula y horario
-                DataTable dtAulaHorario = N_HorarioAsignatura.HorarioAsignaturaDocente("2021-II", CodAsignatura, "10134");
+                DataTable dtAulaHorario = N_HorarioAsignatura.HorarioAsignaturaDocente("2021-II", CodAsignatura, CodDocente);
 
                 wb.Worksheet(1).Cell("C13").Value = dtAulaHorario.Rows[0]["HorarioGeneral"].ToString();
                 
                 // Completar información del docente
-                DataTable dtDatosDocente = N_Docente.BuscarDocente(CodAsignatura.Substring(0, 2), "10134");
+                DataTable dtDatosDocente = N_Docente.BuscarDocente(CodAsignatura.Substring(0, 2), CodDocente);
                 string Nombre = dtDatosDocente.Rows[0]["Nombre"].ToString();
                 string APaterno = dtDatosDocente.Rows[0]["APaterno"].ToString();
                 string AMaterno = dtDatosDocente.Rows[0]["AMaterno"].ToString();
@@ -221,7 +223,7 @@ namespace CapaPresentaciones
                 SubirArchivo.NombreAsignatura = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
                 SubirArchivo.EscuelaProfesional = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
                 SubirArchivo.Grupo = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
-                SubirArchivo.CodDocente = "10134";
+                SubirArchivo.CodDocente = CodDocente;
 
                 SubirArchivo.ShowDialog();
                 SubirArchivo.Dispose();
