@@ -48,9 +48,19 @@ namespace CapaNegocios
             ObjCatalogo.InsertarAsignaturaCatalogo(Catalogo);
         }
 
-        public void ActualizarAsignaturaCatalogo(E_Catalogo Catalogo)
+        public void ActualizarAsignaturaCatalogo(E_Catalogo Catalogo, string CodSemestre, string CodEscuelaP, string Grupo, string CodDocente)
         {
-            ObjCatalogo.ActualizarAsignaturaCatalogo(Catalogo);
+            ObjCatalogo.ActualizarAsignaturaCatalogo(Catalogo, CodSemestre, CodEscuelaP, Grupo, CodDocente);
+        }
+
+        public void ActualizarSilaboAsignatura(E_Catalogo Catalogo, byte[] Silabo)
+        {
+            ObjCatalogo.ActualizarSilaboAsignatura(Catalogo, Silabo);
+        }
+
+        public void ActualizarPlanSesionesAsignatura(E_Catalogo Catalogo, byte[] PlanSesiones)
+        {
+            ObjCatalogo.ActualizarPlanSesionesAsignatura(Catalogo, PlanSesiones);
         }
 
         public void EliminarAsignaturaCatalogo(E_Catalogo Catalogo)
