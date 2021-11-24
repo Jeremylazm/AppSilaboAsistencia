@@ -79,7 +79,7 @@ namespace CapaDatos
         }
 
         // Método para buscar los silabos de una asignatura.
-        public DataTable BuscarSilabosAsignatura(string Texto1, string Texto2)
+        public DataTable BuscarSilabosAsignatura(string CodSemestre, string Texto1, string Texto2)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarSilaboAsignatura", Conectar)
@@ -87,6 +87,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@Texto1", Texto1); // código (ej. IF065) o nombre de la asignatura
             Comando.Parameters.AddWithValue("@Texto2", Texto2); // EP donde se enseña la asignatura
             SqlDataAdapter Data = new SqlDataAdapter(Comando); 
@@ -95,7 +96,7 @@ namespace CapaDatos
         }
 
         // Método para buscar el silabo de una asignatura.
-        public DataTable MostrarSilaboAsignatura(string CodSemestre, string Texto1, string Texto2, string Grupo)
+        public DataTable MostrarSilaboAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuMostrarSilaboAsignatura", Conectar)
@@ -104,27 +105,25 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@Texto1", Texto1); // código (ej. IF065) o nombre de la asignatura
-            Comando.Parameters.AddWithValue("@Texto2", Texto2); // EP donde se enseña la asignatura
-            Comando.Parameters.AddWithValue("@Grupo", Grupo);
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); // código (ej. IF065AIN), obtener de BuscarAsignaturasDocente
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
         }
 
         // Método para buscar el plan de sesiones de un docente para una asignatura.
-        public DataTable BuscarPlanSesionesAsignatura(string CodSemestre, string Texto1, string Texto2, string Grupo)
+        public DataTable MostrarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
         {
             DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("spuBuscarPlanSesionesAsignatura", Conectar)
+            SqlCommand Comando = new SqlCommand("spuMostrarPlanSesionesAsignatura", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@Texto1", Texto1); // código (ej. IF065) o nombre de la asignatura
-            Comando.Parameters.AddWithValue("@Texto2", Texto2); // EP donde se enseña la asignatura
-            Comando.Parameters.AddWithValue("@Grupo", Grupo);
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); // código (ej. IF065AIN), obtener de BuscarAsignaturasDocente
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
@@ -173,7 +172,7 @@ namespace CapaDatos
         }
 
         // Método para actualizar el silabo de una asignatura.
-        public void ActualizarSilaboAsignatura(E_Catalogo Catalogo, byte[] Silabo)
+        public void ActualizarSilaboAsignatura(string CodSemestre, string CodAsignatura, string CodDocente, byte[] Silabo)
         {
             SqlCommand Comando = new SqlCommand("spuActualizarSilaboAsignatura", Conectar)
             {
@@ -181,18 +180,16 @@ namespace CapaDatos
             };
 
             Conectar.Open();
-            Comando.Parameters.AddWithValue("@CodSemestre", Catalogo.CodSemestre);
-            Comando.Parameters.AddWithValue("@CodAsignatura", Catalogo.CodAsignatura);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", Catalogo.CodEscuelaP);
-            Comando.Parameters.AddWithValue("@Grupo", Catalogo.Grupo);
-            Comando.Parameters.AddWithValue("@CodDocente", Catalogo.CodDocente);
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             Comando.Parameters.AddWithValue("@Silabo", Silabo);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }
 
         // Método para actualizar el plan de sesiones de una asignatura.
-        public void ActualizarPlanSesionesAsignatura(E_Catalogo Catalogo, byte[] PlanSesiones)
+        public void ActualizarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodDocente, byte[] PlanSesiones)
         {
             SqlCommand Comando = new SqlCommand("spuActualizarPlanSesionesAsignatura", Conectar)
             {
@@ -200,11 +197,9 @@ namespace CapaDatos
             };
 
             Conectar.Open();
-            Comando.Parameters.AddWithValue("@CodSemestre", Catalogo.CodSemestre);
-            Comando.Parameters.AddWithValue("@CodAsignatura", Catalogo.CodAsignatura);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", Catalogo.CodEscuelaP);
-            Comando.Parameters.AddWithValue("@Grupo", Catalogo.Grupo);
-            Comando.Parameters.AddWithValue("@CodDocente", Catalogo.CodDocente);
+            omando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             Comando.Parameters.AddWithValue("@PlanSesiones", PlanSesiones);
             Comando.ExecuteNonQuery();
             Conectar.Close();
