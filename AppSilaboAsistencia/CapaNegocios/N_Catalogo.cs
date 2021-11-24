@@ -28,19 +28,19 @@ namespace CapaNegocios
             return new D_Catalogo().BuscarAsignaturasAsignadasDocente(CodSemestre, CodDepartamentoA, Texto1, Texto2);
         }
 
-        public static DataTable BuscarSilabosAsignatura(string Texto1, string Texto2)
+        public static DataTable BuscarSilabosAsignatura(string CodSemestre, string Texto1, string Texto2)
         {
-            return new D_Catalogo().BuscarSilabosAsignatura(Texto1, Texto2);
+            return new D_Catalogo().BuscarSilabosAsignatura(CodSemestre, Texto1, Texto2);
         }
 
-        public static DataTable MostrarSilaboAsignatura(string CodSemestre, string Texto1, string Texto2, string Grupo)
+        public static DataTable MostrarSilaboAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
         {
-            return new D_Catalogo().MostrarSilaboAsignatura(CodSemestre, Texto1, Texto2, Grupo);
+            return new D_Catalogo().MostrarSilaboAsignatura(CodSemestre, CodAsignatura, CodDocente);
         }
 
-        public static DataTable BuscarPlanSesionesAsignatura(string CodSemestre, string Texto1, string Texto2, string Grupo)
+        public static DataTable MostrarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
         {
-            return new D_Catalogo().BuscarPlanSesionesAsignatura(CodSemestre, Texto1, Texto2, Grupo);
+            return new D_Catalogo().MostrarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodDocente);
         }
 
         public void InsertarAsignaturaCatalogo(E_Catalogo Catalogo)
@@ -53,14 +53,14 @@ namespace CapaNegocios
             ObjCatalogo.ActualizarAsignaturaCatalogo(Catalogo, CodSemestre, CodEscuelaP, Grupo, CodDocente);
         }
 
-        public void ActualizarSilaboAsignatura(E_Catalogo Catalogo, byte[] Silabo)
+        public void ActualizarSilaboAsignatura(string CodSemestre, string CodAsignatura, string CodDocente, byte[] Silabo)
         {
-            ObjCatalogo.ActualizarSilaboAsignatura(Catalogo, Silabo);
+            ObjCatalogo.ActualizarSilaboAsignatura(CodSemestre, CodAsignatura, CodDocente, Silabo);
         }
 
-        public void ActualizarPlanSesionesAsignatura(E_Catalogo Catalogo, byte[] PlanSesiones)
+        public void ActualizarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodDocente, byte[] PlanSesiones)
         {
-            ObjCatalogo.ActualizarPlanSesionesAsignatura(Catalogo, PlanSesiones);
+            ObjCatalogo.ActualizarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodDocente, PlanSesiones);
         }
 
         public void EliminarAsignaturaCatalogo(E_Catalogo Catalogo)
