@@ -11,7 +11,8 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasSilabos : Form
     {
-        private string CodDocente = "10134";
+        private string CodDocente = "95234";
+        //private string CodDocente = "34024";
 
         public P_TablaAsignaturasAsignadasSilabos()
         {
@@ -209,6 +210,10 @@ namespace CapaPresentaciones
                 {
                     MessageBox.Show("No hay registro del sílabo");
                 }*/
+                P_TablaSilabosAsignatura silabosAsignatura = new P_TablaSilabosAsignatura(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString());
+
+                silabosAsignatura.ShowDialog();
+                silabosAsignatura.Dispose();
             }
 
             // Subir sílabo

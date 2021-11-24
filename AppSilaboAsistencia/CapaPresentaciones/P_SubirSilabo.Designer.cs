@@ -343,6 +343,7 @@ namespace CapaPresentaciones
             this.Controls.Add(this.pnContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_SubirSilabo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P_SubirSilabo";
             this.pnContenedor.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -17,7 +17,6 @@ namespace CapaPresentaciones
     public partial class P_SubirSilabo : Form
     {
         readonly N_Catalogo ObjNegocio;
-        readonly E_Catalogo ObjEntidad;
 
         readonly N_Recursos ObjNegocioRecursos;
         readonly E_Recursos ObjEntidadRecursos;
@@ -32,7 +31,6 @@ namespace CapaPresentaciones
 
         public P_SubirSilabo()
         {
-            ObjEntidad = new E_Catalogo();
             ObjNegocio = new N_Catalogo();
 
             ObjEntidadRecursos = new E_Recursos();
@@ -88,22 +86,14 @@ namespace CapaPresentaciones
                 archivo = ms.ToArray();
             }
 
-            ObjEntidad.CodSemestre = "2021-II";
-            ObjEntidad.CodAsignatura = CodAsignatura.Substring(0, 5);
-            ObjEntidad.CodEscuelaP = CodAsignatura.Substring(6, 2);
-            ObjEntidad.Grupo = Grupo;
-            ObjEntidad.CodDocente = CodDocente;
-            ObjEntidad.Silabo = archivo;
-            ObjEntidad.PlanSesiones = new byte[1];
+            ObjNegocio.ActualizarSilaboAsignatura("2021-II", CodAsignatura, CodDocente, archivo);
+            MensajeConfirmacion("Archivo subido exitosamente");
 
             /*
             ////////////////////////////////////////////////////////////
             // Subir la plantilla a recursos
             ObjEntidadRecursos.PlantillaSilabo = archivo;
             ObjNegocioRecursos.ActualizarPlantillaSilabo(ObjEntidadRecursos);
-
-            ObjNegocio.ActualizarAsignaturaCatalogo(ObjEntidad, "2021-II", ObjEntidad.CodEscuelaP, ObjEntidad.Grupo, "10134");
-            MensajeConfirmacion("Archivo subido exitosamente");
             ////////////////////////////////////////////////////////////
             */
 
