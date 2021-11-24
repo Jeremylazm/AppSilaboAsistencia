@@ -732,25 +732,13 @@ BEGIN
 END;
 GO
 
--- Procedimiento para mostrar la sumilla de una asignatura
-CREATE PROCEDURE spuMostrarSumilla @CodDepartamento VARCHAR(3),
-								   @CodAsignatura VARCHAR(6)
-AS
-BEGIN	
-	-- Mostrar la tabla TAsignatura
-	SELECT Sumilla
-		FROM TAsignatura
-	    WHERE SUBSTRING(CodAsignatura,1,2) = @CodDepartamento AND CodAsignatura = @CodAsignatura
-END;
-GO
-
 -- Procedimiento para buscar una asignatura.
 CREATE PROCEDURE spuBuscarAsignatura @CodDepartamento VARCHAR(3),
 									 @CodAsignatura VARCHAR(6)
 AS
 BEGIN
 	-- Mostrar la tabla TAsignatura por el texto que se desea buscar
-	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica, Prerrequisito
+	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica, Prerrequisito, Sumilla
 		FROM TAsignatura
 		WHERE SUBSTRING(CodAsignatura,1,2) = @CodDepartamento AND CodAsignatura = @CodAsignatura
 END;
@@ -918,7 +906,6 @@ GO
 CREATE PROCEDURE spuBuscarSilabosAsignatura @CodSemestre VARCHAR(7),
 											@Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
 										    @Texto2 VARCHAR(3), -- EP donde se enseña la asignatura
-											@Grupo VARCHAR(1)
 AS
 BEGIN
 	-- Mostrar el silabo
@@ -927,46 +914,35 @@ BEGIN
 			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
 			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
-		WHERE (C.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND 
+		WHERE C.CodSemestre = @CodSemestre AND
+		      (C.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND 
 			  (C.CodEscuelaP LIKE (@Texto2 + '%') OR EP.Nombre LIKE (@Texto2 + '%'))
 END;
 GO
 
 -- Procedimiento para buscar el silabo de una asignatura.
 CREATE PROCEDURE spuMostrarSilaboAsignatura @CodSemestre VARCHAR(7),
-										    @Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
-										    @Texto2 VARCHAR(3), -- EP donde se enseña la asignatura
-										    @Grupo VARCHAR(1)
+										    @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
+											@CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar el silabo
-	SELECT DISTINCT C.Silabo
-		FROM (TCatalogo C INNER JOIN TAsignatura A ON
-			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
-			 C.CodEscuelaP = EP.CodEscuelaP
-		WHERE C.CodSemestre = @CodSemestre AND
-			 (C.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND 
-			 (C.CodEscuelaP LIKE (@Texto2 + '%') OR EP.Nombre LIKE (@Texto2 + '%')) AND
-			  C.Grupo = @Grupo AND C.Silabo IS NOT NULL
+	SELECT Silabo FROM TCatalogo
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura + Grupo + CodEscuelaP = @CodAsignatura AND 
+		      CodDocente = @CodDocente AND Silabo IS NOT NULL
 END;
 GO
 
 -- Procedimiento para buscar el plan de sesiones de un docente para una asignatura.
-CREATE PROCEDURE spuBuscarPlanSesionesAsignatura @CodSemestre VARCHAR(7),
-												 @Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
-										         @Texto2 VARCHAR(3), -- EP donde se enseña la asignatura     
-										         @Grupo VARCHAR(1)
+CREATE PROCEDURE spuMostrarPlanSesionesAsignatura @CodSemestre VARCHAR(7),
+												  @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
+												  @CodDocente VARCHAR(5)
 AS
 BEGIN
-	-- Mostrar el silabo
-	SELECT DISTINCT C.PlanSesiones
-		FROM (TCatalogo C INNER JOIN TAsignatura A ON
-			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
-			 C.CodEscuelaP = EP.CodEscuelaP
-		WHERE C.CodSemestre = @CodSemestre AND
-		     (C.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND
-			 (C.CodEscuelaP LIKE (@Texto2 + '%') OR EP.Nombre LIKE (@Texto2 + '%')) AND
-			  C.Grupo = @Grupo AND C.PlanSesiones IS NOT NULL
+	-- Mostrar el plan de sesiones
+	SELECT PlanSesiones FROM TCatalogo 
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura + Grupo + CodEscuelaP = @CodAsignatura AND 
+		      CodDocente = @CodDocente AND PlanSesiones IS NOT NULL
 END;
 GO
 
@@ -986,27 +962,54 @@ BEGIN
 END;
 GO
 
--- Procedimiento para actualizar una asignatura de un catálogo.
+-- Procedimiento para actualizar la información de una asignatura de un catálogo.
 CREATE PROCEDURE spuActualizarAsignaturaCatalogo @CodSemestre VARCHAR(7),
 											     @CodAsignatura VARCHAR(6),
 											     @CodEscuelaP VARCHAR(3),
 											     @Grupo VARCHAR(1),
 											     @CodDocente VARCHAR(5),
-											     @Silabo VARBINARY(MAX),
-											     @PlanSesiones VARBINARY(MAX)
+												 @ACodSemestre VARCHAR(7), -- Nuevo CodSemestre
+												 @ACodEscuelaP VARCHAR(3), -- Nuevo CodEscuelaP
+												 @AGrupo VARCHAR(1), -- Nuevo Grupo
+												 @ACodDocente VARCHAR(5) -- Nuevo CodDocente
 AS
 BEGIN
 	-- Actualizar una asignatura de la tabla TCatalogo
 	UPDATE TCatalogo
-		SET CodSemestre = @CodSemestre,  
-			CodAsignatura = @CodAsignatura, 
-			CodEscuelaP = @CodEscuelaP,
-			Grupo = @Grupo,
-			CodDocente = @CodDocente,
-		    Silabo = @Silabo,
-			PlanSesiones = @PlanSesiones
+		SET CodSemestre = @ACodSemestre,   
+			CodEscuelaP = @ACodEscuelaP,
+			Grupo = @AGrupo,
+			CodDocente = @ACodDocente
 		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND CodEscuelaP = @CodEscuelaP AND 
 		      Grupo = @Grupo AND CodDocente = @CodDocente
+END;
+GO
+
+-- Procedimiento para actualizar el silabo de una asignatura.
+CREATE PROCEDURE spuActualizarSilaboAsignatura @CodSemestre VARCHAR(7),
+											   @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
+											   @CodDocente VARCHAR(5),
+											   @Silabo VARBINARY(MAX)
+AS
+BEGIN
+	-- Actualizar una asignatura de la tabla TCatalogo
+	UPDATE TCatalogo
+		SET Silabo = @Silabo
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura + Grupo + CodEscuelaP = @CodAsignatura AND CodDocente = @CodDocente
+END;
+GO
+
+-- Procedimiento para actualizar el plan de sesiones de una asignatura.
+CREATE PROCEDURE spuActualizarPlanSesionesAsignatura @CodSemestre VARCHAR(7),
+											         @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
+											         @CodDocente VARCHAR(5),
+											         @PlanSesiones VARBINARY(MAX)
+AS
+BEGIN
+	-- Actualizar una asignatura de la tabla TCatalogo
+	UPDATE TCatalogo
+		SET PlanSesiones = @PlanSesiones
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura + Grupo + CodEscuelaP = @CodAsignatura AND CodDocente = @CodDocente
 END;
 GO
 
