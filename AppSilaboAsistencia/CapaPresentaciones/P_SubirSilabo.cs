@@ -102,7 +102,7 @@ namespace CapaPresentaciones
             ObjEntidadRecursos.PlantillaSilabo = archivo;
             ObjNegocioRecursos.ActualizarPlantillaSilabo(ObjEntidadRecursos);
 
-            ObjNegocio.ActualizarAsignaturaCatalogo(ObjEntidad);
+            ObjNegocio.ActualizarAsignaturaCatalogo(ObjEntidad, "2021-II", ObjEntidad.CodEscuelaP, ObjEntidad.Grupo, "10134");
             MensajeConfirmacion("Archivo subido exitosamente");
             ////////////////////////////////////////////////////////////
             */

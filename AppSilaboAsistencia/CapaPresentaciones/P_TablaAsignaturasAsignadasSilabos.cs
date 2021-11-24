@@ -86,9 +86,8 @@ namespace CapaPresentaciones
                 wb.Worksheet(1).Cell("C9").Value = dtDatosAsignatura.Rows[0]["Creditos"].ToString();
 
                 // Sumilla
-                DataTable dtSumilla = N_Asignatura.MostrarSumilla(CodAsignatura.Substring(0, 2), CodAsignatura.Substring(0, 5));
-
-                wb.Worksheet(1).Cell("A21").Value = dtSumilla.Rows[0]["Sumilla"].ToString();
+                //DataTable dtSumilla = N_Asignatura.MostrarSumilla(CodAsignatura.Substring(0, 2), CodAsignatura.Substring(0, 5));
+                wb.Worksheet(1).Cell("A21").Value = dtDatosAsignatura.Rows[0]["Sumilla"].ToString();
 
                 // Horario de la asignatura
                 DataTable dtHorarioAsignatura = N_HorarioAsignatura.BuscarHorarioAsignatura("2021-II", CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());

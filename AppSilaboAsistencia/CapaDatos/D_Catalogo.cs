@@ -197,7 +197,7 @@ namespace CapaDatos
             };
 
             Conectar.Open();
-            omando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); // código (ej. IF065AIN), obtener de BuscarAsignaturasDocente
             Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             Comando.Parameters.AddWithValue("@PlanSesiones", PlanSesiones);
