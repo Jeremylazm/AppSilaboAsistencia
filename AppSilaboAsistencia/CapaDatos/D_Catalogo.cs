@@ -150,8 +150,8 @@ namespace CapaDatos
             Conectar.Close();
         }
 
-        // Método para actualizar una asignatura de un catálogo.
-        public void ActualizarAsignaturaCatalogo(E_Catalogo Catalogo)
+        // Método para actualizar la información de una asignatura de un catálogo.
+        public void ActualizarAsignaturaCatalogo(E_Catalogo Catalogo, string CodSemestre, string CodEscuelaP, string Grupo, string CodDocente)
         {
             SqlCommand Comando = new SqlCommand("spuActualizarAsignaturaCatalogo", Conectar)
             {
@@ -164,8 +164,48 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodEscuelaP", Catalogo.CodEscuelaP);
             Comando.Parameters.AddWithValue("@Grupo", Catalogo.Grupo);
             Comando.Parameters.AddWithValue("@CodDocente", Catalogo.CodDocente);
-            Comando.Parameters.AddWithValue("@Silabo", Catalogo.Silabo);
-            Comando.Parameters.AddWithValue("@PlanSesiones", Catalogo.PlanSesiones);
+            Comando.Parameters.AddWithValue("@ACodSemestre", CodSemestre); // Nuevo CodSemestre
+            Comando.Parameters.AddWithValue("@ACodEscuelaP", CodEscuelaP); // Nuevo CodEscuelaP
+            Comando.Parameters.AddWithValue("@AGrupo", Grupo); // Nuevo Grupo
+            Comando.Parameters.AddWithValue("@ACodDocente", CodDocente); // Nuevo CodDocente
+            Comando.ExecuteNonQuery();
+            Conectar.Close();
+        }
+
+        // Método para actualizar el silabo de una asignatura.
+        public void ActualizarSilaboAsignatura(E_Catalogo Catalogo, byte[] Silabo)
+        {
+            SqlCommand Comando = new SqlCommand("spuActualizarSilaboAsignatura", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Conectar.Open();
+            Comando.Parameters.AddWithValue("@CodSemestre", Catalogo.CodSemestre);
+            Comando.Parameters.AddWithValue("@CodAsignatura", Catalogo.CodAsignatura);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", Catalogo.CodEscuelaP);
+            Comando.Parameters.AddWithValue("@Grupo", Catalogo.Grupo);
+            Comando.Parameters.AddWithValue("@CodDocente", Catalogo.CodDocente);
+            Comando.Parameters.AddWithValue("@Silabo", Silabo);
+            Comando.ExecuteNonQuery();
+            Conectar.Close();
+        }
+
+        // Método para actualizar el plan de sesiones de una asignatura.
+        public void ActualizarPlanSesionesAsignatura(E_Catalogo Catalogo, byte[] PlanSesiones)
+        {
+            SqlCommand Comando = new SqlCommand("spuActualizarPlanSesionesAsignatura", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Conectar.Open();
+            Comando.Parameters.AddWithValue("@CodSemestre", Catalogo.CodSemestre);
+            Comando.Parameters.AddWithValue("@CodAsignatura", Catalogo.CodAsignatura);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", Catalogo.CodEscuelaP);
+            Comando.Parameters.AddWithValue("@Grupo", Catalogo.Grupo);
+            Comando.Parameters.AddWithValue("@CodDocente", Catalogo.CodDocente);
+            Comando.Parameters.AddWithValue("@PlanSesiones", PlanSesiones);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }

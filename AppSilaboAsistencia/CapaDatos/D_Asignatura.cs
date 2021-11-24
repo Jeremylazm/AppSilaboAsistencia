@@ -24,21 +24,6 @@ namespace CapaDatos
             return Resultado;
         }
 
-        // Método para mostrar la sumilla de una asignatura
-        public DataTable MostrarSumilla(string CodDepartamentoA, string CodAsignatura)
-        {
-            DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("spuMostrarSumilla", Conectar)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-
-            Comando.Parameters.AddWithValue("@CodDepartamento", CodDepartamentoA);
-            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
-            SqlDataAdapter Data = new SqlDataAdapter(Comando);
-            Data.Fill(Resultado);
-            return Resultado;
-        }
 
         // Método para buscar una asignatura.
         public DataTable BuscarAsignatura(string CodDepartamentoA, string CodAsignatura)
