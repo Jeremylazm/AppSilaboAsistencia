@@ -37,5 +37,7 @@ namespace CapaNegocios
         {
             ObjAsignatura.EliminarAsignatura(Asignatura);
         }
+        
+       
     }
 }
