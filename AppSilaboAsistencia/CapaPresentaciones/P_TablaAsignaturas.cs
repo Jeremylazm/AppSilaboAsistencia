@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
+using System.Data;
 
 namespace CapaPresentaciones
 {
@@ -31,8 +32,8 @@ namespace CapaPresentaciones
 
 		public void AccionesTabla()
 		{
-			dgvDatos.Columns[0].DisplayIndex = 8;
-			dgvDatos.Columns[1].DisplayIndex = 8;
+			dgvDatos.Columns[0].DisplayIndex = 9;
+			dgvDatos.Columns[1].DisplayIndex = 9;
 
 			dgvDatos.Columns[2].HeaderText = "Código";
 			dgvDatos.Columns[3].HeaderText = "Nombre";
@@ -41,6 +42,8 @@ namespace CapaPresentaciones
 			dgvDatos.Columns[6].HeaderText = "Hrs. Teoria";
 			dgvDatos.Columns[7].HeaderText = "Hrs. Práctica";
 			dgvDatos.Columns[8].HeaderText = "Prerrequisitos";
+            dgvDatos.Columns[9].Visible = false;
+
         }
 
 		public void MostrarRegistros()
@@ -88,8 +91,9 @@ namespace CapaPresentaciones
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
                 P_DatosAsignatura EditarRegistro = new P_DatosAsignatura();
+                
                 EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-
+                
                 Program.Evento = 1;
 
                 EditarRegistro.txtCodigo.Text = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
@@ -100,9 +104,10 @@ namespace CapaPresentaciones
                 EditarRegistro.txtHorasTeoria.Text = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
                 EditarRegistro.txtHorasPractica.Text = dgvDatos.Rows[e.RowIndex].Cells[7].Value.ToString();
                 EditarRegistro.txtPrerrequisito.Text = dgvDatos.Rows[e.RowIndex].Cells[8].Value.ToString();
-                //EditarRegistro.txtSumilla.Text = dgvDatos.DataSource.Equals("Sumilla");
-                EditarRegistro.ShowDialog();
+               
+                EditarRegistro.txtSumilla.Text = dgvDatos.Rows[e.RowIndex].Cells[9].Value.ToString();
 
+                EditarRegistro.ShowDialog();
                 EditarRegistro.Dispose();
             }
 
