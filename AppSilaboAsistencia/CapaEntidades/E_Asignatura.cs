@@ -10,5 +10,6 @@
         public string Categoria { get; set; }
         public int HorasTeoria { get; set; }
         public int HorasPractica { get; set; }
+        public string Sumlla { get; set; }
     }
 }
