@@ -1,11 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
-using CapaNegocios;
-using CapaEntidades;
-using System.IO;
-using System.Diagnostics;
-using System.Data;
+﻿using CapaNegocios;
 using ClosedXML.Excel;
+using System;
+using System.Data;
+using System.IO;
+using System.Windows.Forms;
 
 namespace CapaPresentaciones
 {
@@ -130,7 +128,7 @@ namespace CapaPresentaciones
                 DataTable dtAulaHorario = N_HorarioAsignatura.HorarioAsignaturaDocente("2021-II", CodAsignatura, CodDocente);
 
                 wb.Worksheet(1).Cell("C13").Value = dtAulaHorario.Rows[0]["HorarioGeneral"].ToString();
-                
+
                 // Completar información del docente
                 DataTable dtDatosDocente = N_Docente.BuscarDocente(CodAsignatura.Substring(0, 2), CodDocente);
                 string Nombre = dtDatosDocente.Rows[0]["Nombre"].ToString();

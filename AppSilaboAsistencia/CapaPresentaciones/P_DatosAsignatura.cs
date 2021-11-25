@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CapaEntidades;
+﻿using CapaEntidades;
 using CapaNegocios;
+using System;
+using System.Data;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace CapaPresentaciones
 {
-	public partial class P_DatosAsignatura : Form
-	{
-		readonly E_Asignatura ObjEntidad;
+    public partial class P_DatosAsignatura : Form
+    {
+        readonly E_Asignatura ObjEntidad;
         readonly N_Asignatura ObjNegocio;
 
         public P_DatosAsignatura()
-		{
+        {
             ObjEntidad = new E_Asignatura();
             ObjNegocio = new N_Asignatura();
             InitializeComponent();
@@ -28,15 +22,15 @@ namespace CapaPresentaciones
             //LlenarComboBox();
         }
 
-		private void MensajeConfirmacion(string Mensaje)
-		{
-			MessageBox.Show(Mensaje, "Sistema de Gestion de Plan de seciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-		}
+        private void MensajeConfirmacion(string Mensaje)
+        {
+            MessageBox.Show(Mensaje, "Sistema de Gestion de Plan de seciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
-		private void MensajeError(string Mensaje)
-		{
-			MessageBox.Show(Mensaje, "Sistema de Gestion de Plan de seciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-		}
+        private void MensajeError(string Mensaje)
+        {
+            MessageBox.Show(Mensaje, "Sistema de Gestion de Plan de seciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         private void LimpiarCajas()
         {
@@ -56,7 +50,7 @@ namespace CapaPresentaciones
             lblTitulo.Focus();
         }
 
-        public string VerificarDatosAsignatura(out bool EsValido, string Codigo, string Nombre,string creditos,
+        public string VerificarDatosAsignatura(out bool EsValido, string Codigo, string Nombre, string creditos,
               string categoria, string horasTeoria, string horasPractica, string Prerrequisito, string sumilla)
         {
             //Inicializando variables de salida
@@ -103,10 +97,10 @@ namespace CapaPresentaciones
         {
             bool EsValido;
             string msg = VerificarDatosAsignatura(out EsValido, txtCodigo.Text, txtNombre.Text.ToUpper(), txtCreditos.Text.ToString(),
-                cxtCategoriaAsg.SelectedItem.ToString(),txtHorasTeoria.Text.ToUpper(),txtHorasPractica.Text.ToUpper(), txtPrerrequisito.Text.ToUpper(), txtSumilla.Text.ToUpper());
+                cxtCategoriaAsg.SelectedItem.ToString(), txtHorasTeoria.Text.ToUpper(), txtHorasPractica.Text.ToUpper(), txtPrerrequisito.Text.ToUpper(), txtSumilla.Text.ToUpper());
             ActualizarColor();
-            if(EsValido)
-			{
+            if (EsValido)
+            {
                 if ((txtCodigo.Text.Trim() != "") &&
                 (txtNombre.Text.Trim() != "") &&
                 (txtCreditos.Text.Trim() != "") &&

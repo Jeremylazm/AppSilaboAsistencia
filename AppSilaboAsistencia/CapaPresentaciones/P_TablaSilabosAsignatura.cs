@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using CapaNegocios;
+using System;
 using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaNegocios;
 
 namespace CapaPresentaciones
 {
@@ -70,7 +64,7 @@ namespace CapaPresentaciones
                     MessageBox.Show("No hay sílabo");
                 }
 
-                
+
             }
         }
     }

@@ -90,7 +90,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@Texto1", Texto1); // código (ej. IF065) o nombre de la asignatura
             Comando.Parameters.AddWithValue("@Texto2", Texto2); // EP donde se enseña la asignatura
-            SqlDataAdapter Data = new SqlDataAdapter(Comando); 
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
         }

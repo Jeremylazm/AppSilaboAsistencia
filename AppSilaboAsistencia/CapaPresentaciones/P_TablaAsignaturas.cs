@@ -1,63 +1,63 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using CapaEntidades;
 using CapaNegocios;
-using CapaEntidades;
+using System;
+using System.Windows.Forms;
 
 namespace CapaPresentaciones
 {
-	public partial class P_TablaAsignaturas : Form
-	{
-		readonly E_Asignatura ObjEntidad;
-		readonly N_Asignatura ObjNegocio;
-		
-		public P_TablaAsignaturas()
-		{
-			ObjEntidad = new E_Asignatura();
-			ObjNegocio = new N_Asignatura();
-			InitializeComponent();
-			MostrarRegistros();
-			Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
-		}
-		
-		private void MensajeConfirmacion(string Mensaje)
-		{
-			MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-		}
+    public partial class P_TablaAsignaturas : Form
+    {
+        readonly E_Asignatura ObjEntidad;
+        readonly N_Asignatura ObjNegocio;
 
-		private void MensajeError(string Mensaje)
-		{
-			MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-		}
-
-		public void AccionesTabla()
-		{
-			dgvDatos.Columns[0].DisplayIndex = 8;
-			dgvDatos.Columns[1].DisplayIndex = 8;
-
-			dgvDatos.Columns[2].HeaderText = "Código";
-			dgvDatos.Columns[3].HeaderText = "Nombre";
-			dgvDatos.Columns[4].HeaderText = "Nro. Créditos";
-			dgvDatos.Columns[5].HeaderText = "Categoría";
-			dgvDatos.Columns[6].HeaderText = "Hrs. Teoria";
-			dgvDatos.Columns[7].HeaderText = "Hrs. Práctica";
-			dgvDatos.Columns[8].HeaderText = "Prerrequisitos";
+        public P_TablaAsignaturas()
+        {
+            ObjEntidad = new E_Asignatura();
+            ObjNegocio = new N_Asignatura();
+            InitializeComponent();
+            MostrarRegistros();
+            Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
         }
 
-		public void MostrarRegistros()
-		{
-			dgvDatos.DataSource = N_Asignatura.MostrarAsignaturas("IF");
-			AccionesTabla();
-		}
+        private void MensajeConfirmacion(string Mensaje)
+        {
+            MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
-		private void ActualizarDatos(object sender, FormClosedEventArgs e)
-		{
-			MostrarRegistros();
-		}
+        private void MensajeError(string Mensaje)
+        {
+            MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
-		public void BuscarRegistros()
-		{
-			dgvDatos.DataSource = N_Asignatura.BuscarAsignaturas("IF", txtBuscar.Text);
-		}
+        public void AccionesTabla()
+        {
+            dgvDatos.Columns[0].DisplayIndex = 8;
+            dgvDatos.Columns[1].DisplayIndex = 8;
+
+            dgvDatos.Columns[2].HeaderText = "Código";
+            dgvDatos.Columns[3].HeaderText = "Nombre";
+            dgvDatos.Columns[4].HeaderText = "Nro. Créditos";
+            dgvDatos.Columns[5].HeaderText = "Categoría";
+            dgvDatos.Columns[6].HeaderText = "Hrs. Teoria";
+            dgvDatos.Columns[7].HeaderText = "Hrs. Práctica";
+            dgvDatos.Columns[8].HeaderText = "Prerrequisitos";
+        }
+
+        public void MostrarRegistros()
+        {
+            dgvDatos.DataSource = N_Asignatura.MostrarAsignaturas("IF");
+            AccionesTabla();
+        }
+
+        private void ActualizarDatos(object sender, FormClosedEventArgs e)
+        {
+            MostrarRegistros();
+        }
+
+        public void BuscarRegistros()
+        {
+            dgvDatos.DataSource = N_Asignatura.BuscarAsignaturas("IF", txtBuscar.Text);
+        }
 
         private void ActualizarColor()
         {
