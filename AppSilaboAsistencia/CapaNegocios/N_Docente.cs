@@ -8,19 +8,24 @@ namespace CapaNegocios
     {
         readonly D_Docente ObjDocente = new D_Docente();
 
-        public static DataTable MostrarDocentesDepartamento(string CodDepartamentoA)
+        public static DataTable MostrarDocentes(string CodEscuelaP)
         {
-            return new D_Docente().MostrarDocentesDepartamento(CodDepartamentoA);
+            return new D_Docente().MostrarDocentes(CodEscuelaP);
         }
 
-        public static DataTable BuscarDocente(string CodDepartamentoA, string CodDocente)
+        public static DataTable BuscarDocente(string CodEscuelaP, string CodDocente)
         {
-            return new D_Docente().BuscarDocente(CodDepartamentoA, CodDocente);
+            return new D_Docente().BuscarDocente(CodEscuelaP, CodDocente);
         }
 
-        public static DataTable BuscarDocentes(string CodDepartamentoA, string Texto)
+        public static DataTable BuscarDocentes(string CodEscuelaP, string Texto)
         {
-            return new D_Docente().BuscarDocentes(CodDepartamentoA, Texto);
+            return new D_Docente().BuscarDocente(CodEscuelaP, Texto);
+        }
+
+        public static DataTable ObtenerCodigoDocente(string Nombre)
+        {
+            return new D_Docente().ObtenerCodigoDocente(Nombre);
         }
 
         public void InsertarDocente(E_Docente Docente)

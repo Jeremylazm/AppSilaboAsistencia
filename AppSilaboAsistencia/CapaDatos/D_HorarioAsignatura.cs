@@ -7,10 +7,10 @@ namespace CapaDatos
 {
     public class D_HorarioAsignatura
     {
-        readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
+        readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
 
         // Método para buscar el horario de una asignatura en un catálogo. 
-        public DataTable BuscarHorarioAsignatura(string CodSemestre, string Texto1, string Texto2, string Grupo)
+        public DataTable BuscarHorarioAsignatura(string CodSemestre, string CodEscuelaP, string Texto)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarHorarioAsignatura", Conectar)
@@ -19,16 +19,15 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@Texto1", Texto1); // código (ej. IF065) o nombre de la asignatura
-            Comando.Parameters.AddWithValue("@Texto2", Texto2); // EP donde se enseña la asignatura
-            Comando.Parameters.AddWithValue("@Grupo", Grupo);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@Texto", Texto); // código o nombre de la asignatura
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
         }
 
-        // Método para obtener el horario semanal (por registros) de las asignaturas asignadas a un docente. 
-        public DataTable HorarioSemanalDocente(string CodSemestre, string Texto)
+        // Método para obtener el horario semanal de las asignaturas asignadas a un docente. 
+        public DataTable HorarioSemanalDocente(string CodSemestre, string CodEscuelaP, string Texto)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuHorarioSemanalDocente", Conectar)
@@ -37,24 +36,22 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
             Comando.Parameters.AddWithValue("@Texto", Texto); // código o nombre de un docente
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
         }
 
-        // Método para obtener el horario (concatenado) de una asignatura asignada a un docente.
-        // Formato salida: IF614AIN T:MA 7 -9 VIRT 7 IN; T:VI 8 -9 VIRT 7 IN; P:JU 7 -9 VIRT 7 IN
-        public DataTable HorarioAsignaturaDocente(string CodSemestre, string CodAsignatura, string CodDocente)
+        // Método para obtener las horas asignada de un docente. 
+        public DataTable HorasDocenteHorarioAsignatura(string CodDocente)
         {
             DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("spuHorarioAsignaturaDocente", Conectar)
+            SqlCommand Comando = new SqlCommand("spuHorasDocenteHorarioAsignatura", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); // código(ej.IF065AIN), obtener de BuscarAsignaturasDocente
             Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);

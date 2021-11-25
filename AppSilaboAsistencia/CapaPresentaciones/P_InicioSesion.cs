@@ -8,20 +8,5 @@ namespace CapaPresentaciones
         {
             InitializeComponent();
         }
-
-        private void ActualizarColor()
-        {
-            lblTitulo.Focus();
-        }
-
-        private void btnIngresar_Click(object sender, System.EventArgs e)
-        {
-            ActualizarColor();
-        }
-
-        private void btnCerrar_Click(object sender, System.EventArgs e)
-        {
-            Close();
-        }
     }
 }

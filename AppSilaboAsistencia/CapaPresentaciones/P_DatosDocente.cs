@@ -18,18 +18,12 @@ namespace CapaPresentaciones
 {
     public partial class P_DatosDocente : Form
     {
-        readonly E_Docente ObjEntidad;
-        readonly N_Docente ObjNegocio;
+        readonly E_Docente ObjEntidad;// = new E_Docente();
+        readonly N_Docente ObjNegocio;// = new N_Docente();
 
         public P_DatosDocente()
         {
-            ObjEntidad = new E_Docente();
-            ObjNegocio = new N_Docente();
             InitializeComponent();
-            Control[] Controles = { lblTitulo, pbLogo };
-            Docker.SubscribeControlsToDragEvents(Controles);
-            LlenarComboBox();
-            ValidarPerfil();
         }
 
         private void MensajeConfirmacion(string Mensaje)
@@ -52,56 +46,6 @@ namespace CapaPresentaciones
             txtDireccion.Clear();
             txtTelefono.Clear();
             txtCodigo.Focus();
-        }
-
-        private void ActualizarColor()
-        {
-            lblTitulo.Focus();
-        }
-
-        private void ValidarPerfil()
-        {
-            if (pbPerfil.Image == (Properties.Resources.Perfil_Docente as Image))
-            {
-                btnRestablecerPerfil.Visible = false;
-            }
-        }
-
-        private void LlenarComboBox()
-        {
-            cxtCategoria.SelectedIndex = 0;
-            cxtSubcategoria.SelectedIndex = 0;
-            cxtRegimen.SelectedIndex = 0;
-
-            if (E_InicioSesion.Acceso == "Administrador")
-            {
-                cxtEscuela.DataSource = N_EscuelaProfesional.MostrarEscuelas();
-            }
-            else
-            {
-                cxtEscuela.DataSource = N_EscuelaProfesional.MostrarEscuelas();
-                //cxtEscuela.DataSource = N_EscuelaProfesional.MostrarEscuelas(E_InicioSesion.Usuario);
-
-                cxtEscuela.SelectedIndex = 2;
-                //cxtEscuela.Enabled = false;
-            }
-
-            cxtEscuela.ValueMember = "CodEscuelaP";
-            cxtEscuela.DisplayMember = "Nombre";
-
-            if (E_InicioSesion.Acceso == "Administrador")
-            {
-                cxtDepartamento.DataSource = N_DepartamentoAcademico.MostrarDepartamentos();
-            }
-            else
-            {
-                cxtDepartamento.DataSource = N_DepartamentoAcademico.MostrarDepartamentos();
-                cxtDepartamento.SelectedIndex = 4;
-                cxtDepartamento.Enabled = false;
-            }
-
-            cxtDepartamento.ValueMember = "CodDepartamentoA";
-            cxtDepartamento.DisplayMember = "Nombre";
         }
 
         public string VerificarDatosDocente(out bool EsValido, string Codigo, string APaterno, string AMaterno,
@@ -159,15 +103,8 @@ namespace CapaPresentaciones
             return tmp;
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            ActualizarColor();
-            LimpiarCajas();
-        }
-
         private void btnSubirPerfil_Click(object sender, EventArgs e)
         {
-            ActualizarColor();
             try
             {
                 OpenFileDialog Archivo = new OpenFileDialog();
@@ -176,7 +113,7 @@ namespace CapaPresentaciones
 
                 if (Archivo.ShowDialog() == DialogResult.OK)
                 {
-                    pbPerfil.Image = HacerImagenCircular(Image.FromFile(Archivo.FileName));
+                    imgPerfil.Image = HacerImagenCircular(Image.FromFile(Archivo.FileName));
                 }
             }
             catch (Exception)
@@ -187,13 +124,11 @@ namespace CapaPresentaciones
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
-            ActualizarColor();
-            pbPerfil.Image = Properties.Resources.Perfil_Docente as Image;
+            imgPerfil.Image = Properties.Resources.Perfil_Docente as Image;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            ActualizarColor();
             //Validar datos ingresados
             bool EsValido;
             string msg = VerificarDatosDocente(out EsValido, txtCodigo.Text, txtAPaterno.Text.ToUpper(), txtAMaterno.Text.ToUpper(), txtNombre.Text.ToUpper()
@@ -214,14 +149,14 @@ namespace CapaPresentaciones
                     {
                         try
                         {
-                            DataTable Resultado = N_Docente.BuscarDocente("IF", txtCodigo.Text);
+                            DataTable Resultado = N_Docente.BuscarDocente(cxtEscuela.Text, txtCodigo.Text);
 
                             if (Resultado.Rows.Count == 0)
                             {
                                 byte[] Perfil = new byte[0];
                                 using (MemoryStream MemoriaPerfil = new MemoryStream())
                                 {
-                                    pbPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
+                                    imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
                                     Perfil = MemoriaPerfil.ToArray();
                                 }
                                 ObjEntidad.Perfil = Perfil;
@@ -235,7 +170,6 @@ namespace CapaPresentaciones
                                 ObjEntidad.Categoria = cxtCategoria.SelectedItem.ToString();
                                 ObjEntidad.Subcategoria = cxtSubcategoria.SelectedItem.ToString();
                                 ObjEntidad.Regimen = cxtRegimen.SelectedItem.ToString();
-                                ObjEntidad.CodDepartamentoA = cxtDepartamento.SelectedValue.ToString();
                                 ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
 
                                 ObjNegocio.InsertarDocente(ObjEntidad);
@@ -290,14 +224,14 @@ namespace CapaPresentaciones
                             Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                             if (Opcion == DialogResult.OK)
                             {
-                                DataTable Resultado = N_Docente.BuscarDocente("IF", txtCodigo.Text);
+                                DataTable Resultado = N_Docente.BuscarDocente(cxtEscuela.Text, txtCodigo.Text);
 
                                 if (Resultado.Rows.Count != 0)
                                 {
                                     byte[] Perfil = new byte[0];
                                     using (MemoryStream MemoriaPerfil = new MemoryStream())
                                     {
-                                        pbPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
+                                        imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
                                         Perfil = MemoriaPerfil.ToArray();
                                     }
                                     ObjEntidad.Perfil = Perfil;
@@ -311,7 +245,6 @@ namespace CapaPresentaciones
                                     ObjEntidad.Categoria = cxtCategoria.SelectedItem.ToString();
                                     ObjEntidad.Subcategoria = cxtSubcategoria.SelectedItem.ToString();
                                     ObjEntidad.Regimen = cxtRegimen.SelectedItem.ToString();
-                                    ObjEntidad.CodDepartamentoA = cxtDepartamento.SelectedValue.ToString();
                                     ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
 
                                     ObjNegocio.ActualizarDocente(ObjEntidad);
@@ -336,6 +269,7 @@ namespace CapaPresentaciones
                 {
                     MensajeError("Debe llenar los campos");
                 }
+                MensajeError(msg);
             }
             else
             {
