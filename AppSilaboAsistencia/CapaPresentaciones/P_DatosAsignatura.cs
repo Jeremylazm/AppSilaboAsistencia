@@ -68,7 +68,7 @@ namespace CapaPresentaciones
             //Definiendo expresiones regulares
             Regex PatronCodigo = new Regex(@"\A^[I]{1}[F]{1}[0-9]{3}\Z");
             Regex PatronCreditos = new Regex(@"\A[2-4]{1}\Z");
-            Regex PatronHorasTeo = new Regex(@"\A[0-4]{1}\Z");//en caso de 0, el cursopude ser netamente practico
+            Regex PatronHorasTeo = new Regex(@"\A[0-5]{1}\Z");//en caso de 0, el cursopude ser netamente practico
             Regex PatronHorasPra = new Regex(@"\A[0-4]{1}\Z");//en caso de 0, el cursopude ser netamente teorico
 
             //Verificando textbox vacios
@@ -83,7 +83,7 @@ namespace CapaPresentaciones
             //Verificado si los datos son validos
             if (!PatronCodigo.IsMatch(Codigo)) return "El formato del código es incorrecto  ejemlo 'IF[Nro 3 digitos]' ";
             if (!PatronCreditos.IsMatch(creditos)) return "El formato del creditos es incorrecto(2 a 4)";
-            if (!PatronHorasTeo.IsMatch(horasTeoria)) return "El formato del horas de Teoria es incorrecto(0 a 4)";
+            if (!PatronHorasTeo.IsMatch(horasTeoria)) return "El formato del horas de Teoria es incorrecto(0 a 5)";
             if (!PatronHorasPra.IsMatch(horasPractica)) return "El formato del horas de Practica es incorrecto(0 a 4)";
             //Si paso todo sin problema
             EsValido = true; //Los datos son válidos
