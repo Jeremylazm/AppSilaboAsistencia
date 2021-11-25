@@ -725,7 +725,7 @@ CREATE PROCEDURE spuMostrarAsignaturas @CodDepartamento VARCHAR(3)
 AS
 BEGIN	
 	-- Mostrar la tabla TAsignatura
-	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica, Prerrequisito
+	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica, Prerrequisito, Sumilla
 		FROM TAsignatura
 	    WHERE SUBSTRING(CodAsignatura,1,2) = @CodDepartamento
 		ORDER BY NombreAsignatura

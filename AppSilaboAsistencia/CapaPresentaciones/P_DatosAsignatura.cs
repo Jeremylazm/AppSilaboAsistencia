@@ -25,7 +25,7 @@ namespace CapaPresentaciones
             InitializeComponent();
             Control[] Controles = { lblTitulo, pbLogo };
             Docker.SubscribeControlsToDragEvents(Controles);
-            //LlenarComboBox();
+            InicializarComboBoxCatergoria();
         }
 
 		private void MensajeConfirmacion(string Mensaje)
@@ -55,7 +55,10 @@ namespace CapaPresentaciones
         {
             lblTitulo.Focus();
         }
-
+        private void InicializarComboBoxCatergoria()
+		{
+            cxtCategoriaAsg.SelectedIndex = 0;
+        }
         public string VerificarDatosAsignatura(out bool EsValido, string Codigo, string Nombre,string creditos,
               string categoria, string horasTeoria, string horasPractica, string Prerrequisito, string sumilla)
         {
@@ -63,24 +66,24 @@ namespace CapaPresentaciones
             EsValido = false; //Inicializando como si es falso
 
             //Definiendo expresiones regulares
-            Regex PatronCodigo = new Regex(@"^[IF]{2}");
+            Regex PatronCodigo = new Regex(@"\A^[I]{1}[F]{1}[0-9]{3}\Z");
             Regex PatronCreditos = new Regex(@"\A[2-4]{1}\Z");
-            Regex PatronHorasTeo = new Regex(@"\A[0-4]{1}\Z");//en caso de 0, el cursopude ser netamente practico
+            Regex PatronHorasTeo = new Regex(@"\A[0-5]{1}\Z");//en caso de 0, el cursopude ser netamente practico
             Regex PatronHorasPra = new Regex(@"\A[0-4]{1}\Z");//en caso de 0, el cursopude ser netamente teorico
 
             //Verificando textbox vacios
             if (Codigo.Trim() == "") return "Debe llenar el código";
             if (Nombre.Trim() == "") return "Debe llenar Nombre de la asignatura";
             if (creditos.Trim() == "") return "Debe llenar la cantidad de creditos";
-            if (categoria.Trim() == "") return "Debe llenar la categoria";
+            if (categoria.Trim() == "SELECCIONE") return "Debe seleccionar la categoria";
             if (horasTeoria.Trim() == "") return "Debe llenar las horas de teoria(0-4)";
             if (horasPractica.Trim() == "") return "Debe llenar las horas de  practica(0-4)";
             if (sumilla.Trim() == "") return "Debe llenar sumilla";
 
             //Verificado si los datos son validos
-            if (!PatronCodigo.IsMatch(Codigo)) return "El formato del código es incorrecto (IF...)";
+            if (!PatronCodigo.IsMatch(Codigo)) return "El formato del código es incorrecto  ejemlo 'IF[Nro 3 digitos]' ";
             if (!PatronCreditos.IsMatch(creditos)) return "El formato del creditos es incorrecto(2 a 4)";
-            if (!PatronHorasTeo.IsMatch(horasTeoria)) return "El formato del horas de Teoria es incorrecto(0 a 4)";
+            if (!PatronHorasTeo.IsMatch(horasTeoria)) return "El formato del horas de Teoria es incorrecto(0 a 5)";
             if (!PatronHorasPra.IsMatch(horasPractica)) return "El formato del horas de Practica es incorrecto(0 a 4)";
             //Si paso todo sin problema
             EsValido = true; //Los datos son válidos
@@ -101,10 +104,11 @@ namespace CapaPresentaciones
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             bool EsValido;
             string msg = VerificarDatosAsignatura(out EsValido, txtCodigo.Text, txtNombre.Text.ToUpper(), txtCreditos.Text.ToString(),
                 cxtCategoriaAsg.SelectedItem.ToString(),txtHorasTeoria.Text.ToUpper(),txtHorasPractica.Text.ToUpper(), txtPrerrequisito.Text.ToUpper(), txtSumilla.Text.ToUpper());
-            ActualizarColor();
+          
             if(EsValido)
 			{
                 if ((txtCodigo.Text.Trim() != "") &&
