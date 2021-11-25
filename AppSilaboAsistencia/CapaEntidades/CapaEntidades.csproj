@@ -47,12 +47,14 @@
     <Compile Include="E_AsistenciaEstudiante.cs" />
     <Compile Include="E_Catalogo.cs" />
     <Compile Include="E_Criptografia.cs" />
+    <Compile Include="E_DepartamentoAcademico.cs" />
     <Compile Include="E_Docente.cs" />
     <Compile Include="E_EscuelaProfesional.cs" />
     <Compile Include="E_Estudiante.cs" />
     <Compile Include="E_HorarioAsignatura.cs" />
     <Compile Include="E_InicioSesion.cs" />
     <Compile Include="E_Matricula.cs" />
+    <Compile Include="E_Recursos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

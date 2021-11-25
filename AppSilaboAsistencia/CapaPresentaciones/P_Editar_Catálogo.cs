@@ -47,7 +47,7 @@ namespace CapaPresentaciones
             {
                 Panel_DashBoard.Visible = false;
                 Panel_DashBoard.Width = 80;
-                GradientPanel.Width = 50;
+                GradientPanel.Width = 48;
                 Animación_Panel.Show(Panel_DashBoard);
             }
             else

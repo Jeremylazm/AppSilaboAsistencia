@@ -10,6 +10,8 @@ namespace CapaPresentaciones
         public P_Menu()
         {
             InitializeComponent();
+            Control[] Controles = { pnOpciones, pnContenedor, lblSuperior, lblInferior, pbLogo, pbPerfil, lblDatos, lblAcceso, lblUsuario };
+            Docker.SubscribeControlsToDragEvents(Controles);
         }
 
         bool DrawerOpen = true;
@@ -24,13 +26,14 @@ namespace CapaPresentaciones
             {
                 pnOpciones.Width = 173;
                 pbLogo.Location = new Point(178, 6);
+                SeparadorMenu.Width = 161;
                 pbPerfil.Visible = true;
                 btnEditarPerfil.Visible = true;
                 pbEditarPerfil.Visible = false;
                 lblDatos.Visible = true;
                 lblAcceso.Visible = true;
                 lblUsuario.Visible = true;
-                btnContraer.Image = Properties.Resources.Cerrar as Image;
+                //btnContraer.Image = Properties.Resources.Cerrar as Image;
                 Transicion.ShowSync(pnOpciones);
                 Transicion.ShowSync(pnContenedor);
 
@@ -39,17 +42,16 @@ namespace CapaPresentaciones
             {
                 pnOpciones.Width = 44;
                 pbLogo.Location = new Point(49, 6);
+                SeparadorMenu.Width = 35;
                 pbPerfil.Visible = false;
                 btnEditarPerfil.Visible = false;
                 pbEditarPerfil.Visible = true;
                 lblDatos.Visible = false;
                 lblAcceso.Visible = false;
                 lblUsuario.Visible = false;
-                btnContraer.Image = Properties.Resources.Ingresar as Image;
+                //btnContraer.Image = Properties.Resources.Ingresar as Image;
                 Transicion.ShowSync(pnOpciones);
                 Transicion.ShowSync(pnContenedor);
-
-
             }
         }
 
@@ -130,20 +132,48 @@ namespace CapaPresentaciones
             WindowState = FormWindowState.Minimized;
         }
 
+        private void ActualizarColor()
+        {
+            lblSuperior.Focus();
+        }
+
         private void btnDocentes_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             AbrirFormularios<P_TablaDocentes>();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAsignaturas_Click(object sender, EventArgs e)
         {
-            P_Editar_Catálogo form = new P_Editar_Catálogo();
-            form.Show();
+            ActualizarColor();
+            AbrirFormularios<P_TablaAsignaturas>();
+        }
+
+        private void btnPrincipal_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+        }
+
+        private void btnSilabos_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_TablaAsignaturasAsignadasSilabos>();
+        }
+
+        private void btnAsignaturasAsignadas_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_TablaAsignaturasAsignadasEstudiantes>();
+        }
+
+        private void btnEditarPerfil_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea salir de la aplicación?", "¡Alerta!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("¿Desea salir de la aplicación?", "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Application.Exit();
             }

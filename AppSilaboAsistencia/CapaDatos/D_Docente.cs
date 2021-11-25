@@ -15,16 +15,16 @@ namespace CapaDatos
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
 
-        // Método para mostrar los docentes de una escuela profesional.
-        public DataTable MostrarDocentes(string CodEscuelaP)
+        // Método para mostrar los docentes de un departamento académico
+        public DataTable MostrarDocentesDepartamento(string CodDepartamentoA)
         {
             DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("spuMostrarDocentes", Conectar)
+            SqlCommand Comando = new SqlCommand("spuMostrarDocentesDepartamento", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
 
@@ -49,8 +49,8 @@ namespace CapaDatos
             return Resultado;
         }
 
-        // Método para buscar un docente (por su código) de una escuela profesional.
-        public DataTable BuscarDocente(string CodEscuelaP, string CodDocente)
+        // Método para buscar un docente (por su código) de un departamento académico
+        public DataTable BuscarDocente(string CodDepartamentoA, string CodDocente)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarDocente", Conectar)
@@ -58,7 +58,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
             Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
@@ -84,8 +84,8 @@ namespace CapaDatos
             return Resultado;
         }
 
-        // Método para buscar por cualquier atributo los docentes de una escuela profesional.
-        public DataTable BuscarDocentes(string CodEscuelaP, string Texto)
+        // Método para buscar por cualquier atributo los docentes de un departamento académico.
+        public DataTable BuscarDocentes(string CodDepartamentoA, string Texto)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarDocentes", Conectar)
@@ -93,7 +93,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
             Comando.Parameters.AddWithValue("@Texto", Texto);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
@@ -139,6 +139,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@Categoria", Docente.Categoria);
             Comando.Parameters.AddWithValue("@Subcategoria", Docente.Subcategoria);
             Comando.Parameters.AddWithValue("@Regimen", Docente.Regimen);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", Docente.CodDepartamentoA);
             Comando.Parameters.AddWithValue("@CodEscuelaP", Docente.CodEscuelaP);
             Comando.ExecuteNonQuery();
             Conectar.Close();
@@ -164,6 +165,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@Categoria", Docente.Categoria);
             Comando.Parameters.AddWithValue("@Subcategoria", Docente.Subcategoria);
             Comando.Parameters.AddWithValue("@Regimen", Docente.Regimen);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", Docente.CodDepartamentoA);
             Comando.Parameters.AddWithValue("@CodEscuelaP", Docente.CodEscuelaP);
             Comando.ExecuteNonQuery();
             Conectar.Close();
