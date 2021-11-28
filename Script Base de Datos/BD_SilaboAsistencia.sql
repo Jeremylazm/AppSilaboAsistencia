@@ -577,7 +577,7 @@ BEGIN
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
 	       Subcategoria, Regimen
 		FROM TDocente
-	    WHERE CodEscuelaP = @CodEscuelaP
+	    WHERE CodEscuelaP = @CodEscuelaP AND CodDocente != '00000'
 		ORDER BY APaterno
 END;
 GO
@@ -590,7 +590,7 @@ BEGIN
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
 	       Subcategoria, Regimen
 		FROM TDocente
-	    WHERE CodDepartamentoA = @CodDepartamentoA
+	    WHERE CodDepartamentoA = @CodDepartamentoA AND CodDocente != '00000'
 		ORDER BY APaterno
 END;
 GO
@@ -604,7 +604,7 @@ BEGIN
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
 	       Subcategoria, Regimen
 		FROM TDocente
-		WHERE CodDepartamentoA = @CodDepartamentoA AND CodDocente = @CodDocente
+		WHERE CodDepartamentoA = @CodDepartamentoA AND CodDocente = @CodDocente AND CodDocente != '00000'
 END;
 GO
 
@@ -617,7 +617,7 @@ BEGIN
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
 	       Subcategoria, Regimen
 		FROM TDocente
-		WHERE CodDepartamentoA = @CodDepartamentoA AND
+		WHERE CodDepartamentoA = @CodDepartamentoA AND @Texto != '00000' AND
 		     (CodDocente LIKE (@Texto + '%') OR
 			  APaterno LIKE (@Texto + '%') OR
 			  AMaterno LIKE (@Texto + '%') OR
@@ -1070,6 +1070,8 @@ BEGIN
 			   D.AMaterno LIKE (@Texto + '%'))
 END;
 GO
+
+exec spuHorarioAsignaturaDocente '2021-II', 'IF662AIN', '51410'
 
 -- Procedimiento para obtener el horario (concatenado) de una asignatura asignada a un docente.
 -- Formato salida: IF614AIN T:MA 7 -9 VIRT 7 IN; T:VI 8 -9 VIRT 7 IN; P:JU 7 -9 VIRT 7 IN
