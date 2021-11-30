@@ -8,6 +8,7 @@ namespace CapaDatos
     public class D_Asignatura
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
+        //readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
 
         // Método para mostrar las asignaturas de un departamento académico.
         public DataTable MostrarAsignaturas(string CodDepartamentoA)
