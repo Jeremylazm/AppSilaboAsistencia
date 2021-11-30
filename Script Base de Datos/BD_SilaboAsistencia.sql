@@ -41,7 +41,7 @@ CREATE TABLE TEscuelaProfesional
 (
 	-- Lista de atributos
 	CodEscuelaP tyCodEscuelaP,
-	Nombre VARCHAR(40) NOT NULL,
+	Nombre VARCHAR(80) NOT NULL,
 
 	-- Determinar las claves 
 	PRIMARY KEY (CodEscuelaP)
@@ -58,7 +58,8 @@ CREATE TABLE TDepartamentoAcademico
 (
 	-- Lista de atributos
 	CodDepartamentoA tyCodDepartamentoA,
-	Nombre VARCHAR(50) NOT NULL,
+
+	Nombre VARCHAR(80) NOT NULL,
 
 	-- Determinar las claves 
 	PRIMARY KEY (CodDepartamentoA)
@@ -76,9 +77,9 @@ CREATE TABLE TEstudiante
 	-- Lista de atributos
 	Perfil VARBINARY(MAX),
 	CodEstudiante tyCodEstudiante,
-	APaterno VARCHAR(15) NOT NULL,
-	AMaterno VARCHAR(15) NOT NULL,
-	Nombre VARCHAR(20) NOT NULL,
+	APaterno VARCHAR(35) NOT NULL,
+	AMaterno VARCHAR(35) NOT NULL,
+	Nombre VARCHAR(35) NOT NULL,
 	Email VARCHAR(50) NOT NULL,
 	Direccion VARCHAR(50) NOT NULL,
 	Telefono VARCHAR(15) NOT NULL,
@@ -103,9 +104,9 @@ CREATE TABLE TDocente
 	-- Lista de atributos
 	Perfil VARBINARY(MAX),
 	CodDocente tyCodDocente,
-	APaterno VARCHAR(15) NOT NULL,
-	AMaterno VARCHAR(15) NOT NULL,
-	Nombre VARCHAR(20) NOT NULL,
+	APaterno VARCHAR(35) NOT NULL,
+	AMaterno VARCHAR(35) NOT NULL,
+	Nombre VARCHAR(35) NOT NULL,
 	Email VARCHAR(50) NOT NULL,
 	Direccion VARCHAR(50) NOT NULL,
 	Telefono VARCHAR(15) NOT NULL,
@@ -121,7 +122,7 @@ CREATE TABLE TDocente
 															 'B2',
 															 'B3')),
 	Regimen VARCHAR(20) NOT NULL CHECK (Regimen IN ('TIEMPO COMPLETO', 
-													'DEDICACIÓN EXCLUSIVA',
+													'DEDICACIÃ“N EXCLUSIVA',
 													'TIEMPO PARCIAL')),
 	CodDepartamentoA tyCodDepartamentoA,
 	CodEscuelaP tyCodEscuelaP
@@ -147,7 +148,7 @@ CREATE TABLE TAsignatura
 (
 	-- Lista de atributos
 	CodAsignatura tyCodAsignatura, -- ej. IF085
-	NombreAsignatura VARCHAR(50) NOT NULL,
+	NombreAsignatura VARCHAR(100) NOT NULL,
 	Creditos INT NOT NULL,
 	Categoria VARCHAR(5) NOT NULL,
 	HorasTeoria INT NOT NULL,
@@ -171,9 +172,9 @@ CREATE TABLE TCatalogo
 	-- Lista de atributos
 	CodSemestre tyCodSemestre,
 	CodAsignatura tyCodAsignatura, -- ej. IF085
-	CodEscuelaP tyCodEscuelaP, -- EP donde se enseña la asignatura
+	CodEscuelaP tyCodEscuelaP, -- EP donde se enseÃ±a la asignatura
 	Grupo VARCHAR(1) NOT NULL,
-	CodDocente tyCodDocente, -- Puede ser uno o más
+	CodDocente tyCodDocente, -- Puede ser uno o mÃ¡s
 	Silabo VARBINARY(MAX),
 	PlanSesiones VARBINARY(MAX)
 
@@ -199,11 +200,11 @@ CREATE TABLE THorarioAsignatura
 	-- Lista de atributos
 	CodSemestre tyCodSemestre,
 	CodAsignatura tyCodAsignatura, -- ej. IF085
-	CodEscuelaP tyCodEscuelaP, -- EP donde se enseña la asignatura
+	CodEscuelaP tyCodEscuelaP, -- EP donde se enseÃ±a la asignatura
 	Grupo VARCHAR(1) NOT NULL,
-	CodDocente tyCodDocente, -- Puede ser uno o más
+	CodDocente tyCodDocente, -- Puede ser uno o mÃ¡s
 	Dia VARCHAR(2), -- LU, MA, MI, JU, VI
-	Tipo VARCHAR(1) NOT NULL, -- T: Teoria, P: Práctica
+	Tipo VARCHAR(1) NOT NULL, -- T: Teoria, P: PrÃ¡ctica
 	HorasTeoria INT NOT NULL,
 	HorasPractica INT NOT NULL,
 	HoraInicio VARCHAR(2) NOT NULL, -- Formato: 00-23
@@ -274,7 +275,7 @@ CREATE TABLE TUsuario
 	-- Lista de atributos
 	Perfil VARBINARY(MAX),
 	Usuario VARCHAR(6) NOT NULL,
-	Contraseña VARBINARY(MAX) NOT NULL,
+	ContraseÃ±a VARBINARY(MAX) NOT NULL,
 	Acceso VARCHAR(20) NOT NULL,
 	Datos VARCHAR(53) NOT NULL
 
@@ -309,7 +310,7 @@ GO
    ******************* FUNCIONES Y PROCEDIMIENTOS ALMACENADOS DE LA BASE DE DATOS********************
    ************************************************************************************************** */
 
-/* ****************** FUNCIONES PARA LA ENCRIPTACION DE LA CONTRASEÑA ****************** */
+/* ****************** FUNCIONES PARA LA ENCRIPTACION DE LA CONTRASEÃ‘A ****************** */
 USE BDSistemaGestion
 GO
 -- Crear una llave asimetrica
@@ -319,29 +320,29 @@ CREATE ASYMMETRIC KEY AppSistemaGestionAsymKey01
 GO
 
 -- Funcion encriptar --
-CREATE FUNCTION fnEncriptarContraseña(@Contraseña Varchar(8))
+CREATE FUNCTION fnEncriptarContraseÃ±a(@ContraseÃ±a Varchar(8))
 RETURNS VARBINARY(max)
 AS
 BEGIN
 	-- Declarar las variables
     DECLARE @EncryptedText VARBINARY(max)
 
-	-- Generar contraseña encriptada
-	SET @EncryptedText=ENCRYPTBYASYMKEY(ASYMKEY_ID(N'AppSistemaGestionAsymKey01'), @Contraseña)
+	-- Generar contraseÃ±a encriptada
+	SET @EncryptedText=ENCRYPTBYASYMKEY(ASYMKEY_ID(N'AppSistemaGestionAsymKey01'), @ContraseÃ±a)
 
 	-- Retornar una contrasenia varbinary
     RETURN (@EncryptedText);
 END;
 GO
 -- Funcion desencriptar --
-CREATE FUNCTION fnDesencriptarContraseña(@EncryptedText VARBINARY(max))
+CREATE FUNCTION fnDesencriptarContraseÃ±a(@EncryptedText VARBINARY(max))
 RETURNS VARCHAR(8)
 AS
 BEGIN
 	-- Declarar las variables
     DECLARE @DecryptedText VARCHAR(MAX)
 
-	-- Generar contraseña desencriptada
+	-- Generar contraseÃ±a desencriptada
 	SET @DecryptedText=DECRYPTBYASYMKEY (ASYMKEY_ID(N'AppSistemaGestionAsymKey01'),@EncryptedText, N'IngenieriaSoftwareI')
 
 	-- Retornar una contrasenia desencriptada
@@ -349,7 +350,7 @@ BEGIN
 END;
 GO
 
-/* ************************** FUNCION PARA GENERAR UNA CONTRASEÑA ************************** */
+/* ************************** FUNCION PARA GENERAR UNA CONTRASEÃ‘A ************************** */
 
 CREATE VIEW viAleatorio
 AS
@@ -357,7 +358,7 @@ AS
 	SELECT RAND() AS ValorAleatorio
 GO 
 
-CREATE FUNCTION fnGenerarContraseña ()
+CREATE FUNCTION fnGenerarContraseÃ±a ()
 RETURNS VARCHAR(8)
 AS
 BEGIN
@@ -365,59 +366,59 @@ BEGIN
 	DECLARE @Indice INT;
     DECLARE @Contador INT;
     DECLARE @Caracteres VARCHAR(37);      
-    DECLARE @Contraseña VARCHAR(8);
+    DECLARE @ContraseÃ±a VARCHAR(8);
 
 	-- Establecer los valores iniciales
 	SET @Contador = 0
-	SET @Caracteres = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789'
-	SET @Contraseña = ''
+	SET @Caracteres = 'ABCDEFGHIJKLMNÃ‘OPQRSTUVWXYZ0123456789'
+	SET @ContraseÃ±a = ''
     
-	-- Tomar un indice aleatorio de los caracteres para generar una contraseña
+	-- Tomar un indice aleatorio de los caracteres para generar una contraseÃ±a
     WHILE (@Contador < 8)
     BEGIN
         SET @Indice = CEILING((SELECT ValorAleatorio FROM viAleatorio) * (LEN(@Caracteres)))
-        SET @Contraseña = @Contraseña + SUBSTRING(@Caracteres, @Indice, 1)
+        SET @ContraseÃ±a = @ContraseÃ±a + SUBSTRING(@Caracteres, @Indice, 1)
         SET @Contador = @Contador + 1
     END;
 
-	-- Retornar una contraseña de 8 caracteres
-    RETURN (@Contraseña);
+	-- Retornar una contraseÃ±a de 8 caracteres
+    RETURN (@ContraseÃ±a);
 END;
 GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA USUARIO ****************** */
 USE BDSistemaGestion
 GO
--- Procedimiento insertar nuevo usuario, encripta la contraseña
+-- Procedimiento insertar nuevo usuario, encripta la contraseÃ±a
 CREATE PROCEDURE spuInsertarUsuario	@Perfil VARBINARY(MAX),
 									@Usuario VARCHAR(6),
-									@Contraseña VARCHAR(8),
+									@ContraseÃ±a VARCHAR(8),
 									@Acceso VARCHAR(20),
 									@Datos VARCHAR(53)
 AS
 BEGIN
 	-- Actualizar un estudiante de la tabla de TEstudiante
-	Insert INTO TUsuario values(@Perfil,@Usuario, DBO.fnEncriptarContraseña(@Contraseña),@Acceso,@Datos)
+	Insert INTO TUsuario values(@Perfil,@Usuario, DBO.fnEncriptarContraseÃ±a(@ContraseÃ±a),@Acceso,@Datos)
 END;
 GO
 
--- Cambiar contraseña de usuario --
-CREATE PROCEDURE spuCambiarContraseña @Usuario VARCHAR(6),
+-- Cambiar contraseÃ±a de usuario --
+CREATE PROCEDURE spuCambiarContraseÃ±a @Usuario VARCHAR(6),
 									  @NuevaContrasenia VARCHAR(8)
 AS
 BEGIN
-	-- Actualizar contraseña de Usuario
+	-- Actualizar contraseÃ±a de Usuario
 	UPDATE TUsuario
-		SET Contraseña = DBO.fnEncriptarContraseña(@NuevaContrasenia)
+		SET ContraseÃ±a = DBO.fnEncriptarContraseÃ±a(@NuevaContrasenia)
 		WHERE Usuario = @Usuario
 END;
 GO
--- Retornar contraseña desencriptada
-CREATE PROCEDURE spuRetornarContraseña @Usuario VARCHAR(6)			
+-- Retornar contraseÃ±a desencriptada
+CREATE PROCEDURE spuRetornarContraseÃ±a @Usuario VARCHAR(6)			
 AS
 BEGIN
 	-- Actualizar un estudiante de la tabla de TEstudiante
-	SELECT DBO.fnDesencriptarContraseña(Contraseña) as 'Contraseña'
+	SELECT DBO.fnDesencriptarContraseÃ±a(ContraseÃ±a) as 'ContraseÃ±a'
 		FROM TUsuario
 		WHERE Usuario = @Usuario
 END;
@@ -447,7 +448,7 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA DEPARTAMENTO ACADEMICO ****************** */
 
--- Procedimiento para mostrar la lista de departamentos académicos.
+-- Procedimiento para mostrar la lista de departamentos acadÃ©micos.
 CREATE PROCEDURE spuMostrarDepartamentos 
 AS
 BEGIN
@@ -456,11 +457,11 @@ BEGIN
 END;
 GO
 
--- Procedimiento para buscar el nombre de un departamento académico.
+-- Procedimiento para buscar el nombre de un departamento acadÃ©mico.
 CREATE PROCEDURE spuBuscarNombreDepartamento @CodDepartamentoA VARCHAR(3) 
 AS
 BEGIN
-	-- Mostrar el nombre del departamento académico.
+	-- Mostrar el nombre del departamento acadÃ©mico.
 	SELECT Nombre
 		FROM TDepartamentoAcademico
 		WHERE CodDepartamentoA = @CodDepartamentoA
@@ -480,12 +481,12 @@ BEGIN
 END;
 GO
 
--- Procedimiento para buscar un estudiante (por su código) de una escuela profesional.
+-- Procedimiento para buscar un estudiante (por su cÃ³digo) de una escuela profesional.
 CREATE PROCEDURE spuBuscarEstudiante @CodEscuelaP VARCHAR(3),
 									 @CodEstudiante VARCHAR(6)
 AS
 BEGIN
-	-- Mostrar la información del estudiante
+	-- Mostrar la informaciÃ³n del estudiante
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodEstudiante, APaterno, AMaterno, Nombre, Email, Direccion, Telefono
 		FROM TEstudiante
 		WHERE CodEscuelaP = @CodEscuelaP AND CodEstudiante = @CodEstudiante
@@ -494,7 +495,7 @@ GO
 
 -- Procedimiento para buscar por cualquier atributo los estudiantes de una escuela profesional.
 CREATE PROCEDURE spuBuscarEstudiantes @CodEscuelaP VARCHAR(3),
-									  @Texto VARCHAR(20)
+									  @Texto VARCHAR(35)
 AS
 BEGIN
 	-- Mostrar la tabla TEstudiante por el texto que se desea buscar
@@ -514,9 +515,9 @@ GO
 -- Procedimiento para insertar un estudiante.
 CREATE PROCEDURE spuInsertarEstudiante @Perfil VARBINARY(MAX),
 									   @CodEstudiante VARCHAR(6),
-									   @APaterno VARCHAR(15),
-									   @AMaterno VARCHAR(15),
-									   @Nombre VARCHAR(20),
+									   @APaterno VARCHAR(35),
+									   @AMaterno VARCHAR(35),
+									   @Nombre VARCHAR(35),
 									   @Email VARCHAR(50),
 									   @Direccion VARCHAR(50),
 									   @Telefono VARCHAR(15),
@@ -532,9 +533,9 @@ GO
 -- Procedimiento para actualizar un estudiante.
 CREATE PROCEDURE spuActualizarEstudiante @Perfil VARBINARY(MAX),
 										 @CodEstudiante VARCHAR(6),
-										 @APaterno VARCHAR(15),
-										 @AMaterno VARCHAR(15),
-										 @Nombre VARCHAR(20),
+										 @APaterno VARCHAR(35),
+										 @AMaterno VARCHAR(35),
+										 @Nombre VARCHAR(35),
 										 @Email VARCHAR(50),
 										 @Direccion VARCHAR(50),
 										 @Telefono VARCHAR(15),
@@ -577,12 +578,12 @@ BEGIN
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
 	       Subcategoria, Regimen
 		FROM TDocente
-	    WHERE CodEscuelaP = @CodEscuelaP
+	    WHERE CodEscuelaP = @CodEscuelaP AND CodDocente != '00000'
 		ORDER BY APaterno
 END;
 GO
 
--- Procedimiento para mostrar los docentes de un departamento académico.
+-- Procedimiento para mostrar los docentes de un departamento acadÃ©mico.
 CREATE PROCEDURE spuMostrarDocentesDepartamento @CodDepartamentoA VARCHAR(3)
 AS
 BEGIN
@@ -590,34 +591,34 @@ BEGIN
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
 	       Subcategoria, Regimen
 		FROM TDocente
-	    WHERE CodDepartamentoA = @CodDepartamentoA
+	    WHERE CodDepartamentoA = @CodDepartamentoA AND CodDocente != '00000'
 		ORDER BY APaterno
 END;
 GO
 
--- Procedimiento para buscar un docente (por su código) de un departamento académico.
+-- Procedimiento para buscar un docente (por su cÃ³digo) de un departamento acadÃ©mico.
 CREATE PROCEDURE spuBuscarDocente @CodDepartamentoA VARCHAR(3),
 								  @CodDocente VARCHAR(5)
 AS
 BEGIN
-	-- Mostrar la información del docente
+	-- Mostrar la informaciÃ³n del docente
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
 	       Subcategoria, Regimen
 		FROM TDocente
-		WHERE CodDepartamentoA = @CodDepartamentoA AND CodDocente = @CodDocente
+		WHERE CodDepartamentoA = @CodDepartamentoA AND CodDocente = @CodDocente AND CodDocente != '00000'
 END;
 GO
 
--- Procedimiento para buscar por cualquier atributo los docentes de un departamento académico.
+-- Procedimiento para buscar por cualquier atributo los docentes de un departamento acadÃ©mico.
 CREATE PROCEDURE spuBuscarDocentes @CodDepartamentoA VARCHAR(3),
-								   @Texto VARCHAR(20)
+								   @Texto VARCHAR(35)
 AS
 BEGIN
 	-- Mostrar la tabla TDocente por el texto que se desea buscar
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
 	       Subcategoria, Regimen
 		FROM TDocente
-		WHERE CodDepartamentoA = @CodDepartamentoA AND
+		WHERE CodDepartamentoA = @CodDepartamentoA AND @Texto != '00000' AND
 		     (CodDocente LIKE (@Texto + '%') OR
 			  APaterno LIKE (@Texto + '%') OR
 			  AMaterno LIKE (@Texto + '%') OR
@@ -632,11 +633,11 @@ BEGIN
 END;
 GO
 
---Procedimiento para obtener el código de un docente por su nombre.
+--Procedimiento para obtener el cÃ³digo de un docente por su nombre.
 CREATE PROCEDURE spuObtenerCodigoDocente @Nombre VARCHAR(50)
 AS
 BEGIN
-	--Obtener el código de la asignatura
+	--Obtener el cÃ³digo de la asignatura
 	SELECT CodDocente
 		FROM TDocente
 		WHERE Nombre = @Nombre
@@ -646,9 +647,9 @@ GO
 -- Procedimiento para insertar un docente.
 CREATE PROCEDURE spuInsertarDocente @Perfil VARBINARY(MAX),
 									@CodDocente VARCHAR(5),
-									@APaterno VARCHAR(15),
-									@AMaterno VARCHAR(15),
-									@Nombre VARCHAR(20),
+									@APaterno VARCHAR(35),
+									@AMaterno VARCHAR(35),
+									@Nombre VARCHAR(35),
 									@Email VARCHAR(50),
 									@Direccion VARCHAR(50),
 									@Telefono VARCHAR(15),
@@ -666,19 +667,19 @@ BEGIN
 
 	-- Insertar un usuario con el codigo del docente en la tabla TUsuario
 	DECLARE @Datos VARCHAR(53);
-	DECLARE @Contraseña VARCHAR(8);
+	DECLARE @ContraseÃ±a VARCHAR(8);
 	SET @Datos = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre);
-	SET @Contraseña = @CodDocente;
-	EXEC DBO.spuInsertarUsuario @Perfil, @CodDocente, @Contraseña, 'Docente', @Datos
+	SET @ContraseÃ±a = @CodDocente;
+	EXEC DBO.spuInsertarUsuario @Perfil, @CodDocente, @ContraseÃ±a, 'Docente', @Datos
 END;
 GO
 
 -- Procedimiento para actualizar un docente.
 CREATE PROCEDURE spuActualizarDocente @Perfil VARBINARY(MAX),
 									  @CodDocente VARCHAR(5),
-									  @APaterno VARCHAR(15),
-									  @AMaterno VARCHAR(15),
-									  @Nombre VARCHAR(20),
+									  @APaterno VARCHAR(35),
+									  @AMaterno VARCHAR(35),
+									  @Nombre VARCHAR(35),
 									  @Email VARCHAR(50),
 									  @Direccion VARCHAR(50),
 									  @Telefono VARCHAR(15),
@@ -731,12 +732,12 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ASIGNATURA ****************** */
 
--- Procedimiento para mostrar las asignaturas de un departamento académico.
+-- Procedimiento para mostrar las asignaturas de un departamento acadÃ©mico.
 CREATE PROCEDURE spuMostrarAsignaturas @CodDepartamento VARCHAR(3)
 AS
 BEGIN	
 	-- Mostrar la tabla TAsignatura
-	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica, Prerrequisito
+	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica, Prerrequisito, Sumilla
 		FROM TAsignatura
 	    WHERE SUBSTRING(CodAsignatura,1,2) = @CodDepartamento
 		ORDER BY NombreAsignatura
@@ -755,9 +756,9 @@ BEGIN
 END;
 GO
 
--- Procedimiento para buscar por cualquier atributo las asignaturas de un departamento académico.
+-- Procedimiento para buscar por cualquier atributo las asignaturas de un departamento acadÃ©mico.
 CREATE PROCEDURE spuBuscarAsignaturas @CodDepartamento VARCHAR(3),
-									  @Texto VARCHAR(20)
+									  @Texto VARCHAR(100)
 AS
 BEGIN
 	-- Mostrar la tabla TAsignatura por el texto que se desea buscar
@@ -774,22 +775,22 @@ BEGIN
 END;
 GO
 
---Procedimiento para obtener las horas de teoría y práctica de una asignatura.
+--Procedimiento para obtener las horas de teorÃ­a y prÃ¡ctica de una asignatura.
 CREATE PROCEDURE spuObtenerHorasAsignatura @CodAsignatura VARCHAR(6)
 AS                                                         
 BEGIN                                 
-	--Obtener las horas de teoría y práctica
+	--Obtener las horas de teorÃ­a y prÃ¡ctica
 	SELECT HorasTeoria,HorasPractica
 		FROM TAsignatura
 		WHERE CodAsignatura = @CodAsignatura
 END;
 GO
 
---Procedimiento para obtener el código de una asignatura por su nombre.
+--Procedimiento para obtener el cÃ³digo de una asignatura por su nombre.
 CREATE PROCEDURE spuObtenerCodigoAsignatura @NombreAsignatura VARCHAR(50)
 AS
 BEGIN
-	--Obtener el código de la asignatura
+	--Obtener el cÃ³digo de la asignatura
 	SELECT CodAsignatura
 		FROM TAsignatura
 		WHERE NombreAsignatura = @NombreAsignatura
@@ -808,7 +809,7 @@ GO
 
 -- Procedimiento para insertar una asignatura.
 CREATE PROCEDURE spuInsertarAsignatura @CodAsignatura VARCHAR(6),
-									   @NombreAsignatura VARCHAR(50),
+									   @NombreAsignatura VARCHAR(100),
 									   @Creditos INT,
 									   @Categoria VARCHAR(5),
 									   @HorasTeoria INT,
@@ -825,7 +826,7 @@ GO
 
 -- Procedimiento para actualizar una asignatura.
 CREATE PROCEDURE spuActualizarAsignatura @CodAsignatura VARCHAR(6),
-									     @NombreAsignatura VARCHAR(50),
+									     @NombreAsignatura VARCHAR(100),
 									     @Creditos INT,
 									     @Categoria VARCHAR(5),
 									     @HorasTeoria INT,
@@ -861,7 +862,7 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA CATALOGO ****************** */
 
--- Procedimiento para mostrar el catálogo de asignaturas asignadas de un departamento académico.
+-- Procedimiento para mostrar el catÃ¡logo de asignaturas asignadas de un departamento acadÃ©mico.
 CREATE PROCEDURE spuMostrarCatalogo @CodDepartamentoA VARCHAR(3) -- Atrib. Docente (Jefe de Dep.) 
 AS
 BEGIN
@@ -878,7 +879,7 @@ BEGIN
 END;
 GO
 
--- Procedimiento para buscar un catálogo específico.
+-- Procedimiento para buscar un catÃ¡logo especÃ­fico.
 CREATE PROCEDURE spuBuscarCatalogo @Texto VARCHAR(50),
                                    @CodEscuelaP VARCHAR(3)
 AS
@@ -903,10 +904,10 @@ BEGIN
 END;
 GO
 
--- Procedimiento para buscar los docentes que enseñan una asignatura. 
+-- Procedimiento para buscar los docentes que enseÃ±an una asignatura. 
 CREATE PROCEDURE spuBuscarDocentesAsignatura @CodSemestre VARCHAR(7),
-										     @Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
-											 @Texto2 VARCHAR(3), -- EP donde se enseña la asignatura
+										     @Texto1 VARCHAR(100), -- cÃ³digo (ej. IF065) o nombre de la asignatura
+											 @Texto2 VARCHAR(3), -- EP donde se enseÃ±a la asignatura
 											 @Grupo VARCHAR(1)
 AS
 BEGIN
@@ -926,7 +927,7 @@ GO
 -- Procedimiento para buscar las asignaturas asignadas a un docente.
 CREATE PROCEDURE spuBuscarAsignaturasDocente @CodSemestre VARCHAR(7),
                                              @CodDepartamentoA VARCHAR(3), -- Atrib. Docente
-										     @Texto VARCHAR(20) -- código o nombre del docente
+										     @Texto VARCHAR(35) -- cÃ³digo o nombre del docente
 AS
 BEGIN
 	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
@@ -947,8 +948,8 @@ GO
 -- Procedimiento para buscar por un filtro las asignaturas asignadas a un docente.
 CREATE PROCEDURE spuBuscarAsignaturasAsignadasDocente @CodSemestre VARCHAR(7),
 													  @CodDepartamentoA VARCHAR(3), -- Atrib. Docente
-													  @Texto1 VARCHAR(20), -- código o nombre del docente
-													  @Texto2 VARCHAR(20) -- filtro (código o nombre de la asignatura, EP, grupo)
+													  @Texto1 VARCHAR(35), -- cÃ³digo o nombre del docente
+													  @Texto2 VARCHAR(100) -- filtro (cÃ³digo o nombre de la asignatura, EP, grupo)
 AS
 BEGIN
 	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
@@ -972,8 +973,8 @@ GO
 
 -- Procedimiento para buscar los silabos de una asignatura.
 CREATE PROCEDURE spuBuscarSilabosAsignatura @CodSemestre VARCHAR(7),
-											@Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
-										    @Texto2 VARCHAR(3) -- EP donde se enseña la asignatura
+											@Texto1 VARCHAR(100), -- cÃ³digo (ej. IF065) o nombre de la asignatura
+										    @Texto2 VARCHAR(3) -- EP donde se enseÃ±a la asignatura
 AS
 BEGIN
 	-- Mostrar el silabo
@@ -991,7 +992,7 @@ GO
 
 -- Procedimiento para buscar el silabo de una asignatura.
 CREATE PROCEDURE spuMostrarSilaboAsignatura @CodSemestre VARCHAR(7),
-										    @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
+										    @CodAsignatura VARCHAR(9), -- cÃ³digo (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
 											@CodDocente VARCHAR(5)
 AS
 BEGIN
@@ -1004,7 +1005,7 @@ GO
 
 -- Procedimiento para buscar el plan de sesiones de un docente para una asignatura.
 CREATE PROCEDURE spuMostrarPlanSesionesAsignatura @CodSemestre VARCHAR(7),
-												  @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
+												  @CodAsignatura VARCHAR(9), -- cÃ³digo (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
 												  @CodDocente VARCHAR(5)
 AS
 BEGIN
@@ -1015,7 +1016,7 @@ BEGIN
 END;
 GO
 
--- Procedimiento para insertar una asignatura en un catálogo.
+-- Procedimiento para insertar una asignatura en un catÃ¡logo.
 CREATE PROCEDURE spuInsertarAsignaturaCatalogo @CodSemestre VARCHAR(7),
 											   @CodAsignatura VARCHAR(6),
 											   @CodEscuelaP VARCHAR(3),
@@ -1031,7 +1032,7 @@ BEGIN
 END;
 GO
 
--- Procedimiento para actualizar la información de una asignatura de un catálogo.
+-- Procedimiento para actualizar la informaciÃ³n de una asignatura de un catÃ¡logo.
 CREATE PROCEDURE spuActualizarAsignaturaCatalogo @CodSemestre VARCHAR(7),
 											     @CodAsignatura VARCHAR(6),
 											     @CodEscuelaP VARCHAR(3),
@@ -1056,7 +1057,7 @@ GO
 
 -- Procedimiento para actualizar el silabo de una asignatura.
 CREATE PROCEDURE spuActualizarSilaboAsignatura @CodSemestre VARCHAR(7),
-											   @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
+											   @CodAsignatura VARCHAR(9), -- cÃ³digo (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
 											   @CodDocente VARCHAR(5),
 											   @Silabo VARBINARY(MAX)
 AS
@@ -1070,7 +1071,7 @@ GO
 
 -- Procedimiento para actualizar el plan de sesiones de una asignatura.
 CREATE PROCEDURE spuActualizarPlanSesionesAsignatura @CodSemestre VARCHAR(7),
-											         @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
+											         @CodAsignatura VARCHAR(9), -- cÃ³digo (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
 											         @CodDocente VARCHAR(5),
 											         @PlanSesiones VARBINARY(MAX)
 AS
@@ -1082,7 +1083,7 @@ BEGIN
 END;
 GO
 
--- Procedimiento para eliminar una asignatura de un catálogo
+-- Procedimiento para eliminar una asignatura de un catÃ¡logo
 CREATE PROCEDURE spuEliminarAsignaturaCatalogo @CodSemestre VARCHAR(7),
 											   @CodAsignatura VARCHAR(6),
 											   @CodEscuelaP VARCHAR(3),
@@ -1098,10 +1099,10 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA HORARIO-ASIGNATURA ****************** */
 
--- Procedimiento para buscar el horario de una asignatura en un catálogo. 
+-- Procedimiento para buscar el horario de una asignatura en un catÃ¡logo. 
 CREATE PROCEDURE spuBuscarHorarioAsignatura @CodSemestre VARCHAR(7),
-										    @Texto1 VARCHAR(20), -- código (ej. IF065) o nombre de la asignatura
-											@Texto2 VARCHAR(3), -- EP donde se enseña la asignatura
+										    @Texto1 VARCHAR(100), -- cÃ³digo (ej. IF065) o nombre de la asignatura
+											@Texto2 VARCHAR(3), -- EP donde se enseÃ±a la asignatura
 											@Grupo VARCHAR(1)
 AS
 BEGIN
@@ -1121,7 +1122,7 @@ GO
 
 -- Procedimiento para obtener el horario semanal (por registros) de las asignaturas asignadas a un docente.
 CREATE PROCEDURE spuHorarioSemanalDocente @CodSemestre VARCHAR(7),
-										  @Texto VARCHAR(20) -- código o nombre del docente
+										  @Texto VARCHAR(35) -- cÃ³digo o nombre del docente
 AS
 BEGIN
 	-- Mostrar las asignaturas y los horarios:
@@ -1138,10 +1139,12 @@ BEGIN
 END;
 GO
 
+exec spuHorarioAsignaturaDocente '2021-II', 'IF662AIN', '51410'
+
 -- Procedimiento para obtener el horario (concatenado) de una asignatura asignada a un docente.
 -- Formato salida: IF614AIN T:MA 7 -9 VIRT 7 IN; T:VI 8 -9 VIRT 7 IN; P:JU 7 -9 VIRT 7 IN
 CREATE PROCEDURE spuHorarioAsignaturaDocente @CodSemestre VARCHAR(7),
-											 @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
+											 @CodAsignatura VARCHAR(9), -- cÃ³digo (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
 											 @CodDocente VARCHAR(5)
 AS
 BEGIN
@@ -1155,7 +1158,7 @@ BEGIN
 		FROM THorarioAsignatura
 		WHERE CodSemestre = @CodSemestre AND CodAsignatura + Grupo + CodEscuelaP = @CodAsignatura AND CodDocente = @CodDocente
 
-	-- Declarar variables que utilizará el cursor
+	-- Declarar variables que utilizarÃ¡ el cursor
 	DECLARE @Dia VARCHAR(2),  
 			@Tipo CHAR(1),
 		    @HoraInicio VARCHAR(2),
@@ -1194,7 +1197,7 @@ BEGIN
 END;
 GO
 
---Procedimiento para obtener las horas que se le asignó a un docente en un semestre.
+--Procedimiento para obtener las horas que se le asignÃ³ a un docente en un semestre.
 CREATE PROCEDURE spuHorasDocenteHorarioAsignatura @CodDocente VARCHAR(5),
 												  @CodSemestre VARCHAR(7)
 AS
@@ -1315,7 +1318,7 @@ GO
 -- Procedimiento para buscar los estudiantes matriculados en una asignatura de un determinado semestre.
 CREATE PROCEDURE spuBuscarEstudiantesAsignatura @CodSemestre VARCHAR(7),
 										        @CodEscuelaP VARCHAR(3),
-											    @Texto VARCHAR(20) -- código (ej. IF085AIN) o nombre de la asignatura
+											    @Texto VARCHAR(100) -- cÃ³digo (ej. IF085AIN) o nombre de la asignatura
 AS
 BEGIN
 	-- Mostrar la tabla de TMatricula
@@ -1331,7 +1334,7 @@ GO
 -- Procedimiento para buscar por sus datos de los estudiantes matriculados a una asignatura
 CREATE PROCEDURE spuBuscarEstudiantesMatriculadosAsignatura @CodSemestre VARCHAR(7),
 															@CodEscuelaP VARCHAR(3),
-															@Texto1 VARCHAR(20), -- código (ej. IF085AIN) o nombre de la asignatura
+															@Texto1 VARCHAR(100), -- cÃ³digo (ej. IF085AIN) o nombre de la asignatura
 															@Texto2 VARCHAR(20)
 AS
 BEGIN
@@ -1435,14 +1438,14 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA USUARIO ****************** */
 
--- Procedimiento para el inicio de sesión.
+-- Procedimiento para el inicio de sesiÃ³n.
 CREATE PROCEDURE spuIniciarSesion @Usuario VARCHAR(6),
-                                  @Contraseña VARCHAR(20)
+                                  @ContraseÃ±a VARCHAR(20)
 AS
 BEGIN
 	-- Seleccionar los datos del usuario valido
-	SELECT Perfil, Usuario, DBO.fnDesencriptarContraseña(Contraseña), Acceso, Datos
+	SELECT Perfil, Usuario, DBO.fnDesencriptarContraseÃ±a(ContraseÃ±a), Acceso, Datos
 		FROM TUsuario
-		WHERE Usuario = @Usuario AND DBO.fnDesencriptarContraseña(Contraseña) = @Contraseña
+		WHERE Usuario = @Usuario AND DBO.fnDesencriptarContraseÃ±a(ContraseÃ±a) = @ContraseÃ±a
 END;
 GO
