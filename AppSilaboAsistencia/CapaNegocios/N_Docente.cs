@@ -23,6 +23,11 @@ namespace CapaNegocios
             return new D_Docente().BuscarDocentes(CodDepartamentoA, Texto);
         }
 
+        public static DataTable ObtenerCodigoDocente(string Nombre)
+        {
+            return new D_Docente().ObtenerCodigoDocente(Nombre);
+        }
+
         public void InsertarDocente(E_Docente Docente)
         {
             ObjDocente.InsertarDocente(Docente);

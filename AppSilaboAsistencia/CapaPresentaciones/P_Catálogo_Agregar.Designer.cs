@@ -31,11 +31,21 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_Catálogo_Agregar));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.Salir = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Panel_Info = new System.Windows.Forms.Panel();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.Label_Horas_Asignadas_Docente2 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -119,24 +129,12 @@ namespace CapaPresentaciones
             this.Check_Código_Docente = new System.Windows.Forms.CheckBox();
             this.Check_Nombre_Docente = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tDocenteBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.tAsignaturaTableAdapter = new CapaPresentaciones.BDSistemaGestionDataSetTableAdapters.TAsignaturaTableAdapter();
             this.tDocenteTableAdapter = new CapaPresentaciones.BDSistemaGestionDataSetTableAdapters.TDocenteTableAdapter();
-            this.tDocenteBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.tAsignaturaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.Panel_Info = new System.Windows.Forms.Panel();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
+            this.tAsignaturaTableAdapter = new CapaPresentaciones.BDSistemaGestionDataSetTableAdapters.TAsignaturaTableAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Salir)).BeginInit();
             this.panel2.SuspendLayout();
+            this.Panel_Info.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Información)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tDocenteBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDSistemaGestionDataSetBindingSource)).BeginInit();
@@ -144,11 +142,12 @@ namespace CapaPresentaciones
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tAsignaturaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tDocenteBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tDocenteBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tDocenteBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tAsignaturaBindingSource1)).BeginInit();
-            this.Panel_Info.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 15;
+            this.bunifuElipse1.TargetControl = this;
             // 
             // panel1
             // 
@@ -159,7 +158,7 @@ namespace CapaPresentaciones
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(510, 38);
-            this.panel1.TabIndex = 0;
+            this.panel1.TabIndex = 1;
             // 
             // Salir
             // 
@@ -267,10 +266,106 @@ namespace CapaPresentaciones
             this.panel2.Controls.Add(this.Check_Código_Docente);
             this.panel2.Controls.Add(this.Check_Nombre_Docente);
             this.panel2.Controls.Add(this.label2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 38);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(510, 352);
-            this.panel2.TabIndex = 1;
+            this.panel2.Size = new System.Drawing.Size(510, 386);
+            this.panel2.TabIndex = 2;
+            // 
+            // Panel_Info
+            // 
+            this.Panel_Info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(198)))), ((int)(((byte)(227)))));
+            this.Panel_Info.Controls.Add(this.label33);
+            this.Panel_Info.Controls.Add(this.label32);
+            this.Panel_Info.Controls.Add(this.label31);
+            this.Panel_Info.Controls.Add(this.label30);
+            this.Panel_Info.Controls.Add(this.label29);
+            this.Panel_Info.Controls.Add(this.label28);
+            this.Panel_Info.Controls.Add(this.label27);
+            this.Panel_Info.Controls.Add(this.label26);
+            this.Panel_Info.Location = new System.Drawing.Point(346, 141);
+            this.Panel_Info.Name = "Panel_Info";
+            this.Panel_Info.Size = new System.Drawing.Size(138, 214);
+            this.Panel_Info.TabIndex = 120;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(3, 174);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(18, 13);
+            this.label33.TabIndex = 7;
+            this.label33.Text = "4)";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(3, 118);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(18, 13);
+            this.label32.TabIndex = 6;
+            this.label32.Text = "3)";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(3, 64);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(18, 13);
+            this.label31.TabIndex = 5;
+            this.label31.Text = "2)";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(3, 9);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(18, 13);
+            this.label30.TabIndex = 4;
+            this.label30.Text = "1)";
+            // 
+            // label29
+            // 
+            this.label29.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(22, 173);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(113, 38);
+            this.label29.TabIndex = 3;
+            this.label29.Text = "Al guardar, automáticamente se cierra la ventana.";
+            // 
+            // label28
+            // 
+            this.label28.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(22, 118);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(109, 48);
+            this.label28.TabIndex = 2;
+            this.label28.Text = "Al escoger 2 docentes, si es un curso solo de P, el primer docente va a la primer" +
+    "a hora.";
+            // 
+            // label27
+            // 
+            this.label27.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(22, 64);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(109, 48);
+            this.label27.TabIndex = 1;
+            this.label27.Text = "Al escoger 2 docentes, si es un curso de T y P, el primero va al de T y el segund" +
+    "o al de P.";
+            // 
+            // label26
+            // 
+            this.label26.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(22, 9);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(109, 48);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "Si aún no se tiene designado los docente, puede dejarlo en 1 solo docente por def" +
+    "ecto.";
             // 
             // label25
             // 
@@ -513,6 +608,7 @@ namespace CapaPresentaciones
             this.Seleccionar_Semestre.Name = "Seleccionar_Semestre";
             this.Seleccionar_Semestre.Size = new System.Drawing.Size(121, 21);
             this.Seleccionar_Semestre.TabIndex = 99;
+            this.Seleccionar_Semestre.SelectedIndexChanged += new System.EventHandler(this.Seleccionar_Semestre_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -527,12 +623,14 @@ namespace CapaPresentaciones
             // Seleccionar_Docente_Cod_Nom2
             // 
             this.Seleccionar_Docente_Cod_Nom2.DataSource = this.tDocenteBindingSource1;
+            this.Seleccionar_Docente_Cod_Nom2.DisplayMember = "Nombre";
             this.Seleccionar_Docente_Cod_Nom2.Enabled = false;
             this.Seleccionar_Docente_Cod_Nom2.FormattingEnabled = true;
             this.Seleccionar_Docente_Cod_Nom2.Location = new System.Drawing.Point(167, 79);
             this.Seleccionar_Docente_Cod_Nom2.Name = "Seleccionar_Docente_Cod_Nom2";
             this.Seleccionar_Docente_Cod_Nom2.Size = new System.Drawing.Size(173, 21);
             this.Seleccionar_Docente_Cod_Nom2.TabIndex = 96;
+            this.Seleccionar_Docente_Cod_Nom2.ValueMember = "CodDocente";
             this.Seleccionar_Docente_Cod_Nom2.SelectedIndexChanged += new System.EventHandler(this.Seleccionar_Docente_Cod_Nom2_SelectedIndexChanged);
             // 
             // tDocenteBindingSource1
@@ -912,26 +1010,30 @@ namespace CapaPresentaciones
             // Seleccionar_Asignatura_Cod_Nom
             // 
             this.Seleccionar_Asignatura_Cod_Nom.DataSource = this.tAsignaturaBindingSource;
+            this.Seleccionar_Asignatura_Cod_Nom.DisplayMember = "NombreAsignatura";
             this.Seleccionar_Asignatura_Cod_Nom.FormattingEnabled = true;
             this.Seleccionar_Asignatura_Cod_Nom.Location = new System.Drawing.Point(167, 127);
             this.Seleccionar_Asignatura_Cod_Nom.Name = "Seleccionar_Asignatura_Cod_Nom";
             this.Seleccionar_Asignatura_Cod_Nom.Size = new System.Drawing.Size(173, 21);
             this.Seleccionar_Asignatura_Cod_Nom.TabIndex = 60;
+            this.Seleccionar_Asignatura_Cod_Nom.ValueMember = "CodAsignatura";
             this.Seleccionar_Asignatura_Cod_Nom.SelectedIndexChanged += new System.EventHandler(this.Seleccionar_Asignatura_Cod_Nom_SelectedIndexChanged);
             // 
             // tAsignaturaBindingSource
             // 
             this.tAsignaturaBindingSource.DataMember = "TAsignatura";
-            this.tAsignaturaBindingSource.DataSource = this.bDSistemaGestionDataSet;
+            this.tAsignaturaBindingSource.DataSource = this.bDSistemaGestionDataSetBindingSource;
             // 
             // Seleccionar_Docente_Cod_Nom
             // 
             this.Seleccionar_Docente_Cod_Nom.DataSource = this.tDocenteBindingSource;
+            this.Seleccionar_Docente_Cod_Nom.DisplayMember = "Nombre";
             this.Seleccionar_Docente_Cod_Nom.FormattingEnabled = true;
             this.Seleccionar_Docente_Cod_Nom.Location = new System.Drawing.Point(167, 54);
             this.Seleccionar_Docente_Cod_Nom.Name = "Seleccionar_Docente_Cod_Nom";
             this.Seleccionar_Docente_Cod_Nom.Size = new System.Drawing.Size(173, 21);
             this.Seleccionar_Docente_Cod_Nom.TabIndex = 59;
+            this.Seleccionar_Docente_Cod_Nom.ValueMember = "CodDocente";
             this.Seleccionar_Docente_Cod_Nom.SelectedIndexChanged += new System.EventHandler(this.Seleccionar_Docente_Cod_Nom_SelectedIndexChanged);
             // 
             // tDocenteBindingSource
@@ -998,11 +1100,11 @@ namespace CapaPresentaciones
             this.Botón_Guardar.ColorContrastOnClick = 45;
             this.Botón_Guardar.ColorContrastOnHover = 45;
             this.Botón_Guardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges5.BottomLeft = true;
-            borderEdges5.BottomRight = true;
-            borderEdges5.TopLeft = true;
-            borderEdges5.TopRight = true;
-            this.Botón_Guardar.CustomizableEdges = borderEdges5;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.Botón_Guardar.CustomizableEdges = borderEdges1;
             this.Botón_Guardar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Botón_Guardar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.Botón_Guardar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -1262,128 +1364,13 @@ namespace CapaPresentaciones
             this.label2.TabIndex = 1;
             this.label2.Text = "Seleccione el docente:";
             // 
-            // tDocenteBindingSource2
-            // 
-            this.tDocenteBindingSource2.DataMember = "TDocente";
-            this.tDocenteBindingSource2.DataSource = this.bDSistemaGestionDataSetBindingSource;
-            // 
-            // bunifuElipse1
-            // 
-            this.bunifuElipse1.ElipseRadius = 15;
-            this.bunifuElipse1.TargetControl = this;
-            // 
-            // tAsignaturaTableAdapter
-            // 
-            this.tAsignaturaTableAdapter.ClearBeforeFill = true;
-            // 
             // tDocenteTableAdapter
             // 
             this.tDocenteTableAdapter.ClearBeforeFill = true;
             // 
-            // tDocenteBindingSource3
+            // tAsignaturaTableAdapter
             // 
-            this.tDocenteBindingSource3.DataMember = "TDocente";
-            this.tDocenteBindingSource3.DataSource = this.bDSistemaGestionDataSetBindingSource;
-            // 
-            // tAsignaturaBindingSource1
-            // 
-            this.tAsignaturaBindingSource1.DataMember = "TAsignatura";
-            this.tAsignaturaBindingSource1.DataSource = this.bDSistemaGestionDataSetBindingSource;
-            // 
-            // Panel_Info
-            // 
-            this.Panel_Info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(198)))), ((int)(((byte)(227)))));
-            this.Panel_Info.Controls.Add(this.label33);
-            this.Panel_Info.Controls.Add(this.label32);
-            this.Panel_Info.Controls.Add(this.label31);
-            this.Panel_Info.Controls.Add(this.label30);
-            this.Panel_Info.Controls.Add(this.label29);
-            this.Panel_Info.Controls.Add(this.label28);
-            this.Panel_Info.Controls.Add(this.label27);
-            this.Panel_Info.Controls.Add(this.label26);
-            this.Panel_Info.Location = new System.Drawing.Point(346, 141);
-            this.Panel_Info.Name = "Panel_Info";
-            this.Panel_Info.Size = new System.Drawing.Size(138, 214);
-            this.Panel_Info.TabIndex = 120;
-            // 
-            // label26
-            // 
-            this.label26.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(22, 9);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(109, 48);
-            this.label26.TabIndex = 0;
-            this.label26.Text = "Si aún no se tiene designado los docente, puede dejarlo en 1 solo docente por def" +
-    "ecto.";
-            // 
-            // label27
-            // 
-            this.label27.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(22, 64);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(109, 48);
-            this.label27.TabIndex = 1;
-            this.label27.Text = "Al escoger 2 docentes, si es un curso de T y P, el primero va al de T y el segund" +
-    "o al de P.";
-            // 
-            // label28
-            // 
-            this.label28.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(22, 118);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(109, 48);
-            this.label28.TabIndex = 2;
-            this.label28.Text = "Al escoger 2 docentes, si es un curso solo de P, el primer docente va a la primer" +
-    "a hora.";
-            // 
-            // label29
-            // 
-            this.label29.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(22, 173);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(113, 38);
-            this.label29.TabIndex = 3;
-            this.label29.Text = "Al guardar, automáticamente se cierra la ventana.";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(3, 9);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(18, 13);
-            this.label30.TabIndex = 4;
-            this.label30.Text = "1)";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(3, 64);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(18, 13);
-            this.label31.TabIndex = 5;
-            this.label31.Text = "2)";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(3, 118);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(18, 13);
-            this.label32.TabIndex = 6;
-            this.label32.Text = "3)";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(3, 174);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(18, 13);
-            this.label33.TabIndex = 7;
-            this.label33.Text = "4)";
+            this.tAsignaturaTableAdapter.ClearBeforeFill = true;
             // 
             // P_Catálogo_Agregar
             // 
@@ -1394,13 +1381,15 @@ namespace CapaPresentaciones
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_Catálogo_Agregar";
-            this.Text = "Interfaz_Catálogo_Agregar";
+            this.Text = "P_Catálogo_Agregar";
             this.Load += new System.EventHandler(this.P_Catálogo_Agregar_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Salir)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.Panel_Info.ResumeLayout(false);
+            this.Panel_Info.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Información)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tDocenteBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDSistemaGestionDataSetBindingSource)).EndInit();
@@ -1408,57 +1397,48 @@ namespace CapaPresentaciones
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tAsignaturaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tDocenteBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tDocenteBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tDocenteBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tAsignaturaBindingSource1)).EndInit();
-            this.Panel_Info.ResumeLayout(false);
-            this.Panel_Info.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private System.Windows.Forms.PictureBox Salir;
-        private System.Windows.Forms.CheckBox Check_Código_Docente;
-        private System.Windows.Forms.CheckBox Check_Nombre_Docente;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox Check_Grupo_C;
-        private System.Windows.Forms.CheckBox Check_Grupo_B;
-        private System.Windows.Forms.CheckBox Check_Grupo_A;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox Check_Día_Sábado;
-        private System.Windows.Forms.CheckBox Check_Día_Viernes;
-        private System.Windows.Forms.CheckBox Check_Día_Jueves;
-        private System.Windows.Forms.CheckBox Check_Día_Miércoles;
-        private System.Windows.Forms.CheckBox Check_Día_Martes;
-        private System.Windows.Forms.CheckBox Check_Día_Lunes;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox Check_Código_Asignatura;
-        private System.Windows.Forms.CheckBox Check_Nombre_Asignatura;
-        private System.Windows.Forms.Label label3;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 Botón_Guardar;
-        private System.Windows.Forms.BindingSource bDSistemaGestionDataSetBindingSource;
-        private BDSistemaGestionDataSet bDSistemaGestionDataSet;
-        private System.Windows.Forms.BindingSource tAsignaturaBindingSource;
-        private BDSistemaGestionDataSetTableAdapters.TAsignaturaTableAdapter tAsignaturaTableAdapter;
-        private System.Windows.Forms.ComboBox Seleccionar_Aula;
-        private System.Windows.Forms.ComboBox Seleccionar_Asignatura_Cod_Nom;
-        private System.Windows.Forms.ComboBox Seleccionar_Docente_Cod_Nom;
-        private System.Windows.Forms.BindingSource tDocenteBindingSource;
-        private BDSistemaGestionDataSetTableAdapters.TDocenteTableAdapter tDocenteTableAdapter;
-        private System.Windows.Forms.BindingSource tDocenteBindingSource1;
-        private System.Windows.Forms.BindingSource tDocenteBindingSource3;
-        private System.Windows.Forms.BindingSource tDocenteBindingSource2;
-        private System.Windows.Forms.BindingSource tAsignaturaBindingSource1;
-        private System.Windows.Forms.DateTimePicker Hora_Inicio_Lunes;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker Hora_Fin_Lunes;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel Panel_Info;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label Label_Horas_Asignadas_Docente2;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label Label_Horas_Asignadas_Docente1;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label LabelPR2;
+        private System.Windows.Forms.Label LabelPR1;
+        private System.Windows.Forms.Label LabelP2;
+        private System.Windows.Forms.Label LabelP1;
+        private System.Windows.Forms.PictureBox Información;
+        private System.Windows.Forms.ComboBox Seleccionar_Modalidad;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox Seleccionar_Semestre;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox Seleccionar_Docente_Cod_Nom2;
+        private System.Windows.Forms.CheckBox Check_2_Docentes;
+        private System.Windows.Forms.CheckBox Check_1_Docentes;
+        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.CheckBox Check_P_Sábado;
         private System.Windows.Forms.CheckBox Check_P_Viernes;
@@ -1487,39 +1467,40 @@ namespace CapaPresentaciones
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker Hora_Fin_Martes;
         private System.Windows.Forms.DateTimePicker Hora_Inicio_Martes;
-        private System.Windows.Forms.CheckBox Check_2_Docentes;
-        private System.Windows.Forms.CheckBox Check_1_Docentes;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox Seleccionar_Docente_Cod_Nom2;
-        private System.Windows.Forms.ComboBox Seleccionar_Semestre;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox Seleccionar_Modalidad;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.PictureBox Información;
-        private System.Windows.Forms.Label LabelP2;
-        private System.Windows.Forms.Label LabelP1;
-        private System.Windows.Forms.Label LabelPR2;
-        private System.Windows.Forms.Label LabelPR1;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label Label_Horas_Asignadas_Docente1;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label Label_Horas_Asignadas_Docente2;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Panel Panel_Info;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker Hora_Fin_Lunes;
+        private System.Windows.Forms.DateTimePicker Hora_Inicio_Lunes;
+        private System.Windows.Forms.ComboBox Seleccionar_Asignatura_Cod_Nom;
+        private System.Windows.Forms.ComboBox Seleccionar_Docente_Cod_Nom;
+        private System.Windows.Forms.ComboBox Seleccionar_Aula;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 Botón_Guardar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox Check_Grupo_C;
+        private System.Windows.Forms.CheckBox Check_Grupo_B;
+        private System.Windows.Forms.CheckBox Check_Grupo_A;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox Check_Día_Sábado;
+        private System.Windows.Forms.CheckBox Check_Día_Viernes;
+        private System.Windows.Forms.CheckBox Check_Día_Jueves;
+        private System.Windows.Forms.CheckBox Check_Día_Miércoles;
+        private System.Windows.Forms.CheckBox Check_Día_Martes;
+        private System.Windows.Forms.CheckBox Check_Día_Lunes;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox Check_Código_Asignatura;
+        private System.Windows.Forms.CheckBox Check_Nombre_Asignatura;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox Check_Código_Docente;
+        private System.Windows.Forms.CheckBox Check_Nombre_Docente;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox Salir;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.BindingSource bDSistemaGestionDataSetBindingSource;
+        private BDSistemaGestionDataSet bDSistemaGestionDataSet;
+        private System.Windows.Forms.BindingSource tDocenteBindingSource;
+        private BDSistemaGestionDataSetTableAdapters.TDocenteTableAdapter tDocenteTableAdapter;
+        private System.Windows.Forms.BindingSource tAsignaturaBindingSource;
+        private BDSistemaGestionDataSetTableAdapters.TAsignaturaTableAdapter tAsignaturaTableAdapter;
+        private System.Windows.Forms.BindingSource tDocenteBindingSource1;
     }
 }

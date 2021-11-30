@@ -189,6 +189,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BDSistemaGestionDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDSistemaGestionDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="P_Catálogo_Actualizar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_Catálogo_Actualizar.Designer.cs">
+      <DependentUpon>P_Catálogo_Actualizar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Otros Controles\JALMCircularPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -198,6 +209,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="P_Catálogo_Agregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_Catálogo_Agregar.Designer.cs">
+      <DependentUpon>P_Catálogo_Agregar.cs</DependentUpon>
     </Compile>
     <Compile Include="P_DatosAsignatura.cs">
       <SubType>Form</SubType>
@@ -259,6 +276,12 @@
     <Compile Include="P_TablaAsignaturasAsignadasSilabos.Designer.cs">
       <DependentUpon>P_TablaAsignaturasAsignadasSilabos.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_TablaCatálogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_TablaCatálogo.Designer.cs">
+      <DependentUpon>P_TablaCatálogo.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_TablaDocentes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +305,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_Catálogo_Actualizar.resx">
+      <DependentUpon>P_Catálogo_Actualizar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_Catálogo_Agregar.resx">
+      <DependentUpon>P_Catálogo_Agregar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_DatosAsignatura.resx">
       <DependentUpon>P_DatosAsignatura.cs</DependentUpon>
@@ -313,6 +342,9 @@
     <EmbeddedResource Include="P_TablaAsignaturasAsignadasSilabos.resx">
       <DependentUpon>P_TablaAsignaturasAsignadasSilabos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="P_TablaCatálogo.resx">
+      <DependentUpon>P_TablaCatálogo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="P_TablaDocentes.resx">
       <DependentUpon>P_TablaDocentes.cs</DependentUpon>
     </EmbeddedResource>
@@ -322,6 +354,17 @@
     <EmbeddedResource Include="P_TablaSilabosAsignatura.resx">
       <DependentUpon>P_TablaSilabosAsignatura.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="BDSistemaGestionDataSet.xsc">
+      <DependentUpon>BDSistemaGestionDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BDSistemaGestionDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BDSistemaGestionDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BDSistemaGestionDataSet.xss">
+      <DependentUpon>BDSistemaGestionDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -540,6 +583,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\buscar-archivo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exclamacion1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,4 @@
-		USE MASTER
+USE MASTER
 GO
 
 /* ********************************************************************
@@ -58,7 +58,7 @@ CREATE TABLE TDepartamentoAcademico
 (
 	-- Lista de atributos
 	CodDepartamentoA tyCodDepartamentoA,
-	Nombre VARCHAR(40) NOT NULL,
+	Nombre VARCHAR(50) NOT NULL,
 
 	-- Determinar las claves 
 	PRIMARY KEY (CodDepartamentoA)
@@ -632,6 +632,17 @@ BEGIN
 END;
 GO
 
+--Procedimiento para obtener el código de un docente por su nombre.
+CREATE PROCEDURE spuObtenerCodigoDocente @Nombre VARCHAR(50)
+AS
+BEGIN
+	--Obtener el código de la asignatura
+	SELECT CodDocente
+		FROM TDocente
+		WHERE Nombre = @Nombre
+END;
+GO
+
 -- Procedimiento para insertar un docente.
 CREATE PROCEDURE spuInsertarDocente @Perfil VARBINARY(MAX),
 									@CodDocente VARCHAR(5),
@@ -763,6 +774,38 @@ BEGIN
 END;
 GO
 
+--Procedimiento para obtener las horas de teoría y práctica de una asignatura.
+CREATE PROCEDURE spuObtenerHorasAsignatura @CodAsignatura VARCHAR(6)
+AS                                                         
+BEGIN                                 
+	--Obtener las horas de teoría y práctica
+	SELECT HorasTeoria,HorasPractica
+		FROM TAsignatura
+		WHERE CodAsignatura = @CodAsignatura
+END;
+GO
+
+--Procedimiento para obtener el código de una asignatura por su nombre.
+CREATE PROCEDURE spuObtenerCodigoAsignatura @NombreAsignatura VARCHAR(50)
+AS
+BEGIN
+	--Obtener el código de la asignatura
+	SELECT CodAsignatura
+		FROM TAsignatura
+		WHERE NombreAsignatura = @NombreAsignatura
+END;
+GO
+
+--Procedimiento para obtener el primer nombre de una asignatura
+CREATE PROCEDURE spuObtenerPrimeraAsignatura
+AS
+BEGIN
+	--Obtener el primer nombre
+	SELECT TOP 1 NombreAsignatura
+		FROM TAsignatura
+END;
+GO
+
 -- Procedimiento para insertar una asignatura.
 CREATE PROCEDURE spuInsertarAsignatura @CodAsignatura VARCHAR(6),
 									   @NombreAsignatura VARCHAR(50),
@@ -819,19 +862,44 @@ GO
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA CATALOGO ****************** */
 
 -- Procedimiento para mostrar el catálogo de asignaturas asignadas de un departamento académico.
-CREATE PROCEDURE spuMostrarCatalogo @CodSemestre VARCHAR(7),
-									@CodDepartamentoA VARCHAR(3) -- Atrib. Docente (Jefe de Dep.) 
+CREATE PROCEDURE spuMostrarCatalogo @CodDepartamentoA VARCHAR(3) -- Atrib. Docente (Jefe de Dep.) 
 AS
 BEGIN
 	-- Mostrar la tabla de TCatalogo
-	SELECT CodAsignatura = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), A.NombreAsignatura, EscuelaProfesional = EP.Nombre, 
-	       C.Grupo, C.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre)
+	SELECT CodigoCatalogo = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), C.CodAsignatura, A.NombreAsignatura, 
+		   CodigoEscuelaP = C.CodEscuelaP, EscuelaProfesional = EP.Nombre, C.Grupo, C.CodDocente, 
+		   Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), C.CodSemestre
 		FROM ((TCatalogo C INNER JOIN TAsignatura A ON
 			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
 			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
-	    WHERE C.CodSemestre = @CodSemestre AND SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA
+	    WHERE SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA
 		ORDER BY A.NombreAsignatura
+END;
+GO
+
+-- Procedimiento para buscar un catálogo específico.
+CREATE PROCEDURE spuBuscarCatalogo @Texto VARCHAR(50),
+                                   @CodEscuelaP VARCHAR(3)
+AS
+BEGIN
+	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
+	SELECT CodigoCatalogo = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), C.CodAsignatura, A.NombreAsignatura, 
+		   CodigoEscuelaP = C.CodEscuelaP, EscuelaProfesional = EP.Nombre, C.Grupo, C.CodDocente, 
+		   Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), C.CodSemestre
+		FROM ((TCatalogo C INNER JOIN TAsignatura A ON
+			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
+			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
+			 C.CodDocente = D.CodDocente
+		WHERE C.CodEscuelaP = @CodEscuelaP AND
+			  (C.Grupo LIKE (@Texto + '%') OR
+			   C.CodAsignatura LIKE (@Texto + '%') OR
+			   C.CodDocente LIKE (@Texto + '%') OR
+			   C.CodSemestre LIKE (@Texto + '%') OR
+			   A.NombreAsignatura LIKE (@Texto + '%') OR
+			   D.Nombre LIKE (@Texto + '%') OR
+			   D.APaterno LIKE (@Texto + '%') OR
+			   D.AMaterno LIKE (@Texto + '%'))
 END;
 GO
 
@@ -1018,14 +1086,13 @@ GO
 CREATE PROCEDURE spuEliminarAsignaturaCatalogo @CodSemestre VARCHAR(7),
 											   @CodAsignatura VARCHAR(6),
 											   @CodEscuelaP VARCHAR(3),
-											   @Grupo VARCHAR(1),
-											   @CodDocente VARCHAR(5)
+											   @Grupo VARCHAR(1)
 AS
 BEGIN
 	-- Eliminar una asignatura de la tabla TCatalogo
 	DELETE FROM TCatalogo
 		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND CodEscuelaP = @CodEscuelaP AND 
-		      Grupo = @Grupo AND CodDocente = @CodDocente
+		      Grupo = @Grupo
 END;
 GO
 
@@ -1127,6 +1194,18 @@ BEGIN
 END;
 GO
 
+--Procedimiento para obtener las horas que se le asignó a un docente en un semestre.
+CREATE PROCEDURE spuHorasDocenteHorarioAsignatura @CodDocente VARCHAR(5),
+												  @CodSemestre VARCHAR(7)
+AS
+BEGIN
+	--Extraer solo las horas de un docente
+	SELECT HorasTeoria,HorasPractica
+		FROM THorarioAsignatura
+		WHERE CodDocente = @CodDocente AND CodSemestre = @CodSemestre
+END;
+GO
+
 -- Procedimiento para insertar el horario de una asignatura.
 CREATE PROCEDURE spuInsertarHorarioAsignatura @CodSemestre VARCHAR(7),
 											  @CodAsignatura VARCHAR(6),
@@ -1152,9 +1231,7 @@ GO
 
 -- Procedimiento para actualizar el horario de una asignatura.
 CREATE PROCEDURE spuActualizarHorarioAsignatura @CodSemestre VARCHAR(7),
-											    @CodAsignatura VARCHAR(6),
 											    @CodEscuelaP VARCHAR(3),
-											    @Grupo VARCHAR(1),
 											    @CodDocente VARCHAR(5),
 											    @Dia VARCHAR(2),
 												@Tipo VARCHAR(1),
@@ -1163,15 +1240,19 @@ CREATE PROCEDURE spuActualizarHorarioAsignatura @CodSemestre VARCHAR(7),
 											    @HoraInicio VARCHAR(2),
 											    @HoraFin VARCHAR(2),
 									            @Aula VARCHAR(10),
-											    @Modalidad VARCHAR(10)	
+											    @Modalidad VARCHAR(10),
+												@CodSemestreB VARCHAR(7),
+											    @CodAsignaturaB VARCHAR(6),
+											    @CodEscuelaPB VARCHAR(3),
+											    @GrupoB VARCHAR(1),
+											    @CodDocenteB VARCHAR(5),
+											    @DiaB VARCHAR(2)
 AS
 BEGIN
 	-- Actualizar una asignatura de la tabla THorarioAsignatura
 	UPDATE THorarioAsignatura
 		SET CodSemestre = @CodSemestre,
-			CodAsignatura = @CodAsignatura,
 		    CodEscuelaP = @CodEscuelaP,
-			Grupo = @Grupo,
 			CodDocente = @CodDocente,
 		    Dia = @Dia,
 			Tipo = @Tipo,
@@ -1182,8 +1263,8 @@ BEGIN
 			Aula = @Aula,
 			Modalidad = @Modalidad
 
-		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND CodEscuelaP = @CodEscuelaP AND
-      		  Grupo = @Grupo AND CodDocente = @CodDocente AND Dia = @Dia
+		WHERE CodSemestre = @CodSemestreB AND CodAsignatura = @CodAsignaturaB AND CodEscuelaP = @CodEscuelaPB AND
+      		  Grupo = @GrupoB AND CodDocente = @CodDocenteB AND Dia = @DiaB
 END;
 GO
 
@@ -1191,15 +1272,13 @@ GO
 CREATE PROCEDURE spuEliminarHorarioAsignatura @CodSemestre VARCHAR(7),
 											  @CodAsignatura VARCHAR(6),
 											  @CodEscuelaP VARCHAR(3),
-											  @Grupo VARCHAR(1),
-											  @CodDocente VARCHAR(5),
-											  @Dia VARCHAR(2)
+											  @Grupo VARCHAR(1)
 AS
 BEGIN
 	-- Eliminar una asignatura de la tabla THorarioAsignatura
 	DELETE FROM THorarioAsignatura
 		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND CodEscuelaP = @CodEscuelaP AND
-      		  Grupo = @Grupo AND CodDocente = @CodDocente AND Dia = @Dia
+      		  Grupo = @Grupo
 END;
 GO
 

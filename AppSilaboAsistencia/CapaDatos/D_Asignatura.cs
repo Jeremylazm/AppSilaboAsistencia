@@ -7,7 +7,7 @@ namespace CapaDatos
 {
     public class D_Asignatura
     {
-        readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
+        readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
 
         // Método para mostrar las asignaturas de un departamento académico.
         public DataTable MostrarAsignaturas(string CodDepartamentoA)
@@ -52,6 +52,47 @@ namespace CapaDatos
 
             Comando.Parameters.AddWithValue("@CodDepartamento", CodDepartamentoA);
             Comando.Parameters.AddWithValue("@Texto", Texto);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
+        //Método para obtener horas de teoría y práctica de una asignatura.
+        public DataTable ObtenerHorasAsignatura(string CodAsignatura)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuObtenerHorasAsignatura", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
+        //Método para obtener el código de una asignatura por su nombre.
+        public DataTable ObtenerCódigoAsignatura(string NombreAsignatura)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuObtenerCodigoAsignatura", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            Comando.Parameters.AddWithValue("@NombreAsignatura", NombreAsignatura);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
+        //Método para obtener el código de una asignatura por su nombre.
+        public DataTable ObtenerPrimeraAsignatura()
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuObtenerPrimeraAsignatura", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
