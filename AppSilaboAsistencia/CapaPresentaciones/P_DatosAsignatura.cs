@@ -81,10 +81,10 @@ namespace CapaPresentaciones
             if (sumilla.Trim() == "") return "Debe llenar sumilla";
 
             //Verificado si los datos son validos
-            if (!PatronCodigo.IsMatch(Codigo)) return "El formato del código es incorrecto  ejemlo 'IF[Nro 3 digitos]' ";
-            if (!PatronCreditos.IsMatch(creditos)) return "El formato del creditos es incorrecto(2 a 4)";
-            if (!PatronHorasTeo.IsMatch(horasTeoria)) return "El formato del horas de Teoria es incorrecto(0 a 5)";
-            if (!PatronHorasPra.IsMatch(horasPractica)) return "El formato del horas de Practica es incorrecto(0 a 4)";
+            if (!PatronCodigo.IsMatch(Codigo)) return "El formato del código es incorrecto  ejemplo 'IF[Nro 3 digitos]' ";
+            if (!PatronCreditos.IsMatch(creditos)) return "El formato de creditos es incorrecto(2 a 4)";
+            if (!PatronHorasTeo.IsMatch(horasTeoria)) return "El formato de horas de Teoria es incorrecto(0 a 5)";
+            if (!PatronHorasPra.IsMatch(horasPractica)) return "El formato de horas de Practica es incorrecto(0 a 4)";
             //Si paso todo sin problema
             EsValido = true; //Los datos son válidos
             return "Registro insertado correctamente";
