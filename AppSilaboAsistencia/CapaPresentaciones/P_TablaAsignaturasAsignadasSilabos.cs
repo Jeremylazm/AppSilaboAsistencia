@@ -11,7 +11,7 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasSilabos : Form
     {
-        private string CodDocente = "65475";
+        private string CodDocente = "49920";
         //private string CodDocente = "34024";
 
         public P_TablaAsignaturasAsignadasSilabos()
