@@ -17,6 +17,40 @@ namespace CapaDatos
         //readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
 
         // Método para mostrar los docentes de un departamento académico
+        public DataTable MostrarTodosDocentesDepartamento(string CodDepartamentoA)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuMostrarTodosDocentesDepartamento", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+
+            foreach (DataRow Fila in Resultado.Rows)
+            {
+                if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
+                {
+                    string RutaImagen = System.IO.Path.Combine(Application.StartupPath, @"../../Resources/Perfil Docente.png");
+                    using (MemoryStream MemoriaPerfil = new MemoryStream())
+                    {
+                        Image.FromFile(RutaImagen).Save(MemoriaPerfil, ImageFormat.Bmp);
+                        Fila["Perfil2"] = MemoriaPerfil.ToArray();
+                    }
+                }
+                using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
+                {
+                    PerfilNuevo.Resize(20, 0);
+                    Fila["Perfil2"] = PerfilNuevo.ToByteArray();
+                }
+            }
+
+            return Resultado;
+        }
+
+        // Método para mostrar los docentes de un departamento académico
         public DataTable MostrarDocentesDepartamento(string CodDepartamentoA)
         {
             DataTable Resultado = new DataTable();

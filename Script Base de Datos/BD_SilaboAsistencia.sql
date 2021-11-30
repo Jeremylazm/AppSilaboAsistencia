@@ -583,6 +583,17 @@ BEGIN
 END;
 GO
 
+CREATE PROCEDURE spuMostrarTodosDocentesDepartamento @CodDepartamentoA VARCHAR(3)
+AS
+BEGIN
+	-- Mostrar la tabla TDocente
+	SELECT CodDocente, Nombre
+		FROM TDocente
+	    WHERE CodDepartamentoA = @CodDepartamentoA
+		ORDER BY APaterno
+END;
+GO
+
 -- Procedimiento para mostrar los docentes de un departamento académico.
 CREATE PROCEDURE spuMostrarDocentesDepartamento @CodDepartamentoA VARCHAR(3)
 AS

@@ -31,8 +31,31 @@ namespace CapaPresentaciones
             ObjNegocioHA = new N_HorarioAsignatura();
             InitializeComponent();
             Inicializar();
+            LlenarDatosDocente();
+            LlenarDatosAsignatura();
         }
 
+        private void LlenarDatosDocente()
+        {
+            Seleccionar_Docente_Cod_Nom.DataSource = N_Docente.MostrarTodosDocentesDepartamento("IF");
+
+            Seleccionar_Docente_Cod_Nom.ValueMember = "CodDocente";
+            Seleccionar_Docente_Cod_Nom.DisplayMember = "Nombre";
+
+            Seleccionar_Docente_Cod_Nom2.DataSource = N_Docente.MostrarTodosDocentesDepartamento("IF");
+
+            Seleccionar_Docente_Cod_Nom2.ValueMember = "CodDocente";
+            Seleccionar_Docente_Cod_Nom2.DisplayMember = "Nombre";
+        }
+
+
+        private void LlenarDatosAsignatura()
+        {
+            Seleccionar_Asignatura_Cod_Nom.DataSource = N_Asignatura.MostrarAsignaturas("IF");
+
+            Seleccionar_Asignatura_Cod_Nom.ValueMember = "CodAsignatura";
+            Seleccionar_Asignatura_Cod_Nom.DisplayMember = "NombreAsignatura";
+        }
         public void Recuperar_Horas_Asignaturas()
         {
             DataTable T = N_Asignatura.ObtenerHorasAsignatura(CódigoAsignatura);
@@ -4851,9 +4874,9 @@ namespace CapaPresentaciones
         private void P_Catálogo_Agregar_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'bDSistemaGestionDataSet.TAsignatura' Puede moverla o quitarla según sea necesario.
-            this.tAsignaturaTableAdapter.Fill(this.bDSistemaGestionDataSet.TAsignatura);
+            //this.tAsignaturaTableAdapter.Fill(this.bDSistemaGestionDataSet.TAsignatura);
             // TODO: esta línea de código carga datos en la tabla 'bDSistemaGestionDataSet.TDocente' Puede moverla o quitarla según sea necesario.
-            this.tDocenteTableAdapter.Fill(this.bDSistemaGestionDataSet.TDocente);
+            //this.tDocenteTableAdapter.Fill(this.bDSistemaGestionDataSet.TDocente);
         }
 
         private void Seleccionar_Semestre_SelectedIndexChanged(object sender, EventArgs e)

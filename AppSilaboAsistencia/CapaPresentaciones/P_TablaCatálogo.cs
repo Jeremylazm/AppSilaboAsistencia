@@ -97,9 +97,6 @@ namespace CapaPresentaciones
                 CodEscuelaP = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
                 Grupo = dgvDatos.Rows[e.RowIndex].Cells[7].Value.ToString();
 
-                ActualizarC.Seleccionar_Asignatura_Cod_Nom.DisplayMember = "CodAsignatura";
-                ActualizarC.Seleccionar_Asignatura_Cod_Nom.SelectedValue = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
-                ActualizarC.Seleccionar_Asignatura_Cod_Nom.DisplayMember = "NombreAsignatura";
                 ActualizarC.Show();
                 ActualizarC.Buscar(CodSemestre, CodAsignatura, CodEscuelaP, Grupo);
             }//Actualizar Falta
