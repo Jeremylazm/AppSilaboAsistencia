@@ -29,24 +29,7 @@ namespace CapaDatos
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
 
-            foreach (DataRow Fila in Resultado.Rows)
-            {
-                if (Fila["Perfil2"].GetType() == Type.GetType("System.DBNull"))
-                {
-                    string RutaImagen = System.IO.Path.Combine(Application.StartupPath, @"../../Resources/Perfil Docente.png");
-                    using (MemoryStream MemoriaPerfil = new MemoryStream())
-                    {
-                        Image.FromFile(RutaImagen).Save(MemoriaPerfil, ImageFormat.Bmp);
-                        Fila["Perfil2"] = MemoriaPerfil.ToArray();
-                    }
-                }
-                using (MagickImage PerfilNuevo = new MagickImage((byte[])Fila["Perfil2"]))
-                {
-                    PerfilNuevo.Resize(20, 0);
-                    Fila["Perfil2"] = PerfilNuevo.ToByteArray();
-                }
-            }
-
+          
             return Resultado;
         }
 
