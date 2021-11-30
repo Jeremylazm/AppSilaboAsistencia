@@ -1071,7 +1071,7 @@ BEGIN
 END;
 GO
 
-exec spuHorarioAsignaturaDocente '2021-II', 'IF662AIN', '51410'
+--exec spuHorarioAsignaturaDocente '2021-II', 'IF662AIN', '51410'
 
 -- Procedimiento para obtener el horario (concatenado) de una asignatura asignada a un docente.
 -- Formato salida: IF614AIN T:MA 7 -9 VIRT 7 IN; T:VI 8 -9 VIRT 7 IN; P:JU 7 -9 VIRT 7 IN
