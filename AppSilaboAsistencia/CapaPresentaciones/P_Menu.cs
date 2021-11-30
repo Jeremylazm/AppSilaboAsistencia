@@ -28,12 +28,11 @@ namespace CapaPresentaciones
                 pbLogo.Location = new Point(178, 6);
                 SeparadorMenu.Width = 161;
                 pbPerfil.Visible = true;
-                btnEditarPerfil.Visible = true;
-                pbEditarPerfil.Visible = false;
+                //btnEditarPerfil.Visible = true;
+                //pbEditarPerfil.Visible = false;
                 lblDatos.Visible = true;
                 lblAcceso.Visible = true;
                 lblUsuario.Visible = true;
-                //btnContraer.Image = Properties.Resources.Cerrar as Image;
                 Transicion.ShowSync(pnOpciones);
                 Transicion.ShowSync(pnContenedor);
 
@@ -44,12 +43,11 @@ namespace CapaPresentaciones
                 pbLogo.Location = new Point(49, 6);
                 SeparadorMenu.Width = 35;
                 pbPerfil.Visible = false;
-                btnEditarPerfil.Visible = false;
-                pbEditarPerfil.Visible = true;
+                //btnEditarPerfil.Visible = false;
+                //pbEditarPerfil.Visible = true;
                 lblDatos.Visible = false;
                 lblAcceso.Visible = false;
                 lblUsuario.Visible = false;
-                //btnContraer.Image = Properties.Resources.Ingresar as Image;
                 Transicion.ShowSync(pnOpciones);
                 Transicion.ShowSync(pnContenedor);
             }

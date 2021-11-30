@@ -888,6 +888,7 @@ namespace CapaPresentaciones
             this.pbEditarPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbEditarPerfil.TabIndex = 56;
             this.pbEditarPerfil.TabStop = false;
+            this.pbEditarPerfil.Visible = false;
             // 
             // btnPrincipal
             // 
