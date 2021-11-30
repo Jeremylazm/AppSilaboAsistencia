@@ -171,6 +171,12 @@ namespace CapaPresentaciones
             ActualizarColor();
         }
 
+        private void btnCatálogo_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_TablaCatálogo>();
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Desea salir de la aplicación?", "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.YesNo) == DialogResult.Yes)

@@ -8,9 +8,14 @@ namespace CapaNegocios
     {
         readonly D_Catalogo ObjCatalogo = new D_Catalogo();
 
-        public static DataTable MostrarCatalogo(string CodSemestre, string CodDepartamentoA)
+        public static DataTable MostrarCatalogo(string CodDepartamentoA)
         {
-            return new D_Catalogo().MostrarCatalogo(CodSemestre, CodDepartamentoA);
+            return new D_Catalogo().MostrarCatalogo(CodDepartamentoA);
+        }
+
+        public static DataTable BuscarCatálogo(string Texto, string CodEscuelaP)
+        {
+            return new D_Catalogo().BuscarCatálogo(Texto, CodEscuelaP);
         }
 
         public static DataTable BuscarDocentesAsignatura(string CodSemestre, string Texto1, string Texto2, string Grupo)
@@ -48,9 +53,9 @@ namespace CapaNegocios
             ObjCatalogo.InsertarAsignaturaCatalogo(Catalogo);
         }
 
-        public void ActualizarAsignaturaCatalogo(E_Catalogo Catalogo, string CodSemestre, string CodEscuelaP, string Grupo, string CodDocente)
+        public static void ActualizarAsignaturaCatalogo(string CodSemestreA, string CodAsignaturaA, string CodEscuelaPA, string GrupoA, string CodDocenteA, string CodSemestre, string CodEscuelaP, string Grupo, string CodDocente)
         {
-            ObjCatalogo.ActualizarAsignaturaCatalogo(Catalogo, CodSemestre, CodEscuelaP, Grupo, CodDocente);
+            new D_Catalogo().ActualizarAsignaturaCatalogo(CodSemestreA, CodAsignaturaA, CodEscuelaPA, GrupoA, CodDocenteA, CodSemestre, CodEscuelaP, Grupo, CodDocente);
         }
 
         public void ActualizarSilaboAsignatura(string CodSemestre, string CodAsignatura, string CodDocente, byte[] Silabo)
@@ -63,9 +68,9 @@ namespace CapaNegocios
             ObjCatalogo.ActualizarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodDocente, PlanSesiones);
         }
 
-        public void EliminarAsignaturaCatalogo(E_Catalogo Catalogo)
+        public static void EliminarAsignaturaCatalogo(string CodSemestre, string CodAsignatura, string CodEscuelaP, string Grupo)
         {
-            ObjCatalogo.EliminarAsignaturaCatalogo(Catalogo);
+            new D_Catalogo().EliminarAsignaturaCatalogo(CodSemestre, CodAsignatura, CodEscuelaP, Grupo);
         }
     }
 }

@@ -23,19 +23,24 @@ namespace CapaNegocios
             return new D_HorarioAsignatura().HorarioSemanalDocente(CodSemestre, Texto);
         }
 
+        public static DataTable HorasDocenteHorarioAsignatura(string CodDocente, string CodSemestre)
+        {
+            return new D_HorarioAsignatura().HorasDocenteHorarioAsignatura(CodDocente, CodSemestre);
+        }
+
         public void InsertarHorarioAsignatura(E_HorarioAsignatura HorarioAsignatura)
         {
             ObjHorarioAsignatura.InsertarHorarioAsignatura(HorarioAsignatura);
         }
 
-        public void ActualizarHorarioAsignatura(E_HorarioAsignatura HorarioAsignatura)
+        public static void ActualizarHorarioAsignatura(E_HorarioAsignatura HorarioAsignatura, string CodSemestreB, string CodAsignaturaB, string CodEscuelaPB, string GrupoB, string CodDocenteB, string DiaB)
         {
-            ObjHorarioAsignatura.ActualizarHorarioAsignatura(HorarioAsignatura);
+            new D_HorarioAsignatura().ActualizarHorarioAsignatura(HorarioAsignatura, CodSemestreB, CodAsignaturaB, CodEscuelaPB, GrupoB, CodDocenteB, DiaB);
         }
 
-        public void EliminarHorarioAsignatura(E_HorarioAsignatura HorarioAsignatura)
+        public static void EliminarHorarioAsignatura(string CodSemestre, string CodAsignatura, string CodEscuelaP, string Grupo)
         {
-            ObjHorarioAsignatura.EliminarHorarioAsignatura(HorarioAsignatura);
+            new D_HorarioAsignatura().EliminarHorarioAsignatura(CodSemestre, CodAsignatura, CodEscuelaP, Grupo);
         }
     }
 }
