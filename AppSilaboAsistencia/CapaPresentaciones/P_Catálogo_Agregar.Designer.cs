@@ -622,7 +622,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Docente_Cod_Nom2
             // 
-            this.Seleccionar_Docente_Cod_Nom2.DataSource = this.tDocenteBindingSource1;
+            //this.Seleccionar_Docente_Cod_Nom2.DataSource = this.tDocenteBindingSource1;
             this.Seleccionar_Docente_Cod_Nom2.DisplayMember = "Nombre";
             this.Seleccionar_Docente_Cod_Nom2.Enabled = false;
             this.Seleccionar_Docente_Cod_Nom2.FormattingEnabled = true;
@@ -635,8 +635,8 @@ namespace CapaPresentaciones
             // 
             // tDocenteBindingSource1
             // 
-            this.tDocenteBindingSource1.DataMember = "TDocente";
-            this.tDocenteBindingSource1.DataSource = this.bDSistemaGestionDataSetBindingSource;
+            //this.tDocenteBindingSource1.DataMember = "TDocente";
+            //this.tDocenteBindingSource1.DataSource = this.bDSistemaGestionDataSetBindingSource;
             // 
             // bDSistemaGestionDataSetBindingSource
             // 
@@ -1009,7 +1009,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Asignatura_Cod_Nom
             // 
-            this.Seleccionar_Asignatura_Cod_Nom.DataSource = this.tAsignaturaBindingSource;
+            //this.Seleccionar_Asignatura_Cod_Nom.DataSource = this.tAsignaturaBindingSource;
             this.Seleccionar_Asignatura_Cod_Nom.DisplayMember = "NombreAsignatura";
             this.Seleccionar_Asignatura_Cod_Nom.FormattingEnabled = true;
             this.Seleccionar_Asignatura_Cod_Nom.Location = new System.Drawing.Point(167, 127);
@@ -1021,12 +1021,12 @@ namespace CapaPresentaciones
             // 
             // tAsignaturaBindingSource
             // 
-            this.tAsignaturaBindingSource.DataMember = "TAsignatura";
-            this.tAsignaturaBindingSource.DataSource = this.bDSistemaGestionDataSetBindingSource;
+            //this.tAsignaturaBindingSource.DataMember = "TAsignatura";
+            //this.tAsignaturaBindingSource.DataSource = this.bDSistemaGestionDataSetBindingSource;
             // 
             // Seleccionar_Docente_Cod_Nom
             // 
-            this.Seleccionar_Docente_Cod_Nom.DataSource = this.tDocenteBindingSource;
+            //this.Seleccionar_Docente_Cod_Nom.DataSource = this.tDocenteBindingSource;
             this.Seleccionar_Docente_Cod_Nom.DisplayMember = "Nombre";
             this.Seleccionar_Docente_Cod_Nom.FormattingEnabled = true;
             this.Seleccionar_Docente_Cod_Nom.Location = new System.Drawing.Point(167, 54);
@@ -1038,8 +1038,8 @@ namespace CapaPresentaciones
             // 
             // tDocenteBindingSource
             // 
-            this.tDocenteBindingSource.DataMember = "TDocente";
-            this.tDocenteBindingSource.DataSource = this.bDSistemaGestionDataSetBindingSource;
+            //this.tDocenteBindingSource.DataMember = "TDocente";
+            //this.tDocenteBindingSource.DataSource = this.bDSistemaGestionDataSetBindingSource;
             // 
             // Seleccionar_Aula
             // 

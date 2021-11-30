@@ -33,15 +33,38 @@ namespace CapaPresentaciones
             ObjNegocioHA = new N_HorarioAsignatura();
             InitializeComponent();
             Main();
+            LlenarDatosAsignatura();
+            LlenarDatosDocente();
+        }
+
+        private void LlenarDatosDocente()
+        {
+            Seleccionar_Docente_Cod_Nom.DataSource = N_Docente.MostrarTodosDocentesDepartamento("IF");
+
+            Seleccionar_Docente_Cod_Nom.ValueMember = "CodDocente";
+            Seleccionar_Docente_Cod_Nom.DisplayMember = "Nombre";
+
+            Seleccionar_Docente_Cod_Nom2.DataSource = N_Docente.MostrarTodosDocentesDepartamento("IF");
+
+            Seleccionar_Docente_Cod_Nom2.ValueMember = "CodDocente";
+            Seleccionar_Docente_Cod_Nom2.DisplayMember = "Nombre";
+        }
+
+
+        private void LlenarDatosAsignatura()
+        {
+            Seleccionar_Asignatura_Cod_Nom.DataSource = N_Asignatura.MostrarAsignaturas("IF");
+
+            Seleccionar_Asignatura_Cod_Nom.ValueMember = "CodAsignatura";
+            Seleccionar_Asignatura_Cod_Nom.DisplayMember = "NombreAsignatura";
         }
 
         private void P_Catálogo_Actualizar_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'bDSistemaGestionDataSet.TAsignatura' Puede moverla o quitarla según sea necesario.
-            this.tAsignaturaTableAdapter.Fill(this.bDSistemaGestionDataSet.TAsignatura);
+            //this.tAsignaturaTableAdapter.Fill(this.bDSistemaGestionDataSet.TAsignatura);
             // TODO: esta línea de código carga datos en la tabla 'bDSistemaGestionDataSet.TDocente' Puede moverla o quitarla según sea necesario.
-            this.tDocenteTableAdapter.Fill(this.bDSistemaGestionDataSet.TDocente);
-
+            //this.tDocenteTableAdapter.Fill(this.bDSistemaGestionDataSet.TDocente);
         }
 
         public void Recuperar_Horas_Asignaturas()
@@ -4866,6 +4889,66 @@ namespace CapaPresentaciones
             }
         }
 
+        private void Seleccionar_Docente_Cod_Nom_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Check_Código_Docente.Checked == true)
+                    CódigoDocente1 = Seleccionar_Docente_Cod_Nom.Text;
+                else
+                {
+                    DataTable T = N_Docente.ObtenerCodigoDocente(Seleccionar_Docente_Cod_Nom.Text);
+                    DataRow R = T.Rows[0];
+                    CódigoDocente1 = R["CodDocente"].ToString();
+                }
+                Recuperar_Horas_Docentes();
+            }
+            catch
+            {
+                //Falta ver cuál es el problema...
+            }
+        }
+
+        private void Seleccionar_Docente_Cod_Nom2_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Check_Código_Docente.Checked == true)
+                    CódigoDocente2 = Seleccionar_Docente_Cod_Nom2.Text;
+                else
+                {
+                    DataTable T = N_Docente.ObtenerCodigoDocente(Seleccionar_Docente_Cod_Nom2.Text);
+                    DataRow R = T.Rows[0];
+                    CódigoDocente2 = R["CodDocente"].ToString();
+                }
+                Recuperar_Horas_Docentes();
+            }
+            catch
+            {
+                //Falta ver cuál es el problema...
+            }
+        }
+
+        private void Seleccionar_Asignatura_Cod_Nom_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Check_Código_Asignatura.Checked == true)
+                    CódigoAsignatura = Seleccionar_Asignatura_Cod_Nom.Text;
+                else
+                {
+                    DataTable T = N_Asignatura.ObtenerCódigoAsignatura(Seleccionar_Asignatura_Cod_Nom.Text);
+                    DataRow R = T.Rows[0];
+                    CódigoAsignatura = R["CodAsignatura"].ToString();
+                }
+                Recuperar_Horas_Asignaturas();
+            }
+            catch
+            {
+                //Falta ver cuál es el problema...
+            }
+        }
+
         private void Hora_Fin_Sábado_ValueChanged(object sender, EventArgs e)
         {
             if (Convert.ToInt32(Hora_Inicio_Sábado.Text) >= Convert.ToInt32(Hora_Fin_Sábado.Text))
@@ -5151,6 +5234,21 @@ namespace CapaPresentaciones
             label24.Visible = false;
             label25.Visible = false;
             Label_Horas_Asignadas_Docente2.Visible = false;
+            DescontarHoras();
+        }
+        public void DescontarHoras()
+        {
+            if (Check_Día_Lunes.Checked == true)
+            {
+                if (Check_T_Lunes.Checked == true)
+                {
+
+                }
+                else
+                {
+
+                }
+            }
         }
     }
 }
