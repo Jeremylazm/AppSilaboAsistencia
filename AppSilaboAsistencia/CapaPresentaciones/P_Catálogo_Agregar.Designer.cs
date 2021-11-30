@@ -31,7 +31,7 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_Catálogo_Agregar));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.Salir = new System.Windows.Forms.PictureBox();
@@ -68,9 +68,6 @@ namespace CapaPresentaciones
             this.Seleccionar_Semestre = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.Seleccionar_Docente_Cod_Nom2 = new System.Windows.Forms.ComboBox();
-            this.tDocenteBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.bDSistemaGestionDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bDSistemaGestionDataSet = new CapaPresentaciones.BDSistemaGestionDataSet();
             this.Check_2_Docentes = new System.Windows.Forms.CheckBox();
             this.Check_1_Docentes = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -106,9 +103,7 @@ namespace CapaPresentaciones
             this.Hora_Fin_Lunes = new System.Windows.Forms.DateTimePicker();
             this.Hora_Inicio_Lunes = new System.Windows.Forms.DateTimePicker();
             this.Seleccionar_Asignatura_Cod_Nom = new System.Windows.Forms.ComboBox();
-            this.tAsignaturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Seleccionar_Docente_Cod_Nom = new System.Windows.Forms.ComboBox();
-            this.tDocenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Seleccionar_Aula = new System.Windows.Forms.ComboBox();
             this.Botón_Guardar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.label6 = new System.Windows.Forms.Label();
@@ -129,6 +124,7 @@ namespace CapaPresentaciones
             this.Check_Código_Docente = new System.Windows.Forms.CheckBox();
             this.Check_Nombre_Docente = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.bDSistemaGestionDataSet = new CapaPresentaciones.BDSistemaGestionDataSet();
             this.tDocenteTableAdapter = new CapaPresentaciones.BDSistemaGestionDataSetTableAdapters.TDocenteTableAdapter();
             this.tAsignaturaTableAdapter = new CapaPresentaciones.BDSistemaGestionDataSetTableAdapters.TAsignaturaTableAdapter();
             this.panel1.SuspendLayout();
@@ -136,12 +132,8 @@ namespace CapaPresentaciones
             this.panel2.SuspendLayout();
             this.Panel_Info.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Información)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tDocenteBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDSistemaGestionDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDSistemaGestionDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tAsignaturaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tDocenteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDSistemaGestionDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -622,7 +614,6 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Docente_Cod_Nom2
             // 
-            //this.Seleccionar_Docente_Cod_Nom2.DataSource = this.tDocenteBindingSource1;
             this.Seleccionar_Docente_Cod_Nom2.DisplayMember = "Nombre";
             this.Seleccionar_Docente_Cod_Nom2.Enabled = false;
             this.Seleccionar_Docente_Cod_Nom2.FormattingEnabled = true;
@@ -632,21 +623,6 @@ namespace CapaPresentaciones
             this.Seleccionar_Docente_Cod_Nom2.TabIndex = 96;
             this.Seleccionar_Docente_Cod_Nom2.ValueMember = "CodDocente";
             this.Seleccionar_Docente_Cod_Nom2.SelectedIndexChanged += new System.EventHandler(this.Seleccionar_Docente_Cod_Nom2_SelectedIndexChanged);
-            // 
-            // tDocenteBindingSource1
-            // 
-            //this.tDocenteBindingSource1.DataMember = "TDocente";
-            //this.tDocenteBindingSource1.DataSource = this.bDSistemaGestionDataSetBindingSource;
-            // 
-            // bDSistemaGestionDataSetBindingSource
-            // 
-            this.bDSistemaGestionDataSetBindingSource.DataSource = this.bDSistemaGestionDataSet;
-            this.bDSistemaGestionDataSetBindingSource.Position = 0;
-            // 
-            // bDSistemaGestionDataSet
-            // 
-            this.bDSistemaGestionDataSet.DataSetName = "BDSistemaGestionDataSet";
-            this.bDSistemaGestionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // Check_2_Docentes
             // 
@@ -1009,7 +985,6 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Asignatura_Cod_Nom
             // 
-            //this.Seleccionar_Asignatura_Cod_Nom.DataSource = this.tAsignaturaBindingSource;
             this.Seleccionar_Asignatura_Cod_Nom.DisplayMember = "NombreAsignatura";
             this.Seleccionar_Asignatura_Cod_Nom.FormattingEnabled = true;
             this.Seleccionar_Asignatura_Cod_Nom.Location = new System.Drawing.Point(167, 127);
@@ -1019,14 +994,8 @@ namespace CapaPresentaciones
             this.Seleccionar_Asignatura_Cod_Nom.ValueMember = "CodAsignatura";
             this.Seleccionar_Asignatura_Cod_Nom.SelectedIndexChanged += new System.EventHandler(this.Seleccionar_Asignatura_Cod_Nom_SelectedIndexChanged);
             // 
-            // tAsignaturaBindingSource
-            // 
-            //this.tAsignaturaBindingSource.DataMember = "TAsignatura";
-            //this.tAsignaturaBindingSource.DataSource = this.bDSistemaGestionDataSetBindingSource;
-            // 
             // Seleccionar_Docente_Cod_Nom
             // 
-            //this.Seleccionar_Docente_Cod_Nom.DataSource = this.tDocenteBindingSource;
             this.Seleccionar_Docente_Cod_Nom.DisplayMember = "Nombre";
             this.Seleccionar_Docente_Cod_Nom.FormattingEnabled = true;
             this.Seleccionar_Docente_Cod_Nom.Location = new System.Drawing.Point(167, 54);
@@ -1035,11 +1004,6 @@ namespace CapaPresentaciones
             this.Seleccionar_Docente_Cod_Nom.TabIndex = 59;
             this.Seleccionar_Docente_Cod_Nom.ValueMember = "CodDocente";
             this.Seleccionar_Docente_Cod_Nom.SelectedIndexChanged += new System.EventHandler(this.Seleccionar_Docente_Cod_Nom_SelectedIndexChanged);
-            // 
-            // tDocenteBindingSource
-            // 
-            //this.tDocenteBindingSource.DataMember = "TDocente";
-            //this.tDocenteBindingSource.DataSource = this.bDSistemaGestionDataSetBindingSource;
             // 
             // Seleccionar_Aula
             // 
@@ -1100,11 +1064,11 @@ namespace CapaPresentaciones
             this.Botón_Guardar.ColorContrastOnClick = 45;
             this.Botón_Guardar.ColorContrastOnHover = 45;
             this.Botón_Guardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.Botón_Guardar.CustomizableEdges = borderEdges1;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            this.Botón_Guardar.CustomizableEdges = borderEdges3;
             this.Botón_Guardar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Botón_Guardar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.Botón_Guardar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -1364,6 +1328,11 @@ namespace CapaPresentaciones
             this.label2.TabIndex = 1;
             this.label2.Text = "Seleccione el docente:";
             // 
+            // bDSistemaGestionDataSet
+            // 
+            this.bDSistemaGestionDataSet.DataSetName = "BDSistemaGestionDataSet";
+            this.bDSistemaGestionDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // tDocenteTableAdapter
             // 
             this.tDocenteTableAdapter.ClearBeforeFill = true;
@@ -1391,12 +1360,8 @@ namespace CapaPresentaciones
             this.Panel_Info.ResumeLayout(false);
             this.Panel_Info.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Información)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tDocenteBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDSistemaGestionDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDSistemaGestionDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tAsignaturaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tDocenteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDSistemaGestionDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1495,12 +1460,8 @@ namespace CapaPresentaciones
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox Salir;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.BindingSource bDSistemaGestionDataSetBindingSource;
         private BDSistemaGestionDataSet bDSistemaGestionDataSet;
-        private System.Windows.Forms.BindingSource tDocenteBindingSource;
         private BDSistemaGestionDataSetTableAdapters.TDocenteTableAdapter tDocenteTableAdapter;
-        private System.Windows.Forms.BindingSource tAsignaturaBindingSource;
         private BDSistemaGestionDataSetTableAdapters.TAsignaturaTableAdapter tAsignaturaTableAdapter;
-        private System.Windows.Forms.BindingSource tDocenteBindingSource1;
     }
 }
