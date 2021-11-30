@@ -8,9 +8,10 @@ namespace CapaDatos
     public class D_Catalogo
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
+        //readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
 
         // Método para mostrar el catálogo de asignaturas de una departamento académico.
-        public DataTable MostrarCatalogo(string CodSemestre, string CodDepartamentoA)
+        public DataTable MostrarCatalogo(string CodDepartamentoA)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuMostrarCatalogo", Conectar)
@@ -18,8 +19,23 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
-            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA); // Atrib.Docente(Jefe de Dep.)
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
+        // Método para buscar un catálogo. 
+        public DataTable BuscarCatálogo(string Texto, string CodEscuelaP)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuBuscarCatalogo", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@Texto", Texto);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
@@ -150,7 +166,7 @@ namespace CapaDatos
         }
 
         // Método para actualizar la información de una asignatura de un catálogo.
-        public void ActualizarAsignaturaCatalogo(E_Catalogo Catalogo, string CodSemestre, string CodEscuelaP, string Grupo, string CodDocente)
+        public void ActualizarAsignaturaCatalogo(string CodSemestreA, string CodAsignaturaA, string CodEscuelaPA, string GrupoA, string CodDocenteA, string CodSemestre, string CodEscuelaP, string Grupo, string CodDocente)
         {
             SqlCommand Comando = new SqlCommand("spuActualizarAsignaturaCatalogo", Conectar)
             {
@@ -158,11 +174,11 @@ namespace CapaDatos
             };
 
             Conectar.Open();
-            Comando.Parameters.AddWithValue("@CodSemestre", Catalogo.CodSemestre);
-            Comando.Parameters.AddWithValue("@CodAsignatura", Catalogo.CodAsignatura);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", Catalogo.CodEscuelaP);
-            Comando.Parameters.AddWithValue("@Grupo", Catalogo.Grupo);
-            Comando.Parameters.AddWithValue("@CodDocente", Catalogo.CodDocente);
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestreA);
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignaturaA);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaPA);
+            Comando.Parameters.AddWithValue("@Grupo", GrupoA);
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocenteA);
             Comando.Parameters.AddWithValue("@ACodSemestre", CodSemestre); // Nuevo CodSemestre
             Comando.Parameters.AddWithValue("@ACodEscuelaP", CodEscuelaP); // Nuevo CodEscuelaP
             Comando.Parameters.AddWithValue("@AGrupo", Grupo); // Nuevo Grupo
@@ -206,7 +222,7 @@ namespace CapaDatos
         }
 
         // Método para eliminar una asignatura de un catálogo
-        public void EliminarAsignaturaCatalogo(E_Catalogo Catalogo)
+        public void EliminarAsignaturaCatalogo(string CodSemestre, string CodAsignatura, string CodEscuelaP, string Grupo)
         {
             SqlCommand Comando = new SqlCommand("spuEliminarAsignaturaCatalogo", Conectar)
             {
@@ -214,11 +230,10 @@ namespace CapaDatos
             };
 
             Conectar.Open();
-            Comando.Parameters.AddWithValue("@CodSemestre", Catalogo.CodSemestre);
-            Comando.Parameters.AddWithValue("@CodAsignatura", Catalogo.CodAsignatura);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", Catalogo.CodEscuelaP);
-            Comando.Parameters.AddWithValue("@Grupo", Catalogo.Grupo);
-            Comando.Parameters.AddWithValue("@CodDocente", Catalogo.CodDocente);
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@Grupo", Grupo);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }

@@ -11,7 +11,7 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasSilabos : Form
     {
-        private string CodDocente = "65475";
+        private string CodDocente = "49920";
         //private string CodDocente = "34024";
 
         public P_TablaAsignaturasAsignadasSilabos()
@@ -26,6 +26,11 @@ namespace CapaPresentaciones
             dgvDatos.Columns[0].DisplayIndex = 6;
             dgvDatos.Columns[1].DisplayIndex = 6;
             dgvDatos.Columns[2].DisplayIndex = 6;
+            dgvDatos.Columns[6].Visible = false;
+            dgvDatos.Columns[3].HeaderText = "Código";
+            dgvDatos.Columns[4].HeaderText = "Nombre";
+            dgvDatos.Columns[5].HeaderText = "Escuela Profesional";
+            dgvDatos.Columns[6].HeaderText = "Grupo";
         }
 
         private void MostrarAsignaturas()

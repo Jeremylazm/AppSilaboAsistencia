@@ -14,6 +14,24 @@ namespace CapaDatos
     public class D_Docente
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
+        //readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
+
+        // Método para mostrar los docentes de un departamento académico
+        public DataTable MostrarTodosDocentesDepartamento(string CodDepartamentoA)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuMostrarTodosDocentesDepartamento", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+
+          
+            return Resultado;
+        }
 
         // Método para mostrar los docentes de un departamento académico
         public DataTable MostrarDocentesDepartamento(string CodDepartamentoA)
@@ -115,6 +133,22 @@ namespace CapaDatos
                     Fila["Perfil2"] = PerfilNuevo.ToByteArray();
                 }
             }
+
+            return Resultado;
+        }
+
+        // Método para obtener el código de un docente por su nombre.
+        public DataTable ObtenerCodigoDocente(string Nombre)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuObtenerCodigoDocente", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@Nombre", Nombre);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
 
             return Resultado;
         }
