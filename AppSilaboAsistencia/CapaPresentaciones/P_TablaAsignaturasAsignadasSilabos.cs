@@ -11,7 +11,7 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasSilabos : Form
     {
-        private string CodDocente = "95234";
+        private string CodDocente = "65475";
         //private string CodDocente = "34024";
 
         public P_TablaAsignaturasAsignadasSilabos()
@@ -45,7 +45,6 @@ namespace CapaPresentaciones
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
                 saveFileDialog.InitialDirectory = @"C:\";
-                saveFileDialog.FileName = "Plantilla 2021-II";
                 saveFileDialog.Filter = "Archivo de Excel | *.xlsx";
                 saveFileDialog.DefaultExt = "xlsx";
                 saveFileDialog.FilterIndex = 1;
@@ -144,6 +143,8 @@ namespace CapaPresentaciones
 
                 // Escuela profesional
                 wb.Worksheet(1).Cell("C18").Value = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+                saveFileDialog.FileName = "Sílabo - " + CodAsignatura;
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {

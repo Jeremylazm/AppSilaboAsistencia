@@ -1025,6 +1025,8 @@ namespace CapaPresentaciones
 			this.cxtCategoriaAsg.ItemHighLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
 			this.cxtCategoriaAsg.ItemHighLightForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
 			this.cxtCategoriaAsg.Items.AddRange(new object[] {
+            "SELECCIONE",
+            "EG",
             "EE",
             "EEEP",
             "OEES",
