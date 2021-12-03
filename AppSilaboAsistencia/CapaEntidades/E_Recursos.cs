@@ -10,6 +10,7 @@ namespace CapaEntidades
     {
         // Definir los atributos o campos que tiene una matricula
         public byte[] PlantillaSilabo { get; set; }
-        public byte[] PlantillaPlanSesiones { get; set; }
+        public byte[] PlantillaPlanSesiones2y3 { get; set; }
+        public byte[] PlantillaPlanSesiones4 { get; set; }
     }
 }

@@ -12,17 +12,25 @@ namespace CapaNegocios
         {
             return new D_Recursos().DescargarPlantillaSilabo();
         }
-        public static DataTable DescargarPlantillaPlanSesiones()
+        public static DataTable DescargarPlantillaPlanSesiones2y3()
         {
-            return new D_Recursos().DescargarPlantillaPlanSesiones();
+            return new D_Recursos().DescargarPlantillaPlanSesiones2y3();
+        }
+        public static DataTable DescargarPlantillaPlanSesiones4()
+        {
+            return new D_Recursos().DescargarPlantillaPlanSesiones4();
         }
         public void ActualizarPlantillaSilabo(E_Recursos Recursos)
         {
             ObjRecursos.ActualizarPlantillaSilabo(Recursos);
         }
-        public void ActualizarPlantillaPlanSesiones(E_Recursos Recursos)
+        public void ActualizarPlantillaPlanSesiones2y3(E_Recursos Recursos)
         {
-            ObjRecursos.ActualizarPlantillaPlanSesiones(Recursos);
+            ObjRecursos.ActualizarPlantillaPlanSesiones2y3(Recursos);
+        }
+        public void ActualizarPlantillaPlanSesiones4(E_Recursos Recursos)
+        {
+            ObjRecursos.ActualizarPlantillaPlanSesiones4(Recursos);
         }
     }
 }
