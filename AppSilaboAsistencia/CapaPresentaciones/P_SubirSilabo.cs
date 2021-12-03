@@ -89,14 +89,6 @@ namespace CapaPresentaciones
             ObjNegocio.ActualizarSilaboAsignatura("2021-II", CodAsignatura, CodDocente, archivo);
             MensajeConfirmacion("Archivo subido exitosamente");
 
-            /*
-            ////////////////////////////////////////////////////////////
-            // Subir la plantilla a recursos
-            ObjEntidadRecursos.PlantillaSilabo = archivo;
-            ObjNegocioRecursos.ActualizarPlantillaSilabo(ObjEntidadRecursos);
-            ////////////////////////////////////////////////////////////
-            */
-
             // Abrir el archivo subido
             /*string path = AppDomain.CurrentDomain.BaseDirectory;
             string folder = path + "/temp/";

@@ -255,9 +255,11 @@ GO
 CREATE TABLE TRecursos
 (
 	-- Lista de atributos
-	IdRecurso INT IDENTITY(1,1),
+	IdRecurso INT IDENTITY(1, 1),
 	PlantillaSilabo VARBINARY(MAX),
-	PlantillaPlanSesiones VARBINARY(MAX)
+	PlantillaPlanSesiones2y3 VARBINARY(MAX),
+	PlantillaPlanSesiones4 VARBINARY(MAX)
+	
 
 	-- Definir la clave primaria
 	PRIMARY KEY(IdRecurso)
@@ -1414,12 +1416,21 @@ BEGIN
 END;
 GO
 
--- Procedimiento para el descargar la plantilla del plan de sesiones
-CREATE PROCEDURE spuDescargarPlantillaPlanSesiones
+-- Procedimiento para el descargar la plantilla del plan de sesiones de 2 y 3 créditos
+CREATE PROCEDURE spuDescargarPlantillaPlanSesiones2y3
 AS
 BEGIN
 	-- Mostrar la plantilla en la tabla TRecursos
-	SELECT PlantillaPlanSesiones FROM TRecursos WHERE IdRecurso = 1
+	SELECT PlantillaPlanSesiones2y3 FROM TRecursos WHERE IdRecurso = 1
+END;
+GO
+
+-- Procedimiento para el descargar la plantilla del plan de sesiones de 4 créditos
+CREATE PROCEDURE spuDescargarPlantillaPlanSesiones4
+AS
+BEGIN
+	-- Mostrar la plantilla en la tabla TRecursos
+	SELECT PlantillaPlanSesiones4 FROM TRecursos WHERE IdRecurso = 1
 END;
 GO
 
@@ -1434,13 +1445,24 @@ BEGIN
 END;
 GO
 
--- Procedimiento para el actualizar la plantilla del plan de sesiones (solo el Director de Escuela)
-CREATE PROCEDURE spuActualizarPlantillaPlanSesiones @PlantillaPlanSesiones VARBINARY(MAX)
+-- Procedimiento para el actualizar la plantilla del plan de sesiones de 2 y 3 créditos (solo el Director de Escuela)
+CREATE PROCEDURE spuActualizarPlantillaPlanSesiones2y3 @PlantillaPlanSesiones2y3 VARBINARY(MAX)
 AS
 BEGIN
 	-- Actualizar la plantilla en la tabla TRecursos
 	UPDATE TRecursos
-		SET PlantillaPlanSesiones = @PlantillaPlanSesiones
+		SET PlantillaPlanSesiones2y3 = @PlantillaPlanSesiones2y3
+		WHERE IdRecurso = 1
+END;
+GO
+
+-- Procedimiento para el actualizar la plantilla del plan de sesiones de 4 créditos (solo el Director de Escuela)
+CREATE PROCEDURE spuActualizarPlantillaPlanSesiones4 @PlantillaPlanSesiones4 VARBINARY(MAX)
+AS
+BEGIN
+	-- Actualizar la plantilla en la tabla TRecursos
+	UPDATE TRecursos
+		SET PlantillaPlanSesiones4 = @PlantillaPlanSesiones4
 		WHERE IdRecurso = 1
 END;
 GO
