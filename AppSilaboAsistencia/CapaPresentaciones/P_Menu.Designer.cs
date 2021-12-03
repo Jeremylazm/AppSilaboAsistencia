@@ -57,17 +57,17 @@ namespace CapaPresentaciones
             this.btnDocentes = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnContraer = new Bunifu.UI.WinForms.BunifuImageButton();
             this.btnEditarPerfil = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            this.pbEditarPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.btnPrincipal = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnSilabos = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnAsignaturasAsignadas = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            this.pbPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.lblUsuario = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblAcceso = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblDatos = new Bunifu.UI.WinForms.BunifuLabel();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.Transicion = new Bunifu.UI.WinForms.BunifuTransition(this.components);
+            this.pbEditarPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
+            this.pbPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.pnPrincipal.SuspendLayout();
             this.pnOpciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbEditarPerfil)).BeginInit();
@@ -649,7 +649,7 @@ namespace CapaPresentaciones
             this.btnSesiones.TextMarginLeft = 0;
             this.btnSesiones.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnSesiones.UseDefaultRadiusAndThickness = true;
-            this.btnSesiones.Visible = false;
+            this.btnSesiones.Click += new System.EventHandler(this.btnSesiones_Click);
             // 
             // btnDocentes
             // 
@@ -867,28 +867,7 @@ namespace CapaPresentaciones
             this.btnEditarPerfil.TextMarginLeft = 0;
             this.btnEditarPerfil.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnEditarPerfil.UseDefaultRadiusAndThickness = true;
-            this.btnEditarPerfil.Visible = false;
             this.btnEditarPerfil.Click += new System.EventHandler(this.btnEditarPerfil_Click);
-            // 
-            // pbEditarPerfil
-            // 
-            this.pbEditarPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.pbEditarPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.pbEditarPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.pbEditarPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.pbEditarPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.pbEditarPerfil.BorderSize = 2;
-            this.pbEditarPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Transicion.SetDecoration(this.pbEditarPerfil, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.pbEditarPerfil.GradientAngle = 50F;
-            this.pbEditarPerfil.Image = ((System.Drawing.Image)(resources.GetObject("pbEditarPerfil.Image")));
-            this.pbEditarPerfil.Location = new System.Drawing.Point(5, 246);
-            this.pbEditarPerfil.Name = "pbEditarPerfil";
-            this.pbEditarPerfil.Size = new System.Drawing.Size(34, 34);
-            this.pbEditarPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbEditarPerfil.TabIndex = 56;
-            this.pbEditarPerfil.TabStop = false;
-            this.pbEditarPerfil.Visible = false;
             // 
             // btnPrincipal
             // 
@@ -979,7 +958,6 @@ namespace CapaPresentaciones
             this.btnPrincipal.TextMarginLeft = 0;
             this.btnPrincipal.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnPrincipal.UseDefaultRadiusAndThickness = true;
-            this.btnPrincipal.Visible = false;
             this.btnPrincipal.Click += new System.EventHandler(this.btnPrincipal_Click);
             // 
             // btnSilabos
@@ -1164,24 +1142,6 @@ namespace CapaPresentaciones
             this.btnAsignaturasAsignadas.UseDefaultRadiusAndThickness = true;
             this.btnAsignaturasAsignadas.Click += new System.EventHandler(this.btnAsignaturasAsignadas_Click);
             // 
-            // pbPerfil
-            // 
-            this.pbPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.pbPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.pbPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.pbPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.pbPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.pbPerfil.BorderSize = 2;
-            this.Transicion.SetDecoration(this.pbPerfil, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.pbPerfil.GradientAngle = 50F;
-            this.pbPerfil.Image = ((System.Drawing.Image)(resources.GetObject("pbPerfil.Image")));
-            this.pbPerfil.Location = new System.Drawing.Point(34, 12);
-            this.pbPerfil.Name = "pbPerfil";
-            this.pbPerfil.Size = new System.Drawing.Size(100, 100);
-            this.pbPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbPerfil.TabIndex = 46;
-            this.pbPerfil.TabStop = false;
-            // 
             // lblUsuario
             // 
             this.lblUsuario.AllowParentOverrides = false;
@@ -1305,6 +1265,44 @@ namespace CapaPresentaciones
             animation1.TransparencyCoeff = 0F;
             this.Transicion.DefaultAnimation = animation1;
             this.Transicion.TimeStep = 1F;
+            // 
+            // pbEditarPerfil
+            // 
+            this.pbEditarPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pbEditarPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.pbEditarPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.pbEditarPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.pbEditarPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.pbEditarPerfil.BorderSize = 2;
+            this.pbEditarPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Transicion.SetDecoration(this.pbEditarPerfil, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.pbEditarPerfil.GradientAngle = 50F;
+            this.pbEditarPerfil.Image = ((System.Drawing.Image)(resources.GetObject("pbEditarPerfil.Image")));
+            this.pbEditarPerfil.Location = new System.Drawing.Point(5, 246);
+            this.pbEditarPerfil.Name = "pbEditarPerfil";
+            this.pbEditarPerfil.Size = new System.Drawing.Size(34, 34);
+            this.pbEditarPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbEditarPerfil.TabIndex = 56;
+            this.pbEditarPerfil.TabStop = false;
+            this.pbEditarPerfil.Visible = false;
+            // 
+            // pbPerfil
+            // 
+            this.pbPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pbPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.pbPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.pbPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.pbPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.pbPerfil.BorderSize = 2;
+            this.Transicion.SetDecoration(this.pbPerfil, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.pbPerfil.GradientAngle = 50F;
+            this.pbPerfil.Image = ((System.Drawing.Image)(resources.GetObject("pbPerfil.Image")));
+            this.pbPerfil.Location = new System.Drawing.Point(34, 12);
+            this.pbPerfil.Name = "pbPerfil";
+            this.pbPerfil.Size = new System.Drawing.Size(100, 100);
+            this.pbPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPerfil.TabIndex = 46;
+            this.pbPerfil.TabStop = false;
             // 
             // P_Menu
             // 

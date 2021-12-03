@@ -45,10 +45,11 @@ namespace CapaPresentaciones
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
             this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.btnPlantilla = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnDescargar = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnSubir = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.pnContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
@@ -338,11 +339,7 @@ namespace CapaPresentaciones
             this.dgvDatos.Size = new System.Drawing.Size(773, 346);
             this.dgvDatos.TabIndex = 32;
             this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
-            // 
-            // Bordeado
-            // 
-            this.Bordeado.ElipseRadius = 15;
-            this.Bordeado.TargetControl = this.pnContenedor;
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             // 
             // btnPlantilla
             // 
@@ -367,6 +364,11 @@ namespace CapaPresentaciones
             this.btnSubir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.btnSubir.Name = "btnSubir";
             this.btnSubir.ReadOnly = true;
+            // 
+            // Bordeado
+            // 
+            this.Bordeado.ElipseRadius = 15;
+            this.Bordeado.TargetControl = this.pnContenedor;
             // 
             // P_TablaAsignaturasAsignadasSesiones
             // 
@@ -397,5 +399,6 @@ namespace CapaPresentaciones
         private System.Windows.Forms.DataGridViewImageColumn btnPlantilla;
         private System.Windows.Forms.DataGridViewImageColumn btnDescargar;
         private System.Windows.Forms.DataGridViewImageColumn btnSubir;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
