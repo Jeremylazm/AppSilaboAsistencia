@@ -775,7 +775,7 @@ CREATE PROCEDURE spuBuscarAsignaturas @CodDepartamento VARCHAR(3),
 AS
 BEGIN
 	-- Mostrar la tabla TAsignatura por el texto que se desea buscar
-	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica, Prerrequisito
+	SELECT CodAsignatura, NombreAsignatura, Creditos, Categoria, HorasTeoria, HorasPractica, Prerrequisito, Sumilla
 		FROM TAsignatura
 		WHERE SUBSTRING(CodAsignatura,1,2) = @CodDepartamento AND 
 			 (CodAsignatura LIKE (@Texto + '%') OR
@@ -783,8 +783,8 @@ BEGIN
 			  Creditos LIKE (@Texto + '%') OR
 			  Categoria LIKE (@Texto + '%') OR
 			  HorasTeoria LIKE (@Texto + '%') OR
-			  HorasPractica LIKE (@Texto + '%') OR
-			  Prerrequisito LIKE (@Texto + '%'))
+			  HorasPractica LIKE (@Texto + '%'))
+			 
 END;
 GO
 
