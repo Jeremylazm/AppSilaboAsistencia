@@ -59,6 +59,7 @@ namespace CapaPresentaciones
 
                 DataTable PlantillaSilabo = N_Recursos.DescargarPlantillaSilabo();
 
+                // Se crea un archivo temporal, para después abrirlo con ClosedXML
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 string folder = path + "/temp/";
                 string fullFilePath = folder + "temp.xlsx";
@@ -77,7 +78,6 @@ namespace CapaPresentaciones
 
                 File.WriteAllBytes(fullFilePath, archivo);
 
-                // Se crea un archivo temporal, para después abrirlo con ClosedXML
                 string CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
 
                 DataTable dtDatosAsignatura = N_Asignatura.BuscarAsignatura(CodAsignatura.Substring(0, 2), CodAsignatura.Substring(0, 5));
