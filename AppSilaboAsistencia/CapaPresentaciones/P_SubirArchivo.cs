@@ -14,12 +14,9 @@ using System.Diagnostics;
 
 namespace CapaPresentaciones
 {
-    public partial class P_SubirSilabo : Form
+    public partial class P_SubirArchivo : Form
     {
         readonly N_Catalogo ObjNegocio;
-
-        readonly N_Recursos ObjNegocioRecursos;
-        readonly E_Recursos ObjEntidadRecursos;
 
         public string CodAsignatura;
         public string CodDocente;
@@ -29,13 +26,25 @@ namespace CapaPresentaciones
 
         private static string realNametemp;
 
-        public P_SubirSilabo()
+        private string Tipo;
+
+        public P_SubirArchivo(string Tipo)
         {
             ObjNegocio = new N_Catalogo();
 
-            ObjEntidadRecursos = new E_Recursos();
-            ObjNegocioRecursos = new N_Recursos();
             InitializeComponent();
+
+            this.Tipo = Tipo;
+
+            if (Tipo == "Silabo")
+            {
+                lblTitulo.Text += " Sílabo";
+            }
+            else if (Tipo == "Plan de Sesiones")
+            {
+                lblTitulo.Text += " Plan de Sesiones";
+            }
+
         }
 
         private void MensajeConfirmacion(string Mensaje)
@@ -59,7 +68,6 @@ namespace CapaPresentaciones
             openFileDialog.InitialDirectory = @"C:\";
             openFileDialog.Filter = "Archivos de Excel | *.xlsx";
             openFileDialog.FilterIndex = 1;
-            openFileDialog.RestoreDirectory = true;
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -79,15 +87,33 @@ namespace CapaPresentaciones
             }
 
             byte[] archivo = null;
-            Stream myStream = openFileDialog.OpenFile();
-            using (MemoryStream ms = new MemoryStream())
-            {
-                myStream.CopyTo(ms);
-                archivo = ms.ToArray();
-            }
 
-            ObjNegocio.ActualizarSilaboAsignatura("2021-II", CodAsignatura, CodDocente, archivo);
-            MensajeConfirmacion("Archivo subido exitosamente");
+            try
+            {
+                Stream myStream = openFileDialog.OpenFile();
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    myStream.CopyTo(ms);
+                    archivo = ms.ToArray();
+                }
+
+                if (Tipo == "Silabo")
+                {
+                    ObjNegocio.ActualizarSilaboAsignatura("2021-II", CodAsignatura, CodDocente, archivo);
+                    MensajeConfirmacion("Archivo subido exitosamente");
+                }
+                else if (Tipo == "Plan de Sesiones")
+                {
+                    ObjNegocio.ActualizarPlanSesionesAsignatura("2021-II", CodAsignatura, CodDocente, archivo);
+                    MensajeConfirmacion("Archivo subido exitosamente");
+                }
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show("Guarda y cierra el archivo antes de subirlo");
+                Close();
+            }
+            
 
             // Abrir el archivo subido
             /*string path = AppDomain.CurrentDomain.BaseDirectory;

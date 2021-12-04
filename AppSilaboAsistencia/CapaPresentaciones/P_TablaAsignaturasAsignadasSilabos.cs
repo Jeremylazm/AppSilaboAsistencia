@@ -225,18 +225,18 @@ namespace CapaPresentaciones
             // Subir sílabo
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 2))
             {
-                P_SubirSilabo SubirArchivo = new P_SubirSilabo();
+                P_SubirArchivo SubirSilabo = new P_SubirArchivo("Silabo");
 
                 Program.Evento = 1;
 
-                SubirArchivo.CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
-                SubirArchivo.NombreAsignatura = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
-                SubirArchivo.EscuelaProfesional = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
-                SubirArchivo.Grupo = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
-                SubirArchivo.CodDocente = CodDocente;
+                SubirSilabo.CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
+                SubirSilabo.NombreAsignatura = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                SubirSilabo.EscuelaProfesional = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
+                SubirSilabo.Grupo = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
+                SubirSilabo.CodDocente = CodDocente;
 
-                SubirArchivo.ShowDialog();
-                SubirArchivo.Dispose();
+                SubirSilabo.ShowDialog();
+                SubirSilabo.Dispose();
             }
 
             /*
