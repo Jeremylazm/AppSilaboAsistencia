@@ -29,13 +29,13 @@ namespace CapaPresentaciones
 
         private void MostrarEstudiantes()
         {
-            dgvDatos.DataSource = N_Matricula.BuscarEstudiantesAsignatura("2021-II", CodAsignatura.Substring(6), CodAsignatura.Substring(0, 5));
+            dgvDatos.DataSource = N_Matricula.BuscarEstudiantesAsignatura("2021-II", CodAsignatura.Substring(6), CodAsignatura);
             AccionesTabla();
         }
 
         public void BuscarEstudiantes()
         {
-            dgvDatos.DataSource = N_Matricula.BuscarEstudiantesMatriculadosAsignatura("2021-II", CodAsignatura.Substring(6), CodAsignatura.Substring(0, 5), txtBuscar.Text);
+            dgvDatos.DataSource = N_Matricula.BuscarEstudiantesMatriculadosAsignatura("2021-II", CodAsignatura.Substring(6), CodAsignatura, txtBuscar.Text);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
