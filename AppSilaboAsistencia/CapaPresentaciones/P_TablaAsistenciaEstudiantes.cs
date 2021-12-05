@@ -111,5 +111,23 @@ namespace CapaPresentaciones
                 }
             }
         }
+
+        private void ckbMarcarTodos_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
+        {
+            if (ckbMarcarTodos.Checked)
+            {
+                foreach (DataGridViewRow Fila in dgvDatos.Rows)
+                {
+                    Fila.Cells[0].Value = ListaImagenes.Images[1];
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow Fila in dgvDatos.Rows)
+                {
+                    Fila.Cells[0].Value = ListaImagenes.Images[0];
+                }
+            }
+        }
     }
 }
