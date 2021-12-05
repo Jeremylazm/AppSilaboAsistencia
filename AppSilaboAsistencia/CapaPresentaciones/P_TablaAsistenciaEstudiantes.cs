@@ -3,6 +3,9 @@ using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
 using System.Drawing;
+using ImageMagick;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace CapaPresentaciones
 {
@@ -35,10 +38,7 @@ namespace CapaPresentaciones
             dgvDatos.Columns[6].HeaderText = "Nombre";
             dgvDatos.Columns[6].ReadOnly = true;
 
-            foreach (DataGridViewRow Fila in dgvDatos.Rows)
-            {
-                Fila.Cells["ckbAsistencia"].Value = ListaImagenes.Images[0];
-            }
+            dgvDatos.Rows[6].Cells[0].Value = ListaImagenes.Images[0];
         }
 
         private void MostrarEstudiantes()
@@ -64,7 +64,10 @@ namespace CapaPresentaciones
 
         private void btnSesiones_Click(object sender, EventArgs e)
         {
+            P_TablaSesiones Sesiones = new P_TablaSesiones();
 
+            Sesiones.ShowDialog();
+            Sesiones.Dispose();
         }
 
         private void dgvDatos_CellEnter(object sender, DataGridViewCellEventArgs e)
