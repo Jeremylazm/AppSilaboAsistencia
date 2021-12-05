@@ -15,7 +15,7 @@ namespace CapaPresentaciones
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             lblTitulo.Text += CodAsignatura;
-            txtFecha.Text = DateTime.Now.ToString("dd-MM-yyyy");
+            lblFecha.Text += "    " + DateTime.Now.ToString("dd / MM / yyyy").ToString();
             MostrarEstudiantes();
         }
 
@@ -24,10 +24,15 @@ namespace CapaPresentaciones
             dgvDatos.Columns[0].DisplayIndex = 6;
             dgvDatos.Columns[1].DisplayIndex = 6;
             dgvDatos.Columns[2].HeaderText = "Id.";
+            dgvDatos.Columns[2].ReadOnly = true;
             dgvDatos.Columns[3].HeaderText = "Código";
+            dgvDatos.Columns[3].ReadOnly = true;
             dgvDatos.Columns[4].HeaderText = "Apellido Paterno";
+            dgvDatos.Columns[4].ReadOnly = true;
             dgvDatos.Columns[5].HeaderText = "Apellido Materno";
+            dgvDatos.Columns[5].ReadOnly = true;
             dgvDatos.Columns[6].HeaderText = "Nombre";
+            dgvDatos.Columns[6].ReadOnly = true;
         }
 
         private void MostrarEstudiantes()
