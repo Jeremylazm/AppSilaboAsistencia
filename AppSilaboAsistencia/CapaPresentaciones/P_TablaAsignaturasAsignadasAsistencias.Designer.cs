@@ -45,8 +45,8 @@ namespace CapaPresentaciones
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
             this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.btnAsistencia = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
@@ -186,6 +186,7 @@ namespace CapaPresentaciones
             this.txtBuscar.TextPlaceholder = "Buscar...";
             this.txtBuscar.UseSystemPasswordChar = false;
             this.txtBuscar.WordWrap = true;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // pnContenedor
             // 
@@ -334,11 +335,7 @@ namespace CapaPresentaciones
             this.dgvDatos.Size = new System.Drawing.Size(773, 346);
             this.dgvDatos.TabIndex = 32;
             this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
-            // 
-            // Bordeado
-            // 
-            this.Bordeado.ElipseRadius = 15;
-            this.Bordeado.TargetControl = this.pnContenedor;
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             // 
             // btnAsistencia
             // 
@@ -347,6 +344,11 @@ namespace CapaPresentaciones
             this.btnAsistencia.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.btnAsistencia.Name = "btnAsistencia";
             this.btnAsistencia.ReadOnly = true;
+            // 
+            // Bordeado
+            // 
+            this.Bordeado.ElipseRadius = 15;
+            this.Bordeado.TargetControl = this.pnContenedor;
             // 
             // P_TablaAsignaturasAsignadasAsistencias
             // 

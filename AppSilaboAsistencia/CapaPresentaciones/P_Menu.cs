@@ -147,11 +147,6 @@ namespace CapaPresentaciones
             AbrirFormularios<P_TablaAsignaturas>();
         }
 
-        private void btnPrincipal_Click(object sender, EventArgs e)
-        {
-            ActualizarColor();
-        }
-
         private void btnSilabos_Click(object sender, EventArgs e)
         {
             ActualizarColor();
@@ -179,6 +174,12 @@ namespace CapaPresentaciones
         {
             ActualizarColor();
             AbrirFormularios<P_TablaAsignaturasAsignadasSesiones>();
+        }
+
+        private void btnAsistencia_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_TablaAsignaturasAsignadasAsistencias>();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
