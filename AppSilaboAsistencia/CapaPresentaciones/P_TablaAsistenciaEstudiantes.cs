@@ -17,6 +17,7 @@ namespace CapaPresentaciones
             lblTitulo.Text += CodAsignatura;
             lblFecha.Text += "    " + DateTime.Now.ToString("dd / MM / yyyy").ToString();
             MostrarEstudiantes();
+            ckbMarcarTodos.Click += new EventHandler(ckbMarcarTodos_Click);
         }
 
         private void AccionesTabla()
@@ -60,5 +61,18 @@ namespace CapaPresentaciones
         {
 
         }
-    }
+        //marcar todo los checkboxs del datagridview
+        bool CheckboxMarcarTodoClick = false;
+        private void MarcarTodoCKB(Bunifu.UI.WinForms.BunifuCheckBox ckbx)
+		{
+            CheckboxMarcarTodoClick = true;
+            foreach (DataGridViewRow row in dgvDatos.Rows) ((DataGridViewCheckBoxCell)row.Cells["ckbAsistencia"]).Value = ckbx.Checked;
+            dgvDatos.RefreshEdit();
+            CheckboxMarcarTodoClick = false;
+		}
+		private void ckbMarcarTodos_Click(object sender, EventArgs e)
+		{
+            MarcarTodoCKB((Bunifu.UI.WinForms.BunifuCheckBox)sender);
+		}
+	}
 }
