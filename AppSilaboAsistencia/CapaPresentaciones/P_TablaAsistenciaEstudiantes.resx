@@ -123,29 +123,7 @@
   <metadata name="Bordeado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnGuardarReAsistencia.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAKoAAAAnCAYAAACfWNOEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAI1SURBVHhe7dw9aBNhGMDxG13EtNo0Mbl7HRx0dRIXB5cO
-        Tm4iShexQ4WCDhU6dBFErIbkUitNPR0cRHQQxEEUXBxcBKeKmrsg+fAzQv2CDmefmFaUd23uHvi/8Nve
-        ZPpz7703PM7/KwzMlnbNjL+7WpyvV9wXnesmBjabtBb5xZutmpnoBibTz9G+OoHZXy+7jUeT+ZUbh7Px
-        hX3b44mt24BNJ63VxrLxw1O572sNfmgtmrF+lv+usGLOvTxf6M7sHrb+ETAoZwtD8fOZnd3lOa/Uz/PP
-        kiepRGr7EZCUp2fyXyLfO96LVN5Jo4rbnjZD1s1AUqaymfhtyf30PjA5p7Nkpu6Pj/6ybQSSJncludg7
-        YdW9s3BoxLoJSJpcsuSLgBP6bn12LxcopJMc/81r3g9HvmHZNgBpIY0SKlKPUKECoUIFQoUKhAoVCBUq
-        ECpUIFSoQKhQgVChAqFCBUKFCoQKFQgVKhAqVCBUqECoUIFQoQKhQgVChQqEChUIFSr0Qm3Mex8Z54O0
-        mhzOxK1Fb9WpV9wnpQM7rJuApMlwFBmS4rSXzPTdY6Ortk1A0mRmqgz4ddqB2fX6crErj1jbRiBJMg5V
-        xqL2Rk9Gvnfy8en8V9tGICm3j+ZW3lxxL/UiXV/yrnrvRO4bT1akwa0j2Z+v5orPZH5vP9G/q1E1s8sX
-        3c8yhpIJfxg0GcvvHxzpHfdhuVC2Rrq+moHZIzNT5aYl36+AQYmqXnPtZH+w8U66sRznN5S2sNAjWEdA
-        AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="bunifuLabel1.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 28px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(232, 158, 31); text-align: center; }</value>
-  </data>
   <data name="Separador1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGkAAAAKCAYAAAC34nDOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -181,11 +159,10 @@
   </data>
   <data name="sbDatos.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAwAAAGFCAYAAADJvRJDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACdSURBVHhe7cu5DYBAAMAwBuBZk50ZgwF4+kNyRZXCVZRp
-        X7bjcaHjHUbhU4NoEA2iQTSIBtEgGkSDaBANokE0iAbRIBpEg2gQDaJBNIgG0SAaRINoEA2iQTSIBtEg
-        GkSDaBANokE0iAbRIBpEg2gQDaJBNIgG0SAaRINoEA2iQTSIBtEgGkSDaBANokE0iAbRIBrEH8O8nqMw
-        NK/nDeGmkeamExcrAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAAoAAAFsCAYAAAD16ChOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACESURBVGhD7cqxDcIwAABBBjDOmuzsMTIAhBIRXepIX1z1
+        /3g9t3V4X1jf8Sz8aaRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRG
+        aqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqR7jGPuZ+HHmPsHwa1/gGK/3W8AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="txtBuscar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
