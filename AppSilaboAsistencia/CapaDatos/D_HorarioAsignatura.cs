@@ -105,7 +105,20 @@ namespace CapaDatos
         }
 
         // Método para actualizar el horario de una asignatura en un catálogo.
-        public void ActualizarHorarioAsignatura(E_HorarioAsignatura HorarioAsignatura, string CodSemestreB, string CodAsignaturaB, string CodEscuelaPB, string GrupoB, string CodDocenteB, string DiaB)
+        public void ActualizarHorarioAsignatura(E_HorarioAsignatura HorarioAsignatura,
+                                                string NCodSemestre,   // Atributo nuevo
+                                                string NCodAsignatura, // Atributo nuevo
+                                                string NCodEscuelaP,   // Atributo nuevo
+                                                string NGrupo,         // Atributo nuevo
+                                                string NCodDocente,    // Atributo nuevo
+                                                string NDia,           // Atributo nuevo
+                                                string NTipo,          // Atributo nuevo
+                                                string NHorasTeoria,   // Atributo nuevo
+                                                string NHorasPractica, // Atributo nuevo
+                                                string NHoraInicio,    // Atributo nuevo
+                                                string NHoraFin,       // Atributo nuevo 
+                                                string NAula,          // Atributo nuevo
+                                                string NModalidad)     // Atributo nuevo
         {
             SqlCommand Comando = new SqlCommand("spuActualizarHorarioAsignatura", Conectar)
             {
@@ -114,28 +127,30 @@ namespace CapaDatos
 
             Conectar.Open();
             Comando.Parameters.AddWithValue("@CodSemestre", HorarioAsignatura.CodSemestre);
+            Comando.Parameters.AddWithValue("@CodAsignatura", HorarioAsignatura.CodAsignatura);
             Comando.Parameters.AddWithValue("@CodEscuelaP", HorarioAsignatura.CodEscuelaP);
+            Comando.Parameters.AddWithValue("@Grupo", HorarioAsignatura.Grupo);
             Comando.Parameters.AddWithValue("@CodDocente", HorarioAsignatura.CodDocente);
             Comando.Parameters.AddWithValue("@Dia", HorarioAsignatura.Dia);
-            Comando.Parameters.AddWithValue("@Tipo", HorarioAsignatura.Tipo);
-            Comando.Parameters.AddWithValue("@HorasTeoria", HorarioAsignatura.HorasTeoria);
-            Comando.Parameters.AddWithValue("@HorasPractica", HorarioAsignatura.HorasPractica);
-            Comando.Parameters.AddWithValue("@HoraInicio", HorarioAsignatura.HoraInicio);
-            Comando.Parameters.AddWithValue("@HoraFin", HorarioAsignatura.HoraFin);
-            Comando.Parameters.AddWithValue("@Aula", HorarioAsignatura.Aula);
-            Comando.Parameters.AddWithValue("@Modalidad", HorarioAsignatura.Modalidad);
-            Comando.Parameters.AddWithValue("@CodSemestreB", CodSemestreB);
-            Comando.Parameters.AddWithValue("@CodAsignaturaB", CodAsignaturaB);
-            Comando.Parameters.AddWithValue("@CodEscuelaPB", CodEscuelaPB);
-            Comando.Parameters.AddWithValue("@GrupoB", GrupoB);
-            Comando.Parameters.AddWithValue("@CodDocenteB", CodDocenteB);
-            Comando.Parameters.AddWithValue("@DiaB", DiaB);
+            Comando.Parameters.AddWithValue("@NCodSemestre", NCodSemestre);
+            Comando.Parameters.AddWithValue("@NCodAsignatura", NCodAsignatura);
+            Comando.Parameters.AddWithValue("@NCodEscuelaP", NCodEscuelaP);
+            Comando.Parameters.AddWithValue("@NGrupo", NGrupo);
+            Comando.Parameters.AddWithValue("@NCodDocente", NCodDocente);
+            Comando.Parameters.AddWithValue("@NDia", NDia);
+            Comando.Parameters.AddWithValue("@NTipo", NTipo);
+            Comando.Parameters.AddWithValue("@NHorasTeoria", NHorasTeoria);
+            Comando.Parameters.AddWithValue("@NHorasPractica", NHorasPractica);
+            Comando.Parameters.AddWithValue("@NHoraInicio", NHoraInicio);
+            Comando.Parameters.AddWithValue("@NHoraFin", NHoraFin);
+            Comando.Parameters.AddWithValue("@NAula", NAula);
+            Comando.Parameters.AddWithValue("@NModalidad", NModalidad);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }
 
         // Método para eliminar el horario de una asignatura en un catálogo.
-        public void EliminarHorarioAsignatura(string CodSemestre, string CodAsignatura, string CodEscuelaP, string Grupo)
+        public void EliminarHorarioAsignatura(E_HorarioAsignatura HorarioAsignatura)
         {
             SqlCommand Comando = new SqlCommand("spuEliminarHorarioAsignatura", Conectar)
             {
@@ -143,10 +158,12 @@ namespace CapaDatos
             };
 
             Conectar.Open();
-            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
-            Comando.Parameters.AddWithValue("@Grupo", Grupo);
+            Comando.Parameters.AddWithValue("@CodSemestre", HorarioAsignatura.CodSemestre);
+            Comando.Parameters.AddWithValue("@CodAsignatura", HorarioAsignatura.CodAsignatura);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", HorarioAsignatura.CodEscuelaP);
+            Comando.Parameters.AddWithValue("@Grupo", HorarioAsignatura.Grupo);
+            Comando.Parameters.AddWithValue("@CodDocente", HorarioAsignatura.CodDocente);
+            Comando.Parameters.AddWithValue("@Dia", HorarioAsignatura.Dia);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }

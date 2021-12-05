@@ -33,9 +33,9 @@ namespace CapaNegocios
             ObjMatricula.InsertarMatricula(Matricula);
         }
 
-        public void ActualizarMatricula(E_Matricula Matricula)
+        public void ActualizarMatricula(E_Matricula Matricula, string NCodSemestre, string NCodEscuelaP, string NCodAsignatura, string NCodEstudiante)
         {
-            ObjMatricula.ActualizarMatricula(Matricula);
+            ObjMatricula.ActualizarMatricula(Matricula, NCodSemestre, NCodEscuelaP, NCodAsignatura, NCodEstudiante);
         }
 
         public void EliminarMatricula(E_Matricula Matricula)
