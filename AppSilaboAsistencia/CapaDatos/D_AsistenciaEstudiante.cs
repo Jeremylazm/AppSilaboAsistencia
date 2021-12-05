@@ -9,7 +9,7 @@ namespace CapaDatos
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
 
-        // Método para para mostrar el registro de asistencia de los estudiantes de una asignatura en una fecha especifica. 
+        // Método para mostrar el registro de asistencia de los estudiantes de una asignatura en una fecha especifica. 
         public DataTable AsistenciaEstudiantes(string CodSemestre, string CodDepartamentoA, string Texto, string Fecha)
         {
             DataTable Resultado = new DataTable();
