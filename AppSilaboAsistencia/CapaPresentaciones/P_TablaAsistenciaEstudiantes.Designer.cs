@@ -31,18 +31,18 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaAsistenciaEstudiantes));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties69 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties70 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties71 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties72 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties65 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties66 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties67 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties68 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.pbLogo = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -51,8 +51,6 @@ namespace CapaPresentaciones
             this.txtBuscar = new Bunifu.UI.WinForms.BunifuTextBox();
             this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.ckbAsistencia = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.txtObservaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFecha = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblMarcarTodos = new Bunifu.UI.WinForms.BunifuLabel();
             this.ckbMarcarTodos = new Bunifu.UI.WinForms.BunifuCheckBox();
@@ -60,6 +58,9 @@ namespace CapaPresentaciones
             this.lblTema = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnSesiones = new Bunifu.UI.WinForms.BunifuImageButton();
             this.Separador1 = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.ListaImagenes = new System.Windows.Forms.ImageList(this.components);
+            this.ckbAsistencia = new System.Windows.Forms.DataGridViewImageColumn();
+            this.txtObservaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -238,26 +239,26 @@ namespace CapaPresentaciones
             this.txtBuscar.Modified = false;
             this.txtBuscar.Multiline = false;
             this.txtBuscar.Name = "txtBuscar";
-            stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties5.FillColor = System.Drawing.Color.Empty;
-            stateProperties5.ForeColor = System.Drawing.Color.Empty;
-            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtBuscar.OnActiveState = stateProperties5;
-            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtBuscar.OnDisabledState = stateProperties6;
-            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties7.FillColor = System.Drawing.Color.Empty;
-            stateProperties7.ForeColor = System.Drawing.Color.Empty;
-            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtBuscar.OnHoverState = stateProperties7;
-            stateProperties8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties8.FillColor = System.Drawing.Color.White;
-            stateProperties8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtBuscar.OnIdleState = stateProperties8;
+            stateProperties69.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties69.FillColor = System.Drawing.Color.Empty;
+            stateProperties69.ForeColor = System.Drawing.Color.Empty;
+            stateProperties69.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtBuscar.OnActiveState = stateProperties69;
+            stateProperties70.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties70.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties70.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties70.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtBuscar.OnDisabledState = stateProperties70;
+            stateProperties71.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties71.FillColor = System.Drawing.Color.Empty;
+            stateProperties71.ForeColor = System.Drawing.Color.Empty;
+            stateProperties71.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtBuscar.OnHoverState = stateProperties71;
+            stateProperties72.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties72.FillColor = System.Drawing.Color.White;
+            stateProperties72.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties72.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtBuscar.OnIdleState = stateProperties72;
             this.txtBuscar.Padding = new System.Windows.Forms.Padding(3);
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -328,10 +329,10 @@ namespace CapaPresentaciones
             this.dgvDatos.AllowUserToDeleteRows = false;
             this.dgvDatos.AllowUserToOrderColumns = true;
             this.dgvDatos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle33;
             this.dgvDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -340,14 +341,14 @@ namespace CapaPresentaciones
             this.dgvDatos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDatos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvDatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
             this.dgvDatos.ColumnHeadersHeight = 28;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -371,14 +372,14 @@ namespace CapaPresentaciones
             this.dgvDatos.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.dgvDatos.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.dgvDatos.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
+            dataGridViewCellStyle35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDatos.DefaultCellStyle = dataGridViewCellStyle35;
             this.dgvDatos.EnableHeadersVisualStyles = false;
             this.dgvDatos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.dgvDatos.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -387,14 +388,14 @@ namespace CapaPresentaciones
             this.dgvDatos.Location = new System.Drawing.Point(9, 139);
             this.dgvDatos.MultiSelect = false;
             this.dgvDatos.Name = "dgvDatos";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDatos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDatos.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
             this.dgvDatos.RowHeadersVisible = false;
             this.dgvDatos.RowHeadersWidth = 28;
             this.dgvDatos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -405,16 +406,8 @@ namespace CapaPresentaciones
             this.dgvDatos.Size = new System.Drawing.Size(773, 390);
             this.dgvDatos.TabIndex = 34;
             this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
-            // 
-            // ckbAsistencia
-            // 
-            this.ckbAsistencia.HeaderText = "Asistencia";
-            this.ckbAsistencia.Name = "ckbAsistencia";
-            // 
-            // txtObservaciones
-            // 
-            this.txtObservaciones.HeaderText = "Observaciones";
-            this.txtObservaciones.Name = "txtObservaciones";
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
+            this.dgvDatos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellEnter);
             // 
             // lblFecha
             // 
@@ -463,38 +456,38 @@ namespace CapaPresentaciones
             this.ckbMarcarTodos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ckbMarcarTodos.BackgroundImage")));
             this.ckbMarcarTodos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ckbMarcarTodos.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right;
-            this.ckbMarcarTodos.BorderRadius = 12;
-            this.ckbMarcarTodos.Checked = false;
-            this.ckbMarcarTodos.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked;
+            this.ckbMarcarTodos.BorderRadius = 4;
+            this.ckbMarcarTodos.Checked = true;
+            this.ckbMarcarTodos.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked;
             this.ckbMarcarTodos.Cursor = System.Windows.Forms.Cursors.Default;
             this.ckbMarcarTodos.CustomCheckmarkImage = null;
             this.ckbMarcarTodos.Location = new System.Drawing.Point(645, 98);
             this.ckbMarcarTodos.MinimumSize = new System.Drawing.Size(17, 17);
             this.ckbMarcarTodos.Name = "ckbMarcarTodos";
             this.ckbMarcarTodos.OnCheck.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.ckbMarcarTodos.OnCheck.BorderRadius = 12;
+            this.ckbMarcarTodos.OnCheck.BorderRadius = 4;
             this.ckbMarcarTodos.OnCheck.BorderThickness = 2;
             this.ckbMarcarTodos.OnCheck.CheckBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.ckbMarcarTodos.OnCheck.CheckmarkColor = System.Drawing.Color.White;
             this.ckbMarcarTodos.OnCheck.CheckmarkThickness = 2;
             this.ckbMarcarTodos.OnDisable.BorderColor = System.Drawing.Color.LightGray;
-            this.ckbMarcarTodos.OnDisable.BorderRadius = 12;
+            this.ckbMarcarTodos.OnDisable.BorderRadius = 4;
             this.ckbMarcarTodos.OnDisable.BorderThickness = 2;
             this.ckbMarcarTodos.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent;
             this.ckbMarcarTodos.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray;
             this.ckbMarcarTodos.OnDisable.CheckmarkThickness = 2;
             this.ckbMarcarTodos.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.ckbMarcarTodos.OnHoverChecked.BorderRadius = 12;
+            this.ckbMarcarTodos.OnHoverChecked.BorderRadius = 4;
             this.ckbMarcarTodos.OnHoverChecked.BorderThickness = 2;
             this.ckbMarcarTodos.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.ckbMarcarTodos.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White;
             this.ckbMarcarTodos.OnHoverChecked.CheckmarkThickness = 2;
             this.ckbMarcarTodos.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.ckbMarcarTodos.OnHoverUnchecked.BorderRadius = 12;
+            this.ckbMarcarTodos.OnHoverUnchecked.BorderRadius = 4;
             this.ckbMarcarTodos.OnHoverUnchecked.BorderThickness = 1;
             this.ckbMarcarTodos.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent;
             this.ckbMarcarTodos.OnUncheck.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.ckbMarcarTodos.OnUncheck.BorderRadius = 12;
+            this.ckbMarcarTodos.OnUncheck.BorderRadius = 4;
             this.ckbMarcarTodos.OnUncheck.BorderThickness = 1;
             this.ckbMarcarTodos.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent;
             this.ckbMarcarTodos.Size = new System.Drawing.Size(21, 21);
@@ -540,26 +533,26 @@ namespace CapaPresentaciones
             this.txtTema.Modified = false;
             this.txtTema.Multiline = false;
             this.txtTema.Name = "txtTema";
-            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties1.FillColor = System.Drawing.Color.Empty;
-            stateProperties1.ForeColor = System.Drawing.Color.Empty;
-            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtTema.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtTema.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties3.FillColor = System.Drawing.Color.Empty;
-            stateProperties3.ForeColor = System.Drawing.Color.Empty;
-            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtTema.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties4.FillColor = System.Drawing.Color.White;
-            stateProperties4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtTema.OnIdleState = stateProperties4;
+            stateProperties65.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties65.FillColor = System.Drawing.Color.Empty;
+            stateProperties65.ForeColor = System.Drawing.Color.Empty;
+            stateProperties65.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtTema.OnActiveState = stateProperties65;
+            stateProperties66.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties66.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties66.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties66.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtTema.OnDisabledState = stateProperties66;
+            stateProperties67.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties67.FillColor = System.Drawing.Color.Empty;
+            stateProperties67.ForeColor = System.Drawing.Color.Empty;
+            stateProperties67.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtTema.OnHoverState = stateProperties67;
+            stateProperties68.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties68.FillColor = System.Drawing.Color.White;
+            stateProperties68.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties68.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtTema.OnIdleState = stateProperties68;
             this.txtTema.Padding = new System.Windows.Forms.Padding(3);
             this.txtTema.PasswordChar = '\0';
             this.txtTema.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -650,6 +643,24 @@ namespace CapaPresentaciones
             this.Separador1.Size = new System.Drawing.Size(105, 10);
             this.Separador1.TabIndex = 57;
             // 
+            // ListaImagenes
+            // 
+            this.ListaImagenes.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ListaImagenes.ImageStream")));
+            this.ListaImagenes.TransparentColor = System.Drawing.Color.Transparent;
+            this.ListaImagenes.Images.SetKeyName(0, "Unchecked.png");
+            this.ListaImagenes.Images.SetKeyName(1, "Checked.png");
+            // 
+            // ckbAsistencia
+            // 
+            this.ckbAsistencia.HeaderText = "Asistencia";
+            this.ckbAsistencia.Name = "ckbAsistencia";
+            this.ckbAsistencia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // txtObservaciones
+            // 
+            this.txtObservaciones.HeaderText = "Observaciones";
+            this.txtObservaciones.Name = "txtObservaciones";
+            // 
             // P_TablaAsistenciaEstudiantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -690,8 +701,6 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuTextBox txtBuscar;
         private Bunifu.UI.WinForms.BunifuVScrollBar sbDatos;
         public Bunifu.UI.WinForms.BunifuDataGridView dgvDatos;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ckbAsistencia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txtObservaciones;
         private Bunifu.UI.WinForms.BunifuLabel lblFecha;
         private Bunifu.UI.WinForms.BunifuCheckBox ckbMarcarTodos;
         private Bunifu.UI.WinForms.BunifuLabel lblMarcarTodos;
@@ -699,5 +708,8 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuLabel lblTema;
         private Bunifu.UI.WinForms.BunifuImageButton btnSesiones;
         private Bunifu.UI.WinForms.BunifuSeparator Separador1;
+        private System.Windows.Forms.DataGridViewImageColumn ckbAsistencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtObservaciones;
+        private System.Windows.Forms.ImageList ListaImagenes;
     }
 }
