@@ -95,7 +95,7 @@ namespace CapaDatos
         }
 
         // Método para actualizar el registro de una matricula de la base de datos.
-        public void ActualizarMatricula(E_Matricula Matricula)
+        public void ActualizarMatricula(E_Matricula Matricula, string NCodSemestre, string NCodEscuelaP, string NCodAsignatura, string NCodEstudiante)
         {
             SqlCommand Comando = new SqlCommand("spuActualizarMatricula", Conectar)
             {
@@ -107,6 +107,10 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodEscuelaP", Matricula.CodEscuelaP);
             Comando.Parameters.AddWithValue("@CodAsignatura", Matricula.CodAsignatura);
             Comando.Parameters.AddWithValue("@CodEstudiante", Matricula.CodEstudiante);
+            Comando.Parameters.AddWithValue("@NCodSemestre", NCodSemestre);
+            Comando.Parameters.AddWithValue("@NCodEscuelaP", NCodEscuelaP);
+            Comando.Parameters.AddWithValue("@NCodAsignatura", NCodAsignatura);
+            Comando.Parameters.AddWithValue("@NCodEstudiante", NCodEstudiante);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }
