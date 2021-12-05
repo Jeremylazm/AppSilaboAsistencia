@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
+using System.Drawing;
 
 namespace CapaPresentaciones
 {
@@ -34,6 +35,11 @@ namespace CapaPresentaciones
             dgvDatos.Columns[5].ReadOnly = true;
             dgvDatos.Columns[6].HeaderText = "Nombre";
             dgvDatos.Columns[6].ReadOnly = true;
+
+            foreach (DataGridViewRow Fila in dgvDatos.Rows)
+            {
+                Fila.Cells["ckbAsistencia"].Value = ListaImagenes.Images[0];
+            }
         }
 
         private void MostrarEstudiantes()
@@ -61,6 +67,7 @@ namespace CapaPresentaciones
         {
 
         }
+<<<<<<< HEAD
         //marcar todo los checkboxs del datagridview
         bool CheckboxMarcarTodoClick = false;
         private void MarcarTodoCKB(Bunifu.UI.WinForms.BunifuCheckBox ckbx)
@@ -75,4 +82,49 @@ namespace CapaPresentaciones
             MarcarTodoCKB((Bunifu.UI.WinForms.BunifuCheckBox)sender);
 		}
 	}
+=======
+
+        private void dgvDatos_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((e.ColumnIndex < 0) || (e.RowIndex < 0))
+            {
+                return;
+            }
+
+            var DataGrid = (sender as DataGridView);
+
+            if (e.ColumnIndex == 0)
+                DataGrid.Cursor = Cursors.Hand;
+            else
+                DataGrid.Cursor = Cursors.Default;
+        }
+
+        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((e.ColumnIndex < 0) || (e.RowIndex < 0))
+            {
+                return;
+            }
+
+            var DataGrid = (sender as DataGridView);
+
+            if (e.ColumnIndex == 0)
+            {
+                var Celda = DataGrid.Rows[e.RowIndex].Cells[0];
+
+                if ((Celda.Tag == null) || !((bool)Celda.Tag))
+                {
+                    // Falso
+                    DataGrid.Rows[e.RowIndex].Cells[0].Value = ListaImagenes.Images[1];
+                    DataGrid.Rows[e.RowIndex].Cells[0].Tag = true;
+                }
+                else
+                {
+                    DataGrid.Rows[e.RowIndex].Cells[0].Value = ListaImagenes.Images[0];
+                    DataGrid.Rows[e.RowIndex].Cells[0].Tag = false;
+                }
+            }
+        }
+    }
+>>>>>>> main
 }

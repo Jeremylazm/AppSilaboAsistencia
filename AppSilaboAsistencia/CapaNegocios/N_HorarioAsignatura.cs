@@ -33,14 +33,28 @@ namespace CapaNegocios
             ObjHorarioAsignatura.InsertarHorarioAsignatura(HorarioAsignatura);
         }
 
-        public static void ActualizarHorarioAsignatura(E_HorarioAsignatura HorarioAsignatura, string CodSemestreB, string CodAsignaturaB, string CodEscuelaPB, string GrupoB, string CodDocenteB, string DiaB)
+        public void ActualizarHorarioAsignatura(E_HorarioAsignatura HorarioAsignatura,
+                                                string NCodSemestre, 
+                                                string NCodAsignatura,
+                                                string NCodEscuelaP,
+                                                string NGrupo, 
+                                                string NCodDocente,
+                                                string NDia,
+                                                string NTipo,
+                                                string NHorasTeoria,
+                                                string NHorasPractica,
+                                                string NHoraInicio,
+                                                string NHoraFin,
+                                                string NAula,
+                                                string NModalidad)
         {
-            new D_HorarioAsignatura().ActualizarHorarioAsignatura(HorarioAsignatura, CodSemestreB, CodAsignaturaB, CodEscuelaPB, GrupoB, CodDocenteB, DiaB);
+            ObjHorarioAsignatura.ActualizarHorarioAsignatura(HorarioAsignatura, NCodSemestre, NCodAsignatura, NCodEscuelaP, NGrupo, NCodDocente, NDia, 
+                                                             NTipo,NHorasTeoria, NHorasPractica, NHoraInicio, NHoraFin, NAula, NModalidad);
         }
 
-        public static void EliminarHorarioAsignatura(string CodSemestre, string CodAsignatura, string CodEscuelaP, string Grupo)
+        public void EliminarHorarioAsignatura(E_HorarioAsignatura HorarioAsignatura)
         {
-            new D_HorarioAsignatura().EliminarHorarioAsignatura(CodSemestre, CodAsignatura, CodEscuelaP, Grupo);
+            ObjHorarioAsignatura.EliminarHorarioAsignatura(HorarioAsignatura);
         }
     }
 }
