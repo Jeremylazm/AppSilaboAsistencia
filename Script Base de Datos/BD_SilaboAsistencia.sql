@@ -1610,7 +1610,7 @@ AS
 BEGIN
 	-- Registrar la asistencia en la tabla TAsistenciaEstudiante
 	INSERT INTO TAsistenciaEstudiante
-		VALUES (@CodSemestre, @CodAsignatura, @Fecha, @CodEstudiante, @Estado, @Observación)
+		VALUES (@CodSemestre, @CodAsignatura, @Fecha, @Hora, @CodEstudiante, @Estado, @Observación)
 END;
 GO
 
