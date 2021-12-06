@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ControlesPerzonalizados
 {
-    public partial class C_Sesion : UserControl
+    public partial class C_PlanSemanasPeriodoParcial : UserControl
     {
-        public C_Sesion()
+        public C_PlanSemanasPeriodoParcial()
         {
             InitializeComponent();
         }

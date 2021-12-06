@@ -150,23 +150,261 @@
     <Compile Include="C_CircularPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="C_Sesion.cs">
+    <Compile Include="C_PlanSemanasPeriodoParcial.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="C_Sesion.Designer.cs">
-      <DependentUpon>C_Sesion.cs</DependentUpon>
+    <Compile Include="C_PlanSemanasPeriodoParcial.Designer.cs">
+      <DependentUpon>C_PlanSemanasPeriodoParcial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C_PlanSesionesSemana.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="C_PlanSesionesSemana.Designer.cs">
+      <DependentUpon>C_PlanSesionesSemana.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="C_Sesion.resx">
-      <DependentUpon>C_Sesion.cs</DependentUpon>
+    <EmbeddedResource Include="C_PlanSemanasPeriodoParcial.resx">
+      <DependentUpon>C_PlanSemanasPeriodoParcial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C_PlanSesionesSemana.resx">
+      <DependentUpon>C_PlanSesionesSemana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Unchecked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Unchecked_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Checked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tutorias.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Modificar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exclamacion1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exclamacion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Estudiantes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Contorno.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dashboard Gráficos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar-archivo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Asistencias.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Asistencias 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buscar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Descargar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Subir 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Asistencia 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plantilla 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Estudiantes 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Principal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Principal 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Docentes 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reportes 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Asignaturas 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Agregar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Agregar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eliminar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eliminar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Editar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cambiar Contraseña 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Limpiar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Guardar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Planes de Sesiones.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Planes de Sesiones 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sílabos 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sílabos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Menú.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Restaurar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Modificar_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maximizar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eliminar_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Agregar_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Perfil Estudiante.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Perfil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Restablecer Perfil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Restaurar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Subir Perfil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Usuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Asignaturas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Correo 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Correo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Docentes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Guardar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ingresar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ingresar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Limpiar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo UNSAAC.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo UNSAAC.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Más Detalles.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maximizar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Minimizar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Minimizar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Perfil Docente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reportes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cambiar Contraseña.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cerrar 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cerrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Contraseña.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Solicitud.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
