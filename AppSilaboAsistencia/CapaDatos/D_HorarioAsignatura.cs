@@ -163,7 +163,6 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodEscuelaP", HorarioAsignatura.CodEscuelaP);
             Comando.Parameters.AddWithValue("@Grupo", HorarioAsignatura.Grupo);
             Comando.Parameters.AddWithValue("@CodDocente", HorarioAsignatura.CodDocente);
-            Comando.Parameters.AddWithValue("@Dia", HorarioAsignatura.Dia);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }

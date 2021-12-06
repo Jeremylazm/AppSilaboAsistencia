@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
 using System.Drawing;
-using ImageMagick;
 using System.IO;
 using System.Drawing.Imaging;
 
