@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaNegocios", "CapaNegocio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaPresentaciones", "CapaPresentaciones\CapaPresentaciones.csproj", "{0CADAFAB-2786-4CDA-8725-9FF62CCCC573}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlesPerzonalizados", "ControlesPerzonalizados\ControlesPerzonalizados.csproj", "{86796531-46FB-4DE6-BE65-16426F8989A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,14 @@ Global
 		{0CADAFAB-2786-4CDA-8725-9FF62CCCC573}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CADAFAB-2786-4CDA-8725-9FF62CCCC573}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0CADAFAB-2786-4CDA-8725-9FF62CCCC573}.Release|x64.ActiveCfg = Release|Any CPU
+		{86796531-46FB-4DE6-BE65-16426F8989A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86796531-46FB-4DE6-BE65-16426F8989A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86796531-46FB-4DE6-BE65-16426F8989A7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{86796531-46FB-4DE6-BE65-16426F8989A7}.Debug|x64.Build.0 = Debug|Any CPU
+		{86796531-46FB-4DE6-BE65-16426F8989A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86796531-46FB-4DE6-BE65-16426F8989A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86796531-46FB-4DE6-BE65-16426F8989A7}.Release|x64.ActiveCfg = Release|Any CPU
+		{86796531-46FB-4DE6-BE65-16426F8989A7}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
