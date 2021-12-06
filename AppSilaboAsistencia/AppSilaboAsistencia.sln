@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31624.102
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDatos", "CapaDatos\CapaDatos.csproj", "{BD8067F1-C3C2-41B5-BC8A-06971826B1A6}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaNegocios", "CapaNegocios\CapaNegocios.csproj", "{18201101-FCED-479F-9DCF-FF8E765C613D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaPresentaciones", "CapaPresentaciones\CapaPresentaciones.csproj", "{0CADAFAB-2786-4CDA-8725-9FF62CCCC573}"
+	ProjectSection(ProjectDependencies) = postProject
+		{86796531-46FB-4DE6-BE65-16426F8989A7} = {86796531-46FB-4DE6-BE65-16426F8989A7}
+		{BD8067F1-C3C2-41B5-BC8A-06971826B1A6} = {BD8067F1-C3C2-41B5-BC8A-06971826B1A6}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlesPerzonalizados", "ControlesPerzonalizados\ControlesPerzonalizados.csproj", "{86796531-46FB-4DE6-BE65-16426F8989A7}"
 EndProject
