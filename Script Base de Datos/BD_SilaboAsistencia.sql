@@ -246,6 +246,56 @@ CREATE TABLE TMatricula
 );
 GO
 
+/* ********************* TABLA ASISTENCIA-DOCENTE ********************** */
+IF EXISTS (SELECT * 
+				FROM SYSOBJECTS
+				WHERE NAME = 'TAsistenciaDocente')
+	DROP TABLE TAsistenciaDocente
+GO
+CREATE TABLE TAsistenciaDocente
+(
+	-- Lista de atributos
+	CodSemestre tyCodSemestre,
+	CodAsignatura VARCHAR(9) NOT NULL, -- ej. IF085AIN
+	HoraInicio VARCHAR(2) NOT NULL, -- Formato: 00-23 (Hora de inicio de la asignatura en el catálogo)
+	Fecha DATE NOT NULL,   -- Formato: yyyy-mm-dd
+	Hora TIME(0) NOT NULL, -- Formato: hh:mm:ss (Hora del control de asistencia)
+	CodDocente tyCodDocente NOT NULL,
+	NombreTema VARCHAR(100)
+
+	-- Determinar las claves
+	PRIMARY KEY (CodSemestre, CodAsignatura, HoraInicio, Fecha),
+	CONSTRAINT FKAD_CodDocente FOREIGN KEY (CodDocente)
+		REFERENCES TDocente
+		ON UPDATE NO ACTION
+);
+GO
+
+/* ********************* TABLA ASISTENCIA-ESTUDIANTE ******************** */
+IF EXISTS (SELECT * 
+				FROM SYSOBJECTS
+				WHERE NAME = 'TAsistenciaEstudiante')
+	DROP TABLE TAsistenciaEstudiante
+GO
+CREATE TABLE TAsistenciaEstudiante
+(
+	-- Lista de atributos
+	CodSemestre tyCodSemestre,
+	CodAsignatura VARCHAR(9) NOT NULL, -- ej. IF085AIN
+	HoraInicio VARCHAR(2) NOT NULL, -- Formato: 00-23 (Hora de inicio de la asignatura en el catálogo)
+	Fecha DATE NOT NULL,   -- Formato: yyyy-mm-dd
+	Hora TIME(0) NOT NULL, -- Formato: hh:mm:ss (Hora del control de asistencia)
+	CodEstudiante tyCodEstudiante NOT NULL,
+	Estado VARCHAR(2) NOT NULL,  -- SI/NO (Presente/No presente)
+	Observación VARCHAR(25) -- tardanza, permisos
+
+	-- Determinar las claves
+	PRIMARY KEY (CodSemestre, CodAsignatura, HoraInicio, Fecha, CodEstudiante),
+	CONSTRAINT FK_CodAsistenciaDocente FOREIGN KEY (CodSemestre, CodAsignatura, HoraInicio, Fecha)
+		REFERENCES TAsistenciaDocente
+		ON UPDATE CASCADE,
+);
+
 /* *************************** TABLA RECURSOS *************************** */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
@@ -259,7 +309,6 @@ CREATE TABLE TRecursos
 	PlantillaSilabo VARBINARY(MAX),
 	PlantillaPlanSesiones2y3 VARBINARY(MAX),
 	PlantillaPlanSesiones4 VARBINARY(MAX)
-	
 
 	-- Definir la clave primaria
 	PRIMARY KEY(IdRecurso)
@@ -585,6 +634,7 @@ BEGIN
 END;
 GO
 
+-- Procedimiento para mostrar todos los docentes de una escuela profesional.
 CREATE PROCEDURE spuMostrarTodosDocentesDepartamento @CodDepartamentoA VARCHAR(3)
 AS
 BEGIN
@@ -876,41 +926,45 @@ GO
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA CATALOGO ****************** */
 
 -- Procedimiento para mostrar el catálogo de asignaturas asignadas de un departamento académico.
-CREATE PROCEDURE spuMostrarCatalogo @CodDepartamentoA VARCHAR(3) -- Atrib. Docente (Jefe de Dep.) 
+CREATE PROCEDURE spuMostrarCatalogo @CodSemestre VARCHAR(7),
+                                    @CodDepartamentoA VARCHAR(3) -- Atrib. Docente (Jefe de Dep.) 
 AS
 BEGIN
 	-- Mostrar la tabla de TCatalogo
-	SELECT CodigoCatalogo = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), C.CodAsignatura, A.NombreAsignatura, 
-		   CodigoEscuelaP = C.CodEscuelaP, EscuelaProfesional = EP.Nombre, C.Grupo, C.CodDocente, 
-		   Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), C.CodSemestre
+	SELECT CodAsignatura = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), A.NombreAsignatura, 
+	       EscuelaProfesional = EP.Nombre, C.Grupo, C.CodDocente,  
+		   Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre)
 		FROM ((TCatalogo C INNER JOIN TAsignatura A ON
 			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
 			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
-	    WHERE SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA
+	    WHERE C.CodSemestre = @CodSemestre AND SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA
 		ORDER BY A.NombreAsignatura
 END;
 GO
 
--- Procedimiento para buscar un catálogo específico.
-CREATE PROCEDURE spuBuscarCatalogo @Texto VARCHAR(50),
-                                   @CodEscuelaP VARCHAR(3)
+-- Procedimiento para buscar por cualquier atributo en un catálogo.
+CREATE PROCEDURE spuBuscarCatalogo @CodSemestre VARCHAR(7),
+                                   @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.) 
+								   @Texto VARCHAR(50) -- Filtro
 AS
 BEGIN
 	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
-	SELECT CodigoCatalogo = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), C.CodAsignatura, A.NombreAsignatura, 
-		   CodigoEscuelaP = C.CodEscuelaP, EscuelaProfesional = EP.Nombre, C.Grupo, C.CodDocente, 
-		   Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), C.CodSemestre
+	SELECT CodAsignatura = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), A.NombreAsignatura, 
+	       EscuelaProfesional = EP.Nombre, C.Grupo, C.CodDocente,  
+		   Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre)
 		FROM ((TCatalogo C INNER JOIN TAsignatura A ON
 			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
 			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
-		WHERE C.CodEscuelaP = @CodEscuelaP AND
-			  (C.Grupo LIKE (@Texto + '%') OR
-			   C.CodAsignatura LIKE (@Texto + '%') OR
-			   C.CodDocente LIKE (@Texto + '%') OR
-			   C.CodSemestre LIKE (@Texto + '%') OR
+		WHERE C.CodSemestre = @CodSemestre AND
+		      SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
+			  (C.CodAsignatura LIKE (@Texto + '%') OR
 			   A.NombreAsignatura LIKE (@Texto + '%') OR
+			   C.CodEscuelaP = @Texto OR
+			   EP.Nombre LIKE (@Texto + '%') OR
+			   C.Grupo LIKE (@Texto + '%') OR
+			   C.CodDocente LIKE (@Texto + '%') OR
 			   D.Nombre LIKE (@Texto + '%') OR
 			   D.APaterno LIKE (@Texto + '%') OR
 			   D.AMaterno LIKE (@Texto + '%'))
@@ -961,8 +1015,8 @@ GO
 -- Procedimiento para buscar por un filtro las asignaturas asignadas a un docente.
 CREATE PROCEDURE spuBuscarAsignaturasAsignadasDocente @CodSemestre VARCHAR(7),
 													  @CodDepartamentoA VARCHAR(3), -- Atrib. Docente
-													  @Texto1 VARCHAR(35), -- código o nombre del docente
-													  @Texto2 VARCHAR(100) -- filtro (código o nombre de la asignatura, EP, grupo)
+													  @CodDocente VARCHAR(5),
+													  @Texto VARCHAR(100) -- filtro (código o nombre de la asignatura, EP, grupo)
 AS
 BEGIN
 	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
@@ -971,61 +1025,47 @@ BEGIN
 			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
 			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
-		WHERE C.CodSemestre = @CodSemestre AND
+		WHERE C.CodSemestre = @CodSemestre AND 
 			  SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
-		      (C.CodDocente LIKE (@Texto1 + '%') OR
-			   D.Nombre LIKE (@Texto1 + '%') OR
-			   D.APaterno LIKE (@Texto1 + '%') OR
-			   D.AMaterno LIKE (@Texto1 + '%')) AND
-			  ((C.CodAsignatura + C.Grupo + C.CodEscuelaP) LIKE (@Texto2 + '%') OR
-			   A.NombreAsignatura LIKE (@Texto2 + '%') OR
-			   EP.Nombre LIKE (@Texto2 + '%') OR
-			   C.Grupo LIKE (@Texto2 + '%'))
+		      C.CodDocente = @CodDocente AND
+			  ((C.CodAsignatura + C.Grupo + C.CodEscuelaP) LIKE (@Texto + '%') OR
+			   A.NombreAsignatura LIKE (@Texto + '%') OR
+			   C.CodEscuelaP LIKE (@Texto + '%') OR 
+			   EP.Nombre LIKE (@Texto + '%') OR
+			   C.Grupo LIKE (@Texto + '%'))
 END;
 GO
 
 -- Procedimiento para buscar los silabos de una asignatura.
 CREATE PROCEDURE spuBuscarSilabosAsignatura @CodSemestre VARCHAR(7),
-											@Texto1 VARCHAR(100), -- código (ej. IF065) o nombre de la asignatura
-										    @Texto2 VARCHAR(3) -- EP donde se enseña la asignatura
+											@CodAsignatura VARCHAR(6),
+										    @CodEscuelaP VARCHAR(3)
 AS
 BEGIN
-	-- Mostrar el silabo
-	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, D.Nombre, C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.Silabo
-		FROM ((TCatalogo C INNER JOIN TAsignatura A ON
-			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
-			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
+	-- Mostrar los silabos
+	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, D.Nombre, 
+	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.Silabo
+		FROM TCatalogo C INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
-		WHERE C.CodSemestre = @CodSemestre AND
-		      (C.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND 
-			  (C.CodEscuelaP LIKE (@Texto2 + '%') OR EP.Nombre LIKE (@Texto2 + '%')) AND
-			  C.Silabo IS NOT NULL
+		WHERE C.CodSemestre = @CodSemestre AND C.CodAsignatura = @CodAsignatura AND 
+		      C.CodEscuelaP = @CodEscuelaP AND C.Silabo IS NOT NULL
 END;
 GO
 
--- Procedimiento para buscar el silabo de una asignatura.
-CREATE PROCEDURE spuMostrarSilaboAsignatura @CodSemestre VARCHAR(7),
-										    @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
-											@CodDocente VARCHAR(5)
+-- Procedimiento para buscar los planes de sesión anteriores de un docente que dicto una asignatura.
+CREATE PROCEDURE spuBuscarPlanSesionesAsignatura @CodSemestre VARCHAR(7),
+											     @CodAsignatura VARCHAR(6),
+										         @CodEscuelaP VARCHAR(3),
+											     @CodDocente VARCHAR(5)
 AS
 BEGIN
-	-- Mostrar el silabo
-	SELECT Silabo FROM TCatalogo
-		WHERE CodSemestre = @CodSemestre AND CodAsignatura + Grupo + CodEscuelaP = @CodAsignatura AND 
-		      CodDocente = @CodDocente AND Silabo IS NOT NULL
-END;
-GO
-
--- Procedimiento para buscar el plan de sesiones de un docente para una asignatura.
-CREATE PROCEDURE spuMostrarPlanSesionesAsignatura @CodSemestre VARCHAR(7),
-												  @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
-												  @CodDocente VARCHAR(5)
-AS
-BEGIN
-	-- Mostrar el plan de sesiones
-	SELECT PlanSesiones FROM TCatalogo 
-		WHERE CodSemestre = @CodSemestre AND CodAsignatura + Grupo + CodEscuelaP = @CodAsignatura AND 
-		      CodDocente = @CodDocente AND PlanSesiones IS NOT NULL
+	-- Mostrar los catalogos
+	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, D.Nombre,
+	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.PlanSesiones
+		FROM TCatalogo C INNER JOIN TDocente D ON
+			 C.CodDocente = D.CodDocente
+		WHERE C.CodSemestre = @CodSemestre AND C.CodAsignatura = @CodAsignatura AND C.CodEscuelaP = @CodEscuelaP AND 
+		      C.CodDocente = @CodDocente AND C.PlanSesiones IS NOT NULL
 END;
 GO
 
@@ -1051,18 +1091,20 @@ CREATE PROCEDURE spuActualizarAsignaturaCatalogo @CodSemestre VARCHAR(7),
 											     @CodEscuelaP VARCHAR(3),
 											     @Grupo VARCHAR(1),
 											     @CodDocente VARCHAR(5),
-												 @ACodSemestre VARCHAR(7), -- Nuevo CodSemestre
-												 @ACodEscuelaP VARCHAR(3), -- Nuevo CodEscuelaP
-												 @AGrupo VARCHAR(1), -- Nuevo Grupo
-												 @ACodDocente VARCHAR(5) -- Nuevo CodDocente
+												 @NCodSemestre VARCHAR(7), -- Nuevo CodSemestre
+												 @NCodAsignatura VARCHAR(6), -- Nuevo CodAsignatura
+												 @NCodEscuelaP VARCHAR(3), -- Nuevo CodEscuelaP
+												 @NGrupo VARCHAR(1), -- Nuevo Grupo
+												 @NCodDocente VARCHAR(5) -- Nuevo CodDocente
 AS
 BEGIN
 	-- Actualizar una asignatura de la tabla TCatalogo
 	UPDATE TCatalogo
-		SET CodSemestre = @ACodSemestre,   
-			CodEscuelaP = @ACodEscuelaP,
-			Grupo = @AGrupo,
-			CodDocente = @ACodDocente
+		SET CodSemestre = @NCodSemestre,   
+		    CodAsignatura = @NCodAsignatura,
+			CodEscuelaP = @NCodEscuelaP,
+			Grupo = @NGrupo,
+			CodDocente = @NCodDocente
 		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND CodEscuelaP = @CodEscuelaP AND 
 		      Grupo = @Grupo AND CodDocente = @CodDocente
 END;
@@ -1214,7 +1256,7 @@ CREATE PROCEDURE spuHorasDocenteHorarioAsignatura @CodDocente VARCHAR(5),
 AS
 BEGIN
 	--Extraer solo las horas de un docente
-	SELECT HorasTeoria,HorasPractica
+	SELECT HorasTeoria, HorasPractica
 		FROM THorarioAsignatura
 		WHERE CodDocente = @CodDocente AND CodSemestre = @CodSemestre
 END;
@@ -1245,54 +1287,59 @@ GO
 
 -- Procedimiento para actualizar el horario de una asignatura.
 CREATE PROCEDURE spuActualizarHorarioAsignatura @CodSemestre VARCHAR(7),
+												@CodAsignatura VARCHAR(6),
 											    @CodEscuelaP VARCHAR(3),
+												@Grupo VARCHAR(1),
 											    @CodDocente VARCHAR(5),
 											    @Dia VARCHAR(2),
-												@Tipo VARCHAR(1),
-											    @HorasTeoria INT,
-											    @HorasPractica INT,
-											    @HoraInicio VARCHAR(2),
-											    @HoraFin VARCHAR(2),
-									            @Aula VARCHAR(10),
-											    @Modalidad VARCHAR(10),
-												@CodSemestreB VARCHAR(7),
-											    @CodAsignaturaB VARCHAR(6),
-											    @CodEscuelaPB VARCHAR(3),
-											    @GrupoB VARCHAR(1),
-											    @CodDocenteB VARCHAR(5),
-											    @DiaB VARCHAR(2)
+												@NCodSemestre VARCHAR(7), -- Nuevo CodSemestre
+												@NCodAsignatura VARCHAR(6), -- Nuevo CodAsignatura
+											    @NCodEscuelaP VARCHAR(3), -- Nuevo CodEscuelaP
+												@NGrupo VARCHAR(1), -- Nuevo Grupo
+											    @NCodDocente VARCHAR(5), -- Nuevo CodDocente
+											    @NDia VARCHAR(2), -- Nuevo Dia
+												@NTipo VARCHAR(1), -- Nuevo Tipo
+											    @NHorasTeoria INT, -- Nuevo HorasTeoria
+											    @NHorasPractica INT, -- Nuevo HorasPractica
+											    @NHoraInicio VARCHAR(2), -- Nuevo HoraInicio
+											    @NHoraFin VARCHAR(2), -- Nuevo HoraFin
+									            @NAula VARCHAR(10), -- Nuevo Aula
+											    @NModalidad VARCHAR(10) -- Nuevo Modalidad
 AS
 BEGIN
 	-- Actualizar una asignatura de la tabla THorarioAsignatura
 	UPDATE THorarioAsignatura
-		SET CodSemestre = @CodSemestre,
-		    CodEscuelaP = @CodEscuelaP,
-			CodDocente = @CodDocente,
-		    Dia = @Dia,
-			Tipo = @Tipo,
-			HorasTeoria = @HorasTeoria,
-			HorasPractica = @HorasPractica,
-			HoraInicio = @HoraInicio,
-			HoraFin = @HoraFin,
-			Aula = @Aula,
-			Modalidad = @Modalidad
+		SET CodSemestre = @NCodSemestre,
+		    CodAsignatura = @NCodAsignatura,
+		    CodEscuelaP = @NCodEscuelaP,
+			Grupo = @NGrupo,
+			CodDocente = @NCodDocente,
+		    Dia = @NDia,
+			Tipo = @NTipo,
+			HorasTeoria = @NHorasTeoria,
+			HorasPractica = @NHorasPractica,
+			HoraInicio = @NHoraInicio,
+			HoraFin = @NHoraFin,
+			Aula = @NAula,
+			Modalidad = @NModalidad
 
-		WHERE CodSemestre = @CodSemestreB AND CodAsignatura = @CodAsignaturaB AND CodEscuelaP = @CodEscuelaPB AND
-      		  Grupo = @GrupoB AND CodDocente = @CodDocenteB AND Dia = @DiaB
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND CodEscuelaP = @CodEscuelaP AND
+      		  Grupo = @Grupo AND CodDocente = @CodDocente AND Dia = @Dia
 END;
 GO
 
 -- Procedimiento para eliminar el horario de una asignatura.
 CREATE PROCEDURE spuEliminarHorarioAsignatura @CodSemestre VARCHAR(7),
-											  @CodAsignatura VARCHAR(6),
+                                              @CodAsignatura VARCHAR(6),
 											  @CodEscuelaP VARCHAR(3),
-											  @Grupo VARCHAR(1)
+										      @Grupo VARCHAR(1),
+											  @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Eliminar una asignatura de la tabla THorarioAsignatura
 	DELETE FROM THorarioAsignatura
 		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND CodEscuelaP = @CodEscuelaP AND
-      		  Grupo = @Grupo
+      		  Grupo = @Grupo AND CodDocente = @CodDocente
 END;
 GO
 
@@ -1380,13 +1427,20 @@ GO
 CREATE PROCEDURE spuActualizarMatricula @CodSemestre VARCHAR(7),
 									    @CodEscuelaP VARCHAR(3),
 								        @CodAsignatura VARCHAR(9),
-									    @CodEstudiante VARCHAR(6)
+									    @CodEstudiante VARCHAR(6),
+										@NCodSemestre VARCHAR(7),
+									    @NCodEscuelaP VARCHAR(3),
+								        @NCodAsignatura VARCHAR(9),
+									    @NCodEstudiante VARCHAR(6)
 AS
 BEGIN
 	-- Actualizar una matricula de la tabla de TMatricula
 	UPDATE TMatricula
-		SET CodSemestre = @CodSemestre, CodEscuelaP = @CodEscuelaP, CodAsignatura = @CodAsignatura, CodEstudiante = @CodEstudiante
-		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND 
+		SET CodSemestre = @NCodSemestre,
+		    CodEscuelaP = @NCodEscuelaP,
+			CodAsignatura = @NCodAsignatura,
+			CodEstudiante = @NCodEstudiante
+		WHERE CodSemestre = @NCodSemestre AND CodEscuelaP = @CodEscuelaP AND 
 		      CodAsignatura = @CodAsignatura AND CodEstudiante = @CodEstudiante
 END;
 GO
@@ -1402,6 +1456,218 @@ BEGIN
 	DELETE FROM TMatricula
 		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND 
 		      CodAsignatura = @CodAsignatura AND CodEstudiante = @CodEstudiante
+END;
+GO
+
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ASISTENCIA-DOCENTE ****************** */
+
+-- Procedimiento para mostrar el registro de asistencia de los docentes en una fecha especifica.
+CREATE PROCEDURE spuAsistenciaDocentes @CodSemestre VARCHAR(7),
+									   @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
+									   @Fecha DATE
+AS
+BEGIN
+	-- Mostrar el registro de asistencia
+	SELECT ROW_NUMBER() OVER (ORDER BY D.APaterno ASC) AS Id, AD.CodDocente, D.APaterno, D.AMaterno, D.Nombre, 
+	       AD.CodAsignatura, A.NombreAsignatura, AD.HoraInicio, AD.Hora, AD.NombreTema
+		FROM (TAsistenciaDocente AD INNER JOIN TDocente D ON
+			 AD.CodDocente = D.CodDocente) INNER JOIN TAsignatura A ON
+			 SUBSTRING(AD.CodAsignatura,1,5) = A.CodAsignatura
+	    WHERE AD.CodSemestre = @CodSemestre AND AD.Fecha = @Fecha AND
+              SUBSTRING(AD.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA
+END;
+GO
+
+-- Procedimiento para mostrar el registro de asistencias de un docente que dicta una asignatura en un rango de fechas.
+CREATE PROCEDURE spuAsistenciaDocenteAsignatura @CodSemestre VARCHAR(7),
+                                                @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
+												@Texto1 VARCHAR(35), -- código o nombre del docente
+												@Texto2 VARCHAR(100), -- código (ej. IF085AIN) o nombre de la asignatura
+												@HoraInicio VARCHAR(2), -- Hora inicio de la asignatura
+												@LimFechaInf DATE,
+												@LimFechaSup DATE
+AS
+BEGIN
+	-- Mostrar el registro de asistencia en el rango de fechas
+	SELECT AD.Fecha, AD.Hora, AD.NombreTema
+		FROM (TAsistenciaDocente AD INNER JOIN TDocente D ON
+			 AD.CodDocente = D.CodDocente) INNER JOIN TAsignatura A ON
+			 SUBSTRING(AD.CodAsignatura,1,5) = A.CodAsignatura
+	    WHERE AD.CodSemestre = @CodSemestre AND AD.HoraInicio = @HoraInicio AND
+              SUBSTRING(AD.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
+		      (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
+			  (AD.CodDocente LIKE (@Texto1 + '%') OR
+			   D.Nombre LIKE (@Texto1 + '%') OR
+			   D.APaterno LIKE (@Texto1 + '%') OR
+			   D.AMaterno LIKE (@Texto1 + '%')) AND
+			  (AD.CodAsignatura LIKE (@Texto2 + '%') OR A.NombreAsignatura LIKE (@Texto2 + '%'))
+END;
+GO
+
+-- Procedimiento para registrar la asistencia de un docente.
+CREATE PROCEDURE spuRegistrarAsistenciaDocente @CodSemestre VARCHAR(7),
+								               @CodAsignatura VARCHAR(9),
+											   @HoraInicio VARCHAR(2),
+										       @Fecha DATE,
+											   @Hora TIME(0),
+									           @CodDocente VARCHAR(5),
+										       @NombreTema VARCHAR(100)
+AS
+BEGIN
+	-- Registrar la asistencia en la tabla TAsistenciaDocente
+	INSERT INTO TAsistenciaDocente
+		VALUES (@CodSemestre, @CodAsignatura, @HoraInicio, @Fecha, @Hora, @CodDocente, @NombreTema)
+END;
+GO
+
+-- Procedimiento para actualizar la asistencia de un docente:
+CREATE PROCEDURE spuActualizarAsistenciaDocente @CodSemestre VARCHAR(7),
+								                @CodAsignatura VARCHAR(9),
+												@HoraInicio VARCHAR(2),
+										        @Fecha DATE,
+												@NCodSemestre VARCHAR(7), -- Nuevo CodSemestre
+								                @NCodAsignatura VARCHAR(9), -- Nuevo CodAsignatura
+												@NHoraInicio VARCHAR(2),
+										        @NFecha DATE, -- Nueva Fecha
+									            @NCodDocente VARCHAR(5), -- Nuevo CodDocente
+										        @NNombreTema VARCHAR(100) -- Nuevo Nombre Tema
+
+AS
+BEGIN
+	-- Actualizar la asistencia en la tabla TAsistenciaDocente
+	UPDATE TAsistenciaDocente
+		SET CodSemestre = @NCodSemestre, 
+			CodAsignatura = @NCodAsignatura,
+			HoraInicio = @NHoraInicio,
+			Fecha = @NFecha,
+			CodDocente = @NCodDocente,
+			NombreTema = @NNombreTema
+
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND HoraInicio = @HoraInicio AND Fecha = @Fecha
+END;
+GO
+
+-- Procedimiento para eliminar la asistencia de un docente.
+CREATE PROCEDURE spuEliminarAsistenciaDocente @CodSemestre VARCHAR(7),
+								              @CodAsignatura VARCHAR(9),
+											  @HoraInicio VARCHAR(2),
+										      @Fecha DATE				
+AS
+BEGIN
+	-- Eliminar una asistencia en la tabla de TAsistenciaDocente
+	DELETE FROM TAsistenciaDocente
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND HoraInicio = @HoraInicio AND Fecha = @Fecha
+END;
+GO
+
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ASISTENCIA-ESTUDIANTE ****************** */
+
+-- Procedimiento para mostrar el registro de asistencia de los estudiantes de una asignatura en una fecha especifica.
+CREATE PROCEDURE spuAsistenciaEstudiantes @CodSemestre VARCHAR(7),
+									      @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
+									      @Texto VARCHAR(100), -- código (ej. IF085AIN) o nombre de la asignatura
+										  @HoraInicio VARCHAR(2), -- Hora inicio de la asignatura
+									      @Fecha DATE
+AS
+BEGIN
+	-- Mostrar el registro de asistencia de los estudiantes
+	SELECT ROW_NUMBER() OVER (ORDER BY ET.APaterno ASC) AS Id, AE.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre,
+	       AE.Hora, AE.Estado, AE.Observación
+		FROM (TAsistenciaEstudiante AE INNER JOIN TEstudiante ET ON
+			 AE.CodEstudiante = ET.CodEstudiante) INNER JOIN TAsignatura A ON
+			 SUBSTRING(AE.CodAsignatura,1,5) = A.CodAsignatura
+	    WHERE AE.CodSemestre = @CodSemestre AND AE.HoraInicio = @HoraInicio AND
+              SUBSTRING(AE.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
+		     (AE.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%')) AND
+			  AE.Fecha = @Fecha
+END;
+GO
+
+-- Procedimiento para mostrar el registro de asistencias de un estudiante en una asignatura en un rango de fechas.
+CREATE PROCEDURE spuAsistenciaEstudianteAsignatura @CodSemestre VARCHAR(7),
+												   @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
+												   @Texto1 VARCHAR(35), -- código o nombre del estudiante
+												   @Texto2 VARCHAR(100), -- código (ej. IF085AIN) o nombre de la asignatura
+												   @HoraInicio VARCHAR(2), -- Hora inicio de la asignatura
+												   @LimFechaInf DATE,
+												   @LimFechaSup DATE
+AS
+BEGIN
+	-- Mostrar el registro de asistencia en el rango de fechas
+	SELECT AE.Fecha, AE.Hora, AE.Estado, AE.Observación
+		FROM (TAsistenciaEstudiante AE INNER JOIN TEstudiante ET ON
+			 AE.CodEstudiante = ET.CodEstudiante) INNER JOIN TAsignatura A ON
+			 SUBSTRING(AE.CodAsignatura,1,5) = A.CodAsignatura
+	    WHERE AE.CodSemestre = @CodSemestre AND AE.HoraInicio = @HoraInicio AND
+              SUBSTRING(AE.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
+		      (AE.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
+			  (AE.CodEstudiante LIKE (@Texto1 + '%') OR
+			   ET.Nombre LIKE (@Texto1 + '%') OR
+			   ET.APaterno LIKE (@Texto1 + '%') OR
+			   ET.AMaterno LIKE (@Texto1 + '%')) AND
+			  (AE.CodAsignatura LIKE (@Texto2 + '%') OR A.NombreAsignatura LIKE (@Texto2 + '%'))
+END;
+GO
+
+-- Procedimiento para registrar la asistencia de un estudiante.
+CREATE PROCEDURE spuRegistrarAsistenciaEstudiante @CodSemestre VARCHAR(7),
+								                  @CodAsignatura VARCHAR(9),
+												  @HoraInicio VARCHAR(2),
+										          @Fecha DATE,
+												  @Hora TIME(0),
+									              @CodEstudiante VARCHAR(6),
+										          @Estado VARCHAR(2),
+											      @Observación VARCHAR(25)
+AS
+BEGIN
+	-- Registrar la asistencia en la tabla TAsistenciaEstudiante
+	INSERT INTO TAsistenciaEstudiante
+		VALUES (@CodSemestre, @CodAsignatura, @HoraInicio, @Fecha, @Hora, @CodEstudiante, @Estado, @Observación)
+END;
+GO
+
+-- Procedimiento para actualizar la asistencia de un estudiante.
+CREATE PROCEDURE spuActualizarAsistenciaEstudiante @CodSemestre VARCHAR(7),
+								                   @CodAsignatura VARCHAR(9),
+												   @HoraInicio VARCHAR(2),
+										           @Fecha DATE,
+									               @CodEstudiante VARCHAR(6),
+												   @NCodSemestre VARCHAR(7),
+								                   @NCodAsignatura VARCHAR(9),
+												   @NHoraInicio VARCHAR(2),
+										           @NFecha DATE,
+									               @NCodEstudiante VARCHAR(6),
+										           @NEstado VARCHAR(2),
+											       @NObservación VARCHAR(25)
+AS
+BEGIN
+	-- Actualizar la asistencia en la tabla TAsistenciaEstudiante
+	UPDATE TAsistenciaEstudiante
+		SET CodSemestre = @NCodSemestre, 
+			CodAsignatura = @NCodAsignatura,
+			HoraInicio = @HoraInicio,
+			Fecha = @NFecha,
+			CodEstudiante = @NCodEstudiante,
+			Estado = @NEstado,
+			Observación = @NObservación
+
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND HoraInicio = @HoraInicio AND 
+		      Fecha = @Fecha AND CodEstudiante = @CodEstudiante
+END;
+GO
+
+-- Procedimiento para eliminar la asistencia de un estudiante.
+CREATE PROCEDURE spuEliminarAsistenciaEstudiante @CodSemestre VARCHAR(7),
+								                 @CodAsignatura VARCHAR(9),
+												 @HoraInicio VARCHAR(2),
+										         @Fecha DATE,
+											     @CodEstudiante VARCHAR(6)
+AS
+BEGIN
+	-- Eliminar una asistencia en la tabla de TAsistenciaEstudiante
+	DELETE FROM TAsistenciaEstudiante
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND HoraInicio = @HoraInicio AND 
+		      Fecha = @Fecha AND CodEstudiante = @CodEstudiante
 END;
 GO
 

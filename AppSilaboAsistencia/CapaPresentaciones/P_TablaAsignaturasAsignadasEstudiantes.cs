@@ -26,13 +26,13 @@ namespace CapaPresentaciones
 
         private void MostrarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente("2021-II", "IF", "49920");
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente("2021-II", "IF", "65475");
             AccionesTabla();
-        }
+        }   
 
         public void BuscarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente("2021-II", "IF", "49920", txtBuscar.Text);
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente("2021-II", "IF", "65475", txtBuscar.Text);
         }
 
         private void btnCerrar_Click(object sender, System.EventArgs e)

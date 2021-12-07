@@ -46,7 +46,7 @@ namespace CapaPresentaciones
 
         public void BuscarRegistros()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarCatálogo(txtBuscar.Text, "IN");
+            //dgvDatos.DataSource = N_Catalogo.BuscarCatálogo(txtBuscar.Text, "IN");
         }//Listo
 
         private void MensajeConfirmacion(string Mensaje)
@@ -73,7 +73,7 @@ namespace CapaPresentaciones
 
         public void MostrarRegistros()
         {
-            dgvDatos.DataSource = N_Catalogo.MostrarCatalogo("IF");
+            //dgvDatos.DataSource = N_Catalogo.MostrarCatalogo("IF");
             AccionesTabla();
         }//Listo
 
@@ -112,8 +112,8 @@ namespace CapaPresentaciones
                     CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
                     CodEscuelaP = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
                     Grupo = dgvDatos.Rows[e.RowIndex].Cells[7].Value.ToString();
-                    N_HorarioAsignatura.EliminarHorarioAsignatura(CodSemestre, CodAsignatura, CodEscuelaP, Grupo);
-                    N_Catalogo.EliminarAsignaturaCatalogo(CodSemestre, CodAsignatura, CodEscuelaP, Grupo);
+                    //N_HorarioAsignatura.EliminarHorarioAsignatura(CodSemestre, CodAsignatura, CodEscuelaP, Grupo);
+                    //N_Catalogo.EliminarAsignaturaCatalogo(CodSemestre, CodAsignatura, CodEscuelaP, Grupo);
                     MensajeConfirmacion("Registro eliminado exitosamente");
                     MostrarRegistros();
                 }

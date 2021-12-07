@@ -225,11 +225,11 @@ namespace CapaPresentaciones
                     {
                         //Eliminar el anterior registro de THorarioAsignatura
 
-                        N_HorarioAsignatura.EliminarHorarioAsignatura(CódigoSemestreA, CódigoAsignaturaA, "IN", GrupoA);
+                        //N_HorarioAsignatura.EliminarHorarioAsignatura(CódigoSemestreA, CódigoAsignaturaA, "IN", GrupoA);
 
                         //Eliminar registro del catálogo
 
-                        N_Catalogo.EliminarAsignaturaCatalogo(CódigoSemestreA, CódigoAsignaturaA, "IN", GrupoA);
+                        //N_Catalogo.EliminarAsignaturaCatalogo(CódigoSemestreA, CódigoAsignaturaA, "IN", GrupoA);
 
                         //Insertar primer elemento a la tabla TCatálogo
                         ObjEntidadC.CodSemestre = CódigoS;
@@ -1086,11 +1086,11 @@ namespace CapaPresentaciones
                         {
                             //Eliminar el anterior registro de THorarioAsignatura
 
-                            N_HorarioAsignatura.EliminarHorarioAsignatura(CódigoSemestreA, CódigoAsignaturaA, "IN", GrupoA);
+                            //N_HorarioAsignatura.EliminarHorarioAsignatura(CódigoSemestreA, CódigoAsignaturaA, "IN", GrupoA);
 
                             //Eliminar registro del catálogo
 
-                            N_Catalogo.EliminarAsignaturaCatalogo(CódigoSemestreA, CódigoAsignaturaA, "IN", GrupoA);
+                            //N_Catalogo.EliminarAsignaturaCatalogo(CódigoSemestreA, CódigoAsignaturaA, "IN", GrupoA);
 
                             //Insertar primer elemento a la tabla TCatálogo
 

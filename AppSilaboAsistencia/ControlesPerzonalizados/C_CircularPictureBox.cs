@@ -4,9 +4,9 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace CapaPresentaciones.Otros_Controles
+namespace ControlesPerzonalizados
 {
-    public class JALMCircularPictureBox : PictureBox
+    public class C_CircularPictureBox : PictureBox
     {
         //Fields
         private int borderSize = 2;
@@ -17,14 +17,14 @@ namespace CapaPresentaciones.Otros_Controles
         private float gradientAngle = 50F;
 
         //Constructor
-        public JALMCircularPictureBox()
+        public C_CircularPictureBox()
         {
             this.Size = new Size(100, 100);
             this.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         //Properties
-        [Category("Jeremylazm")]
+        [Category("DreamTeam")]
         public int BorderSize
         {
             get
@@ -39,7 +39,7 @@ namespace CapaPresentaciones.Otros_Controles
             }
         }
 
-        [Category("Jeremylazm")]
+        [Category("DreamTeam")]
         public Color BorderColor
         {
             get
@@ -54,7 +54,7 @@ namespace CapaPresentaciones.Otros_Controles
             }
         }
 
-        [Category("Jeremylazm")]
+        [Category("DreamTeam")]
         public Color BorderColor2
         {
             get
@@ -69,7 +69,7 @@ namespace CapaPresentaciones.Otros_Controles
             }
         }
 
-        [Category("Jeremylazm")]
+        [Category("DreamTeam")]
         public DashStyle BorderLineStyle
         {
             get
@@ -84,7 +84,7 @@ namespace CapaPresentaciones.Otros_Controles
             }
         }
 
-        [Category("Jeremylazm")]
+        [Category("DreamTeam")]
         public DashCap BorderCapStyle
         {
             get
@@ -99,7 +99,7 @@ namespace CapaPresentaciones.Otros_Controles
             }
         }
 
-        [Category("Jeremylazm")]
+        [Category("DreamTeam")]
         public float GradientAngle
         {
             get

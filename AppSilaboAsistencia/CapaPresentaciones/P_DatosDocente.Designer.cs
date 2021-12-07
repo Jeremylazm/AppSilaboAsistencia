@@ -81,7 +81,6 @@ namespace CapaPresentaciones
             this.btnLimpiar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
-            this.pbPerfil = new CapaPresentaciones.Otros_Controles.JALMCircularPictureBox();
             this.txtAMaterno = new Bunifu.UI.WinForms.BunifuTextBox();
             this.lblMaterno = new Bunifu.UI.WinForms.BunifuLabel();
             this.txtEmail = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -98,6 +97,7 @@ namespace CapaPresentaciones
             this.lblEscuela = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnRestablecerPerfil = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnSubirPerfil = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            this.pbPerfil = new ControlesPerzonalizados.C_CircularPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).BeginInit();
             this.SuspendLayout();
             // 
@@ -909,23 +909,6 @@ namespace CapaPresentaciones
             this.Docker.TitleBarOptions.TitleBarControl = null;
             this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
-            // pbPerfil
-            // 
-            this.pbPerfil.BackColor = System.Drawing.Color.Transparent;
-            this.pbPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.pbPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.pbPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.pbPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.pbPerfil.BorderSize = 2;
-            this.pbPerfil.GradientAngle = 50F;
-            this.pbPerfil.Image = global::CapaPresentaciones.Properties.Resources.Perfil_Docente;
-            this.pbPerfil.Location = new System.Drawing.Point(630, 107);
-            this.pbPerfil.Name = "pbPerfil";
-            this.pbPerfil.Size = new System.Drawing.Size(250, 250);
-            this.pbPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbPerfil.TabIndex = 47;
-            this.pbPerfil.TabStop = false;
-            // 
             // txtAMaterno
             // 
             this.txtAMaterno.AcceptsReturn = false;
@@ -1612,6 +1595,23 @@ namespace CapaPresentaciones
             this.btnSubirPerfil.UseDefaultRadiusAndThickness = true;
             this.btnSubirPerfil.Click += new System.EventHandler(this.btnSubirPerfil_Click);
             // 
+            // pbPerfil
+            // 
+            this.pbPerfil.BackColor = System.Drawing.Color.Transparent;
+            this.pbPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.pbPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pbPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pbPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.pbPerfil.BorderSize = 2;
+            this.pbPerfil.GradientAngle = 50F;
+            this.pbPerfil.Image = global::CapaPresentaciones.Properties.Resources.Perfil_Docente;
+            this.pbPerfil.Location = new System.Drawing.Point(630, 107);
+            this.pbPerfil.Name = "pbPerfil";
+            this.pbPerfil.Size = new System.Drawing.Size(250, 250);
+            this.pbPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPerfil.TabIndex = 47;
+            this.pbPerfil.TabStop = false;
+            // 
             // P_DatosDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1619,6 +1619,7 @@ namespace CapaPresentaciones
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(906, 635);
+            this.Controls.Add(this.pbPerfil);
             this.Controls.Add(this.btnSubirPerfil);
             this.Controls.Add(this.btnRestablecerPerfil);
             this.Controls.Add(this.cxtEscuela);
@@ -1635,7 +1636,6 @@ namespace CapaPresentaciones
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.txtAMaterno);
             this.Controls.Add(this.lblMaterno);
-            this.Controls.Add(this.pbPerfil);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lblCategoria);
@@ -1698,6 +1698,6 @@ namespace CapaPresentaciones
         public Bunifu.UI.WinForms.BunifuDropdown cxtRegimen;
         public Bunifu.UI.WinForms.BunifuDropdown cxtSubcategoria;
         public Bunifu.UI.WinForms.BunifuDropdown cxtCategoria;
-        public Otros_Controles.JALMCircularPictureBox pbPerfil;
+        public ControlesPerzonalizados.C_CircularPictureBox pbPerfil;
     }
 }
