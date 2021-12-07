@@ -25,10 +25,9 @@ namespace CapaPresentaciones
 
         public void AccionesTabla()
         {
-            dgvDatos.Columns[0].DisplayIndex = 8;
-            dgvDatos.Columns[1].DisplayIndex = 8;
+            dgvDatos.Columns[0].DisplayIndex = 9;
+            dgvDatos.Columns[1].DisplayIndex = 9;
 
-            dgvDatos.Columns[8].Visible = false;
             dgvDatos.Columns[2].HeaderText = "Código";
             dgvDatos.Columns[3].HeaderText = "Asignatura";
             dgvDatos.Columns[4].HeaderText = "Escuela";
@@ -36,6 +35,9 @@ namespace CapaPresentaciones
             dgvDatos.Columns[6].HeaderText = "Cod Docente";
             dgvDatos.Columns[7].HeaderText = "Docente";
             dgvDatos.Columns[8].HeaderText = "Cod Asignatura";
+            dgvDatos.Columns[9].HeaderText = "Cod Escuela";
+            dgvDatos.Columns[8].Visible = false;
+            dgvDatos.Columns[9].Visible = false;
         }//Listo
 
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
@@ -115,7 +117,7 @@ namespace CapaPresentaciones
 
                 CodSemestre = Semestre;
                 CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[8].Value.ToString();
-                CodEscuelaP = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                CodEscuelaP = dgvDatos.Rows[e.RowIndex].Cells[9].Value.ToString();
                 Grupo = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
 
                 ActualizarC.Show();
@@ -130,12 +132,12 @@ namespace CapaPresentaciones
                 {
                     ObjEntidad.CodSemestre = Semestre;
                     ObjEntidad.CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[8].Value.ToString();
-                    ObjEntidad.CodEscuelaP = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    ObjEntidad.CodEscuelaP = dgvDatos.Rows[e.RowIndex].Cells[9].Value.ToString();
                     ObjEntidad.Grupo = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
 
                     ObjEntidadHA.CodSemestre = Semestre;
                     ObjEntidadHA.CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[8].Value.ToString();
-                    ObjEntidadHA.CodEscuelaP = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    ObjEntidadHA.CodEscuelaP = dgvDatos.Rows[e.RowIndex].Cells[9].Value.ToString();
                     ObjEntidadHA.Grupo = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
 
                     ObjNegocioHA.EliminarHorarioAsignatura(ObjEntidadHA);
