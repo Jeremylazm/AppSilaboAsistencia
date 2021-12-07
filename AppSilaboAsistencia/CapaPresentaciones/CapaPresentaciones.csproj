@@ -303,6 +303,12 @@
     <Compile Include="P_TablaEstudiantesAsignatura.Designer.cs">
       <DependentUpon>P_TablaEstudiantesAsignatura.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_TablaSesionesAsignatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_TablaSesionesAsignatura.Designer.cs">
+      <DependentUpon>P_TablaSesionesAsignatura.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_TablaSilabosAsignatura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -365,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaEstudiantesAsignatura.resx">
       <DependentUpon>P_TablaEstudiantesAsignatura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_TablaSesionesAsignatura.resx">
+      <DependentUpon>P_TablaSesionesAsignatura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaSilabosAsignatura.resx">
       <DependentUpon>P_TablaSilabosAsignatura.cs</DependentUpon>

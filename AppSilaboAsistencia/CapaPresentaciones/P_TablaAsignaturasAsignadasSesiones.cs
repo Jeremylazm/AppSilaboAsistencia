@@ -15,9 +15,10 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasSesiones : Form
     {
-        // private string CodDocente = "49920";
-        private string CodDocente = "65475";
+        //private string CodDocente = "49920";
+        //private string CodDocente = "65475";
         //private string CodDocente = "34024";
+        private string CodDocente = "43992";
 
         public P_TablaAsignaturasAsignadasSesiones()
         {
@@ -99,15 +100,22 @@ namespace CapaPresentaciones
 
                 // Completar información
 
-                wb.Worksheet(1).Cell("C6").Value = dtDatosAsignatura.Rows[0]["NombreAsignatura"].ToString();
+                // Nombre y código del curso
+                wb.Worksheet(1).Cell("A3").Value = dtDatosAsignatura.Rows[0]["NombreAsignatura"].ToString() + " (" + CodAsignatura.Substring(0, 5) + ")";
+
+                // Semestre
+                wb.Worksheet(1).Cell("A4").Value = wb.Worksheet(1).Cell("A4").Value + "2021-II";
 
                 // Completar información del docente
                 DataTable dtDatosDocente = N_Docente.BuscarDocente(CodAsignatura.Substring(0, 2), CodDocente);
                 string Nombre = dtDatosDocente.Rows[0]["Nombre"].ToString();
                 string APaterno = dtDatosDocente.Rows[0]["APaterno"].ToString();
                 string AMaterno = dtDatosDocente.Rows[0]["AMaterno"].ToString();
-                //
 
+                // Nombre del docente
+                wb.Worksheet(1).Cell("A5").Value = wb.Worksheet(1).Cell("A5").Value + " " + APaterno + "-" + AMaterno + "-" + Nombre; 
+
+                // Guardar el archivo
                 saveFileDialog.FileName = "Plan de Sesiones - " + CodAsignatura;
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -124,7 +132,10 @@ namespace CapaPresentaciones
             // Descargar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
-                // 
+                P_TablaSesionesAsignatura sesionesAsignatura = new P_TablaSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString());
+
+                sesionesAsignatura.ShowDialog();
+                sesionesAsignatura.Dispose();
             }
 
             // Subir
