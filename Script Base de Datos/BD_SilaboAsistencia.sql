@@ -933,7 +933,7 @@ BEGIN
 	-- Mostrar la tabla de TCatalogo
 	SELECT CodAsignatura = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), A.NombreAsignatura, 
 	       EscuelaProfesional = EP.Nombre, C.Grupo, C.CodDocente,  
-		   Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre)
+		   Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), A.CodAsignatura
 		FROM ((TCatalogo C INNER JOIN TAsignatura A ON
 			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
 			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
@@ -952,7 +952,7 @@ BEGIN
 	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
 	SELECT CodAsignatura = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), A.NombreAsignatura, 
 	       EscuelaProfesional = EP.Nombre, C.Grupo, C.CodDocente,  
-		   Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre)
+		   Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), A.CodAsignatura
 		FROM ((TCatalogo C INNER JOIN TAsignatura A ON
 			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
 			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
