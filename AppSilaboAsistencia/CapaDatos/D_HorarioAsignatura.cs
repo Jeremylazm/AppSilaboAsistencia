@@ -7,8 +7,8 @@ namespace CapaDatos
 {
     public class D_HorarioAsignatura
     {
-        readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
-        //readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
+        //readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
+        readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
 
         // Método para buscar el horario de una asignatura en un catálogo. 
         public DataTable BuscarHorarioAsignatura(string CodSemestre, string Texto1, string Texto2, string Grupo)
@@ -162,7 +162,6 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodAsignatura", HorarioAsignatura.CodAsignatura);
             Comando.Parameters.AddWithValue("@CodEscuelaP", HorarioAsignatura.CodEscuelaP);
             Comando.Parameters.AddWithValue("@Grupo", HorarioAsignatura.Grupo);
-            Comando.Parameters.AddWithValue("@CodDocente", HorarioAsignatura.CodDocente);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }

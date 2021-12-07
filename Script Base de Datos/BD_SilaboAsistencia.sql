@@ -1332,14 +1332,13 @@ GO
 CREATE PROCEDURE spuEliminarHorarioAsignatura @CodSemestre VARCHAR(7),
                                               @CodAsignatura VARCHAR(6),
 											  @CodEscuelaP VARCHAR(3),
-										      @Grupo VARCHAR(1),
-											  @CodDocente VARCHAR(5)
+										      @Grupo VARCHAR(1)
 AS
 BEGIN
 	-- Eliminar una asignatura de la tabla THorarioAsignatura
 	DELETE FROM THorarioAsignatura
 		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND CodEscuelaP = @CodEscuelaP AND
-      		  Grupo = @Grupo AND CodDocente = @CodDocente
+      		  Grupo = @Grupo
 END;
 GO
 
