@@ -94,7 +94,7 @@ namespace CapaPresentaciones
 
         public void Guardar()
         {
-            string CódigoAS, CódigoD1, CódigoD2, CódigoS, Grupo, Día1, Día2, Día3, Día4, 
+            string CódigoAS, CódigoD1, CódigoD2, CódigoS, Grupo, Día1, Día2, Día3, Día4,
                    Día5, Día6, Tipo1, Tipo2, Tipo3, Tipo4, Tipo5, Tipo6;
             int HoraInicio, HoraFin;
             string Aula;
@@ -374,7 +374,7 @@ namespace CapaPresentaciones
                     catch
                     {
                         MessageBox.Show("Ya se ingresó en el catálogo u horario un contenido similar.");
-                    }   
+                    }
                 }
                 else
                 {
