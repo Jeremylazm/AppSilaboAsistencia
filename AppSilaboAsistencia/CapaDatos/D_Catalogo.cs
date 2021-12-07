@@ -7,11 +7,11 @@ namespace CapaDatos
 {
     public class D_Catalogo
     {
-        readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
-        //readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
+        //readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
+        readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
 
         // Método para mostrar el catálogo de asignaturas de una departamento académico.
-        public DataTable MostrarCatalogo(string CodDepartamentoA)
+        public DataTable MostrarCatalogo(string CodSemestre, string CodDepartamentoA)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuMostrarCatalogo", Conectar)
@@ -19,6 +19,7 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA); // Atrib.Docente(Jefe de Dep.)
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
@@ -26,7 +27,7 @@ namespace CapaDatos
         }
 
         // Método para buscar un catálogo. 
-        public DataTable BuscarCatálogo(string Texto, string CodEscuelaP)
+        public DataTable BuscarCatálogo(string CodSemestre, string Texto, string CodDepartamentoA)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarCatalogo", Conectar)
@@ -34,8 +35,9 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@Texto", Texto);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;

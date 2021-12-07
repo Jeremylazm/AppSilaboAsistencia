@@ -21,22 +21,17 @@ namespace CapaPresentaciones
 
         public void AccionesTabla()
         {
-            dgvDatos.Columns[0].DisplayIndex = 10;
-            dgvDatos.Columns[1].DisplayIndex = 10;
-            dgvDatos.Columns[5].Visible = false;
-            dgvDatos.Columns[6].Visible = false;
-            dgvDatos.Columns[10].Visible = false;
-            dgvDatos.Columns[3].Visible = false;
-            dgvDatos.Columns[7].Visible = false;
+            dgvDatos.Columns[0].DisplayIndex = 8;
+            dgvDatos.Columns[1].DisplayIndex = 8;
+
+            dgvDatos.Columns[8].Visible = false;
             dgvDatos.Columns[2].HeaderText = "Código";
-            dgvDatos.Columns[3].HeaderText = "Cod Asignatura";
-            dgvDatos.Columns[4].HeaderText = "Asignatura";
-            dgvDatos.Columns[5].HeaderText = "Cod Escuela";
-            dgvDatos.Columns[6].HeaderText = "Escuela Profesional";
-            dgvDatos.Columns[7].HeaderText = "Grupo";
-            dgvDatos.Columns[8].HeaderText = "Cod Docente";
-            dgvDatos.Columns[9].HeaderText = "Docente";
-            dgvDatos.Columns[10].HeaderText = "Semestre";
+            dgvDatos.Columns[3].HeaderText = "Asignatura";
+            dgvDatos.Columns[4].HeaderText = "Escuela";
+            dgvDatos.Columns[5].HeaderText = "Grupo";
+            dgvDatos.Columns[6].HeaderText = "Cod Docente";
+            dgvDatos.Columns[7].HeaderText = "Docente";
+            dgvDatos.Columns[8].HeaderText = "Cod Asignatura";
         }//Listo
 
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
@@ -46,7 +41,14 @@ namespace CapaPresentaciones
 
         public void BuscarRegistros()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarCatálogo(txtBuscar.Text, "IN");
+            string Semestre = "";
+            var AñoActual = DateTime.Now.ToString("yyyy");
+            var MesActual = DateTime.Now.ToString("MM");
+            if (Convert.ToInt32(MesActual) >= 1 && Convert.ToInt32(MesActual) <= 6)
+                Semestre = AñoActual + "-I";
+            if (Convert.ToInt32(MesActual) >= 7 && Convert.ToInt32(MesActual) <= 12)
+                Semestre = AñoActual + "-II";
+            dgvDatos.DataSource = N_Catalogo.BuscarCatálogo(Semestre, txtBuscar.Text, "IF");
         }//Listo
 
         private void MensajeConfirmacion(string Mensaje)
@@ -73,7 +75,14 @@ namespace CapaPresentaciones
 
         public void MostrarRegistros()
         {
-            dgvDatos.DataSource = N_Catalogo.MostrarCatalogo("IF");
+            string Semestre = "";
+            var AñoActual = DateTime.Now.ToString("yyyy");
+            var MesActual = DateTime.Now.ToString("MM");
+            if (Convert.ToInt32(MesActual) >= 1 && Convert.ToInt32(MesActual) <= 6)
+                Semestre = AñoActual + "-I";
+            if (Convert.ToInt32(MesActual) >= 7 && Convert.ToInt32(MesActual) <= 12)
+                Semestre = AñoActual + "-II";
+            dgvDatos.DataSource = N_Catalogo.MostrarCatalogo(Semestre, "IF");
             AccionesTabla();
         }//Listo
 
@@ -84,6 +93,14 @@ namespace CapaPresentaciones
 
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            string Semestre = "";
+            var AñoActual = DateTime.Now.ToString("yyyy");
+            var MesActual = DateTime.Now.ToString("MM");
+            if (Convert.ToInt32(MesActual) >= 1 && Convert.ToInt32(MesActual) <= 6)
+                Semestre = AñoActual + "-I";
+            if (Convert.ToInt32(MesActual) >= 7 && Convert.ToInt32(MesActual) <= 12)
+                Semestre = AñoActual + "-II";
+
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
                 string CodSemestre, CodAsignatura, CodEscuelaP, Grupo;
@@ -92,10 +109,10 @@ namespace CapaPresentaciones
 
                 Program.Evento = 1;
 
-                CodSemestre = dgvDatos.Rows[e.RowIndex].Cells[10].Value.ToString();
-                CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
-                CodEscuelaP = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
-                Grupo = dgvDatos.Rows[e.RowIndex].Cells[7].Value.ToString();
+                CodSemestre = Semestre;
+                CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[8].Value.ToString();
+                CodEscuelaP = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                Grupo = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
 
                 ActualizarC.Show();
                 ActualizarC.Buscar(CodSemestre, CodAsignatura, CodEscuelaP, Grupo);
@@ -108,10 +125,10 @@ namespace CapaPresentaciones
                 Opcion = MessageBox.Show("¿Realmente desea eliminar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (Opcion == DialogResult.OK)
                 {
-                    CodSemestre = dgvDatos.Rows[e.RowIndex].Cells[10].Value.ToString();
-                    CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    CodEscuelaP = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    Grupo = dgvDatos.Rows[e.RowIndex].Cells[7].Value.ToString();
+                    CodSemestre = Semestre;
+                    CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[8].Value.ToString();
+                    CodEscuelaP = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    Grupo = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
                     N_HorarioAsignatura.EliminarHorarioAsignatura(CodSemestre, CodAsignatura, CodEscuelaP, Grupo);
                     N_Catalogo.EliminarAsignaturaCatalogo(CodSemestre, CodAsignatura, CodEscuelaP, Grupo);
                     MensajeConfirmacion("Registro eliminado exitosamente");

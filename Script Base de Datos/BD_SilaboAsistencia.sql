@@ -931,7 +931,8 @@ BEGIN
 	-- Mostrar la tabla de TCatalogo
 	SELECT CodAsignatura = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), A.NombreAsignatura, 
 	       EscuelaProfesional = EP.Nombre, C.Grupo, C.CodDocente,  
-		   Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre)
+		   Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre),
+		   A.CodAsignatura
 		FROM ((TCatalogo C INNER JOIN TAsignatura A ON
 			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
 			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
@@ -950,7 +951,8 @@ BEGIN
 	-- Mostrar la tabla de TCatalogo por el texto que se desea buscar
 	SELECT CodAsignatura = (C.CodAsignatura + C.Grupo + C.CodEscuelaP), A.NombreAsignatura, 
 	       EscuelaProfesional = EP.Nombre, C.Grupo, C.CodDocente,  
-		   Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre)
+		   Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre),
+		   A.CodAsignatura
 		FROM ((TCatalogo C INNER JOIN TAsignatura A ON
 			 C.CodAsignatura = A.CodAsignatura) INNER JOIN TEscuelaProfesional EP ON
 			 C.CodEscuelaP = EP.CodEscuelaP) INNER JOIN TDocente D ON
@@ -1326,19 +1328,19 @@ BEGIN
 END;
 GO
 
--- Procedimiento para eliminar el horario de una asignatura.
+-- Procedimiento para eliminar el horario de una asignatura.  OJO...............................................................
 CREATE PROCEDURE spuEliminarHorarioAsignatura @CodSemestre VARCHAR(7),
                                               @CodAsignatura VARCHAR(6),
 											  @CodEscuelaP VARCHAR(3),
-										      @Grupo VARCHAR(1),
-											  @CodDocente VARCHAR(5),
-											  @Dia VARCHAR(2)
+										      @Grupo VARCHAR(1)
+											  --@CodDocente VARCHAR(5),
+											  --@Dia VARCHAR(2)
 AS
 BEGIN
 	-- Eliminar una asignatura de la tabla THorarioAsignatura
 	DELETE FROM THorarioAsignatura
 		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND CodEscuelaP = @CodEscuelaP AND
-      		  Grupo = @Grupo AND CodDocente = @CodDocente AND Dia = @Dia
+      		  Grupo = @Grupo --AND CodDocente = @CodDocente AND Dia = @Dia
 END;
 GO
 

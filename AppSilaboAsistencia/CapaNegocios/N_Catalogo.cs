@@ -8,14 +8,14 @@ namespace CapaNegocios
     {
         readonly D_Catalogo ObjCatalogo = new D_Catalogo();
 
-        public static DataTable MostrarCatalogo(string CodDepartamentoA)
+        public static DataTable MostrarCatalogo(string CodSemestre, string CodDepartamentoA)
         {
-            return new D_Catalogo().MostrarCatalogo(CodDepartamentoA);
+            return new D_Catalogo().MostrarCatalogo(CodSemestre, CodDepartamentoA);
         }
 
-        public static DataTable BuscarCatálogo(string Texto, string CodEscuelaP)
+        public static DataTable BuscarCatálogo(string CodSemestre, string Texto, string CodDepartamentoA)
         {
-            return new D_Catalogo().BuscarCatálogo(Texto, CodEscuelaP);
+            return new D_Catalogo().BuscarCatálogo(CodSemestre, Texto, CodDepartamentoA);
         }
 
         public static DataTable BuscarDocentesAsignatura(string CodSemestre, string Texto1, string Texto2, string Grupo)
