@@ -12,18 +12,17 @@ using CapaNegocios;
 
 namespace CapaPresentaciones
 {
-    public partial class P_TablaSilabosAsignatura : Form
+    public partial class P_TablaSesionesAsignatura : Form
     {
         readonly private string CodAsignatura;
 
-        public P_TablaSilabosAsignatura(string CodAsignatura)
+        public P_TablaSesionesAsignatura(string CodAsignatura)
         {
             this.CodAsignatura = CodAsignatura;
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             MostrarAsignaturas();
         }
-
         private void AccionesTabla()
         {
             dgvDatos.Columns[0].DisplayIndex = 6;
@@ -48,7 +47,7 @@ namespace CapaPresentaciones
         {
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
-                // Descargar el sílabo
+                // Descargar el plan de sesiones
                 DataTable silaboAsignatura = N_Catalogo.MostrarSilaboAsignatura(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString());
 
                 if (silaboAsignatura.Rows.Count != 0)
@@ -67,7 +66,7 @@ namespace CapaPresentaciones
                 }
                 else
                 {
-                    MessageBox.Show("No hay sílabo");
+                    MessageBox.Show("No hay plan de sesiones");
                 }
             }
         }
