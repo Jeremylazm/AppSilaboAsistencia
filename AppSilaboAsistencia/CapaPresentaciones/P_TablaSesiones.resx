@@ -142,10 +142,11 @@
   </data>
   <data name="sbDatos.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAoAAAFACAYAAACFhu0DAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB7SURBVGhD7cqxEcIwAMBABjDOmuzsMTIAhJIj96nSqfhK
-        erye2zq8L6zveBb+NFIjNVIjNVIjNVIjNVIjNVIjNVIjNVIjNVIjNVIjNVIjNVIjNVIjNVIjNVIjNVIj
-        NVIjNVIjNVIjNVIjNVIjNVIjNdId45j7Wfgx5v4BARrmK6hwqKQAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAAAoAAAHrCAYAAAD2XQwuAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACfSURBVHhe7cqxDcIwAABBBjDOmuzsMTIAhBIRXfroi6v+
+        H6/ntg7vC+s7noU/jdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRI
+        jdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjXSzccz9
+        LPwYc/8ABjH/yx3crbYAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="txtBuscar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

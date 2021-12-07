@@ -13,9 +13,10 @@ namespace CapaNegocios
             return new D_AsistenciaDocente().AsistenciaDocentes(CodSemestre, CodDepartamentoA, Fecha);
         }
 
-        public static DataTable AsistenciaDocenteAsignatura(string CodSemestre, string CodDepartamentoA, string Texto1, string Texto2, string LimFechaInf, string LimFechaSup)
+        public static DataTable AsistenciaDocenteAsignatura(string CodSemestre, string CodDepartamentoA, string Texto1, string Texto2,
+                                                            string HoraInicio, string LimFechaInf, string LimFechaSup)
         {
-            return new D_AsistenciaDocente().AsistenciaDocenteAsignatura(CodSemestre, CodDepartamentoA, Texto1, Texto2, LimFechaInf, LimFechaSup);
+            return new D_AsistenciaDocente().AsistenciaDocenteAsignatura(CodSemestre, CodDepartamentoA, Texto1, Texto2, HoraInicio, LimFechaInf, LimFechaSup);
         }
 
         public void RegistrarAsistenciaDocente(E_AsistenciaDocente AsistenciaDocente)
@@ -25,12 +26,13 @@ namespace CapaNegocios
 
         public void ActualizarAsistenciaDocente(E_AsistenciaDocente AsistenciaDocente,
                                                 string NCodSemestre,  
-                                                string NCodAsignatura, 
+                                                string NCodAsignatura,
+                                                string NHoraInicio,
                                                 string NFecha,     
                                                 string NCodDocente, 
                                                 string NNombreTema) 
         {
-            ObjAsistenciaDocente.ActualizarAsistenciaDocente(AsistenciaDocente, NCodSemestre, NCodAsignatura, NFecha, NCodDocente, NNombreTema);
+            ObjAsistenciaDocente.ActualizarAsistenciaDocente(AsistenciaDocente, NCodSemestre, NCodAsignatura, NHoraInicio, NFecha, NCodDocente, NNombreTema);
         }
 
         public void EliminarAsistenciaDocente(E_AsistenciaDocente AsistenciaDocente)

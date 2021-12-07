@@ -31,11 +31,11 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaSesiones));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.pbLogo = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -43,8 +43,8 @@ namespace CapaPresentaciones
             this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.txtBuscar = new Bunifu.UI.WinForms.BunifuTextBox();
             this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
+            this.pnPeriodosParciales = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAceptar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -101,6 +101,7 @@ namespace CapaPresentaciones
             this.btnCerrar.WaitOnLoad = false;
             this.btnCerrar.Zoom = 10;
             this.btnCerrar.ZoomSpeed = 10;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // pbLogo
             // 
@@ -221,26 +222,26 @@ namespace CapaPresentaciones
             this.txtBuscar.Modified = false;
             this.txtBuscar.Multiline = false;
             this.txtBuscar.Name = "txtBuscar";
-            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties1.FillColor = System.Drawing.Color.Empty;
-            stateProperties1.ForeColor = System.Drawing.Color.Empty;
-            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtBuscar.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtBuscar.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties3.FillColor = System.Drawing.Color.Empty;
-            stateProperties3.ForeColor = System.Drawing.Color.Empty;
-            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtBuscar.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties4.FillColor = System.Drawing.Color.White;
-            stateProperties4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtBuscar.OnIdleState = stateProperties4;
+            stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties5.FillColor = System.Drawing.Color.Empty;
+            stateProperties5.ForeColor = System.Drawing.Color.Empty;
+            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtBuscar.OnActiveState = stateProperties5;
+            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtBuscar.OnDisabledState = stateProperties6;
+            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties7.FillColor = System.Drawing.Color.Empty;
+            stateProperties7.ForeColor = System.Drawing.Color.Empty;
+            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtBuscar.OnHoverState = stateProperties7;
+            stateProperties8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties8.FillColor = System.Drawing.Color.White;
+            stateProperties8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtBuscar.OnIdleState = stateProperties8;
             this.txtBuscar.Padding = new System.Windows.Forms.Padding(3);
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -273,16 +274,17 @@ namespace CapaPresentaciones
             this.sbDatos.AllowScrollKeysDetection = true;
             this.sbDatos.AllowScrollOptionsMenu = true;
             this.sbDatos.AllowShrinkingOnFocusLost = false;
-            this.sbDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbDatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.sbDatos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbDatos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sbDatos.BackgroundImage")));
-            this.sbDatos.BindingContainer = null;
+            this.sbDatos.BindingContainer = this.pnPeriodosParciales;
             this.sbDatos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbDatos.BorderRadius = 0;
             this.sbDatos.BorderThickness = 1;
             this.sbDatos.DurationBeforeShrink = 2000;
             this.sbDatos.LargeChange = 10;
-            this.sbDatos.Location = new System.Drawing.Point(772, 128);
+            this.sbDatos.Location = new System.Drawing.Point(772, 92);
             this.sbDatos.Maximum = 100;
             this.sbDatos.Minimum = 0;
             this.sbDatos.MinimumThumbLength = 18;
@@ -293,21 +295,31 @@ namespace CapaPresentaciones
             this.sbDatos.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbDatos.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbDatos.ShrinkSizeLimit = 3;
-            this.sbDatos.Size = new System.Drawing.Size(10, 320);
+            this.sbDatos.Size = new System.Drawing.Size(10, 491);
             this.sbDatos.SmallChange = 1;
             this.sbDatos.TabIndex = 33;
             this.sbDatos.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.sbDatos.ThumbLength = 31;
+            this.sbDatos.ThumbLength = 48;
             this.sbDatos.ThumbMargin = 1;
             this.sbDatos.ThumbStyle = Bunifu.UI.WinForms.BunifuVScrollBar.ThumbStyles.Inset;
-            this.sbDatos.Value = 0;
+            this.sbDatos.Value = 1;
+            // 
+            // pnPeriodosParciales
+            // 
+            this.pnPeriodosParciales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnPeriodosParciales.Location = new System.Drawing.Point(9, 92);
+            this.pnPeriodosParciales.Name = "pnPeriodosParciales";
+            this.pnPeriodosParciales.Size = new System.Drawing.Size(762, 491);
+            this.pnPeriodosParciales.TabIndex = 36;
             // 
             // btnAceptar
             // 
             this.btnAceptar.AllowAnimations = true;
             this.btnAceptar.AllowMouseEffects = true;
             this.btnAceptar.AllowToggling = false;
-            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAceptar.AnimationSpeed = 200;
             this.btnAceptar.AutoGenerateColors = false;
             this.btnAceptar.AutoRoundBorders = false;
@@ -322,11 +334,11 @@ namespace CapaPresentaciones
             this.btnAceptar.ColorContrastOnClick = 45;
             this.btnAceptar.ColorContrastOnHover = 45;
             this.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnAceptar.CustomizableEdges = borderEdges1;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnAceptar.CustomizableEdges = borderEdges2;
             this.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnAceptar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAceptar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -350,7 +362,7 @@ namespace CapaPresentaciones
             this.btnAceptar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Agregar;
             this.btnAceptar.IdleIconRightImage = null;
             this.btnAceptar.IndicateFocus = false;
-            this.btnAceptar.Location = new System.Drawing.Point(611, 454);
+            this.btnAceptar.Location = new System.Drawing.Point(611, 591);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAceptar.OnDisabledState.BorderRadius = 15;
@@ -392,27 +404,20 @@ namespace CapaPresentaciones
             this.btnAceptar.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnAceptar.UseDefaultRadiusAndThickness = true;
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(9, 100);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(773, 346);
-            this.flowLayoutPanel1.TabIndex = 36;
-            // 
             // P_TablaSesiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(791, 503);
+            this.ClientSize = new System.Drawing.Size(791, 640);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.sbDatos);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.pnPeriodosParciales);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_TablaSesiones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -431,6 +436,6 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuTextBox txtBuscar;
         private Bunifu.UI.WinForms.BunifuVScrollBar sbDatos;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnAceptar;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel pnPeriodosParciales;
     }
 }

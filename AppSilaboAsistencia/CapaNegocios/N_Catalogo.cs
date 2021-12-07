@@ -13,9 +13,9 @@ namespace CapaNegocios
             return new D_Catalogo().MostrarCatalogo(CodSemestre, CodDepartamentoA);
         }
 
-        public static DataTable BuscarCatálogo(string CodSemestre, string Texto, string CodDepartamentoA)
+        public static DataTable BuscarCatálogo(string CodSemestre, string CodDepartamentoA, string Texto)
         {
-            return new D_Catalogo().BuscarCatálogo(CodSemestre, Texto, CodDepartamentoA);
+            return new D_Catalogo().BuscarCatálogo(CodSemestre, CodDepartamentoA, Texto);
         }
 
         public static DataTable BuscarDocentesAsignatura(string CodSemestre, string Texto1, string Texto2, string Grupo)
@@ -28,19 +28,24 @@ namespace CapaNegocios
             return new D_Catalogo().BuscarAsignaturasDocente(CodSemestre, CodDepartamentoA, Texto);
         }
 
-        public static DataTable BuscarAsignaturasAsignadasDocente(string CodSemestre, string CodDepartamentoA, string Texto1, string Texto2)
+        public static DataTable BuscarAsignaturasAsignadasDocente(string CodSemestre, string CodDepartamentoA, string CodDocente, string Texto)
         {
-            return new D_Catalogo().BuscarAsignaturasAsignadasDocente(CodSemestre, CodDepartamentoA, Texto1, Texto2);
+            return new D_Catalogo().BuscarAsignaturasAsignadasDocente(CodSemestre, CodDepartamentoA, CodDocente, Texto);
         }
 
-        public static DataTable BuscarSilabosAsignatura(string CodSemestre, string Texto1, string Texto2)
+        public static DataTable BuscarSilabosAsignatura(string CodSemestre, string CodAsignatura, string CodEscuelaP)
         {
-            return new D_Catalogo().BuscarSilabosAsignatura(CodSemestre, Texto1, Texto2);
+            return new D_Catalogo().BuscarSilabosAsignatura(CodSemestre, CodAsignatura, CodEscuelaP);
         }
 
         public static DataTable MostrarSilaboAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
         {
             return new D_Catalogo().MostrarSilaboAsignatura(CodSemestre, CodAsignatura, CodDocente);
+        }
+
+        public static DataTable BuscarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodEscuelaP, string CodDocente)
+        {
+            return new D_Catalogo().BuscarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodEscuelaP, CodDocente);
         }
 
         public static DataTable MostrarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
@@ -53,9 +58,9 @@ namespace CapaNegocios
             ObjCatalogo.InsertarAsignaturaCatalogo(Catalogo);
         }
 
-        public static void ActualizarAsignaturaCatalogo(string CodSemestreA, string CodAsignaturaA, string CodEscuelaPA, string GrupoA, string CodDocenteA, string CodSemestre, string CodEscuelaP, string Grupo, string CodDocente)
+        public void ActualizarAsignaturaCatalogo(E_Catalogo Catalogo, string NCodSemestre, string NCodAsignatura, string NCodEscuelaP, string NGrupo, string NCodDocente) 
         {
-            new D_Catalogo().ActualizarAsignaturaCatalogo(CodSemestreA, CodAsignaturaA, CodEscuelaPA, GrupoA, CodDocenteA, CodSemestre, CodEscuelaP, Grupo, CodDocente);
+            ObjCatalogo.ActualizarAsignaturaCatalogo(Catalogo, NCodSemestre, NCodAsignatura, NCodEscuelaP, NGrupo, NCodDocente);
         }
 
         public void ActualizarSilaboAsignatura(string CodSemestre, string CodAsignatura, string CodDocente, byte[] Silabo)
@@ -68,9 +73,9 @@ namespace CapaNegocios
             ObjCatalogo.ActualizarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodDocente, PlanSesiones);
         }
 
-        public static void EliminarAsignaturaCatalogo(string CodSemestre, string CodAsignatura, string CodEscuelaP, string Grupo)
+        public void EliminarAsignaturaCatalogo(E_Catalogo Catalogo)
         {
-            new D_Catalogo().EliminarAsignaturaCatalogo(CodSemestre, CodAsignatura, CodEscuelaP, Grupo);
+            ObjCatalogo.EliminarAsignaturaCatalogo(Catalogo);
         }
     }
 }
