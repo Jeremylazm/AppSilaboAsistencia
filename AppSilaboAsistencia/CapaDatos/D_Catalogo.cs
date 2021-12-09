@@ -130,7 +130,7 @@ namespace CapaDatos
         }
 
         // Método para buscar los planes de sesión de una asignatura.
-        public DataTable BuscarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodEscuelaP, string CodDocente)
+        public DataTable BuscarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarPlanSesionesAsignatura", Conectar)
@@ -140,7 +140,6 @@ namespace CapaDatos
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
             Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);

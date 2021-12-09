@@ -16,14 +16,14 @@ namespace CapaPresentaciones
     {
         readonly private string CodAsignatura;
 
-        private DataTable Asignaturas;
+        private readonly DataTable Asignaturas;
 
         public P_TablaSilabosAsignatura(string CodAsignatura)
         {
             this.CodAsignatura = CodAsignatura;
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
-            Asignaturas = N_Catalogo.BuscarSilabosAsignatura("2021-II", CodAsignatura.Substring(0, 5)); //////////
+            Asignaturas = N_Catalogo.BuscarSilabosAsignatura("2021-II", CodAsignatura.Substring(0, 5));
             MostrarAsignaturas();
         }
 
@@ -61,8 +61,16 @@ namespace CapaPresentaciones
 
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        File.WriteAllBytes(saveFileDialog.FileName, dgvDatos.Rows[e.RowIndex].Cells["Silabo"].Value as byte[]);
-                        Close();
+                        try
+                        {
+                            File.WriteAllBytes(saveFileDialog.FileName, dgvDatos.Rows[e.RowIndex].Cells["Silabo"].Value as byte[]);
+                            MessageBox.Show("Archivo guardado correctamente");
+                            Close();
+                        }
+                        catch (IOException)
+                        {
+                            MessageBox.Show("Cierra el archivo antes de reemplazarlo o elige otro nombre");
+                        }
                     }
                 }
                 else

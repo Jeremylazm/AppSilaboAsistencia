@@ -16,13 +16,17 @@ namespace CapaPresentaciones
     {
         readonly private string CodAsignatura;
 
+        private readonly DataTable Asignaturas;
+
         public P_TablaSesionesAsignatura(string CodAsignatura)
         {
             this.CodAsignatura = CodAsignatura;
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
+            Asignaturas = N_Catalogo.BuscarPlanSesionesAsignatura("2021-II", CodAsignatura.Substring(0, 5), "65475");
             MostrarAsignaturas();
         }
+
         private void AccionesTabla()
         {
             dgvDatos.Columns[0].DisplayIndex = 6;
@@ -34,7 +38,7 @@ namespace CapaPresentaciones
 
         private void MostrarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarPlanSesionesAsignatura("2021-II", CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), "65475");
+            dgvDatos.DataSource = Asignaturas;
             AccionesTabla();
         }
 
@@ -48,21 +52,27 @@ namespace CapaPresentaciones
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
                 // Descargar el plan de sesiones
-                DataTable plansesionesAsignatura = N_Catalogo.MostrarPlanSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString());
-
-                if (plansesionesAsignatura.Rows.Count != 0)
+                if (Asignaturas.Rows.Count != 0)
                 {
                     saveFileDialog.InitialDirectory = @"C:\";
-                    saveFileDialog.FileName = "Sílabo " + CodAsignatura.Substring(0, 5);
+                    saveFileDialog.FileName = "Plan de Sesiones " + " - " + CodAsignatura.Substring(0, 5);
                     saveFileDialog.Filter = "Archivo de Excel | *.xlsx";
                     saveFileDialog.DefaultExt = "xlsx";
                     saveFileDialog.FilterIndex = 1;
 
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        File.WriteAllBytes(saveFileDialog.FileName, plansesionesAsignatura.Rows[0]["Silabo"] as byte[]);
+                        try
+                        {
+                            File.WriteAllBytes(saveFileDialog.FileName, dgvDatos.Rows[e.RowIndex].Cells["PlanSesiones"].Value as byte[]);
+                            MessageBox.Show("Archivo guardado correctamente");
+                            Close();
+                        }
+                        catch(IOException)
+                        {
+                            MessageBox.Show("Cierra el archivo antes de reemplazarlo o elige otro nombre");
+                        }
                     }
-                    Close();
                 }
                 else
                 {

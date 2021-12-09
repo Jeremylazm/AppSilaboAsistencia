@@ -24,9 +24,7 @@ namespace CapaPresentaciones
         public string EscuelaProfesional;
         public string Grupo;
 
-        private static string realNametemp;
-
-        private string Tipo;
+        private readonly string Tipo;
 
         public P_SubirArchivo(string Tipo)
         {
@@ -44,7 +42,6 @@ namespace CapaPresentaciones
             {
                 lblTitulo.Text += " Plan de Sesiones";
             }
-
         }
 
         private void MensajeConfirmacion(string Mensaje)
@@ -73,8 +70,6 @@ namespace CapaPresentaciones
             {
                 txtRuta.Text = openFileDialog.FileName;
             }
-
-            realNametemp = openFileDialog.SafeFileName;
         }
 
         private void btnSubir_Click(object sender, EventArgs e)
