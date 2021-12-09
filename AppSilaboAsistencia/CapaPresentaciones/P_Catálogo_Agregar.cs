@@ -23,6 +23,7 @@ namespace CapaPresentaciones
         int HTD1, HTD2 = 0;
         string CódigoDocente1, CódigoDocente2, CódigoAsignatura;
         int HoraTeoría, HoraPráctica;
+
         public P_Catálogo_Agregar()
         {
             ObjEntidadC = new E_Catalogo();
@@ -730,8 +731,8 @@ namespace CapaPresentaciones
             if (Check_Nombre_Docente.Checked == true)
             {
                 Check_Código_Docente.Checked = false;
-                Seleccionar_Docente_Cod_Nom.DisplayMember = "Nombre";
-                Seleccionar_Docente_Cod_Nom2.DisplayMember = "Nombre";
+                Seleccionar_Docente_Cod_Nom.DisplayMember = "NombreCompleto";
+                Seleccionar_Docente_Cod_Nom2.DisplayMember = "NombreCompleto";
             }
             else
             {
@@ -753,8 +754,8 @@ namespace CapaPresentaciones
             else
             {
                 Check_Código_Docente.Checked = false;
-                Seleccionar_Docente_Cod_Nom.DisplayMember = "Nombre";
-                Seleccionar_Docente_Cod_Nom2.DisplayMember = "Nombre";
+                Seleccionar_Docente_Cod_Nom.DisplayMember = "NombreCompleto";
+                Seleccionar_Docente_Cod_Nom2.DisplayMember = "NombreCompleto";
                 Check_Nombre_Docente.Checked = true;
             }
         }
@@ -1982,11 +1983,7 @@ namespace CapaPresentaciones
                 if (Check_Código_Docente.Checked == true)
                     CódigoDocente1 = Seleccionar_Docente_Cod_Nom.Text;
                 else
-                {
-                    DataTable T = N_Docente.ObtenerCodigoDocente(Seleccionar_Docente_Cod_Nom.Text);
-                    DataRow R = T.Rows[0];
-                    CódigoDocente1 = R["CodDocente"].ToString();
-                }
+                    CódigoDocente1 = Seleccionar_Docente_Cod_Nom.SelectedValue.ToString();
                 Recuperar_Horas_Docentes();
             }
             catch
@@ -2002,11 +1999,7 @@ namespace CapaPresentaciones
                 if (Check_Código_Docente.Checked == true)
                     CódigoDocente2 = Seleccionar_Docente_Cod_Nom2.Text;
                 else
-                {
-                    DataTable T = N_Docente.ObtenerCodigoDocente(Seleccionar_Docente_Cod_Nom2.Text);
-                    DataRow R = T.Rows[0];
-                    CódigoDocente2 = R["CodDocente"].ToString();
-                }
+                    CódigoDocente2 = Seleccionar_Docente_Cod_Nom2.SelectedValue.ToString();
                 Recuperar_Horas_Docentes();
             }
             catch
@@ -2170,6 +2163,15 @@ namespace CapaPresentaciones
             Panel_Info.Enabled = false;
             Panel_Info.Height = 0;
             Panel_Info.Width = 0;
+
+            string Semestre = "";
+            var AñoActual = DateTime.Now.ToString("yyyy");
+            var MesActual = DateTime.Now.ToString("MM");
+            if (Convert.ToInt32(MesActual) >= 1 && Convert.ToInt32(MesActual) <= 6)
+                Semestre = AñoActual + "-I";
+            if (Convert.ToInt32(MesActual) >= 7 && Convert.ToInt32(MesActual) <= 12)
+                Semestre = AñoActual + "-II";
+            Seleccionar_Semestre.Text = Semestre;
         }
 
         private void Salir_Click(object sender, EventArgs e)
