@@ -261,6 +261,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Docente_Cod_Nom2
             // 
+            this.Seleccionar_Docente_Cod_Nom2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Docente_Cod_Nom2.FormattingEnabled = true;
             this.Seleccionar_Docente_Cod_Nom2.Location = new System.Drawing.Point(169, 81);
             this.Seleccionar_Docente_Cod_Nom2.Name = "Seleccionar_Docente_Cod_Nom2";
@@ -270,6 +271,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Docente_Cod_Nom
             // 
+            this.Seleccionar_Docente_Cod_Nom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Docente_Cod_Nom.FormattingEnabled = true;
             this.Seleccionar_Docente_Cod_Nom.Location = new System.Drawing.Point(169, 54);
             this.Seleccionar_Docente_Cod_Nom.Name = "Seleccionar_Docente_Cod_Nom";
@@ -279,6 +281,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Asignatura_Cod_Nom
             // 
+            this.Seleccionar_Asignatura_Cod_Nom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Asignatura_Cod_Nom.FormattingEnabled = true;
             this.Seleccionar_Asignatura_Cod_Nom.Location = new System.Drawing.Point(167, 127);
             this.Seleccionar_Asignatura_Cod_Nom.Name = "Seleccionar_Asignatura_Cod_Nom";
@@ -554,6 +557,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Modalidad
             // 
+            this.Seleccionar_Modalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Modalidad.FormattingEnabled = true;
             this.Seleccionar_Modalidad.Items.AddRange(new object[] {
             "PRESENCIAL",
@@ -576,6 +580,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Semestre
             // 
+            this.Seleccionar_Semestre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Semestre.FormattingEnabled = true;
             this.Seleccionar_Semestre.Items.AddRange(new object[] {
             "2021-I",
@@ -1006,6 +1011,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Aula
             // 
+            this.Seleccionar_Aula.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Aula.FormattingEnabled = true;
             this.Seleccionar_Aula.Items.AddRange(new object[] {
             "IN101",

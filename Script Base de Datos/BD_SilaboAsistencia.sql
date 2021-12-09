@@ -634,12 +634,12 @@ BEGIN
 END;
 GO
 
--- Procedimiento para mostrar todos los docentes de una escuela profesional.
+-- Procedimiento para mostrar todos los docentes de una escuela profesional. =======================================================
 CREATE PROCEDURE spuMostrarTodosDocentesDepartamento @CodDepartamentoA VARCHAR(3)
 AS
 BEGIN
 	-- Mostrar la tabla TDocente
-	SELECT CodDocente, Nombre
+	SELECT CodDocente, NombreCompleto = (APaterno + ' ' + AMaterno + ', ' + Nombre)
 		FROM TDocente
 	    WHERE CodDepartamentoA = @CodDepartamentoA
 		ORDER BY APaterno
@@ -693,17 +693,6 @@ BEGIN
 			  Subcategoria LIKE (@Texto + '%') OR
 			  Regimen LIKE (@Texto + '%') OR
 			  CodEscuelaP LIKE (@Texto + '%') )
-END;
-GO
-
---Procedimiento para obtener el código de un docente por su nombre.
-CREATE PROCEDURE spuObtenerCodigoDocente @Nombre VARCHAR(50)
-AS
-BEGIN
-	--Obtener el código de la asignatura
-	SELECT CodDocente
-		FROM TDocente
-		WHERE Nombre = @Nombre
 END;
 GO
 

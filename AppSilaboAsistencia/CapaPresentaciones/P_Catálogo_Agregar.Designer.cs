@@ -31,7 +31,7 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_Catálogo_Agregar));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.Salir = new System.Windows.Forms.PictureBox();
@@ -127,6 +127,7 @@ namespace CapaPresentaciones
             this.bDSistemaGestionDataSet = new CapaPresentaciones.BDSistemaGestionDataSet();
             this.tDocenteTableAdapter = new CapaPresentaciones.BDSistemaGestionDataSetTableAdapters.TDocenteTableAdapter();
             this.tAsignaturaTableAdapter = new CapaPresentaciones.BDSistemaGestionDataSetTableAdapters.TAsignaturaTableAdapter();
+            this.label34 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Salir)).BeginInit();
             this.panel2.SuspendLayout();
@@ -167,7 +168,9 @@ namespace CapaPresentaciones
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(146)))), ((int)(((byte)(1)))));
@@ -267,6 +270,7 @@ namespace CapaPresentaciones
             // Panel_Info
             // 
             this.Panel_Info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(198)))), ((int)(((byte)(227)))));
+            this.Panel_Info.Controls.Add(this.label34);
             this.Panel_Info.Controls.Add(this.label33);
             this.Panel_Info.Controls.Add(this.label32);
             this.Panel_Info.Controls.Add(this.label31);
@@ -275,9 +279,9 @@ namespace CapaPresentaciones
             this.Panel_Info.Controls.Add(this.label28);
             this.Panel_Info.Controls.Add(this.label27);
             this.Panel_Info.Controls.Add(this.label26);
-            this.Panel_Info.Location = new System.Drawing.Point(346, 141);
+            this.Panel_Info.Location = new System.Drawing.Point(346, 111);
             this.Panel_Info.Name = "Panel_Info";
-            this.Panel_Info.Size = new System.Drawing.Size(138, 214);
+            this.Panel_Info.Size = new System.Drawing.Size(138, 244);
             this.Panel_Info.TabIndex = 120;
             // 
             // label33
@@ -532,6 +536,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Modalidad
             // 
+            this.Seleccionar_Modalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Modalidad.FormattingEnabled = true;
             this.Seleccionar_Modalidad.Items.AddRange(new object[] {
             "PRESENCIAL",
@@ -554,6 +559,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Semestre
             // 
+            this.Seleccionar_Semestre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Semestre.FormattingEnabled = true;
             this.Seleccionar_Semestre.Items.AddRange(new object[] {
             "2021-I",
@@ -615,6 +621,7 @@ namespace CapaPresentaciones
             // Seleccionar_Docente_Cod_Nom2
             // 
             this.Seleccionar_Docente_Cod_Nom2.DisplayMember = "Nombre";
+            this.Seleccionar_Docente_Cod_Nom2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Docente_Cod_Nom2.Enabled = false;
             this.Seleccionar_Docente_Cod_Nom2.FormattingEnabled = true;
             this.Seleccionar_Docente_Cod_Nom2.Location = new System.Drawing.Point(167, 79);
@@ -986,6 +993,7 @@ namespace CapaPresentaciones
             // Seleccionar_Asignatura_Cod_Nom
             // 
             this.Seleccionar_Asignatura_Cod_Nom.DisplayMember = "NombreAsignatura";
+            this.Seleccionar_Asignatura_Cod_Nom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Asignatura_Cod_Nom.FormattingEnabled = true;
             this.Seleccionar_Asignatura_Cod_Nom.Location = new System.Drawing.Point(167, 127);
             this.Seleccionar_Asignatura_Cod_Nom.Name = "Seleccionar_Asignatura_Cod_Nom";
@@ -997,6 +1005,7 @@ namespace CapaPresentaciones
             // Seleccionar_Docente_Cod_Nom
             // 
             this.Seleccionar_Docente_Cod_Nom.DisplayMember = "Nombre";
+            this.Seleccionar_Docente_Cod_Nom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Docente_Cod_Nom.FormattingEnabled = true;
             this.Seleccionar_Docente_Cod_Nom.Location = new System.Drawing.Point(167, 54);
             this.Seleccionar_Docente_Cod_Nom.Name = "Seleccionar_Docente_Cod_Nom";
@@ -1007,6 +1016,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Aula
             // 
+            this.Seleccionar_Aula.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Aula.FormattingEnabled = true;
             this.Seleccionar_Aula.Items.AddRange(new object[] {
             "IN101",
@@ -1064,11 +1074,11 @@ namespace CapaPresentaciones
             this.Botón_Guardar.ColorContrastOnClick = 45;
             this.Botón_Guardar.ColorContrastOnHover = 45;
             this.Botón_Guardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            this.Botón_Guardar.CustomizableEdges = borderEdges3;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            this.Botón_Guardar.CustomizableEdges = borderEdges4;
             this.Botón_Guardar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Botón_Guardar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.Botón_Guardar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -1341,6 +1351,16 @@ namespace CapaPresentaciones
             // 
             this.tAsignaturaTableAdapter.ClearBeforeFill = true;
             // 
+            // label34
+            // 
+            this.label34.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label34.Location = new System.Drawing.Point(11, 214);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(113, 27);
+            this.label34.TabIndex = 8;
+            this.label34.Text = "Futura actualización para la interfaz ...";
+            // 
             // P_Catálogo_Agregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1463,5 +1483,6 @@ namespace CapaPresentaciones
         private BDSistemaGestionDataSet bDSistemaGestionDataSet;
         private BDSistemaGestionDataSetTableAdapters.TDocenteTableAdapter tDocenteTableAdapter;
         private BDSistemaGestionDataSetTableAdapters.TAsignaturaTableAdapter tAsignaturaTableAdapter;
+        private System.Windows.Forms.Label label34;
     }
 }
