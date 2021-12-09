@@ -16,11 +16,14 @@ namespace CapaPresentaciones
     {
         readonly private string CodAsignatura;
 
+        private DataTable Asignaturas;
+
         public P_TablaSilabosAsignatura(string CodAsignatura)
         {
             this.CodAsignatura = CodAsignatura;
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
+            Asignaturas = N_Catalogo.BuscarSilabosAsignatura("2021-II", CodAsignatura.Substring(0, 5)); //////////
             MostrarAsignaturas();
         }
 
@@ -35,7 +38,7 @@ namespace CapaPresentaciones
 
         private void MostrarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarSilabosAsignatura("2021-II", CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6));
+            dgvDatos.DataSource = Asignaturas;
             AccionesTabla();
         }
 
@@ -48,10 +51,7 @@ namespace CapaPresentaciones
         {
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
-                // Descargar el sílabo
-                DataTable silaboAsignatura = N_Catalogo.MostrarSilaboAsignatura(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString());
-
-                if (silaboAsignatura.Rows.Count != 0)
+                if (Asignaturas.Rows.Count != 0)
                 {
                     saveFileDialog.InitialDirectory = @"C:\";
                     saveFileDialog.FileName = "Sílabo " + CodAsignatura.Substring(0, 5);
@@ -61,9 +61,9 @@ namespace CapaPresentaciones
 
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        File.WriteAllBytes(saveFileDialog.FileName, silaboAsignatura.Rows[0]["Silabo"] as byte[]);
+                        File.WriteAllBytes(saveFileDialog.FileName, dgvDatos.Rows[e.RowIndex].Cells["Silabo"].Value as byte[]);
+                        Close();
                     }
-                    Close();
                 }
                 else
                 {

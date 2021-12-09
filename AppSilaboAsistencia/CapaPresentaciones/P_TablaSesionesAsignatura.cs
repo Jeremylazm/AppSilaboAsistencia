@@ -34,7 +34,7 @@ namespace CapaPresentaciones
 
         private void MostrarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarSilabosAsignatura("2021-II", CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6));
+            dgvDatos.DataSource = N_Catalogo.BuscarPlanSesionesAsignatura("2021-II", CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), "65475");
             AccionesTabla();
         }
 
@@ -48,9 +48,9 @@ namespace CapaPresentaciones
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
                 // Descargar el plan de sesiones
-                DataTable silaboAsignatura = N_Catalogo.MostrarSilaboAsignatura(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString());
+                DataTable plansesionesAsignatura = N_Catalogo.MostrarPlanSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString());
 
-                if (silaboAsignatura.Rows.Count != 0)
+                if (plansesionesAsignatura.Rows.Count != 0)
                 {
                     saveFileDialog.InitialDirectory = @"C:\";
                     saveFileDialog.FileName = "Sílabo " + CodAsignatura.Substring(0, 5);
@@ -60,7 +60,7 @@ namespace CapaPresentaciones
 
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        File.WriteAllBytes(saveFileDialog.FileName, silaboAsignatura.Rows[0]["Silabo"] as byte[]);
+                        File.WriteAllBytes(saveFileDialog.FileName, plansesionesAsignatura.Rows[0]["Silabo"] as byte[]);
                     }
                     Close();
                 }

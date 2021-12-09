@@ -1038,8 +1038,7 @@ GO
 
 -- Procedimiento para buscar los silabos de una asignatura.
 CREATE PROCEDURE spuBuscarSilabosAsignatura @CodSemestre VARCHAR(7),
-											@CodAsignatura VARCHAR(6),
-										    @CodEscuelaP VARCHAR(3)
+											@CodAsignatura VARCHAR(6)
 AS
 BEGIN
 	-- Mostrar los silabos
@@ -1048,7 +1047,7 @@ BEGIN
 		FROM TCatalogo C INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
 		WHERE C.CodSemestre = @CodSemestre AND C.CodAsignatura = @CodAsignatura AND 
-		      C.CodEscuelaP = @CodEscuelaP AND C.Silabo IS NOT NULL
+				C.Silabo IS NOT NULL
 END;
 GO
 

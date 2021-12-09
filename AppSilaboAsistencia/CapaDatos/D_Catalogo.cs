@@ -97,7 +97,7 @@ namespace CapaDatos
         }
 
         // Método para buscar los silabos de una asignatura.
-        public DataTable BuscarSilabosAsignatura(string CodSemestre, string CodAsignatura, string CodEscuelaP)
+        public DataTable BuscarSilabosAsignatura(string CodSemestre, string CodAsignatura)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarSilabosAsignatura", Conectar)
@@ -106,8 +106,7 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); 
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
             SqlDataAdapter Data = new SqlDataAdapter(Comando); 
             Data.Fill(Resultado);
             return Resultado;
@@ -134,7 +133,7 @@ namespace CapaDatos
         public DataTable BuscarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodEscuelaP, string CodDocente)
         {
             DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("sspuBuscarPlanSesionesAsignatura", Conectar)
+            SqlCommand Comando = new SqlCommand("spuBuscarPlanSesionesAsignatura", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
