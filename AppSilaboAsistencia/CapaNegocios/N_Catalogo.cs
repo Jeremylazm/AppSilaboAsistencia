@@ -33,9 +33,9 @@ namespace CapaNegocios
             return new D_Catalogo().BuscarAsignaturasAsignadasDocente(CodSemestre, CodDepartamentoA, CodDocente, Texto);
         }
 
-        public static DataTable BuscarSilabosAsignatura(string CodSemestre, string CodAsignatura, string CodEscuelaP)
+        public static DataTable BuscarSilabosAsignatura(string CodSemestre, string CodAsignatura)
         {
-            return new D_Catalogo().BuscarSilabosAsignatura(CodSemestre, CodAsignatura, CodEscuelaP);
+            return new D_Catalogo().BuscarSilabosAsignatura(CodSemestre, CodAsignatura);
         }
 
         public static DataTable MostrarSilaboAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
@@ -43,9 +43,9 @@ namespace CapaNegocios
             return new D_Catalogo().MostrarSilaboAsignatura(CodSemestre, CodAsignatura, CodDocente);
         }
 
-        public static DataTable BuscarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodEscuelaP, string CodDocente)
+        public static DataTable BuscarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
         {
-            return new D_Catalogo().BuscarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodEscuelaP, CodDocente);
+            return new D_Catalogo().BuscarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodDocente);
         }
 
         public static DataTable MostrarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)

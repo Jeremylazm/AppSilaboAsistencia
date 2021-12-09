@@ -11,8 +11,10 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasSilabos : Form
     {
-        private string CodDocente = "49920";
-        //private string CodDocente = "34024";
+        //private readonly string CodDocente = "49920";
+        //private readonly string CodDocente = "65475";
+        //private readonly string CodDocente = "43992";
+        private readonly string CodDocente = "78371";
 
         public P_TablaAsignaturasAsignadasSilabos()
         {
@@ -153,7 +155,15 @@ namespace CapaPresentaciones
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    wb.SaveAs(saveFileDialog.FileName);
+                    try
+                    {
+                        wb.SaveAs(saveFileDialog.FileName);
+                        MessageBox.Show("Archivo guardado correctamente");
+                    }
+                    catch (IOException)
+                    {
+                        MessageBox.Show("Cierra el archivo antes de reemplazarlo o elige otro nombre");
+                    }
                 }
 
                 if (Directory.Exists(folder))
@@ -165,57 +175,6 @@ namespace CapaPresentaciones
             // Descargar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
-                /*
-                --Procedimiento para buscar los silabos de una asignatura.
-                CREATE PROCEDURE spuBuscarSilabosAsignatura @Texto1 VARCHAR(20), --código(ej.IF065) o nombre de la asignatura
-                                         @Texto2 VARCHAR(3)-- EP donde se enseña la asignatura
-                AS
-                BEGIN
-
-                --Mostrar el silabo
-
-                SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, D.Nombre
-                */
-
-
-                /*DataTable A = N_Catalogo.BuscarSilaboAsignatura("2021-II", dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(0, 5), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());
-
-                if (A.Rows.Count != 0)
-                {
-                    string path = AppDomain.CurrentDomain.BaseDirectory;
-                    string folder = path + "/temp/";
-                    string fullFilePath = folder + "temp.xlsx";
-                    MessageBox.Show(fullFilePath);
-
-                    if (!Directory.Exists(folder))
-                    {
-                        Directory.CreateDirectory(folder);
-                    }
-
-                    if (File.Exists(fullFilePath))
-                    {
-                        File.Delete(fullFilePath);
-                    }
-
-                    MessageBox.Show(A.Rows[0][0].GetType().ToString());
-
-                    byte[] archivo = A.Rows[0]["Silabo"] as byte[];
-                    MessageBox.Show(archivo.Length.ToString());
-
-                    File.WriteAllBytes(fullFilePath, archivo);
-
-                    Process.Start(fullFilePath);
-
-                    if (Directory.Exists(folder))
-                    {
-                        MessageBox.Show("Se eliminará un folder");
-                        Directory.Delete(folder);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No hay registro del sílabo");
-                }*/
                 P_TablaSilabosAsignatura silabosAsignatura = new P_TablaSilabosAsignatura(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString());
 
                 silabosAsignatura.ShowDialog();

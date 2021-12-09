@@ -1038,8 +1038,7 @@ GO
 
 -- Procedimiento para buscar los silabos de una asignatura.
 CREATE PROCEDURE spuBuscarSilabosAsignatura @CodSemestre VARCHAR(7),
-											@CodAsignatura VARCHAR(6),
-										    @CodEscuelaP VARCHAR(3)
+											@CodAsignatura VARCHAR(6)
 AS
 BEGIN
 	-- Mostrar los silabos
@@ -1048,14 +1047,13 @@ BEGIN
 		FROM TCatalogo C INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
 		WHERE C.CodSemestre = @CodSemestre AND C.CodAsignatura = @CodAsignatura AND 
-		      C.CodEscuelaP = @CodEscuelaP AND C.Silabo IS NOT NULL
+				C.Silabo IS NOT NULL
 END;
 GO
 
 -- Procedimiento para buscar los planes de sesión anteriores de un docente que dicto una asignatura.
 CREATE PROCEDURE spuBuscarPlanSesionesAsignatura @CodSemestre VARCHAR(7),
 											     @CodAsignatura VARCHAR(6),
-										         @CodEscuelaP VARCHAR(3),
 											     @CodDocente VARCHAR(5)
 AS
 BEGIN
@@ -1064,7 +1062,7 @@ BEGIN
 	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.PlanSesiones
 		FROM TCatalogo C INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
-		WHERE C.CodSemestre = @CodSemestre AND C.CodAsignatura = @CodAsignatura AND C.CodEscuelaP = @CodEscuelaP AND 
+		WHERE C.CodSemestre = @CodSemestre AND C.CodAsignatura = @CodAsignatura AND 
 		      C.CodDocente = @CodDocente AND C.PlanSesiones IS NOT NULL
 END;
 GO
