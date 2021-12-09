@@ -634,7 +634,7 @@ BEGIN
 END;
 GO
 
--- Procedimiento para mostrar todos los docentes de una escuela profesional. =======================================================
+-- Procedimiento para mostrar todos los docentes de una escuela profesional.
 CREATE PROCEDURE spuMostrarTodosDocentesDepartamento @CodDepartamentoA VARCHAR(3)
 AS
 BEGIN

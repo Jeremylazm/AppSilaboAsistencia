@@ -41,12 +41,12 @@ namespace CapaPresentaciones
             Seleccionar_Docente_Cod_Nom.DataSource = N_Docente.MostrarTodosDocentesDepartamento("IF");
 
             Seleccionar_Docente_Cod_Nom.ValueMember = "CodDocente";
-            Seleccionar_Docente_Cod_Nom.DisplayMember = "Nombre";
+            Seleccionar_Docente_Cod_Nom.DisplayMember = "NombreCompleto";
 
             Seleccionar_Docente_Cod_Nom2.DataSource = N_Docente.MostrarTodosDocentesDepartamento("IF");
 
             Seleccionar_Docente_Cod_Nom2.ValueMember = "CodDocente";
-            Seleccionar_Docente_Cod_Nom2.DisplayMember = "Nombre";
+            Seleccionar_Docente_Cod_Nom2.DisplayMember = "NombreCompleto";
         }
 
         private void LlenarDatosAsignatura()
@@ -138,19 +138,13 @@ namespace CapaPresentaciones
             }
             else
             {
-                Check_Código_Docente.Checked = true;
-                CódigoD1 = Seleccionar_Docente_Cod_Nom.Text;
-                CódigoD2 = Seleccionar_Docente_Cod_Nom2.Text;
-                Check_Código_Docente.Checked = false;
+                CódigoD1 = Seleccionar_Docente_Cod_Nom.SelectedValue.ToString();
+                CódigoD2 = Seleccionar_Docente_Cod_Nom2.SelectedValue.ToString();
             }
             if (Check_Código_Asignatura.Checked == true)
                 CódigoAS = Seleccionar_Asignatura_Cod_Nom.Text;
             else
-            {
-                Check_Código_Asignatura.Checked = true;
-                CódigoAS = Seleccionar_Asignatura_Cod_Nom.Text;
-                Check_Código_Asignatura.Checked = false;
-            }
+                CódigoAS = Seleccionar_Asignatura_Cod_Nom.SelectedValue.ToString();
             if (Check_Grupo_A.Checked == true)
                 Grupo = "A";
             else if (Check_Grupo_B.Checked == true)
