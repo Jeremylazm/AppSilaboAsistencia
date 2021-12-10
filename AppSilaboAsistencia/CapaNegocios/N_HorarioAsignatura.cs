@@ -28,6 +28,11 @@ namespace CapaNegocios
             return new D_HorarioAsignatura().HorasDocenteHorarioAsignatura(CodDocente, CodSemestre);
         }
 
+        public static DataTable HorasDocenteAsignaturaHorarioAsignatura(string CodDocente, string CodSemestre, string CodAsignatura, string Grupo)
+        {
+            return new D_HorarioAsignatura().HorasDocenteAsignaturaHorarioAsignatura(CodDocente, CodSemestre, CodAsignatura, Grupo);
+        }
+
         public void InsertarHorarioAsignatura(E_HorarioAsignatura HorarioAsignatura)
         {
             ObjHorarioAsignatura.InsertarHorarioAsignatura(HorarioAsignatura);
