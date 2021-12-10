@@ -7,8 +7,8 @@ namespace CapaDatos
 {
     public class D_Catalogo
     {
-        //readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
-        readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
+        readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
+        //readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
 
         // Método para mostrar el catálogo de asignaturas de una departamento académico.
         public DataTable MostrarCatalogo(string CodSemestre, string CodDepartamentoA)
