@@ -16,12 +16,13 @@ namespace CapaPresentaciones
 
         private void AccionesTabla()
         {
-            dgvDatos.Columns[0].DisplayIndex = 4;
-            dgvDatos.Columns[4].Visible = false;
-            dgvDatos.Columns[1].HeaderText = "Código";
-            dgvDatos.Columns[2].HeaderText = "Nombre";
-            dgvDatos.Columns[3].HeaderText = "Escuela Profesional";
-            dgvDatos.Columns[4].HeaderText = "Grupo";
+            dgvDatos.Columns[0].DisplayIndex = 5;
+            dgvDatos.Columns[1].DisplayIndex = 5;
+            dgvDatos.Columns[5].Visible = false;
+            dgvDatos.Columns[2].HeaderText = "Código";
+            dgvDatos.Columns[3].HeaderText = "Nombre";
+            dgvDatos.Columns[4].HeaderText = "Escuela Profesional";
+            dgvDatos.Columns[5].HeaderText = "Grupo";
         }
 
         private void MostrarAsignaturas()
@@ -45,7 +46,7 @@ namespace CapaPresentaciones
             // Estudiantes
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
-                P_TablaEstudiantesAsignatura Estudiantes = new P_TablaEstudiantesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString());
+                P_TablaEstudiantesAsignatura Estudiantes = new P_TablaEstudiantesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
 
                 Estudiantes.ShowDialog();
                 Estudiantes.Dispose();
