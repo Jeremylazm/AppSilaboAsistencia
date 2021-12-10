@@ -1060,13 +1060,11 @@ CREATE PROCEDURE spuInsertarAsignaturaCatalogo @CodSemestre VARCHAR(7),
 											   @CodEscuelaP VARCHAR(3),
 											   @Grupo VARCHAR(1),
 											   @CodDocente VARCHAR(5),
-											   @Silabo VARBINARY(MAX),
-											   @PlanSesiones VARBINARY(MAX)
 AS
 BEGIN
 	-- Insertar una asignatura en la tabla TCatalogo
 	INSERT INTO TCatalogo
-		VALUES (@CodSemestre, @CodAsignatura, @CodEscuelaP, @Grupo, @CodDocente, NULL, @Silabo, @PlanSesiones)
+		VALUES (@CodSemestre, @CodAsignatura, @CodEscuelaP, @Grupo, @CodDocente, NULL, NULL, NULL)
 END;
 GO
 
