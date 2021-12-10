@@ -8,6 +8,7 @@
         public string CodEscuelaP { get; set; }
         public string Grupo { get; set; }
         public string CodDocente { get; set; }
+        public string Matriculados { get; set; }
         public byte[] Silabo { get; set; }
         public byte[] PlanSesiones { get; set; }
     }
