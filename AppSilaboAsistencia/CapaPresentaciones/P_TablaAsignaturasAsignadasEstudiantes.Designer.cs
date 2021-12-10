@@ -47,6 +47,7 @@ namespace CapaPresentaciones
             this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.btnEstudiantes = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnActualizar = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
@@ -281,7 +282,8 @@ namespace CapaPresentaciones
             this.dgvDatos.ColumnHeadersHeight = 28;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.btnEstudiantes});
+            this.btnEstudiantes,
+            this.btnActualizar});
             this.dgvDatos.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
             this.dgvDatos.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvDatos.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -350,6 +352,14 @@ namespace CapaPresentaciones
             this.btnEstudiantes.Name = "btnEstudiantes";
             this.btnEstudiantes.ReadOnly = true;
             // 
+            // btnActualizar
+            // 
+            this.btnActualizar.HeaderText = "Actualizar";
+            this.btnActualizar.Image = global::CapaPresentaciones.Properties.Resources.Descargar_2;
+            this.btnActualizar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.ReadOnly = true;
+            // 
             // P_TablaAsignaturasAsignadasEstudiantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,5 +387,6 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuVScrollBar sbDatos;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvDatos;
         private System.Windows.Forms.DataGridViewImageColumn btnEstudiantes;
+        private System.Windows.Forms.DataGridViewImageColumn btnActualizar;
     }
 }
