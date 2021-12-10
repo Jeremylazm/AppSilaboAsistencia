@@ -38,24 +38,19 @@ namespace CapaNegocios
             return new D_Catalogo().BuscarSilabosAsignatura(CodSemestre, CodAsignatura);
         }
 
-        public static DataTable MostrarSilaboAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
-        {
-            return new D_Catalogo().MostrarSilaboAsignatura(CodSemestre, CodAsignatura, CodDocente);
-        }
-
         public static DataTable BuscarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
         {
             return new D_Catalogo().BuscarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodDocente);
         }
 
-        public static DataTable MostrarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
-        {
-            return new D_Catalogo().MostrarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodDocente);
-        }
-
         public void InsertarAsignaturaCatalogo(E_Catalogo Catalogo)
         {
             ObjCatalogo.InsertarAsignaturaCatalogo(Catalogo);
+        }
+
+        public void ActualizarMatriculadosAsignatura(string CodSemestre, string CodAsignatura, string CodDocente, string Matriculados)
+        {
+            ObjCatalogo.ActualizarMatriculadosAsignatura(CodSemestre, CodAsignatura, CodDocente, Matriculados);
         }
 
         public void ActualizarAsignaturaCatalogo(E_Catalogo Catalogo, string NCodSemestre, string NCodAsignatura, string NCodEscuelaP, string NGrupo, string NCodDocente) 
