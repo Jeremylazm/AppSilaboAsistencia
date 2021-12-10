@@ -1251,6 +1251,21 @@ BEGIN
 END;
 GO
 
+--Procedimiento para obtener las horas que se le asignó a un docente en un semestre de una determinada asignatura.
+CREATE PROCEDURE spuHorasDocenteAsignaturaHorarioAsignatura @CodDocente VARCHAR(5),
+															@CodSemestre VARCHAR(7),
+															@CodAsignatura VARCHAR(6),
+															@Grupo VARCHAR(1)
+AS
+BEGIN
+	--Extraer solo las horas de un docente
+	SELECT HorasTeoria, HorasPractica
+		FROM THorarioAsignatura
+		WHERE CodDocente = @CodDocente AND CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND
+			  Grupo = @Grupo
+END;
+GO
+
 -- Procedimiento para insertar el horario de una asignatura.
 CREATE PROCEDURE spuInsertarHorarioAsignatura @CodSemestre VARCHAR(7),
 											  @CodAsignatura VARCHAR(6),

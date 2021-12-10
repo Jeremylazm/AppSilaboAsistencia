@@ -240,38 +240,39 @@ namespace CapaPresentaciones
 
             if (Check_1_Docentes.Checked == true)
             {
+                int H = 0;
                 if (Día1 != "")
                 {
-                    HTD1 = HTD1 + Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text);
+                    H = Convert.ToInt32(Label_Horas_Asignadas_Docente1.Text) + Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text);
                     Pasa1 = Pasa1 && Verificar_Horario(CódigoD1, Día1, Hora_Inicio_Lunes.Text, Hora_Fin_Lunes.Text);
                 }
                 if (Día2 != "")
                 {
-                    HTD1 = HTD1 + Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text);
+                    H = Convert.ToInt32(Label_Horas_Asignadas_Docente1.Text) + Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text);
                     Pasa1 = Pasa1 && Verificar_Horario(CódigoD1, Día2, Hora_Inicio_Martes.Text, Hora_Fin_Martes.Text);
                 }
                 if (Día3 != "")
                 {
-                    HTD1 = HTD1 + Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text);
+                    H = Convert.ToInt32(Label_Horas_Asignadas_Docente1.Text) + Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text);
                     Pasa1 = Pasa1 && Verificar_Horario(CódigoD1, Día3, Hora_Inicio_Miércoles.Text, Hora_Fin_Miércoles.Text);
                 }
                 if (Día4 != "")
                 {
-                    HTD1 = HTD1 + Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text);
+                    H = Convert.ToInt32(Label_Horas_Asignadas_Docente1.Text) + Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text);
                     Pasa1 = Pasa1 && Verificar_Horario(CódigoD1, Día4, Hora_Inicio_Jueves.Text, Hora_Fin_Jueves.Text);
                 }
                 if (Día5 != "")
                 {
-                    HTD1 = HTD1 + Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text);
+                    H = Convert.ToInt32(Label_Horas_Asignadas_Docente1.Text) + Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text);
                     Pasa1 = Pasa1 && Verificar_Horario(CódigoD1, Día5, Hora_Inicio_Viernes.Text, Hora_Fin_Viernes.Text);
                 }
                 if (Día6 != "")
                 {
-                    HTD1 = HTD1 + Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text);
+                    H = Convert.ToInt32(Label_Horas_Asignadas_Docente1.Text) + Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text);
                     Pasa1 = Pasa1 && Verificar_Horario(CódigoD1, Día6, Hora_Inicio_Sábado.Text, Hora_Fin_Sábado.Text);
                 }
 
-                if (HTD1 <= 10 || CódigoD1 == "00000")
+                if (H <= 10 || CódigoD1 == "00000")
                 {
                     if (Pasa1 || CódigoD1 == "00000")
                     {
@@ -476,16 +477,18 @@ namespace CapaPresentaciones
             {
                 if (HoraTeoría != 0 && HoraPráctica != 0)
                 {
+                    int H1 = 0;
+                    int H2 = 0;
                     if (Día1 != "")
                     {
                         if (Tipo1 == "P")
                         {
-                            HTD2 = HTD2 + Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text);
+                            H2 = Convert.ToInt32(Label_Horas_Asignadas_Docente2.Text) + Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text);
                             Pasa2 = Pasa2 && Verificar_Horario(CódigoD2, Día1, Hora_Inicio_Lunes.Text, Hora_Fin_Lunes.Text);
                         }
                         else
                         {
-                            HTD1 = HTD1 + Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text);
+                            H1 = Convert.ToInt32(Label_Horas_Asignadas_Docente1.Text) + Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text);
                             Pasa1 = Pasa1 && Verificar_Horario(CódigoD1, Día1, Hora_Inicio_Lunes.Text, Hora_Fin_Lunes.Text);
                         }
                     }
@@ -493,12 +496,12 @@ namespace CapaPresentaciones
                     {
                         if (Tipo2 == "P")
                         {
-                            HTD2 = HTD2 + Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text);
+                            H2 = Convert.ToInt32(Label_Horas_Asignadas_Docente2.Text) + Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text);
                             Pasa2 = Pasa2 && Verificar_Horario(CódigoD2, Día2, Hora_Inicio_Martes.Text, Hora_Fin_Martes.Text);
                         }
                         else
                         {
-                            HTD1 = HTD1 + Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text);
+                            H1 = Convert.ToInt32(Label_Horas_Asignadas_Docente1.Text) + Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text);
                             Pasa1 = Pasa1 && Verificar_Horario(CódigoD1, Día2, Hora_Inicio_Martes.Text, Hora_Fin_Martes.Text);
                         }
                     }
@@ -506,12 +509,12 @@ namespace CapaPresentaciones
                     {
                         if (Tipo3 == "P")
                         {
-                            HTD2 = HTD2 + Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text);
+                            H2 = Convert.ToInt32(Label_Horas_Asignadas_Docente2.Text) + Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text);
                             Pasa2 = Pasa2 && Verificar_Horario(CódigoD2, Día3, Hora_Inicio_Miércoles.Text, Hora_Fin_Miércoles.Text);
                         }
                         else
                         {
-                            HTD1 = HTD1 + Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text);
+                            H1 = Convert.ToInt32(Label_Horas_Asignadas_Docente1.Text) + Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text);
                             Pasa1 = Pasa1 && Verificar_Horario(CódigoD1, Día3, Hora_Inicio_Miércoles.Text, Hora_Fin_Miércoles.Text);
                         }
                     }
@@ -519,12 +522,12 @@ namespace CapaPresentaciones
                     {
                         if (Tipo4 == "P")
                         {
-                            HTD2 = HTD2 + Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text);
+                            H2 = Convert.ToInt32(Label_Horas_Asignadas_Docente2.Text) + Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text);
                             Pasa2 = Pasa2 && Verificar_Horario(CódigoD2, Día4, Hora_Inicio_Jueves.Text, Hora_Fin_Jueves.Text);
                         }
                         else
                         {
-                            HTD1 = HTD1 + Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text);
+                            H1 = Convert.ToInt32(Label_Horas_Asignadas_Docente1.Text) + Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text);
                             Pasa1 = Pasa1 && Verificar_Horario(CódigoD1, Día4, Hora_Inicio_Jueves.Text, Hora_Fin_Jueves.Text);
                         }
                     }
@@ -532,12 +535,12 @@ namespace CapaPresentaciones
                     {
                         if (Tipo5 == "P")
                         {
-                            HTD2 = HTD2 + Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text);
+                            H2 = Convert.ToInt32(Label_Horas_Asignadas_Docente2.Text) + Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text);
                             Pasa2 = Pasa2 && Verificar_Horario(CódigoD2, Día5, Hora_Inicio_Viernes.Text, Hora_Fin_Viernes.Text);
                         }
                         else
                         {
-                            HTD1 = HTD1 + Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text);
+                            H1 = Convert.ToInt32(Label_Horas_Asignadas_Docente1.Text) + Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text);
                             Pasa1 = Pasa1 && Verificar_Horario(CódigoD1, Día5, Hora_Inicio_Viernes.Text, Hora_Fin_Viernes.Text);
                         }
                     }
@@ -545,17 +548,17 @@ namespace CapaPresentaciones
                     {
                         if (Tipo6 == "P")
                         {
-                            HTD2 = HTD2 + Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text);
+                            H2 = Convert.ToInt32(Label_Horas_Asignadas_Docente2.Text) + Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text);
                             Pasa2 = Pasa2 && Verificar_Horario(CódigoD2, Día6, Hora_Inicio_Sábado.Text, Hora_Fin_Sábado.Text);
                         }
                         else
                         {
-                            HTD1 = HTD1 + Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text);
+                            H1 = Convert.ToInt32(Label_Horas_Asignadas_Docente1.Text) + Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text);
                             Pasa1 = Pasa1 && Verificar_Horario(CódigoD1, Día6, Hora_Inicio_Sábado.Text, Hora_Fin_Sábado.Text);
                         }
                     }
 
-                    if ((HTD1 <= 10 || CódigoD1 == "00000") && (HTD2 <= 10 || CódigoD2 == "00000"))
+                    if ((H1 <= 10 || CódigoD1 == "00000") && (H2 <= 10 || CódigoD2 == "00000"))
                     {
                         if (CódigoD1 != CódigoD2)
                         {
@@ -989,6 +992,8 @@ namespace CapaPresentaciones
             {
                 Check_Grupo_B.Checked = false;
                 Check_Grupo_C.Checked = false;
+                Recuperar_Horas_Docentes();
+                DescontarHoras();
             }
             else
             {
@@ -1005,6 +1010,8 @@ namespace CapaPresentaciones
             {
                 Check_Grupo_A.Checked = false;
                 Check_Grupo_C.Checked = false;
+                Recuperar_Horas_Docentes();
+                DescontarHoras();
             }
             else
             {
@@ -1021,6 +1028,8 @@ namespace CapaPresentaciones
             {
                 Check_Grupo_A.Checked = false;
                 Check_Grupo_B.Checked = false;
+                Recuperar_Horas_Docentes();
+                DescontarHoras();
             }
             else
             {
@@ -2124,6 +2133,7 @@ namespace CapaPresentaciones
                 else
                     CódigoDocente1 = Seleccionar_Docente_Cod_Nom.SelectedValue.ToString();
                 Recuperar_Horas_Docentes();
+                DescontarHoras();
             }
             catch
             {
@@ -2140,6 +2150,7 @@ namespace CapaPresentaciones
                 else
                     CódigoDocente2 = Seleccionar_Docente_Cod_Nom2.SelectedValue.ToString();
                 Recuperar_Horas_Docentes();
+                DescontarHoras();
             }
             catch
             {
@@ -2160,6 +2171,8 @@ namespace CapaPresentaciones
                     CódigoAsignatura = R["CodAsignatura"].ToString();
                 }
                 Recuperar_Horas_Asignaturas();
+                Recuperar_Horas_Docentes();
+                DescontarHoras();
             }
             catch
             {
@@ -2216,6 +2229,12 @@ namespace CapaPresentaciones
                     LabelPR2.Text = Convert.ToString(HoraPrácticaA);
                 }
             }
+        }
+
+        private void Seleccionar_Semestre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Recuperar_Horas_Docentes();
+            DescontarHoras();
         }
 
         public bool Buscar(string CS, string CA, string EP, string G)
@@ -2454,7 +2473,7 @@ namespace CapaPresentaciones
             if (CódigoD1A == CódigoDocente1 && CódigoSemestreA == Seleccionar_Semestre.Text)
             {
                 HD1 = 0;
-                DataTable T1 = N_HorarioAsignatura.HorasDocenteHorarioAsignatura(CódigoDocente1, Seleccionar_Semestre.Text);
+                DataTable T1 = N_HorarioAsignatura.HorasDocenteAsignaturaHorarioAsignatura(CódigoDocente1, Seleccionar_Semestre.Text, CódigoAsignaturaA, GrupoA);
                 for (int i = 0; i < T1.Rows.Count; i++)
                 {
                     HD1 = HD1 + Convert.ToInt32(T1.Rows[i]["HorasTeoria"].ToString());
@@ -2466,7 +2485,7 @@ namespace CapaPresentaciones
             if (CódigoD2A == CódigoDocente2 && CódigoSemestreA == Seleccionar_Semestre.Text)
             {
                 HD2 = 0;
-                DataTable T1 = N_HorarioAsignatura.HorasDocenteHorarioAsignatura(CódigoDocente2, Seleccionar_Semestre.Text);
+                DataTable T1 = N_HorarioAsignatura.HorasDocenteAsignaturaHorarioAsignatura(CódigoDocente2, Seleccionar_Semestre.Text, CódigoAsignaturaA, GrupoA);
                 for (int i = 0; i < T1.Rows.Count; i++)
                 {
                     HD2 = HD2 + Convert.ToInt32(T1.Rows[i]["HorasTeoria"].ToString());
