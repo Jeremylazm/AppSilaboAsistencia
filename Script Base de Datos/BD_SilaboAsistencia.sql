@@ -1059,7 +1059,7 @@ CREATE PROCEDURE spuInsertarAsignaturaCatalogo @CodSemestre VARCHAR(7),
 											   @CodAsignatura VARCHAR(6),
 											   @CodEscuelaP VARCHAR(3),
 											   @Grupo VARCHAR(1),
-											   @CodDocente VARCHAR(5),
+											   @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Insertar una asignatura en la tabla TCatalogo
@@ -1070,9 +1070,7 @@ GO
 
 -- Procedimiento para actualizar la lista de estudiantes matriculados de una asignatura.
 CREATE PROCEDURE spuActualizarMatriculadosAsignatura @CodSemestre VARCHAR(7),
-											         @CodAsignatura VARCHAR(6),
-											         @CodEscuelaP VARCHAR(3),
-											         @Grupo VARCHAR(1),
+											         @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN), obtener de spuBuscarAsignaturasDocente
 											         @CodDocente VARCHAR(5),
 												     @Matriculados VARCHAR(1000) -- string concat
 AS
@@ -1080,8 +1078,7 @@ BEGIN
 	-- Actualizar una asignatura de la tabla TCatalogo
 	UPDATE TCatalogo
 		SET Matriculados = @Matriculados  
-		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND CodEscuelaP = @CodEscuelaP AND 
-		      Grupo = @Grupo AND CodDocente = @CodDocente
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura + Grupo + CodEscuelaP = @CodAsignatura AND CodDocente = @CodDocente
 END;
 GO
 
