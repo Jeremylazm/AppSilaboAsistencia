@@ -25,9 +25,10 @@ namespace CapaPresentaciones
             Close();
         }
 
-        string Direccion = @"D:\Yo\Plantilla Sesion Pruebas.xlsx";
+        //string Direccion = @"D:\Yo\Plantilla Sesion Pruebas.xlsx";
         private void P_TablaSesiones_Load(object sender, EventArgs e)
         {
+            /*
             SLDocument sl = new SLDocument(Direccion);
             int IRow = 9;
             List<sesionesViewModel> lst = new List<sesionesViewModel>();
@@ -42,7 +43,7 @@ namespace CapaPresentaciones
                 IRow++;
                 lst.Add(oSesion);
             }
-            dgvSesiones.DataSource = lst;
+            dgvSesiones.DataSource = lst;*/
         }
 
         private void pnPeriodosParciales_Paint(object sender, PaintEventArgs e)
