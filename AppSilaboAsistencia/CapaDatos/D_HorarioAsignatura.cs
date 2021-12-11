@@ -78,6 +78,24 @@ namespace CapaDatos
             return Resultado;
         }
 
+        // Método para obtener las horas asignada de un docente en un semestre de una determinada asignatura. 
+        public DataTable HorasDocenteAsignaturaHorarioAsignatura(string CodDocente, string CodSemestre, string CodAsignatura, string Grupo)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuHorasDocenteAsignaturaHorarioAsignatura", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
+            Comando.Parameters.AddWithValue("@Grupo", Grupo);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
         // Método para insertar el horario de una asignatura en un catálogo.
         public void InsertarHorarioAsignatura(E_HorarioAsignatura HorarioAsignatura)
         {

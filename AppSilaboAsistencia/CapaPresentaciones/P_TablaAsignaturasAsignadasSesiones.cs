@@ -15,10 +15,8 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasSesiones : Form
     {
-        //private string CodDocente = "49920";
-        //private string CodDocente = "65475";
-        //private string CodDocente = "34024";
-        private string CodDocente = "43992";
+        //private readonly string CodDocente = "49920";
+        private readonly string CodDocente = "65475";
 
         public P_TablaAsignaturasAsignadasSesiones()
         {
@@ -120,7 +118,15 @@ namespace CapaPresentaciones
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    wb.SaveAs(saveFileDialog.FileName);
+                    try
+                    {
+                        wb.SaveAs(saveFileDialog.FileName);
+                        MessageBox.Show("Archivo guardado correctamente");
+                    }
+                    catch (IOException)
+                    {
+                        MessageBox.Show("Cierra el archivo antes de reemplazarlo");
+                    }
                 }
 
                 if (Directory.Exists(folder))

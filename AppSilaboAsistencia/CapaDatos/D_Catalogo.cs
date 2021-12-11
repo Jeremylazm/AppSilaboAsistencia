@@ -97,7 +97,7 @@ namespace CapaDatos
         }
 
         // Método para buscar los silabos de una asignatura.
-        public DataTable BuscarSilabosAsignatura(string CodSemestre, string CodAsignatura, string CodEscuelaP)
+        public DataTable BuscarSilabosAsignatura(string CodSemestre, string CodAsignatura)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarSilabosAsignatura", Conectar)
@@ -106,59 +106,23 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); 
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
             SqlDataAdapter Data = new SqlDataAdapter(Comando); 
             Data.Fill(Resultado);
             return Resultado;
         }
 
-        // Método para buscar el silabo de una asignatura.
-        public DataTable MostrarSilaboAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
-        {
-            DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("spuMostrarSilaboAsignatura", Conectar)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-
-            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); // código (ej. IF065AIN), obtener de BuscarAsignaturasDocente
-            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
-            SqlDataAdapter Data = new SqlDataAdapter(Comando);
-            Data.Fill(Resultado);
-            return Resultado;
-        }
-
         // Método para buscar los planes de sesión de una asignatura.
-        public DataTable BuscarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodEscuelaP, string CodDocente)
+        public DataTable BuscarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
         {
             DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("sspuBuscarPlanSesionesAsignatura", Conectar)
+            SqlCommand Comando = new SqlCommand("spuBuscarPlanSesionesAsignatura", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
-            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
-            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
-            SqlDataAdapter Data = new SqlDataAdapter(Comando);
-            Data.Fill(Resultado);
-            return Resultado;
-        }
-
-        // Método para buscar el plan de sesiones de un docente para una asignatura.
-        public DataTable MostrarPlanSesionesAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
-        {
-            DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("spuMostrarPlanSesionesAsignatura", Conectar)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-
-            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); // código (ej. IF065AIN), obtener de BuscarAsignaturasDocente
             Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
@@ -179,8 +143,23 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodEscuelaP", Catalogo.CodEscuelaP);
             Comando.Parameters.AddWithValue("@Grupo", Catalogo.Grupo);
             Comando.Parameters.AddWithValue("@CodDocente", Catalogo.CodDocente);
-            Comando.Parameters.AddWithValue("@Silabo", Catalogo.Silabo);
-            Comando.Parameters.AddWithValue("@PlanSesiones", Catalogo.PlanSesiones);
+            Comando.ExecuteNonQuery();
+            Conectar.Close();
+        }
+
+        // Método para actualizar la lista de estudiantes matriculados de una asignatura.
+        public void ActualizarMatriculadosAsignatura(string CodSemestre, string CodAsignatura, string CodDocente, string Matriculados)
+        {
+            SqlCommand Comando = new SqlCommand("spuActualizarMatriculadosAsignatura", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Conectar.Open();
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); // código (ej. IF065AIN), obtener de BuscarAsignaturasDocente
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
+            Comando.Parameters.AddWithValue("@Matriculados", Matriculados);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }

@@ -51,7 +51,7 @@ namespace CapaPresentaciones
             // Estudiantes
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
-                P_TablaAsistenciaEstudiantes Estudiantes = new P_TablaAsistenciaEstudiantes(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString());
+                P_TablaAsistenciaEstudiantes Estudiantes = new P_TablaAsistenciaEstudiantes(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), "65475");//codasignatura y coddocente
 
                 Estudiantes.ShowDialog();
                 Estudiantes.Dispose();

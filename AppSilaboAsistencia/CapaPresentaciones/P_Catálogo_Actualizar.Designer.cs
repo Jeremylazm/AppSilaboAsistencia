@@ -31,7 +31,7 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_Catálogo_Actualizar));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Salir = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -261,6 +261,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Docente_Cod_Nom2
             // 
+            this.Seleccionar_Docente_Cod_Nom2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Docente_Cod_Nom2.FormattingEnabled = true;
             this.Seleccionar_Docente_Cod_Nom2.Location = new System.Drawing.Point(169, 81);
             this.Seleccionar_Docente_Cod_Nom2.Name = "Seleccionar_Docente_Cod_Nom2";
@@ -270,6 +271,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Docente_Cod_Nom
             // 
+            this.Seleccionar_Docente_Cod_Nom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Docente_Cod_Nom.FormattingEnabled = true;
             this.Seleccionar_Docente_Cod_Nom.Location = new System.Drawing.Point(169, 54);
             this.Seleccionar_Docente_Cod_Nom.Name = "Seleccionar_Docente_Cod_Nom";
@@ -279,6 +281,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Asignatura_Cod_Nom
             // 
+            this.Seleccionar_Asignatura_Cod_Nom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Asignatura_Cod_Nom.FormattingEnabled = true;
             this.Seleccionar_Asignatura_Cod_Nom.Location = new System.Drawing.Point(167, 127);
             this.Seleccionar_Asignatura_Cod_Nom.Name = "Seleccionar_Asignatura_Cod_Nom";
@@ -554,6 +557,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Modalidad
             // 
+            this.Seleccionar_Modalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Modalidad.FormattingEnabled = true;
             this.Seleccionar_Modalidad.Items.AddRange(new object[] {
             "PRESENCIAL",
@@ -576,6 +580,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Semestre
             // 
+            this.Seleccionar_Semestre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Semestre.FormattingEnabled = true;
             this.Seleccionar_Semestre.Items.AddRange(new object[] {
             "2021-I",
@@ -622,6 +627,7 @@ namespace CapaPresentaciones
             this.Seleccionar_Semestre.Name = "Seleccionar_Semestre";
             this.Seleccionar_Semestre.Size = new System.Drawing.Size(121, 21);
             this.Seleccionar_Semestre.TabIndex = 99;
+            this.Seleccionar_Semestre.SelectedIndexChanged += new System.EventHandler(this.Seleccionar_Semestre_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -1006,6 +1012,7 @@ namespace CapaPresentaciones
             // 
             // Seleccionar_Aula
             // 
+            this.Seleccionar_Aula.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Aula.FormattingEnabled = true;
             this.Seleccionar_Aula.Items.AddRange(new object[] {
             "IN101",
@@ -1063,11 +1070,11 @@ namespace CapaPresentaciones
             this.Botón_Guardar.ColorContrastOnClick = 45;
             this.Botón_Guardar.ColorContrastOnHover = 45;
             this.Botón_Guardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.Botón_Guardar.CustomizableEdges = borderEdges1;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.Botón_Guardar.CustomizableEdges = borderEdges2;
             this.Botón_Guardar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Botón_Guardar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.Botón_Guardar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
