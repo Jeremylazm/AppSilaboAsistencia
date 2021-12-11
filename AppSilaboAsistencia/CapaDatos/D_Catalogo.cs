@@ -128,8 +128,24 @@ namespace CapaDatos
             Data.Fill(Resultado);
             return Resultado;
         }
+        //Metodo para recuperar plan de sesion de un determinado docente y un determinada asignatura
+        public DataTable RecuperarPlanDeSesionAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuRecuperarPlanSesionAsignatura", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
 
-        // Método para insertar una asignatura en un catálogo.
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
+        // Método para insertar una asignatura en un catálogo. 
         public void InsertarAsignaturaCatalogo(E_Catalogo Catalogo)
         {
             SqlCommand Comando = new SqlCommand("spuInsertarAsignaturaCatalogo", Conectar)
