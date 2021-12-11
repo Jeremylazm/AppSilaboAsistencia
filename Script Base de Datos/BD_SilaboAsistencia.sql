@@ -1053,6 +1053,21 @@ BEGIN
 		      C.CodDocente = @CodDocente AND C.PlanSesiones IS NOT NULL
 END;
 GO
+-- Procedimiento para recueprar un plan de sesión anteriores de un docente determinado.
+CREATE PROCEDURE spuRecuperarPlanSesionAsignatura @CodSemestre VARCHAR(7),
+											     @CodAsignatura VARCHAR(8),--codigo completo
+											     @CodDocente VARCHAR(5)
+AS
+BEGIN
+	-- Mostrar los catalogos
+	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, D.Nombre,
+	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.PlanSesiones
+		FROM TCatalogo C INNER JOIN TDocente D ON
+			 C.CodDocente = D.CodDocente
+		WHERE C.CodSemestre = @CodSemestre AND C.CodAsignatura+c.Grupo+c.CodEscuelaP = @CodAsignatura AND 
+		      C.CodDocente = @CodDocente AND C.PlanSesiones IS NOT NULL
+END;
+GO
 
 -- Procedimiento para insertar una asignatura en un catálogo.
 CREATE PROCEDURE spuInsertarAsignaturaCatalogo @CodSemestre VARCHAR(7),
