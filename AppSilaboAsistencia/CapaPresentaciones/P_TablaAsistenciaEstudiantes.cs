@@ -5,6 +5,8 @@ using CapaEntidades;
 using System.Drawing;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Data.OleDb;
+using SpreadsheetLight;
 
 namespace CapaPresentaciones
 {
@@ -67,6 +69,14 @@ namespace CapaPresentaciones
 
             Sesiones.ShowDialog();
             Sesiones.Dispose();
+            valor++;
+            string Direccion = @"D:\Yo\Plantilla Sesion Pruebas.xlsx";
+            SLDocument sl = new SLDocument(Direccion);
+            if (sl.GetCellValueAsString(valor, 3) == "")
+            {
+                valor++;
+            }
+            txtTema.Text = sl.GetCellValueAsString(valor, 3);
         }
 
         private void dgvDatos_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -127,6 +137,14 @@ namespace CapaPresentaciones
                     Fila.Cells[0].Value = ListaImagenes.Images[0];
                 }
             }
+        }
+        string Direccion = @"D:\Yo\Plantilla Sesion Pruebas.xlsx";
+        int valor = 9;
+        private void P_TablaAsistenciaEstudiantes_Load(object sender, EventArgs e)
+        {
+            
+            SLDocument sl = new SLDocument(Direccion);
+            txtTema.Text = sl.GetCellValueAsString(valor, 3);
         }
     }
 }
