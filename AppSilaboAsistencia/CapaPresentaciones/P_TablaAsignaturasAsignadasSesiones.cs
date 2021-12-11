@@ -99,7 +99,7 @@ namespace CapaPresentaciones
                 // Completar información
 
                 // Nombre y código del curso
-                wb.Worksheet(1).Cell("A3").Value = dtDatosAsignatura.Rows[0]["NombreAsignatura"].ToString() + " (" + CodAsignatura.Substring(0, 5) + ")";
+                wb.Worksheet(1).Cell("A3").Value = dtDatosAsignatura.Rows[0]["NombreAsignatura"].ToString() + " (" + CodAsignatura + ")";
 
                 // Semestre
                 wb.Worksheet(1).Cell("A4").Value = wb.Worksheet(1).Cell("A4").Value + "2021-II";
