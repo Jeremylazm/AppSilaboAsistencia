@@ -7,23 +7,37 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Data.OleDb;
 using SpreadsheetLight;
+using System.Data;
 
 namespace CapaPresentaciones
 {
     public partial class P_TablaAsistenciaEstudiantes : Form
     {
         public string CodAsignatura;
-
-        public P_TablaAsistenciaEstudiantes(string pCodAsignatura)
+        public string CodDocente;
+        readonly E_AsistenciaEstudiante ObjEntidadEstd;
+        readonly N_AsistenciaEstudiante ObjNegocioEstd;
+        readonly E_AsistenciaDocente ObjEntidadDoc;
+        readonly N_AsistenciaDocente ObjNegocioDoc;
+        public string hora = DateTime.Now.ToString("hh:mm:ss");
+        private DataTable PlanSesion;
+        public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente)
         {
             CodAsignatura = pCodAsignatura;
+            CodDocente = pCodDocente;
+            ObjEntidadEstd = new E_AsistenciaEstudiante();
+            ObjNegocioEstd = new N_AsistenciaEstudiante();
+            ObjEntidadDoc = new E_AsistenciaDocente();
+            ObjNegocioDoc = new N_AsistenciaDocente();
             InitializeComponent();
+
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             lblTitulo.Text += CodAsignatura;
-            lblFecha.Text += "    " + DateTime.Now.ToString("dd / MM / yyyy").ToString();
+            lblFecha.Text += "    " + DateTime.Now.ToString("dd/MM/yyyy").ToString();
+            PlanSesion = N_Catalogo.RecuperarPlanDeSesionAsignatura("2021-II", CodAsignatura, CodDocente);
             MostrarEstudiantes();
         }
-
+        
         private void AccionesTabla()
         {
             dgvDatos.Columns[0].DisplayIndex = 6;
@@ -138,12 +152,30 @@ namespace CapaPresentaciones
                 }
             }
         }
-        string Direccion = @"D:\Yo\Plantilla Sesion Pruebas.xlsx";
+        
         int valor = 9;
         private void P_TablaAsistenciaEstudiantes_Load(object sender, EventArgs e)
         {
-            
-            SLDocument sl = new SLDocument(Direccion);
+            // Se crea un archivo temporal, para después abrirlo con ClosedXML
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            string folder = path + "/temp/";
+            string fullFilePath = folder + "temp.xlsx";
+
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+
+            if (File.Exists(fullFilePath))
+            {
+                File.Delete(fullFilePath);
+            }
+
+            byte[] archivo = PlanSesion.Rows[0]["PlanSesiones"] as byte[];
+
+            File.WriteAllBytes(fullFilePath, archivo);
+
+            SLDocument sl = new SLDocument(fullFilePath);
             txtTema.Text = sl.GetCellValueAsString(valor, 3);
         }
     }
