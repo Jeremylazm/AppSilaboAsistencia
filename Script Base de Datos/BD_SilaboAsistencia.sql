@@ -1024,8 +1024,7 @@ END;
 GO
 
 -- Procedimiento para buscar los silabos de una asignatura.
-CREATE PROCEDURE spuBuscarSilabosAsignatura @CodSemestre VARCHAR(7),
-											@CodAsignatura VARCHAR(6)
+CREATE PROCEDURE spuBuscarSilabosAsignatura @CodAsignatura VARCHAR(6)
 AS
 BEGIN
 	-- Mostrar los silabos
@@ -1033,14 +1032,12 @@ BEGIN
 	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.Silabo
 		FROM TCatalogo C INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
-		WHERE C.CodSemestre = @CodSemestre AND C.CodAsignatura = @CodAsignatura AND 
-				C.Silabo IS NOT NULL
+		WHERE C.CodAsignatura = @CodAsignatura AND C.Silabo IS NOT NULL
 END;
 GO
 
--- Procedimiento para buscar los planes de sesión anteriores de un docente que dicto una asignatura.
-CREATE PROCEDURE spuBuscarPlanSesionesAsignatura @CodSemestre VARCHAR(7),
-											     @CodAsignatura VARCHAR(6),
+-- Procedimiento para buscar los planes de sesión anteriores de un docente que dictó una asignatura.
+CREATE PROCEDURE spuBuscarPlanSesionesAsignatura @CodAsignatura VARCHAR(6),
 											     @CodDocente VARCHAR(5)
 AS
 BEGIN
@@ -1049,13 +1046,13 @@ BEGIN
 	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.PlanSesiones
 		FROM TCatalogo C INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
-		WHERE C.CodSemestre = @CodSemestre AND C.CodAsignatura = @CodAsignatura AND 
+		WHERE C.CodAsignatura = @CodAsignatura AND 
 		      C.CodDocente = @CodDocente AND C.PlanSesiones IS NOT NULL
 END;
 GO
--- Procedimiento para recueprar un plan de sesión anteriores de un docente determinado.
+-- Procedimiento para recuperar un plan de sesión de un docente determinado.
 CREATE PROCEDURE spuRecuperarPlanSesionAsignatura @CodSemestre VARCHAR(7),
-											     @CodAsignatura VARCHAR(8),--codigo completo
+											     @CodAsignatura VARCHAR(8), -- código completo
 											     @CodDocente VARCHAR(5)
 AS
 BEGIN
@@ -1064,7 +1061,7 @@ BEGIN
 	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.PlanSesiones
 		FROM TCatalogo C INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
-		WHERE C.CodSemestre = @CodSemestre AND C.CodAsignatura+c.Grupo+c.CodEscuelaP = @CodAsignatura AND 
+		WHERE C.CodSemestre = @CodSemestre AND C.CodAsignatura + C.Grupo + C.CodEscuelaP = @CodAsignatura AND 
 		      C.CodDocente = @CodDocente AND C.PlanSesiones IS NOT NULL
 END;
 GO

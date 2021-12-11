@@ -23,7 +23,7 @@ namespace CapaPresentaciones
             this.CodAsignatura = CodAsignatura;
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
-            Asignaturas = N_Catalogo.BuscarSilabosAsignatura("2021-II", CodAsignatura.Substring(0, 5));
+            Asignaturas = N_Catalogo.BuscarSilabosAsignatura(CodAsignatura.Substring(0, 5));
             MostrarAsignaturas();
         }
 
