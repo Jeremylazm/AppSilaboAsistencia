@@ -2468,6 +2468,7 @@ namespace CapaPresentaciones
             Label_Horas_Asignadas_Docente2.Visible = false;
             DescontarHoras();
         }
+
         public void DescontarHoras()
         {
             if (CódigoD1A == CódigoDocente1 && CódigoSemestreA == Seleccionar_Semestre.Text)
