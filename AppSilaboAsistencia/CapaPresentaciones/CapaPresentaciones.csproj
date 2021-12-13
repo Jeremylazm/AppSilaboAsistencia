@@ -232,6 +232,12 @@
     <Compile Include="P_DatosDocente.Designer.cs">
       <DependentUpon>P_DatosDocente.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_HistorialSesionesAsignatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_HistorialSesionesAsignatura.Designer.cs">
+      <DependentUpon>P_HistorialSesionesAsignatura.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_InicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -339,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_DatosDocente.resx">
       <DependentUpon>P_DatosDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_HistorialSesionesAsignatura.resx">
+      <DependentUpon>P_HistorialSesionesAsignatura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_InicioSesion.resx">
       <DependentUpon>P_InicioSesion.cs</DependentUpon>
