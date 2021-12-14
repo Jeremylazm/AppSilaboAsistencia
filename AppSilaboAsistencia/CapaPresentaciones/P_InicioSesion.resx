@@ -121,7 +121,7 @@
     <value>17, 17</value>
   </metadata>
   <data name="lblTitulo.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 14px;font-family: 'Montserrat Alternates'; font-size: 17pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(232, 158, 31); text-align: center; }</value>
+    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 20px;font-family: 'Montserrat Alternates'; font-size: 14pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(232, 158, 31); text-align: center; }</value>
   </data>
   <metadata name="Bordeado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>177, 17</value>

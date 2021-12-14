@@ -75,7 +75,7 @@ namespace CapaPresentaciones
             this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblTitulo.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 17F);
+            this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 14F);
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
