@@ -370,6 +370,9 @@
     <EmbeddedResource Include="P_Menu.resx">
       <DependentUpon>P_Menu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="P_RecuperacionContraseña.resx">
+      <DependentUpon>P_RecuperacionContraseña.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="P_SubirArchivo.resx">
       <DependentUpon>P_SubirArchivo.cs</DependentUpon>
     </EmbeddedResource>
