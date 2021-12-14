@@ -1024,7 +1024,7 @@ END;
 GO
 
 -- Procedimiento para buscar los silabos de una asignatura.
-CREATE PROCEDURE spuBuscarSilabosAsignatura @CodAsignatura VARCHAR(6)
+CREATE PROCEDURE spuBuscarSilabosAsignatura @CodAsignatura VARCHAR(6) -- código (ej. IF065)
 AS
 BEGIN
 	-- Mostrar los silabos
@@ -1037,11 +1037,11 @@ END;
 GO
 
 -- Procedimiento para buscar los planes de sesión anteriores de un docente que dictó una asignatura.
-CREATE PROCEDURE spuBuscarPlanSesionesAsignatura @CodAsignatura VARCHAR(6),
+CREATE PROCEDURE spuBuscarPlanSesionesAsignatura @CodAsignatura VARCHAR(6), -- código (ej. IF065)
 											     @CodDocente VARCHAR(5)
 AS
 BEGIN
-	-- Mostrar los catalogos
+	-- Mostrar los planes de sesión
 	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, D.Nombre,
 	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.PlanSesiones
 		FROM TCatalogo C INNER JOIN TDocente D ON
@@ -1050,19 +1050,33 @@ BEGIN
 		      C.CodDocente = @CodDocente AND C.PlanSesiones IS NOT NULL
 END;
 GO
+
 -- Procedimiento para recuperar un plan de sesión de un docente determinado.
 CREATE PROCEDURE spuRecuperarPlanSesionAsignatura @CodSemestre VARCHAR(7),
-											     @CodAsignatura VARCHAR(8), -- código completo
-											     @CodDocente VARCHAR(5)
+											      @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN)
+											      @CodDocente VARCHAR(5)
 AS
 BEGIN
-	-- Mostrar los catalogos
+	-- Mostrar el plan de sesión
 	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, D.Nombre,
 	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.PlanSesiones
 		FROM TCatalogo C INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
 		WHERE C.CodSemestre = @CodSemestre AND C.CodAsignatura + C.Grupo + C.CodEscuelaP = @CodAsignatura AND 
 		      C.CodDocente = @CodDocente AND C.PlanSesiones IS NOT NULL
+END;
+GO
+
+-- Procedimiento para obtener la lista de los estudiantes matriculados en una asignatura. 
+CREATE PROCEDURE spuListaEstudiantesMatriculados @CodSemestre VARCHAR(7),
+										         @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN)
+											     @CodDocente VARCHAR(5)
+AS
+BEGIN
+	-- Mostrar la relación de estudiantes matriculados
+	SELECT Matriculados
+		FROM TCatalogo
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura + Grupo + CodEscuelaP = @CodAsignatura AND CodDocente = @CodDocente
 END;
 GO
 
@@ -1445,6 +1459,8 @@ BEGIN
 		VALUES (@CodSemestre, @CodEscuelaP, @CodAsignatura, @CodEstudiante, @APaterno, @AMaterno, @Nombre)
 END;
 GO
+
+exec spuInsertarMatricula '2021-II','IN','IF612AIN','000000','AAAAA','AAAAA','AAAAA'
 
 -- Procedimiento para actualizar la matricula de un estudiante.
 CREATE PROCEDURE spuActualizarMatricula @CodSemestre VARCHAR(7),
