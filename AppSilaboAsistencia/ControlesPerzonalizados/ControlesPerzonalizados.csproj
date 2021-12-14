@@ -147,6 +147,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ayudas\A_Paso.cs" />
+    <Compile Include="C_CambioContraseñaCodigo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="C_CambioContraseñaCodigo.Designer.cs">
+      <DependentUpon>C_CambioContraseñaCodigo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C_CambioContraseñaCorreo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="C_CambioContraseñaCorreo.Designer.cs">
+      <DependentUpon>C_CambioContraseñaCorreo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C_CambioContraseñaNueva.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="C_CambioContraseñaNueva.Designer.cs">
+      <DependentUpon>C_CambioContraseñaNueva.cs</DependentUpon>
+    </Compile>
     <Compile Include="C_CircularPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -171,6 +190,15 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="C_CambioContraseñaCodigo.resx">
+      <DependentUpon>C_CambioContraseñaCodigo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C_CambioContraseñaCorreo.resx">
+      <DependentUpon>C_CambioContraseñaCorreo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C_CambioContraseñaNueva.resx">
+      <DependentUpon>C_CambioContraseñaNueva.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="C_PlanSemanasPeriodoParcial.resx">
       <DependentUpon>C_PlanSemanasPeriodoParcial.cs</DependentUpon>
     </EmbeddedResource>
@@ -405,6 +433,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Solicitud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Circulo_Checked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Circulo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Circulo_Unchecked.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
