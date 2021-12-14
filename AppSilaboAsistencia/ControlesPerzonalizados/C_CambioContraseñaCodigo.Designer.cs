@@ -39,10 +39,10 @@ namespace ControlesPerzonalizados
             this.btnAtras = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.txtCodigoVerificacion = new Bunifu.UI.WinForms.BunifuTextBox();
             this.lblCodigoVerificacion = new Bunifu.UI.WinForms.BunifuLabel();
-            this.btnAceptar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnVolverEnviar = new System.Windows.Forms.LinkLabel();
             this.lblMensajeCorreo = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblEmail = new Bunifu.UI.WinForms.BunifuLabel();
+            this.btnSiguiente = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.SuspendLayout();
             // 
             // btnAtras
@@ -133,6 +133,7 @@ namespace ControlesPerzonalizados
             this.btnAtras.TextMarginLeft = 0;
             this.btnAtras.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnAtras.UseDefaultRadiusAndThickness = true;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // txtCodigoVerificacion
             // 
@@ -229,95 +230,6 @@ namespace ControlesPerzonalizados
             this.lblCodigoVerificacion.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblCodigoVerificacion.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // btnAceptar
-            // 
-            this.btnAceptar.AllowAnimations = true;
-            this.btnAceptar.AllowMouseEffects = true;
-            this.btnAceptar.AllowToggling = false;
-            this.btnAceptar.AnimationSpeed = 200;
-            this.btnAceptar.AutoGenerateColors = false;
-            this.btnAceptar.AutoRoundBorders = false;
-            this.btnAceptar.AutoSizeLeftIcon = true;
-            this.btnAceptar.AutoSizeRightIcon = true;
-            this.btnAceptar.BackColor = System.Drawing.Color.Transparent;
-            this.btnAceptar.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAceptar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAceptar.BackgroundImage")));
-            this.btnAceptar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnAceptar.ButtonText = "Aceptar";
-            this.btnAceptar.ButtonTextMarginLeft = 0;
-            this.btnAceptar.ColorContrastOnClick = 45;
-            this.btnAceptar.ColorContrastOnHover = 45;
-            this.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnAceptar.CustomizableEdges = borderEdges2;
-            this.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnAceptar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnAceptar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnAceptar.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnAceptar.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            this.btnAceptar.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAceptar.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAceptar.IconLeftCursor = System.Windows.Forms.Cursors.Default;
-            this.btnAceptar.IconLeftPadding = new System.Windows.Forms.Padding(3);
-            this.btnAceptar.IconMarginLeft = 11;
-            this.btnAceptar.IconPadding = 10;
-            this.btnAceptar.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAceptar.IconRightCursor = System.Windows.Forms.Cursors.Default;
-            this.btnAceptar.IconRightPadding = new System.Windows.Forms.Padding(3);
-            this.btnAceptar.IconSize = 25;
-            this.btnAceptar.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAceptar.IdleBorderRadius = 15;
-            this.btnAceptar.IdleBorderThickness = 1;
-            this.btnAceptar.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAceptar.IdleIconLeftImage = null;
-            this.btnAceptar.IdleIconRightImage = null;
-            this.btnAceptar.IndicateFocus = false;
-            this.btnAceptar.Location = new System.Drawing.Point(607, 272);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnAceptar.OnDisabledState.BorderRadius = 15;
-            this.btnAceptar.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnAceptar.OnDisabledState.BorderThickness = 1;
-            this.btnAceptar.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnAceptar.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnAceptar.OnDisabledState.IconLeftImage = null;
-            this.btnAceptar.OnDisabledState.IconRightImage = null;
-            this.btnAceptar.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAceptar.onHoverState.BorderRadius = 15;
-            this.btnAceptar.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnAceptar.onHoverState.BorderThickness = 1;
-            this.btnAceptar.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAceptar.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAceptar.onHoverState.IconLeftImage = null;
-            this.btnAceptar.onHoverState.IconRightImage = null;
-            this.btnAceptar.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAceptar.OnIdleState.BorderRadius = 15;
-            this.btnAceptar.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnAceptar.OnIdleState.BorderThickness = 1;
-            this.btnAceptar.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAceptar.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAceptar.OnIdleState.IconLeftImage = null;
-            this.btnAceptar.OnIdleState.IconRightImage = null;
-            this.btnAceptar.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAceptar.OnPressedState.BorderRadius = 15;
-            this.btnAceptar.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnAceptar.OnPressedState.BorderThickness = 1;
-            this.btnAceptar.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnAceptar.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnAceptar.OnPressedState.IconLeftImage = null;
-            this.btnAceptar.OnPressedState.IconRightImage = null;
-            this.btnAceptar.Size = new System.Drawing.Size(148, 39);
-            this.btnAceptar.TabIndex = 23;
-            this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnAceptar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnAceptar.TextMarginLeft = 0;
-            this.btnAceptar.TextPadding = new System.Windows.Forms.Padding(0);
-            this.btnAceptar.UseDefaultRadiusAndThickness = true;
-            // 
             // btnVolverEnviar
             // 
             this.btnVolverEnviar.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -369,18 +281,108 @@ namespace ControlesPerzonalizados
             this.lblEmail.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblEmail.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.AllowAnimations = true;
+            this.btnSiguiente.AllowMouseEffects = true;
+            this.btnSiguiente.AllowToggling = false;
+            this.btnSiguiente.AnimationSpeed = 200;
+            this.btnSiguiente.AutoGenerateColors = false;
+            this.btnSiguiente.AutoRoundBorders = false;
+            this.btnSiguiente.AutoSizeLeftIcon = true;
+            this.btnSiguiente.AutoSizeRightIcon = true;
+            this.btnSiguiente.BackColor = System.Drawing.Color.Transparent;
+            this.btnSiguiente.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnSiguiente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSiguiente.BackgroundImage")));
+            this.btnSiguiente.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnSiguiente.ButtonText = "Siguiente";
+            this.btnSiguiente.ButtonTextMarginLeft = 0;
+            this.btnSiguiente.ColorContrastOnClick = 45;
+            this.btnSiguiente.ColorContrastOnHover = 45;
+            this.btnSiguiente.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnSiguiente.CustomizableEdges = borderEdges2;
+            this.btnSiguiente.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSiguiente.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnSiguiente.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnSiguiente.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnSiguiente.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            this.btnSiguiente.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSiguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnSiguiente.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSiguiente.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnSiguiente.IconLeftPadding = new System.Windows.Forms.Padding(3);
+            this.btnSiguiente.IconMarginLeft = 11;
+            this.btnSiguiente.IconPadding = 10;
+            this.btnSiguiente.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSiguiente.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnSiguiente.IconRightPadding = new System.Windows.Forms.Padding(3);
+            this.btnSiguiente.IconSize = 25;
+            this.btnSiguiente.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnSiguiente.IdleBorderRadius = 15;
+            this.btnSiguiente.IdleBorderThickness = 1;
+            this.btnSiguiente.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnSiguiente.IdleIconLeftImage = null;
+            this.btnSiguiente.IdleIconRightImage = null;
+            this.btnSiguiente.IndicateFocus = false;
+            this.btnSiguiente.Location = new System.Drawing.Point(607, 272);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnSiguiente.OnDisabledState.BorderRadius = 15;
+            this.btnSiguiente.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnSiguiente.OnDisabledState.BorderThickness = 1;
+            this.btnSiguiente.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnSiguiente.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnSiguiente.OnDisabledState.IconLeftImage = null;
+            this.btnSiguiente.OnDisabledState.IconRightImage = null;
+            this.btnSiguiente.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnSiguiente.onHoverState.BorderRadius = 15;
+            this.btnSiguiente.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnSiguiente.onHoverState.BorderThickness = 1;
+            this.btnSiguiente.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnSiguiente.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnSiguiente.onHoverState.IconLeftImage = null;
+            this.btnSiguiente.onHoverState.IconRightImage = null;
+            this.btnSiguiente.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnSiguiente.OnIdleState.BorderRadius = 15;
+            this.btnSiguiente.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnSiguiente.OnIdleState.BorderThickness = 1;
+            this.btnSiguiente.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnSiguiente.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnSiguiente.OnIdleState.IconLeftImage = null;
+            this.btnSiguiente.OnIdleState.IconRightImage = null;
+            this.btnSiguiente.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnSiguiente.OnPressedState.BorderRadius = 15;
+            this.btnSiguiente.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnSiguiente.OnPressedState.BorderThickness = 1;
+            this.btnSiguiente.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnSiguiente.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnSiguiente.OnPressedState.IconLeftImage = null;
+            this.btnSiguiente.OnPressedState.IconRightImage = null;
+            this.btnSiguiente.Size = new System.Drawing.Size(148, 39);
+            this.btnSiguiente.TabIndex = 30;
+            this.btnSiguiente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnSiguiente.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnSiguiente.TextMarginLeft = 0;
+            this.btnSiguiente.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnSiguiente.UseDefaultRadiusAndThickness = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
             // C_CambioContraseñaCodigo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblMensajeCorreo);
             this.Controls.Add(this.btnVolverEnviar);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.txtCodigoVerificacion);
             this.Controls.Add(this.lblCodigoVerificacion);
-            this.Controls.Add(this.btnAceptar);
             this.Name = "C_CambioContraseñaCodigo";
             this.Size = new System.Drawing.Size(758, 314);
             this.ResumeLayout(false);
@@ -392,9 +394,9 @@ namespace ControlesPerzonalizados
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnAtras;
         private Bunifu.UI.WinForms.BunifuTextBox txtCodigoVerificacion;
         private Bunifu.UI.WinForms.BunifuLabel lblCodigoVerificacion;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnAceptar;
         private System.Windows.Forms.LinkLabel btnVolverEnviar;
         private Bunifu.UI.WinForms.BunifuLabel lblMensajeCorreo;
         private Bunifu.UI.WinForms.BunifuLabel lblEmail;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnSiguiente;
     }
 }

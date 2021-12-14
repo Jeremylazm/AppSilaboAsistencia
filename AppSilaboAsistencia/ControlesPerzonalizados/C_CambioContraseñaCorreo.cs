@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaPresentaciones.Ayudas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace ControlesPerzonalizados
         public C_CambioContraseñaCorreo()
         {
             InitializeComponent();
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            new A_Paso().Siguiente(ParentForm, "pbPaso1", "pbPaso2", "C_CambioContraseñaCodigo");
         }
     }
 }

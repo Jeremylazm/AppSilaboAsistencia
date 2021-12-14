@@ -41,8 +41,8 @@ namespace CapaPresentaciones
             this.pbPaso3 = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.lblPaso2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblPaso1 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuSeparator2 = new Bunifu.UI.WinForms.BunifuSeparator();
-            this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.Linea2 = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.Linea1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPaso1)).BeginInit();
@@ -124,8 +124,8 @@ namespace CapaPresentaciones
             this.pnContenedor.Controls.Add(this.pbPaso3);
             this.pnContenedor.Controls.Add(this.lblPaso2);
             this.pnContenedor.Controls.Add(this.lblPaso1);
-            this.pnContenedor.Controls.Add(this.bunifuSeparator2);
-            this.pnContenedor.Controls.Add(this.bunifuSeparator1);
+            this.pnContenedor.Controls.Add(this.Linea2);
+            this.pnContenedor.Controls.Add(this.Linea1);
             this.pnContenedor.Controls.Add(this.btnCerrar);
             this.pnContenedor.Controls.Add(this.lblTitulo);
             this.pnContenedor.Location = new System.Drawing.Point(6, 5);
@@ -247,35 +247,35 @@ namespace CapaPresentaciones
             this.lblPaso1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblPaso1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuSeparator2
+            // Linea2
             // 
-            this.bunifuSeparator2.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuSeparator2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuSeparator2.BackgroundImage")));
-            this.bunifuSeparator2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuSeparator2.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
-            this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.bunifuSeparator2.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
-            this.bunifuSeparator2.LineThickness = 2;
-            this.bunifuSeparator2.Location = new System.Drawing.Point(332, 79);
-            this.bunifuSeparator2.Name = "bunifuSeparator2";
-            this.bunifuSeparator2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.bunifuSeparator2.Size = new System.Drawing.Size(299, 10);
-            this.bunifuSeparator2.TabIndex = 19;
+            this.Linea2.BackColor = System.Drawing.Color.Transparent;
+            this.Linea2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Linea2.BackgroundImage")));
+            this.Linea2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Linea2.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
+            this.Linea2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.Linea2.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
+            this.Linea2.LineThickness = 2;
+            this.Linea2.Location = new System.Drawing.Point(332, 79);
+            this.Linea2.Name = "Linea2";
+            this.Linea2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
+            this.Linea2.Size = new System.Drawing.Size(299, 10);
+            this.Linea2.TabIndex = 19;
             // 
-            // bunifuSeparator1
+            // Linea1
             // 
-            this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuSeparator1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuSeparator1.BackgroundImage")));
-            this.bunifuSeparator1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuSeparator1.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
-            this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.bunifuSeparator1.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
-            this.bunifuSeparator1.LineThickness = 2;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(61, 79);
-            this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.bunifuSeparator1.Size = new System.Drawing.Size(225, 10);
-            this.bunifuSeparator1.TabIndex = 18;
+            this.Linea1.BackColor = System.Drawing.Color.Transparent;
+            this.Linea1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Linea1.BackgroundImage")));
+            this.Linea1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Linea1.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
+            this.Linea1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.Linea1.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
+            this.Linea1.LineThickness = 2;
+            this.Linea1.Location = new System.Drawing.Point(61, 79);
+            this.Linea1.Name = "Linea1";
+            this.Linea1.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
+            this.Linea1.Size = new System.Drawing.Size(225, 10);
+            this.Linea1.TabIndex = 18;
             // 
             // Bordeado
             // 
@@ -315,7 +315,7 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuPictureBox pbPaso2;
         private Bunifu.UI.WinForms.BunifuPictureBox pbPaso3;
         private Bunifu.UI.WinForms.BunifuLabel lblPaso2;
-        private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator2;
-        private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator1;
+        private Bunifu.UI.WinForms.BunifuSeparator Linea2;
+        private Bunifu.UI.WinForms.BunifuSeparator Linea1;
     }
 }

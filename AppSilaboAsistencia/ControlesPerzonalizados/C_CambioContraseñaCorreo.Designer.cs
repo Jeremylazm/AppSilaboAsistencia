@@ -136,6 +136,7 @@ namespace ControlesPerzonalizados
             this.btnSiguiente.TextMarginLeft = 0;
             this.btnSiguiente.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnSiguiente.UseDefaultRadiusAndThickness = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // lblDominio
             // 

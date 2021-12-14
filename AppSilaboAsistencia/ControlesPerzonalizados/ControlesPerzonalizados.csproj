@@ -147,6 +147,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ayudas\A_Paso.cs" />
     <Compile Include="C_CambioContraseñaCodigo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -432,6 +433,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Solicitud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Circulo_Checked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Circulo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Circulo_Unchecked.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

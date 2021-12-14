@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ControlesPerzonalizados;
 
 namespace CapaPresentaciones
 {
@@ -15,6 +16,10 @@ namespace CapaPresentaciones
         public P_CambioContraseña()
         {
             InitializeComponent();
+
+            pnPasos.Controls.Add(new C_CambioContraseñaCorreo());
+            pnPasos.Controls.Add(new C_CambioContraseñaCodigo());
+            pnPasos.Controls.Add(new C_CambioContraseñaNueva());
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

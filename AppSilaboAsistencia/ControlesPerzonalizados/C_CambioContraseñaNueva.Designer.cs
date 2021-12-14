@@ -237,6 +237,7 @@ namespace ControlesPerzonalizados
             this.btnAceptar.TextMarginLeft = 0;
             this.btnAceptar.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnAceptar.UseDefaultRadiusAndThickness = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnAtras
             // 
@@ -326,6 +327,7 @@ namespace ControlesPerzonalizados
             this.btnAtras.TextMarginLeft = 0;
             this.btnAtras.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnAtras.UseDefaultRadiusAndThickness = true;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // txtContraseñaNueva
             // 
