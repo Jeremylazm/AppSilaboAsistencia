@@ -65,6 +65,7 @@ namespace CapaPresentaciones
             openFileDialog.InitialDirectory = @"C:\";
             openFileDialog.Filter = "Archivos de Excel | *.xlsx";
             openFileDialog.FilterIndex = 1;
+            openFileDialog.RestoreDirectory = true;
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -103,12 +104,11 @@ namespace CapaPresentaciones
                     MensajeConfirmacion("Archivo subido exitosamente");
                 }
             }
-            catch (IOException ex)
+            catch (IOException)
             {
-                MessageBox.Show("Guarda y cierra el archivo antes de subirlo");
+                MessageBox.Show("Guarda y cierra el archivo antes de subirlo", "Sistema de Gestión de Sílabos y Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
-            
 
             // Abrir el archivo subido
             /*string path = AppDomain.CurrentDomain.BaseDirectory;
@@ -130,8 +130,6 @@ namespace CapaPresentaciones
 
             Process.Start(fullFilePath);
             */
-
-            Program.Evento = 0;
             Close();
         }
     }

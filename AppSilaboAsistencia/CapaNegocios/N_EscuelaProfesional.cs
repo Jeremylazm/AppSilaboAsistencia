@@ -9,5 +9,10 @@ namespace CapaNegocios
         {
             return new D_EscuelaProfesional().MostrarEscuelas();
         }
+
+        public static string BuscarNombraEscuela(string CodEscuelaP)
+        {
+            return new D_EscuelaProfesional().BuscarNombreEscuela(CodEscuelaP);
+        }
     }
 }

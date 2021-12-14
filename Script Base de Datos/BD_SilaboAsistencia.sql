@@ -664,7 +664,7 @@ AS
 BEGIN
 	-- Mostrar la información del docente
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
-	       Subcategoria, Regimen
+	       Subcategoria, Regimen, CodDepartamentoA, CodEscuelaP
 		FROM TDocente
 		WHERE CodDepartamentoA = @CodDepartamentoA AND CodDocente = @CodDocente AND CodDocente != '00000'
 END;

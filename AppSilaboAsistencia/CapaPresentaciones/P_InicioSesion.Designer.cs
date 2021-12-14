@@ -31,15 +31,15 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_InicioSesion));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties13 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties14 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties15 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
@@ -54,7 +54,9 @@ namespace CapaPresentaciones
             this.lblUniversidad = new Bunifu.UI.WinForms.BunifuLabel();
             this.pbLogo = new Bunifu.UI.WinForms.BunifuImageButton();
             this.btnOlvidarContraseña = new System.Windows.Forms.LinkLabel();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // Movimiento
@@ -73,12 +75,12 @@ namespace CapaPresentaciones
             this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblTitulo.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 14F);
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTitulo.Size = new System.Drawing.Size(311, 87);
+            this.lblTitulo.Size = new System.Drawing.Size(397, 87);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Sistema de Gestión de Sílabo y\r\nControl de Asistencia";
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -86,7 +88,7 @@ namespace CapaPresentaciones
             // 
             // Bordeado
             // 
-            this.Bordeado.ElipseRadius = 15;
+            this.Bordeado.ElipseRadius = 40;
             this.Bordeado.TargetControl = this;
             // 
             // Redimension
@@ -183,29 +185,29 @@ namespace CapaPresentaciones
             this.txtUsuario.Modified = false;
             this.txtUsuario.Multiline = false;
             this.txtUsuario.Name = "txtUsuario";
-            stateProperties13.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties13.FillColor = System.Drawing.Color.Empty;
-            stateProperties13.ForeColor = System.Drawing.Color.Empty;
-            stateProperties13.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtUsuario.OnActiveState = stateProperties13;
-            stateProperties14.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties14.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties14.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtUsuario.OnDisabledState = stateProperties14;
-            stateProperties15.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties15.FillColor = System.Drawing.Color.Empty;
-            stateProperties15.ForeColor = System.Drawing.Color.Empty;
-            stateProperties15.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtUsuario.OnHoverState = stateProperties15;
-            stateProperties16.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties16.FillColor = System.Drawing.Color.White;
-            stateProperties16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties16.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtUsuario.OnIdleState = stateProperties16;
+            stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties5.FillColor = System.Drawing.Color.Empty;
+            stateProperties5.ForeColor = System.Drawing.Color.Empty;
+            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtUsuario.OnActiveState = stateProperties5;
+            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtUsuario.OnDisabledState = stateProperties6;
+            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties7.FillColor = System.Drawing.Color.Empty;
+            stateProperties7.ForeColor = System.Drawing.Color.Empty;
+            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtUsuario.OnHoverState = stateProperties7;
+            stateProperties8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties8.FillColor = System.Drawing.Color.White;
+            stateProperties8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtUsuario.OnIdleState = stateProperties8;
             this.txtUsuario.Padding = new System.Windows.Forms.Padding(3);
             this.txtUsuario.PasswordChar = '\0';
-            this.txtUsuario.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtUsuario.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtUsuario.PlaceholderText = "Escriba su usuario";
             this.txtUsuario.ReadOnly = false;
             this.txtUsuario.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -213,7 +215,7 @@ namespace CapaPresentaciones
             this.txtUsuario.SelectionLength = 0;
             this.txtUsuario.SelectionStart = 0;
             this.txtUsuario.ShortcutsEnabled = true;
-            this.txtUsuario.Size = new System.Drawing.Size(269, 40);
+            this.txtUsuario.Size = new System.Drawing.Size(335, 40);
             this.txtUsuario.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtUsuario.TabIndex = 3;
             this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -223,6 +225,8 @@ namespace CapaPresentaciones
             this.txtUsuario.TextPlaceholder = "Escriba su usuario";
             this.txtUsuario.UseSystemPasswordChar = false;
             this.txtUsuario.WordWrap = true;
+            this.txtUsuario.TextChange += new System.EventHandler(this.txtUsuario_TextChange);
+            this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
             // txtContraseña
             // 
@@ -260,29 +264,29 @@ namespace CapaPresentaciones
             this.txtContraseña.Modified = false;
             this.txtContraseña.Multiline = false;
             this.txtContraseña.Name = "txtContraseña";
-            stateProperties9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties9.FillColor = System.Drawing.Color.Empty;
-            stateProperties9.ForeColor = System.Drawing.Color.Empty;
-            stateProperties9.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtContraseña.OnActiveState = stateProperties9;
-            stateProperties10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties10.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties10.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtContraseña.OnDisabledState = stateProperties10;
-            stateProperties11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties11.FillColor = System.Drawing.Color.Empty;
-            stateProperties11.ForeColor = System.Drawing.Color.Empty;
-            stateProperties11.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtContraseña.OnHoverState = stateProperties11;
-            stateProperties12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties12.FillColor = System.Drawing.Color.White;
-            stateProperties12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties12.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtContraseña.OnIdleState = stateProperties12;
+            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties1.FillColor = System.Drawing.Color.Empty;
+            stateProperties1.ForeColor = System.Drawing.Color.Empty;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtContraseña.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtContraseña.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtContraseña.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties4.FillColor = System.Drawing.Color.White;
+            stateProperties4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtContraseña.OnIdleState = stateProperties4;
             this.txtContraseña.Padding = new System.Windows.Forms.Padding(3);
             this.txtContraseña.PasswordChar = '\0';
-            this.txtContraseña.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtContraseña.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtContraseña.PlaceholderText = "Escriba su contraseña";
             this.txtContraseña.ReadOnly = false;
             this.txtContraseña.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -290,7 +294,7 @@ namespace CapaPresentaciones
             this.txtContraseña.SelectionLength = 0;
             this.txtContraseña.SelectionStart = 0;
             this.txtContraseña.ShortcutsEnabled = true;
-            this.txtContraseña.Size = new System.Drawing.Size(269, 40);
+            this.txtContraseña.Size = new System.Drawing.Size(335, 40);
             this.txtContraseña.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtContraseña.TabIndex = 5;
             this.txtContraseña.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -300,6 +304,8 @@ namespace CapaPresentaciones
             this.txtContraseña.TextPlaceholder = "Escriba su contraseña";
             this.txtContraseña.UseSystemPasswordChar = false;
             this.txtContraseña.WordWrap = true;
+            this.txtContraseña.TextChange += new System.EventHandler(this.txtContraseña_TextChange);
+            this.txtContraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseña_KeyPress);
             // 
             // lblContraseña
             // 
@@ -337,11 +343,11 @@ namespace CapaPresentaciones
             this.btnIngresar.ColorContrastOnClick = 45;
             this.btnIngresar.ColorContrastOnHover = 45;
             this.btnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnIngresar.CustomizableEdges = borderEdges2;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnIngresar.CustomizableEdges = borderEdges1;
             this.btnIngresar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnIngresar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnIngresar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -365,7 +371,7 @@ namespace CapaPresentaciones
             this.btnIngresar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Ingresar;
             this.btnIngresar.IdleIconRightImage = null;
             this.btnIngresar.IndicateFocus = false;
-            this.btnIngresar.Location = new System.Drawing.Point(21, 271);
+            this.btnIngresar.Location = new System.Drawing.Point(58, 270);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnIngresar.OnDisabledState.BorderRadius = 15;
@@ -421,7 +427,7 @@ namespace CapaPresentaciones
             this.pnLogo.Controls.Add(this.pbLogo);
             this.pnLogo.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pnLogo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnLogo.Location = new System.Drawing.Point(311, 0);
+            this.pnLogo.Location = new System.Drawing.Point(397, 0);
             this.pnLogo.Margin = new System.Windows.Forms.Padding(0);
             this.pnLogo.Name = "pnLogo";
             this.pnLogo.ShowBorders = true;
@@ -524,8 +530,8 @@ namespace CapaPresentaciones
             this.btnOlvidarContraseña.AutoSize = true;
             this.btnOlvidarContraseña.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOlvidarContraseña.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.btnOlvidarContraseña.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnOlvidarContraseña.Location = new System.Drawing.Point(64, 319);
+            this.btnOlvidarContraseña.LinkColor = System.Drawing.Color.Black;
+            this.btnOlvidarContraseña.Location = new System.Drawing.Point(104, 318);
             this.btnOlvidarContraseña.Name = "btnOlvidarContraseña";
             this.btnOlvidarContraseña.Size = new System.Drawing.Size(184, 22);
             this.btnOlvidarContraseña.TabIndex = 9;
@@ -534,12 +540,17 @@ namespace CapaPresentaciones
             this.btnOlvidarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnOlvidarContraseña.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
+            // 
             // P_InicioSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(545, 360);
+            this.ClientSize = new System.Drawing.Size(631, 360);
             this.Controls.Add(this.btnOlvidarContraseña);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.txtContraseña);
@@ -552,7 +563,9 @@ namespace CapaPresentaciones
             this.Name = "P_InicioSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de Sesión";
+            this.Load += new System.EventHandler(this.P_InicioSesion_Load);
             this.pnLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -574,5 +587,6 @@ namespace CapaPresentaciones
         private System.Windows.Forms.LinkLabel btnOlvidarContraseña;
         private Bunifu.UI.WinForms.BunifuLabel lblUniversidad;
         private Bunifu.UI.WinForms.BunifuImageButton btnCerrar;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
