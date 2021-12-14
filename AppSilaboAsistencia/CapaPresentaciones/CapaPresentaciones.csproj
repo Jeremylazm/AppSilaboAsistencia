@@ -201,6 +201,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BDSistemaGestionDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="P_CambioContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_CambioContraseña.Designer.cs">
+      <DependentUpon>P_CambioContraseña.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_Catálogo_Actualizar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +255,12 @@
     </Compile>
     <Compile Include="P_Menu.Designer.cs">
       <DependentUpon>P_Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_RecuperacionContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_RecuperacionContraseña.Designer.cs">
+      <DependentUpon>P_RecuperacionContraseña.cs</DependentUpon>
     </Compile>
     <Compile Include="P_SubirArchivo.cs">
       <SubType>Form</SubType>
@@ -333,6 +345,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_CambioContraseña.resx">
+      <DependentUpon>P_CambioContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_Catálogo_Actualizar.resx">
       <DependentUpon>P_Catálogo_Actualizar.cs</DependentUpon>
@@ -630,6 +645,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Exclamacion1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Circulo_Unchecked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Circulo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Circulo_Checked.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
