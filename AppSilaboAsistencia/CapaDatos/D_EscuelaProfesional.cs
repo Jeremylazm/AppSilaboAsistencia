@@ -21,5 +21,20 @@ namespace CapaDatos
 
             return Resultado;
         }
+
+        public string BuscarNombreEscuela(string CodEscuelaP)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuBuscarNombreEscuela", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+
+            return Resultado.Rows[0]["Nombre"].ToString();
+        }
     }
 }

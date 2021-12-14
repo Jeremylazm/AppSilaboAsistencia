@@ -67,6 +67,11 @@ namespace CapaPresentaciones
             lblUsuario.Text = E_InicioSesion.Usuario;
         }
 
+        private void ActualizarPerfil(object sender, EventArgs e)
+        {
+            CargarDatosUsuario();
+        }
+
         private void GestionarAcceso()
         {
             if (Acceso == "Administrador")
@@ -112,7 +117,7 @@ namespace CapaPresentaciones
                 btnSesiones.Visible = true;
                 btnCatálogo.Visible = false;
                 btnAsignaturas.Visible = false;
-                btnDocentes.Visible = false;
+                btnDocentes.Visible = true;
             }
         }
 
@@ -262,6 +267,56 @@ namespace CapaPresentaciones
         private void btnEditarPerfil_Click(object sender, EventArgs e)
         {
             ActualizarColor();
+
+            if (lblAcceso.Text == "Jefe de Departamento Academico")
+            {
+                P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
+                {
+                    Usuario = E_InicioSesion.Usuario,
+                    TopLevel = false,
+                    Dock = DockStyle.Fill
+                };
+                Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
+
+                pnContenedor.Controls.Add(Editar);
+                pnContenedor.Tag = Editar;
+                Editar.Show();
+                Editar.BringToFront();
+            }
+            else if (lblAcceso.Text == "Director de Escuela Profesional")
+            {
+
+            }
+            else if (lblAcceso.Text == "Docente")
+            {
+                P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
+                {
+                    Usuario = E_InicioSesion.Usuario,
+                    TopLevel = false,
+                    Dock = DockStyle.Fill
+                };
+                Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
+
+                pnContenedor.Controls.Add(Editar);
+                pnContenedor.Tag = Editar;
+                Editar.Show();
+                Editar.BringToFront();
+            }
+            /*else
+            {
+                P_EditarPerfilDirector Editar = new P_EditarPerfilDirector
+                {
+                    Usuario = E_InicioSesion.Usuario,
+                    TopLevel = false,
+                    Dock = DockStyle.Fill
+                };
+                Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
+
+                pnContenedor.Controls.Add(Editar);
+                pnContenedor.Tag = Editar;
+                Editar.Show();
+                Editar.BringToFront();
+            }*/
         }
 
         private void btnCatálogo_Click(object sender, EventArgs e)
