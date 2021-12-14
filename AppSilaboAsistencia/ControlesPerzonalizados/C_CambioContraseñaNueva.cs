@@ -1,4 +1,5 @@
-﻿using CapaPresentaciones.Ayudas;
+﻿using Bunifu.UI.WinForms;
+using CapaPresentaciones.Ayudas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,12 +26,15 @@ namespace ControlesPerzonalizados
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            BunifuPictureBox PictureActual = (BunifuPictureBox)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("pbPaso3", false)[0];
+            PictureActual.Image = Properties.Resources.Circulo_Checked;
+
             MensajeConfirmacion("La contraseña se cambio éxitosamente");
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
         {
-            new A_Paso().Atras(ParentForm, "pbPaso3", "pbPaso2", "C_CambioContraseñaCodigo");
+            new A_Paso().Atras(ParentForm, "Paso3", "Paso2", "C_CambioContraseñaCodigo");
         }
     }
 }

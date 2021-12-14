@@ -222,18 +222,18 @@
   <data name="lblPaso1.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
   </data>
-  <data name="Linea2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="lnPaso3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAASsAAAAKCAYAAADsI3iTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVGhD7dZBDQAgEAPBOsE5+s4FfBBRkplkLTQNAAAA
         ALSZvY4ktWesJH3R+1cAAAAAUCK5Yjorc8vWYukAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="Linea1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="lnPaso2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAOEAAAAKCAYAAABCMDk7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAzSURBVGhD7dVBDQAwDAOxMBnz4SuL7jMOfdSWDkKUAAAA
-        sFfd05LmMkJpuP+HAAAArJM8FsCkhUu8bKQAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAARAAAAAKCAYAAAB8MAFcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA2SURBVGhD7dZBEQAgDAPBOKlz9OECPijos+zOnIVMAgAA
+        APCDvepIUicDIqnd+yEAAAAAgyUXFVmczIzAs7YAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="Bordeado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

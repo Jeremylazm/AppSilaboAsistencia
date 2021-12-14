@@ -20,7 +20,7 @@ namespace ControlesPerzonalizados
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            new A_Paso().Siguiente(ParentForm, "pbPaso1", "pbPaso2", "C_CambioContraseñaCodigo");
+            new A_Paso().Siguiente(ParentForm, "Paso1", "Paso2", "C_CambioContraseñaCodigo");
         }
     }
 }
