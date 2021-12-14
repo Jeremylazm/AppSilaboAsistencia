@@ -65,6 +65,7 @@ namespace CapaPresentaciones
             openFileDialog.InitialDirectory = @"C:\";
             openFileDialog.Filter = "Archivos de Excel | *.xlsx";
             openFileDialog.FilterIndex = 1;
+            openFileDialog.RestoreDirectory = true;
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
