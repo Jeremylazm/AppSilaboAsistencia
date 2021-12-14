@@ -69,7 +69,7 @@ namespace CapaPresentaciones
 
         private void GestionarAcceso()
         {
-            if ((Acceso == "Director de Escuela") || (Acceso == "Administrador"))
+            if (Acceso == "Administrador")
             {
                 /*btnTutorias.Visible = false;
                 btnTutorados.Visible = false;
@@ -79,15 +79,29 @@ namespace CapaPresentaciones
                 btnMiTutor.Visible = false;
                 btnSolicitarCita.Visible = false;
                 separador.Visible = false;*/
+
+                // Administrador 
+            }
+            else if (Acceso == "Jefe de Departamento Academico")
+            {
+                // Docentes y catálogo
+                btnAsistencia.Visible = false;
+                btnAsignaturasAsignadas.Visible = false;
+                btnSilabos.Visible = false;
+                btnSesiones.Visible = false;
+                btnCatálogo.Visible = true;
+                btnAsignaturas.Visible = true;
+                btnDocentes.Visible = true;
             }
             else if (Acceso == "Director de Escuela Profesional")
             {
-                btnAsistencia.Visible = true;
-                btnAsignaturasAsignadas.Visible = true;
-                btnSilabos.Visible = true;
-                btnSesiones.Visible = true;
-                btnCatálogo.Visible = true;
-                btnAsignaturas.Visible = false;
+                // Asignaturas
+                btnAsistencia.Visible = false;
+                btnAsignaturasAsignadas.Visible = false;
+                btnSilabos.Visible = false;
+                btnSesiones.Visible = false;
+                btnCatálogo.Visible = false;
+                btnAsignaturas.Visible = true;
                 btnDocentes.Visible = false;
             }
             else if (Acceso == "Docente")
@@ -100,22 +114,6 @@ namespace CapaPresentaciones
                 btnAsignaturas.Visible = false;
                 btnDocentes.Visible = false;
             }
-            /*else if (Acceso == "Estudiante")
-            {
-                btnTutorias.Visible = false;
-                btnTutorados.Visible = false;
-                btnDocentes.Visible = false;
-                btnTutores.Visible = false;
-                btnEstudiantes.Visible = false;
-                btnMiTutor.Visible = true;
-                separador.Visible = false;
-                btnSolicitarCita.Visible = true;
-            }*/
-            //else
-            //{
-            //    if (MessageBox.Show("Acceso inválido", "Sistema de Tutoría", MessageBoxButtons.OK) == DialogResult.OK)
-            //        Application.Exit();
-            //}
         }
 
         private void btnContraer_Click(object sender, EventArgs e)

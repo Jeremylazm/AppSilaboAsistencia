@@ -66,10 +66,10 @@
             this.Separador4 = new Bunifu.Framework.UI.BunifuSeparator();
             this.lblEmail = new System.Windows.Forms.Label();
             this.BordeadoPerfilDocente = new Bunifu.UI.WinForms.BunifuGroupBox();
+            this.imgPerfil = new ControlesPerzonalizados.C_CircularPictureBox();
             this.bunifuGroupBox1 = new Bunifu.UI.WinForms.BunifuGroupBox();
             this.gbxInformacion = new Bunifu.UI.WinForms.BunifuGroupBox();
             this.gbxDatos = new Bunifu.UI.WinForms.BunifuGroupBox();
-            this.imgPerfil = new ControlesPerzonalizados.C_CircularPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.BordeadoPerfilDocente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
@@ -643,6 +643,22 @@
             this.BordeadoPerfilDocente.TabIndex = 190;
             this.BordeadoPerfilDocente.TabStop = false;
             // 
+            // imgPerfil
+            // 
+            this.imgPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.imgPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.imgPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.imgPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.imgPerfil.BorderSize = 2;
+            this.imgPerfil.GradientAngle = 50F;
+            this.imgPerfil.Image = global::CapaPresentaciones.Properties.Resources.Perfil_Docente;
+            this.imgPerfil.Location = new System.Drawing.Point(444, 61);
+            this.imgPerfil.Name = "imgPerfil";
+            this.imgPerfil.Size = new System.Drawing.Size(183, 183);
+            this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgPerfil.TabIndex = 181;
+            this.imgPerfil.TabStop = false;
+            // 
             // bunifuGroupBox1
             // 
             this.bunifuGroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -694,22 +710,6 @@
             this.gbxDatos.TabStop = false;
             this.gbxDatos.Text = "Datos";
             // 
-            // imgPerfil
-            // 
-            this.imgPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.imgPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.imgPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.imgPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.imgPerfil.BorderSize = 2;
-            this.imgPerfil.GradientAngle = 50F;
-            this.imgPerfil.Image = global::CapaPresentaciones.Properties.Resources.Perfil_Docente;
-            this.imgPerfil.Location = new System.Drawing.Point(444, 61);
-            this.imgPerfil.Name = "imgPerfil";
-            this.imgPerfil.Size = new System.Drawing.Size(183, 183);
-            this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgPerfil.TabIndex = 181;
-            this.imgPerfil.TabStop = false;
-            // 
             // P_EditarPerfilDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -756,6 +756,7 @@
             this.Name = "P_EditarPerfilDocente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Perfil de Docente";
+            this.Load += new System.EventHandler(this.P_EditarPerfilDocente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             this.BordeadoPerfilDocente.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();

@@ -14,7 +14,7 @@ namespace CapaPresentaciones
         //private readonly string CodDocente = "49920";
         //private readonly string CodDocente = "65475";
         //private readonly string CodDocente = "43992";
-        private readonly string CodDocente = "78371";
+        private readonly string CodDocente = E_InicioSesion.Usuario;
 
         public P_TablaAsignaturasAsignadasSilabos()
         {
