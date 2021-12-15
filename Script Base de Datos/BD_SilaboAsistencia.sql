@@ -1460,8 +1460,6 @@ BEGIN
 END;
 GO
 
-exec spuInsertarMatricula '2021-II','IN','IF612AIN','000000','AAAAA','AAAAA','AAAAA'
-
 -- Procedimiento para actualizar la matricula de un estudiante.
 CREATE PROCEDURE spuActualizarMatricula @CodSemestre VARCHAR(7),
 									    @CodEscuelaP VARCHAR(3),
@@ -1517,13 +1515,13 @@ BEGIN
 	       AD.CodAsignatura, A.NombreAsignatura, AD.HoraInicio, AD.Hora, AD.NombreTema
 		FROM (TAsistenciaDocente AD INNER JOIN TDocente D ON
 			 AD.CodDocente = D.CodDocente) INNER JOIN TAsignatura A ON
-			 SUBSTRING(AD.CodAsignatura,1,5) = A.CodAsignatura
+			 SUBSTRING(AD.CodAsignatura,1,LEN(A.CodAsignatura)) = A.CodAsignatura
 	    WHERE AD.CodSemestre = @CodSemestre AND AD.Fecha = @Fecha AND
               SUBSTRING(AD.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA
 END;
 GO
 
--- Procedimiento para mostrar el registro de asistencias de un docente que dicta una asignatura en un rango de fechas.
+-- Procedimiento para mostrar el registro de asistencias de un docente (sesiones) que dicta una asignatura en un rango de fechas.
 CREATE PROCEDURE spuAsistenciaDocenteAsignatura @CodSemestre VARCHAR(7),
                                                 @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
 												@Texto1 VARCHAR(35), -- código o nombre del docente
@@ -1534,10 +1532,14 @@ CREATE PROCEDURE spuAsistenciaDocenteAsignatura @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar el registro de asistencia en el rango de fechas
-	SELECT AD.Fecha, AD.Hora, AD.NombreTema
+	SELECT AD.Fecha, AD.Hora, AD.NombreTema, 
+	       TotalAsistieron = SUM(CASE WHEN AE.Estado = 'SI' THEN 1 ELSE 0 END),
+		   TotalFaltaron = SUM(CASE WHEN AE.Estado = 'NO' THEN 1 ELSE 0 END)
 		FROM (TAsistenciaDocente AD INNER JOIN TDocente D ON
 			 AD.CodDocente = D.CodDocente) INNER JOIN TAsignatura A ON
-			 SUBSTRING(AD.CodAsignatura,1,5) = A.CodAsignatura
+			 SUBSTRING(AD.CodAsignatura,1,LEN(A.CodAsignatura)) = A.CodAsignatura INNER JOIN TAsistenciaEstudiante AE ON
+			 (AD.CodSemestre = AE.CodSemestre AND AD.CodAsignatura = AE.CodAsignatura AND 
+			  AD.HoraInicio = AE.HoraInicio AND AD.Fecha = AE.Fecha)
 	    WHERE AD.CodSemestre = @CodSemestre AND AD.HoraInicio = @HoraInicio AND
               SUBSTRING(AD.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
 		      (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
@@ -1546,8 +1548,11 @@ BEGIN
 			   D.APaterno LIKE (@Texto1 + '%') OR
 			   D.AMaterno LIKE (@Texto1 + '%')) AND
 			  (AD.CodAsignatura LIKE (@Texto2 + '%') OR A.NombreAsignatura LIKE (@Texto2 + '%'))
+	   GROUP BY AD.Fecha, AD.Hora, AD.NombreTema
 END;
 GO
+
+EXEC spuAsistenciaDocenteAsignatura '2021-II','IF','65475','IF612AIN','09','2021-12-06','2021-12-10'
 
 -- Procedimiento para registrar la asistencia de un docente.
 CREATE PROCEDURE spuRegistrarAsistenciaDocente @CodSemestre VARCHAR(7),
@@ -1620,7 +1625,7 @@ BEGIN
 	       AE.Hora, AE.Estado, AE.Observación
 		FROM (TAsistenciaEstudiante AE INNER JOIN TEstudiante ET ON
 			 AE.CodEstudiante = ET.CodEstudiante) INNER JOIN TAsignatura A ON
-			 SUBSTRING(AE.CodAsignatura,1,5) = A.CodAsignatura
+			 SUBSTRING(AE.CodAsignatura,1,LEN(A.CodAsignatura)) = A.CodAsignatura
 	    WHERE AE.CodSemestre = @CodSemestre AND AE.HoraInicio = @HoraInicio AND
               SUBSTRING(AE.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
 		     (AE.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%')) AND
@@ -1642,7 +1647,7 @@ BEGIN
 	SELECT AE.Fecha, AE.Hora, AE.Estado, AE.Observación
 		FROM (TAsistenciaEstudiante AE INNER JOIN TEstudiante ET ON
 			 AE.CodEstudiante = ET.CodEstudiante) INNER JOIN TAsignatura A ON
-			 SUBSTRING(AE.CodAsignatura,1,5) = A.CodAsignatura
+			 SUBSTRING(AE.CodAsignatura,1,LEN(A.CodAsignatura)) = A.CodAsignatura
 	    WHERE AE.CodSemestre = @CodSemestre AND AE.HoraInicio = @HoraInicio AND
               SUBSTRING(AE.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
 		      (AE.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
