@@ -101,11 +101,13 @@ namespace CapaPresentaciones
                 driver.Quit();
                 if (ex is NoSuchElementException)
                 {
-                    MessageBox.Show("El servidor se encuentra temporalmente fuera de servicio.");
+                    P_DialogoError.Mostrar("El servidor se encuentra temporalmente fuera de servicio");
+                    //MessageBox.Show("El servidor se encuentra temporalmente fuera de servicio.");
                 }
                 else if (ex is WebDriverException)
                 {
-                    MessageBox.Show("No se encuentra conectado a Internet. Revise su conexión.");
+                    P_DialogoError.Mostrar("No se encuentra conectado a Internet. Revise su conexión");
+                    //MessageBox.Show("No se encuentra conectado a Internet. Revise su conexión.");
                 }
             }
 
@@ -189,9 +191,12 @@ namespace CapaPresentaciones
                     // Actualizar lista matriculados
                     string[] MatriculadosActual = NuevaLista.ToArray();
                     ObjCatalogo.ActualizarMatriculadosAsignatura(CodSemestre, CodAsignatura, CodDocente, string.Join(",", MatriculadosActual));
-                    MessageBox.Show("La actualización ha terminado...\n" +
-                                    "Nuevos estudiantes matriculados: " + matriculados.ToString() + "\n" +
-                                    "Estudiantes desmatriculados: " + desmatriculados.ToString() + "\n");
+                    P_DialogoInformacion.Mostrar("La actualización ha terminado...\n" +
+                                                 "Nuevos estudiantes matriculados: " + matriculados.ToString() + "\n" +
+                                                 "Estudiantes desmatriculados: " + desmatriculados.ToString() + "\n");
+                    //MessageBox.Show("La actualización ha terminado...\n" +
+                    //                "Nuevos estudiantes matriculados: " + matriculados.ToString() + "\n" +
+                    //                "Estudiantes desmatriculados: " + desmatriculados.ToString() + "\n");
                 }
             }
         }
