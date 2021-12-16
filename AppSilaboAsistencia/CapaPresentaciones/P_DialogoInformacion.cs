@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bunifu.UI.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,29 @@ namespace CapaPresentaciones
         public P_DialogoInformacion()
         {
             InitializeComponent();
+        }
+
+        private void P_DialogoInformacion_Load(object sender, EventArgs e)
+        {
+            this.Opacity = 0.0;
+            FormAparicion.Start();
+        }
+
+        private void FormAparicion_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity < 1)
+                this.Opacity += 0.2;
+            if (this.Opacity == 1)
+            {
+                FormAparicion.Stop();
+                ImagenAparicion.ShowSync(pbImagen);
+                btnAceptar.Visible = true;
+            }
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -283,6 +283,36 @@ namespace CapaPresentaciones.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Dialogo_Error {
+            get {
+                object obj = ResourceManager.GetObject("Dialogo_Error", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Dialogo_Informacion {
+            get {
+                object obj = ResourceManager.GetObject("Dialogo_Informacion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Dialogo_Pregunta {
+            get {
+                object obj = ResourceManager.GetObject("Dialogo_Pregunta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Docentes {
             get {
                 object obj = ResourceManager.GetObject("Docentes", resourceCulture);
