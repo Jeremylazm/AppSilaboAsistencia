@@ -122,11 +122,13 @@ namespace CapaPresentaciones
                     try
                     {
                         wb.SaveAs(saveFileDialog.FileName);
-                        MessageBox.Show("Archivo guardado correctamente");
+                        P_DialogoInformacion.Mostrar("Archivo guardado correctamente");
+                        //MessageBox.Show("Archivo guardado correctamente");
                     }
                     catch (IOException)
                     {
-                        MessageBox.Show("Cierra el archivo antes de reemplazarlo");
+                        P_DialogoError.Mostrar("Cierre el archivo antes de que sea reemplazado");
+                        //MessageBox.Show("Cierra el archivo antes de reemplazarlo");
                     }
                 }
 
