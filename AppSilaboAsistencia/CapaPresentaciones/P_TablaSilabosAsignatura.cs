@@ -64,18 +64,21 @@ namespace CapaPresentaciones
                         try
                         {
                             File.WriteAllBytes(saveFileDialog.FileName, dgvDatos.Rows[e.RowIndex].Cells["Silabo"].Value as byte[]);
-                            MessageBox.Show("Archivo guardado correctamente");
+                            P_DialogoInformacion.Mostrar("Archivo guardado correctamente");
+                            //MessageBox.Show("Archivo guardado correctamente");
                             Close();
                         }
                         catch (IOException)
                         {
-                            MessageBox.Show("Cierra el archivo antes de reemplazarlo o elige otro nombre");
+                            P_DialogoError.Mostrar("Cierre el archivo antes de que sea reemplazado o elija otro nombre");
+                            //MessageBox.Show("Cierra el archivo antes de reemplazarlo o elige otro nombre");
                         }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No hay sílabo");
+                    P_DialogoError.Mostrar("No hay sílabo");
+                    //MessageBox.Show("No hay sílabo");
                 }
             }
         }
