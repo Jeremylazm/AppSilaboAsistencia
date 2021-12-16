@@ -51,6 +51,7 @@ namespace CapaPresentaciones
 
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             // Plantilla
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {

@@ -142,6 +142,7 @@ namespace CapaDatos
             Data.Fill(Resultado);
             return Resultado;
         }
+        
 
         //Metodo para obtener la lista de los estudiantes matriculados en una asignatura. 
         public DataTable ListaEstudiantesMatriculados(string CodSemestre, string CodAsignatura, string CodDocente)

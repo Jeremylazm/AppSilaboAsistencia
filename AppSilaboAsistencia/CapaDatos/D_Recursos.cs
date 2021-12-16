@@ -92,5 +92,6 @@ namespace CapaDatos
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }
+        
     }
 }
