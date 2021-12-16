@@ -78,7 +78,8 @@ namespace CapaPresentaciones
             ActualizarColor();
             if (txtRuta.Text.Trim().Equals(""))
             {
-                MessageBox.Show("Selecciona un archivo");
+                P_DialogoError.Mostrar("Seleccione un archivo");
+                //MessageBox.Show("Selecciona un archivo");
                 return;
             }
 
@@ -96,17 +97,20 @@ namespace CapaPresentaciones
                 if (Tipo == "Silabo")
                 {
                     ObjNegocio.ActualizarSilaboAsignatura("2021-II", CodAsignatura, CodDocente, archivo);
-                    MensajeConfirmacion("Archivo subido exitosamente");
+                    P_DialogoInformacion.Mostrar("Archivo subido exitosamente");
+                    //MensajeConfirmacion("Archivo subido exitosamente");
                 }
                 else if (Tipo == "Plan de Sesiones")
                 {
                     ObjNegocio.ActualizarPlanSesionesAsignatura("2021-II", CodAsignatura, CodDocente, archivo);
-                    MensajeConfirmacion("Archivo subido exitosamente");
+                    P_DialogoInformacion.Mostrar("Archivo subido exitosamente");
+                    //MensajeConfirmacion("Archivo subido exitosamente");
                 }
             }
             catch (IOException)
             {
-                MessageBox.Show("Guarda y cierra el archivo antes de subirlo", "Sistema de Gestión de Sílabos y Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                P_DialogoError.Mostrar("Guarde y cierre el archivo antes de subirlo");
+                //MessageBox.Show("Guarda y cierra el archivo antes de subirlo", "Sistema de Gestión de Sílabos y Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }
 
