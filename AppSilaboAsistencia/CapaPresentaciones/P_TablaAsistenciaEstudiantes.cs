@@ -1,18 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
-using System.Drawing;
 using System.IO;
-using System.Drawing.Imaging;
-using System.Data.OleDb;
+using System.Diagnostics;
 using SpreadsheetLight;
-using System.Data;
+using ClosedXML.Excel;
 
 namespace CapaPresentaciones
 {
     public partial class P_TablaAsistenciaEstudiantes : Form
     {
+        readonly N_Catalogo ObjNegocio;
+        
         public string CodAsignatura;
         public string CodDocente;
         readonly E_AsistenciaEstudiante ObjEntidadEstd;
@@ -23,6 +30,7 @@ namespace CapaPresentaciones
         private DataTable PlanSesion;
         public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente)
         {
+            ObjNegocio = new N_Catalogo();
             CodAsignatura = pCodAsignatura;
             CodDocente = pCodDocente;
             ObjEntidadEstd = new E_AsistenciaEstudiante();
@@ -79,18 +87,11 @@ namespace CapaPresentaciones
 
         private void btnSesiones_Click(object sender, EventArgs e)
         {
-            P_TablaSesiones Sesiones = new P_TablaSesiones();
+            P_TablaSesiones Sesiones = new P_TablaSesiones(CodAsignatura,CodDocente);
 
             Sesiones.ShowDialog();
             Sesiones.Dispose();
-            valor++;
-            string Direccion = @"D:\Yo\Plantilla Sesion Pruebas.xlsx";
-            SLDocument sl = new SLDocument(Direccion);
-            if (sl.GetCellValueAsString(valor, 3) == "")
-            {
-                valor++;
-            }
-            txtTema.Text = sl.GetCellValueAsString(valor, 3);
+            
         }
 
         private void dgvDatos_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -152,15 +153,17 @@ namespace CapaPresentaciones
                 }
             }
         }
+
         
-        int valor = 9;
         private void P_TablaAsistenciaEstudiantes_Load(object sender, EventArgs e)
         {
+            int valor = 9;
             // Se crea un archivo temporal, para después abrirlo con ClosedXML
             string path = AppDomain.CurrentDomain.BaseDirectory;
             string folder = path + "/temp/";
             string fullFilePath = folder + "temp.xlsx";
-
+            
+            
             if (!Directory.Exists(folder))
             {
                 Directory.CreateDirectory(folder);
@@ -176,7 +179,50 @@ namespace CapaPresentaciones
             File.WriteAllBytes(fullFilePath, archivo);
 
             SLDocument sl = new SLDocument(fullFilePath);
+            while (sl.GetCellValueAsString(valor,8) == "Hecho")
+            {
+                valor++;
+            }
             txtTema.Text = sl.GetCellValueAsString(valor, 3);
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            
+            int valor = 9;
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            string folder = path + "/temp/";
+            string fullFilePath = folder + "temp.xlsx";
+
+
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+
+            if (File.Exists(fullFilePath))
+            {
+                File.Delete(fullFilePath);
+            }
+
+            byte[] archivo = PlanSesion.Rows[0]["PlanSesiones"] as byte[];
+
+            File.WriteAllBytes(fullFilePath, archivo);
+            SLDocument sl = new SLDocument(fullFilePath);
+            while (sl.GetCellValueAsString(valor, 8) == "Hecho")
+            {
+                valor++;
+            }
+            XLWorkbook wb = new XLWorkbook(fullFilePath);
+            wb.Worksheet(1).Cell("H"+valor.ToString()).Value = wb.Worksheet(1).Cell("H"+valor.ToString()).Value + "Hecho";
+            wb.SaveAs(fullFilePath);
+            byte[] arreglo=null;
+            arreglo = File.ReadAllBytes(fullFilePath);
+
+            ObjNegocio.ActualizarPlanSesionesAsignatura("2021-II", CodAsignatura, CodDocente,arreglo);
+            MessageBox.Show("Guardado con Exito");
+            Close();
         }
     }
 }

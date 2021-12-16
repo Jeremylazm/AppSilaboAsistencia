@@ -144,6 +144,7 @@ namespace CapaDatos
             Data.Fill(Resultado);
             return Resultado;
         }
+        
 
         // Método para insertar una asignatura en un catálogo. 
         public void InsertarAsignaturaCatalogo(E_Catalogo Catalogo)
