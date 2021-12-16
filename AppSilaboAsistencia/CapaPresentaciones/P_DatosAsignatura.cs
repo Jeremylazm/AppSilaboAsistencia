@@ -160,7 +160,7 @@ namespace CapaPresentaciones
                     {
                         try
                         {
-                            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea editar el registro ?");
+                            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea editar el registro?");
                             Dialogo.ShowDialog();
                             DialogResult Opcion = Dialogo.DialogResult;
                             //Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Gestion de Plan de seciones", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);

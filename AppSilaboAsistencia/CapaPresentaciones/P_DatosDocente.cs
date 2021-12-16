@@ -181,7 +181,8 @@ namespace CapaPresentaciones
             }
             catch (Exception)
             {
-                MensajeError("Error al subir perfil");
+                P_DialogoError.Mostrar("Error al subir perfil");
+                //MensajeError("Error al subir perfil");
             }
         }
 
@@ -239,7 +240,8 @@ namespace CapaPresentaciones
                                 ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
 
                                 ObjNegocio.InsertarDocente(ObjEntidad);
-                                MensajeConfirmacion("Registro insertado exitosamente");
+                                P_DialogoInformacion.Mostrar("Registro insertado exitosamente");
+                                //MensajeConfirmacion("Registro insertado exitosamente");
                                 Program.Evento = 0;
 
                                 N_InicioSesion InicioSesion = new N_InicioSesion();
@@ -274,20 +276,24 @@ namespace CapaPresentaciones
                             }
                             else
                             {
-                                MensajeError("Este registro de docente ya existe");
+                                P_DialogoError.Mostrar("El registro de docente ya existe");
+                                //MensajeError("Este registro de docente ya existe");
                             }
                         }
                         catch (Exception ex)
                         {
-                            MensajeError("Error al insertar el registro " + ex);
+                            P_DialogoError.Mostrar("Error al insertar el registro");
+                            //MensajeError("Error al insertar el registro " + ex);
                         }
                     }
                     else
                     {
                         try
                         {
-                            DialogResult Opcion;
-                            Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea editar el registro?");
+                            Dialogo.ShowDialog();
+                            DialogResult Opcion = Dialogo.DialogResult;
+                            //Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                             if (Opcion == DialogResult.OK)
                             {
                                 DataTable Resultado = N_Docente.BuscarDocente("IF", txtCodigo.Text);
@@ -315,31 +321,36 @@ namespace CapaPresentaciones
                                     ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
 
                                     ObjNegocio.ActualizarDocente(ObjEntidad);
-                                    MensajeConfirmacion("Registro editado exitosamente");
+                                    P_DialogoInformacion.Mostrar("Registro editado exitosamente");
+                                    //MensajeConfirmacion("Registro editado exitosamente");
                                     Program.Evento = 0;
                                     LimpiarCajas();
                                     Close();
                                 }
                                 else
                                 {
-                                    MensajeError("Este registro de docente no existe");
+                                    P_DialogoError.Mostrar("El registro de docente no existe");
+                                    //MensajeError("Este registro de Asignatura no existe");
                                 }
                             }
                         }
                         catch (Exception ex)
                         {
-                            MensajeError("Error al editar el registro " + ex);
+                            P_DialogoError.Mostrar("Error al editar el registro");
+                            //MensajeError("Error al editar el registro " + ex);
                         }
                     }
                 }
                 else
                 {
-                    MensajeError("Debe llenar los campos");
+                    P_DialogoError.Mostrar("Debe llenar los campos");
+                    //MensajeError("Debe llenar los campos");
                 }
             }
             else
             {
-                MessageBox.Show(msg);
+                P_DialogoError.Mostrar(msg);
+                //MessageBox.Show(msg);
             }
         }
 
