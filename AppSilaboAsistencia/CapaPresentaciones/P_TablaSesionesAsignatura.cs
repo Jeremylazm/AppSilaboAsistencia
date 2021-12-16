@@ -65,18 +65,21 @@ namespace CapaPresentaciones
                         try
                         {
                             File.WriteAllBytes(saveFileDialog.FileName, dgvDatos.Rows[e.RowIndex].Cells["PlanSesiones"].Value as byte[]);
-                            MessageBox.Show("Archivo guardado correctamente");
+                            P_DialogoInformacion.Mostrar("Archivo guardado correctamente");
+                            //MessageBox.Show("Archivo guardado correctamente");
                             Close();
                         }
                         catch(IOException)
                         {
-                            MessageBox.Show("Cierra el archivo antes de reemplazarlo o elige otro nombre");
+                            P_DialogoError.Mostrar("Cierre el archivo antes de que sea reemplazado o elija otro nombre");
+                            //MessageBox.Show("Cierra el archivo antes de reemplazarlo o elige otro nombre");
                         }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No hay plan de sesiones");
+                    P_DialogoError.Mostrar("No hay plan de sesiones");
+                    //MessageBox.Show("No hay plan de sesiones");
                 }
             }
         }
