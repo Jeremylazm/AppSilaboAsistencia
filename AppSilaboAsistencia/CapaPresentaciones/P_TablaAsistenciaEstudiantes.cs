@@ -28,6 +28,7 @@ namespace CapaPresentaciones
         readonly N_AsistenciaDocente ObjNegocioDoc;
         public string hora = DateTime.Now.ToString("hh:mm:ss");
         private DataTable PlanSesion;
+        public string horainicioAsignatura;
         public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente)
         {
             ObjNegocio = new N_Catalogo();
@@ -61,9 +62,27 @@ namespace CapaPresentaciones
             dgvDatos.Columns[6].HeaderText = "Nombre";
             dgvDatos.Columns[6].ReadOnly = true;
 
-            dgvDatos.Rows[6].Cells[0].Value = ListaImagenes.Images[0];
+            //dgvDatos.Rows[6].Cells[0].Value = ListaImagenes.Images[0];
+        }
+        public void InicializarValores()
+        {
+            foreach (DataGridViewRow fila in dgvDatos.Rows)
+            {
+                DataGridViewTextBoxCell textBoxcell = (DataGridViewTextBoxCell)(fila.Cells["txtObservaciones"]);
+                textBoxcell.Value = "";
+                fila.Cells[0].Value = ListaImagenes.Images[0];
+                fila.Cells[0].Tag = false;
+            }
+        }
+        private void MensajeConfirmacion(string Mensaje)
+        {
+            MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void MensajeError(string Mensaje)
+        {
+            MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         private void MostrarEstudiantes()
         {
             dgvDatos.DataSource = N_Matricula.BuscarEstudiantesAsignatura("2021-II", CodAsignatura.Substring(6), CodAsignatura);
@@ -73,6 +92,57 @@ namespace CapaPresentaciones
         public void BuscarEstudiantes()
         {
             dgvDatos.DataSource = N_Matricula.BuscarEstudiantesMatriculadosAsignatura("2021-II", CodAsignatura.Substring(6), CodAsignatura, txtBuscar.Text);
+        }
+        public void GuaradarRgistroEstudiantes()
+        {
+            foreach (DataGridViewRow dr in dgvDatos.Rows)
+            {
+                //DataGridViewTextBoxCell txtb = (DataGridViewTextBoxCell)dr.Cells[1];
+                ObjEntidadEstd.CodSemestre = "2021-II";
+                ObjEntidadEstd.CodAsignatura = CodAsignatura;
+                ObjEntidadEstd.HoraInicio = horainicioAsignatura;//asigantura
+                ObjEntidadEstd.Fecha = lblFecha.Text.Substring(8).ToString();//asistencia
+                ObjEntidadEstd.Hora = hora;//asistencia
+
+                ObjEntidadEstd.CodEstudiante = dr.Cells[3].Value.ToString();
+                ObjEntidadEstd.Estado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";//(Convert.ToBoolean (dr.Cells[0].Tag)==true) ? "SI" : "NO";
+                                                                                                      //TextBox txt2 = (TextBox)(DataGridViewTextBoxCell)dr.Cells["txtObservaciones"];
+                                                                                                      //DataGridViewTextBoxCell textBoxcell = (DataGridViewTextBoxCell)(dr.Cells["txtObservaciones"]);
+                                                                                                      //textBoxcell.Value = "";
+
+
+                ObjEntidadEstd.Observacion = dr.Cells[1].Value.ToString();////textBoxcell.Value.ToString();//dr.Cells[1].Value.ToString();//Convert.ToString((DataGridViewTextBoxCell)dr.Cells["txtObservaciones"]);
+
+
+                ObjNegocioEstd.RegistrarAsistenciaEstudiante(ObjEntidadEstd);
+
+
+            }
+            MensajeConfirmacion("Registro de Asistencia Estudiantes insertado exitosamente");
+        }
+        public void GuardarRegistroDocente()
+        {
+            DataTable HoraInicioThAsg = N_HorarioAsignatura.BuscarHorarioAsignatura("2021-II", CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), CodAsignatura.Substring(5, 1));
+            horainicioAsignatura = HoraInicioThAsg.Rows[0][6].ToString();
+            //guardar asistencia de estudainte en la asigantura
+            //DataTable Resultado = N_AsistenciaEstudiante.AsistenciaEstudiantes("2021-II", "IF", CodAsignatura, hora, lblFecha.Text.ToString());
+            //DataTable registrosAsistencciaDocente = N_AsistenciaDocente.AsistenciaDocentes(CodDocente,CodAsignatura.Substring(0,2),lblFecha.Text.Substring(8).ToString());
+
+            if (dgvDatos.Rows.Count > 0)
+            {
+                ObjEntidadDoc.CodSemestre = "2021-II";
+                ObjEntidadDoc.CodAsignatura = CodAsignatura;
+                ObjEntidadDoc.HoraInicio = horainicioAsignatura;
+                ObjEntidadDoc.Fecha = lblFecha.Text.Substring(8).ToString();
+                ObjEntidadDoc.Hora = hora;
+                ObjEntidadDoc.CodDocente = CodDocente;
+                ObjEntidadDoc.NombreTema = txtTema.Text.ToString();
+
+                ObjNegocioDoc.RegistrarAsistenciaDocente(ObjEntidadDoc);
+                MensajeConfirmacion("Registro Asistencia docente insertado exitosamente");
+                GuaradarRgistroEstudiantes();
+                Close();
+            }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -143,6 +213,7 @@ namespace CapaPresentaciones
                 foreach (DataGridViewRow Fila in dgvDatos.Rows)
                 {
                     Fila.Cells[0].Value = ListaImagenes.Images[1];
+                    Fila.Cells[0].Tag = true;
                 }
             }
             else
@@ -150,6 +221,7 @@ namespace CapaPresentaciones
                 foreach (DataGridViewRow Fila in dgvDatos.Rows)
                 {
                     Fila.Cells[0].Value = ListaImagenes.Images[0];
+                    Fila.Cells[0].Tag = false;
                 }
             }
         }
@@ -157,6 +229,7 @@ namespace CapaPresentaciones
         
         private void P_TablaAsistenciaEstudiantes_Load(object sender, EventArgs e)
         {
+            
             if (PlanSesion.Rows.Count>0)
             {
                 int valor = 9;
@@ -198,7 +271,7 @@ namespace CapaPresentaciones
                 btnGuardar.Enabled = false;
             }
 
-
+            InicializarValores();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -238,9 +311,9 @@ namespace CapaPresentaciones
             arreglo = File.ReadAllBytes(fullFilePath);
 
             ObjNegocio.ActualizarPlanSesionesAsignatura("2021-II", CodAsignatura, CodDocente, arreglo);
+            GuardarRegistroDocente();
             MessageBox.Show("Guardado con Exito");
             Close();
-
         }
     }
 }
