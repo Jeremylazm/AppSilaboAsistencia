@@ -157,45 +157,57 @@ namespace CapaPresentaciones
         
         private void P_TablaAsistenciaEstudiantes_Load(object sender, EventArgs e)
         {
-            int valor = 9;
-            // Se crea un archivo temporal, para después abrirlo con ClosedXML
-            string path = AppDomain.CurrentDomain.BaseDirectory;
-            string folder = path + "/temp/";
-            string fullFilePath = folder + "temp.xlsx";
-            
-            
-            if (!Directory.Exists(folder))
+            if (PlanSesion.Rows.Count>0)
             {
-                Directory.CreateDirectory(folder);
+                int valor = 9;
+                // Se crea un archivo temporal, para después abrirlo con ClosedXML
+                string path = AppDomain.CurrentDomain.BaseDirectory;
+                string folder = path + "/temp/";
+                string fullFilePath = folder + "temp.xlsx";
+
+
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+
+                if (File.Exists(fullFilePath))
+                {
+                    File.Delete(fullFilePath);
+                }
+
+                byte[] archivo = PlanSesion.Rows[0]["PlanSesiones"] as byte[];
+
+                File.WriteAllBytes(fullFilePath, archivo);
+
+                SLDocument sl = new SLDocument(fullFilePath);
+                while (sl.GetCellValueAsString(valor, 8) == "Hecho")
+                {
+                    valor++;
+                    if(sl.GetCellValueAsString(valor, 3) == "")
+                    {
+                        valor++;
+                    }
+                }
+                txtTema.Text = sl.GetCellValueAsString(valor, 3);
+            }
+            else
+            {
+                MessageBox.Show("Aun no subio un plan de sesiones");
+                txtTema.Text = "No hay tema a sugerir";
+                btnGuardar.Enabled = false;
             }
 
-            if (File.Exists(fullFilePath))
-            {
-                File.Delete(fullFilePath);
-            }
-
-            byte[] archivo = PlanSesion.Rows[0]["PlanSesiones"] as byte[];
-
-            File.WriteAllBytes(fullFilePath, archivo);
-
-            SLDocument sl = new SLDocument(fullFilePath);
-            while (sl.GetCellValueAsString(valor,8) == "Hecho")
-            {
-                valor++;
-            }
-            txtTema.Text = sl.GetCellValueAsString(valor, 3);
 
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            
-            int valor = 9;
             string path = AppDomain.CurrentDomain.BaseDirectory;
             string folder = path + "/temp/";
             string fullFilePath = folder + "temp.xlsx";
 
-
+            int valor = 9;
             if (!Directory.Exists(folder))
             {
                 Directory.CreateDirectory(folder);
@@ -213,16 +225,22 @@ namespace CapaPresentaciones
             while (sl.GetCellValueAsString(valor, 8) == "Hecho")
             {
                 valor++;
+                if (sl.GetCellValueAsString(valor, 3) == "")
+                {
+                    valor++;
+                }
             }
+
             XLWorkbook wb = new XLWorkbook(fullFilePath);
-            wb.Worksheet(1).Cell("H"+valor.ToString()).Value = wb.Worksheet(1).Cell("H"+valor.ToString()).Value + "Hecho";
+            wb.Worksheet(1).Cell("H" + valor.ToString()).Value = wb.Worksheet(1).Cell("H" + valor.ToString()).Value + "Hecho";
             wb.SaveAs(fullFilePath);
-            byte[] arreglo=null;
+            byte[] arreglo = null;
             arreglo = File.ReadAllBytes(fullFilePath);
 
-            ObjNegocio.ActualizarPlanSesionesAsignatura("2021-II", CodAsignatura, CodDocente,arreglo);
+            ObjNegocio.ActualizarPlanSesionesAsignatura("2021-II", CodAsignatura, CodDocente, arreglo);
             MessageBox.Show("Guardado con Exito");
             Close();
+
         }
     }
 }
