@@ -120,8 +120,22 @@
   <metadata name="Movimiento.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="lblTitulo.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnAceptar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAKAAAAAnCAYAAACIekNNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIySURBVHhe7dw9aBNhGMDxG13EtNo0Mbl7HRx0dRIXB5cO
+        Tm4iShexQ4WCDhU6dBFErIbkUitNPR0cRHQQxEEUXBxcBKeKmrsg+fAzQv2CDmefM60o79Tm+iz/B37b
+        205/7u7N8Dj/TxiYLe2aGX13tThbr7gvOtdNDKyXNBT5xZutmhnrBibTy8w+ncDsr5fdxqPx/NKNw9n4
+        wr7t8djWbcC6SUO1kWz88FTu+0pbH1rzZqSX278TVsy5l+cL3andg9Z/BGzU2cJA/HxqZ3dxxiv1svsz
+        8uST+Gx/BPTb0zP5L5HvHU/ik2++qOK2J82A9TDQbxPZTPy25H56H5ic01kwE/dHh3/ZDgJpkTuGXHSd
+        sOremTs0ZD0EpEUuJ3JDdkLfrU/v5eKBzSWv4eY174cjv9XYDgBpk/YIEGoIEKoIEKoIEKoIEKoIEKoI
+        EKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKqSABuz3kfWcmCzjQ9m
+        4ta8t+zUK+6T0oEd1kNAWmQZgixFcNoLZvLuseFl2yEgLbIzUBZXOu3A7Hp9udiVR6LtIJAGWQcoawGT
+        FW2R7518fDr/1XYQ6LfbR3NLb664l5L4Vke+Be+dyH3jSYg03TqS/flqpvhM9lL20vs7jaqZXrzofpZ1
+        bWzMQr/I2mf/4FDy2g3LhbI1vtVpBmaP7AyUG4r8TgNsVFT1mitv2Adr33xr4zi/AdUkTIweG7DYAAAA
+        AElFTkSuQmCC
+</value>
   </data>
   <metadata name="ImagenAparicion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>368, 20</value>
@@ -161,25 +175,11 @@
         d2luZy5Qb2ludEYCAAAAAXgBeQAACwsCAAAAAAAAAAAAAAAL
 </value>
   </data>
-  <data name="lblMensaje.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 19px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
+  <data name="lblTitulo.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: bold; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnAceptar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAKAAAAAnCAYAAACIekNNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIySURBVHhe7dw9aBNhGMDxG13EtNo0Mbl7HRx0dRIXB5cO
-        Tm4iShexQ4WCDhU6dBFErIbkUitNPR0cRHQQxEEUXBxcBKeKmrsg+fAzQv2CDmefM60o79Tm+iz/B37b
-        205/7u7N8Dj/TxiYLe2aGX13tThbr7gvOtdNDKyXNBT5xZutmhnrBibTy8w+ncDsr5fdxqPx/NKNw9n4
-        wr7t8djWbcC6SUO1kWz88FTu+0pbH1rzZqSX278TVsy5l+cL3andg9Z/BGzU2cJA/HxqZ3dxxiv1svsz
-        8uST+Gx/BPTb0zP5L5HvHU/ik2++qOK2J82A9TDQbxPZTPy25H56H5ic01kwE/dHh3/ZDgJpkTuGXHSd
-        sOremTs0ZD0EpEUuJ3JDdkLfrU/v5eKBzSWv4eY174cjv9XYDgBpk/YIEGoIEKoIEKoIEKoIEKoIEKoI
-        EKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKoIEKqSABuz3kfWcmCzjQ9m
-        4ta8t+zUK+6T0oEd1kNAWmQZgixFcNoLZvLuseFl2yEgLbIzUBZXOu3A7Hp9udiVR6LtIJAGWQcoawGT
-        FW2R7518fDr/1XYQ6LfbR3NLb664l5L4Vke+Be+dyH3jSYg03TqS/flqpvhM9lL20vs7jaqZXrzofpZ1
-        bWzMQr/I2mf/4FDy2g3LhbI1vtVpBmaP7AyUG4r8TgNsVFT1mitv2Adr33xr4zi/AdUkTIweG7DYAAAA
-        AElFTkSuQmCC
-</value>
+  <data name="lblMensaje.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 40px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
   </data>
   <metadata name="Bordeado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>134, 17</value>
