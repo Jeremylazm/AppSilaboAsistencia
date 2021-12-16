@@ -140,13 +140,17 @@ namespace CapaPresentaciones
             catch (Exception)
             {
                 // Mostrar mensaje de error
-                MessageBox.Show("Error al subir perfil");
+                P_DialogoError.Mostrar("Error al subir perfil");
+                //MessageBox.Show("Error al subir perfil");
             }
         }
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Realmente desea restablecer su imagen de perfil", "Sistema de Gestión",MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea restablecer su perfil?");
+            Dialogo.ShowDialog();
+            DialogResult Opcion = Dialogo.DialogResult;
+            if (Opcion == DialogResult.OK)
             {
                 // Cargar imagen por defecto en el formulario
                 imgPerfil.Image = Properties.Resources.Perfil_Docente as Image;
@@ -156,8 +160,10 @@ namespace CapaPresentaciones
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             // Mostrar mensaje para saber si realmente se desea editar los datos
-            DialogResult Opcion;
-            Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Gestión de Sílabos y Asistencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea editar el registro?");
+            Dialogo.ShowDialog();
+            DialogResult Opcion = Dialogo.DialogResult;
+            //Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Gestión de Sílabos y Asistencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             // Si el docente, quiere cambiar sus datos
             if (Opcion == DialogResult.OK)
@@ -188,7 +194,8 @@ namespace CapaPresentaciones
                 ObjNegocio.ActualizarDocente(ObjEntidad);
 
                 // Mostrar mensaje de confirmacion dando entender que se edito sus datos del docente
-                MessageBox.Show("Registro editado exitosamente");
+                P_DialogoInformacion.Mostrar("Registro editado exitosamente");
+                //MensajeConfirmacion("Registro editado exitosamente");
             }
         }
     }
