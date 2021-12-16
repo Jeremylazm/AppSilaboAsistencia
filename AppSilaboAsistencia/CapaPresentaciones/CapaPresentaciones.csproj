@@ -243,6 +243,24 @@
     <Compile Include="P_DatosDocente.Designer.cs">
       <DependentUpon>P_DatosDocente.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_DialogoError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_DialogoError.Designer.cs">
+      <DependentUpon>P_DialogoError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_DialogoInformacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_DialogoInformacion.Designer.cs">
+      <DependentUpon>P_DialogoInformacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_DialogoPregunta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_DialogoPregunta.Designer.cs">
+      <DependentUpon>P_DialogoPregunta.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_EditarPerfilDocente.cs">
       <SubType>Form</SubType>
     </Compile>
