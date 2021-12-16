@@ -107,7 +107,8 @@ namespace CapaPresentaciones
                             ActiveControl = txtUsuario;
                             errorProvider1.SetError(txtUsuario, "");
                             errorProvider1.SetError(txtContraseña, "");
-                            MessageBox.Show("Usuario o Contraseña incorrectos");
+                            P_DialogoError.Mostrar("Usuario o Contraseña incorrectos");
+                            //MessageBox.Show("Usuario o Contraseña incorrectos");
                             /*Mensaje = "Datos incorrectos";
                             return Mensaje;*/
                         }
