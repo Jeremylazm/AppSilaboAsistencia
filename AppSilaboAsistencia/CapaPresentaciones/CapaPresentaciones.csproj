@@ -390,8 +390,14 @@
     <EmbeddedResource Include="P_DatosDocente.resx">
       <DependentUpon>P_DatosDocente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="P_DialogoError.resx">
+      <DependentUpon>P_DialogoError.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="P_DialogoInformacion.resx">
       <DependentUpon>P_DialogoInformacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_DialogoPregunta.resx">
+      <DependentUpon>P_DialogoPregunta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_EditarPerfilDocente.resx">
       <DependentUpon>P_EditarPerfilDocente.cs</DependentUpon>

@@ -39,6 +39,7 @@ namespace CapaPresentaciones
             this.btnAceptar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.ImagenAparicion = new Bunifu.UI.WinForms.BunifuTransition(this.components);
             this.pbImagen = new System.Windows.Forms.PictureBox();
+            this.lblMensaje = new Bunifu.UI.WinForms.BunifuLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,7 +107,7 @@ namespace CapaPresentaciones
             this.btnAceptar.IdleIconLeftImage = null;
             this.btnAceptar.IdleIconRightImage = null;
             this.btnAceptar.IndicateFocus = false;
-            this.btnAceptar.Location = new System.Drawing.Point(113, 277);
+            this.btnAceptar.Location = new System.Drawing.Point(77, 277);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAceptar.OnDisabledState.BorderRadius = 15;
@@ -175,7 +176,7 @@ namespace CapaPresentaciones
             // 
             this.ImagenAparicion.SetDecoration(this.pbImagen, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.pbImagen.Image = global::CapaPresentaciones.Properties.Resources.Dialogo_Informacion;
-            this.pbImagen.Location = new System.Drawing.Point(113, 35);
+            this.pbImagen.Location = new System.Drawing.Point(77, 24);
             this.pbImagen.Name = "pbImagen";
             this.pbImagen.Size = new System.Drawing.Size(160, 160);
             this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -183,12 +184,32 @@ namespace CapaPresentaciones
             this.pbImagen.TabStop = false;
             this.pbImagen.Visible = false;
             // 
+            // lblMensaje
+            // 
+            this.lblMensaje.AllowParentOverrides = false;
+            this.lblMensaje.AutoEllipsis = false;
+            this.lblMensaje.AutoSize = false;
+            this.lblMensaje.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblMensaje.CursorType = System.Windows.Forms.Cursors.Default;
+            this.ImagenAparicion.SetDecoration(this.lblMensaje, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.lblMensaje.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.lblMensaje.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblMensaje.Location = new System.Drawing.Point(23, 203);
+            this.lblMensaje.Name = "lblMensaje";
+            this.lblMensaje.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblMensaje.Size = new System.Drawing.Size(269, 59);
+            this.lblMensaje.TabIndex = 56;
+            this.lblMensaje.Text = "MENSAJE";
+            this.lblMensaje.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMensaje.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
             // P_DialogoInformacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(387, 338);
+            this.ClientSize = new System.Drawing.Size(316, 338);
+            this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.pbImagen);
             this.Controls.Add(this.btnAceptar);
             this.ImagenAparicion.SetDecoration(this, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
@@ -210,5 +231,6 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnAceptar;
         private Bunifu.UI.WinForms.BunifuTransition ImagenAparicion;
         private System.Windows.Forms.PictureBox pbImagen;
+        private Bunifu.UI.WinForms.BunifuLabel lblMensaje;
     }
 }

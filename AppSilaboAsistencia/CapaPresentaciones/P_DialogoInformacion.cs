@@ -13,9 +13,16 @@ namespace CapaPresentaciones
 {
     public partial class P_DialogoInformacion : Form
     {
-        public P_DialogoInformacion()
+        public P_DialogoInformacion(string Mensaje)
         {
             InitializeComponent();
+            lblMensaje.Text = Mensaje;
+        }
+
+        public static void Mostrar(string Mensaje)
+        {
+            P_DialogoInformacion Dialogo = new P_DialogoInformacion(Mensaje);
+            Dialogo.ShowDialog();
         }
 
         private void P_DialogoInformacion_Load(object sender, EventArgs e)
@@ -38,7 +45,7 @@ namespace CapaPresentaciones
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            
+            Close();
         }
     }
 }

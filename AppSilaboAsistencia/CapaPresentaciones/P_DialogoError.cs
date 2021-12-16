@@ -12,9 +12,39 @@ namespace CapaPresentaciones
 {
     public partial class P_DialogoError : Form
     {
-        public P_DialogoError()
+        public P_DialogoError(string Mensaje)
         {
             InitializeComponent();
+            lblMensaje.Text = Mensaje;
+        }
+
+        public static void Mostrar(string Mensaje)
+        {
+            P_DialogoError Dialogo = new P_DialogoError(Mensaje);
+            Dialogo.ShowDialog();
+        }
+
+        private void P_DialogoError_Load(object sender, EventArgs e)
+        {
+            this.Opacity = 0.0;
+            FormAparicion.Start();
+        }
+
+        private void FormAparicion_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity < 1)
+                this.Opacity += 0.2;
+            if (this.Opacity == 1)
+            {
+                FormAparicion.Stop();
+                ImagenAparicion.ShowSync(pbImagen);
+                btnAceptar.Visible = true;
+            }
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
