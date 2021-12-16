@@ -345,7 +345,10 @@ namespace CapaPresentaciones
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea salir de la aplicación?", "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Desea salir de la aplicación?", true);
+            Dialogo.ShowDialog();
+            DialogResult Opcion = Dialogo.DialogResult;
+            if (Opcion == DialogResult.Yes)
             {
                 Application.Exit();
             }

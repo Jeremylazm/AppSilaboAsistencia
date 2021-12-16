@@ -138,27 +138,32 @@ namespace CapaPresentaciones
                                 ObjEntidad.Sumilla = txtSumilla.Text.ToUpper();
 
                                 ObjNegocio.InsertarAsignatura(ObjEntidad);
-                                MensajeConfirmacion("Registro insertado exitosamente");
+                                P_DialogoInformacion.Mostrar("Registro insertado exitosamente");
+                                //MensajeConfirmacion("Registro insertado exitosamente");
                                 Program.Evento = 0;
 
                                 Close();
                             }
                             else
                             {
-                                MensajeError("Este registro de Asignatura ya existe");
+                                P_DialogoError.Mostrar("El registro de asignatura ya existe");
+                                //MensajeError("Este registro de Asignatura ya existe");
                             }
                         }
                         catch (Exception ex)
                         {
-                            MensajeError("Error al insertar el registro " + ex);
+                            P_DialogoError.Mostrar("Error al insertar el registro");
+                            //MensajeError("Error al insertar el registro " + ex);
                         }
                     }
                     else
                     {
                         try
                         {
-                            DialogResult Opcion;
-                            Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Gestion de Plan de seciones", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea editar el registro ?");
+                            Dialogo.ShowDialog();
+                            DialogResult Opcion = Dialogo.DialogResult;
+                            //Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Gestion de Plan de seciones", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                             if (Opcion == DialogResult.OK)
                             {
                                 DataTable Resultado = N_Asignatura.BuscarAsignatura("IF", txtCodigo.Text);
@@ -176,31 +181,36 @@ namespace CapaPresentaciones
                                     ObjEntidad.Sumilla = txtSumilla.Text.ToUpper();
 
                                     ObjNegocio.ActualizarAsignatura(ObjEntidad);
-                                    MensajeConfirmacion("Registro editado exitosamente");
+                                    P_DialogoInformacion.Mostrar("Registro editado exitosamente");
+                                    //MensajeConfirmacion("Registro editado exitosamente");
                                     Program.Evento = 0;
 
                                     Close();
                                 }
                                 else
                                 {
-                                    MensajeError("Este registro de Asignatura no existe");
+                                    P_DialogoError.Mostrar("El registro de asignatura no existe");
+                                    //MensajeError("Este registro de Asignatura no existe");
                                 }
                             }
                         }
                         catch (Exception ex)
                         {
-                            MensajeError("Error al editar el registro " + ex);
+                            P_DialogoError.Mostrar("Error al editar el registro");
+                            //MensajeError("Error al editar el registro " + ex);
                         }
                     }
                 }
                 else
                 {
-                    MensajeError("Debe llenar los campos");
+                    P_DialogoError.Mostrar("Debe llenar los campos");
+                    //MensajeError("Debe llenar los campos");
                 }
             }
             else
             {
-                MessageBox.Show(msg);
+                P_DialogoError.Mostrar(msg);
+                //MessageBox.Show(msg);
             }
 
         }
