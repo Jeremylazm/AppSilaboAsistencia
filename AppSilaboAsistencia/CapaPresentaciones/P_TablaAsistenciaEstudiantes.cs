@@ -118,7 +118,8 @@ namespace CapaPresentaciones
 
 
             }
-            MensajeConfirmacion("Registro de Asistencia Estudiantes insertado exitosamente");
+            P_DialogoInformacion.Mostrar("El registro de la asistencia de los estudiantes se insertó éxitosamente");
+            //MensajeConfirmacion("Registro de Asistencia Estudiantes insertado exitosamente");
         }
         public void GuardarRegistroDocente()
         {
@@ -139,7 +140,8 @@ namespace CapaPresentaciones
                 ObjEntidadDoc.NombreTema = txtTema.Text.ToString();
 
                 ObjNegocioDoc.RegistrarAsistenciaDocente(ObjEntidadDoc);
-                MensajeConfirmacion("Registro Asistencia docente insertado exitosamente");
+                P_DialogoInformacion.Mostrar("El registro de su asistencia se insertó éxitosamente");
+                //MensajeConfirmacion("Registro Asistencia docente insertado exitosamente");
                 GuaradarRgistroEstudiantes();
                 Close();
             }

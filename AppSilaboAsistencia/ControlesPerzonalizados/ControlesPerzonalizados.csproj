@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ayudas\A_Paso.cs" />
+    <Compile Include="Ayudas\A_Validador.cs" />
     <Compile Include="C_CambioContraseñaCodigo.cs">
       <SubType>UserControl</SubType>
     </Compile>
