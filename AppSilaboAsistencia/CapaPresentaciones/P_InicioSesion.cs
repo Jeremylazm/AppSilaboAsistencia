@@ -23,7 +23,7 @@ namespace CapaPresentaciones
             lblTitulo.Focus();
         }
 
-        public void IniciarSesion(string Usuario, string Contraseña)
+        public void IniciarSesion()
         {
             bool UsuarioCorrecto = Validador.ValidarUsuario(txtUsuario, lblErrorUsuario, pbErrorUsuario);
             bool ContraseñaCorrecta = Validador.ValidarCampoLleno(txtContraseña, lblErrorContraseña, pbErrorContraseña);
@@ -33,7 +33,7 @@ namespace CapaPresentaciones
                 if (ContraseñaCorrecta)
                 {
                     N_InicioSesion InicioSesion = new N_InicioSesion();
-                    var ValidarDatos = InicioSesion.IniciarSesion(Usuario, Contraseña);
+                    var ValidarDatos = InicioSesion.IniciarSesion(txtUsuario.Text, txtContraseña.Text);
 
                     // Si los datos son correctos
                     if (ValidarDatos == true)
@@ -108,12 +108,21 @@ namespace CapaPresentaciones
         private void btnIngresar_Click(object sender, System.EventArgs e)
         {
             ActualizarColor();
-            IniciarSesion(txtUsuario.Text, txtContraseña.Text);
+            IniciarSesion();
         }
 
         private void btnCerrar_Click(object sender, System.EventArgs e)
         {
             Close();
+        }
+
+        private void txtUsuario_TextChange(object sender, EventArgs e)
+        {
+            if (Validador.ValidarUsuario(txtUsuario, lblErrorUsuario, pbErrorUsuario))
+            {
+                pbErrorUsuario.Visible = false;
+                lblErrorUsuario.Visible = false;
+            }
         }
 
         private void txtContraseña_TextChange(object sender, System.EventArgs e)
@@ -133,25 +142,16 @@ namespace CapaPresentaciones
             }
         }
 
-        private void txtUsuario_TextChange(object sender, EventArgs e)
-        {
-            if (Validador.ValidarUsuario(txtUsuario, lblErrorUsuario, pbErrorUsuario))
-            {
-                pbErrorUsuario.Visible = false;
-                lblErrorUsuario.Visible = false;
-            }
-        }
-
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
-                IniciarSesion(txtUsuario.Text, txtContraseña.Text);
+                IniciarSesion();
         }
 
         private void txtContraseña_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
-                IniciarSesion(txtUsuario.Text, txtContraseña.Text);
+                IniciarSesion();
         }
     }
 }
