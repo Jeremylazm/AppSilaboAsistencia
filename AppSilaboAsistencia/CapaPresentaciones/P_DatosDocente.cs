@@ -353,5 +353,75 @@ namespace CapaPresentaciones
             Program.Evento = 0;
             Close();
         }
+
+        private void txtCodigo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAPaterno_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAMaterno_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTelefono_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDireccion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtAPaterno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtAMaterno_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtDireccion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }

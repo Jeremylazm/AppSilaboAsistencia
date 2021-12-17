@@ -97,7 +97,6 @@ namespace CapaPresentaciones
             this.lblEscuela = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnRestablecerPerfil = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnSubirPerfil = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            this.pbPerfil = new ControlesPerzonalizados.C_CircularPictureBox();
             this.pbErrorCodigo = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblErrorCodigo = new Bunifu.UI.WinForms.BunifuLabel();
             this.pbErrorAPaterno = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -112,6 +111,7 @@ namespace CapaPresentaciones
             this.lblErrorCorreo = new Bunifu.UI.WinForms.BunifuLabel();
             this.pbErrorDireccion = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblErrorDireccion = new Bunifu.UI.WinForms.BunifuLabel();
+            this.pbPerfil = new ControlesPerzonalizados.C_CircularPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).BeginInit();
             this.SuspendLayout();
             // 
@@ -300,6 +300,8 @@ namespace CapaPresentaciones
             this.txtCodigo.TextPlaceholder = "Escriba su código";
             this.txtCodigo.UseSystemPasswordChar = false;
             this.txtCodigo.WordWrap = true;
+            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
             // 
             // lblCodigo
             // 
@@ -395,6 +397,8 @@ namespace CapaPresentaciones
             this.txtNombre.TextPlaceholder = "Escriba el nombre";
             this.txtNombre.UseSystemPasswordChar = false;
             this.txtNombre.WordWrap = true;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // txtAPaterno
             // 
@@ -473,6 +477,8 @@ namespace CapaPresentaciones
             this.txtAPaterno.TextPlaceholder = "Escriba su apellido paterno";
             this.txtAPaterno.UseSystemPasswordChar = false;
             this.txtAPaterno.WordWrap = true;
+            this.txtAPaterno.TextChanged += new System.EventHandler(this.txtAPaterno_TextChanged);
+            this.txtAPaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAPaterno_KeyPress);
             // 
             // lblAPaterno
             // 
@@ -568,6 +574,8 @@ namespace CapaPresentaciones
             this.txtTelefono.TextPlaceholder = "Escriba su teléfono";
             this.txtTelefono.UseSystemPasswordChar = false;
             this.txtTelefono.WordWrap = true;
+            this.txtTelefono.TextChanged += new System.EventHandler(this.txtTelefono_TextChanged);
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // lblTelefono
             // 
@@ -680,6 +688,8 @@ namespace CapaPresentaciones
             this.txtDireccion.TextPlaceholder = "Escriba su dirección";
             this.txtDireccion.UseSystemPasswordChar = false;
             this.txtDireccion.WordWrap = true;
+            this.txtDireccion.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
+            this.txtDireccion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDireccion_KeyPress);
             // 
             // lblDireccion
             // 
@@ -1000,6 +1010,8 @@ namespace CapaPresentaciones
             this.txtAMaterno.TextPlaceholder = "Escriba su apellido materno";
             this.txtAMaterno.UseSystemPasswordChar = false;
             this.txtAMaterno.WordWrap = true;
+            this.txtAMaterno.TextChanged += new System.EventHandler(this.txtAMaterno_TextChanged);
+            this.txtAMaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAMaterno_KeyPress);
             // 
             // lblMaterno
             // 
@@ -1095,6 +1107,8 @@ namespace CapaPresentaciones
             this.txtEmail.TextPlaceholder = "Usuario";
             this.txtEmail.UseSystemPasswordChar = false;
             this.txtEmail.WordWrap = true;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // lblEmail
             // 
@@ -1609,23 +1623,6 @@ namespace CapaPresentaciones
             this.btnSubirPerfil.UseDefaultRadiusAndThickness = true;
             this.btnSubirPerfil.Click += new System.EventHandler(this.btnSubirPerfil_Click);
             // 
-            // pbPerfil
-            // 
-            this.pbPerfil.BackColor = System.Drawing.Color.Transparent;
-            this.pbPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.pbPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.pbPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.pbPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.pbPerfil.BorderSize = 2;
-            this.pbPerfil.GradientAngle = 50F;
-            this.pbPerfil.Image = global::CapaPresentaciones.Properties.Resources.Perfil_Docente;
-            this.pbPerfil.Location = new System.Drawing.Point(18, 57);
-            this.pbPerfil.Name = "pbPerfil";
-            this.pbPerfil.Size = new System.Drawing.Size(280, 280);
-            this.pbPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbPerfil.TabIndex = 47;
-            this.pbPerfil.TabStop = false;
-            // 
             // pbErrorCodigo
             // 
             this.pbErrorCodigo.ActiveImage = null;
@@ -2003,6 +2000,23 @@ namespace CapaPresentaciones
             this.lblErrorDireccion.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblErrorDireccion.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.lblErrorDireccion.Visible = false;
+            // 
+            // pbPerfil
+            // 
+            this.pbPerfil.BackColor = System.Drawing.Color.Transparent;
+            this.pbPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.pbPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pbPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pbPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.pbPerfil.BorderSize = 2;
+            this.pbPerfil.GradientAngle = 50F;
+            this.pbPerfil.Image = global::CapaPresentaciones.Properties.Resources.Perfil_Docente;
+            this.pbPerfil.Location = new System.Drawing.Point(18, 57);
+            this.pbPerfil.Name = "pbPerfil";
+            this.pbPerfil.Size = new System.Drawing.Size(280, 280);
+            this.pbPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPerfil.TabIndex = 47;
+            this.pbPerfil.TabStop = false;
             // 
             // P_DatosDocente
             // 

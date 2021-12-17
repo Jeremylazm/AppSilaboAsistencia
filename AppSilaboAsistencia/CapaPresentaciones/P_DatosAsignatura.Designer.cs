@@ -112,7 +112,7 @@ namespace CapaPresentaciones
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTitulo.Size = new System.Drawing.Size(527, 46);
+            this.lblTitulo.Size = new System.Drawing.Size(803, 46);
             this.lblTitulo.TabIndex = 20;
             this.lblTitulo.Text = "Datos de Asignatura";
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -139,7 +139,7 @@ namespace CapaPresentaciones
             this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
             this.btnCerrar.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.btnCerrar.InitialImage = null;
-            this.btnCerrar.Location = new System.Drawing.Point(487, 7);
+            this.btnCerrar.Location = new System.Drawing.Point(763, 7);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Rotation = 0;
             this.btnCerrar.ShowActiveImage = true;
@@ -197,7 +197,7 @@ namespace CapaPresentaciones
             this.lblNombre.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblNombre.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblNombre.Location = new System.Drawing.Point(20, 149);
+            this.lblNombre.Location = new System.Drawing.Point(20, 52);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblNombre.Size = new System.Drawing.Size(67, 23);
@@ -236,7 +236,7 @@ namespace CapaPresentaciones
             this.txtCodigo.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCodigo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtCodigo.Lines = new string[0];
-            this.txtCodigo.Location = new System.Drawing.Point(20, 83);
+            this.txtCodigo.Location = new System.Drawing.Point(20, 175);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(0);
             this.txtCodigo.MaxLength = 32767;
             this.txtCodigo.MinimumSize = new System.Drawing.Size(1, 1);
@@ -275,7 +275,7 @@ namespace CapaPresentaciones
             this.txtCodigo.ShortcutsEnabled = true;
             this.txtCodigo.Size = new System.Drawing.Size(209, 40);
             this.txtCodigo.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
-            this.txtCodigo.TabIndex = 0;
+            this.txtCodigo.TabIndex = 1;
             this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCodigo.TextMarginBottom = 0;
             this.txtCodigo.TextMarginLeft = 0;
@@ -294,7 +294,7 @@ namespace CapaPresentaciones
             this.lblCodigo.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblCodigo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblCodigo.Location = new System.Drawing.Point(20, 57);
+            this.lblCodigo.Location = new System.Drawing.Point(20, 149);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblCodigo.Size = new System.Drawing.Size(58, 23);
@@ -333,7 +333,7 @@ namespace CapaPresentaciones
             this.txtNombre.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNombre.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtNombre.Lines = new string[0];
-            this.txtNombre.Location = new System.Drawing.Point(20, 176);
+            this.txtNombre.Location = new System.Drawing.Point(20, 78);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(0);
             this.txtNombre.MaxLength = 32767;
             this.txtNombre.MinimumSize = new System.Drawing.Size(1, 1);
@@ -370,9 +370,9 @@ namespace CapaPresentaciones
             this.txtNombre.SelectionLength = 0;
             this.txtNombre.SelectionStart = 0;
             this.txtNombre.ShortcutsEnabled = true;
-            this.txtNombre.Size = new System.Drawing.Size(485, 40);
+            this.txtNombre.Size = new System.Drawing.Size(763, 40);
             this.txtNombre.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
-            this.txtNombre.TabIndex = 1;
+            this.txtNombre.TabIndex = 0;
             this.txtNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNombre.TextMarginBottom = 0;
             this.txtNombre.TextMarginLeft = 0;
@@ -391,7 +391,7 @@ namespace CapaPresentaciones
             this.lblCategoria.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblCategoria.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblCategoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblCategoria.Location = new System.Drawing.Point(20, 242);
+            this.lblCategoria.Location = new System.Drawing.Point(20, 241);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblCategoria.Size = new System.Drawing.Size(81, 23);
@@ -430,7 +430,7 @@ namespace CapaPresentaciones
             this.txtCreditos.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCreditos.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtCreditos.Lines = new string[0];
-            this.txtCreditos.Location = new System.Drawing.Point(255, 83);
+            this.txtCreditos.Location = new System.Drawing.Point(257, 175);
             this.txtCreditos.Margin = new System.Windows.Forms.Padding(0);
             this.txtCreditos.MaxLength = 32767;
             this.txtCreditos.MinimumSize = new System.Drawing.Size(1, 1);
@@ -469,7 +469,7 @@ namespace CapaPresentaciones
             this.txtCreditos.ShortcutsEnabled = true;
             this.txtCreditos.Size = new System.Drawing.Size(250, 40);
             this.txtCreditos.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
-            this.txtCreditos.TabIndex = 2;
+            this.txtCreditos.TabIndex = 3;
             this.txtCreditos.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCreditos.TextMarginBottom = 0;
             this.txtCreditos.TextMarginLeft = 0;
@@ -488,7 +488,7 @@ namespace CapaPresentaciones
             this.lblCreditos.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblCreditos.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCreditos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblCreditos.Location = new System.Drawing.Point(255, 57);
+            this.lblCreditos.Location = new System.Drawing.Point(257, 149);
             this.lblCreditos.Name = "lblCreditos";
             this.lblCreditos.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblCreditos.Size = new System.Drawing.Size(163, 23);
@@ -527,7 +527,7 @@ namespace CapaPresentaciones
             this.txtPrerrequisito.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPrerrequisito.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtPrerrequisito.Lines = new string[0];
-            this.txtPrerrequisito.Location = new System.Drawing.Point(20, 360);
+            this.txtPrerrequisito.Location = new System.Drawing.Point(257, 267);
             this.txtPrerrequisito.Margin = new System.Windows.Forms.Padding(0);
             this.txtPrerrequisito.MaxLength = 32767;
             this.txtPrerrequisito.MinimumSize = new System.Drawing.Size(1, 1);
@@ -564,7 +564,7 @@ namespace CapaPresentaciones
             this.txtPrerrequisito.SelectionLength = 0;
             this.txtPrerrequisito.SelectionStart = 0;
             this.txtPrerrequisito.ShortcutsEnabled = true;
-            this.txtPrerrequisito.Size = new System.Drawing.Size(209, 40);
+            this.txtPrerrequisito.Size = new System.Drawing.Size(250, 40);
             this.txtPrerrequisito.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtPrerrequisito.TabIndex = 4;
             this.txtPrerrequisito.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -584,7 +584,7 @@ namespace CapaPresentaciones
             this.lblPrerrequisito.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblPrerrequisito.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblPrerrequisito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblPrerrequisito.Location = new System.Drawing.Point(20, 334);
+            this.lblPrerrequisito.Location = new System.Drawing.Point(257, 241);
             this.lblPrerrequisito.Name = "lblPrerrequisito";
             this.lblPrerrequisito.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblPrerrequisito.Size = new System.Drawing.Size(103, 23);
@@ -623,7 +623,7 @@ namespace CapaPresentaciones
             this.txtHorasPractica.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtHorasPractica.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtHorasPractica.Lines = new string[0];
-            this.txtHorasPractica.Location = new System.Drawing.Point(255, 360);
+            this.txtHorasPractica.Location = new System.Drawing.Point(534, 267);
             this.txtHorasPractica.Margin = new System.Windows.Forms.Padding(0);
             this.txtHorasPractica.MaxLength = 32767;
             this.txtHorasPractica.MinimumSize = new System.Drawing.Size(1, 1);
@@ -660,7 +660,7 @@ namespace CapaPresentaciones
             this.txtHorasPractica.SelectionLength = 0;
             this.txtHorasPractica.SelectionStart = 0;
             this.txtHorasPractica.ShortcutsEnabled = true;
-            this.txtHorasPractica.Size = new System.Drawing.Size(250, 40);
+            this.txtHorasPractica.Size = new System.Drawing.Size(249, 40);
             this.txtHorasPractica.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtHorasPractica.TabIndex = 6;
             this.txtHorasPractica.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -681,7 +681,7 @@ namespace CapaPresentaciones
             this.lblHorasPractica.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblHorasPractica.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHorasPractica.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblHorasPractica.Location = new System.Drawing.Point(255, 334);
+            this.lblHorasPractica.Location = new System.Drawing.Point(534, 241);
             this.lblHorasPractica.Name = "lblHorasPractica";
             this.lblHorasPractica.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblHorasPractica.Size = new System.Drawing.Size(144, 23);
@@ -720,7 +720,7 @@ namespace CapaPresentaciones
             this.txtHorasTeoria.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtHorasTeoria.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtHorasTeoria.Lines = new string[0];
-            this.txtHorasTeoria.Location = new System.Drawing.Point(255, 268);
+            this.txtHorasTeoria.Location = new System.Drawing.Point(534, 175);
             this.txtHorasTeoria.Margin = new System.Windows.Forms.Padding(0);
             this.txtHorasTeoria.MaxLength = 32767;
             this.txtHorasTeoria.MinimumSize = new System.Drawing.Size(1, 1);
@@ -757,7 +757,7 @@ namespace CapaPresentaciones
             this.txtHorasTeoria.SelectionLength = 0;
             this.txtHorasTeoria.SelectionStart = 0;
             this.txtHorasTeoria.ShortcutsEnabled = true;
-            this.txtHorasTeoria.Size = new System.Drawing.Size(250, 40);
+            this.txtHorasTeoria.Size = new System.Drawing.Size(249, 40);
             this.txtHorasTeoria.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtHorasTeoria.TabIndex = 5;
             this.txtHorasTeoria.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -778,7 +778,7 @@ namespace CapaPresentaciones
             this.lblHorasTeoria.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblHorasTeoria.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblHorasTeoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblHorasTeoria.Location = new System.Drawing.Point(255, 242);
+            this.lblHorasTeoria.Location = new System.Drawing.Point(534, 149);
             this.lblHorasTeoria.Name = "lblHorasTeoria";
             this.lblHorasTeoria.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblHorasTeoria.Size = new System.Drawing.Size(127, 23);
@@ -834,7 +834,7 @@ namespace CapaPresentaciones
             this.btnGuardar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Guardar;
             this.btnGuardar.IdleIconRightImage = null;
             this.btnGuardar.IndicateFocus = false;
-            this.btnGuardar.Location = new System.Drawing.Point(73, 648);
+            this.btnGuardar.Location = new System.Drawing.Point(218, 555);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnGuardar.OnDisabledState.BorderRadius = 15;
@@ -924,7 +924,7 @@ namespace CapaPresentaciones
             this.btnLimpiar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Limpiar;
             this.btnLimpiar.IdleIconRightImage = null;
             this.btnLimpiar.IndicateFocus = false;
-            this.btnLimpiar.Location = new System.Drawing.Point(279, 648);
+            this.btnLimpiar.Location = new System.Drawing.Point(424, 555);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnLimpiar.OnDisabledState.BorderRadius = 15;
@@ -1056,10 +1056,10 @@ namespace CapaPresentaciones
             "AEX",
             "SEM"});
             this.cxtCategoriaAsg.ItemTopMargin = 3;
-            this.cxtCategoriaAsg.Location = new System.Drawing.Point(20, 276);
+            this.cxtCategoriaAsg.Location = new System.Drawing.Point(20, 275);
             this.cxtCategoriaAsg.Name = "cxtCategoriaAsg";
             this.cxtCategoriaAsg.Size = new System.Drawing.Size(209, 32);
-            this.cxtCategoriaAsg.TabIndex = 3;
+            this.cxtCategoriaAsg.TabIndex = 2;
             this.cxtCategoriaAsg.Text = null;
             this.cxtCategoriaAsg.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             this.cxtCategoriaAsg.TextLeftMargin = 5;
@@ -1089,12 +1089,12 @@ namespace CapaPresentaciones
             this.txtSumilla.HideSelection = true;
             this.txtSumilla.IconLeft = null;
             this.txtSumilla.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSumilla.IconPadding = 0;
+            this.txtSumilla.IconPadding = -5;
             this.txtSumilla.IconRight = null;
             this.txtSumilla.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSumilla.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtSumilla.Lines = new string[0];
-            this.txtSumilla.Location = new System.Drawing.Point(20, 452);
+            this.txtSumilla.Location = new System.Drawing.Point(20, 359);
             this.txtSumilla.Margin = new System.Windows.Forms.Padding(0);
             this.txtSumilla.MaxLength = 32767;
             this.txtSumilla.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1131,7 +1131,7 @@ namespace CapaPresentaciones
             this.txtSumilla.SelectionLength = 0;
             this.txtSumilla.SelectionStart = 0;
             this.txtSumilla.ShortcutsEnabled = true;
-            this.txtSumilla.Size = new System.Drawing.Size(485, 167);
+            this.txtSumilla.Size = new System.Drawing.Size(763, 167);
             this.txtSumilla.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtSumilla.TabIndex = 7;
             this.txtSumilla.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -1152,7 +1152,7 @@ namespace CapaPresentaciones
             this.lblSumilla.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblSumilla.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblSumilla.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblSumilla.Location = new System.Drawing.Point(20, 426);
+            this.lblSumilla.Location = new System.Drawing.Point(20, 333);
             this.lblSumilla.Name = "lblSumilla";
             this.lblSumilla.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblSumilla.Size = new System.Drawing.Size(63, 23);
@@ -1182,7 +1182,7 @@ namespace CapaPresentaciones
             this.pbErrorCodigo.ImageSize = new System.Drawing.Size(18, 18);
             this.pbErrorCodigo.ImageZoomSize = new System.Drawing.Size(18, 18);
             this.pbErrorCodigo.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorCodigo.InitialImage")));
-            this.pbErrorCodigo.Location = new System.Drawing.Point(20, 126);
+            this.pbErrorCodigo.Location = new System.Drawing.Point(20, 218);
             this.pbErrorCodigo.Name = "pbErrorCodigo";
             this.pbErrorCodigo.Rotation = 0;
             this.pbErrorCodigo.ShowActiveImage = false;
@@ -1205,7 +1205,7 @@ namespace CapaPresentaciones
             this.lblErrorCodigo.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblErrorCodigo.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblErrorCodigo.Location = new System.Drawing.Point(44, 124);
+            this.lblErrorCodigo.Location = new System.Drawing.Point(44, 216);
             this.lblErrorCodigo.Name = "lblErrorCodigo";
             this.lblErrorCodigo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblErrorCodigo.Size = new System.Drawing.Size(101, 19);
@@ -1236,7 +1236,7 @@ namespace CapaPresentaciones
             this.pbErrorNroCreditos.ImageSize = new System.Drawing.Size(18, 18);
             this.pbErrorNroCreditos.ImageZoomSize = new System.Drawing.Size(18, 18);
             this.pbErrorNroCreditos.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorNroCreditos.InitialImage")));
-            this.pbErrorNroCreditos.Location = new System.Drawing.Point(255, 126);
+            this.pbErrorNroCreditos.Location = new System.Drawing.Point(257, 218);
             this.pbErrorNroCreditos.Name = "pbErrorNroCreditos";
             this.pbErrorNroCreditos.Rotation = 0;
             this.pbErrorNroCreditos.ShowActiveImage = false;
@@ -1259,7 +1259,7 @@ namespace CapaPresentaciones
             this.lblErrorNroCreditos.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblErrorNroCreditos.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorNroCreditos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblErrorNroCreditos.Location = new System.Drawing.Point(279, 124);
+            this.lblErrorNroCreditos.Location = new System.Drawing.Point(281, 216);
             this.lblErrorNroCreditos.Name = "lblErrorNroCreditos";
             this.lblErrorNroCreditos.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblErrorNroCreditos.Size = new System.Drawing.Size(137, 19);
@@ -1290,7 +1290,7 @@ namespace CapaPresentaciones
             this.pbErrorNombre.ImageSize = new System.Drawing.Size(18, 18);
             this.pbErrorNombre.ImageZoomSize = new System.Drawing.Size(18, 18);
             this.pbErrorNombre.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorNombre.InitialImage")));
-            this.pbErrorNombre.Location = new System.Drawing.Point(20, 219);
+            this.pbErrorNombre.Location = new System.Drawing.Point(20, 121);
             this.pbErrorNombre.Name = "pbErrorNombre";
             this.pbErrorNombre.Rotation = 0;
             this.pbErrorNombre.ShowActiveImage = false;
@@ -1313,7 +1313,7 @@ namespace CapaPresentaciones
             this.lblErrorNombre.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblErrorNombre.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblErrorNombre.Location = new System.Drawing.Point(44, 217);
+            this.lblErrorNombre.Location = new System.Drawing.Point(44, 119);
             this.lblErrorNombre.Name = "lblErrorNombre";
             this.lblErrorNombre.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblErrorNombre.Size = new System.Drawing.Size(108, 19);
@@ -1344,7 +1344,7 @@ namespace CapaPresentaciones
             this.pbErrorSumilla.ImageSize = new System.Drawing.Size(18, 18);
             this.pbErrorSumilla.ImageZoomSize = new System.Drawing.Size(18, 18);
             this.pbErrorSumilla.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorSumilla.InitialImage")));
-            this.pbErrorSumilla.Location = new System.Drawing.Point(20, 622);
+            this.pbErrorSumilla.Location = new System.Drawing.Point(20, 529);
             this.pbErrorSumilla.Name = "pbErrorSumilla";
             this.pbErrorSumilla.Rotation = 0;
             this.pbErrorSumilla.ShowActiveImage = false;
@@ -1367,7 +1367,7 @@ namespace CapaPresentaciones
             this.lblErrorSumilla.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblErrorSumilla.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorSumilla.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblErrorSumilla.Location = new System.Drawing.Point(44, 620);
+            this.lblErrorSumilla.Location = new System.Drawing.Point(44, 527);
             this.lblErrorSumilla.Name = "lblErrorSumilla";
             this.lblErrorSumilla.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblErrorSumilla.Size = new System.Drawing.Size(106, 19);
@@ -1398,7 +1398,7 @@ namespace CapaPresentaciones
             this.pbErrorHorasPractica.ImageSize = new System.Drawing.Size(18, 18);
             this.pbErrorHorasPractica.ImageZoomSize = new System.Drawing.Size(18, 18);
             this.pbErrorHorasPractica.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorHorasPractica.InitialImage")));
-            this.pbErrorHorasPractica.Location = new System.Drawing.Point(255, 403);
+            this.pbErrorHorasPractica.Location = new System.Drawing.Point(534, 310);
             this.pbErrorHorasPractica.Name = "pbErrorHorasPractica";
             this.pbErrorHorasPractica.Rotation = 0;
             this.pbErrorHorasPractica.ShowActiveImage = false;
@@ -1421,7 +1421,7 @@ namespace CapaPresentaciones
             this.lblErrorHorasPractica.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblErrorHorasPractica.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorHorasPractica.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblErrorHorasPractica.Location = new System.Drawing.Point(279, 401);
+            this.lblErrorHorasPractica.Location = new System.Drawing.Point(558, 308);
             this.lblErrorHorasPractica.Name = "lblErrorHorasPractica";
             this.lblErrorHorasPractica.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblErrorHorasPractica.Size = new System.Drawing.Size(171, 19);
@@ -1452,7 +1452,7 @@ namespace CapaPresentaciones
             this.pbErrorHorasTeoria.ImageSize = new System.Drawing.Size(18, 18);
             this.pbErrorHorasTeoria.ImageZoomSize = new System.Drawing.Size(18, 18);
             this.pbErrorHorasTeoria.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorHorasTeoria.InitialImage")));
-            this.pbErrorHorasTeoria.Location = new System.Drawing.Point(255, 311);
+            this.pbErrorHorasTeoria.Location = new System.Drawing.Point(534, 218);
             this.pbErrorHorasTeoria.Name = "pbErrorHorasTeoria";
             this.pbErrorHorasTeoria.Rotation = 0;
             this.pbErrorHorasTeoria.ShowActiveImage = false;
@@ -1475,7 +1475,7 @@ namespace CapaPresentaciones
             this.lblErrorHorasTeoria.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblErrorHorasTeoria.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorHorasTeoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblErrorHorasTeoria.Location = new System.Drawing.Point(279, 309);
+            this.lblErrorHorasTeoria.Location = new System.Drawing.Point(558, 216);
             this.lblErrorHorasTeoria.Name = "lblErrorHorasTeoria";
             this.lblErrorHorasTeoria.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblErrorHorasTeoria.Size = new System.Drawing.Size(158, 19);
@@ -1491,7 +1491,7 @@ namespace CapaPresentaciones
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(527, 705);
+            this.ClientSize = new System.Drawing.Size(803, 612);
             this.Controls.Add(this.pbErrorHorasTeoria);
             this.Controls.Add(this.lblErrorHorasTeoria);
             this.Controls.Add(this.pbErrorHorasPractica);
