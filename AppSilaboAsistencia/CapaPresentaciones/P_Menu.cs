@@ -50,10 +50,16 @@ namespace CapaPresentaciones
             if (E_InicioSesion.Perfil == null)
             {
                 if ((E_InicioSesion.Acceso == "Director de Escuela") || (E_InicioSesion.Acceso == "Administrador"))
+                {
                     pbPerfil.Image = Properties.Resources.Perfil as Image;
-
+                    pbEditarPerfil.Image = Properties.Resources.Perfil as Image;
+                }
+                
                 if (E_InicioSesion.Acceso == "Docente")
+                {
                     pbPerfil.Image = Properties.Resources.Perfil_Docente as Image;
+                    pbEditarPerfil.Image = Properties.Resources.Perfil_Docente as Image;
+                }
             }
             else
             {
@@ -61,6 +67,7 @@ namespace CapaPresentaciones
                 Perfil = E_InicioSesion.Perfil;
                 MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
                 pbPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
+                pbEditarPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
             }
             lblDatos.Text = E_InicioSesion.Datos;
             lblAcceso.Text = E_InicioSesion.Acceso;
@@ -240,31 +247,7 @@ namespace CapaPresentaciones
             lblSuperior.Focus();
         }
 
-        private void btnDocentes_Click(object sender, EventArgs e)
-        {
-            ActualizarColor();
-            AbrirFormularios<P_TablaDocentes>();
-        }
-
-        private void btnAsignaturas_Click(object sender, EventArgs e)
-        {
-            ActualizarColor();
-            AbrirFormularios<P_TablaAsignaturas>();
-        }
-
-        private void btnSilabos_Click(object sender, EventArgs e)
-        {
-            ActualizarColor();
-            AbrirFormularios<P_TablaAsignaturasAsignadasSilabos>();
-        }
-
-        private void btnAsignaturasAsignadas_Click(object sender, EventArgs e)
-        {
-            ActualizarColor();
-            AbrirFormularios<P_TablaAsignaturasAsignadasEstudiantes>();
-        }
-
-        private void btnEditarPerfil_Click(object sender, EventArgs e)
+        private void EditarPerfil()
         {
             ActualizarColor();
 
@@ -319,6 +302,35 @@ namespace CapaPresentaciones
             }*/
         }
 
+        private void btnDocentes_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_TablaDocentes>();
+        }
+
+        private void btnAsignaturas_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_TablaAsignaturas>();
+        }
+
+        private void btnSilabos_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_TablaAsignaturasAsignadasSilabos>();
+        }
+
+        private void btnAsignaturasAsignadas_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_TablaAsignaturasAsignadasEstudiantes>();
+        }
+
+        private void btnEditarPerfil_Click(object sender, EventArgs e)
+        {
+            EditarPerfil();
+        }
+
         private void btnCatálogo_Click(object sender, EventArgs e)
         {
             ActualizarColor();
@@ -341,6 +353,11 @@ namespace CapaPresentaciones
         {
             CargarDatosUsuario();
             GestionarAcceso();
+        }
+
+        private void pbEditarPerfil_Click(object sender, EventArgs e)
+        {
+            EditarPerfil();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

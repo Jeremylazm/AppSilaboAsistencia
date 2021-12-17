@@ -117,6 +117,8 @@ namespace CapaPresentaciones
         public P_DialogoError(string Mensaje)
         {
             InitializeComponent();
+            Control[] Controles = { pnContenedor, lblTitulo, pbImagen, lblNombre, lblMensaje };
+            Docker.SubscribeControlsToDragEvents(Controles);
             lblMensaje.Text = Mensaje;
         }
 
@@ -140,7 +142,7 @@ namespace CapaPresentaciones
             {
                 FormAparicion.Stop();
                 ImagenAparicion.ShowSync(pbImagen);
-                lblTitulo.Visible = true;
+                lblNombre.Visible = true;
                 lblMensaje.Visible = true;
                 btnAceptar.Visible = true;
             }
@@ -149,6 +151,11 @@ namespace CapaPresentaciones
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void pnContenedor_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
