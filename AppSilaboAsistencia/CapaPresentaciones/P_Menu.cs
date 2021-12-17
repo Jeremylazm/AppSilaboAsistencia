@@ -94,7 +94,7 @@ namespace CapaPresentaciones
 
                 // Administrador 
             }
-            else if (Acceso == "Jefe de Departamento Academico")
+            else if (Acceso == "Jefe de Departamento")
             {
                 // Docentes y catálogo
                 btnAsistencia.Visible = false;
@@ -105,7 +105,7 @@ namespace CapaPresentaciones
                 btnAsignaturas.Visible = true;
                 btnDocentes.Visible = true;
             }
-            else if (Acceso == "Director de Escuela Profesional")
+            else if (Acceso == "Director de Escuela")
             {
                 // Asignaturas
                 btnAsistencia.Visible = false;

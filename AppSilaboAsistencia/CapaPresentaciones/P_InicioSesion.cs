@@ -60,7 +60,7 @@ namespace CapaPresentaciones
                         {
                             P_Menu Menu = new P_Menu
                             {
-                                Acceso = "Jefe de Departamento Academico"
+                                Acceso = "Jefe de Departamento"
                             };
                             Menu.Show();
                         }
@@ -70,7 +70,7 @@ namespace CapaPresentaciones
                         {
                             P_Menu Menu = new P_Menu
                             {
-                                Acceso = "Director de Escuela Profesional"
+                                Acceso = "Director de Escuela"
                             };
                             Menu.Show();
                         }
