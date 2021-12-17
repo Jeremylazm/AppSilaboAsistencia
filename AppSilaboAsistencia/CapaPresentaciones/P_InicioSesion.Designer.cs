@@ -53,13 +53,11 @@ namespace CapaPresentaciones
             this.lblUniversidad = new Bunifu.UI.WinForms.BunifuLabel();
             this.pbLogo = new Bunifu.UI.WinForms.BunifuImageButton();
             this.btnOlvidarContraseña = new System.Windows.Forms.LinkLabel();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblErrorUsuario = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblErrorContraseña = new Bunifu.UI.WinForms.BunifuLabel();
             this.pbErrorUsuario = new Bunifu.UI.WinForms.BunifuImageButton();
             this.pbErrorContraseña = new Bunifu.UI.WinForms.BunifuImageButton();
             this.pnLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // Movimiento
@@ -84,7 +82,7 @@ namespace CapaPresentaciones
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblTitulo.Size = new System.Drawing.Size(376, 87);
-            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.TabIndex = 10;
             this.lblTitulo.Text = "Sistema de Gestión de Sílabo y\r\nControl de Asistencia";
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
@@ -106,7 +104,7 @@ namespace CapaPresentaciones
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblUsuario.Size = new System.Drawing.Size(63, 23);
-            this.lblUsuario.TabIndex = 2;
+            this.lblUsuario.TabIndex = 12;
             this.lblUsuario.Text = "Usuario";
             this.lblUsuario.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblUsuario.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
@@ -180,7 +178,7 @@ namespace CapaPresentaciones
             this.txtUsuario.ShortcutsEnabled = true;
             this.txtUsuario.Size = new System.Drawing.Size(333, 40);
             this.txtUsuario.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
-            this.txtUsuario.TabIndex = 3;
+            this.txtUsuario.TabIndex = 0;
             this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtUsuario.TextMarginBottom = 0;
             this.txtUsuario.TextMarginLeft = 7;
@@ -259,7 +257,7 @@ namespace CapaPresentaciones
             this.txtContraseña.ShortcutsEnabled = true;
             this.txtContraseña.Size = new System.Drawing.Size(333, 40);
             this.txtContraseña.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
-            this.txtContraseña.TabIndex = 5;
+            this.txtContraseña.TabIndex = 1;
             this.txtContraseña.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtContraseña.TextMarginBottom = 0;
             this.txtContraseña.TextMarginLeft = 7;
@@ -282,7 +280,7 @@ namespace CapaPresentaciones
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblContraseña.Size = new System.Drawing.Size(96, 23);
-            this.lblContraseña.TabIndex = 4;
+            this.lblContraseña.TabIndex = 13;
             this.lblContraseña.Text = "Contraseña";
             this.lblContraseña.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblContraseña.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
@@ -369,7 +367,7 @@ namespace CapaPresentaciones
             this.btnIngresar.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Ingresar;
             this.btnIngresar.OnPressedState.IconRightImage = null;
             this.btnIngresar.Size = new System.Drawing.Size(269, 39);
-            this.btnIngresar.TabIndex = 7;
+            this.btnIngresar.TabIndex = 2;
             this.btnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnIngresar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnIngresar.TextMarginLeft = 0;
@@ -503,11 +501,6 @@ namespace CapaPresentaciones
             this.btnOlvidarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnOlvidarContraseña.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProvider1.ContainerControl = this;
-            // 
             // lblErrorUsuario
             // 
             this.lblErrorUsuario.AllowParentOverrides = false;
@@ -524,6 +517,7 @@ namespace CapaPresentaciones
             this.lblErrorUsuario.Text = "Error de Usuario";
             this.lblErrorUsuario.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblErrorUsuario.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblErrorUsuario.Visible = false;
             // 
             // lblErrorContraseña
             // 
@@ -541,6 +535,7 @@ namespace CapaPresentaciones
             this.lblErrorContraseña.Text = "Error de Contraseña";
             this.lblErrorContraseña.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblErrorContraseña.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblErrorContraseña.Visible = false;
             // 
             // pbErrorUsuario
             // 
@@ -573,6 +568,7 @@ namespace CapaPresentaciones
             this.pbErrorUsuario.Size = new System.Drawing.Size(18, 18);
             this.pbErrorUsuario.TabIndex = 12;
             this.pbErrorUsuario.ToolTipText = "";
+            this.pbErrorUsuario.Visible = false;
             this.pbErrorUsuario.WaitOnLoad = false;
             this.pbErrorUsuario.Zoom = 0;
             this.pbErrorUsuario.ZoomSpeed = 10;
@@ -608,6 +604,7 @@ namespace CapaPresentaciones
             this.pbErrorContraseña.Size = new System.Drawing.Size(18, 18);
             this.pbErrorContraseña.TabIndex = 13;
             this.pbErrorContraseña.ToolTipText = "";
+            this.pbErrorContraseña.Visible = false;
             this.pbErrorContraseña.WaitOnLoad = false;
             this.pbErrorContraseña.Zoom = 0;
             this.pbErrorContraseña.ZoomSpeed = 10;
@@ -634,9 +631,7 @@ namespace CapaPresentaciones
             this.Name = "P_InicioSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de Sesión";
-            this.Load += new System.EventHandler(this.P_InicioSesion_Load);
             this.pnLogo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -657,7 +652,6 @@ namespace CapaPresentaciones
         private System.Windows.Forms.LinkLabel btnOlvidarContraseña;
         private Bunifu.UI.WinForms.BunifuLabel lblUniversidad;
         private Bunifu.UI.WinForms.BunifuImageButton btnCerrar;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
         private Bunifu.UI.WinForms.BunifuLabel lblErrorContraseña;
         private Bunifu.UI.WinForms.BunifuLabel lblErrorUsuario;
         private Bunifu.UI.WinForms.BunifuImageButton pbErrorContraseña;
