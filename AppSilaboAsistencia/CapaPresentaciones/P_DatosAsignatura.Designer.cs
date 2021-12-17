@@ -869,7 +869,7 @@ namespace CapaPresentaciones
             this.btnGuardar.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Guardar;
             this.btnGuardar.OnPressedState.IconRightImage = null;
             this.btnGuardar.Size = new System.Drawing.Size(170, 39);
-            this.btnGuardar.TabIndex = 7;
+            this.btnGuardar.TabIndex = 8;
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnGuardar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnGuardar.TextMarginLeft = 0;
@@ -1048,7 +1048,6 @@ namespace CapaPresentaciones
             this.cxtCategoriaAsg.ItemHighLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.cxtCategoriaAsg.ItemHighLightForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.cxtCategoriaAsg.Items.AddRange(new object[] {
-            "SELECCIONE",
             "EG",
             "EE",
             "EEEP",
@@ -1060,7 +1059,7 @@ namespace CapaPresentaciones
             this.cxtCategoriaAsg.Location = new System.Drawing.Point(20, 276);
             this.cxtCategoriaAsg.Name = "cxtCategoriaAsg";
             this.cxtCategoriaAsg.Size = new System.Drawing.Size(209, 32);
-            this.cxtCategoriaAsg.TabIndex = 30;
+            this.cxtCategoriaAsg.TabIndex = 3;
             this.cxtCategoriaAsg.Text = null;
             this.cxtCategoriaAsg.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             this.cxtCategoriaAsg.TextLeftMargin = 5;
@@ -1134,7 +1133,7 @@ namespace CapaPresentaciones
             this.txtSumilla.ShortcutsEnabled = true;
             this.txtSumilla.Size = new System.Drawing.Size(485, 167);
             this.txtSumilla.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
-            this.txtSumilla.TabIndex = 31;
+            this.txtSumilla.TabIndex = 7;
             this.txtSumilla.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtSumilla.TextMarginBottom = 0;
             this.txtSumilla.TextMarginLeft = 0;

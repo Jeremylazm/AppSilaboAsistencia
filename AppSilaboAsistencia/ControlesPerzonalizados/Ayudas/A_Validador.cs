@@ -58,7 +58,7 @@ namespace ControlesPerzonalizados.Ayudas
         public bool ValidarCodigoAsignatura(BunifuTextBox TextBox, BunifuLabel Label, BunifuImageButton Imagen, string CodDepartamento)
         {
             bool DigitoLleno = Validar(@"^(?!\s*$).+", TextBox, Label, Imagen, "El campo no debe estar vacío");
-            bool DigitoCorrecto = Validar(@"(^$)|(^(" + CodDepartamento + @")\d{3}$)", TextBox, Label, Imagen, "El código deber ser " + CodDepartamento + "[Número de 3 dígitos]");
+            bool DigitoCorrecto = Validar(@"(^$)|(^(" + CodDepartamento + @")\d{3}$)", TextBox, Label, Imagen, "El código deber ser " + CodDepartamento + "[3 dígitos]");
 
             return DigitoLleno && DigitoCorrecto;
         }
@@ -74,7 +74,7 @@ namespace ControlesPerzonalizados.Ayudas
         public bool ValidarDigitoIntervalo(BunifuTextBox TextBox, BunifuLabel Label, BunifuImageButton Imagen, int Min, int Max)
         {
             bool DigitoLleno = Validar(@"^(?!\s*$).+", TextBox, Label, Imagen, "El campo no debe estar vacío");
-            bool DigitoCorrecto = Validar(@"(^$)|(^[" + Min + @"-" + Max + @"]$)", TextBox, Label, Imagen, "El campo debe estar en el intervalo [" + Min + "-" + Max + "]");
+            bool DigitoCorrecto = Validar(@"(^$)|(^[" + Min + @"-" + Max + @"]$)", TextBox, Label, Imagen, "El campo debe estar entre " + Min + " y " + Max);
 
             return DigitoLleno && DigitoCorrecto;
         }
