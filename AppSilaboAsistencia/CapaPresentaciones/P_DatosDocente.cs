@@ -280,7 +280,7 @@ namespace CapaPresentaciones
                                 //MensajeError("Este registro de docente ya existe");
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             P_DialogoError.Mostrar("Error al insertar el registro");
                             //MensajeError("Error al insertar el registro " + ex);
@@ -334,7 +334,7 @@ namespace CapaPresentaciones
                                 }
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             P_DialogoError.Mostrar("Error al editar el registro");
                             //MensajeError("Error al editar el registro " + ex);

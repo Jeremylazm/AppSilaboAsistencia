@@ -129,12 +129,12 @@ namespace CapaPresentaciones
 
             if (DrawerOpen)
             {
-                pnOpciones.Width = 173;
-                pbLogo.Location = new Point(178, 6);
-                SeparadorMenu.Width = 161;
+                pnOpciones.Width = 220;
+                pbLogo.Location = new Point(225, 5);
+                SeparadorMenu.Width = 209;
                 pbPerfil.Visible = true;
-                //btnEditarPerfil.Visible = true;
-                //pbEditarPerfil.Visible = false;
+                btnEditarPerfil.Visible = true;
+                pbEditarPerfil.Visible = false;
                 lblDatos.Visible = true;
                 lblAcceso.Visible = true;
                 lblUsuario.Visible = true;
@@ -145,11 +145,11 @@ namespace CapaPresentaciones
             else
             {
                 pnOpciones.Width = 44;
-                pbLogo.Location = new Point(49, 6);
+                pbLogo.Location = new Point(49, 5);
                 SeparadorMenu.Width = 35;
                 pbPerfil.Visible = false;
-                //btnEditarPerfil.Visible = false;
-                //pbEditarPerfil.Visible = true;
+                btnEditarPerfil.Visible = false;
+                pbEditarPerfil.Visible = true;
                 lblDatos.Visible = false;
                 lblAcceso.Visible = false;
                 lblUsuario.Visible = false;

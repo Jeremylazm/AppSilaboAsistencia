@@ -68,10 +68,12 @@ namespace CapaPresentaciones
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.Transicion = new Bunifu.UI.WinForms.BunifuTransition(this.components);
+            this.pbEditarPerfil = new ControlesPerzonalizados.C_CircularPictureBox();
             this.pnPrincipal.SuspendLayout();
             this.pnOpciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbEditar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbEditarPerfil)).BeginInit();
             this.SuspendLayout();
             // 
             // pnPrincipal
@@ -97,7 +99,7 @@ namespace CapaPresentaciones
             this.pnPrincipal.Margin = new System.Windows.Forms.Padding(0);
             this.pnPrincipal.Name = "pnPrincipal";
             this.pnPrincipal.ShowBorders = true;
-            this.pnPrincipal.Size = new System.Drawing.Size(1000, 600);
+            this.pnPrincipal.Size = new System.Drawing.Size(1047, 628);
             this.pnPrincipal.TabIndex = 0;
             // 
             // btnMaximizar
@@ -122,7 +124,7 @@ namespace CapaPresentaciones
             this.btnMaximizar.ImageSize = new System.Drawing.Size(20, 20);
             this.btnMaximizar.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.btnMaximizar.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.InitialImage")));
-            this.btnMaximizar.Location = new System.Drawing.Point(932, 8);
+            this.btnMaximizar.Location = new System.Drawing.Point(978, 8);
             this.btnMaximizar.Name = "btnMaximizar";
             this.btnMaximizar.Rotation = 0;
             this.btnMaximizar.ShowActiveImage = true;
@@ -159,7 +161,7 @@ namespace CapaPresentaciones
             this.btnRestaurar.ImageSize = new System.Drawing.Size(20, 20);
             this.btnRestaurar.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.btnRestaurar.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnRestaurar.InitialImage")));
-            this.btnRestaurar.Location = new System.Drawing.Point(932, 8);
+            this.btnRestaurar.Location = new System.Drawing.Point(979, 8);
             this.btnRestaurar.Name = "btnRestaurar";
             this.btnRestaurar.Rotation = 0;
             this.btnRestaurar.ShowActiveImage = true;
@@ -179,9 +181,9 @@ namespace CapaPresentaciones
             this.pnContenedor.BackColor = System.Drawing.Color.White;
             this.Transicion.SetDecoration(this.pnContenedor, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.pnContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnContenedor.Location = new System.Drawing.Point(173, 46);
+            this.pnContenedor.Location = new System.Drawing.Point(220, 44);
             this.pnContenedor.Name = "pnContenedor";
-            this.pnContenedor.Size = new System.Drawing.Size(827, 508);
+            this.pnContenedor.Size = new System.Drawing.Size(827, 540);
             this.pnContenedor.TabIndex = 16;
             // 
             // btnMinimizar
@@ -206,7 +208,7 @@ namespace CapaPresentaciones
             this.btnMinimizar.ImageSize = new System.Drawing.Size(20, 20);
             this.btnMinimizar.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.btnMinimizar.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.InitialImage")));
-            this.btnMinimizar.Location = new System.Drawing.Point(902, 8);
+            this.btnMinimizar.Location = new System.Drawing.Point(948, 8);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Rotation = 0;
             this.btnMinimizar.ShowActiveImage = true;
@@ -243,7 +245,7 @@ namespace CapaPresentaciones
             this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
             this.btnCerrar.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.btnCerrar.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnCerrar.InitialImage")));
-            this.btnCerrar.Location = new System.Drawing.Point(962, 8);
+            this.btnCerrar.Location = new System.Drawing.Point(1008, 8);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Rotation = 0;
             this.btnCerrar.ShowActiveImage = true;
@@ -280,7 +282,7 @@ namespace CapaPresentaciones
             this.pbLogo.ImageSize = new System.Drawing.Size(30, 36);
             this.pbLogo.ImageZoomSize = new System.Drawing.Size(30, 36);
             this.pbLogo.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbLogo.InitialImage")));
-            this.pbLogo.Location = new System.Drawing.Point(178, 6);
+            this.pbLogo.Location = new System.Drawing.Point(225, 5);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Rotation = 0;
             this.pbLogo.ShowActiveImage = false;
@@ -306,10 +308,10 @@ namespace CapaPresentaciones
             this.lblInferior.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblInferior.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInferior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblInferior.Location = new System.Drawing.Point(173, 554);
+            this.lblInferior.Location = new System.Drawing.Point(220, 584);
             this.lblInferior.Name = "lblInferior";
             this.lblInferior.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblInferior.Size = new System.Drawing.Size(827, 46);
+            this.lblInferior.Size = new System.Drawing.Size(827, 44);
             this.lblInferior.TabIndex = 5;
             this.lblInferior.Text = "Realizado por estudiantes de la Escuela Profesional de Ingeniería Informática y d" +
     "e Sistemas";
@@ -328,10 +330,10 @@ namespace CapaPresentaciones
             this.lblSuperior.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblSuperior.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblSuperior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblSuperior.Location = new System.Drawing.Point(173, 0);
+            this.lblSuperior.Location = new System.Drawing.Point(220, 0);
             this.lblSuperior.Name = "lblSuperior";
             this.lblSuperior.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblSuperior.Size = new System.Drawing.Size(827, 46);
+            this.lblSuperior.Size = new System.Drawing.Size(827, 44);
             this.lblSuperior.TabIndex = 4;
             this.lblSuperior.Text = "Sistema de Gestión de Sílabo y Control de Asistencia - UNSAAC";
             this.lblSuperior.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -341,6 +343,7 @@ namespace CapaPresentaciones
             // 
             this.pnOpciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pnOpciones.Controls.Add(this.btnEditarPerfil);
+            this.pnOpciones.Controls.Add(this.pbEditarPerfil);
             this.pnOpciones.Controls.Add(this.pbEditar);
             this.pnOpciones.Controls.Add(this.pbPerfil);
             this.pnOpciones.Controls.Add(this.SeparadorMenu);
@@ -359,7 +362,7 @@ namespace CapaPresentaciones
             this.pnOpciones.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnOpciones.Location = new System.Drawing.Point(0, 0);
             this.pnOpciones.Name = "pnOpciones";
-            this.pnOpciones.Size = new System.Drawing.Size(173, 600);
+            this.pnOpciones.Size = new System.Drawing.Size(220, 628);
             this.pnOpciones.TabIndex = 15;
             // 
             // btnEditarPerfil
@@ -410,7 +413,7 @@ namespace CapaPresentaciones
             this.btnEditarPerfil.IdleIconLeftImage = null;
             this.btnEditarPerfil.IdleIconRightImage = null;
             this.btnEditarPerfil.IndicateFocus = false;
-            this.btnEditarPerfil.Location = new System.Drawing.Point(5, 241);
+            this.btnEditarPerfil.Location = new System.Drawing.Point(5, 267);
             this.btnEditarPerfil.Name = "btnEditarPerfil";
             this.btnEditarPerfil.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnEditarPerfil.OnDisabledState.BorderRadius = 15;
@@ -444,7 +447,7 @@ namespace CapaPresentaciones
             this.btnEditarPerfil.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEditarPerfil.OnPressedState.IconLeftImage = null;
             this.btnEditarPerfil.OnPressedState.IconRightImage = null;
-            this.btnEditarPerfil.Size = new System.Drawing.Size(161, 39);
+            this.btnEditarPerfil.Size = new System.Drawing.Size(209, 39);
             this.btnEditarPerfil.TabIndex = 50;
             this.btnEditarPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnEditarPerfil.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -465,7 +468,7 @@ namespace CapaPresentaciones
             this.Transicion.SetDecoration(this.pbEditar, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.pbEditar.GradientAngle = 50F;
             this.pbEditar.Image = ((System.Drawing.Image)(resources.GetObject("pbEditar.Image")));
-            this.pbEditar.Location = new System.Drawing.Point(5, 246);
+            this.pbEditar.Location = new System.Drawing.Point(5, 272);
             this.pbEditar.Name = "pbEditar";
             this.pbEditar.Size = new System.Drawing.Size(34, 34);
             this.pbEditar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -484,7 +487,7 @@ namespace CapaPresentaciones
             this.Transicion.SetDecoration(this.pbPerfil, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.pbPerfil.GradientAngle = 50F;
             this.pbPerfil.Image = ((System.Drawing.Image)(resources.GetObject("pbPerfil.Image")));
-            this.pbPerfil.Location = new System.Drawing.Point(34, 12);
+            this.pbPerfil.Location = new System.Drawing.Point(61, 12);
             this.pbPerfil.Name = "pbPerfil";
             this.pbPerfil.Size = new System.Drawing.Size(100, 100);
             this.pbPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -501,10 +504,10 @@ namespace CapaPresentaciones
             this.SeparadorMenu.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.SeparadorMenu.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.SeparadorMenu.LineThickness = 1;
-            this.SeparadorMenu.Location = new System.Drawing.Point(5, 286);
+            this.SeparadorMenu.Location = new System.Drawing.Point(5, 312);
             this.SeparadorMenu.Name = "SeparadorMenu";
             this.SeparadorMenu.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.SeparadorMenu.Size = new System.Drawing.Size(161, 14);
+            this.SeparadorMenu.Size = new System.Drawing.Size(209, 14);
             this.SeparadorMenu.TabIndex = 51;
             // 
             // btnAsignaturas
@@ -555,7 +558,7 @@ namespace CapaPresentaciones
             this.btnAsignaturas.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Asignaturas;
             this.btnAsignaturas.IdleIconRightImage = null;
             this.btnAsignaturas.IndicateFocus = false;
-            this.btnAsignaturas.Location = new System.Drawing.Point(0, 512);
+            this.btnAsignaturas.Location = new System.Drawing.Point(0, 538);
             this.btnAsignaturas.Name = "btnAsignaturas";
             this.btnAsignaturas.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAsignaturas.OnDisabledState.BorderRadius = 1;
@@ -589,7 +592,7 @@ namespace CapaPresentaciones
             this.btnAsignaturas.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnAsignaturas.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Asignaturas;
             this.btnAsignaturas.OnPressedState.IconRightImage = null;
-            this.btnAsignaturas.Size = new System.Drawing.Size(173, 39);
+            this.btnAsignaturas.Size = new System.Drawing.Size(220, 39);
             this.btnAsignaturas.TabIndex = 60;
             this.btnAsignaturas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAsignaturas.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -646,7 +649,7 @@ namespace CapaPresentaciones
             this.btnCatálogo.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Asistencias;
             this.btnCatálogo.IdleIconRightImage = null;
             this.btnCatálogo.IndicateFocus = false;
-            this.btnCatálogo.Location = new System.Drawing.Point(0, 470);
+            this.btnCatálogo.Location = new System.Drawing.Point(0, 496);
             this.btnCatálogo.Name = "btnCatálogo";
             this.btnCatálogo.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnCatálogo.OnDisabledState.BorderRadius = 1;
@@ -680,7 +683,7 @@ namespace CapaPresentaciones
             this.btnCatálogo.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnCatálogo.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Asistencias;
             this.btnCatálogo.OnPressedState.IconRightImage = null;
-            this.btnCatálogo.Size = new System.Drawing.Size(173, 39);
+            this.btnCatálogo.Size = new System.Drawing.Size(220, 39);
             this.btnCatálogo.TabIndex = 59;
             this.btnCatálogo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCatálogo.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -737,7 +740,7 @@ namespace CapaPresentaciones
             this.btnSesiones.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Planes_de_Sesiones;
             this.btnSesiones.IdleIconRightImage = null;
             this.btnSesiones.IndicateFocus = false;
-            this.btnSesiones.Location = new System.Drawing.Point(0, 429);
+            this.btnSesiones.Location = new System.Drawing.Point(0, 455);
             this.btnSesiones.Name = "btnSesiones";
             this.btnSesiones.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSesiones.OnDisabledState.BorderRadius = 1;
@@ -771,7 +774,7 @@ namespace CapaPresentaciones
             this.btnSesiones.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnSesiones.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Planes_de_Sesiones;
             this.btnSesiones.OnPressedState.IconRightImage = null;
-            this.btnSesiones.Size = new System.Drawing.Size(173, 39);
+            this.btnSesiones.Size = new System.Drawing.Size(220, 39);
             this.btnSesiones.TabIndex = 58;
             this.btnSesiones.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSesiones.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -828,7 +831,7 @@ namespace CapaPresentaciones
             this.btnDocentes.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Docentes;
             this.btnDocentes.IdleIconRightImage = null;
             this.btnDocentes.IndicateFocus = false;
-            this.btnDocentes.Location = new System.Drawing.Point(0, 555);
+            this.btnDocentes.Location = new System.Drawing.Point(0, 581);
             this.btnDocentes.Name = "btnDocentes";
             this.btnDocentes.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnDocentes.OnDisabledState.BorderRadius = 1;
@@ -862,7 +865,7 @@ namespace CapaPresentaciones
             this.btnDocentes.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnDocentes.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Docentes;
             this.btnDocentes.OnPressedState.IconRightImage = null;
-            this.btnDocentes.Size = new System.Drawing.Size(173, 39);
+            this.btnDocentes.Size = new System.Drawing.Size(220, 39);
             this.btnDocentes.TabIndex = 57;
             this.btnDocentes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDocentes.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -955,7 +958,7 @@ namespace CapaPresentaciones
             this.btnAsistencia.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Principal;
             this.btnAsistencia.IdleIconRightImage = null;
             this.btnAsistencia.IndicateFocus = false;
-            this.btnAsistencia.Location = new System.Drawing.Point(0, 306);
+            this.btnAsistencia.Location = new System.Drawing.Point(0, 332);
             this.btnAsistencia.Name = "btnAsistencia";
             this.btnAsistencia.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAsistencia.OnDisabledState.BorderRadius = 1;
@@ -989,7 +992,7 @@ namespace CapaPresentaciones
             this.btnAsistencia.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnAsistencia.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Principal;
             this.btnAsistencia.OnPressedState.IconRightImage = null;
-            this.btnAsistencia.Size = new System.Drawing.Size(173, 39);
+            this.btnAsistencia.Size = new System.Drawing.Size(220, 39);
             this.btnAsistencia.TabIndex = 55;
             this.btnAsistencia.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAsistencia.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1046,7 +1049,7 @@ namespace CapaPresentaciones
             this.btnSilabos.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Sílabos;
             this.btnSilabos.IdleIconRightImage = null;
             this.btnSilabos.IndicateFocus = false;
-            this.btnSilabos.Location = new System.Drawing.Point(0, 388);
+            this.btnSilabos.Location = new System.Drawing.Point(0, 414);
             this.btnSilabos.Name = "btnSilabos";
             this.btnSilabos.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSilabos.OnDisabledState.BorderRadius = 1;
@@ -1080,7 +1083,7 @@ namespace CapaPresentaciones
             this.btnSilabos.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnSilabos.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Sílabos;
             this.btnSilabos.OnPressedState.IconRightImage = null;
-            this.btnSilabos.Size = new System.Drawing.Size(173, 39);
+            this.btnSilabos.Size = new System.Drawing.Size(220, 39);
             this.btnSilabos.TabIndex = 53;
             this.btnSilabos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSilabos.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1137,7 +1140,7 @@ namespace CapaPresentaciones
             this.btnAsignaturasAsignadas.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Asignaturas;
             this.btnAsignaturasAsignadas.IdleIconRightImage = null;
             this.btnAsignaturasAsignadas.IndicateFocus = false;
-            this.btnAsignaturasAsignadas.Location = new System.Drawing.Point(0, 347);
+            this.btnAsignaturasAsignadas.Location = new System.Drawing.Point(0, 373);
             this.btnAsignaturasAsignadas.Name = "btnAsignaturasAsignadas";
             this.btnAsignaturasAsignadas.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAsignaturasAsignadas.OnDisabledState.BorderRadius = 1;
@@ -1171,7 +1174,7 @@ namespace CapaPresentaciones
             this.btnAsignaturasAsignadas.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnAsignaturasAsignadas.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Asignaturas;
             this.btnAsignaturasAsignadas.OnPressedState.IconRightImage = null;
-            this.btnAsignaturasAsignadas.Size = new System.Drawing.Size(173, 39);
+            this.btnAsignaturasAsignadas.Size = new System.Drawing.Size(220, 39);
             this.btnAsignaturasAsignadas.TabIndex = 52;
             this.btnAsignaturasAsignadas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAsignaturasAsignadas.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1190,10 +1193,10 @@ namespace CapaPresentaciones
             this.Transicion.SetDecoration(this.lblUsuario, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lblUsuario.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.lblUsuario.Location = new System.Drawing.Point(5, 207);
+            this.lblUsuario.Location = new System.Drawing.Point(5, 233);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblUsuario.Size = new System.Drawing.Size(161, 28);
+            this.lblUsuario.Size = new System.Drawing.Size(209, 28);
             this.lblUsuario.TabIndex = 49;
             this.lblUsuario.Text = "Usuario";
             this.lblUsuario.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
@@ -1209,10 +1212,10 @@ namespace CapaPresentaciones
             this.Transicion.SetDecoration(this.lblAcceso, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lblAcceso.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblAcceso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.lblAcceso.Location = new System.Drawing.Point(5, 173);
+            this.lblAcceso.Location = new System.Drawing.Point(5, 199);
             this.lblAcceso.Name = "lblAcceso";
             this.lblAcceso.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblAcceso.Size = new System.Drawing.Size(161, 28);
+            this.lblAcceso.Size = new System.Drawing.Size(209, 28);
             this.lblAcceso.TabIndex = 48;
             this.lblAcceso.Text = "Acceso";
             this.lblAcceso.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
@@ -1228,12 +1231,12 @@ namespace CapaPresentaciones
             this.Transicion.SetDecoration(this.lblDatos, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lblDatos.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblDatos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.lblDatos.Location = new System.Drawing.Point(5, 108);
+            this.lblDatos.Location = new System.Drawing.Point(5, 120);
             this.lblDatos.Name = "lblDatos";
             this.lblDatos.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblDatos.Size = new System.Drawing.Size(161, 59);
+            this.lblDatos.Size = new System.Drawing.Size(209, 67);
             this.lblDatos.TabIndex = 47;
-            this.lblDatos.Text = "Datos";
+            this.lblDatos.Text = "QUINTANILLA PORTUGAL, ROXANA";
             this.lblDatos.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblDatos.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -1304,16 +1307,35 @@ namespace CapaPresentaciones
             this.Transicion.DefaultAnimation = animation1;
             this.Transicion.TimeStep = 1F;
             // 
+            // pbEditarPerfil
+            // 
+            this.pbEditarPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pbEditarPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.pbEditarPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.pbEditarPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.pbEditarPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.pbEditarPerfil.BorderSize = 2;
+            this.pbEditarPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Transicion.SetDecoration(this.pbEditarPerfil, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.pbEditarPerfil.GradientAngle = 50F;
+            this.pbEditarPerfil.Image = ((System.Drawing.Image)(resources.GetObject("pbEditarPerfil.Image")));
+            this.pbEditarPerfil.Location = new System.Drawing.Point(5, 271);
+            this.pbEditarPerfil.Name = "pbEditarPerfil";
+            this.pbEditarPerfil.Size = new System.Drawing.Size(34, 34);
+            this.pbEditarPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbEditarPerfil.TabIndex = 61;
+            this.pbEditarPerfil.TabStop = false;
+            // 
             // P_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1000, 600);
+            this.ClientSize = new System.Drawing.Size(1047, 628);
             this.Controls.Add(this.pnPrincipal);
             this.Transicion.SetDecoration(this, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimumSize = new System.Drawing.Size(1000, 600);
+            this.MinimumSize = new System.Drawing.Size(1047, 628);
             this.Name = "P_Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Principal";
@@ -1322,6 +1344,7 @@ namespace CapaPresentaciones
             this.pnOpciones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbEditar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbEditarPerfil)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1356,5 +1379,6 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuSeparator SeparadorMenu;
         private ControlesPerzonalizados.C_CircularPictureBox pbPerfil;
         private ControlesPerzonalizados.C_CircularPictureBox pbEditar;
+        private ControlesPerzonalizados.C_CircularPictureBox pbEditarPerfil;
     }
 }
