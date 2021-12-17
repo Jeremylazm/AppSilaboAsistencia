@@ -175,7 +175,7 @@
         d2luZy5Qb2ludEYCAAAAAXgBeQAACwsCAAAAAAAAAAAAAAAL
 </value>
   </data>
-  <data name="lblTitulo.BaseStylesheet" xml:space="preserve">
+  <data name="lblNombre.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: bold; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
   </data>
   <data name="lblMensaje.BaseStylesheet" xml:space="preserve">
@@ -186,5 +186,8 @@
   </metadata>
   <metadata name="FormAparicion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>237, 20</value>
+  </metadata>
+  <metadata name="Docker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>512, 20</value>
   </metadata>
 </root>
