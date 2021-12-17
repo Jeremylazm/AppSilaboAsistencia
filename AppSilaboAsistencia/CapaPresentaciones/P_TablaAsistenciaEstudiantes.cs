@@ -29,6 +29,7 @@ namespace CapaPresentaciones
         public string hora = DateTime.Now.ToString("hh:mm:ss");
         private DataTable PlanSesion;
         public string horainicioAsignatura;
+        public string LmFechaInf = "15/12/2021";
         public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente)
         {
             ObjNegocio = new N_Catalogo();
@@ -128,8 +129,42 @@ namespace CapaPresentaciones
             //guardar asistencia de estudainte en la asigantura
             //DataTable Resultado = N_AsistenciaEstudiante.AsistenciaEstudiantes("2021-II", "IF", CodAsignatura, hora, lblFecha.Text.ToString());
             //DataTable registrosAsistencciaDocente = N_AsistenciaDocente.AsistenciaDocentes(CodDocente,CodAsignatura.Substring(0,2),lblFecha.Text.Substring(8).ToString());
+            if (Program.Evento == 0)//add
+            {
+                try
+                {
+                    // buscar el registro de asistencia de Docente de la fecha actual
+                    DataTable Resultado = N_AsistenciaDocente.AsistenciaDocenteAsignatura("2021-II","IF",CodDocente,CodAsignatura,horainicioAsignatura, lblFecha.Text.Substring(8).ToString(), lblFecha.Text.Substring(8).ToString());
 
-            if (dgvDatos.Rows.Count > 0)
+                    if (Resultado.Rows.Count == 0)
+                    {
+                        ObjEntidadDoc.CodSemestre = "2021-II";
+                        ObjEntidadDoc.CodAsignatura = CodAsignatura;
+                        ObjEntidadDoc.HoraInicio = horainicioAsignatura;
+                        ObjEntidadDoc.Fecha = lblFecha.Text.Substring(8).ToString();
+                        ObjEntidadDoc.Hora = hora;
+                        ObjEntidadDoc.CodDocente = CodDocente;
+                        ObjEntidadDoc.NombreTema = txtTema.Text.ToString();
+
+                        ObjNegocioDoc.RegistrarAsistenciaDocente(ObjEntidadDoc);
+                        P_DialogoInformacion.Mostrar("El registro de Asistencia Docente se insertó éxitosamente");
+                        //MensajeConfirmacion("Registro Asistencia docente insertado exitosamente");
+                        GuaradarRgistroEstudiantes();
+                        P_DialogoInformacion.Mostrar("Guardado con Exito");
+                        Close();
+                    }
+                    else
+                    {
+                        P_DialogoError.Mostrar("El registro de Hoy, ya existe");
+                        //MensajeError("Este registro de Asignatura ya existe");
+                    }
+                }
+                catch (Exception)
+                {
+                    P_DialogoError.Mostrar("Error al insertar el registro");
+                }
+            }
+            /*if (dgvDatos.Rows.Count > 0)
             {
                 ObjEntidadDoc.CodSemestre = "2021-II";
                 ObjEntidadDoc.CodAsignatura = CodAsignatura;
@@ -144,7 +179,7 @@ namespace CapaPresentaciones
                 //MensajeConfirmacion("Registro Asistencia docente insertado exitosamente");
                 GuaradarRgistroEstudiantes();
                 Close();
-            }
+            }*/
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -314,7 +349,7 @@ namespace CapaPresentaciones
 
             ObjNegocio.ActualizarPlanSesionesAsignatura("2021-II", CodAsignatura, CodDocente, arreglo);
             GuardarRegistroDocente();
-            MessageBox.Show("Guardado con Exito");
+            //MessageBox.Show("Guardado con Exito");
             Close();
         }
     }
