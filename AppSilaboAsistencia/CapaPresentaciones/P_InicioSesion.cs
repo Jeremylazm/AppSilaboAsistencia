@@ -9,10 +9,13 @@ namespace CapaPresentaciones
 {
     public partial class P_InicioSesion : Form
     {
-        readonly A_Validador Validador = new A_Validador();
+        readonly A_Validador Validador;
         public P_InicioSesion()
         {
+            Validador = new A_Validador();
             InitializeComponent();
+            Control[] Controles = { this, lblTitulo, pnLogo, pbLogo, lblUniversidad };
+            Docker.SubscribeControlsToDragEvents(Controles);
         }
 
         private void ActualizarColor()

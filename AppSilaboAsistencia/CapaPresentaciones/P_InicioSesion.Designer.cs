@@ -40,7 +40,6 @@ namespace CapaPresentaciones
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.lblUsuario = new Bunifu.UI.WinForms.BunifuLabel();
@@ -57,15 +56,9 @@ namespace CapaPresentaciones
             this.lblErrorContraseña = new Bunifu.UI.WinForms.BunifuLabel();
             this.pbErrorUsuario = new Bunifu.UI.WinForms.BunifuImageButton();
             this.pbErrorContraseña = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.pnLogo.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Movimiento
-            // 
-            this.Movimiento.Fixed = true;
-            this.Movimiento.Horizontal = true;
-            this.Movimiento.TargetControl = this.lblTitulo;
-            this.Movimiento.Vertical = true;
             // 
             // lblTitulo
             // 
@@ -512,7 +505,7 @@ namespace CapaPresentaciones
             this.lblErrorUsuario.Location = new System.Drawing.Point(58, 172);
             this.lblErrorUsuario.Name = "lblErrorUsuario";
             this.lblErrorUsuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblErrorUsuario.Size = new System.Drawing.Size(105, 20);
+            this.lblErrorUsuario.Size = new System.Drawing.Size(105, 19);
             this.lblErrorUsuario.TabIndex = 10;
             this.lblErrorUsuario.Text = "Error de Usuario";
             this.lblErrorUsuario.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -530,7 +523,7 @@ namespace CapaPresentaciones
             this.lblErrorContraseña.Location = new System.Drawing.Point(58, 267);
             this.lblErrorContraseña.Name = "lblErrorContraseña";
             this.lblErrorContraseña.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblErrorContraseña.Size = new System.Drawing.Size(131, 21);
+            this.lblErrorContraseña.Size = new System.Drawing.Size(131, 19);
             this.lblErrorContraseña.TabIndex = 11;
             this.lblErrorContraseña.Text = "Error de Contraseña";
             this.lblErrorContraseña.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -609,6 +602,46 @@ namespace CapaPresentaciones
             this.pbErrorContraseña.Zoom = 0;
             this.pbErrorContraseña.ZoomSpeed = 10;
             // 
+            // Docker
+            // 
+            this.Docker.AllowFormDragging = true;
+            this.Docker.AllowFormDropShadow = true;
+            this.Docker.AllowFormResizing = true;
+            this.Docker.AllowHidingBottomRegion = true;
+            this.Docker.AllowOpacityChangesWhileDragging = false;
+            this.Docker.BorderOptions.BottomBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.BottomBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.BottomBorder.ShowBorder = true;
+            this.Docker.BorderOptions.LeftBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.LeftBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.LeftBorder.ShowBorder = true;
+            this.Docker.BorderOptions.RightBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.RightBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.RightBorder.ShowBorder = true;
+            this.Docker.BorderOptions.TopBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.TopBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.TopBorder.ShowBorder = true;
+            this.Docker.ContainerControl = this;
+            this.Docker.DockingIndicatorsColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(215)))), ((int)(((byte)(233)))));
+            this.Docker.DockingIndicatorsOpacity = 0.5D;
+            this.Docker.DockingOptions.DockAll = false;
+            this.Docker.DockingOptions.DockBottomLeft = false;
+            this.Docker.DockingOptions.DockBottomRight = false;
+            this.Docker.DockingOptions.DockFullScreen = false;
+            this.Docker.DockingOptions.DockLeft = false;
+            this.Docker.DockingOptions.DockRight = false;
+            this.Docker.DockingOptions.DockTopLeft = false;
+            this.Docker.DockingOptions.DockTopRight = false;
+            this.Docker.FormDraggingOpacity = 0.9D;
+            this.Docker.ParentForm = this;
+            this.Docker.ShowCursorChanges = true;
+            this.Docker.ShowDockingIndicators = false;
+            this.Docker.TitleBarOptions.AllowFormDragging = true;
+            this.Docker.TitleBarOptions.BunifuFormDock = this.Docker;
+            this.Docker.TitleBarOptions.DoubleClickToExpandWindow = true;
+            this.Docker.TitleBarOptions.TitleBarControl = null;
+            this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
+            // 
             // P_InicioSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -638,8 +671,6 @@ namespace CapaPresentaciones
         }
 
         #endregion
-
-        private Bunifu.Framework.UI.BunifuDragControl Movimiento;
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
         private Bunifu.UI.WinForms.BunifuTextBox txtUsuario;
@@ -656,5 +687,6 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuLabel lblErrorUsuario;
         private Bunifu.UI.WinForms.BunifuImageButton pbErrorContraseña;
         private Bunifu.UI.WinForms.BunifuImageButton pbErrorUsuario;
+        private Bunifu.UI.WinForms.BunifuFormDock Docker;
     }
 }

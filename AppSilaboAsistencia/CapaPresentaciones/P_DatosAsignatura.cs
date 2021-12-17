@@ -10,16 +10,19 @@ using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
 using System.Text.RegularExpressions;
+using ControlesPerzonalizados.Ayudas;
 
 namespace CapaPresentaciones
 {
 	public partial class P_DatosAsignatura : Form
 	{
-		readonly E_Asignatura ObjEntidad;
+        readonly A_Validador Validador;
+        readonly E_Asignatura ObjEntidad;
         readonly N_Asignatura ObjNegocio;
 
         public P_DatosAsignatura()
 		{
+            Validador = new A_Validador();
             ObjEntidad = new E_Asignatura();
             ObjNegocio = new N_Asignatura();
             InitializeComponent();
@@ -27,16 +30,6 @@ namespace CapaPresentaciones
             Docker.SubscribeControlsToDragEvents(Controles);
             InicializarComboBoxCatergoria();
         }
-
-		private void MensajeConfirmacion(string Mensaje)
-		{
-			MessageBox.Show(Mensaje, "Sistema de Gestion de Plan de seciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-		}
-
-		private void MensajeError(string Mensaje)
-		{
-			MessageBox.Show(Mensaje, "Sistema de Gestion de Plan de seciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-		}
 
         private void LimpiarCajas()
         {
