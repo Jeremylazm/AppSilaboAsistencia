@@ -260,7 +260,7 @@ namespace CapaPresentaciones
             DialogResult Opcion = Dialogo.DialogResult;
             if (Opcion == DialogResult.Yes)
             {
-                Application.Exit();
+                Close();
                 P_InicioSesion Login = new P_InicioSesion();
                 Login.Show();
             }
