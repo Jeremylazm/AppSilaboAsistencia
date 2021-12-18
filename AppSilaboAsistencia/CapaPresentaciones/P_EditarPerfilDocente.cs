@@ -55,20 +55,20 @@ namespace CapaPresentaciones
             }
 
             // Cargar los otros datos del docente
-            txtCodigo.Text = Fila[2].ToString();
+            lblCodigo2.Text = Fila[2].ToString();
             APaterno = Fila[3].ToString();
             AMaterno = Fila[4].ToString();
             Nombre = Fila[5].ToString();
-            txtDocente.Text = APaterno + " " + AMaterno + ", " + Nombre;
+            lblNombres2.Text = APaterno + " " + AMaterno + ", " + Nombre;
             txtEmail.Text = Fila[6].ToString();
             txtDireccion.Text = Fila[7].ToString();
             txtTelefono.Text = Fila[8].ToString();
-            txtCategoria.Text = Fila[9].ToString();
-            txtSubcategoria.Text = Fila[10].ToString();
-            txtRegimen.Text = Fila[11].ToString();
+            lblCategoria2.Text = Fila[9].ToString();
+            lblSubcategoria2.Text = Fila[10].ToString();
+            lblRegimen2.Text = Fila[11].ToString();
             CodDepartamentoA = Fila[12].ToString();
             CodEscuelaP = Fila[13].ToString();
-            txtEscuelaP.Text = N_EscuelaProfesional.BuscarNombraEscuela(CodEscuelaP);
+            lblEscuelaP2.Text = N_EscuelaProfesional.BuscarNombraEscuela(CodEscuelaP);
 
             //CodEscuelaP = Fila[13].ToString();
             //txtEscuelaP.Text = Fila[14].ToString();
@@ -115,6 +115,20 @@ namespace CapaPresentaciones
             CargarDatosUsuario();
         }
 
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnRestablecerPerfil_Click(object sender, EventArgs e)
+        {
+            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea restablecer su perfil?") == DialogResult.Yes)
+            {
+                // Cargar imagen por defecto en el formulario
+                imgPerfil.Image = Properties.Resources.Perfil_Docente as Image;
+            }
+        }
+
         private void btnSubirPerfil_Click(object sender, EventArgs e)
         {
             try
@@ -141,19 +155,10 @@ namespace CapaPresentaciones
             }
         }
 
-        private void btnRestablecerPerfil_Click(object sender, EventArgs e)
-        {
-            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea restablecer su perfil?") == DialogResult.Yes)
-            {
-                // Cargar imagen por defecto en el formulario
-                imgPerfil.Image = Properties.Resources.Perfil_Docente as Image;
-            }
-        }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             // Mostrar mensaje para saber si realmente se desea editar los datos
-            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea guardar cambios?") == DialogResult.Yes)
+            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea actualizar su perfil?") == DialogResult.Yes)
             {
                 // Asignar campo por campo, los datos editados en el objeto entidad del docente
                 byte[] Perfil = new byte[0];
@@ -164,16 +169,16 @@ namespace CapaPresentaciones
                 }
                 E_InicioSesion.Perfil = Perfil;
                 ObjEntidad.Perfil = Perfil;
-                ObjEntidad.CodDocente = txtCodigo.Text;
+                ObjEntidad.CodDocente = lblCodigo2.Text;
                 ObjEntidad.APaterno = APaterno;
                 ObjEntidad.AMaterno = AMaterno;
                 ObjEntidad.Nombre = Nombre;
                 ObjEntidad.Email = txtEmail.Text;
                 ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
                 ObjEntidad.Telefono = txtTelefono.Text;
-                ObjEntidad.Categoria = txtCategoria.Text;
-                ObjEntidad.Subcategoria = txtSubcategoria.Text;
-                ObjEntidad.Regimen = txtRegimen.Text;
+                ObjEntidad.Categoria = lblCategoria2.Text;
+                ObjEntidad.Subcategoria = lblSubcategoria2.Text;
+                ObjEntidad.Regimen = lblRegimen2.Text;
                 ObjEntidad.CodDepartamentoA = CodDepartamentoA;
                 ObjEntidad.CodEscuelaP = CodEscuelaP;
 
@@ -181,7 +186,7 @@ namespace CapaPresentaciones
                 ObjNegocio.ActualizarDocente(ObjEntidad);
 
                 // Mostrar mensaje de confirmacion dando entender que se edito sus datos del docente
-                A_Dialogo.DialogoConfirmacion("Registro editado exitosamente");
+                A_Dialogo.DialogoConfirmacion("Perfil guardado exitosamente");
             }
         }
     }

@@ -130,7 +130,7 @@ namespace ControlesPerzonalizados
 
         private void btnEnviarCodigo_Click(object sender, EventArgs e)
         {
-            string correoIngresado = Email;
+            /*string correoIngresado = Email;
 
             string ans = validarpanelEnviarCodigo(Email, correoIngresado);
 
@@ -161,7 +161,7 @@ namespace ControlesPerzonalizados
                 panelVerificacion.Visible = true;
                 panelVerificacion.BringToFront();
                 lblEmail.Text = correoIngresado;
-            }
+            }*/
         }
 
         private void btnVolverEnviar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
