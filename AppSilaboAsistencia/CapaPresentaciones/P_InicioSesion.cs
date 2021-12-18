@@ -113,6 +113,7 @@ namespace CapaPresentaciones
         private void btnCerrar_Click(object sender, System.EventArgs e)
         {
             Close();
+            Application.Exit();
         }
 
         private void txtUsuario_TextChange(object sender, EventArgs e)
