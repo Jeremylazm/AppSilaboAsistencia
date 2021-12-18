@@ -245,6 +245,7 @@ namespace ControlesPerzonalizados
             this.btnVolverEnviar.Text = "Volver a enviar código de verificación";
             this.btnVolverEnviar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnVolverEnviar.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnVolverEnviar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnVolverEnviar_LinkClicked);
             // 
             // lblMensajeCorreo
             // 
