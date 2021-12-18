@@ -16,7 +16,7 @@ namespace CapaPresentaciones
         readonly E_Matricula ObjEntidadMatricula;
         readonly N_Matricula ObjNegocioMatricula;
         private readonly string CodSemestre = "2021-II";
-        private readonly string CodDocente = "65475";
+        private readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodEscuelaP = "IF";
 
         public P_TablaAsignaturasAsignadasEstudiantes()
@@ -101,12 +101,12 @@ namespace CapaPresentaciones
                 driver.Quit();
                 if (ex is NoSuchElementException)
                 {
-                    P_DialogoError.Mostrar("El servidor se encuentra temporalmente fuera de servicio");
+                    P_DialogoRespuesta1.Mostrar("El servidor se encuentra temporalmente fuera de servicio");
                     //MessageBox.Show("El servidor se encuentra temporalmente fuera de servicio.");
                 }
                 else if (ex is WebDriverException)
                 {
-                    P_DialogoError.Mostrar("No se encuentra conectado a Internet. Revise su conexión");
+                    P_DialogoRespuesta1.Mostrar("No se encuentra conectado a Internet. Revise su conexión");
                     //MessageBox.Show("No se encuentra conectado a Internet. Revise su conexión.");
                 }
             }

@@ -140,14 +140,14 @@ namespace CapaPresentaciones
             catch (Exception)
             {
                 // Mostrar mensaje de error
-                P_DialogoError.Mostrar("Error al subir perfil");
+                P_DialogoRespuesta1.Mostrar("Error al subir perfil");
                 //MessageBox.Show("Error al subir perfil");
             }
         }
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
-            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea restablecer su perfil?");
+            P_DialogoRespuesta2 Dialogo = new P_DialogoRespuesta2("¿Realmente desea restablecer su perfil?");
             Dialogo.ShowDialog();
             DialogResult Opcion = Dialogo.DialogResult;
             if (Opcion == DialogResult.OK)
@@ -160,7 +160,7 @@ namespace CapaPresentaciones
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             // Mostrar mensaje para saber si realmente se desea editar los datos
-            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea editar el registro?");
+            P_DialogoRespuesta2 Dialogo = new P_DialogoRespuesta2("¿Realmente desea editar el registro?");
             Dialogo.ShowDialog();
             DialogResult Opcion = Dialogo.DialogResult;
             //Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Gestión de Sílabos y Asistencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);

@@ -460,20 +460,20 @@ namespace CapaPresentaciones
                         }
                         catch
                         {
-                            P_DialogoError.Mostrar("Ya se ingresó en el catálogo u horario un contenido similar");
+                            P_DialogoRespuesta1.Mostrar("Ya se ingresó en el catálogo u horario un contenido similar");
                             //MessageBox.Show("Ya se ingresó en el catálogo u horario un contenido similar.");
                         }
                     }
                     else
                     {
-                        P_DialogoError.Mostrar("Hay un cruce de horarios de ese docente");
+                        P_DialogoRespuesta1.Mostrar("Hay un cruce de horarios de ese docente");
                         //MessageBox.Show("Hay un cruce de horarios de ese docente.");
                     }
 
                 }
                 else
                 {
-                    P_DialogoError.Mostrar("Las horas totales del docente serían: " + HTD1 + "\nLas cuales supera su límite\nNo se puede actualizar.");
+                    P_DialogoRespuesta1.Mostrar("Las horas totales del docente serían: " + HTD1 + "\nLas cuales supera su límite\nNo se puede actualizar.");
                     //MessageBox.Show("Las horas totales del docente serían: " + HTD1 + "\nLas cuales supera su límite\nNo se puede actualizar.");
                     CódigoDocente1 = CódigoD1;
                     CódigoDocente2 = CódigoD2;
@@ -764,34 +764,34 @@ namespace CapaPresentaciones
                                     }
                                     catch
                                     {
-                                        P_DialogoError.Mostrar("Ya se ingresó en el catálogo u horario un contenido similar");
+                                        P_DialogoRespuesta1.Mostrar("Ya se ingresó en el catálogo u horario un contenido similar");
                                         //MessageBox.Show("Ya se ingresó en el catálogo u horario un contenido similar.");
                                     }
                                 }
                                 else
                                 {
-                                    P_DialogoError.Mostrar("Hay un cruce de horarios del segundo docente");
+                                    P_DialogoRespuesta1.Mostrar("Hay un cruce de horarios del segundo docente");
                                     //MessageBox.Show("Hay un cruce de horarios del segundo docente.");
                                 }
                                     
                             }
                             else
                             {
-                                P_DialogoError.Mostrar("Hay un cruce de horarios del primer docente");
+                                P_DialogoRespuesta1.Mostrar("Hay un cruce de horarios del primer docente");
                                 //MessageBox.Show("Hay un cruce de horarios del primer docente.");
                             }
                                 
                         }
                         else
                         {
-                            P_DialogoError.Mostrar("Los docentes seleccionados no deben ser iguales");
+                            P_DialogoRespuesta1.Mostrar("Los docentes seleccionados no deben ser iguales");
                             //MessageBox.Show("Los docentes seleccionados no deben ser iguales.");
                         }
                             
                     }
                     else
                     {
-                        P_DialogoError.Mostrar("Las horas del primer docente serían: " + HTD1 + "\nLas horas del segundo docente serían: " + HTD2 + "\nNo deben de superar las 10 horas semanales.");
+                        P_DialogoRespuesta1.Mostrar("Las horas del primer docente serían: " + HTD1 + "\nLas horas del segundo docente serían: " + HTD2 + "\nNo deben de superar las 10 horas semanales.");
                         //MessageBox.Show("Las horas del primer docente serían: " + HTD1 + "\nLas horas del segundo docente serían: " + HTD2 + "\nNo deben de superar las 10 horas semanales.");
                         CódigoDocente1 = CódigoD1;
                         CódigoDocente2 = CódigoD2;
@@ -800,7 +800,7 @@ namespace CapaPresentaciones
                 }
                 else
                 {
-                    P_DialogoError.Mostrar("Ese curso no puede llevar 2 docentes");
+                    P_DialogoRespuesta1.Mostrar("Ese curso no puede llevar 2 docentes");
                     //MessageBox.Show("Ese curso no puede llevar 2 docentes.");
                 }
                     
@@ -828,7 +828,7 @@ namespace CapaPresentaciones
                         }
                         else
                         {
-                            P_DialogoError.Mostrar("Las horas de teoría y práctica no concuerdan");
+                            P_DialogoRespuesta1.Mostrar("Las horas de teoría y práctica no concuerdan");
                             //MessageBox.Show("Las horas de teoría y práctica no concuerdan.");
                         }
                             
@@ -839,7 +839,7 @@ namespace CapaPresentaciones
                             Guardar();
                         else
                         {
-                            P_DialogoError.Mostrar("Las horas de teoría y práctica no concuerdan");
+                            P_DialogoRespuesta1.Mostrar("Las horas de teoría y práctica no concuerdan");
                             //MessageBox.Show("Las horas de teoría y práctica no concuerdan.");
                         }
                             
@@ -850,28 +850,28 @@ namespace CapaPresentaciones
                             Guardar();
                         else
                         {
-                            P_DialogoError.Mostrar("Las horas de teoría y práctica no concuerdan");
+                            P_DialogoRespuesta1.Mostrar("Las horas de teoría y práctica no concuerdan");
                             //MessageBox.Show("Las horas de teoría y práctica no concuerdan.");
                         }
                             
                     }
                     else
                     {
-                        P_DialogoError.Mostrar("Las horas de los docentes no debe superar sus límites");
+                        P_DialogoRespuesta1.Mostrar("Las horas de los docentes no debe superar sus límites");
                         //MessageBox.Show("Las horas de los docentes no debe superar sus límites.");
                     }
                         
                 }
                 else
                 {
-                    P_DialogoError.Mostrar("No seleccionó todos los items o hay items mal puestos");
+                    P_DialogoRespuesta1.Mostrar("No seleccionó todos los items o hay items mal puestos");
                     //MessageBox.Show("No seleccionó todos los items o hay items mal puestos.");
                 }
                     
             }
             catch (Exception Ex)
             {
-                P_DialogoError.Mostrar(Convert.ToString(Ex));
+                P_DialogoRespuesta1.Mostrar(Convert.ToString(Ex));
                 //MessageBox.Show(Convert.ToString(Ex));
                 this.Close();
             }
@@ -1607,7 +1607,7 @@ namespace CapaPresentaciones
                     Hora_Fin_Lunes.Value = new DateTime(2022, 1, 1, 1, 0, 0);
                     Hora_Inicio_Lunes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Lunes.Text) - 1, 0, 0);
                 }
-                P_DialogoError.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
+                P_DialogoRespuesta1.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
             }
             else
@@ -1659,7 +1659,7 @@ namespace CapaPresentaciones
                     Hora_Fin_Lunes.Value = new DateTime(2022, 1, 1, 1, 0, 0);
                     Hora_Inicio_Lunes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Lunes.Text) - 1, 0, 0);
                 }
-                P_DialogoError.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
+                P_DialogoRespuesta1.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
             }
             else
@@ -1711,7 +1711,7 @@ namespace CapaPresentaciones
                     Hora_Fin_Martes.Value = new DateTime(2022, 1, 1, 1, 0, 0);
                     Hora_Inicio_Martes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Martes.Text) - 1, 0, 0);
                 }
-                P_DialogoError.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
+                P_DialogoRespuesta1.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
             }
             else
@@ -1763,7 +1763,7 @@ namespace CapaPresentaciones
                     Hora_Fin_Martes.Value = new DateTime(2022, 1, 1, 1, 0, 0);
                     Hora_Inicio_Martes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Martes.Text) - 1, 0, 0);
                 }
-                P_DialogoError.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
+                P_DialogoRespuesta1.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
             }
             else
@@ -1815,7 +1815,7 @@ namespace CapaPresentaciones
                     Hora_Fin_Miércoles.Value = new DateTime(2022, 1, 1, 1, 0, 0);
                     Hora_Inicio_Miércoles.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Miércoles.Text) - 1, 0, 0);
                 }
-                P_DialogoError.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
+                P_DialogoRespuesta1.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
             }
             else
@@ -1867,7 +1867,7 @@ namespace CapaPresentaciones
                     Hora_Fin_Miércoles.Value = new DateTime(2022, 1, 1, 1, 0, 0);
                     Hora_Inicio_Miércoles.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Miércoles.Text) - 1, 0, 0);
                 }
-                P_DialogoError.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
+                P_DialogoRespuesta1.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
             }
             else
@@ -1919,7 +1919,7 @@ namespace CapaPresentaciones
                     Hora_Fin_Jueves.Value = new DateTime(2022, 1, 1, 1, 0, 0);
                     Hora_Inicio_Jueves.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Jueves.Text) - 1, 0, 0);
                 }
-                P_DialogoError.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
+                P_DialogoRespuesta1.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
             }
             else
@@ -1971,7 +1971,7 @@ namespace CapaPresentaciones
                     Hora_Fin_Jueves.Value = new DateTime(2022, 1, 1, 1, 0, 0);
                     Hora_Inicio_Jueves.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Jueves.Text) - 1, 0, 0);
                 }
-                P_DialogoError.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
+                P_DialogoRespuesta1.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
             }
             else
@@ -2023,7 +2023,7 @@ namespace CapaPresentaciones
                     Hora_Fin_Viernes.Value = new DateTime(2022, 1, 1, 1, 0, 0);
                     Hora_Inicio_Viernes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Viernes.Text) - 1, 0, 0);
                 }
-                P_DialogoError.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
+                P_DialogoRespuesta1.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
             }
             else
@@ -2075,7 +2075,7 @@ namespace CapaPresentaciones
                     Hora_Fin_Viernes.Value = new DateTime(2022, 1, 1, 1, 0, 0);
                     Hora_Inicio_Viernes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Viernes.Text) - 1, 0, 0);
                 }
-                P_DialogoError.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
+                P_DialogoRespuesta1.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
             }
             else
@@ -2127,7 +2127,7 @@ namespace CapaPresentaciones
                     Hora_Fin_Sábado.Value = new DateTime(2022, 1, 1, 1, 0, 0);
                     Hora_Inicio_Sábado.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Sábado.Text) - 1, 0, 0);
                 }
-                P_DialogoError.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
+                P_DialogoRespuesta1.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
             }
             else
@@ -2251,7 +2251,7 @@ namespace CapaPresentaciones
                     Hora_Fin_Sábado.Value = new DateTime(2022, 1, 1, 1, 0, 0);
                     Hora_Inicio_Sábado.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Sábado.Text) - 1, 0, 0);
                 }
-                P_DialogoError.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
+                P_DialogoRespuesta1.Mostrar("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
             }
             else

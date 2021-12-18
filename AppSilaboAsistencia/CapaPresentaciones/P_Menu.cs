@@ -255,7 +255,7 @@ namespace CapaPresentaciones
 
         private void CerrarSesion()
         {
-            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Desea cerrar sesión?", true);
+            P_DialogoRespuesta2 Dialogo = new P_DialogoRespuesta2("¿Desea cerrar sesión?", true);
             Dialogo.ShowDialog();
             DialogResult Opcion = Dialogo.DialogResult;
             if (Opcion == DialogResult.Yes)
@@ -391,7 +391,7 @@ namespace CapaPresentaciones
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Desea salir de la aplicación?", true);
+            P_DialogoRespuesta2 Dialogo = new P_DialogoRespuesta2("¿Desea salir de la aplicación?", true);
             Dialogo.ShowDialog();
             DialogResult Opcion = Dialogo.DialogResult;
             if (Opcion == DialogResult.Yes)

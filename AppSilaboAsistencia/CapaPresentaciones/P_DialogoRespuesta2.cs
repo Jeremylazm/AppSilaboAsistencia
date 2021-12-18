@@ -10,26 +10,20 @@ using System.Windows.Forms;
 
 namespace CapaPresentaciones
 {
-    public partial class P_DialogoPregunta : Form
+    public partial class P_DialogoRespuesta2 : Form
     {
-        private bool TipoPregunta { get; set; }
-
-        public P_DialogoPregunta(string Mensaje, bool pTipoPregunta = false)
+        public P_DialogoRespuesta2(string Pregunta, string RespuestaVerdadera, string RespuestaFalsa)
         {
             InitializeComponent();
-            Control[] Controles = { pbImagen, lblNombre, lblMensaje };
+            Control[] Controles = { pbImagen, lblTitulo, lblPregunta };
             Docker.SubscribeControlsToDragEvents(Controles);
-            lblMensaje.Text = Mensaje;
-            TipoPregunta = pTipoPregunta;
 
-            if (TipoPregunta)
-            {
-                btnVerdadero.Text = "Sí";
-                btnFalso.Text = "No";
-            }
+            lblPregunta.Text = Pregunta;
+            btnVerdadero.Text = RespuestaVerdadera;
+            btnFalso.Text = RespuestaFalsa;
         }
 
-        private void P_DialogoPregunta_Load(object sender, EventArgs e)
+        private void P_DialogoRespuesta2_Load(object sender, EventArgs e)
         {
             this.Opacity = 0.0;
             FormAparicion.Start();
@@ -43,8 +37,8 @@ namespace CapaPresentaciones
             {
                 FormAparicion.Stop();
                 ImagenAparicion.ShowSync(pbImagen);
-                lblNombre.Visible = true;
-                lblMensaje.Visible = true;
+                lblTitulo.Visible = true;
+                lblPregunta.Visible = true;
                 btnVerdadero.Visible = true;
                 btnFalso.Visible = true;
             }
@@ -52,18 +46,12 @@ namespace CapaPresentaciones
 
         private void btnVerdadero_Click(object sender, EventArgs e)
         {
-            if (TipoPregunta)
-                DialogResult = DialogResult.Yes;
-            else
-                DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.Yes;
         }
 
         private void btnFalso_Click(object sender, EventArgs e)
         {
-            if (TipoPregunta)
-                DialogResult = DialogResult.No;
-            else
-                DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.No;
         }
     }
 }

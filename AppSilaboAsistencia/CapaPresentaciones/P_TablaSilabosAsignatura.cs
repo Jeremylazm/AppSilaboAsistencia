@@ -70,14 +70,14 @@ namespace CapaPresentaciones
                         }
                         catch (IOException)
                         {
-                            P_DialogoError.Mostrar("Cierre el archivo antes de que sea reemplazado o elija otro nombre");
+                            P_DialogoRespuesta1.Mostrar("Cierre el archivo antes de que sea reemplazado o elija otro nombre");
                             //MessageBox.Show("Cierra el archivo antes de reemplazarlo o elige otro nombre");
                         }
                     }
                 }
                 else
                 {
-                    P_DialogoError.Mostrar("No hay sílabo");
+                    P_DialogoRespuesta1.Mostrar("No hay sílabo");
                     //MessageBox.Show("No hay sílabo");
                 }
             }

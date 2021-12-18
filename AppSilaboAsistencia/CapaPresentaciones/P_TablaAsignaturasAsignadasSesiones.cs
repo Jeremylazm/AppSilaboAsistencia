@@ -128,7 +128,7 @@ namespace CapaPresentaciones
                     }
                     catch (IOException)
                     {
-                        P_DialogoError.Mostrar("Cierre el archivo antes de que sea reemplazado");
+                        P_DialogoRespuesta1.Mostrar("Cierre el archivo antes de que sea reemplazado");
                         //MessageBox.Show("Cierra el archivo antes de reemplazarlo");
                     }
                 }

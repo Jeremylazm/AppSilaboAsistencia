@@ -88,7 +88,7 @@ namespace CapaPresentaciones
                     // Si los datos son incorrectos
                     else
                     {
-                        P_DialogoError.Mostrar("Usuario o contraseña incorrecta");
+                        P_DialogoRespuesta1.Mostrar("Usuario o contraseña incorrecta");
                         txtUsuario.Clear();
                         txtContraseña.Clear();
                         Validador.EnfocarCursor(txtUsuario);

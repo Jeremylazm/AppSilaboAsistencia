@@ -199,7 +199,7 @@ namespace CapaPresentaciones
 
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
-                P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea eliminar el registro?");
+                P_DialogoRespuesta2 Dialogo = new P_DialogoRespuesta2("¿Realmente desea eliminar el registro?");
                 Dialogo.ShowDialog();
                 DialogResult Opcion = Dialogo.DialogResult;
                 //Opcion = MessageBox.Show("¿Realmente desea eliminar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);

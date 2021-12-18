@@ -155,13 +155,13 @@ namespace CapaPresentaciones
                     }
                     else
                     {
-                        P_DialogoError.Mostrar("El registro de Hoy, ya existe");
+                        P_DialogoRespuesta1.Mostrar("El registro de Hoy, ya existe");
                         //MensajeError("Este registro de Asignatura ya existe");
                     }
                 }
                 catch (Exception)
                 {
-                    P_DialogoError.Mostrar("Error al insertar el registro");
+                    P_DialogoRespuesta1.Mostrar("Error al insertar el registro");
                 }
             }
             /*if (dgvDatos.Rows.Count > 0)

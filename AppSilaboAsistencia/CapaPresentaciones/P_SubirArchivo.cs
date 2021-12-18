@@ -78,7 +78,7 @@ namespace CapaPresentaciones
             ActualizarColor();
             if (txtRuta.Text.Trim().Equals(""))
             {
-                P_DialogoError.Mostrar("Seleccione un archivo");
+                P_DialogoRespuesta1.Mostrar("Seleccione un archivo");
                 //MessageBox.Show("Selecciona un archivo");
                 return;
             }
@@ -109,7 +109,7 @@ namespace CapaPresentaciones
             }
             catch (IOException)
             {
-                P_DialogoError.Mostrar("Guarde y cierre el archivo antes de subirlo");
+                P_DialogoRespuesta1.Mostrar("Guarde y cierre el archivo antes de subirlo");
                 //MessageBox.Show("Guarda y cierra el archivo antes de subirlo", "Sistema de Gestión de Sílabos y Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }

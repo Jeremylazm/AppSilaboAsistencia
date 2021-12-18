@@ -93,12 +93,12 @@ namespace CapaPresentaciones
                                             }
                                             else
                                             {
-                                                P_DialogoError.Mostrar("El registro de asignatura ya existe");
+                                                P_DialogoRespuesta1.Mostrar("El registro de asignatura ya existe");
                                             }
                                         }
                                         catch (Exception)
                                         {
-                                            P_DialogoError.Mostrar("Error al insertar el registro");
+                                            P_DialogoRespuesta1.Mostrar("Error al insertar el registro");
                                         }
                                     }
 
@@ -107,7 +107,7 @@ namespace CapaPresentaciones
                                     {
                                         try
                                         {
-                                            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea editar el registro?");
+                                            P_DialogoRespuesta2 Dialogo = new P_DialogoRespuesta2("¿Realmente desea editar el registro?");
                                             Dialogo.ShowDialog();
                                             DialogResult Opcion = Dialogo.DialogResult;
                                             if (Opcion == DialogResult.OK)
@@ -133,13 +133,13 @@ namespace CapaPresentaciones
                                                 }
                                                 else
                                                 {
-                                                    P_DialogoError.Mostrar("El registro de asignatura no existe");
+                                                    P_DialogoRespuesta1.Mostrar("El registro de asignatura no existe");
                                                 }
                                             }
                                         }
                                         catch (Exception)
                                         {
-                                            P_DialogoError.Mostrar("Error al editar el registro");
+                                            P_DialogoRespuesta1.Mostrar("Error al editar el registro");
                                         }
                                     }
                                 }
