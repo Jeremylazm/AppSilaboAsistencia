@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
+using CapaPresentaciones.Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -199,15 +200,11 @@ namespace CapaPresentaciones
 
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
-                P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea eliminar el registro?");
-                Dialogo.ShowDialog();
-                DialogResult Opcion = Dialogo.DialogResult;
-                //Opcion = MessageBox.Show("¿Realmente desea eliminar el registro?", "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (Opcion == DialogResult.OK)
+                if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea eliminar el registro?") == DialogResult.Yes)
                 {
                     ObjEntidad.CodDocente = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
                     ObjNegocio.EliminarDocente(ObjEntidad);
-                    P_DialogoInformacion.Mostrar("Registro eliminado exitosamente");
+                    A_Dialogo.DialogoConfirmacion("Registro eliminado exitosamente");
                     //MensajeConfirmacion("Registro eliminado exitosamente");
                     MostrarRegistros();
                 }

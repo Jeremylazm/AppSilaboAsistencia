@@ -3,9 +3,9 @@ using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
 using System.IO;
-using System.Diagnostics;
 using System.Data;
 using ClosedXML.Excel;
+using CapaPresentaciones.Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -158,12 +158,12 @@ namespace CapaPresentaciones
                     try
                     {
                         wb.SaveAs(saveFileDialog.FileName);
-                        P_DialogoInformacion.Mostrar("Archivo guardado correctamente");
+                        A_Dialogo.DialogoConfirmacion("Archivo guardado exitosamente");
                         //MessageBox.Show("Archivo guardado correctamente");
                     }
                     catch (IOException)
                     {
-                        P_DialogoError.Mostrar("Cierre el archivo antes de que sea reemplazado");
+                        A_Dialogo.DialogoError("Cierre el archivo antes de que sea reemplazado");
                         //MessageBox.Show("Cierra el archivo antes de reemplazarlo");
                     }
                 }

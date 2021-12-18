@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocios;
+using CapaPresentaciones.Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -65,20 +66,20 @@ namespace CapaPresentaciones
                         try
                         {
                             File.WriteAllBytes(saveFileDialog.FileName, dgvDatos.Rows[e.RowIndex].Cells["PlanSesiones"].Value as byte[]);
-                            P_DialogoInformacion.Mostrar("Archivo guardado correctamente");
+                            A_Dialogo.DialogoConfirmacion("Archivo guardado correctamente");
                             //MessageBox.Show("Archivo guardado correctamente");
                             Close();
                         }
                         catch(IOException)
                         {
-                            P_DialogoError.Mostrar("Cierre el archivo antes de que sea reemplazado o elija otro nombre");
+                            A_Dialogo.DialogoError("Cierre el archivo antes de que sea reemplazado o elija otro nombre");
                             //MessageBox.Show("Cierra el archivo antes de reemplazarlo o elige otro nombre");
                         }
                     }
                 }
                 else
                 {
-                    P_DialogoError.Mostrar("No hay plan de sesiones");
+                    A_Dialogo.DialogoInformacion("No hay plan de sesiones");
                     //MessageBox.Show("No hay plan de sesiones");
                 }
             }

@@ -34,11 +34,13 @@ namespace CapaPresentaciones
         }
         public void AccionesTabla()
         {
-            dgvDatos.Columns[0].DisplayIndex = 3;
+            dgvDatos.Columns[0].DisplayIndex = 5;
 
             dgvDatos.Columns[1].HeaderText = "Fecha";
             dgvDatos.Columns[2].HeaderText = "Hora";
             dgvDatos.Columns[3].HeaderText = "TEMA(S)";
+            dgvDatos.Columns[4].HeaderText = "TotalAsis";
+            dgvDatos.Columns[5].HeaderText = "TotalFalt";
 
         }
         public void MostrarRegistros()
@@ -72,6 +74,7 @@ namespace CapaPresentaciones
 
 		private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
+          
         }
 	}
 }

@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaNegocios;
-using CapaEntidades;
 using System.IO;
-using System.Diagnostics;
+using CapaNegocios;
+using CapaPresentaciones.Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -44,11 +36,6 @@ namespace CapaPresentaciones
             }
         }
 
-        private void MensajeConfirmacion(string Mensaje)
-        {
-            MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void ActualizarColor()
         {
             lblTitulo.Focus();
@@ -78,7 +65,7 @@ namespace CapaPresentaciones
             ActualizarColor();
             if (txtRuta.Text.Trim().Equals(""))
             {
-                P_DialogoError.Mostrar("Seleccione un archivo");
+                A_Dialogo.DialogoError("Seleccione un archivo");
                 //MessageBox.Show("Selecciona un archivo");
                 return;
             }
@@ -97,19 +84,19 @@ namespace CapaPresentaciones
                 if (Tipo == "Silabo")
                 {
                     ObjNegocio.ActualizarSilaboAsignatura("2021-II", CodAsignatura, CodDocente, archivo);
-                    P_DialogoInformacion.Mostrar("Archivo subido exitosamente");
+                    A_Dialogo.DialogoConfirmacion("Archivo subido exitosamente");
                     //MensajeConfirmacion("Archivo subido exitosamente");
                 }
                 else if (Tipo == "Plan de Sesiones")
                 {
                     ObjNegocio.ActualizarPlanSesionesAsignatura("2021-II", CodAsignatura, CodDocente, archivo);
-                    P_DialogoInformacion.Mostrar("Archivo subido exitosamente");
+                    A_Dialogo.DialogoConfirmacion("Archivo subido exitosamente");
                     //MensajeConfirmacion("Archivo subido exitosamente");
                 }
             }
             catch (IOException)
             {
-                P_DialogoError.Mostrar("Guarde y cierre el archivo antes de subirlo");
+                A_Dialogo.DialogoError("Guarde y cierre el archivo antes de subirlo");
                 //MessageBox.Show("Guarda y cierra el archivo antes de subirlo", "Sistema de Gestión de Sílabos y Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
             }

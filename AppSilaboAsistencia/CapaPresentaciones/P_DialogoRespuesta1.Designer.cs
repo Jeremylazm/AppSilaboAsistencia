@@ -1,7 +1,7 @@
 ﻿
 namespace CapaPresentaciones
 {
-    partial class P_DialogoInformacion
+    partial class P_DialogoRespuesta1
     {
         /// <summary>
         /// Required designer variable.
@@ -30,17 +30,18 @@ namespace CapaPresentaciones
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_DialogoInformacion));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuAnimatorNS.Animation animation2 = new Bunifu.UI.WinForms.BunifuAnimatorNS.Animation();
+            Bunifu.UI.WinForms.BunifuAnimatorNS.Animation animation3 = new Bunifu.UI.WinForms.BunifuAnimatorNS.Animation();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_DialogoRespuesta1));
             this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.BordeadoForm = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.FormAparicion = new System.Windows.Forms.Timer(this.components);
-            this.btnAceptar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.ImagenAparicion = new Bunifu.UI.WinForms.BunifuTransition(this.components);
+            this.btnAceptar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.pbImagen = new System.Windows.Forms.PictureBox();
-            this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblMensaje = new Bunifu.UI.WinForms.BunifuLabel();
+            this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
+            this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,14 +52,35 @@ namespace CapaPresentaciones
             this.Movimiento.TargetControl = this;
             this.Movimiento.Vertical = true;
             // 
-            // Bordeado
+            // BordeadoForm
             // 
-            this.Bordeado.ElipseRadius = 15;
-            this.Bordeado.TargetControl = this;
+            this.BordeadoForm.ElipseRadius = 15;
+            this.BordeadoForm.TargetControl = this;
             // 
             // FormAparicion
             // 
             this.FormAparicion.Tick += new System.EventHandler(this.FormAparicion_Tick);
+            // 
+            // ImagenAparicion
+            // 
+            this.ImagenAparicion.AnimationType = Bunifu.UI.WinForms.BunifuAnimatorNS.AnimationType.ScaleAndRotate;
+            this.ImagenAparicion.Cursor = null;
+            animation3.AnimateOnlyDifferences = true;
+            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
+            animation3.LeafCoeff = 0F;
+            animation3.MaxTime = 1F;
+            animation3.MinTime = 0F;
+            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
+            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
+            animation3.MosaicSize = 0;
+            animation3.Padding = new System.Windows.Forms.Padding(30);
+            animation3.RotateCoeff = 0.5F;
+            animation3.RotateLimit = 0.2F;
+            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
+            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
+            animation3.TimeCoeff = 0F;
+            animation3.TransparencyCoeff = 0F;
+            this.ImagenAparicion.DefaultAnimation = animation3;
             // 
             // btnAceptar
             // 
@@ -80,11 +102,11 @@ namespace CapaPresentaciones
             this.btnAceptar.ColorContrastOnClick = 45;
             this.btnAceptar.ColorContrastOnHover = 45;
             this.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnAceptar.CustomizableEdges = borderEdges2;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            this.btnAceptar.CustomizableEdges = borderEdges3;
             this.ImagenAparicion.SetDecoration(this.btnAceptar, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnAceptar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
@@ -109,7 +131,7 @@ namespace CapaPresentaciones
             this.btnAceptar.IdleIconLeftImage = null;
             this.btnAceptar.IdleIconRightImage = null;
             this.btnAceptar.IndicateFocus = false;
-            this.btnAceptar.Location = new System.Drawing.Point(133, 288);
+            this.btnAceptar.Location = new System.Drawing.Point(133, 324);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAceptar.OnDisabledState.BorderRadius = 15;
@@ -144,7 +166,7 @@ namespace CapaPresentaciones
             this.btnAceptar.OnPressedState.IconLeftImage = null;
             this.btnAceptar.OnPressedState.IconRightImage = null;
             this.btnAceptar.Size = new System.Drawing.Size(160, 39);
-            this.btnAceptar.TabIndex = 51;
+            this.btnAceptar.TabIndex = 62;
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnAceptar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnAceptar.TextMarginLeft = 0;
@@ -153,65 +175,23 @@ namespace CapaPresentaciones
             this.btnAceptar.Visible = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // ImagenAparicion
-            // 
-            this.ImagenAparicion.AnimationType = Bunifu.UI.WinForms.BunifuAnimatorNS.AnimationType.ScaleAndRotate;
-            this.ImagenAparicion.Cursor = null;
-            animation2.AnimateOnlyDifferences = true;
-            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
-            animation2.LeafCoeff = 0F;
-            animation2.MaxTime = 1F;
-            animation2.MinTime = 0F;
-            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
-            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
-            animation2.MosaicSize = 0;
-            animation2.Padding = new System.Windows.Forms.Padding(30);
-            animation2.RotateCoeff = 0.5F;
-            animation2.RotateLimit = 0.2F;
-            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
-            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
-            animation2.TimeCoeff = 0F;
-            animation2.TransparencyCoeff = 0F;
-            this.ImagenAparicion.DefaultAnimation = animation2;
-            // 
             // pbImagen
             // 
-            this.pbImagen.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pbImagen.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ImagenAparicion.SetDecoration(this.pbImagen, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.pbImagen.Image = global::CapaPresentaciones.Properties.Resources.Dialogo_Informacion;
-            this.pbImagen.Location = new System.Drawing.Point(133, 44);
+            this.pbImagen.Location = new System.Drawing.Point(135, 80);
             this.pbImagen.Name = "pbImagen";
             this.pbImagen.Size = new System.Drawing.Size(160, 160);
             this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbImagen.TabIndex = 58;
+            this.pbImagen.TabIndex = 63;
             this.pbImagen.TabStop = false;
             this.pbImagen.Visible = false;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AllowParentOverrides = false;
-            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTitulo.AutoEllipsis = false;
-            this.lblTitulo.AutoSize = false;
-            this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblTitulo.CursorType = System.Windows.Forms.Cursors.Default;
-            this.ImagenAparicion.SetDecoration(this.lblTitulo, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblTitulo.Location = new System.Drawing.Point(133, 15);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTitulo.Size = new System.Drawing.Size(160, 23);
-            this.lblTitulo.TabIndex = 60;
-            this.lblTitulo.Text = "INFORMACIÓN";
-            this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            this.lblTitulo.Visible = false;
             // 
             // lblMensaje
             // 
             this.lblMensaje.AllowParentOverrides = false;
-            this.lblMensaje.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMensaje.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMensaje.AutoEllipsis = false;
             this.lblMensaje.AutoSize = false;
             this.lblMensaje.Cursor = System.Windows.Forms.Cursors.Default;
@@ -219,32 +199,94 @@ namespace CapaPresentaciones
             this.ImagenAparicion.SetDecoration(this.lblMensaje, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lblMensaje.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblMensaje.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblMensaje.Location = new System.Drawing.Point(23, 192);
+            this.lblMensaje.Location = new System.Drawing.Point(23, 228);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblMensaje.Size = new System.Drawing.Size(384, 100);
-            this.lblMensaje.TabIndex = 59;
+            this.lblMensaje.TabIndex = 64;
             this.lblMensaje.Text = "MENSAJE\r\n";
             this.lblMensaje.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblMensaje.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.lblMensaje.Visible = false;
             // 
-            // P_DialogoInformacion
+            // Docker
+            // 
+            this.Docker.AllowFormDragging = true;
+            this.Docker.AllowFormDropShadow = true;
+            this.Docker.AllowFormResizing = true;
+            this.Docker.AllowHidingBottomRegion = true;
+            this.Docker.AllowOpacityChangesWhileDragging = false;
+            this.Docker.BorderOptions.BottomBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.BottomBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.BottomBorder.ShowBorder = true;
+            this.Docker.BorderOptions.LeftBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.LeftBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.LeftBorder.ShowBorder = true;
+            this.Docker.BorderOptions.RightBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.RightBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.RightBorder.ShowBorder = true;
+            this.Docker.BorderOptions.TopBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.TopBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.TopBorder.ShowBorder = true;
+            this.Docker.ContainerControl = this;
+            this.Docker.DockingIndicatorsColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(215)))), ((int)(((byte)(233)))));
+            this.Docker.DockingIndicatorsOpacity = 0.5D;
+            this.Docker.DockingOptions.DockAll = false;
+            this.Docker.DockingOptions.DockBottomLeft = false;
+            this.Docker.DockingOptions.DockBottomRight = false;
+            this.Docker.DockingOptions.DockFullScreen = false;
+            this.Docker.DockingOptions.DockLeft = false;
+            this.Docker.DockingOptions.DockRight = false;
+            this.Docker.DockingOptions.DockTopLeft = false;
+            this.Docker.DockingOptions.DockTopRight = false;
+            this.Docker.FormDraggingOpacity = 0.9D;
+            this.Docker.ParentForm = this;
+            this.Docker.ShowCursorChanges = true;
+            this.Docker.ShowDockingIndicators = false;
+            this.Docker.TitleBarOptions.AllowFormDragging = true;
+            this.Docker.TitleBarOptions.BunifuFormDock = this.Docker;
+            this.Docker.TitleBarOptions.DoubleClickToExpandWindow = true;
+            this.Docker.TitleBarOptions.TitleBarControl = null;
+            this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AllowParentOverrides = false;
+            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTitulo.AutoEllipsis = false;
+            this.lblTitulo.AutoSize = false;
+            this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblTitulo.CursorType = System.Windows.Forms.Cursors.Default;
+            this.ImagenAparicion.SetDecoration(this.lblTitulo, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblTitulo.Location = new System.Drawing.Point(23, 12);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblTitulo.Size = new System.Drawing.Size(384, 52);
+            this.lblTitulo.TabIndex = 65;
+            this.lblTitulo.Text = "SISTEMA DE GESTIÓN DE SILABOS Y CONTROL DE ASISTENCIA - UNSAAC";
+            this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblTitulo.Visible = false;
+            // 
+            // P_DialogoRespuesta1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(429, 346);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.ClientSize = new System.Drawing.Size(429, 382);
+            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.pbImagen);
-            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.lblMensaje);
             this.ImagenAparicion.SetDecoration(this, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "P_DialogoInformacion";
+            this.Name = "P_DialogoRespuesta1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dialogo de Confirmación";
-            this.Load += new System.EventHandler(this.P_DialogoInformacion_Load);
+            this.Text = "Dialogo de Error";
+            this.Load += new System.EventHandler(this.P_DialogoRespuesta1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
             this.ResumeLayout(false);
 
@@ -253,12 +295,13 @@ namespace CapaPresentaciones
         #endregion
 
         private Bunifu.Framework.UI.BunifuDragControl Movimiento;
-        private Bunifu.Framework.UI.BunifuElipse Bordeado;
+        private Bunifu.Framework.UI.BunifuElipse BordeadoForm;
         private System.Windows.Forms.Timer FormAparicion;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnAceptar;
         private Bunifu.UI.WinForms.BunifuTransition ImagenAparicion;
+        private Bunifu.UI.WinForms.BunifuFormDock Docker;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnAceptar;
         private System.Windows.Forms.PictureBox pbImagen;
-        private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
         private Bunifu.UI.WinForms.BunifuLabel lblMensaje;
+        private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
     }
 }

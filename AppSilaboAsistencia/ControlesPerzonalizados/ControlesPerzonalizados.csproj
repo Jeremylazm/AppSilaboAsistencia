@@ -148,7 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ayudas\A_Paso.cs" />
-    <Compile Include="Ayudas\A_Validador.cs" />
     <Compile Include="C_CambioContraseñaCodigo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -443,6 +442,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Circulo_Unchecked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaNegocios\CapaNegocios.csproj">
+      <Project>{18201101-fced-479f-9dcf-ff8e765c613d}</Project>
+      <Name>CapaNegocios</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
