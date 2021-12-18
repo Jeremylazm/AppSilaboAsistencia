@@ -160,7 +160,7 @@ namespace CapaPresentaciones
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             // Mostrar mensaje para saber si realmente se desea editar los datos
-            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea editar su perfil?");
+            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea editar el registro?");
             Dialogo.ShowDialog();
             DialogResult Opcion = Dialogo.DialogResult;
             //Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Gestión de Sílabos y Asistencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -194,14 +194,9 @@ namespace CapaPresentaciones
                 ObjNegocio.ActualizarDocente(ObjEntidad);
 
                 // Mostrar mensaje de confirmacion dando entender que se edito sus datos del docente
-                P_DialogoInformacion.Mostrar("Perfil guardado exitosamente");
+                P_DialogoInformacion.Mostrar("Registro editado exitosamente");
                 //MensajeConfirmacion("Registro editado exitosamente");
             }
-        }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }
