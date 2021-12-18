@@ -90,10 +90,10 @@ namespace CapaPresentaciones
             else if (Acceso == "Jefe de Departamento Academico")
             {
                 // Docentes y catálogo
-                btnAsistencia.Visible = false;
-                btnAsignaturasAsignadas.Visible = false;
-                btnSilabos.Visible = false;
-                btnSesiones.Visible = false;
+                btnAsistencia.Visible = true;
+                btnAsignaturasAsignadas.Visible = true;
+                btnSilabos.Visible = true;
+                btnSesiones.Visible = true;
                 btnCatálogo.Visible = true;
                 btnAsignaturas.Visible = true;
                 btnDocentes.Visible = true;
@@ -117,7 +117,9 @@ namespace CapaPresentaciones
                 btnSesiones.Visible = true;
                 btnCatálogo.Visible = false;
                 btnAsignaturas.Visible = false;
-                btnDocentes.Visible = true;
+                btnDocentes.Visible = false;
+
+                // Mis asignaturas, asistencia, sílabos y plan de sesiones
             }
         }
 

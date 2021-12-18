@@ -955,7 +955,7 @@ namespace CapaPresentaciones
             this.btnAsistencia.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Principal;
             this.btnAsistencia.IdleIconRightImage = null;
             this.btnAsistencia.IndicateFocus = false;
-            this.btnAsistencia.Location = new System.Drawing.Point(0, 306);
+            this.btnAsistencia.Location = new System.Drawing.Point(0, 347);
             this.btnAsistencia.Name = "btnAsistencia";
             this.btnAsistencia.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAsistencia.OnDisabledState.BorderRadius = 1;
@@ -1103,7 +1103,7 @@ namespace CapaPresentaciones
             this.btnAsignaturasAsignadas.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnAsignaturasAsignadas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAsignaturasAsignadas.BackgroundImage")));
             this.btnAsignaturasAsignadas.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnAsignaturasAsignadas.ButtonText = "Asignaturas";
+            this.btnAsignaturasAsignadas.ButtonText = "Mis Asignaturas";
             this.btnAsignaturasAsignadas.ButtonTextMarginLeft = 0;
             this.btnAsignaturasAsignadas.ColorContrastOnClick = 45;
             this.btnAsignaturasAsignadas.ColorContrastOnHover = 45;
@@ -1119,7 +1119,7 @@ namespace CapaPresentaciones
             this.btnAsignaturasAsignadas.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.btnAsignaturasAsignadas.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
             this.btnAsignaturasAsignadas.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            this.btnAsignaturasAsignadas.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAsignaturasAsignadas.Font = new System.Drawing.Font("Montserrat Alternates", 11F);
             this.btnAsignaturasAsignadas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnAsignaturasAsignadas.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAsignaturasAsignadas.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
@@ -1137,7 +1137,7 @@ namespace CapaPresentaciones
             this.btnAsignaturasAsignadas.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Asignaturas;
             this.btnAsignaturasAsignadas.IdleIconRightImage = null;
             this.btnAsignaturasAsignadas.IndicateFocus = false;
-            this.btnAsignaturasAsignadas.Location = new System.Drawing.Point(0, 347);
+            this.btnAsignaturasAsignadas.Location = new System.Drawing.Point(0, 306);
             this.btnAsignaturasAsignadas.Name = "btnAsignaturasAsignadas";
             this.btnAsignaturasAsignadas.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAsignaturasAsignadas.OnDisabledState.BorderRadius = 1;

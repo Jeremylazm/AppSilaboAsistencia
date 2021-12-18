@@ -325,7 +325,7 @@ CREATE TABLE TUsuario
 	Perfil VARBINARY(MAX),
 	Usuario VARCHAR(6) NOT NULL,
 	Contraseña VARBINARY(MAX) NOT NULL,
-	Acceso VARCHAR(20) NOT NULL,
+	Acceso VARCHAR(32) NOT NULL,
 	Datos VARCHAR(53) NOT NULL
 
 	-- Definir la clave primaria
@@ -1553,6 +1553,7 @@ END;
 GO
 
 EXEC spuAsistenciaDocenteAsignatura '2021-II','IF','65475','IF612AIN','09','2021-12-06','2021-12-10'
+GO
 
 -- Procedimiento para registrar la asistencia de un docente.
 CREATE PROCEDURE spuRegistrarAsistenciaDocente @CodSemestre VARCHAR(7),
