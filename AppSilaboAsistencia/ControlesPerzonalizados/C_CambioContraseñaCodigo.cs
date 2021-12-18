@@ -14,6 +14,8 @@ namespace ControlesPerzonalizados
         public C_CambioContraseñaCodigo()
         {
             InitializeComponent();
+            lblEmail.Text = Email;
+            Verificar();
         }
 
         public static void Inicializar(string pEmail, string pUsuario)
@@ -29,8 +31,11 @@ namespace ControlesPerzonalizados
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            if(ValidarCodigo())
+            if (ValidarCodigo())
+            {
+                C_CambioContraseñaNueva.Inicializar(Usuario);
                 new A_Paso().Siguiente(ParentForm, "Paso2", "Paso3", "C_CambioContraseñaNueva");
+            }
         } //Listo
 
         private void btnAtras_Click(object sender, EventArgs e)
@@ -128,27 +133,24 @@ namespace ControlesPerzonalizados
                 return "01"; // correo vacio
         }
 
-        private void btnEnviarCodigo_Click(object sender, EventArgs e)
+        public void Verificar()
         {
             string correoIngresado = Email;
+            string correoValido = Usuario + "@unsaac.edu.pe";
 
-            string ans = validarpanelEnviarCodigo(Email, correoIngresado);
+            string ans = validarpanelEnviarCodigo(correoValido, correoIngresado);
 
             if (ans == "-1")
             {
-                txtEmail.Focus();
                 MessageBox.Show("El código no se pudo enviar");
             }
             else if (ans == "00") // Correo invalido
             {
-                txtEmail.Text = "";
-                txtEmail.Focus();
-                MensajeError("Correo electrónico no coincide, intente de nuevo");
+                MensajeError("Correo electrónico no coincide, regrese al paso anterior y cambie el correo");
             }
             // Correo no ingresado
             else if (ans == "01")
             {
-                txtEmail.Focus();
                 MensajeError("Correo no ingresado, intente de nuevo");
             }
             else
@@ -157,9 +159,6 @@ namespace ControlesPerzonalizados
                 codigo_verificacion = ans;
 
                 // mostrar panel de verificacion de codigo
-                panelCorreo.Visible = false;
-                panelVerificacion.Visible = true;
-                panelVerificacion.BringToFront();
                 lblEmail.Text = correoIngresado;
             }
         }
