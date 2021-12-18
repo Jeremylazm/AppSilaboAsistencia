@@ -1552,9 +1552,6 @@ BEGIN
 END;
 GO
 
-EXEC spuAsistenciaDocenteAsignatura '2021-II','IF','65475','IF612AIN','09','2021-12-06','2021-12-10'
-GO
-
 -- Procedimiento para registrar la asistencia de un docente.
 CREATE PROCEDURE spuRegistrarAsistenciaDocente @CodSemestre VARCHAR(7),
 								               @CodAsignatura VARCHAR(9),
