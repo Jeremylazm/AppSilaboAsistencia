@@ -1,12 +1,7 @@
 ﻿using Bunifu.UI.WinForms;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
-namespace ControlesPerzonalizados.Ayudas
+namespace CapaPresentaciones.Ayudas
 {
     public class A_Validador
     {

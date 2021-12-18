@@ -3,7 +3,6 @@ using CapaEntidades;
 using CapaNegocios;
 using System;
 using CapaPresentaciones.Ayudas;
-using ControlesPerzonalizados.Ayudas;
 
 namespace CapaPresentaciones
 {

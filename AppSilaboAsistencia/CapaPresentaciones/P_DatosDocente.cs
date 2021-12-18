@@ -8,7 +8,6 @@ using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
 using CapaPresentaciones.Ayudas;
-using ControlesPerzonalizados.Ayudas;
 
 namespace CapaPresentaciones
 {
