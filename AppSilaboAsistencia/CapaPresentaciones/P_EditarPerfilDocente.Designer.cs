@@ -456,6 +456,44 @@
             // 
             // lblEmail
             // 
+
+            // btnCambiarContraseña
+            // 
+            this.btnCambiarContraseña.Active = true;
+            this.btnCambiarContraseña.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnCambiarContraseña.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnCambiarContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnCambiarContraseña.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCambiarContraseña.BorderRadius = 7;
+            this.btnCambiarContraseña.ButtonText = "Cambiar Contraseña";
+            this.btnCambiarContraseña.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCambiarContraseña.DisabledColor = System.Drawing.Color.Gray;
+            this.btnCambiarContraseña.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnCambiarContraseña.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnCambiarContraseña.Iconimage")));
+            this.btnCambiarContraseña.Iconimage_right = null;
+            this.btnCambiarContraseña.Iconimage_right_Selected = null;
+            this.btnCambiarContraseña.Iconimage_Selected = null;
+            this.btnCambiarContraseña.IconMarginLeft = 0;
+            this.btnCambiarContraseña.IconMarginRight = 0;
+            this.btnCambiarContraseña.IconRightVisible = true;
+            this.btnCambiarContraseña.IconRightZoom = 0D;
+            this.btnCambiarContraseña.IconVisible = true;
+            this.btnCambiarContraseña.IconZoom = 50D;
+            this.btnCambiarContraseña.IsTab = false;
+            this.btnCambiarContraseña.Location = new System.Drawing.Point(456, 433);
+            this.btnCambiarContraseña.Name = "btnCambiarContraseña";
+            this.btnCambiarContraseña.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnCambiarContraseña.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
+            this.btnCambiarContraseña.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnCambiarContraseña.selected = true;
+            this.btnCambiarContraseña.Size = new System.Drawing.Size(197, 40);
+            this.btnCambiarContraseña.TabIndex = 172;
+            this.btnCambiarContraseña.Text = "Cambiar Contraseña";
+            this.btnCambiarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnCambiarContraseña.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnCambiarContraseña.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCambiarContraseña.Click += new System.EventHandler(this.btnCambiarContraseña_Click);
+
             this.lblEmail.AllowParentOverrides = false;
             this.lblEmail.AutoEllipsis = false;
             this.lblEmail.CursorType = null;
@@ -517,6 +555,7 @@
             this.lblCodigo1.Text = "Código: ";
             this.lblCodigo1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.lblCodigo1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+
             // 
             // btnGuardar
             // 
