@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
 using System.IO;
-using System.Diagnostics;
 using SpreadsheetLight;
 using ClosedXML.Excel;
+using CapaPresentaciones.Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -75,15 +75,7 @@ namespace CapaPresentaciones
                 fila.Cells[0].Tag = false;
             }
         }
-        private void MensajeConfirmacion(string Mensaje)
-        {
-            MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
 
-        private void MensajeError(string Mensaje)
-        {
-            MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
         private void MostrarEstudiantes()
         {
             dgvDatos.DataSource = N_Matricula.BuscarEstudiantesAsignatura("2021-II", CodAsignatura.Substring(6), CodAsignatura);
@@ -94,6 +86,7 @@ namespace CapaPresentaciones
         {
             dgvDatos.DataSource = N_Matricula.BuscarEstudiantesMatriculadosAsignatura("2021-II", CodAsignatura.Substring(6), CodAsignatura, txtBuscar.Text);
         }
+
         public void GuaradarRgistroEstudiantes()
         {
             foreach (DataGridViewRow dr in dgvDatos.Rows)
@@ -119,7 +112,7 @@ namespace CapaPresentaciones
 
 
             }
-            P_DialogoInformacion.Mostrar("El registro de la asistencia de los estudiantes se insertó éxitosamente");
+            A_Dialogo.DialogoConfirmacion("El registro de Asistencia de Estudiantes se insertó exitosamente");
             //MensajeConfirmacion("Registro de Asistencia Estudiantes insertado exitosamente");
         }
         public void GuardarRegistroDocente()
@@ -147,21 +140,21 @@ namespace CapaPresentaciones
                         ObjEntidadDoc.NombreTema = txtTema.Text.ToString();
 
                         ObjNegocioDoc.RegistrarAsistenciaDocente(ObjEntidadDoc);
-                        P_DialogoInformacion.Mostrar("El registro de Asistencia Docente se insertó éxitosamente");
+                        A_Dialogo.DialogoConfirmacion("El registro de Asistencia Docente se insertó exitosamente");
                         //MensajeConfirmacion("Registro Asistencia docente insertado exitosamente");
                         GuaradarRgistroEstudiantes();
-                        P_DialogoInformacion.Mostrar("Guardado con Exito");
+                        A_Dialogo.DialogoConfirmacion("Guardado con éxito");
                         Close();
                     }
                     else
                     {
-                        P_DialogoRespuesta1.Mostrar("El registro de Hoy, ya existe");
+                        A_Dialogo.DialogoError("El registro de hoy ya existe");
                         //MensajeError("Este registro de Asignatura ya existe");
                     }
                 }
                 catch (Exception)
                 {
-                    P_DialogoRespuesta1.Mostrar("Error al insertar el registro");
+                    A_Dialogo.DialogoError("Error al insertar el registro");
                 }
             }
             /*if (dgvDatos.Rows.Count > 0)
@@ -175,7 +168,7 @@ namespace CapaPresentaciones
                 ObjEntidadDoc.NombreTema = txtTema.Text.ToString();
 
                 ObjNegocioDoc.RegistrarAsistenciaDocente(ObjEntidadDoc);
-                P_DialogoInformacion.Mostrar("El registro de su asistencia se insertó éxitosamente");
+                A_Dialogo.Mostrar("El registro de su asistencia se insertó éxitosamente");
                 //MensajeConfirmacion("Registro Asistencia docente insertado exitosamente");
                 GuaradarRgistroEstudiantes();
                 Close();

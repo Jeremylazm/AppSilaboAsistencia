@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using OpenQA.Selenium;
@@ -7,6 +6,7 @@ using OpenQA.Selenium.Chrome;
 using CapaNegocios;
 using System.Data;
 using CapaEntidades;
+using CapaPresentaciones.Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -101,12 +101,12 @@ namespace CapaPresentaciones
                 driver.Quit();
                 if (ex is NoSuchElementException)
                 {
-                    P_DialogoRespuesta1.Mostrar("El servidor se encuentra temporalmente fuera de servicio");
+                    A_Dialogo.DialogoError("El servidor se encuentra temporalmente fuera de servicio");
                     //MessageBox.Show("El servidor se encuentra temporalmente fuera de servicio.");
                 }
                 else if (ex is WebDriverException)
                 {
-                    P_DialogoRespuesta1.Mostrar("No se encuentra conectado a Internet. Revise su conexión");
+                    A_Dialogo.DialogoError("No se encuentra conectado a Internet. Revise su conexión");
                     //MessageBox.Show("No se encuentra conectado a Internet. Revise su conexión.");
                 }
             }
@@ -191,7 +191,7 @@ namespace CapaPresentaciones
                     // Actualizar lista matriculados
                     string[] MatriculadosActual = NuevaLista.ToArray();
                     ObjCatalogo.ActualizarMatriculadosAsignatura(CodSemestre, CodAsignatura, CodDocente, string.Join(",", MatriculadosActual));
-                    P_DialogoInformacion.Mostrar("La actualización ha terminado...\n" +
+                    A_Dialogo.DialogoInformacion("La actualización ha terminado...\n" +
                                                  "Nuevos estudiantes matriculados: " + matriculados.ToString() + "\n" +
                                                  "Estudiantes desmatriculados: " + desmatriculados.ToString() + "\n");
                     //MessageBox.Show("La actualización ha terminado...\n" +

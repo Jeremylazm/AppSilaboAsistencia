@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
+using CapaPresentaciones.Ayudas;
 using ControlesPerzonalizados.Ayudas;
 
 namespace CapaPresentaciones
@@ -86,19 +87,19 @@ namespace CapaPresentaciones
                                                 ObjEntidad.Sumilla = txtSumilla.Text.ToUpper();
 
                                                 ObjNegocio.InsertarAsignatura(ObjEntidad);
-                                                P_DialogoInformacion.Mostrar("Registro insertado exitosamente");
+                                                A_Dialogo.DialogoConfirmacion("Registro insertado exitosamente");
                                                 Program.Evento = 0;
 
                                                 Close();
                                             }
                                             else
                                             {
-                                                P_DialogoRespuesta1.Mostrar("El registro de asignatura ya existe");
+                                                A_Dialogo.DialogoError("El registro de asignatura ya existe");
                                             }
                                         }
                                         catch (Exception)
                                         {
-                                            P_DialogoRespuesta1.Mostrar("Error al insertar el registro");
+                                            A_Dialogo.DialogoError("Error al insertar el registro");
                                         }
                                     }
 
@@ -107,10 +108,7 @@ namespace CapaPresentaciones
                                     {
                                         try
                                         {
-                                            P_DialogoRespuesta2 Dialogo = new P_DialogoRespuesta2("¿Realmente desea editar el registro?");
-                                            Dialogo.ShowDialog();
-                                            DialogResult Opcion = Dialogo.DialogResult;
-                                            if (Opcion == DialogResult.OK)
+                                            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea editar el registro?") == DialogResult.Yes)
                                             {
                                                 DataTable Resultado = N_Asignatura.BuscarAsignatura("IF", txtCodigo.Text);
 
@@ -126,20 +124,20 @@ namespace CapaPresentaciones
                                                     ObjEntidad.Sumilla = txtSumilla.Text.ToUpper();
 
                                                     ObjNegocio.ActualizarAsignatura(ObjEntidad);
-                                                    P_DialogoInformacion.Mostrar("Registro editado exitosamente");
+                                                    A_Dialogo.DialogoConfirmacion("Registro editado exitosamente");
                                                     Program.Evento = 0;
 
                                                     Close();
                                                 }
                                                 else
                                                 {
-                                                    P_DialogoRespuesta1.Mostrar("El registro de asignatura no existe");
+                                                    A_Dialogo.DialogoError("El registro de asignatura no existe");
                                                 }
                                             }
                                         }
                                         catch (Exception)
                                         {
-                                            P_DialogoRespuesta1.Mostrar("Error al editar el registro");
+                                            A_Dialogo.DialogoError("Error al editar el registro");
                                         }
                                     }
                                 }

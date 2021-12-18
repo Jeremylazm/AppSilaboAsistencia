@@ -7,6 +7,7 @@ using System.IO;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
+using CapaPresentaciones.Ayudas;
 using ControlesPerzonalizados.Ayudas;
 
 namespace CapaPresentaciones
@@ -162,7 +163,7 @@ namespace CapaPresentaciones
                                                     ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
 
                                                     ObjNegocio.InsertarDocente(ObjEntidad);
-                                                    P_DialogoInformacion.Mostrar("Registro insertado exitosamente");
+                                                    A_Dialogo.DialogoConfirmacion("Registro insertado exitosamente");
                                                     Program.Evento = 0;
 
                                                     N_InicioSesion InicioSesion = new N_InicioSesion();
@@ -197,12 +198,12 @@ namespace CapaPresentaciones
                                                 }
                                                 else
                                                 {
-                                                    P_DialogoRespuesta1.Mostrar("El registro de docente ya existe");
+                                                    A_Dialogo.DialogoError("El registro de docente ya existe");
                                                 }
                                             }
                                             catch (Exception)
                                             {
-                                                P_DialogoRespuesta1.Mostrar("Error al insertar el registro");
+                                                A_Dialogo.DialogoError("Error al insertar el registro");
                                             }
                                         }
 
@@ -211,10 +212,7 @@ namespace CapaPresentaciones
                                         {
                                             try
                                             {
-                                                P_DialogoRespuesta2 Dialogo = new P_DialogoRespuesta2("¿Realmente desea editar el registro?");
-                                                Dialogo.ShowDialog();
-                                                DialogResult Opcion = Dialogo.DialogResult;
-                                                if (Opcion == DialogResult.OK)
+                                                if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea editar el registro?") == DialogResult.Yes)
                                                 {
                                                     DataTable Resultado = N_Docente.BuscarDocente("IF", txtCodigo.Text);
 
@@ -241,20 +239,20 @@ namespace CapaPresentaciones
                                                         ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
 
                                                         ObjNegocio.ActualizarDocente(ObjEntidad);
-                                                        P_DialogoInformacion.Mostrar("Registro editado exitosamente");
+                                                        A_Dialogo.DialogoConfirmacion("Registro editado exitosamente");
                                                         Program.Evento = 0;
                                                         LimpiarCajas();
                                                         Close();
                                                     }
                                                     else
                                                     {
-                                                        P_DialogoRespuesta1.Mostrar("El registro de docente no existe");
+                                                        A_Dialogo.DialogoError("El registro de docente no existe");
                                                     }
                                                 }
                                             }
                                             catch (Exception)
                                             {
-                                                P_DialogoRespuesta1.Mostrar("Error al editar el registro");
+                                                A_Dialogo.DialogoError("Error al editar el registro");
                                             }
                                         }
                                     }
@@ -322,7 +320,7 @@ namespace CapaPresentaciones
             }
             catch (Exception)
             {
-                P_DialogoRespuesta1.Mostrar("Error al subir perfil");
+                A_Dialogo.DialogoError("Error al subir perfil");
             }
         }
 

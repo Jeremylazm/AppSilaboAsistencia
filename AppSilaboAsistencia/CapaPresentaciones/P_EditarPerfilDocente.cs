@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
 using System.IO;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using CapaPresentaciones.Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -140,17 +136,14 @@ namespace CapaPresentaciones
             catch (Exception)
             {
                 // Mostrar mensaje de error
-                P_DialogoRespuesta1.Mostrar("Error al subir perfil");
+                A_Dialogo.DialogoError("Error al subir perfil");
                 //MessageBox.Show("Error al subir perfil");
             }
         }
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
-            P_DialogoRespuesta2 Dialogo = new P_DialogoRespuesta2("¿Realmente desea restablecer su perfil?");
-            Dialogo.ShowDialog();
-            DialogResult Opcion = Dialogo.DialogResult;
-            if (Opcion == DialogResult.OK)
+            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea restablecer su perfil?") == DialogResult.Yes)
             {
                 // Cargar imagen por defecto en el formulario
                 imgPerfil.Image = Properties.Resources.Perfil_Docente as Image;
@@ -160,13 +153,7 @@ namespace CapaPresentaciones
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             // Mostrar mensaje para saber si realmente se desea editar los datos
-            P_DialogoRespuesta2 Dialogo = new P_DialogoRespuesta2("¿Realmente desea editar el registro?");
-            Dialogo.ShowDialog();
-            DialogResult Opcion = Dialogo.DialogResult;
-            //Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Gestión de Sílabos y Asistencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-            // Si el docente, quiere cambiar sus datos
-            if (Opcion == DialogResult.OK)
+            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea guardar cambios?") == DialogResult.Yes)
             {
                 // Asignar campo por campo, los datos editados en el objeto entidad del docente
                 byte[] Perfil = new byte[0];
@@ -194,8 +181,7 @@ namespace CapaPresentaciones
                 ObjNegocio.ActualizarDocente(ObjEntidad);
 
                 // Mostrar mensaje de confirmacion dando entender que se edito sus datos del docente
-                P_DialogoInformacion.Mostrar("Registro editado exitosamente");
-                //MensajeConfirmacion("Registro editado exitosamente");
+                A_Dialogo.DialogoConfirmacion("Registro editado exitosamente");
             }
         }
     }

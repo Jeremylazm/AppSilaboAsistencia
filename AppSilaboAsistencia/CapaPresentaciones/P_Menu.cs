@@ -5,6 +5,7 @@ using System.Linq;
 using CapaEntidades;
 using System.IO;
 using System.Drawing.Drawing2D;
+using CapaPresentaciones.Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -255,10 +256,7 @@ namespace CapaPresentaciones
 
         private void CerrarSesion()
         {
-            P_DialogoRespuesta2 Dialogo = new P_DialogoRespuesta2("¿Desea cerrar sesión?", true);
-            Dialogo.ShowDialog();
-            DialogResult Opcion = Dialogo.DialogResult;
-            if (Opcion == DialogResult.Yes)
+            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Desea cerrar sesión?") == DialogResult.Yes)
             {
                 Close();
                 P_InicioSesion Login = new P_InicioSesion();
@@ -391,10 +389,7 @@ namespace CapaPresentaciones
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            P_DialogoRespuesta2 Dialogo = new P_DialogoRespuesta2("¿Desea salir de la aplicación?", true);
-            Dialogo.ShowDialog();
-            DialogResult Opcion = Dialogo.DialogResult;
-            if (Opcion == DialogResult.Yes)
+            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Desea salir de la aplicación?") == DialogResult.Yes)
             {
                 Application.Exit();
             }

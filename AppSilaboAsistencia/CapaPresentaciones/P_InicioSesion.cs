@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
-using System.Text.RegularExpressions;
 using CapaEntidades;
 using CapaNegocios;
 using System;
+using CapaPresentaciones.Ayudas;
 using ControlesPerzonalizados.Ayudas;
 
 namespace CapaPresentaciones
@@ -88,7 +88,7 @@ namespace CapaPresentaciones
                     // Si los datos son incorrectos
                     else
                     {
-                        P_DialogoRespuesta1.Mostrar("Usuario o contraseña incorrecta");
+                        A_Dialogo.DialogoError("Usuario o contraseña incorrecta");
                         txtUsuario.Clear();
                         txtContraseña.Clear();
                         Validador.EnfocarCursor(txtUsuario);

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocios;
+using CapaPresentaciones.Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -64,20 +65,20 @@ namespace CapaPresentaciones
                         try
                         {
                             File.WriteAllBytes(saveFileDialog.FileName, dgvDatos.Rows[e.RowIndex].Cells["Silabo"].Value as byte[]);
-                            P_DialogoInformacion.Mostrar("Archivo guardado correctamente");
+                            A_Dialogo.DialogoConfirmacion("Archivo guardado correctamente");
                             //MessageBox.Show("Archivo guardado correctamente");
                             Close();
                         }
                         catch (IOException)
                         {
-                            P_DialogoRespuesta1.Mostrar("Cierre el archivo antes de que sea reemplazado o elija otro nombre");
+                            A_Dialogo.DialogoError("Cierre el archivo antes de que sea reemplazado o elija otro nombre");
                             //MessageBox.Show("Cierra el archivo antes de reemplazarlo o elige otro nombre");
                         }
                     }
                 }
                 else
                 {
-                    P_DialogoRespuesta1.Mostrar("No hay sílabo");
+                    A_Dialogo.DialogoInformacion("No hay sílabo");
                     //MessageBox.Show("No hay sílabo");
                 }
             }
