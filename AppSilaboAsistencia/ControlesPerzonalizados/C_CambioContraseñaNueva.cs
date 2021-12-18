@@ -19,11 +19,6 @@ namespace ControlesPerzonalizados
             Usuario = pUsuario;
         } //Listo
 
-        private void MensajeConfirmacion(string Mensaje)
-        {
-            MessageBox.Show(Mensaje, "Sistema de Gestion de Plan de seciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private DialogResult MensajeConfirmacionD(string Mensaje)
         {
             return MessageBox.Show(Mensaje, "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);

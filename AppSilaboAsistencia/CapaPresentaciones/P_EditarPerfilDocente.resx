@@ -120,6 +120,9 @@
   <metadata name="Bordeado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>81</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pnContenedor.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -214,25 +217,41 @@
         Zmb2/+/o9tuunFxaPrOyZduBKcMAAAAA8M4xDP8AN1bBCzrTIyEAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="btnCambiarContraseña.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAANkAAAAnCAYAAACCJu0fAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJCSURBVHhe7d09aBNhGMDxG13EtNo0Mbl7HRx0dRIXB5cO
+        Tm5SlC5ihwoFHSp06CKIWA3JpSpNezo4iOggiIMouDi4CE4VNbkg+fAzQv2CDmefM60or9Zc+2z/F37b
+        m2x/7r13uMf5c9UCs6lVMSOvL+VnqiX3aXveRAD+TjoJ/fy1ZsWMdgKT6qZkX+3A7K0W3fr9sezi1YPp
+        6OyerdHo5i0A/kE6qQylo3vHM1+W+3nbnDVD3aR+X7WSOf3sTK4zubPf+kcA1nYq1xc9mdzeWZj2Ct20
+        fi55gklgth8B6N2jk9mPoe8diQOTd7Cw5LYmTJ91M4DejadT0auC+/5NYDJOe86M3xkZ/G7bCCA5udeQ
+        C0SnVnZvXj4wYN0EIDm5EJGbR6fmu9Wp3Vx2ABtNjoyNK95XR+75bRsArJ/0RWSAIiIDlBEZoIzIAGVE
+        BigjMkAZkQHKiAxQRmSAMiIDlBEZoIzIAGVEBigjMkAZkQHKiAxQRmSAMiIDlBEZoIzIAGVEBigjMkBZ
+        HFl9xnvHJ7qBjTfWn4qas96SUy25Dwv7tlk3AUhOPhosHw92WnNm4tbw4JJtE4DkZGaZDAd0WoHZ8eJC
+        viOPNttGAMnIODIZSxaPTwp979iDE9lPto0AenfjcGbx5UX3fBzYypJ3s9tHM595ogHrc/1Q+tvz6fxj
+        mf3XzevXqpfN1MI594OMUmLSC/D/ZAy0v38gPiLWirmiNbCV1QjMLplZJrcicscPYG1h2Wssnwbvrr6D
+        rS7H+QG7Oe6O4SnfYQAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="txtTelefono.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAOAAAAAYCAYAAADj7PGVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA4SURBVHhe7cNBEQAgCAAwCyA1aUk0bOGH7W4HAAAAAAAA
-        AAAAAAAAAAAAAAAAAFir4nZFjvp7zgMOSlJvMmb5+QAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAOAAAAAqCAYAAACqXlczAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABISURBVHhe7cMxDQAwCACwGWDYxCXSmIuFo016AAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABglYrbFTnq7zkPTVxSb2R6nDEAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="txtDireccion.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAOAAAAAYCAYAAADj7PGVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA4SURBVHhe7cNBEQAgCAAwCyA1aUk0bOGH7W4HAAAAAAAA
-        AAAAAAAAAAAAAAAAAFir4nZFjvp7zgMOSlJvMmb5+QAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAOAAAAAqCAYAAACqXlczAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABISURBVHhe7cMxDQAwCACwGWDYxCXSmIuFo016AAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABglYrbFTnq7zkPTVxSb2R6nDEAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="txtEmail.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAOAAAAAYCAYAAADj7PGVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA4SURBVHhe7cNBEQAgCAAwCyA1aUk0bOGH7W4HAAAAAAAA
-        AAAAAAAAAAAAAAAAAFir4nZFjvp7zgMOSlJvMmb5+QAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAOAAAAAqCAYAAACqXlczAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABISURBVHhe7cMxDQAwCACwGWDYxCXSmIuFo016AAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABglYrbFTnq7zkPTVxSb2R6nDEAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="lblEscuelaP2.BaseStylesheet" xml:space="preserve">

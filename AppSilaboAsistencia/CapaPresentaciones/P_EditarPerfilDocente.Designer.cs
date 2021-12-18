@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_EditarPerfilDocente));
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -42,11 +43,12 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
+            this.btnCambiarContraseña = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.gbDatos = new Bunifu.UI.WinForms.BunifuGroupBox();
             this.txtTelefono = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtDireccion = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -95,6 +97,7 @@
             this.pnContenedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pnContenedor.BorderRadius = 20;
             this.pnContenedor.BorderThickness = 1;
+            this.pnContenedor.Controls.Add(this.btnCambiarContraseña);
             this.pnContenedor.Controls.Add(this.gbDatos);
             this.pnContenedor.Controls.Add(this.btnGuardar);
             this.pnContenedor.Controls.Add(this.btnSubirPerfil);
@@ -108,6 +111,96 @@
             this.pnContenedor.ShowBorders = true;
             this.pnContenedor.Size = new System.Drawing.Size(1134, 670);
             this.pnContenedor.TabIndex = 18;
+            // 
+            // btnCambiarContraseña
+            // 
+            this.btnCambiarContraseña.AllowAnimations = true;
+            this.btnCambiarContraseña.AllowMouseEffects = true;
+            this.btnCambiarContraseña.AllowToggling = false;
+            this.btnCambiarContraseña.AnimationSpeed = 200;
+            this.btnCambiarContraseña.AutoGenerateColors = false;
+            this.btnCambiarContraseña.AutoRoundBorders = false;
+            this.btnCambiarContraseña.AutoSizeLeftIcon = true;
+            this.btnCambiarContraseña.AutoSizeRightIcon = true;
+            this.btnCambiarContraseña.BackColor = System.Drawing.Color.Transparent;
+            this.btnCambiarContraseña.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnCambiarContraseña.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCambiarContraseña.BackgroundImage")));
+            this.btnCambiarContraseña.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnCambiarContraseña.ButtonText = "Cambiar Contraseña";
+            this.btnCambiarContraseña.ButtonTextMarginLeft = 0;
+            this.btnCambiarContraseña.ColorContrastOnClick = 45;
+            this.btnCambiarContraseña.ColorContrastOnHover = 45;
+            this.btnCambiarContraseña.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnCambiarContraseña.CustomizableEdges = borderEdges1;
+            this.btnCambiarContraseña.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnCambiarContraseña.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnCambiarContraseña.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnCambiarContraseña.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnCambiarContraseña.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            this.btnCambiarContraseña.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCambiarContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnCambiarContraseña.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCambiarContraseña.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnCambiarContraseña.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnCambiarContraseña.IconMarginLeft = 11;
+            this.btnCambiarContraseña.IconPadding = 10;
+            this.btnCambiarContraseña.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCambiarContraseña.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnCambiarContraseña.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnCambiarContraseña.IconSize = 25;
+            this.btnCambiarContraseña.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnCambiarContraseña.IdleBorderRadius = 15;
+            this.btnCambiarContraseña.IdleBorderThickness = 1;
+            this.btnCambiarContraseña.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnCambiarContraseña.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Guardar;
+            this.btnCambiarContraseña.IdleIconRightImage = null;
+            this.btnCambiarContraseña.IndicateFocus = false;
+            this.btnCambiarContraseña.Location = new System.Drawing.Point(628, 611);
+            this.btnCambiarContraseña.Name = "btnCambiarContraseña";
+            this.btnCambiarContraseña.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnCambiarContraseña.OnDisabledState.BorderRadius = 15;
+            this.btnCambiarContraseña.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnCambiarContraseña.OnDisabledState.BorderThickness = 1;
+            this.btnCambiarContraseña.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnCambiarContraseña.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnCambiarContraseña.OnDisabledState.IconLeftImage = null;
+            this.btnCambiarContraseña.OnDisabledState.IconRightImage = null;
+            this.btnCambiarContraseña.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnCambiarContraseña.onHoverState.BorderRadius = 15;
+            this.btnCambiarContraseña.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnCambiarContraseña.onHoverState.BorderThickness = 1;
+            this.btnCambiarContraseña.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnCambiarContraseña.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnCambiarContraseña.onHoverState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Guardar_2;
+            this.btnCambiarContraseña.onHoverState.IconRightImage = null;
+            this.btnCambiarContraseña.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnCambiarContraseña.OnIdleState.BorderRadius = 15;
+            this.btnCambiarContraseña.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnCambiarContraseña.OnIdleState.BorderThickness = 1;
+            this.btnCambiarContraseña.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnCambiarContraseña.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnCambiarContraseña.OnIdleState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Guardar;
+            this.btnCambiarContraseña.OnIdleState.IconRightImage = null;
+            this.btnCambiarContraseña.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnCambiarContraseña.OnPressedState.BorderRadius = 15;
+            this.btnCambiarContraseña.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnCambiarContraseña.OnPressedState.BorderThickness = 1;
+            this.btnCambiarContraseña.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnCambiarContraseña.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnCambiarContraseña.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Guardar;
+            this.btnCambiarContraseña.OnPressedState.IconRightImage = null;
+            this.btnCambiarContraseña.Size = new System.Drawing.Size(217, 39);
+            this.btnCambiarContraseña.TabIndex = 67;
+            this.btnCambiarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnCambiarContraseña.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnCambiarContraseña.TextMarginLeft = 0;
+            this.btnCambiarContraseña.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnCambiarContraseña.UseDefaultRadiusAndThickness = true;
+            this.btnCambiarContraseña.Click += new System.EventHandler(this.btnCambiarContraseña_Click);
             // 
             // gbDatos
             // 
@@ -205,7 +298,7 @@
             this.txtTelefono.SelectionLength = 0;
             this.txtTelefono.SelectionStart = 0;
             this.txtTelefono.ShortcutsEnabled = true;
-            this.txtTelefono.Size = new System.Drawing.Size(224, 24);
+            this.txtTelefono.Size = new System.Drawing.Size(224, 42);
             this.txtTelefono.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtTelefono.TabIndex = 13;
             this.txtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -283,7 +376,7 @@
             this.txtDireccion.SelectionLength = 0;
             this.txtDireccion.SelectionStart = 0;
             this.txtDireccion.ShortcutsEnabled = true;
-            this.txtDireccion.Size = new System.Drawing.Size(224, 24);
+            this.txtDireccion.Size = new System.Drawing.Size(224, 42);
             this.txtDireccion.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtDireccion.TabIndex = 12;
             this.txtDireccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -361,7 +454,7 @@
             this.txtEmail.SelectionLength = 0;
             this.txtEmail.SelectionStart = 0;
             this.txtEmail.ShortcutsEnabled = true;
-            this.txtEmail.Size = new System.Drawing.Size(224, 24);
+            this.txtEmail.Size = new System.Drawing.Size(224, 42);
             this.txtEmail.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtEmail.TabIndex = 11;
             this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -456,44 +549,6 @@
             // 
             // lblEmail
             // 
-
-            // btnCambiarContraseña
-            // 
-            this.btnCambiarContraseña.Active = true;
-            this.btnCambiarContraseña.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnCambiarContraseña.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCambiarContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnCambiarContraseña.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCambiarContraseña.BorderRadius = 7;
-            this.btnCambiarContraseña.ButtonText = "Cambiar Contraseña";
-            this.btnCambiarContraseña.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCambiarContraseña.DisabledColor = System.Drawing.Color.Gray;
-            this.btnCambiarContraseña.Iconcolor = System.Drawing.Color.Transparent;
-            this.btnCambiarContraseña.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnCambiarContraseña.Iconimage")));
-            this.btnCambiarContraseña.Iconimage_right = null;
-            this.btnCambiarContraseña.Iconimage_right_Selected = null;
-            this.btnCambiarContraseña.Iconimage_Selected = null;
-            this.btnCambiarContraseña.IconMarginLeft = 0;
-            this.btnCambiarContraseña.IconMarginRight = 0;
-            this.btnCambiarContraseña.IconRightVisible = true;
-            this.btnCambiarContraseña.IconRightZoom = 0D;
-            this.btnCambiarContraseña.IconVisible = true;
-            this.btnCambiarContraseña.IconZoom = 50D;
-            this.btnCambiarContraseña.IsTab = false;
-            this.btnCambiarContraseña.Location = new System.Drawing.Point(456, 433);
-            this.btnCambiarContraseña.Name = "btnCambiarContraseña";
-            this.btnCambiarContraseña.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnCambiarContraseña.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(58)))));
-            this.btnCambiarContraseña.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnCambiarContraseña.selected = true;
-            this.btnCambiarContraseña.Size = new System.Drawing.Size(197, 40);
-            this.btnCambiarContraseña.TabIndex = 172;
-            this.btnCambiarContraseña.Text = "Cambiar Contraseña";
-            this.btnCambiarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnCambiarContraseña.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnCambiarContraseña.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCambiarContraseña.Click += new System.EventHandler(this.btnCambiarContraseña_Click);
-
             this.lblEmail.AllowParentOverrides = false;
             this.lblEmail.AutoEllipsis = false;
             this.lblEmail.CursorType = null;
@@ -555,7 +610,6 @@
             this.lblCodigo1.Text = "Código: ";
             this.lblCodigo1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.lblCodigo1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-
             // 
             // btnGuardar
             // 
@@ -576,11 +630,11 @@
             this.btnGuardar.ColorContrastOnClick = 45;
             this.btnGuardar.ColorContrastOnHover = 45;
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnGuardar.CustomizableEdges = borderEdges1;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnGuardar.CustomizableEdges = borderEdges2;
             this.btnGuardar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnGuardar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnGuardar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -604,7 +658,7 @@
             this.btnGuardar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Guardar;
             this.btnGuardar.IdleIconRightImage = null;
             this.btnGuardar.IndicateFocus = false;
-            this.btnGuardar.Location = new System.Drawing.Point(896, 611);
+            this.btnGuardar.Location = new System.Drawing.Point(864, 611);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnGuardar.OnDisabledState.BorderRadius = 15;
@@ -666,11 +720,11 @@
             this.btnSubirPerfil.ColorContrastOnClick = 45;
             this.btnSubirPerfil.ColorContrastOnHover = 45;
             this.btnSubirPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnSubirPerfil.CustomizableEdges = borderEdges2;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            this.btnSubirPerfil.CustomizableEdges = borderEdges3;
             this.btnSubirPerfil.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnSubirPerfil.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSubirPerfil.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -756,11 +810,11 @@
             this.btnRestablecerPerfil.ColorContrastOnClick = 45;
             this.btnRestablecerPerfil.ColorContrastOnHover = 45;
             this.btnRestablecerPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            this.btnRestablecerPerfil.CustomizableEdges = borderEdges3;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            this.btnRestablecerPerfil.CustomizableEdges = borderEdges4;
             this.btnRestablecerPerfil.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnRestablecerPerfil.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnRestablecerPerfil.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -1071,5 +1125,6 @@
         private Bunifu.UI.WinForms.BunifuLabel lblNombres1;
         private Bunifu.UI.WinForms.BunifuLabel lblTelefono1;
         private Bunifu.UI.WinForms.BunifuLabel lblCodigo1;
+        public Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnCambiarContraseña;
     }
 }
