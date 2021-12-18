@@ -138,10 +138,13 @@ namespace CapaPresentaciones
             {
                 pnOpciones.Width = 220;
                 pbLogo.Location = new Point(225, 5);
-                SeparadorMenu.Width = 209;
+                SeparadorMenu1.Width = 209;
+                SeparadorMenu2.Width = 209;
                 pbPerfil.Visible = true;
                 btnEditarPerfil.Visible = true;
                 pbEditarPerfil.Visible = false;
+                btnCerrarSesion.Visible = true;
+                pbCerrarSesion.Visible = false;
                 lblDatos.Visible = true;
                 lblAcceso.Visible = true;
                 lblUsuario.Visible = true;
@@ -153,10 +156,13 @@ namespace CapaPresentaciones
             {
                 pnOpciones.Width = 44;
                 pbLogo.Location = new Point(49, 5);
-                SeparadorMenu.Width = 35;
+                SeparadorMenu1.Width = 35;
+                SeparadorMenu2.Width = 35;
                 pbPerfil.Visible = false;
                 btnEditarPerfil.Visible = false;
                 pbEditarPerfil.Visible = true;
+                btnCerrarSesion.Visible = false;
+                pbCerrarSesion.Visible = true;
                 lblDatos.Visible = false;
                 lblAcceso.Visible = false;
                 lblUsuario.Visible = false;
@@ -245,6 +251,19 @@ namespace CapaPresentaciones
         private void ActualizarColor()
         {
             lblSuperior.Focus();
+        }
+
+        private void CerrarSesion()
+        {
+            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Desea cerrar sesión?", true);
+            Dialogo.ShowDialog();
+            DialogResult Opcion = Dialogo.DialogResult;
+            if (Opcion == DialogResult.Yes)
+            {
+                Application.Exit();
+                P_InicioSesion Login = new P_InicioSesion();
+                Login.Show();
+            }
         }
 
         private void EditarPerfil()
@@ -358,6 +377,16 @@ namespace CapaPresentaciones
         private void pbEditarPerfil_Click(object sender, EventArgs e)
         {
             EditarPerfil();
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            CerrarSesion();
+        }
+
+        private void pbCerrarSesion_Click(object sender, EventArgs e)
+        {
+            CerrarSesion();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
