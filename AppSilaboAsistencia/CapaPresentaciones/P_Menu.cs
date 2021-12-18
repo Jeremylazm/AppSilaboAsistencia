@@ -123,8 +123,8 @@ namespace CapaPresentaciones
                 btnAsignaturasAsignadas.Visible = true;
                 btnSilabos.Visible = true;
                 btnSesiones.Visible = true;
-                btnCatálogo.Visible = false;
-                btnAsignaturas.Visible = false;
+                btnCatálogo.Visible = true;
+                btnAsignaturas.Visible = true;
                 btnDocentes.Visible = true;
             }
         }
@@ -268,40 +268,18 @@ namespace CapaPresentaciones
         {
             ActualizarColor();
 
-            if (lblAcceso.Text == "Jefe de Departamento Academico")
+            P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
             {
-                P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
-                {
-                    Usuario = E_InicioSesion.Usuario,
-                    TopLevel = false,
-                    Dock = DockStyle.Fill
-                };
-                Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
+                Usuario = E_InicioSesion.Usuario,
+                TopLevel = false,
+                Dock = DockStyle.Fill
+            };
+            Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
 
-                pnContenedor.Controls.Add(Editar);
-                pnContenedor.Tag = Editar;
-                Editar.Show();
-                Editar.BringToFront();
-            }
-            else if (lblAcceso.Text == "Director de Escuela Profesional")
-            {
-
-            }
-            else if (lblAcceso.Text == "Docente")
-            {
-                P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
-                {
-                    Usuario = E_InicioSesion.Usuario,
-                    TopLevel = false,
-                    Dock = DockStyle.Fill
-                };
-                Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
-
-                pnContenedor.Controls.Add(Editar);
-                pnContenedor.Tag = Editar;
-                Editar.Show();
-                Editar.BringToFront();
-            }
+            pnContenedor.Controls.Add(Editar);
+            pnContenedor.Tag = Editar;
+            Editar.Show();
+            Editar.BringToFront();
             /*else
             {
                 P_EditarPerfilDirector Editar = new P_EditarPerfilDirector
