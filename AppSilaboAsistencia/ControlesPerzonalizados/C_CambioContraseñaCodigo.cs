@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
 using ControlesPerzonalizados.Ayudas;
+using ControlesPerzonalizados;
 
 namespace ControlesPerzonalizados
 {
@@ -14,8 +15,6 @@ namespace ControlesPerzonalizados
         public C_CambioContraseñaCodigo()
         {
             InitializeComponent();
-            lblEmail.Text = Email;
-            Verificar();
         }
 
         public static void Inicializar(string pEmail, string pUsuario)
@@ -23,6 +22,12 @@ namespace ControlesPerzonalizados
             Email = pEmail;
             Usuario = pUsuario;
         } //Listo
+
+        private void Inicializar2()
+        {
+            lblEmail.Text = Email;
+            Verificar();
+        }
 
         private void MensajeError(string Mensaje)
         {
