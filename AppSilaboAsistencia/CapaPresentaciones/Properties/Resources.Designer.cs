@@ -273,9 +273,9 @@ namespace CapaPresentaciones.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Dailogo_Confirmacion {
+        internal static System.Drawing.Bitmap Descargar_2 {
             get {
-                object obj = ResourceManager.GetObject("Dailogo_Confirmacion", resourceCulture);
+                object obj = ResourceManager.GetObject("Descargar_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,9 +283,9 @@ namespace CapaPresentaciones.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Descargar_2 {
+        internal static System.Drawing.Bitmap Dialogo_Confirmacion {
             get {
-                object obj = ResourceManager.GetObject("Descargar_2", resourceCulture);
+                object obj = ResourceManager.GetObject("Dialogo_Confirmacion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

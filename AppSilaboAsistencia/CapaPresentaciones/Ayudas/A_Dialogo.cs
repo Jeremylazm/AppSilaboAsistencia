@@ -26,7 +26,7 @@ namespace CapaPresentaciones.Ayudas
 
         public static void DialogoConfirmacion(string Mensaje)
         {
-            P_DialogoRespuesta1.Mostrar(Mensaje, (Image)Properties.Resources.Circulo_Checked);
+            P_DialogoRespuesta1.Mostrar(Mensaje, (Image)Properties.Resources.Dialogo_Confirmacion);
         }
 
         public static void DialogoError(string Mensaje)
