@@ -13,12 +13,22 @@ namespace ControlesPerzonalizados
             InitializeComponent();
         }
 
+        private void MensajeError(string Mensaje)
+        {
+            MessageBox.Show(Mensaje, "Sistema Sílabo Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        } //Listo
+
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            Usuario = txtUsuario.Text;
-            Correo = txtUsuario.Text + "@unsaac.edu.pe";
-            C_CambioContraseñaCodigo.Inicializar(Correo, Usuario);
-            new A_Paso().Siguiente(ParentForm, "Paso1", "Paso2", "C_CambioContraseñaCodigo");
+            if (txtUsuario.Text != "")
+            {
+                Usuario = txtUsuario.Text;
+                Correo = txtUsuario.Text + "@unsaac.edu.pe";
+                C_CambioContraseñaCodigo.Inicializar(Correo, Usuario);
+                new A_Paso().Siguiente(ParentForm, "Paso1", "Paso2", "C_CambioContraseñaCodigo");
+            }
+            else
+                MensajeError("No se ingresó el usuario");
         }
 
 
