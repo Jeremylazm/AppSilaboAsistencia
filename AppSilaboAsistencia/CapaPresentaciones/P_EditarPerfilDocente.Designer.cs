@@ -412,6 +412,7 @@
             this.btnCambiarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnCambiarContraseña.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnCambiarContraseña.TextFont = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCambiarContraseña.Click += new System.EventHandler(this.btnCambiarContraseña_Click);
             // 
             // btnGuardar
             // 

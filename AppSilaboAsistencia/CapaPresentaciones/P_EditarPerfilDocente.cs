@@ -184,5 +184,11 @@ namespace CapaPresentaciones
                 A_Dialogo.DialogoConfirmacion("Registro editado exitosamente");
             }
         }
+
+        private void btnCambiarContraseña_Click(object sender, EventArgs e)
+        {
+            P_CambioContraseña CC = new P_CambioContraseña();
+            CC.Show();
+        }
     }
 }
