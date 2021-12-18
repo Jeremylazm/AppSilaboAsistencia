@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
-using System.Text.RegularExpressions;
 using ControlesPerzonalizados.Ayudas;
 
 namespace CapaPresentaciones
@@ -108,6 +101,7 @@ namespace CapaPresentaciones
                                             P_DialogoError.Mostrar("Error al insertar el registro");
                                         }
                                     }
+
                                     // Editar
                                     else
                                     {
@@ -180,6 +174,12 @@ namespace CapaPresentaciones
             }
         }
 
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            RegistrarAsignatura();
+        }
+
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             ActualizarColor();
@@ -190,12 +190,6 @@ namespace CapaPresentaciones
         {
             Program.Evento = 0;
             Close();
-        }
-
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            ActualizarColor();
-            RegistrarAsignatura();
         }
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)

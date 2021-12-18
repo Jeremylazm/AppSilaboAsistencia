@@ -16,7 +16,7 @@ namespace CapaPresentaciones
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new P_TablaDocentes());
+            Application.Run(new P_InicioSesion());
         }
     }
 }
