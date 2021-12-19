@@ -23,7 +23,7 @@ namespace ControlesPerzonalizados
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            Correo = txtUsuario.Text + "@unsaac.edu.pe";
+            Correo = txtUsuario.Text + "@gmail.com";
             Usuario = txtUsuario.Text;
             Verificar();
         }
@@ -57,7 +57,7 @@ namespace ControlesPerzonalizados
                 // Enviar codigo de verificacion
                 SmtpClient clientDetails = new SmtpClient();
                 clientDetails.Port = 587;
-                clientDetails.Host = "smtp.unsaac.edu.pe";
+                clientDetails.Host = "smtp.gmail.com";
                 clientDetails.EnableSsl = true;
                 clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
                 clientDetails.UseDefaultCredentials = false;
@@ -83,8 +83,8 @@ namespace ControlesPerzonalizados
 
         public void Verificar()
         {
-            string correoIngresado = txtUsuario.Text + "@unsaac.edu.pe";
-            string correoValido = Usuario + "@unsaac.edu.pe";
+            string correoIngresado = txtUsuario.Text + "@gmail.com";
+            string correoValido = Usuario + "@gmail.com";
 
             string ans = validarpanelEnviarCodigo(correoValido, correoIngresado);
 
