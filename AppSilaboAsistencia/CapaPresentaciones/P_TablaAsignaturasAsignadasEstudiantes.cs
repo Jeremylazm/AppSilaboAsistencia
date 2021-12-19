@@ -191,9 +191,9 @@ namespace CapaPresentaciones
                     // Actualizar lista matriculados
                     string[] MatriculadosActual = NuevaLista.ToArray();
                     ObjCatalogo.ActualizarMatriculadosAsignatura(CodSemestre, CodAsignatura, CodDocente, string.Join(",", MatriculadosActual));
-                    A_Dialogo.DialogoInformacion("La actualización ha terminado...\n" +
-                                                 "Nuevos estudiantes matriculados: " + matriculados.ToString() + "\n" +
-                                                 "Estudiantes desmatriculados: " + desmatriculados.ToString() + "\n");
+                    A_Dialogo.DialogoInformacion("La actualización ha terminado..." + Environment.NewLine +
+                                                 "Nuevos estudiantes matriculados: " + matriculados.ToString() + Environment.NewLine +
+                                                 "Estudiantes desmatriculados: " + desmatriculados.ToString() + Environment.NewLine);
                     //MessageBox.Show("La actualización ha terminado...\n" +
                     //                "Nuevos estudiantes matriculados: " + matriculados.ToString() + "\n" +
                     //                "Estudiantes desmatriculados: " + desmatriculados.ToString() + "\n");

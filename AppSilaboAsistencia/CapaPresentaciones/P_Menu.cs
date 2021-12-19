@@ -397,6 +397,21 @@ namespace CapaPresentaciones
             CerrarSesion();
         }
 
+        private void P_Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Desea salir de la aplicación?") == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Desea salir de la aplicación?") == DialogResult.Yes)
@@ -428,6 +443,5 @@ namespace CapaPresentaciones
                 Formularios.BringToFront();
             }
         }
-
     }
 }

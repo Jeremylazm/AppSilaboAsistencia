@@ -11,9 +11,6 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasSilabos : Form
     {
-        //private readonly string CodDocente = "49920";
-        //private readonly string CodDocente = "65475";
-        //private readonly string CodDocente = "43992";
         private readonly string CodDocente = E_InicioSesion.Usuario;
 
         public P_TablaAsignaturasAsignadasSilabos()
@@ -57,8 +54,6 @@ namespace CapaPresentaciones
                 saveFileDialog.FilterIndex = 1;
 
                 // El registro de la plantilla
-                /*DataTable A = N_Catalogo.MostrarSilaboAsignatura("2021-II", dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(0, 5), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());*/
-
                 DataTable PlantillaSilabo = N_Recursos.DescargarPlantillaSilabo();
 
                 // Se crea un archivo temporal, para después abrirlo con ClosedXML
