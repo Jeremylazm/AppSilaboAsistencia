@@ -52,6 +52,12 @@ namespace ControlesPerzonalizados
             this.lblContraseñaNueva = new Bunifu.UI.WinForms.BunifuLabel();
             this.txtConfirmarContraseña = new Bunifu.UI.WinForms.BunifuTextBox();
             this.lblConfirmarContraseña = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblErrorContraseñaAnterior = new Bunifu.UI.WinForms.BunifuLabel();
+            this.pbErrorContraseñaAnterior = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.pbErrorContraseñaNueva = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.lblErrorContraseñaNueva = new Bunifu.UI.WinForms.BunifuLabel();
+            this.pbErrorConfirmarContraseña = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.lblErrorConfirmarContraseña = new Bunifu.UI.WinForms.BunifuLabel();
             this.SuspendLayout();
             // 
             // txtContraseñaAnterior
@@ -84,7 +90,7 @@ namespace ControlesPerzonalizados
             this.txtContraseñaAnterior.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtContraseñaAnterior.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtContraseñaAnterior.Lines = new string[0];
-            this.txtContraseñaAnterior.Location = new System.Drawing.Point(218, 50);
+            this.txtContraseñaAnterior.Location = new System.Drawing.Point(218, 46);
             this.txtContraseñaAnterior.Margin = new System.Windows.Forms.Padding(0);
             this.txtContraseñaAnterior.MaxLength = 32767;
             this.txtContraseñaAnterior.MinimumSize = new System.Drawing.Size(1, 1);
@@ -131,6 +137,7 @@ namespace ControlesPerzonalizados
             this.txtContraseñaAnterior.TextPlaceholder = "Escriba su contraseña anterior";
             this.txtContraseñaAnterior.UseSystemPasswordChar = false;
             this.txtContraseñaAnterior.WordWrap = true;
+            this.txtContraseñaAnterior.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseñaAnterior_KeyPress);
             // 
             // lblContraseñaAnterior
             // 
@@ -138,12 +145,12 @@ namespace ControlesPerzonalizados
             this.lblContraseñaAnterior.AutoEllipsis = false;
             this.lblContraseñaAnterior.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblContraseñaAnterior.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblContraseñaAnterior.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContraseñaAnterior.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContraseñaAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblContraseñaAnterior.Location = new System.Drawing.Point(218, 24);
+            this.lblContraseñaAnterior.Location = new System.Drawing.Point(218, 20);
             this.lblContraseñaAnterior.Name = "lblContraseñaAnterior";
             this.lblContraseñaAnterior.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblContraseñaAnterior.Size = new System.Drawing.Size(166, 23);
+            this.lblContraseñaAnterior.Size = new System.Drawing.Size(174, 23);
             this.lblContraseñaAnterior.TabIndex = 15;
             this.lblContraseñaAnterior.Text = "Contraseña Anterior";
             this.lblContraseñaAnterior.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -359,7 +366,7 @@ namespace ControlesPerzonalizados
             this.txtContraseñaNueva.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtContraseñaNueva.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtContraseñaNueva.Lines = new string[0];
-            this.txtContraseñaNueva.Location = new System.Drawing.Point(218, 128);
+            this.txtContraseñaNueva.Location = new System.Drawing.Point(218, 130);
             this.txtContraseñaNueva.Margin = new System.Windows.Forms.Padding(0);
             this.txtContraseñaNueva.MaxLength = 32767;
             this.txtContraseñaNueva.MinimumSize = new System.Drawing.Size(1, 1);
@@ -406,6 +413,7 @@ namespace ControlesPerzonalizados
             this.txtContraseñaNueva.TextPlaceholder = "Escriba su contraseña nueva";
             this.txtContraseñaNueva.UseSystemPasswordChar = false;
             this.txtContraseñaNueva.WordWrap = true;
+            this.txtContraseñaNueva.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseñaNueva_KeyPress);
             // 
             // lblContraseñaNueva
             // 
@@ -413,12 +421,12 @@ namespace ControlesPerzonalizados
             this.lblContraseñaNueva.AutoEllipsis = false;
             this.lblContraseñaNueva.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblContraseñaNueva.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblContraseñaNueva.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContraseñaNueva.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContraseñaNueva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblContraseñaNueva.Location = new System.Drawing.Point(218, 102);
+            this.lblContraseñaNueva.Location = new System.Drawing.Point(218, 104);
             this.lblContraseñaNueva.Name = "lblContraseñaNueva";
             this.lblContraseñaNueva.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblContraseñaNueva.Size = new System.Drawing.Size(154, 23);
+            this.lblContraseñaNueva.Size = new System.Drawing.Size(159, 23);
             this.lblContraseñaNueva.TabIndex = 19;
             this.lblContraseñaNueva.Text = "Contraseña Nueva";
             this.lblContraseñaNueva.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -454,7 +462,7 @@ namespace ControlesPerzonalizados
             this.txtConfirmarContraseña.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtConfirmarContraseña.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtConfirmarContraseña.Lines = new string[0];
-            this.txtConfirmarContraseña.Location = new System.Drawing.Point(218, 210);
+            this.txtConfirmarContraseña.Location = new System.Drawing.Point(218, 214);
             this.txtConfirmarContraseña.Margin = new System.Windows.Forms.Padding(0);
             this.txtConfirmarContraseña.MaxLength = 32767;
             this.txtConfirmarContraseña.MinimumSize = new System.Drawing.Size(1, 1);
@@ -501,6 +509,7 @@ namespace ControlesPerzonalizados
             this.txtConfirmarContraseña.TextPlaceholder = "Confirme su contraseña nueva";
             this.txtConfirmarContraseña.UseSystemPasswordChar = false;
             this.txtConfirmarContraseña.WordWrap = true;
+            this.txtConfirmarContraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtConfirmarContraseña_KeyPress);
             // 
             // lblConfirmarContraseña
             // 
@@ -508,22 +517,190 @@ namespace ControlesPerzonalizados
             this.lblConfirmarContraseña.AutoEllipsis = false;
             this.lblConfirmarContraseña.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblConfirmarContraseña.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblConfirmarContraseña.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfirmarContraseña.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConfirmarContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblConfirmarContraseña.Location = new System.Drawing.Point(218, 184);
+            this.lblConfirmarContraseña.Location = new System.Drawing.Point(218, 188);
             this.lblConfirmarContraseña.Name = "lblConfirmarContraseña";
             this.lblConfirmarContraseña.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblConfirmarContraseña.Size = new System.Drawing.Size(182, 23);
+            this.lblConfirmarContraseña.Size = new System.Drawing.Size(190, 23);
             this.lblConfirmarContraseña.TabIndex = 21;
             this.lblConfirmarContraseña.Text = "Confirmar Contraseña";
             this.lblConfirmarContraseña.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblConfirmarContraseña.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // lblErrorContraseñaAnterior
+            // 
+            this.lblErrorContraseñaAnterior.AllowParentOverrides = false;
+            this.lblErrorContraseñaAnterior.AutoEllipsis = false;
+            this.lblErrorContraseñaAnterior.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblErrorContraseñaAnterior.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblErrorContraseñaAnterior.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorContraseñaAnterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblErrorContraseñaAnterior.Location = new System.Drawing.Point(253, 86);
+            this.lblErrorContraseñaAnterior.Name = "lblErrorContraseñaAnterior";
+            this.lblErrorContraseñaAnterior.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblErrorContraseñaAnterior.Size = new System.Drawing.Size(131, 19);
+            this.lblErrorContraseñaAnterior.TabIndex = 23;
+            this.lblErrorContraseñaAnterior.Text = "Error de Contraseña";
+            this.lblErrorContraseñaAnterior.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblErrorContraseñaAnterior.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblErrorContraseñaAnterior.Visible = false;
+            // 
+            // pbErrorContraseñaAnterior
+            // 
+            this.pbErrorContraseñaAnterior.ActiveImage = null;
+            this.pbErrorContraseñaAnterior.AllowAnimations = true;
+            this.pbErrorContraseñaAnterior.AllowBuffering = false;
+            this.pbErrorContraseñaAnterior.AllowToggling = false;
+            this.pbErrorContraseñaAnterior.AllowZooming = false;
+            this.pbErrorContraseñaAnterior.AllowZoomingOnFocus = false;
+            this.pbErrorContraseñaAnterior.BackColor = System.Drawing.Color.White;
+            this.pbErrorContraseñaAnterior.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pbErrorContraseñaAnterior.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pbErrorContraseñaAnterior.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbErrorContraseñaAnterior.ErrorImage")));
+            this.pbErrorContraseñaAnterior.FadeWhenInactive = false;
+            this.pbErrorContraseñaAnterior.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.pbErrorContraseñaAnterior.Image = global::ControlesPerzonalizados.Properties.Resources.Cerrar_2;
+            this.pbErrorContraseñaAnterior.ImageActive = null;
+            this.pbErrorContraseñaAnterior.ImageLocation = null;
+            this.pbErrorContraseñaAnterior.ImageMargin = 0;
+            this.pbErrorContraseñaAnterior.ImageSize = new System.Drawing.Size(18, 18);
+            this.pbErrorContraseñaAnterior.ImageZoomSize = new System.Drawing.Size(18, 18);
+            this.pbErrorContraseñaAnterior.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorContraseñaAnterior.InitialImage")));
+            this.pbErrorContraseñaAnterior.Location = new System.Drawing.Point(229, 87);
+            this.pbErrorContraseñaAnterior.Name = "pbErrorContraseñaAnterior";
+            this.pbErrorContraseñaAnterior.Rotation = 0;
+            this.pbErrorContraseñaAnterior.ShowActiveImage = false;
+            this.pbErrorContraseñaAnterior.ShowCursorChanges = false;
+            this.pbErrorContraseñaAnterior.ShowImageBorders = true;
+            this.pbErrorContraseñaAnterior.ShowSizeMarkers = false;
+            this.pbErrorContraseñaAnterior.Size = new System.Drawing.Size(18, 18);
+            this.pbErrorContraseñaAnterior.TabIndex = 24;
+            this.pbErrorContraseñaAnterior.ToolTipText = "";
+            this.pbErrorContraseñaAnterior.Visible = false;
+            this.pbErrorContraseñaAnterior.WaitOnLoad = false;
+            this.pbErrorContraseñaAnterior.Zoom = 0;
+            this.pbErrorContraseñaAnterior.ZoomSpeed = 10;
+            // 
+            // pbErrorContraseñaNueva
+            // 
+            this.pbErrorContraseñaNueva.ActiveImage = null;
+            this.pbErrorContraseñaNueva.AllowAnimations = true;
+            this.pbErrorContraseñaNueva.AllowBuffering = false;
+            this.pbErrorContraseñaNueva.AllowToggling = false;
+            this.pbErrorContraseñaNueva.AllowZooming = false;
+            this.pbErrorContraseñaNueva.AllowZoomingOnFocus = false;
+            this.pbErrorContraseñaNueva.BackColor = System.Drawing.Color.White;
+            this.pbErrorContraseñaNueva.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pbErrorContraseñaNueva.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pbErrorContraseñaNueva.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbErrorContraseñaNueva.ErrorImage")));
+            this.pbErrorContraseñaNueva.FadeWhenInactive = false;
+            this.pbErrorContraseñaNueva.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.pbErrorContraseñaNueva.Image = global::ControlesPerzonalizados.Properties.Resources.Cerrar_2;
+            this.pbErrorContraseñaNueva.ImageActive = null;
+            this.pbErrorContraseñaNueva.ImageLocation = null;
+            this.pbErrorContraseñaNueva.ImageMargin = 0;
+            this.pbErrorContraseñaNueva.ImageSize = new System.Drawing.Size(18, 18);
+            this.pbErrorContraseñaNueva.ImageZoomSize = new System.Drawing.Size(18, 18);
+            this.pbErrorContraseñaNueva.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorContraseñaNueva.InitialImage")));
+            this.pbErrorContraseñaNueva.Location = new System.Drawing.Point(229, 171);
+            this.pbErrorContraseñaNueva.Name = "pbErrorContraseñaNueva";
+            this.pbErrorContraseñaNueva.Rotation = 0;
+            this.pbErrorContraseñaNueva.ShowActiveImage = false;
+            this.pbErrorContraseñaNueva.ShowCursorChanges = false;
+            this.pbErrorContraseñaNueva.ShowImageBorders = true;
+            this.pbErrorContraseñaNueva.ShowSizeMarkers = false;
+            this.pbErrorContraseñaNueva.Size = new System.Drawing.Size(18, 18);
+            this.pbErrorContraseñaNueva.TabIndex = 26;
+            this.pbErrorContraseñaNueva.ToolTipText = "";
+            this.pbErrorContraseñaNueva.Visible = false;
+            this.pbErrorContraseñaNueva.WaitOnLoad = false;
+            this.pbErrorContraseñaNueva.Zoom = 0;
+            this.pbErrorContraseñaNueva.ZoomSpeed = 10;
+            // 
+            // lblErrorContraseñaNueva
+            // 
+            this.lblErrorContraseñaNueva.AllowParentOverrides = false;
+            this.lblErrorContraseñaNueva.AutoEllipsis = false;
+            this.lblErrorContraseñaNueva.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblErrorContraseñaNueva.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblErrorContraseñaNueva.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorContraseñaNueva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblErrorContraseñaNueva.Location = new System.Drawing.Point(253, 170);
+            this.lblErrorContraseñaNueva.Name = "lblErrorContraseñaNueva";
+            this.lblErrorContraseñaNueva.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblErrorContraseñaNueva.Size = new System.Drawing.Size(131, 19);
+            this.lblErrorContraseñaNueva.TabIndex = 25;
+            this.lblErrorContraseñaNueva.Text = "Error de Contraseña";
+            this.lblErrorContraseñaNueva.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblErrorContraseñaNueva.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblErrorContraseñaNueva.Visible = false;
+            // 
+            // pbErrorConfirmarContraseña
+            // 
+            this.pbErrorConfirmarContraseña.ActiveImage = null;
+            this.pbErrorConfirmarContraseña.AllowAnimations = true;
+            this.pbErrorConfirmarContraseña.AllowBuffering = false;
+            this.pbErrorConfirmarContraseña.AllowToggling = false;
+            this.pbErrorConfirmarContraseña.AllowZooming = false;
+            this.pbErrorConfirmarContraseña.AllowZoomingOnFocus = false;
+            this.pbErrorConfirmarContraseña.BackColor = System.Drawing.Color.White;
+            this.pbErrorConfirmarContraseña.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pbErrorConfirmarContraseña.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pbErrorConfirmarContraseña.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbErrorConfirmarContraseña.ErrorImage")));
+            this.pbErrorConfirmarContraseña.FadeWhenInactive = false;
+            this.pbErrorConfirmarContraseña.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.pbErrorConfirmarContraseña.Image = global::ControlesPerzonalizados.Properties.Resources.Cerrar_2;
+            this.pbErrorConfirmarContraseña.ImageActive = null;
+            this.pbErrorConfirmarContraseña.ImageLocation = null;
+            this.pbErrorConfirmarContraseña.ImageMargin = 0;
+            this.pbErrorConfirmarContraseña.ImageSize = new System.Drawing.Size(18, 18);
+            this.pbErrorConfirmarContraseña.ImageZoomSize = new System.Drawing.Size(18, 18);
+            this.pbErrorConfirmarContraseña.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorConfirmarContraseña.InitialImage")));
+            this.pbErrorConfirmarContraseña.Location = new System.Drawing.Point(229, 255);
+            this.pbErrorConfirmarContraseña.Name = "pbErrorConfirmarContraseña";
+            this.pbErrorConfirmarContraseña.Rotation = 0;
+            this.pbErrorConfirmarContraseña.ShowActiveImage = false;
+            this.pbErrorConfirmarContraseña.ShowCursorChanges = false;
+            this.pbErrorConfirmarContraseña.ShowImageBorders = true;
+            this.pbErrorConfirmarContraseña.ShowSizeMarkers = false;
+            this.pbErrorConfirmarContraseña.Size = new System.Drawing.Size(18, 18);
+            this.pbErrorConfirmarContraseña.TabIndex = 28;
+            this.pbErrorConfirmarContraseña.ToolTipText = "";
+            this.pbErrorConfirmarContraseña.Visible = false;
+            this.pbErrorConfirmarContraseña.WaitOnLoad = false;
+            this.pbErrorConfirmarContraseña.Zoom = 0;
+            this.pbErrorConfirmarContraseña.ZoomSpeed = 10;
+            // 
+            // lblErrorConfirmarContraseña
+            // 
+            this.lblErrorConfirmarContraseña.AllowParentOverrides = false;
+            this.lblErrorConfirmarContraseña.AutoEllipsis = false;
+            this.lblErrorConfirmarContraseña.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblErrorConfirmarContraseña.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblErrorConfirmarContraseña.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorConfirmarContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblErrorConfirmarContraseña.Location = new System.Drawing.Point(253, 254);
+            this.lblErrorConfirmarContraseña.Name = "lblErrorConfirmarContraseña";
+            this.lblErrorConfirmarContraseña.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblErrorConfirmarContraseña.Size = new System.Drawing.Size(131, 19);
+            this.lblErrorConfirmarContraseña.TabIndex = 27;
+            this.lblErrorConfirmarContraseña.Text = "Error de Contraseña";
+            this.lblErrorConfirmarContraseña.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblErrorConfirmarContraseña.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblErrorConfirmarContraseña.Visible = false;
             // 
             // C_CambioContraseñaNueva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.pbErrorConfirmarContraseña);
+            this.Controls.Add(this.lblErrorConfirmarContraseña);
+            this.Controls.Add(this.pbErrorContraseñaNueva);
+            this.Controls.Add(this.lblErrorContraseñaNueva);
+            this.Controls.Add(this.pbErrorContraseñaAnterior);
+            this.Controls.Add(this.lblErrorContraseñaAnterior);
             this.Controls.Add(this.txtConfirmarContraseña);
             this.Controls.Add(this.lblConfirmarContraseña);
             this.Controls.Add(this.txtContraseñaNueva);
@@ -548,5 +725,11 @@ namespace ControlesPerzonalizados
         private Bunifu.UI.WinForms.BunifuLabel lblContraseñaNueva;
         private Bunifu.UI.WinForms.BunifuTextBox txtConfirmarContraseña;
         private Bunifu.UI.WinForms.BunifuLabel lblConfirmarContraseña;
+        private Bunifu.UI.WinForms.BunifuLabel lblErrorContraseñaAnterior;
+        private Bunifu.UI.WinForms.BunifuImageButton pbErrorContraseñaAnterior;
+        private Bunifu.UI.WinForms.BunifuImageButton pbErrorContraseñaNueva;
+        private Bunifu.UI.WinForms.BunifuLabel lblErrorContraseñaNueva;
+        private Bunifu.UI.WinForms.BunifuImageButton pbErrorConfirmarContraseña;
+        private Bunifu.UI.WinForms.BunifuLabel lblErrorConfirmarContraseña;
     }
 }
