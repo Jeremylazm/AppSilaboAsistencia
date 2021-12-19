@@ -892,6 +892,7 @@ namespace CapaPresentaciones
                 Seleccionar_Docente_Cod_Nom.Enabled = true;
                 Seleccionar_Docente_Cod_Nom2.Enabled = true;
                 Check_2_Docentes.Checked = true;
+                Actualizar_Color();
             }
         }
 
@@ -904,7 +905,8 @@ namespace CapaPresentaciones
                 Seleccionar_Docente_Cod_Nom2.Enabled = true;
                 label24.Visible = true;
                 label25.Visible = true;
-                Label_Horas_Asignadas_Docente2.Visible = true;           
+                Label_Horas_Asignadas_Docente2.Visible = true;
+                Actualizar_Color();
             }
             else
             {
@@ -915,6 +917,7 @@ namespace CapaPresentaciones
                 label24.Visible = false;
                 label25.Visible = false;
                 Label_Horas_Asignadas_Docente2.Visible = false;
+                Actualizar_Color();
             }
         }
 
@@ -1595,7 +1598,7 @@ namespace CapaPresentaciones
             }
         }
 
-        private void Hora_Inicio_Lunes_ValueChanged(object sender, EventArgs e)
+        public void Arreglar_Hora_Lunes()
         {
             if (Convert.ToInt32(Hora_Inicio_Lunes.Text) >= Convert.ToInt32(Hora_Fin_Lunes.Text))
             {
@@ -1647,18 +1650,49 @@ namespace CapaPresentaciones
             }
         }
 
+        private void Hora_Inicio_Lunes_ValueChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(Hora_Inicio_Lunes.Text) >= 7)
+                Arreglar_Hora_Lunes();
+            else
+            {
+                Hora_Inicio_Lunes.Value = new DateTime(2022, 1, 1, 7, 0, 0);
+                Arreglar_Hora_Lunes();
+                A_Dialogo.DialogoError("No hay horario que inicie antes de las 7:00");
+                //MessageBox.Show("No hay horario que inicie antes de las 7:00");
+            }
+        }
+
         private void Hora_Fin_Lunes_ValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(Hora_Inicio_Lunes.Text) >= Convert.ToInt32(Hora_Fin_Lunes.Text))
+            if (Convert.ToInt32(Hora_Fin_Lunes.Text) <= 21 && Convert.ToInt32(Hora_Fin_Lunes.Text) >= 8)
+                Arreglar_Hora_Lunes();
+            else if (Convert.ToInt32(Hora_Fin_Lunes.Text) > 21)
             {
-                if (Convert.ToInt32(Hora_Fin_Lunes.Text) >= 1)
+                Hora_Fin_Lunes.Value = new DateTime(2022, 1, 1, 21, 0, 0);
+                Arreglar_Hora_Lunes();
+                A_Dialogo.DialogoError("No hay horario que termine después de las 21:00");
+                //MessageBox.Show("No hay horario que termine después de las 21:00");
+            }
+            else if (Convert.ToInt32(Hora_Fin_Lunes.Text) < 8)
+            {
+                Hora_Fin_Lunes.Value = new DateTime(2022, 1, 1, 8, 0, 0);
+                Arreglar_Hora_Lunes();
+            }
+        }
+
+        public void Arreglar_Hora_Martes()
+        {
+            if (Convert.ToInt32(Hora_Inicio_Martes.Text) >= Convert.ToInt32(Hora_Fin_Martes.Text))
+            {
+                if (Convert.ToInt32(Hora_Fin_Martes.Text) >= 1)
                 {
-                    Hora_Inicio_Lunes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Lunes.Text) - 1, 0, 0);
+                    Hora_Inicio_Martes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Martes.Text) - 1, 0, 0);
                 }
-                else if (Convert.ToInt32(Hora_Fin_Lunes.Text) == 0)
+                else if (Convert.ToInt32(Hora_Fin_Martes.Text) == 0)
                 {
-                    Hora_Fin_Lunes.Value = new DateTime(2022, 1, 1, 1, 0, 0);
-                    Hora_Inicio_Lunes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Lunes.Text) - 1, 0, 0);
+                    Hora_Fin_Martes.Value = new DateTime(2022, 1, 1, 1, 0, 0);
+                    Hora_Inicio_Martes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Martes.Text) - 1, 0, 0);
                 }
                 A_Dialogo.DialogoError("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
@@ -1666,10 +1700,10 @@ namespace CapaPresentaciones
             else
             {
                 int Aux = 0;
-                if (Check_T_Lunes.Checked == true)
+                if (Check_T_Martes.Checked == true)
                 {
-                    if (Check_T_Martes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
+                    if (Check_T_Lunes.Checked == true)
+                        Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
                     if (Check_T_Miércoles.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
                     if (Check_T_Jueves.Checked == true)
@@ -1678,13 +1712,13 @@ namespace CapaPresentaciones
                         Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
                     if (Check_T_Sábado.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraTeoríaA = Aux + Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text);
+                    HoraTeoríaA = Aux + Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text);
                     LabelPR1.Text = Convert.ToString(HoraTeoríaA);
                 }
-                if (Check_P_Lunes.Checked == true)
+                if (Check_P_Martes.Checked == true)
                 {
-                    if (Check_P_Martes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
+                    if (Check_P_Lunes.Checked == true)
+                        Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
                     if (Check_P_Miércoles.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
                     if (Check_P_Jueves.Checked == true)
@@ -1693,7 +1727,7 @@ namespace CapaPresentaciones
                         Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
                     if (Check_P_Sábado.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraPrácticaA = Aux + (Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text));
+                    HoraPrácticaA = Aux + (Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text));
                     LabelPR2.Text = Convert.ToString(HoraPrácticaA);
                 }
             }
@@ -1701,68 +1735,47 @@ namespace CapaPresentaciones
 
         private void Hora_Inicio_Martes_ValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(Hora_Inicio_Martes.Text) >= Convert.ToInt32(Hora_Fin_Martes.Text))
-            {
-                if (Convert.ToInt32(Hora_Fin_Martes.Text) >= 1)
-                {
-                    Hora_Inicio_Martes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Martes.Text) - 1, 0, 0);
-                }
-                else if (Convert.ToInt32(Hora_Fin_Martes.Text) == 0)
-                {
-                    Hora_Fin_Martes.Value = new DateTime(2022, 1, 1, 1, 0, 0);
-                    Hora_Inicio_Martes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Martes.Text) - 1, 0, 0);
-                }
-                A_Dialogo.DialogoError("La hora de inicio no puede ser mayor o igual que la hora de finalización");
-                //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
-            }
+            if (Convert.ToInt32(Hora_Inicio_Martes.Text) >= 7)
+                Arreglar_Hora_Martes();
             else
             {
-                int Aux = 0;
-                if (Check_T_Martes.Checked == true)
-                {
-                    if (Check_T_Lunes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
-                    if (Check_T_Miércoles.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
-                    if (Check_T_Jueves.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
-                    if (Check_T_Viernes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
-                    if (Check_T_Sábado.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraTeoríaA = Aux + Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text);
-                    LabelPR1.Text = Convert.ToString(HoraTeoríaA);
-                }
-                if (Check_P_Martes.Checked == true)
-                {
-                    if (Check_P_Lunes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
-                    if (Check_P_Miércoles.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
-                    if (Check_P_Jueves.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
-                    if (Check_P_Viernes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
-                    if (Check_P_Sábado.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraPrácticaA = Aux + (Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text));
-                    LabelPR2.Text = Convert.ToString(HoraPrácticaA);
-                }
+                Hora_Inicio_Martes.Value = new DateTime(2022, 1, 1, 7, 0, 0);
+                Arreglar_Hora_Martes();
+                A_Dialogo.DialogoError("No hay horario que inicie antes de las 7:00");
+                //MessageBox.Show("No hay horario que inicie antes de las 7:00");
             }
         }
 
         private void Hora_Fin_Martes_ValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(Hora_Inicio_Martes.Text) >= Convert.ToInt32(Hora_Fin_Martes.Text))
+            if (Convert.ToInt32(Hora_Fin_Martes.Text) <= 21 && Convert.ToInt32(Hora_Fin_Martes.Text) >= 8)
+                Arreglar_Hora_Martes();
+            else if (Convert.ToInt32(Hora_Fin_Martes.Text) > 21)
             {
-                if (Convert.ToInt32(Hora_Fin_Martes.Text) >= 1)
+                Hora_Fin_Martes.Value = new DateTime(2022, 1, 1, 21, 0, 0);
+                Arreglar_Hora_Martes();
+                A_Dialogo.DialogoError("No hay horario que termine después de las 21:00");
+                //MessageBox.Show("No hay horario que termine después de las 21:00");
+            }
+            else if (Convert.ToInt32(Hora_Fin_Martes.Text) < 8)
+            {
+                Hora_Fin_Martes.Value = new DateTime(2022, 1, 1, 8, 0, 0);
+                Arreglar_Hora_Martes();
+            }
+        }
+
+        public void Arreglar_Hora_Miércoles()
+        {
+            if (Convert.ToInt32(Hora_Inicio_Miércoles.Text) >= Convert.ToInt32(Hora_Fin_Miércoles.Text))
+            {
+                if (Convert.ToInt32(Hora_Fin_Miércoles.Text) >= 1)
                 {
-                    Hora_Inicio_Martes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Martes.Text) - 1, 0, 0);
+                    Hora_Inicio_Miércoles.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Miércoles.Text) - 1, 0, 0);
                 }
-                else if (Convert.ToInt32(Hora_Fin_Martes.Text) == 0)
+                else if (Convert.ToInt32(Hora_Fin_Miércoles.Text) == 0)
                 {
-                    Hora_Fin_Martes.Value = new DateTime(2022, 1, 1, 1, 0, 0);
-                    Hora_Inicio_Martes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Martes.Text) - 1, 0, 0);
+                    Hora_Fin_Miércoles.Value = new DateTime(2022, 1, 1, 1, 0, 0);
+                    Hora_Inicio_Miércoles.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Miércoles.Text) - 1, 0, 0);
                 }
                 A_Dialogo.DialogoError("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
@@ -1770,34 +1783,34 @@ namespace CapaPresentaciones
             else
             {
                 int Aux = 0;
-                if (Check_T_Martes.Checked == true)
+                if (Check_T_Miércoles.Checked == true)
                 {
                     if (Check_T_Lunes.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
-                    if (Check_T_Miércoles.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
+                    if (Check_T_Martes.Checked == true)
+                        Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
                     if (Check_T_Jueves.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
                     if (Check_T_Viernes.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
                     if (Check_T_Sábado.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraTeoríaA = Aux + Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text);
+                    HoraTeoríaA = Aux + Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text);
                     LabelPR1.Text = Convert.ToString(HoraTeoríaA);
                 }
-                if (Check_P_Martes.Checked == true)
+                if (Check_P_Miércoles.Checked == true)
                 {
                     if (Check_P_Lunes.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
-                    if (Check_P_Miércoles.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
+                    if (Check_P_Martes.Checked == true)
+                        Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
                     if (Check_P_Jueves.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
                     if (Check_P_Viernes.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
                     if (Check_P_Sábado.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraPrácticaA = Aux + (Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text));
+                    HoraPrácticaA = Aux + (Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text));
                     LabelPR2.Text = Convert.ToString(HoraPrácticaA);
                 }
             }
@@ -1805,68 +1818,47 @@ namespace CapaPresentaciones
 
         private void Hora_Inicio_Miércoles_ValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(Hora_Inicio_Miércoles.Text) >= Convert.ToInt32(Hora_Fin_Miércoles.Text))
-            {
-                if (Convert.ToInt32(Hora_Fin_Miércoles.Text) >= 1)
-                {
-                    Hora_Inicio_Miércoles.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Miércoles.Text) - 1, 0, 0);
-                }
-                else if (Convert.ToInt32(Hora_Fin_Miércoles.Text) == 0)
-                {
-                    Hora_Fin_Miércoles.Value = new DateTime(2022, 1, 1, 1, 0, 0);
-                    Hora_Inicio_Miércoles.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Miércoles.Text) - 1, 0, 0);
-                }
-                A_Dialogo.DialogoError("La hora de inicio no puede ser mayor o igual que la hora de finalización");
-                //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
-            }
+            if (Convert.ToInt32(Hora_Inicio_Miércoles.Text) >= 7)
+                Arreglar_Hora_Miércoles();
             else
             {
-                int Aux = 0;
-                if (Check_T_Miércoles.Checked == true)
-                {
-                    if (Check_T_Lunes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
-                    if (Check_T_Martes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
-                    if (Check_T_Jueves.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
-                    if (Check_T_Viernes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
-                    if (Check_T_Sábado.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraTeoríaA = Aux + Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text);
-                    LabelPR1.Text = Convert.ToString(HoraTeoríaA);
-                }
-                if (Check_P_Miércoles.Checked == true)
-                {
-                    if (Check_P_Lunes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
-                    if (Check_P_Martes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
-                    if (Check_P_Jueves.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
-                    if (Check_P_Viernes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
-                    if (Check_P_Sábado.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraPrácticaA = Aux + (Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text));
-                    LabelPR2.Text = Convert.ToString(HoraPrácticaA);
-                }
+                Hora_Inicio_Miércoles.Value = new DateTime(2022, 1, 1, 7, 0, 0);
+                Arreglar_Hora_Miércoles();
+                A_Dialogo.DialogoError("No hay horario que inicie antes de las 7:00");
+                //MessageBox.Show("No hay horario que inicie antes de las 7:00");
             }
         }
 
         private void Hora_Fin_Miércoles_ValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(Hora_Inicio_Miércoles.Text) >= Convert.ToInt32(Hora_Fin_Miércoles.Text))
+            if (Convert.ToInt32(Hora_Fin_Miércoles.Text) <= 21 && Convert.ToInt32(Hora_Fin_Miércoles.Text) >= 8)
+                Arreglar_Hora_Miércoles();
+            else if (Convert.ToInt32(Hora_Fin_Miércoles.Text) > 21)
             {
-                if (Convert.ToInt32(Hora_Fin_Miércoles.Text) >= 1)
+                Hora_Fin_Miércoles.Value = new DateTime(2022, 1, 1, 21, 0, 0);
+                Arreglar_Hora_Miércoles();
+                A_Dialogo.DialogoError("No hay horario que termine después de las 21:00");
+                //MessageBox.Show("No hay horario que termine después de las 21:00");
+            }
+            else if (Convert.ToInt32(Hora_Fin_Miércoles.Text) < 8)
+            {
+                Hora_Fin_Miércoles.Value = new DateTime(2022, 1, 1, 8, 0, 0);
+                Arreglar_Hora_Miércoles();
+            }
+        }
+
+        public void Arreglar_Hora_Jueves()
+        {
+            if (Convert.ToInt32(Hora_Inicio_Jueves.Text) >= Convert.ToInt32(Hora_Fin_Jueves.Text))
+            {
+                if (Convert.ToInt32(Hora_Fin_Jueves.Text) >= 1)
                 {
-                    Hora_Inicio_Miércoles.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Miércoles.Text) - 1, 0, 0);
+                    Hora_Inicio_Jueves.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Jueves.Text) - 1, 0, 0);
                 }
-                else if (Convert.ToInt32(Hora_Fin_Miércoles.Text) == 0)
+                else if (Convert.ToInt32(Hora_Fin_Jueves.Text) == 0)
                 {
-                    Hora_Fin_Miércoles.Value = new DateTime(2022, 1, 1, 1, 0, 0);
-                    Hora_Inicio_Miércoles.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Miércoles.Text) - 1, 0, 0);
+                    Hora_Fin_Jueves.Value = new DateTime(2022, 1, 1, 1, 0, 0);
+                    Hora_Inicio_Jueves.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Jueves.Text) - 1, 0, 0);
                 }
                 A_Dialogo.DialogoError("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
@@ -1874,34 +1866,34 @@ namespace CapaPresentaciones
             else
             {
                 int Aux = 0;
-                if (Check_T_Miércoles.Checked == true)
+                if (Check_T_Jueves.Checked == true)
                 {
                     if (Check_T_Lunes.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
                     if (Check_T_Martes.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
-                    if (Check_T_Jueves.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
+                    if (Check_T_Miércoles.Checked == true)
+                        Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
                     if (Check_T_Viernes.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
                     if (Check_T_Sábado.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraTeoríaA = Aux + Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text);
+                    HoraTeoríaA = Aux + Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text);
                     LabelPR1.Text = Convert.ToString(HoraTeoríaA);
                 }
-                if (Check_P_Miércoles.Checked == true)
+                if (Check_P_Jueves.Checked == true)
                 {
                     if (Check_P_Lunes.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
                     if (Check_P_Martes.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
-                    if (Check_P_Jueves.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
+                    if (Check_P_Miércoles.Checked == true)
+                        Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
                     if (Check_P_Viernes.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
                     if (Check_P_Sábado.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraPrácticaA = Aux + (Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text));
+                    HoraPrácticaA = Aux + (Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text));
                     LabelPR2.Text = Convert.ToString(HoraPrácticaA);
                 }
             }
@@ -1909,68 +1901,47 @@ namespace CapaPresentaciones
 
         private void Hora_Inicio_Jueves_ValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(Hora_Inicio_Jueves.Text) >= Convert.ToInt32(Hora_Fin_Jueves.Text))
-            {
-                if (Convert.ToInt32(Hora_Fin_Jueves.Text) >= 1)
-                {
-                    Hora_Inicio_Jueves.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Jueves.Text) - 1, 0, 0);
-                }
-                else if (Convert.ToInt32(Hora_Fin_Jueves.Text) == 0)
-                {
-                    Hora_Fin_Jueves.Value = new DateTime(2022, 1, 1, 1, 0, 0);
-                    Hora_Inicio_Jueves.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Jueves.Text) - 1, 0, 0);
-                }
-                A_Dialogo.DialogoError("La hora de inicio no puede ser mayor o igual que la hora de finalización");
-                //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
-            }
+            if (Convert.ToInt32(Hora_Inicio_Jueves.Text) >= 7)
+                Arreglar_Hora_Jueves();
             else
             {
-                int Aux = 0;
-                if (Check_T_Jueves.Checked == true)
-                {
-                    if (Check_T_Lunes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
-                    if (Check_T_Martes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
-                    if (Check_T_Miércoles.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
-                    if (Check_T_Viernes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
-                    if (Check_T_Sábado.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraTeoríaA = Aux + Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text);
-                    LabelPR1.Text = Convert.ToString(HoraTeoríaA);
-                }
-                if (Check_P_Jueves.Checked == true)
-                {
-                    if (Check_P_Lunes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
-                    if (Check_P_Martes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
-                    if (Check_P_Miércoles.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
-                    if (Check_P_Viernes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
-                    if (Check_P_Sábado.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraPrácticaA = Aux + (Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text));
-                    LabelPR2.Text = Convert.ToString(HoraPrácticaA);
-                }
+                Hora_Inicio_Jueves.Value = new DateTime(2022, 1, 1, 7, 0, 0);
+                Arreglar_Hora_Jueves();
+                A_Dialogo.DialogoError("No hay horario que inicie antes de las 7:00");
+                //MessageBox.Show("No hay horario que inicie antes de las 7:00");
             }
         }
 
         private void Hora_Fin_Jueves_ValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(Hora_Inicio_Jueves.Text) >= Convert.ToInt32(Hora_Fin_Jueves.Text))
+            if (Convert.ToInt32(Hora_Fin_Jueves.Text) <= 21 && Convert.ToInt32(Hora_Fin_Jueves.Text) >= 8)
+                Arreglar_Hora_Jueves();
+            else if (Convert.ToInt32(Hora_Fin_Jueves.Text) > 21)
             {
-                if (Convert.ToInt32(Hora_Fin_Jueves.Text) >= 1)
+                Hora_Fin_Jueves.Value = new DateTime(2022, 1, 1, 21, 0, 0);
+                Arreglar_Hora_Jueves();
+                A_Dialogo.DialogoError("No hay horario que termine después de las 21:00");
+                //MessageBox.Show("No hay horario que termine después de las 21:00");
+            }
+            else if (Convert.ToInt32(Hora_Fin_Jueves.Text) < 8)
+            {
+                Hora_Fin_Jueves.Value = new DateTime(2022, 1, 1, 8, 0, 0);
+                Arreglar_Hora_Jueves();
+            }
+        }
+
+        public void Arreglar_Hora_Viernes()
+        {
+            if (Convert.ToInt32(Hora_Inicio_Viernes.Text) >= Convert.ToInt32(Hora_Fin_Viernes.Text))
+            {
+                if (Convert.ToInt32(Hora_Fin_Viernes.Text) >= 1)
                 {
-                    Hora_Inicio_Jueves.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Jueves.Text) - 1, 0, 0);
+                    Hora_Inicio_Viernes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Viernes.Text) - 1, 0, 0);
                 }
-                else if (Convert.ToInt32(Hora_Fin_Jueves.Text) == 0)
+                else if (Convert.ToInt32(Hora_Fin_Viernes.Text) == 0)
                 {
-                    Hora_Fin_Jueves.Value = new DateTime(2022, 1, 1, 1, 0, 0);
-                    Hora_Inicio_Jueves.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Jueves.Text) - 1, 0, 0);
+                    Hora_Fin_Viernes.Value = new DateTime(2022, 1, 1, 1, 0, 0);
+                    Hora_Inicio_Viernes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Viernes.Text) - 1, 0, 0);
                 }
                 A_Dialogo.DialogoError("La hora de inicio no puede ser mayor o igual que la hora de finalización");
                 //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
@@ -1978,7 +1949,7 @@ namespace CapaPresentaciones
             else
             {
                 int Aux = 0;
-                if (Check_T_Jueves.Checked == true)
+                if (Check_T_Viernes.Checked == true)
                 {
                     if (Check_T_Lunes.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
@@ -1986,14 +1957,14 @@ namespace CapaPresentaciones
                         Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
                     if (Check_T_Miércoles.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
-                    if (Check_T_Viernes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
+                    if (Check_T_Jueves.Checked == true)
+                        Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
                     if (Check_T_Sábado.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraTeoríaA = Aux + Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text);
+                    HoraTeoríaA = Aux + Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text);
                     LabelPR1.Text = Convert.ToString(HoraTeoríaA);
                 }
-                if (Check_P_Jueves.Checked == true)
+                if (Check_P_Viernes.Checked == true)
                 {
                     if (Check_P_Lunes.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
@@ -2001,11 +1972,11 @@ namespace CapaPresentaciones
                         Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
                     if (Check_P_Miércoles.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
-                    if (Check_P_Viernes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
+                    if (Check_P_Jueves.Checked == true)
+                        Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
                     if (Check_P_Sábado.Checked == true)
                         Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraPrácticaA = Aux + (Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text));
+                    HoraPrácticaA = Aux + (Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text));
                     LabelPR2.Text = Convert.ToString(HoraPrácticaA);
                 }
             }
@@ -2013,109 +1984,36 @@ namespace CapaPresentaciones
 
         private void Hora_Inicio_Viernes_ValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(Hora_Inicio_Viernes.Text) >= Convert.ToInt32(Hora_Fin_Viernes.Text))
-            {
-                if (Convert.ToInt32(Hora_Fin_Viernes.Text) >= 1)
-                {
-                    Hora_Inicio_Viernes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Viernes.Text) - 1, 0, 0);
-                }
-                else if (Convert.ToInt32(Hora_Fin_Viernes.Text) == 0)
-                {
-                    Hora_Fin_Viernes.Value = new DateTime(2022, 1, 1, 1, 0, 0);
-                    Hora_Inicio_Viernes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Viernes.Text) - 1, 0, 0);
-                }
-                A_Dialogo.DialogoError("La hora de inicio no puede ser mayor o igual que la hora de finalización");
-                //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
-            }
+            if (Convert.ToInt32(Hora_Inicio_Viernes.Text) >= 7)
+                Arreglar_Hora_Viernes();
             else
             {
-                int Aux = 0;
-                if (Check_T_Viernes.Checked == true)
-                {
-                    if (Check_T_Lunes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
-                    if (Check_T_Martes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
-                    if (Check_T_Miércoles.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
-                    if (Check_T_Jueves.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
-                    if (Check_T_Sábado.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraTeoríaA = Aux + Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text);
-                    LabelPR1.Text = Convert.ToString(HoraTeoríaA);
-                }
-                if (Check_P_Viernes.Checked == true)
-                {
-                    if (Check_P_Lunes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
-                    if (Check_P_Martes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
-                    if (Check_P_Miércoles.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
-                    if (Check_P_Jueves.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
-                    if (Check_P_Sábado.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraPrácticaA = Aux + (Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text));
-                    LabelPR2.Text = Convert.ToString(HoraPrácticaA);
-                }
+                Hora_Inicio_Viernes.Value = new DateTime(2022, 1, 1, 7, 0, 0);
+                Arreglar_Hora_Viernes();
+                A_Dialogo.DialogoError("No hay horario que inicie antes de las 7:00");
+                //MessageBox.Show("No hay horario que inicie antes de las 7:00");
             }
         }
 
         private void Hora_Fin_Viernes_ValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(Hora_Inicio_Viernes.Text) >= Convert.ToInt32(Hora_Fin_Viernes.Text))
+            if (Convert.ToInt32(Hora_Fin_Viernes.Text) <= 21 && Convert.ToInt32(Hora_Fin_Viernes.Text) >= 8)
+                Arreglar_Hora_Viernes();
+            else if (Convert.ToInt32(Hora_Fin_Viernes.Text) > 21)
             {
-                if (Convert.ToInt32(Hora_Fin_Viernes.Text) >= 1)
-                {
-                    Hora_Inicio_Viernes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Viernes.Text) - 1, 0, 0);
-                }
-                else if (Convert.ToInt32(Hora_Fin_Viernes.Text) == 0)
-                {
-                    Hora_Fin_Viernes.Value = new DateTime(2022, 1, 1, 1, 0, 0);
-                    Hora_Inicio_Viernes.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Viernes.Text) - 1, 0, 0);
-                }
-                A_Dialogo.DialogoError("La hora de inicio no puede ser mayor o igual que la hora de finalización");
-                //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
+                Hora_Fin_Viernes.Value = new DateTime(2022, 1, 1, 21, 0, 0);
+                Arreglar_Hora_Viernes();
+                A_Dialogo.DialogoError("No hay horario que termine después de las 21:00");
+                //MessageBox.Show("No hay horario que termine después de las 21:00");
             }
-            else
+            else if (Convert.ToInt32(Hora_Fin_Viernes.Text) < 8)
             {
-                int Aux = 0;
-                if (Check_T_Viernes.Checked == true)
-                {
-                    if (Check_T_Lunes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
-                    if (Check_T_Martes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
-                    if (Check_T_Miércoles.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
-                    if (Check_T_Jueves.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
-                    if (Check_T_Sábado.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraTeoríaA = Aux + Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text);
-                    LabelPR1.Text = Convert.ToString(HoraTeoríaA);
-                }
-                if (Check_P_Viernes.Checked == true)
-                {
-                    if (Check_P_Lunes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
-                    if (Check_P_Martes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
-                    if (Check_P_Miércoles.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
-                    if (Check_P_Jueves.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
-                    if (Check_P_Sábado.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text) + Aux;
-                    HoraPrácticaA = Aux + (Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text));
-                    LabelPR2.Text = Convert.ToString(HoraPrácticaA);
-                }
+                Hora_Fin_Viernes.Value = new DateTime(2022, 1, 1, 8, 0, 0);
+                Arreglar_Hora_Viernes();
             }
         }
 
-        private void Hora_Inicio_Sábado_ValueChanged(object sender, EventArgs e)
+        public void Arreglar_Hora_Sábado()
         {
             if (Convert.ToInt32(Hora_Inicio_Sábado.Text) >= Convert.ToInt32(Hora_Fin_Sábado.Text))
             {
@@ -2164,6 +2062,37 @@ namespace CapaPresentaciones
                     HoraPrácticaA = Aux + (Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text));
                     LabelPR2.Text = Convert.ToString(HoraPrácticaA);
                 }
+            }
+        }
+
+        private void Hora_Inicio_Sábado_ValueChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(Hora_Inicio_Sábado.Text) >= 7)
+                Arreglar_Hora_Sábado();
+            else
+            {
+                Hora_Inicio_Sábado.Value = new DateTime(2022, 1, 1, 7, 0, 0);
+                Arreglar_Hora_Sábado();
+                A_Dialogo.DialogoError("No hay horario que inicie antes de las 7:00");
+                //MessageBox.Show("No hay horario que inicie antes de las 7:00");
+            }
+        }
+
+        private void Hora_Fin_Sábado_ValueChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(Hora_Fin_Sábado.Text) <= 21 && Convert.ToInt32(Hora_Fin_Sábado.Text) >= 8)
+                Arreglar_Hora_Sábado();
+            else if (Convert.ToInt32(Hora_Fin_Sábado.Text) > 21)
+            {
+                Hora_Fin_Sábado.Value = new DateTime(2022, 1, 1, 21, 0, 0);
+                Arreglar_Hora_Sábado();
+                A_Dialogo.DialogoError("No hay horario que termine después de las 21:00");
+                //MessageBox.Show("No hay horario que termine después de las 21:00");
+            }
+            else if (Convert.ToInt32(Hora_Fin_Sábado.Text) < 8)
+            {
+                Hora_Fin_Sábado.Value = new DateTime(2022, 1, 1, 8, 0, 0);
+                Arreglar_Hora_Sábado();
             }
         }
 
@@ -2193,6 +2122,7 @@ namespace CapaPresentaciones
                     CódigoDocente1 = Seleccionar_Docente_Cod_Nom.SelectedValue.ToString();
                 Recuperar_Horas_Docentes();
                 DescontarHoras();
+                Actualizar_Color();
             }
             catch
             {
@@ -2210,6 +2140,7 @@ namespace CapaPresentaciones
                     CódigoDocente2 = Seleccionar_Docente_Cod_Nom2.SelectedValue.ToString();
                 Recuperar_Horas_Docentes();
                 DescontarHoras();
+                Actualizar_Color();
             }
             catch
             {
@@ -2239,62 +2170,12 @@ namespace CapaPresentaciones
             }
         }
 
-        private void Hora_Fin_Sábado_ValueChanged(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(Hora_Inicio_Sábado.Text) >= Convert.ToInt32(Hora_Fin_Sábado.Text))
-            {
-                if (Convert.ToInt32(Hora_Fin_Sábado.Text) >= 1)
-                {
-                    Hora_Inicio_Sábado.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Sábado.Text) - 1, 0, 0);
-                }
-                else if (Convert.ToInt32(Hora_Fin_Sábado.Text) == 0)
-                {
-                    Hora_Fin_Sábado.Value = new DateTime(2022, 1, 1, 1, 0, 0);
-                    Hora_Inicio_Sábado.Value = new DateTime(2022, 1, 1, Convert.ToInt32(Hora_Fin_Sábado.Text) - 1, 0, 0);
-                }
-                A_Dialogo.DialogoError("La hora de inicio no puede ser mayor o igual que la hora de finalización");
-                //MessageBox.Show("La hora de inicio no puede ser mayor o igual que la hora de finalización");
-            }
-            else
-            {
-                int Aux = 0;
-                if (Check_T_Sábado.Checked == true)
-                {
-                    if (Check_T_Lunes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
-                    if (Check_T_Martes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
-                    if (Check_T_Miércoles.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
-                    if (Check_T_Jueves.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
-                    if (Check_T_Viernes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
-                    HoraTeoríaA = Aux + Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text);
-                    LabelPR1.Text = Convert.ToString(HoraTeoríaA);
-                }
-                if (Check_P_Sábado.Checked == true)
-                {
-                    if (Check_P_Lunes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Lunes.Text) - Convert.ToInt32(Hora_Inicio_Lunes.Text) + Aux;
-                    if (Check_P_Martes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Martes.Text) - Convert.ToInt32(Hora_Inicio_Martes.Text) + Aux;
-                    if (Check_P_Miércoles.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Miércoles.Text) - Convert.ToInt32(Hora_Inicio_Miércoles.Text) + Aux;
-                    if (Check_P_Jueves.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Jueves.Text) - Convert.ToInt32(Hora_Inicio_Jueves.Text) + Aux;
-                    if (Check_P_Viernes.Checked == true)
-                        Aux = Convert.ToInt32(Hora_Fin_Viernes.Text) - Convert.ToInt32(Hora_Inicio_Viernes.Text) + Aux;
-                    HoraPrácticaA = Aux + (Convert.ToInt32(Hora_Fin_Sábado.Text) - Convert.ToInt32(Hora_Inicio_Sábado.Text));
-                    LabelPR2.Text = Convert.ToString(HoraPrácticaA);
-                }
-            }
-        }
 
         private void Seleccionar_Semestre_SelectedIndexChanged(object sender, EventArgs e)
         {
             Recuperar_Horas_Docentes();
             DescontarHoras();
+            Actualizar_Color();
         }
 
         public bool Buscar(string CS, string CA, string EP, string G)
@@ -2561,6 +2442,965 @@ namespace CapaPresentaciones
         {
             Label_Horas_Asignadas_Docente1.Text = Convert.ToString(HTD1);
             Label_Horas_Asignadas_Docente2.Text = Convert.ToString(HTD1);
+        }
+
+        public void Designar(string Día, string HoraInicio, string HoraFin, int Docente)
+        {
+            int[] Horas = { 0, 0, 0, 0, 0 };
+            Horas[0] = Convert.ToInt32(HoraInicio);
+            for (int i = 1; i < 5; i++)
+            {
+                if (Convert.ToInt32(HoraInicio) + i <= Convert.ToInt32(HoraFin))
+                    Horas[i] = Convert.ToInt32(HoraInicio) + i;
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                if (Horas[i] != 0 && Horas[i + 1] != 0)
+                {
+                    if (Docente == 1)
+                        Colorear1(Día, Horas[i], Horas[i + 1]);
+                    else
+                        Colorear2(Día, Horas[i], Horas[i + 1]);
+                }
+            }
+        }
+
+        public void Limpiar_Colores()
+        {
+            //Lunes
+            L7_8.BackColor = Color.White;
+            L8_9.BackColor = Color.White;
+            L9_10.BackColor = Color.White;
+            L10_11.BackColor = Color.White;
+            L11_12.BackColor = Color.White;
+            L12_13.BackColor = Color.White;
+            L13_14.BackColor = Color.White;
+            L14_15.BackColor = Color.White;
+            L15_16.BackColor = Color.White;
+            L16_17.BackColor = Color.White;
+            L17_18.BackColor = Color.White;
+            L18_19.BackColor = Color.White;
+            L19_20.BackColor = Color.White;
+            L20_21.BackColor = Color.White;
+            //Martes
+            M7_8.BackColor = Color.White;
+            M8_9.BackColor = Color.White;
+            M9_10.BackColor = Color.White;
+            M10_11.BackColor = Color.White;
+            M11_12.BackColor = Color.White;
+            M12_13.BackColor = Color.White;
+            M13_14.BackColor = Color.White;
+            M14_15.BackColor = Color.White;
+            M15_16.BackColor = Color.White;
+            M16_17.BackColor = Color.White;
+            M17_18.BackColor = Color.White;
+            M18_19.BackColor = Color.White;
+            M19_20.BackColor = Color.White;
+            M20_21.BackColor = Color.White;
+            //Miércoles
+            Mi7_8.BackColor = Color.White;
+            Mi8_9.BackColor = Color.White;
+            Mi9_10.BackColor = Color.White;
+            Mi10_11.BackColor = Color.White;
+            Mi11_12.BackColor = Color.White;
+            Mi12_13.BackColor = Color.White;
+            Mi13_14.BackColor = Color.White;
+            Mi14_15.BackColor = Color.White;
+            Mi15_16.BackColor = Color.White;
+            Mi16_17.BackColor = Color.White;
+            Mi17_18.BackColor = Color.White;
+            Mi18_19.BackColor = Color.White;
+            Mi19_20.BackColor = Color.White;
+            Mi20_21.BackColor = Color.White;
+            //Jueves
+            J7_8.BackColor = Color.White;
+            J8_9.BackColor = Color.White;
+            J9_10.BackColor = Color.White;
+            J10_11.BackColor = Color.White;
+            J11_12.BackColor = Color.White;
+            J12_13.BackColor = Color.White;
+            J13_14.BackColor = Color.White;
+            J14_15.BackColor = Color.White;
+            J15_16.BackColor = Color.White;
+            J16_17.BackColor = Color.White;
+            J17_18.BackColor = Color.White;
+            J18_19.BackColor = Color.White;
+            J19_20.BackColor = Color.White;
+            J20_21.BackColor = Color.White;
+            //Viernes
+            V7_8.BackColor = Color.White;
+            V8_9.BackColor = Color.White;
+            V9_10.BackColor = Color.White;
+            V10_11.BackColor = Color.White;
+            V11_12.BackColor = Color.White;
+            V12_13.BackColor = Color.White;
+            V13_14.BackColor = Color.White;
+            V14_15.BackColor = Color.White;
+            V15_16.BackColor = Color.White;
+            V16_17.BackColor = Color.White;
+            V17_18.BackColor = Color.White;
+            V18_19.BackColor = Color.White;
+            V19_20.BackColor = Color.White;
+            V20_21.BackColor = Color.White;
+            //Sábado
+            S7_8.BackColor = Color.White;
+            S8_9.BackColor = Color.White;
+            S9_10.BackColor = Color.White;
+            S10_11.BackColor = Color.White;
+            S11_12.BackColor = Color.White;
+            S12_13.BackColor = Color.White;
+            S13_14.BackColor = Color.White;
+            S14_15.BackColor = Color.White;
+            S15_16.BackColor = Color.White;
+            S16_17.BackColor = Color.White;
+            S17_18.BackColor = Color.White;
+            S18_19.BackColor = Color.White;
+            S19_20.BackColor = Color.White;
+            S20_21.BackColor = Color.White;
+        }
+
+        public void Colorear1(string Día, int HoraInicio, int HoraFin)
+        {
+            if (Día == "LU")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                    L7_8.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 8 && HoraFin == 9)
+                    L8_9.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 9 && HoraFin == 10)
+                    L9_10.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 10 && HoraFin == 11)
+                    L10_11.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 11 && HoraFin == 12)
+                    L11_12.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 12 && HoraFin == 13)
+                    L12_13.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 13 && HoraFin == 14)
+                    L13_14.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 14 && HoraFin == 15)
+                    L14_15.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 15 && HoraFin == 16)
+                    L15_16.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 16 && HoraFin == 17)
+                    L16_17.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 17 && HoraFin == 18)
+                    L17_18.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 18 && HoraFin == 19)
+                    L18_19.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 19 && HoraFin == 20)
+                    L19_20.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 20 && HoraFin == 21)
+                    L20_21.BackColor = Color.LawnGreen;
+            }
+            else if (Día == "MA")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                    M7_8.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 8 && HoraFin == 9)
+                    M8_9.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 9 && HoraFin == 10)
+                    M9_10.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 10 && HoraFin == 11)
+                    M10_11.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 11 && HoraFin == 12)
+                    M11_12.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 12 && HoraFin == 13)
+                    M12_13.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 13 && HoraFin == 14)
+                    M13_14.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 14 && HoraFin == 15)
+                    M14_15.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 15 && HoraFin == 16)
+                    M15_16.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 16 && HoraFin == 17)
+                    M16_17.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 17 && HoraFin == 18)
+                    M17_18.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 18 && HoraFin == 19)
+                    M18_19.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 19 && HoraFin == 20)
+                    M19_20.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 20 && HoraFin == 21)
+                    M20_21.BackColor = Color.LawnGreen;
+            }
+            else if (Día == "MI")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                    Mi7_8.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 8 && HoraFin == 9)
+                    Mi8_9.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 9 && HoraFin == 10)
+                    Mi9_10.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 10 && HoraFin == 11)
+                    Mi10_11.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 11 && HoraFin == 12)
+                    Mi11_12.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 12 && HoraFin == 13)
+                    Mi12_13.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 13 && HoraFin == 14)
+                    Mi13_14.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 14 && HoraFin == 15)
+                    Mi14_15.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 15 && HoraFin == 16)
+                    Mi15_16.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 16 && HoraFin == 17)
+                    Mi16_17.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 17 && HoraFin == 18)
+                    Mi17_18.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 18 && HoraFin == 19)
+                    Mi18_19.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 19 && HoraFin == 20)
+                    Mi19_20.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 20 && HoraFin == 21)
+                    Mi20_21.BackColor = Color.LawnGreen;
+            }
+            else if (Día == "JU")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                    J7_8.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 8 && HoraFin == 9)
+                    J8_9.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 9 && HoraFin == 10)
+                    J9_10.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 10 && HoraFin == 11)
+                    J10_11.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 11 && HoraFin == 12)
+                    J11_12.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 12 && HoraFin == 13)
+                    J12_13.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 13 && HoraFin == 14)
+                    J13_14.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 14 && HoraFin == 15)
+                    J14_15.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 15 && HoraFin == 16)
+                    J15_16.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 16 && HoraFin == 17)
+                    J16_17.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 17 && HoraFin == 18)
+                    J17_18.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 18 && HoraFin == 19)
+                    J18_19.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 19 && HoraFin == 20)
+                    J19_20.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 20 && HoraFin == 21)
+                    J20_21.BackColor = Color.LawnGreen;
+            }
+            else if (Día == "VI")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                    V7_8.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 8 && HoraFin == 9)
+                    V8_9.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 9 && HoraFin == 10)
+                    V9_10.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 10 && HoraFin == 11)
+                    V10_11.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 11 && HoraFin == 12)
+                    V11_12.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 12 && HoraFin == 13)
+                    V12_13.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 13 && HoraFin == 14)
+                    V13_14.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 14 && HoraFin == 15)
+                    V14_15.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 15 && HoraFin == 16)
+                    V15_16.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 16 && HoraFin == 17)
+                    V16_17.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 17 && HoraFin == 18)
+                    V17_18.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 18 && HoraFin == 19)
+                    V18_19.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 19 && HoraFin == 20)
+                    V19_20.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 20 && HoraFin == 21)
+                    V20_21.BackColor = Color.LawnGreen;
+            }
+            else if (Día == "SA")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                    S7_8.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 8 && HoraFin == 9)
+                    S8_9.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 9 && HoraFin == 10)
+                    S9_10.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 10 && HoraFin == 11)
+                    S10_11.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 11 && HoraFin == 12)
+                    S11_12.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 12 && HoraFin == 13)
+                    S12_13.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 13 && HoraFin == 14)
+                    S13_14.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 14 && HoraFin == 15)
+                    S14_15.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 15 && HoraFin == 16)
+                    S15_16.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 16 && HoraFin == 17)
+                    S16_17.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 17 && HoraFin == 18)
+                    S17_18.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 18 && HoraFin == 19)
+                    S18_19.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 19 && HoraFin == 20)
+                    S19_20.BackColor = Color.LawnGreen;
+                else if (HoraInicio == 20 && HoraFin == 21)
+                    S20_21.BackColor = Color.LawnGreen;
+            }
+        }
+
+        public void Colorear2(string Día, int HoraInicio, int HoraFin)
+        {
+            if (Día == "LU")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                {
+                    if (L7_8.BackColor == Color.White)
+                        L7_8.BackColor = Color.Orange;
+                    else
+                        L7_8.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 8 && HoraFin == 9)
+                {
+                    if (L8_9.BackColor == Color.White)
+                        L8_9.BackColor = Color.Orange;
+                    else
+                        L8_9.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 9 && HoraFin == 10)
+                {
+                    if (L9_10.BackColor == Color.White)
+                        L9_10.BackColor = Color.Orange;
+                    else
+                        L9_10.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 10 && HoraFin == 11)
+                {
+                    if (L10_11.BackColor == Color.White)
+                        L10_11.BackColor = Color.Orange;
+                    else
+                        L10_11.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 11 && HoraFin == 12)
+                {
+                    if (L11_12.BackColor == Color.White)
+                        L11_12.BackColor = Color.Orange;
+                    else
+                        L11_12.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 12 && HoraFin == 13)
+                {
+                    if (L12_13.BackColor == Color.White)
+                        L12_13.BackColor = Color.Orange;
+                    else
+                        L12_13.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 13 && HoraFin == 14)
+                {
+                    if (L13_14.BackColor == Color.White)
+                        L13_14.BackColor = Color.Orange;
+                    else
+                        L13_14.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 14 && HoraFin == 15)
+                {
+                    if (L14_15.BackColor == Color.White)
+                        L14_15.BackColor = Color.Orange;
+                    else
+                        L14_15.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 15 && HoraFin == 16)
+                {
+                    if (L15_16.BackColor == Color.White)
+                        L15_16.BackColor = Color.Orange;
+                    else
+                        L15_16.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 16 && HoraFin == 17)
+                {
+                    if (L16_17.BackColor == Color.White)
+                        L16_17.BackColor = Color.Orange;
+                    else
+                        L16_17.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 17 && HoraFin == 18)
+                {
+                    if (L17_18.BackColor == Color.White)
+                        L17_18.BackColor = Color.Orange;
+                    else
+                        L17_18.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 18 && HoraFin == 19)
+                {
+                    if (L18_19.BackColor == Color.White)
+                        L18_19.BackColor = Color.Orange;
+                    else
+                        L18_19.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 19 && HoraFin == 20)
+                {
+                    if (L19_20.BackColor == Color.White)
+                        L19_20.BackColor = Color.Orange;
+                    else
+                        L19_20.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 20 && HoraFin == 21)
+                {
+                    if (L20_21.BackColor == Color.White)
+                        L20_21.BackColor = Color.Orange;
+                    else
+                        L20_21.BackColor = Color.DarkViolet;
+                }
+            }
+            else if (Día == "MA")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                {
+                    if (M7_8.BackColor == Color.White)
+                        M7_8.BackColor = Color.Orange;
+                    else
+                        M7_8.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 8 && HoraFin == 9)
+                {
+                    if (M8_9.BackColor == Color.White)
+                        M8_9.BackColor = Color.Orange;
+                    else
+                        M8_9.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 9 && HoraFin == 10)
+                {
+                    if (M9_10.BackColor == Color.White)
+                        M9_10.BackColor = Color.Orange;
+                    else
+                        M9_10.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 10 && HoraFin == 11)
+                {
+                    if (M10_11.BackColor == Color.White)
+                        M10_11.BackColor = Color.Orange;
+                    else
+                        M10_11.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 11 && HoraFin == 12)
+                {
+                    if (M11_12.BackColor == Color.White)
+                        M11_12.BackColor = Color.Orange;
+                    else
+                        M11_12.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 12 && HoraFin == 13)
+                {
+                    if (M12_13.BackColor == Color.White)
+                        M12_13.BackColor = Color.Orange;
+                    else
+                        M12_13.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 13 && HoraFin == 14)
+                {
+                    if (M13_14.BackColor == Color.White)
+                        M13_14.BackColor = Color.Orange;
+                    else
+                        M13_14.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 14 && HoraFin == 15)
+                {
+                    if (M14_15.BackColor == Color.White)
+                        M14_15.BackColor = Color.Orange;
+                    else
+                        M14_15.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 15 && HoraFin == 16)
+                {
+                    if (M15_16.BackColor == Color.White)
+                        M15_16.BackColor = Color.Orange;
+                    else
+                        M15_16.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 16 && HoraFin == 17)
+                {
+                    if (M16_17.BackColor == Color.White)
+                        M16_17.BackColor = Color.Orange;
+                    else
+                        M16_17.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 17 && HoraFin == 18)
+                {
+                    if (M17_18.BackColor == Color.White)
+                        M17_18.BackColor = Color.Orange;
+                    else
+                        M17_18.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 18 && HoraFin == 19)
+                {
+                    if (M18_19.BackColor == Color.White)
+                        M18_19.BackColor = Color.Orange;
+                    else
+                        M18_19.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 19 && HoraFin == 20)
+                {
+                    if (M19_20.BackColor == Color.White)
+                        M19_20.BackColor = Color.Orange;
+                    else
+                        M19_20.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 20 && HoraFin == 21)
+                {
+                    if (M20_21.BackColor == Color.White)
+                        M20_21.BackColor = Color.Orange;
+                    else
+                        M20_21.BackColor = Color.DarkViolet;
+                }
+            }
+            else if (Día == "MI")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                {
+                    if (Mi7_8.BackColor == Color.White)
+                        Mi7_8.BackColor = Color.Orange;
+                    else
+                        Mi7_8.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 8 && HoraFin == 9)
+                {
+                    if (Mi8_9.BackColor == Color.White)
+                        Mi8_9.BackColor = Color.Orange;
+                    else
+                        Mi8_9.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 9 && HoraFin == 10)
+                {
+                    if (Mi9_10.BackColor == Color.White)
+                        Mi9_10.BackColor = Color.Orange;
+                    else
+                        Mi9_10.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 10 && HoraFin == 11)
+                {
+                    if (Mi10_11.BackColor == Color.White)
+                        Mi10_11.BackColor = Color.Orange;
+                    else
+                        Mi10_11.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 11 && HoraFin == 12)
+                {
+                    if (Mi11_12.BackColor == Color.White)
+                        Mi11_12.BackColor = Color.Orange;
+                    else
+                        Mi11_12.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 12 && HoraFin == 13)
+                {
+                    if (Mi12_13.BackColor == Color.White)
+                        Mi12_13.BackColor = Color.Orange;
+                    else
+                        Mi12_13.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 13 && HoraFin == 14)
+                {
+                    if (Mi13_14.BackColor == Color.White)
+                        Mi13_14.BackColor = Color.Orange;
+                    else
+                        Mi13_14.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 14 && HoraFin == 15)
+                {
+                    if (Mi14_15.BackColor == Color.White)
+                        Mi14_15.BackColor = Color.Orange;
+                    else
+                        Mi14_15.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 15 && HoraFin == 16)
+                {
+                    if (Mi15_16.BackColor == Color.White)
+                        Mi15_16.BackColor = Color.Orange;
+                    else
+                        Mi15_16.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 16 && HoraFin == 17)
+                {
+                    if (Mi16_17.BackColor == Color.White)
+                        Mi16_17.BackColor = Color.Orange;
+                    else
+                        Mi16_17.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 17 && HoraFin == 18)
+                {
+                    if (Mi17_18.BackColor == Color.White)
+                        Mi17_18.BackColor = Color.Orange;
+                    else
+                        Mi17_18.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 18 && HoraFin == 19)
+                {
+                    if (Mi18_19.BackColor == Color.White)
+                        Mi18_19.BackColor = Color.Orange;
+                    else
+                        Mi18_19.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 19 && HoraFin == 20)
+                {
+                    if (Mi19_20.BackColor == Color.White)
+                        Mi19_20.BackColor = Color.Orange;
+                    else
+                        Mi19_20.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 20 && HoraFin == 21)
+                {
+                    if (Mi20_21.BackColor == Color.White)
+                        Mi20_21.BackColor = Color.Orange;
+                    else
+                        Mi20_21.BackColor = Color.DarkViolet;
+                }
+            }
+            else if (Día == "JU")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                {
+                    if (J7_8.BackColor == Color.White)
+                        J7_8.BackColor = Color.Orange;
+                    else
+                        J7_8.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 8 && HoraFin == 9)
+                {
+                    if (J8_9.BackColor == Color.White)
+                        J8_9.BackColor = Color.Orange;
+                    else
+                        J8_9.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 9 && HoraFin == 10)
+                {
+                    if (J9_10.BackColor == Color.White)
+                        J9_10.BackColor = Color.Orange;
+                    else
+                        J9_10.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 10 && HoraFin == 11)
+                {
+                    if (J10_11.BackColor == Color.White)
+                        J10_11.BackColor = Color.Orange;
+                    else
+                        J10_11.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 11 && HoraFin == 12)
+                {
+                    if (J11_12.BackColor == Color.White)
+                        J11_12.BackColor = Color.Orange;
+                    else
+                        J11_12.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 12 && HoraFin == 13)
+                {
+                    if (J12_13.BackColor == Color.White)
+                        J12_13.BackColor = Color.Orange;
+                    else
+                        J12_13.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 13 && HoraFin == 14)
+                {
+                    if (J13_14.BackColor == Color.White)
+                        J13_14.BackColor = Color.Orange;
+                    else
+                        J13_14.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 14 && HoraFin == 15)
+                {
+                    if (J14_15.BackColor == Color.White)
+                        J14_15.BackColor = Color.Orange;
+                    else
+                        J14_15.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 15 && HoraFin == 16)
+                {
+                    if (J15_16.BackColor == Color.White)
+                        J15_16.BackColor = Color.Orange;
+                    else
+                        J15_16.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 16 && HoraFin == 17)
+                {
+                    if (J16_17.BackColor == Color.White)
+                        J16_17.BackColor = Color.Orange;
+                    else
+                        J16_17.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 17 && HoraFin == 18)
+                {
+                    if (J17_18.BackColor == Color.White)
+                        J17_18.BackColor = Color.Orange;
+                    else
+                        J17_18.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 18 && HoraFin == 19)
+                {
+                    if (J18_19.BackColor == Color.White)
+                        J18_19.BackColor = Color.Orange;
+                    else
+                        J18_19.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 19 && HoraFin == 20)
+                {
+                    if (J19_20.BackColor == Color.White)
+                        J19_20.BackColor = Color.Orange;
+                    else
+                        J19_20.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 20 && HoraFin == 21)
+                {
+                    if (J20_21.BackColor == Color.White)
+                        J20_21.BackColor = Color.Orange;
+                    else
+                        J20_21.BackColor = Color.DarkViolet;
+                }
+            }
+            else if (Día == "VI")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                {
+                    if (V7_8.BackColor == Color.White)
+                        V7_8.BackColor = Color.Orange;
+                    else
+                        V7_8.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 8 && HoraFin == 9)
+                {
+                    if (V8_9.BackColor == Color.White)
+                        V8_9.BackColor = Color.Orange;
+                    else
+                        V8_9.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 9 && HoraFin == 10)
+                {
+                    if (V9_10.BackColor == Color.White)
+                        V9_10.BackColor = Color.Orange;
+                    else
+                        V9_10.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 10 && HoraFin == 11)
+                {
+                    if (V10_11.BackColor == Color.White)
+                        V10_11.BackColor = Color.Orange;
+                    else
+                        V10_11.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 11 && HoraFin == 12)
+                {
+                    if (V11_12.BackColor == Color.White)
+                        V11_12.BackColor = Color.Orange;
+                    else
+                        V11_12.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 12 && HoraFin == 13)
+                {
+                    if (V12_13.BackColor == Color.White)
+                        V12_13.BackColor = Color.Orange;
+                    else
+                        V12_13.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 13 && HoraFin == 14)
+                {
+                    if (V13_14.BackColor == Color.White)
+                        V13_14.BackColor = Color.Orange;
+                    else
+                        V13_14.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 14 && HoraFin == 15)
+                {
+                    if (V14_15.BackColor == Color.White)
+                        V14_15.BackColor = Color.Orange;
+                    else
+                        V14_15.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 15 && HoraFin == 16)
+                {
+                    if (V15_16.BackColor == Color.White)
+                        V15_16.BackColor = Color.Orange;
+                    else
+                        V15_16.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 16 && HoraFin == 17)
+                {
+                    if (V16_17.BackColor == Color.White)
+                        V16_17.BackColor = Color.Orange;
+                    else
+                        V16_17.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 17 && HoraFin == 18)
+                {
+                    if (V17_18.BackColor == Color.White)
+                        V17_18.BackColor = Color.Orange;
+                    else
+                        V17_18.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 18 && HoraFin == 19)
+                {
+                    if (V18_19.BackColor == Color.White)
+                        V18_19.BackColor = Color.Orange;
+                    else
+                        V18_19.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 19 && HoraFin == 20)
+                {
+                    if (V19_20.BackColor == Color.White)
+                        V19_20.BackColor = Color.Orange;
+                    else
+                        V19_20.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 20 && HoraFin == 21)
+                {
+                    if (V20_21.BackColor == Color.White)
+                        V20_21.BackColor = Color.Orange;
+                    else
+                        V20_21.BackColor = Color.DarkViolet;
+                }
+            }
+            else if (Día == "SA")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                {
+                    if (S7_8.BackColor == Color.White)
+                        S7_8.BackColor = Color.Orange;
+                    else
+                        S7_8.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 8 && HoraFin == 9)
+                {
+                    if (S8_9.BackColor == Color.White)
+                        S8_9.BackColor = Color.Orange;
+                    else
+                        S8_9.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 9 && HoraFin == 10)
+                {
+                    if (S9_10.BackColor == Color.White)
+                        S9_10.BackColor = Color.Orange;
+                    else
+                        S9_10.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 10 && HoraFin == 11)
+                {
+                    if (S10_11.BackColor == Color.White)
+                        S10_11.BackColor = Color.Orange;
+                    else
+                        S10_11.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 11 && HoraFin == 12)
+                {
+                    if (S11_12.BackColor == Color.White)
+                        S11_12.BackColor = Color.Orange;
+                    else
+                        S11_12.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 12 && HoraFin == 13)
+                {
+                    if (S12_13.BackColor == Color.White)
+                        S12_13.BackColor = Color.Orange;
+                    else
+                        S12_13.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 13 && HoraFin == 14)
+                {
+                    if (S13_14.BackColor == Color.White)
+                        S13_14.BackColor = Color.Orange;
+                    else
+                        S13_14.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 14 && HoraFin == 15)
+                {
+                    if (S14_15.BackColor == Color.White)
+                        S14_15.BackColor = Color.Orange;
+                    else
+                        S14_15.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 15 && HoraFin == 16)
+                {
+                    if (S15_16.BackColor == Color.White)
+                        S15_16.BackColor = Color.Orange;
+                    else
+                        S15_16.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 16 && HoraFin == 17)
+                {
+                    if (S16_17.BackColor == Color.White)
+                        S16_17.BackColor = Color.Orange;
+                    else
+                        S16_17.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 17 && HoraFin == 18)
+                {
+                    if (S17_18.BackColor == Color.White)
+                        S17_18.BackColor = Color.Orange;
+                    else
+                        S17_18.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 18 && HoraFin == 19)
+                {
+                    if (S18_19.BackColor == Color.White)
+                        S18_19.BackColor = Color.Orange;
+                    else
+                        S18_19.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 19 && HoraFin == 20)
+                {
+                    if (S19_20.BackColor == Color.White)
+                        S19_20.BackColor = Color.Orange;
+                    else
+                        S19_20.BackColor = Color.DarkViolet;
+                }
+                else if (HoraInicio == 20 && HoraFin == 21)
+                {
+                    if (S20_21.BackColor == Color.White)
+                        S20_21.BackColor = Color.Orange;
+                    else
+                        S20_21.BackColor = Color.DarkViolet;
+                }
+            }
+        }
+
+        public void Actualizar_Color()
+        {
+            Limpiar_Colores();
+
+            DataTable T1 = N_HorarioAsignatura.HorarioSemanalDocente(Seleccionar_Semestre.Text, CódigoDocente1);
+            DataTable T2 = N_HorarioAsignatura.HorarioSemanalDocente(Seleccionar_Semestre.Text, CódigoDocente2);
+
+            if (T1.Rows.Count >= 1 || T2.Rows.Count >= 1)
+            {
+                string Día;
+                string HI;
+                string HF;
+
+                if (CódigoDocente1 != "00000")
+                {
+                    if (T1.Rows.Count >= 1)
+                    {
+                        for (int i = 0; i < T1.Rows.Count; i++)
+                        {
+                            Día = T1.Rows[i]["Dia"].ToString();
+                            HI = T1.Rows[i]["HoraInicio"].ToString();
+                            HF = T1.Rows[i]["HoraFin"].ToString();
+                            Designar(Día, HI, HF, 1);
+                        }
+                    }
+                }
+
+                if (CódigoDocente2 != "00000")
+                {
+                    if (T2.Rows.Count >= 1 && Seleccionar_Docente_Cod_Nom2.Enabled == true)
+                    {
+                        for (int i = 0; i < T2.Rows.Count; i++)
+                        {
+                            Día = T2.Rows[i]["Dia"].ToString();
+                            HI = T2.Rows[i]["HoraInicio"].ToString();
+                            HF = T2.Rows[i]["HoraFin"].ToString();
+                            Designar(Día, HI, HF, 2);
+                        }
+                    }
+                }
+            }
         }
     }
 }
