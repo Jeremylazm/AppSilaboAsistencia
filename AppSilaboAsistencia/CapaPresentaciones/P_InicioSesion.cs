@@ -154,7 +154,8 @@ namespace CapaPresentaciones
                 IniciarSesion();
         }
 
-        private void btnOlvidarContraseña_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+
+        private void btnOlvidarContraseña_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
             P_RecuperacionContraseña RC = new P_RecuperacionContraseña();
             RC.ShowDialog();
