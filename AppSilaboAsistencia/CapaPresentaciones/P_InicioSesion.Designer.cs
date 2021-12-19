@@ -40,7 +40,6 @@ namespace CapaPresentaciones
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.lblUsuario = new Bunifu.UI.WinForms.BunifuLabel();
@@ -53,17 +52,13 @@ namespace CapaPresentaciones
             this.lblUniversidad = new Bunifu.UI.WinForms.BunifuLabel();
             this.pbLogo = new Bunifu.UI.WinForms.BunifuImageButton();
             this.btnOlvidarContraseña = new System.Windows.Forms.LinkLabel();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblErrorUsuario = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblErrorContraseña = new Bunifu.UI.WinForms.BunifuLabel();
+            this.pbErrorUsuario = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.pbErrorContraseña = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.pnLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Movimiento
-            // 
-            this.Movimiento.Fixed = true;
-            this.Movimiento.Horizontal = true;
-            this.Movimiento.TargetControl = this.lblTitulo;
-            this.Movimiento.Vertical = true;
             // 
             // lblTitulo
             // 
@@ -77,11 +72,10 @@ namespace CapaPresentaciones
             this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 14F);
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTitulo.Size = new System.Drawing.Size(529, 107);
-            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Size = new System.Drawing.Size(376, 87);
+            this.lblTitulo.TabIndex = 10;
             this.lblTitulo.Text = "Sistema de Gestión de Sílabo y\r\nControl de Asistencia";
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
@@ -99,12 +93,11 @@ namespace CapaPresentaciones
             this.lblUsuario.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblUsuario.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblUsuario.Location = new System.Drawing.Point(28, 132);
-            this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblUsuario.Location = new System.Drawing.Point(21, 103);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblUsuario.Size = new System.Drawing.Size(79, 27);
-            this.lblUsuario.TabIndex = 2;
+            this.lblUsuario.Size = new System.Drawing.Size(63, 23);
+            this.lblUsuario.TabIndex = 12;
             this.lblUsuario.Text = "Usuario";
             this.lblUsuario.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblUsuario.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
@@ -139,7 +132,7 @@ namespace CapaPresentaciones
             this.txtUsuario.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtUsuario.Lines = new string[0];
-            this.txtUsuario.Location = new System.Drawing.Point(28, 164);
+            this.txtUsuario.Location = new System.Drawing.Point(21, 129);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(0);
             this.txtUsuario.MaxLength = 32767;
             this.txtUsuario.MinimumSize = new System.Drawing.Size(1, 1);
@@ -166,7 +159,7 @@ namespace CapaPresentaciones
             stateProperties8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
             this.txtUsuario.OnIdleState = stateProperties8;
-            this.txtUsuario.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUsuario.Padding = new System.Windows.Forms.Padding(3);
             this.txtUsuario.PasswordChar = '\0';
             this.txtUsuario.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtUsuario.PlaceholderText = "Escriba su usuario";
@@ -176,9 +169,9 @@ namespace CapaPresentaciones
             this.txtUsuario.SelectionLength = 0;
             this.txtUsuario.SelectionStart = 0;
             this.txtUsuario.ShortcutsEnabled = true;
-            this.txtUsuario.Size = new System.Drawing.Size(447, 49);
+            this.txtUsuario.Size = new System.Drawing.Size(333, 40);
             this.txtUsuario.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
-            this.txtUsuario.TabIndex = 3;
+            this.txtUsuario.TabIndex = 0;
             this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtUsuario.TextMarginBottom = 0;
             this.txtUsuario.TextMarginLeft = 7;
@@ -218,7 +211,7 @@ namespace CapaPresentaciones
             this.txtContraseña.IconRight = null;
             this.txtContraseña.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtContraseña.Lines = new string[0];
-            this.txtContraseña.Location = new System.Drawing.Point(28, 260);
+            this.txtContraseña.Location = new System.Drawing.Point(21, 224);
             this.txtContraseña.Margin = new System.Windows.Forms.Padding(0);
             this.txtContraseña.MaxLength = 32767;
             this.txtContraseña.MinimumSize = new System.Drawing.Size(1, 1);
@@ -245,7 +238,7 @@ namespace CapaPresentaciones
             stateProperties4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
             this.txtContraseña.OnIdleState = stateProperties4;
-            this.txtContraseña.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContraseña.Padding = new System.Windows.Forms.Padding(3);
             this.txtContraseña.PasswordChar = '\0';
             this.txtContraseña.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtContraseña.PlaceholderText = "Escriba su contraseña";
@@ -255,9 +248,9 @@ namespace CapaPresentaciones
             this.txtContraseña.SelectionLength = 0;
             this.txtContraseña.SelectionStart = 0;
             this.txtContraseña.ShortcutsEnabled = true;
-            this.txtContraseña.Size = new System.Drawing.Size(447, 49);
+            this.txtContraseña.Size = new System.Drawing.Size(333, 40);
             this.txtContraseña.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
-            this.txtContraseña.TabIndex = 5;
+            this.txtContraseña.TabIndex = 1;
             this.txtContraseña.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtContraseña.TextMarginBottom = 0;
             this.txtContraseña.TextMarginLeft = 7;
@@ -276,12 +269,11 @@ namespace CapaPresentaciones
             this.lblContraseña.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblContraseña.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblContraseña.Location = new System.Drawing.Point(28, 228);
-            this.lblContraseña.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblContraseña.Location = new System.Drawing.Point(21, 198);
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblContraseña.Size = new System.Drawing.Size(121, 27);
-            this.lblContraseña.TabIndex = 4;
+            this.lblContraseña.Size = new System.Drawing.Size(96, 23);
+            this.lblContraseña.TabIndex = 13;
             this.lblContraseña.Text = "Contraseña";
             this.lblContraseña.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblContraseña.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
@@ -333,8 +325,7 @@ namespace CapaPresentaciones
             this.btnIngresar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Ingresar;
             this.btnIngresar.IdleIconRightImage = null;
             this.btnIngresar.IndicateFocus = false;
-            this.btnIngresar.Location = new System.Drawing.Point(77, 332);
-            this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnIngresar.Location = new System.Drawing.Point(58, 300);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnIngresar.OnDisabledState.BorderRadius = 15;
@@ -368,8 +359,8 @@ namespace CapaPresentaciones
             this.btnIngresar.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnIngresar.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Ingresar;
             this.btnIngresar.OnPressedState.IconRightImage = null;
-            this.btnIngresar.Size = new System.Drawing.Size(359, 48);
-            this.btnIngresar.TabIndex = 7;
+            this.btnIngresar.Size = new System.Drawing.Size(269, 39);
+            this.btnIngresar.TabIndex = 2;
             this.btnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnIngresar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnIngresar.TextMarginLeft = 0;
@@ -390,11 +381,11 @@ namespace CapaPresentaciones
             this.pnLogo.Controls.Add(this.pbLogo);
             this.pnLogo.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.pnLogo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnLogo.Location = new System.Drawing.Point(529, 0);
+            this.pnLogo.Location = new System.Drawing.Point(376, 0);
             this.pnLogo.Margin = new System.Windows.Forms.Padding(0);
             this.pnLogo.Name = "pnLogo";
             this.pnLogo.ShowBorders = true;
-            this.pnLogo.Size = new System.Drawing.Size(312, 443);
+            this.pnLogo.Size = new System.Drawing.Size(255, 388);
             this.pnLogo.TabIndex = 8;
             // 
             // btnCerrar
@@ -415,18 +406,17 @@ namespace CapaPresentaciones
             this.btnCerrar.ImageActive = null;
             this.btnCerrar.ImageLocation = null;
             this.btnCerrar.ImageMargin = 10;
-            this.btnCerrar.ImageSize = new System.Drawing.Size(30, 27);
-            this.btnCerrar.ImageZoomSize = new System.Drawing.Size(40, 37);
+            this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnCerrar.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.btnCerrar.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnCerrar.InitialImage")));
-            this.btnCerrar.Location = new System.Drawing.Point(256, 15);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCerrar.Location = new System.Drawing.Point(213, 12);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Rotation = 0;
             this.btnCerrar.ShowActiveImage = true;
             this.btnCerrar.ShowCursorChanges = true;
             this.btnCerrar.ShowImageBorders = true;
             this.btnCerrar.ShowSizeMarkers = false;
-            this.btnCerrar.Size = new System.Drawing.Size(40, 37);
+            this.btnCerrar.Size = new System.Drawing.Size(30, 30);
             this.btnCerrar.TabIndex = 10;
             this.btnCerrar.ToolTipText = "";
             this.btnCerrar.WaitOnLoad = false;
@@ -444,13 +434,12 @@ namespace CapaPresentaciones
             this.lblUniversidad.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblUniversidad.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblUniversidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblUniversidad.Location = new System.Drawing.Point(0, 346);
-            this.lblUniversidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblUniversidad.Location = new System.Drawing.Point(0, 301);
             this.lblUniversidad.Name = "lblUniversidad";
             this.lblUniversidad.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblUniversidad.Size = new System.Drawing.Size(312, 97);
+            this.lblUniversidad.Size = new System.Drawing.Size(255, 87);
             this.lblUniversidad.TabIndex = 10;
-            this.lblUniversidad.Text = "Universidad Nacional de San Antonio Abad del Cusco";
+            this.lblUniversidad.Text = "Universidad Nacional de \r\nSan Antonio Abad del \r\nCusco";
             this.lblUniversidad.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.lblUniversidad.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -472,18 +461,17 @@ namespace CapaPresentaciones
             this.pbLogo.ImageActive = null;
             this.pbLogo.ImageLocation = null;
             this.pbLogo.ImageMargin = 10;
-            this.pbLogo.ImageSize = new System.Drawing.Size(273, 325);
-            this.pbLogo.ImageZoomSize = new System.Drawing.Size(283, 335);
+            this.pbLogo.ImageSize = new System.Drawing.Size(202, 262);
+            this.pbLogo.ImageZoomSize = new System.Drawing.Size(212, 272);
             this.pbLogo.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbLogo.InitialImage")));
-            this.pbLogo.Location = new System.Drawing.Point(13, 15);
-            this.pbLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbLogo.Location = new System.Drawing.Point(23, 23);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Rotation = 0;
             this.pbLogo.ShowActiveImage = false;
             this.pbLogo.ShowCursorChanges = false;
             this.pbLogo.ShowImageBorders = true;
             this.pbLogo.ShowSizeMarkers = false;
-            this.pbLogo.Size = new System.Drawing.Size(283, 335);
+            this.pbLogo.Size = new System.Drawing.Size(212, 272);
             this.pbLogo.TabIndex = 9;
             this.pbLogo.ToolTipText = "";
             this.pbLogo.WaitOnLoad = false;
@@ -497,28 +485,173 @@ namespace CapaPresentaciones
             this.btnOlvidarContraseña.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOlvidarContraseña.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.btnOlvidarContraseña.LinkColor = System.Drawing.Color.Black;
-            this.btnOlvidarContraseña.Location = new System.Drawing.Point(139, 391);
-            this.btnOlvidarContraseña.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.btnOlvidarContraseña.Location = new System.Drawing.Point(104, 342);
             this.btnOlvidarContraseña.Name = "btnOlvidarContraseña";
-            this.btnOlvidarContraseña.Size = new System.Drawing.Size(231, 27);
+            this.btnOlvidarContraseña.Size = new System.Drawing.Size(184, 22);
             this.btnOlvidarContraseña.TabIndex = 9;
             this.btnOlvidarContraseña.TabStop = true;
             this.btnOlvidarContraseña.Text = "Olvidé mi contraseña";
             this.btnOlvidarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnOlvidarContraseña.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnOlvidarContraseña.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnOlvidarContraseña_LinkClicked);
             // 
-            // errorProvider1
+            // lblErrorUsuario
             // 
-            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProvider1.ContainerControl = this;
+            this.lblErrorUsuario.AllowParentOverrides = false;
+            this.lblErrorUsuario.AutoEllipsis = false;
+            this.lblErrorUsuario.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblErrorUsuario.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblErrorUsuario.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblErrorUsuario.Location = new System.Drawing.Point(58, 172);
+            this.lblErrorUsuario.Name = "lblErrorUsuario";
+            this.lblErrorUsuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblErrorUsuario.Size = new System.Drawing.Size(105, 19);
+            this.lblErrorUsuario.TabIndex = 10;
+            this.lblErrorUsuario.Text = "Error de Usuario";
+            this.lblErrorUsuario.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblErrorUsuario.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblErrorUsuario.Visible = false;
+            // 
+            // lblErrorContraseña
+            // 
+            this.lblErrorContraseña.AllowParentOverrides = false;
+            this.lblErrorContraseña.AutoEllipsis = false;
+            this.lblErrorContraseña.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblErrorContraseña.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblErrorContraseña.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblErrorContraseña.Location = new System.Drawing.Point(58, 267);
+            this.lblErrorContraseña.Name = "lblErrorContraseña";
+            this.lblErrorContraseña.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblErrorContraseña.Size = new System.Drawing.Size(131, 19);
+            this.lblErrorContraseña.TabIndex = 11;
+            this.lblErrorContraseña.Text = "Error de Contraseña";
+            this.lblErrorContraseña.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblErrorContraseña.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblErrorContraseña.Visible = false;
+            // 
+            // pbErrorUsuario
+            // 
+            this.pbErrorUsuario.ActiveImage = null;
+            this.pbErrorUsuario.AllowAnimations = true;
+            this.pbErrorUsuario.AllowBuffering = false;
+            this.pbErrorUsuario.AllowToggling = false;
+            this.pbErrorUsuario.AllowZooming = false;
+            this.pbErrorUsuario.AllowZoomingOnFocus = false;
+            this.pbErrorUsuario.BackColor = System.Drawing.Color.White;
+            this.pbErrorUsuario.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pbErrorUsuario.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pbErrorUsuario.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbErrorUsuario.ErrorImage")));
+            this.pbErrorUsuario.FadeWhenInactive = false;
+            this.pbErrorUsuario.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.pbErrorUsuario.Image = global::CapaPresentaciones.Properties.Resources.Dialogo_Error;
+            this.pbErrorUsuario.ImageActive = null;
+            this.pbErrorUsuario.ImageLocation = null;
+            this.pbErrorUsuario.ImageMargin = 0;
+            this.pbErrorUsuario.ImageSize = new System.Drawing.Size(18, 18);
+            this.pbErrorUsuario.ImageZoomSize = new System.Drawing.Size(18, 18);
+            this.pbErrorUsuario.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorUsuario.InitialImage")));
+            this.pbErrorUsuario.Location = new System.Drawing.Point(34, 174);
+            this.pbErrorUsuario.Name = "pbErrorUsuario";
+            this.pbErrorUsuario.Rotation = 0;
+            this.pbErrorUsuario.ShowActiveImage = false;
+            this.pbErrorUsuario.ShowCursorChanges = false;
+            this.pbErrorUsuario.ShowImageBorders = true;
+            this.pbErrorUsuario.ShowSizeMarkers = false;
+            this.pbErrorUsuario.Size = new System.Drawing.Size(18, 18);
+            this.pbErrorUsuario.TabIndex = 12;
+            this.pbErrorUsuario.ToolTipText = "";
+            this.pbErrorUsuario.Visible = false;
+            this.pbErrorUsuario.WaitOnLoad = false;
+            this.pbErrorUsuario.Zoom = 0;
+            this.pbErrorUsuario.ZoomSpeed = 10;
+            // 
+            // pbErrorContraseña
+            // 
+            this.pbErrorContraseña.ActiveImage = null;
+            this.pbErrorContraseña.AllowAnimations = true;
+            this.pbErrorContraseña.AllowBuffering = false;
+            this.pbErrorContraseña.AllowToggling = false;
+            this.pbErrorContraseña.AllowZooming = false;
+            this.pbErrorContraseña.AllowZoomingOnFocus = false;
+            this.pbErrorContraseña.BackColor = System.Drawing.Color.White;
+            this.pbErrorContraseña.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pbErrorContraseña.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pbErrorContraseña.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbErrorContraseña.ErrorImage")));
+            this.pbErrorContraseña.FadeWhenInactive = false;
+            this.pbErrorContraseña.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.pbErrorContraseña.Image = global::CapaPresentaciones.Properties.Resources.Dialogo_Error;
+            this.pbErrorContraseña.ImageActive = null;
+            this.pbErrorContraseña.ImageLocation = null;
+            this.pbErrorContraseña.ImageMargin = 0;
+            this.pbErrorContraseña.ImageSize = new System.Drawing.Size(18, 18);
+            this.pbErrorContraseña.ImageZoomSize = new System.Drawing.Size(18, 18);
+            this.pbErrorContraseña.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorContraseña.InitialImage")));
+            this.pbErrorContraseña.Location = new System.Drawing.Point(34, 270);
+            this.pbErrorContraseña.Name = "pbErrorContraseña";
+            this.pbErrorContraseña.Rotation = 0;
+            this.pbErrorContraseña.ShowActiveImage = false;
+            this.pbErrorContraseña.ShowCursorChanges = false;
+            this.pbErrorContraseña.ShowImageBorders = true;
+            this.pbErrorContraseña.ShowSizeMarkers = false;
+            this.pbErrorContraseña.Size = new System.Drawing.Size(18, 18);
+            this.pbErrorContraseña.TabIndex = 13;
+            this.pbErrorContraseña.ToolTipText = "";
+            this.pbErrorContraseña.Visible = false;
+            this.pbErrorContraseña.WaitOnLoad = false;
+            this.pbErrorContraseña.Zoom = 0;
+            this.pbErrorContraseña.ZoomSpeed = 10;
+            // 
+            // Docker
+            // 
+            this.Docker.AllowFormDragging = true;
+            this.Docker.AllowFormDropShadow = true;
+            this.Docker.AllowFormResizing = true;
+            this.Docker.AllowHidingBottomRegion = true;
+            this.Docker.AllowOpacityChangesWhileDragging = false;
+            this.Docker.BorderOptions.BottomBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.BottomBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.BottomBorder.ShowBorder = true;
+            this.Docker.BorderOptions.LeftBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.LeftBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.LeftBorder.ShowBorder = true;
+            this.Docker.BorderOptions.RightBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.RightBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.RightBorder.ShowBorder = true;
+            this.Docker.BorderOptions.TopBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.TopBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.TopBorder.ShowBorder = true;
+            this.Docker.ContainerControl = this;
+            this.Docker.DockingIndicatorsColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(215)))), ((int)(((byte)(233)))));
+            this.Docker.DockingIndicatorsOpacity = 0.5D;
+            this.Docker.DockingOptions.DockAll = false;
+            this.Docker.DockingOptions.DockBottomLeft = false;
+            this.Docker.DockingOptions.DockBottomRight = false;
+            this.Docker.DockingOptions.DockFullScreen = false;
+            this.Docker.DockingOptions.DockLeft = false;
+            this.Docker.DockingOptions.DockRight = false;
+            this.Docker.DockingOptions.DockTopLeft = false;
+            this.Docker.DockingOptions.DockTopRight = false;
+            this.Docker.FormDraggingOpacity = 0.9D;
+            this.Docker.ParentForm = this;
+            this.Docker.ShowCursorChanges = true;
+            this.Docker.ShowDockingIndicators = false;
+            this.Docker.TitleBarOptions.AllowFormDragging = true;
+            this.Docker.TitleBarOptions.BunifuFormDock = this.Docker;
+            this.Docker.TitleBarOptions.DoubleClickToExpandWindow = true;
+            this.Docker.TitleBarOptions.TitleBarControl = null;
+            this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
             // P_InicioSesion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(841, 443);
+            this.ClientSize = new System.Drawing.Size(631, 388);
+            this.Controls.Add(this.pbErrorContraseña);
+            this.Controls.Add(this.pbErrorUsuario);
+            this.Controls.Add(this.lblErrorContraseña);
+            this.Controls.Add(this.lblErrorUsuario);
             this.Controls.Add(this.btnOlvidarContraseña);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.txtContraseña);
@@ -528,21 +661,16 @@ namespace CapaPresentaciones
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.pnLogo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "P_InicioSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de Sesión";
-            this.Load += new System.EventHandler(this.P_InicioSesion_Load);
             this.pnLogo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private Bunifu.Framework.UI.BunifuDragControl Movimiento;
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
         private Bunifu.UI.WinForms.BunifuTextBox txtUsuario;
@@ -555,6 +683,10 @@ namespace CapaPresentaciones
         private System.Windows.Forms.LinkLabel btnOlvidarContraseña;
         private Bunifu.UI.WinForms.BunifuLabel lblUniversidad;
         private Bunifu.UI.WinForms.BunifuImageButton btnCerrar;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Bunifu.UI.WinForms.BunifuLabel lblErrorContraseña;
+        private Bunifu.UI.WinForms.BunifuLabel lblErrorUsuario;
+        private Bunifu.UI.WinForms.BunifuImageButton pbErrorContraseña;
+        private Bunifu.UI.WinForms.BunifuImageButton pbErrorUsuario;
+        private Bunifu.UI.WinForms.BunifuFormDock Docker;
     }
 }

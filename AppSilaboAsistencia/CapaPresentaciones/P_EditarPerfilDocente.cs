@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
 using System.IO;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using CapaPresentaciones.Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -59,20 +55,20 @@ namespace CapaPresentaciones
             }
 
             // Cargar los otros datos del docente
-            txtCodigo.Text = Fila[2].ToString();
+            lblCodigo2.Text = Fila[2].ToString();
             APaterno = Fila[3].ToString();
             AMaterno = Fila[4].ToString();
             Nombre = Fila[5].ToString();
-            txtDocente.Text = APaterno + " " + AMaterno + ", " + Nombre;
+            lblNombres2.Text = APaterno + " " + AMaterno + ", " + Nombre;
             txtEmail.Text = Fila[6].ToString();
             txtDireccion.Text = Fila[7].ToString();
             txtTelefono.Text = Fila[8].ToString();
-            txtCategoria.Text = Fila[9].ToString();
-            txtSubcategoria.Text = Fila[10].ToString();
-            txtRegimen.Text = Fila[11].ToString();
+            lblCategoria2.Text = Fila[9].ToString();
+            lblSubcategoria2.Text = Fila[10].ToString();
+            lblRegimen2.Text = Fila[11].ToString();
             CodDepartamentoA = Fila[12].ToString();
             CodEscuelaP = Fila[13].ToString();
-            txtEscuelaP.Text = N_EscuelaProfesional.BuscarNombraEscuela(CodEscuelaP);
+            lblEscuelaP2.Text = N_EscuelaProfesional.BuscarNombraEscuela(CodEscuelaP);
 
             //CodEscuelaP = Fila[13].ToString();
             //txtEscuelaP.Text = Fila[14].ToString();
@@ -119,6 +115,20 @@ namespace CapaPresentaciones
             CargarDatosUsuario();
         }
 
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnRestablecerPerfil_Click(object sender, EventArgs e)
+        {
+            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea restablecer su perfil?") == DialogResult.Yes)
+            {
+                // Cargar imagen por defecto en el formulario
+                imgPerfil.Image = Properties.Resources.Perfil_Docente as Image;
+            }
+        }
+
         private void btnSubirPerfil_Click(object sender, EventArgs e)
         {
             try
@@ -140,33 +150,15 @@ namespace CapaPresentaciones
             catch (Exception)
             {
                 // Mostrar mensaje de error
-                P_DialogoError.Mostrar("Error al subir perfil");
+                A_Dialogo.DialogoError("Error al subir perfil");
                 //MessageBox.Show("Error al subir perfil");
-            }
-        }
-
-        private void btnRestablecerPerfil_Click(object sender, EventArgs e)
-        {
-            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea restablecer su perfil?");
-            Dialogo.ShowDialog();
-            DialogResult Opcion = Dialogo.DialogResult;
-            if (Opcion == DialogResult.OK)
-            {
-                // Cargar imagen por defecto en el formulario
-                imgPerfil.Image = Properties.Resources.Perfil_Docente as Image;
             }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             // Mostrar mensaje para saber si realmente se desea editar los datos
-            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea editar el registro?");
-            Dialogo.ShowDialog();
-            DialogResult Opcion = Dialogo.DialogResult;
-            //Opcion = MessageBox.Show("¿Realmente desea editar el registro?", "Sistema de Gestión de Sílabos y Asistencia", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-            // Si el docente, quiere cambiar sus datos
-            if (Opcion == DialogResult.OK)
+            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea actualizar su perfil?") == DialogResult.Yes)
             {
                 // Asignar campo por campo, los datos editados en el objeto entidad del docente
                 byte[] Perfil = new byte[0];
@@ -177,16 +169,16 @@ namespace CapaPresentaciones
                 }
                 E_InicioSesion.Perfil = Perfil;
                 ObjEntidad.Perfil = Perfil;
-                ObjEntidad.CodDocente = txtCodigo.Text;
+                ObjEntidad.CodDocente = lblCodigo2.Text;
                 ObjEntidad.APaterno = APaterno;
                 ObjEntidad.AMaterno = AMaterno;
                 ObjEntidad.Nombre = Nombre;
                 ObjEntidad.Email = txtEmail.Text;
                 ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
                 ObjEntidad.Telefono = txtTelefono.Text;
-                ObjEntidad.Categoria = txtCategoria.Text;
-                ObjEntidad.Subcategoria = txtSubcategoria.Text;
-                ObjEntidad.Regimen = txtRegimen.Text;
+                ObjEntidad.Categoria = lblCategoria2.Text;
+                ObjEntidad.Subcategoria = lblSubcategoria2.Text;
+                ObjEntidad.Regimen = lblRegimen2.Text;
                 ObjEntidad.CodDepartamentoA = CodDepartamentoA;
                 ObjEntidad.CodEscuelaP = CodEscuelaP;
 
@@ -194,9 +186,14 @@ namespace CapaPresentaciones
                 ObjNegocio.ActualizarDocente(ObjEntidad);
 
                 // Mostrar mensaje de confirmacion dando entender que se edito sus datos del docente
-                P_DialogoInformacion.Mostrar("Registro editado exitosamente");
-                //MensajeConfirmacion("Registro editado exitosamente");
+                A_Dialogo.DialogoConfirmacion("Perfil guardado exitosamente");
             }
+        }
+
+        private void btnCambiarContraseña_Click(object sender, EventArgs e)
+        {
+            P_CambioContraseña CC = new P_CambioContraseña();
+            CC.Show();
         }
     }
 }

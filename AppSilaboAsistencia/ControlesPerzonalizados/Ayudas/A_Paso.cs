@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Bunifu.UI.WinForms;
 
-namespace CapaPresentaciones.Ayudas
+namespace ControlesPerzonalizados.Ayudas
 {
     public class A_Paso
     {

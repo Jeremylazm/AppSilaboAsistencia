@@ -3,17 +3,14 @@ using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
 using System.IO;
-using System.Diagnostics;
 using System.Data;
 using ClosedXML.Excel;
+using CapaPresentaciones.Ayudas;
 
 namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasSilabos : Form
     {
-        //private readonly string CodDocente = "49920";
-        //private readonly string CodDocente = "65475";
-        //private readonly string CodDocente = "43992";
         private readonly string CodDocente = E_InicioSesion.Usuario;
 
         public P_TablaAsignaturasAsignadasSilabos()
@@ -57,8 +54,6 @@ namespace CapaPresentaciones
                 saveFileDialog.FilterIndex = 1;
 
                 // El registro de la plantilla
-                /*DataTable A = N_Catalogo.MostrarSilaboAsignatura("2021-II", dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(0, 5), dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString().Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());*/
-
                 DataTable PlantillaSilabo = N_Recursos.DescargarPlantillaSilabo();
 
                 // Se crea un archivo temporal, para después abrirlo con ClosedXML
@@ -158,12 +153,12 @@ namespace CapaPresentaciones
                     try
                     {
                         wb.SaveAs(saveFileDialog.FileName);
-                        P_DialogoInformacion.Mostrar("Archivo guardado correctamente");
+                        A_Dialogo.DialogoConfirmacion("Archivo guardado exitosamente");
                         //MessageBox.Show("Archivo guardado correctamente");
                     }
                     catch (IOException)
                     {
-                        P_DialogoError.Mostrar("Cierre el archivo antes de que sea reemplazado");
+                        A_Dialogo.DialogoError("Cierre el archivo antes de que sea reemplazado");
                         //MessageBox.Show("Cierra el archivo antes de reemplazarlo");
                     }
                 }

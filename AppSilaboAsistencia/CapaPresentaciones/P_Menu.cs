@@ -5,6 +5,7 @@ using System.Linq;
 using CapaEntidades;
 using System.IO;
 using System.Drawing.Drawing2D;
+using CapaPresentaciones.Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -50,10 +51,16 @@ namespace CapaPresentaciones
             if (E_InicioSesion.Perfil == null)
             {
                 if ((E_InicioSesion.Acceso == "Director de Escuela") || (E_InicioSesion.Acceso == "Administrador"))
+                {
                     pbPerfil.Image = Properties.Resources.Perfil as Image;
-
+                    pbEditarPerfil.Image = Properties.Resources.Perfil as Image;
+                }
+                
                 if (E_InicioSesion.Acceso == "Docente")
+                {
                     pbPerfil.Image = Properties.Resources.Perfil_Docente as Image;
+                    pbEditarPerfil.Image = Properties.Resources.Perfil_Docente as Image;
+                }
             }
             else
             {
@@ -61,6 +68,7 @@ namespace CapaPresentaciones
                 Perfil = E_InicioSesion.Perfil;
                 MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
                 pbPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
+                pbEditarPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
             }
             lblDatos.Text = E_InicioSesion.Datos;
             lblAcceso.Text = E_InicioSesion.Acceso;
@@ -87,37 +95,69 @@ namespace CapaPresentaciones
 
                 // Administrador 
             }
-            else if (Acceso == "Jefe de Departamento Academico")
+            else if (Acceso == "Jefe de Departamento")
             {
                 // Docentes y catálogo
-                btnAsistencia.Visible = false;
-                btnAsignaturasAsignadas.Visible = false;
-                btnSilabos.Visible = false;
-                btnSesiones.Visible = false;
+                btnAsignaturasAsignadas.Visible = true;
+                btnAsistencia.Visible = true;
+                btnSilabos.Visible = true;
+                btnSesiones.Visible = true;
+
+                Bunifu.UI.WinForms.BunifuSeparator bs1 = new Bunifu.UI.WinForms.BunifuSeparator
+                {
+                    LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded,
+                    Location = new Point(5, 496),
+                    Size = new Size(209, 14),
+                    BackColor = Color.Transparent,
+                    LineColor = Color.FromArgb(232, 158, 31)
+                };
+
+                pnOpciones.Controls.Add(bs1);
+                pnOpciones.Tag = bs1;
+
+                btnCatálogo.Location = new Point(0, 507);
+                btnDocentes.Location = new Point(0, 549);
+
                 btnCatálogo.Visible = true;
-                btnAsignaturas.Visible = true;
+                btnAsignaturas.Visible = false;
                 btnDocentes.Visible = true;
             }
-            else if (Acceso == "Director de Escuela Profesional")
+            else if (Acceso == "Director de Escuela")
             {
                 // Asignaturas
-                btnAsistencia.Visible = false;
-                btnAsignaturasAsignadas.Visible = false;
-                btnSilabos.Visible = false;
-                btnSesiones.Visible = false;
+                btnAsignaturasAsignadas.Visible = true;
+                btnAsistencia.Visible = true;
+                btnSilabos.Visible = true;
+                btnSesiones.Visible = true;
+
+                Bunifu.UI.WinForms.BunifuSeparator bs1 = new Bunifu.UI.WinForms.BunifuSeparator
+                {
+                    LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded,
+                    Location = new Point(5, 496),
+                    Size = new Size(209, 14),
+                    BackColor = Color.Transparent,
+                    LineColor = Color.FromArgb(232, 158, 31)
+                };
+
+                pnOpciones.Controls.Add(bs1);
+                pnOpciones.Tag = bs1;
+
+                btnAsignaturas.Location = new Point(0, 507);
+
                 btnCatálogo.Visible = false;
                 btnAsignaturas.Visible = true;
                 btnDocentes.Visible = false;
             }
             else if (Acceso == "Docente")
             {
-                btnAsistencia.Visible = true;
                 btnAsignaturasAsignadas.Visible = true;
+                btnAsistencia.Visible = true;
                 btnSilabos.Visible = true;
                 btnSesiones.Visible = true;
+
                 btnCatálogo.Visible = false;
                 btnAsignaturas.Visible = false;
-                btnDocentes.Visible = true;
+                btnDocentes.Visible = false;
             }
         }
 
@@ -129,12 +169,15 @@ namespace CapaPresentaciones
 
             if (DrawerOpen)
             {
-                pnOpciones.Width = 173;
-                pbLogo.Location = new Point(178, 6);
-                SeparadorMenu.Width = 161;
+                pnOpciones.Width = 220;
+                pbLogo.Location = new Point(225, 5);
+                SeparadorMenu1.Width = 209;
+                SeparadorMenu2.Width = 209;
                 pbPerfil.Visible = true;
-                //btnEditarPerfil.Visible = true;
-                //pbEditarPerfil.Visible = false;
+                btnEditarPerfil.Visible = true;
+                pbEditarPerfil.Visible = false;
+                btnCerrarSesion.Visible = true;
+                pbCerrarSesion.Visible = false;
                 lblDatos.Visible = true;
                 lblAcceso.Visible = true;
                 lblUsuario.Visible = true;
@@ -145,11 +188,14 @@ namespace CapaPresentaciones
             else
             {
                 pnOpciones.Width = 44;
-                pbLogo.Location = new Point(49, 6);
-                SeparadorMenu.Width = 35;
+                pbLogo.Location = new Point(49, 5);
+                SeparadorMenu1.Width = 35;
+                SeparadorMenu2.Width = 35;
                 pbPerfil.Visible = false;
-                //btnEditarPerfil.Visible = false;
-                //pbEditarPerfil.Visible = true;
+                btnEditarPerfil.Visible = false;
+                pbEditarPerfil.Visible = true;
+                btnCerrarSesion.Visible = false;
+                pbCerrarSesion.Visible = true;
                 lblDatos.Visible = false;
                 lblAcceso.Visible = false;
                 lblUsuario.Visible = false;
@@ -240,6 +286,49 @@ namespace CapaPresentaciones
             lblSuperior.Focus();
         }
 
+        private void CerrarSesion()
+        {
+            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Desea cerrar sesión?") == DialogResult.Yes)
+            {
+                Close();
+                P_InicioSesion Login = new P_InicioSesion();
+                Login.Show();
+            }
+        }
+
+        private void EditarPerfil()
+        {
+            ActualizarColor();
+
+            P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
+            {
+                Usuario = E_InicioSesion.Usuario,
+                TopLevel = false,
+                Dock = DockStyle.Fill
+            };
+            Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
+
+            pnContenedor.Controls.Add(Editar);
+            pnContenedor.Tag = Editar;
+            Editar.Show();
+            Editar.BringToFront();
+            /*else
+            {
+                P_EditarPerfilDirector Editar = new P_EditarPerfilDirector
+                {
+                    Usuario = E_InicioSesion.Usuario,
+                    TopLevel = false,
+                    Dock = DockStyle.Fill
+                };
+                Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
+
+                pnContenedor.Controls.Add(Editar);
+                pnContenedor.Tag = Editar;
+                Editar.Show();
+                Editar.BringToFront();
+            }*/
+        }
+
         private void btnDocentes_Click(object sender, EventArgs e)
         {
             ActualizarColor();
@@ -266,57 +355,7 @@ namespace CapaPresentaciones
 
         private void btnEditarPerfil_Click(object sender, EventArgs e)
         {
-            ActualizarColor();
-
-            if (lblAcceso.Text == "Jefe de Departamento Academico")
-            {
-                P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
-                {
-                    Usuario = E_InicioSesion.Usuario,
-                    TopLevel = false,
-                    Dock = DockStyle.Fill
-                };
-                Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
-
-                pnContenedor.Controls.Add(Editar);
-                pnContenedor.Tag = Editar;
-                Editar.Show();
-                Editar.BringToFront();
-            }
-            else if (lblAcceso.Text == "Director de Escuela Profesional")
-            {
-
-            }
-            else if (lblAcceso.Text == "Docente")
-            {
-                P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
-                {
-                    Usuario = E_InicioSesion.Usuario,
-                    TopLevel = false,
-                    Dock = DockStyle.Fill
-                };
-                Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
-
-                pnContenedor.Controls.Add(Editar);
-                pnContenedor.Tag = Editar;
-                Editar.Show();
-                Editar.BringToFront();
-            }
-            /*else
-            {
-                P_EditarPerfilDirector Editar = new P_EditarPerfilDirector
-                {
-                    Usuario = E_InicioSesion.Usuario,
-                    TopLevel = false,
-                    Dock = DockStyle.Fill
-                };
-                Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
-
-                pnContenedor.Controls.Add(Editar);
-                pnContenedor.Tag = Editar;
-                Editar.Show();
-                Editar.BringToFront();
-            }*/
+            EditarPerfil();
         }
 
         private void btnCatálogo_Click(object sender, EventArgs e)
@@ -343,12 +382,39 @@ namespace CapaPresentaciones
             GestionarAcceso();
         }
 
+        private void pbEditarPerfil_Click(object sender, EventArgs e)
+        {
+            EditarPerfil();
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            CerrarSesion();
+        }
+
+        private void pbCerrarSesion_Click(object sender, EventArgs e)
+        {
+            CerrarSesion();
+        }
+
+        private void P_Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Desea salir de la aplicación?") == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Desea salir de la aplicación?", true);
-            Dialogo.ShowDialog();
-            DialogResult Opcion = Dialogo.DialogResult;
-            if (Opcion == DialogResult.Yes)
+            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Desea salir de la aplicación?") == DialogResult.Yes)
             {
                 Application.Exit();
             }
@@ -377,6 +443,5 @@ namespace CapaPresentaciones
                 Formularios.BringToFront();
             }
         }
-
     }
 }

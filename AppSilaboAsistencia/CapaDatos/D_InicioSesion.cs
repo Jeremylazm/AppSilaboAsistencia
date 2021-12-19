@@ -10,6 +10,7 @@ namespace CapaDatos
     public class D_InicioSesion
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
+        //readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
 
         // Método para el inicio de sesión.
         public bool IniciarSesion(string Usuario, string Contraseña)

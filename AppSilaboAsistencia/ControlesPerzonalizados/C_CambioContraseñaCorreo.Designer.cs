@@ -146,7 +146,7 @@ namespace ControlesPerzonalizados
             this.lblDominio.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblDominio.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDominio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblDominio.Location = new System.Drawing.Point(373, 133);
+            this.lblDominio.Location = new System.Drawing.Point(379, 133);
             this.lblDominio.Name = "lblDominio";
             this.lblDominio.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblDominio.Size = new System.Drawing.Size(137, 23);
@@ -185,7 +185,7 @@ namespace ControlesPerzonalizados
             this.txtUsuario.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUsuario.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtUsuario.Lines = new string[0];
-            this.txtUsuario.Location = new System.Drawing.Point(241, 124);
+            this.txtUsuario.Location = new System.Drawing.Point(216, 124);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(0);
             this.txtUsuario.MaxLength = 32767;
             this.txtUsuario.MinimumSize = new System.Drawing.Size(1, 1);
@@ -215,21 +215,21 @@ namespace ControlesPerzonalizados
             this.txtUsuario.Padding = new System.Windows.Forms.Padding(3);
             this.txtUsuario.PasswordChar = '\0';
             this.txtUsuario.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtUsuario.PlaceholderText = "Código";
+            this.txtUsuario.PlaceholderText = "Usuario";
             this.txtUsuario.ReadOnly = false;
             this.txtUsuario.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtUsuario.SelectedText = "";
             this.txtUsuario.SelectionLength = 0;
             this.txtUsuario.SelectionStart = 0;
             this.txtUsuario.ShortcutsEnabled = true;
-            this.txtUsuario.Size = new System.Drawing.Size(269, 40);
+            this.txtUsuario.Size = new System.Drawing.Size(301, 40);
             this.txtUsuario.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtUsuario.TabIndex = 12;
             this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtUsuario.TextMarginBottom = 0;
             this.txtUsuario.TextMarginLeft = 7;
             this.txtUsuario.TextMarginTop = 0;
-            this.txtUsuario.TextPlaceholder = "Código";
+            this.txtUsuario.TextPlaceholder = "Usuario";
             this.txtUsuario.UseSystemPasswordChar = false;
             this.txtUsuario.WordWrap = true;
             // 
@@ -241,7 +241,7 @@ namespace ControlesPerzonalizados
             this.lblCorreo.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblCorreo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblCorreo.Location = new System.Drawing.Point(241, 98);
+            this.lblCorreo.Location = new System.Drawing.Point(216, 98);
             this.lblCorreo.Name = "lblCorreo";
             this.lblCorreo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblCorreo.Size = new System.Drawing.Size(161, 23);
