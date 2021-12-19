@@ -19,7 +19,7 @@ namespace CapaPresentaciones
     public partial class P_TablaAsistenciaEstudiantes : Form
     {
         readonly N_Catalogo ObjNegocio;
-        public string CodSemestre="2021-II";
+        public string CodSemestre = "2021-II";
         public string CodAsignatura;
         public string CodDocente;
         readonly E_AsistenciaEstudiante ObjEntidadEstd;
@@ -31,10 +31,7 @@ namespace CapaPresentaciones
         public DataTable dgvTabla;
         public string horainicioAsignatura;
         public string LmFechaInf = "15/12/2021";
-        
-        //public string HoraAntesRegistrada;
-
-        public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente,DataTable pdgv)
+        public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente, DataTable pdgv)
         {
             ObjNegocio = new N_Catalogo();
             CodAsignatura = pCodAsignatura;
@@ -45,15 +42,14 @@ namespace CapaPresentaciones
             ObjEntidadDoc = new E_AsistenciaDocente();
             ObjNegocioDoc = new N_AsistenciaDocente();
             InitializeComponent();
-            //MostrarEstudiantes();
 
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             lblTitulo.Text += CodAsignatura;
             lblFecha.Text += "    ";
-            //txtFecha.Text =DateTime.Now.ToString("dd/MM/yyyy").ToString();
             PlanSesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, CodAsignatura, CodDocente);
+            //MostrarEstudiantes();
         }
-        
+
         private void AccionesTabla()
         {
             dgvDatos.Columns[0].DisplayIndex = 6;
@@ -109,16 +105,26 @@ namespace CapaPresentaciones
                 fila.Cells[0].Tag = false;
             }
         }
-
-        private void MostrarEstudiantes()
+        public void InicializarValoresEditar()
         {
-            
+            foreach (DataGridViewRow fila in dgvDatos.Rows)
+            {
+                DataGridViewTextBoxCell textBoxcell = (DataGridViewTextBoxCell)(fila.Cells["txtObservaciones"]);
+                textBoxcell.Value = fila.Cells[9].Value;
+                fila.Cells[0].Value = (fila.Cells[8].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
+                fila.Cells[0].Tag = (fila.Cells[0].Value == ListaImagenes.Images[1]) ? true : false;
+            }
+        }
+
+        private void MostrarEstudiantesNuevoRegistro()
+        {
+
             dgvDatos.DataSource = dgvTabla;
             AccionesTabla();
 
         }
         public void MostrarEstudiantesRegistrados()
-		{
+        {
             dgvDatos.DataSource = dgvTabla;
             AccionesTablaEditar();
         }
@@ -128,10 +134,10 @@ namespace CapaPresentaciones
             dgvDatos.DataSource = N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodAsignatura.Substring(6), CodAsignatura, txtBuscar.Text);
         }
 
-        public void GuaradarRgistroEstudiantes()
+        public void AgregarRgistroEstudiantes()
         {
-            
-			
+
+
             foreach (DataGridViewRow dr in dgvDatos.Rows)
             {
                 ObjEntidadEstd.CodSemestre = CodSemestre;
@@ -147,10 +153,10 @@ namespace CapaPresentaciones
 
 
             }
-            P_DialogoInformacion.Mostrar("El registro de la asistencia de los estudiantes se insertó éxitosamente");
+            A_Dialogo.DialogoConfirmacion("El registro de la asistencia de los estudiantes se insertó éxitosamente");
         }
         public void EditarRegistroEstudiantes()
-		{
+        {
             foreach (DataGridViewRow dr in dgvDatos.Rows)
             {
                 ObjEntidadEstd.CodSemestre = CodSemestre;
@@ -167,21 +173,21 @@ namespace CapaPresentaciones
 
 
             }
-            A_Dialogo.DialogoConfirmacion("El registro de Asistencia de Estudiantes se insertó exitosamente");
-            //MensajeConfirmacion("Registro de Asistencia Estudiantes insertado exitosamente");
+            A_Dialogo.DialogoConfirmacion("El registro de la asistencia de los estudiantes se Editó éxitosamente");
+
         }
         public void GuardarRegistroDocente()
         {
             // HoraInicioThAsg = N_HorarioAsignatura.BuscarHorarioAsignatura(CodSemestre, CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), CodAsignatura.Substring(5, 1));
             //horainicioAsignatura = HoraInicioThAsg.Rows[0][6].ToString();
             //guardar asistencia de estudainte en la asigantura
-            
+
             if (Program.Evento == 0)//add
             {
                 try
                 {
                     // buscar el registro de asistencia de Docente de la fecha actual
-                    DataTable Resultado = N_AsistenciaDocente.AsistenciaDocenteAsignatura(CodSemestre,"IF",CodDocente,CodAsignatura,horainicioAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString());
+                    DataTable Resultado = N_AsistenciaDocente.AsistenciaDocenteAsignatura(CodSemestre, "IF", CodDocente, CodAsignatura, horainicioAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString());
 
                     if (Resultado.Rows.Count == 0)
                     {
@@ -194,16 +200,15 @@ namespace CapaPresentaciones
                         ObjEntidadDoc.NombreTema = txtTema.Text.ToString();
 
                         ObjNegocioDoc.RegistrarAsistenciaDocente(ObjEntidadDoc);
-                        A_Dialogo.DialogoConfirmacion("El registro de Asistencia Docente se insertó exitosamente");
-                        //MensajeConfirmacion("Registro Asistencia docente insertado exitosamente");
-                        GuaradarRgistroEstudiantes();
-                        A_Dialogo.DialogoConfirmacion("Guardado con éxito");
+                        A_Dialogo.DialogoConfirmacion("El registro de Asistencia Docente se insertó éxitosamente");
+                        AgregarRgistroEstudiantes();
+                        A_Dialogo.DialogoConfirmacion("Guardado con Exito");
+                        Program.Evento = 0;
                         Close();
                     }
                     else
                     {
-                        A_Dialogo.DialogoError("El registro de hoy ya existe");
-                        //MensajeError("Este registro de Asignatura ya existe");
+                        A_Dialogo.DialogoConfirmacion("El registro de Hoy, ya existe");
                     }
                 }
                 catch (Exception)
@@ -216,10 +221,7 @@ namespace CapaPresentaciones
             {
                 try
                 {
-                    P_DialogoPregunta Dialogo = new P_DialogoPregunta("¿Realmente desea editar el registro?");
-                    Dialogo.ShowDialog();
-                    DialogResult Opcion = Dialogo.DialogResult;
-                    if (Opcion == DialogResult.OK)
+                    if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea editar el registro?") == DialogResult.Yes)
                     {
                         DataTable Resultado = N_AsistenciaDocente.AsistenciaDocenteAsignatura(CodSemestre, "IF", CodDocente, CodAsignatura, horainicioAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString());
                         //HoraInicioThAsg = N_HorarioAsignatura.BuscarHorarioAsignatura(CodSemestre, CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), CodAsignatura.Substring(5, 1));
@@ -235,12 +237,30 @@ namespace CapaPresentaciones
                             ObjEntidadDoc.CodDocente = CodDocente;
                             ObjEntidadDoc.NombreTema = txtTema.Text.ToString();
 
-                ObjNegocioDoc.RegistrarAsistenciaDocente(ObjEntidadDoc);
-                A_Dialogo.Mostrar("El registro de su asistencia se insertó éxitosamente");
-                //MensajeConfirmacion("Registro Asistencia docente insertado exitosamente");
-                GuaradarRgistroEstudiantes();
-                Close();
-            }*/
+                            string NombreTemaActualizado = txtTema.Text.ToString();
+                            string fechaActualizada = txtFecha.Text.ToString();
+                            string NuevaHoraInicioAsignatura = horainicioAsignatura;
+
+                            ObjNegocioDoc.ActualizarAsistenciaDocente(ObjEntidadDoc, CodSemestre, CodAsignatura, NuevaHoraInicioAsignatura, fechaActualizada, CodDocente, NombreTemaActualizado);
+                            A_Dialogo.DialogoConfirmacion("Registro Docente editado exitosamente");
+                            EditarRegistroEstudiantes();
+                            Program.Evento = 0;
+
+                            Close();
+
+                        }
+                        else
+                        {
+                            A_Dialogo.DialogoError("El registro de Docente no existe");
+                        }
+
+                    }
+                }
+                catch (Exception)
+                {
+                    A_Dialogo.DialogoError("Error al editar el registro");
+                }
+            }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -256,11 +276,11 @@ namespace CapaPresentaciones
 
         private void btnSesiones_Click(object sender, EventArgs e)
         {
-            P_TablaSesiones Sesiones = new P_TablaSesiones(CodAsignatura,CodDocente);
+            P_TablaSesiones Sesiones = new P_TablaSesiones(CodAsignatura, CodDocente);
 
             Sesiones.ShowDialog();
             Sesiones.Dispose();
-            
+
         }
 
         private void dgvDatos_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -325,7 +345,7 @@ namespace CapaPresentaciones
             }
         }
 
-        
+
         private void P_TablaAsistenciaEstudiantes_Load(object sender, EventArgs e)
         {
             if (Program.Evento == 0)
@@ -366,7 +386,7 @@ namespace CapaPresentaciones
                 }
                 else
                 {
-                    MessageBox.Show("Aun no subio un plan de sesiones");
+                    A_Dialogo.DialogoInformacion("Aun no subio un plan de sesiones");
                     txtTema.Text = "No hay tema a sugerir";
                     btnGuardar.Enabled = false;
                 }
@@ -374,8 +394,8 @@ namespace CapaPresentaciones
                 InicializarValores();
                 Program.Evento = 0;
             }
-			else
-			{
+            else
+            {
                 MostrarEstudiantesRegistrados();
                 InicializarValoresEditar();
                 Program.Evento = 1;
@@ -425,11 +445,10 @@ namespace CapaPresentaciones
                 Close();
             }
             else
-			{
+            {
                 GuardarRegistroDocente();
                 Close();
             }
-            
         }
     }
 }
