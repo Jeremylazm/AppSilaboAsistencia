@@ -232,5 +232,11 @@ namespace CapaPresentaciones
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
                 IniciarSesion(txtUsuario.Text, txtContraseña.Text);
         }
+
+        private void btnOlvidarContraseña_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            P_RecuperacionContraseña RC = new P_RecuperacionContraseña();
+            RC.ShowDialog();
+        }
     }
 }
