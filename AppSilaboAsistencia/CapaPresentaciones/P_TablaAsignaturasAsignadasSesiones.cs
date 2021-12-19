@@ -17,7 +17,6 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasSesiones : Form
     {
-        //private readonly string CodDocente = "49920";
         private readonly string CodDocente = E_InicioSesion.Usuario;
 
         public P_TablaAsignaturasAsignadasSesiones()

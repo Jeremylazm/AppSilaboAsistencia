@@ -98,34 +98,66 @@ namespace CapaPresentaciones
             else if (Acceso == "Jefe de Departamento")
             {
                 // Docentes y catálogo
-                btnAsistencia.Visible = false;
-                btnAsignaturasAsignadas.Visible = false;
-                btnSilabos.Visible = false;
-                btnSesiones.Visible = false;
+                btnAsignaturasAsignadas.Visible = true;
+                btnAsistencia.Visible = true;
+                btnSilabos.Visible = true;
+                btnSesiones.Visible = true;
+
+                Bunifu.UI.WinForms.BunifuSeparator bs1 = new Bunifu.UI.WinForms.BunifuSeparator
+                {
+                    LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded,
+                    Location = new Point(5, 496),
+                    Size = new Size(209, 14),
+                    BackColor = Color.Transparent,
+                    LineColor = Color.FromArgb(232, 158, 31)
+                };
+
+                pnOpciones.Controls.Add(bs1);
+                pnOpciones.Tag = bs1;
+
+                btnCatálogo.Location = new Point(0, 507);
+                btnDocentes.Location = new Point(0, 549);
+
                 btnCatálogo.Visible = true;
-                btnAsignaturas.Visible = true;
+                btnAsignaturas.Visible = false;
                 btnDocentes.Visible = true;
             }
             else if (Acceso == "Director de Escuela")
             {
                 // Asignaturas
-                btnAsistencia.Visible = false;
-                btnAsignaturasAsignadas.Visible = false;
-                btnSilabos.Visible = false;
-                btnSesiones.Visible = false;
+                btnAsignaturasAsignadas.Visible = true;
+                btnAsistencia.Visible = true;
+                btnSilabos.Visible = true;
+                btnSesiones.Visible = true;
+
+                Bunifu.UI.WinForms.BunifuSeparator bs1 = new Bunifu.UI.WinForms.BunifuSeparator
+                {
+                    LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded,
+                    Location = new Point(5, 496),
+                    Size = new Size(209, 14),
+                    BackColor = Color.Transparent,
+                    LineColor = Color.FromArgb(232, 158, 31)
+                };
+
+                pnOpciones.Controls.Add(bs1);
+                pnOpciones.Tag = bs1;
+
+                btnAsignaturas.Location = new Point(0, 507);
+
                 btnCatálogo.Visible = false;
                 btnAsignaturas.Visible = true;
                 btnDocentes.Visible = false;
             }
             else if (Acceso == "Docente")
             {
-                btnAsistencia.Visible = true;
                 btnAsignaturasAsignadas.Visible = true;
+                btnAsistencia.Visible = true;
                 btnSilabos.Visible = true;
                 btnSesiones.Visible = true;
-                btnCatálogo.Visible = true;
-                btnAsignaturas.Visible = true;
-                btnDocentes.Visible = true;
+
+                btnCatálogo.Visible = false;
+                btnAsignaturas.Visible = false;
+                btnDocentes.Visible = false;
             }
         }
 
@@ -365,6 +397,21 @@ namespace CapaPresentaciones
             CerrarSesion();
         }
 
+        private void P_Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Desea salir de la aplicación?") == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Desea salir de la aplicación?") == DialogResult.Yes)
@@ -396,6 +443,5 @@ namespace CapaPresentaciones
                 Formularios.BringToFront();
             }
         }
-
     }
 }
