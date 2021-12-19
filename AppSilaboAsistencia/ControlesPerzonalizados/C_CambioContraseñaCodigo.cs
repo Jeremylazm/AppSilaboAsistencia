@@ -23,7 +23,7 @@ namespace ControlesPerzonalizados
             Usuario = pUsuario;
         } //Listo
 
-        private void Inicializar2()
+        public void Inicializar2()
         {
             lblEmail.Text = Email;
             Verificar();

@@ -31,12 +31,28 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_Catálogo_Agregar));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges12 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.Salir = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.Panel_Info = new System.Windows.Forms.Panel();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.S20_21 = new System.Windows.Forms.Button();
             this.S19_20 = new System.Windows.Forms.Button();
             this.S18_19 = new System.Windows.Forms.Button();
@@ -222,28 +238,12 @@ namespace CapaPresentaciones
             this.bDSistemaGestionDataSet = new CapaPresentaciones.BDSistemaGestionDataSet();
             this.tDocenteTableAdapter = new CapaPresentaciones.BDSistemaGestionDataSetTableAdapters.TDocenteTableAdapter();
             this.tAsignaturaTableAdapter = new CapaPresentaciones.BDSistemaGestionDataSetTableAdapters.TAsignaturaTableAdapter();
-            this.Panel_Info = new System.Windows.Forms.Panel();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Salir)).BeginInit();
             this.panel2.SuspendLayout();
+            this.Panel_Info.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Información)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDSistemaGestionDataSet)).BeginInit();
-            this.Panel_Info.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -483,8 +483,177 @@ namespace CapaPresentaciones
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 38);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(750, 586);
+            this.panel2.Size = new System.Drawing.Size(750, 587);
             this.panel2.TabIndex = 2;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.BackColor = System.Drawing.Color.LawnGreen;
+            this.label40.Location = new System.Drawing.Point(136, 527);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(13, 13);
+            this.label40.TabIndex = 233;
+            this.label40.Text = "  ";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.BackColor = System.Drawing.Color.DarkViolet;
+            this.label39.Location = new System.Drawing.Point(169, 557);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(13, 13);
+            this.label39.TabIndex = 232;
+            this.label39.Text = "  ";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.BackColor = System.Drawing.Color.Orange;
+            this.label38.Location = new System.Drawing.Point(136, 542);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(13, 13);
+            this.label38.TabIndex = 231;
+            this.label38.Text = "  ";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label37.Location = new System.Drawing.Point(16, 557);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(147, 13);
+            this.label37.TabIndex = 230;
+            this.label37.Text = "Horario Ambos Docentes";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label36.Location = new System.Drawing.Point(16, 542);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(111, 13);
+            this.label36.TabIndex = 229;
+            this.label36.Text = "Horario Docente 2";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label35.Location = new System.Drawing.Point(16, 527);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(111, 13);
+            this.label35.TabIndex = 228;
+            this.label35.Text = "Horario Docente 1";
+            // 
+            // Panel_Info
+            // 
+            this.Panel_Info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(198)))), ((int)(((byte)(227)))));
+            this.Panel_Info.Controls.Add(this.label34);
+            this.Panel_Info.Controls.Add(this.label33);
+            this.Panel_Info.Controls.Add(this.label32);
+            this.Panel_Info.Controls.Add(this.label31);
+            this.Panel_Info.Controls.Add(this.label30);
+            this.Panel_Info.Controls.Add(this.label29);
+            this.Panel_Info.Controls.Add(this.label28);
+            this.Panel_Info.Controls.Add(this.label27);
+            this.Panel_Info.Controls.Add(this.label26);
+            this.Panel_Info.Location = new System.Drawing.Point(577, 310);
+            this.Panel_Info.Name = "Panel_Info";
+            this.Panel_Info.Size = new System.Drawing.Size(140, 245);
+            this.Panel_Info.TabIndex = 227;
+            // 
+            // label34
+            // 
+            this.label34.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label34.Location = new System.Drawing.Point(11, 214);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(113, 27);
+            this.label34.TabIndex = 8;
+            this.label34.Text = "Futura actualización para la interfaz ...";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(3, 174);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(18, 13);
+            this.label33.TabIndex = 7;
+            this.label33.Text = "4)";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(3, 118);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(18, 13);
+            this.label32.TabIndex = 6;
+            this.label32.Text = "3)";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(3, 64);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(18, 13);
+            this.label31.TabIndex = 5;
+            this.label31.Text = "2)";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(3, 9);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(18, 13);
+            this.label30.TabIndex = 4;
+            this.label30.Text = "1)";
+            // 
+            // label29
+            // 
+            this.label29.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(22, 173);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(113, 38);
+            this.label29.TabIndex = 3;
+            this.label29.Text = "Al guardar, automáticamente se cierra la ventana.";
+            // 
+            // label28
+            // 
+            this.label28.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(22, 118);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(109, 48);
+            this.label28.TabIndex = 2;
+            this.label28.Text = "Al escoger 2 docentes, si es un curso solo de P, el primer docente va a la primer" +
+    "a hora.";
+            // 
+            // label27
+            // 
+            this.label27.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(22, 64);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(109, 48);
+            this.label27.TabIndex = 1;
+            this.label27.Text = "Al escoger 2 docentes, si es un curso de T y P, el primero va al de T y el segund" +
+    "o al de P.";
+            // 
+            // label26
+            // 
+            this.label26.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(22, 9);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(109, 48);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "Si aún no se tiene designado los docente, puede dejarlo en 1 solo docente por def" +
+    "ecto.";
             // 
             // S20_21
             // 
@@ -1532,7 +1701,7 @@ namespace CapaPresentaciones
             this.Información.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Información.BackColor = System.Drawing.Color.Transparent;
             this.Información.Image = global::CapaPresentaciones.Properties.Resources.Exclamacion;
-            this.Información.Location = new System.Drawing.Point(717, 549);
+            this.Información.Location = new System.Drawing.Point(717, 554);
             this.Información.Name = "Información";
             this.Información.Size = new System.Drawing.Size(21, 20);
             this.Información.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1630,7 +1799,7 @@ namespace CapaPresentaciones
             this.Seleccionar_Docente_Cod_Nom2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Seleccionar_Docente_Cod_Nom2.Enabled = false;
             this.Seleccionar_Docente_Cod_Nom2.FormattingEnabled = true;
-            this.Seleccionar_Docente_Cod_Nom2.Location = new System.Drawing.Point(153, 68);
+            this.Seleccionar_Docente_Cod_Nom2.Location = new System.Drawing.Point(153, 70);
             this.Seleccionar_Docente_Cod_Nom2.Name = "Seleccionar_Docente_Cod_Nom2";
             this.Seleccionar_Docente_Cod_Nom2.Size = new System.Drawing.Size(211, 21);
             this.Seleccionar_Docente_Cod_Nom2.TabIndex = 96;
@@ -1640,7 +1809,7 @@ namespace CapaPresentaciones
             // Check_2_Docentes
             // 
             this.Check_2_Docentes.AutoSize = true;
-            this.Check_2_Docentes.Location = new System.Drawing.Point(285, 10);
+            this.Check_2_Docentes.Location = new System.Drawing.Point(285, 11);
             this.Check_2_Docentes.Name = "Check_2_Docentes";
             this.Check_2_Docentes.Size = new System.Drawing.Size(32, 17);
             this.Check_2_Docentes.TabIndex = 94;
@@ -1651,7 +1820,7 @@ namespace CapaPresentaciones
             // Check_1_Docentes
             // 
             this.Check_1_Docentes.AutoSize = true;
-            this.Check_1_Docentes.Location = new System.Drawing.Point(237, 10);
+            this.Check_1_Docentes.Location = new System.Drawing.Point(237, 11);
             this.Check_1_Docentes.Name = "Check_1_Docentes";
             this.Check_1_Docentes.Size = new System.Drawing.Size(32, 17);
             this.Check_1_Docentes.TabIndex = 93;
@@ -1672,7 +1841,7 @@ namespace CapaPresentaciones
             // Check_P_Sábado
             // 
             this.Check_P_Sábado.AutoSize = true;
-            this.Check_P_Sábado.Location = new System.Drawing.Point(209, 320);
+            this.Check_P_Sábado.Location = new System.Drawing.Point(211, 321);
             this.Check_P_Sábado.Name = "Check_P_Sábado";
             this.Check_P_Sábado.Size = new System.Drawing.Size(33, 17);
             this.Check_P_Sábado.TabIndex = 90;
@@ -1683,7 +1852,7 @@ namespace CapaPresentaciones
             // Check_P_Viernes
             // 
             this.Check_P_Viernes.AutoSize = true;
-            this.Check_P_Viernes.Location = new System.Drawing.Point(209, 296);
+            this.Check_P_Viernes.Location = new System.Drawing.Point(211, 297);
             this.Check_P_Viernes.Name = "Check_P_Viernes";
             this.Check_P_Viernes.Size = new System.Drawing.Size(33, 17);
             this.Check_P_Viernes.TabIndex = 89;
@@ -1694,7 +1863,7 @@ namespace CapaPresentaciones
             // Check_P_Jueves
             // 
             this.Check_P_Jueves.AutoSize = true;
-            this.Check_P_Jueves.Location = new System.Drawing.Point(209, 272);
+            this.Check_P_Jueves.Location = new System.Drawing.Point(211, 273);
             this.Check_P_Jueves.Name = "Check_P_Jueves";
             this.Check_P_Jueves.Size = new System.Drawing.Size(33, 17);
             this.Check_P_Jueves.TabIndex = 88;
@@ -1738,7 +1907,7 @@ namespace CapaPresentaciones
             // Check_T_Sábado
             // 
             this.Check_T_Sábado.AutoSize = true;
-            this.Check_T_Sábado.Location = new System.Drawing.Point(180, 320);
+            this.Check_T_Sábado.Location = new System.Drawing.Point(180, 321);
             this.Check_T_Sábado.Name = "Check_T_Sábado";
             this.Check_T_Sábado.Size = new System.Drawing.Size(33, 17);
             this.Check_T_Sábado.TabIndex = 84;
@@ -1749,7 +1918,7 @@ namespace CapaPresentaciones
             // Check_T_Viernes
             // 
             this.Check_T_Viernes.AutoSize = true;
-            this.Check_T_Viernes.Location = new System.Drawing.Point(180, 296);
+            this.Check_T_Viernes.Location = new System.Drawing.Point(180, 297);
             this.Check_T_Viernes.Name = "Check_T_Viernes";
             this.Check_T_Viernes.Size = new System.Drawing.Size(33, 17);
             this.Check_T_Viernes.TabIndex = 83;
@@ -1760,7 +1929,7 @@ namespace CapaPresentaciones
             // Check_T_Jueves
             // 
             this.Check_T_Jueves.AutoSize = true;
-            this.Check_T_Jueves.Location = new System.Drawing.Point(180, 272);
+            this.Check_T_Jueves.Location = new System.Drawing.Point(180, 273);
             this.Check_T_Jueves.Name = "Check_T_Jueves";
             this.Check_T_Jueves.Size = new System.Drawing.Size(33, 17);
             this.Check_T_Jueves.TabIndex = 82;
@@ -1804,7 +1973,7 @@ namespace CapaPresentaciones
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(125, 320);
+            this.label10.Location = new System.Drawing.Point(125, 321);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(10, 13);
             this.label10.TabIndex = 78;
@@ -1813,7 +1982,7 @@ namespace CapaPresentaciones
             // Hora_Fin_Sábado
             // 
             this.Hora_Fin_Sábado.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.Hora_Fin_Sábado.Location = new System.Drawing.Point(139, 317);
+            this.Hora_Fin_Sábado.Location = new System.Drawing.Point(139, 318);
             this.Hora_Fin_Sábado.Name = "Hora_Fin_Sábado";
             this.Hora_Fin_Sábado.ShowUpDown = true;
             this.Hora_Fin_Sábado.Size = new System.Drawing.Size(34, 20);
@@ -1824,7 +1993,7 @@ namespace CapaPresentaciones
             // Hora_Inicio_Sábado
             // 
             this.Hora_Inicio_Sábado.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.Hora_Inicio_Sábado.Location = new System.Drawing.Point(87, 317);
+            this.Hora_Inicio_Sábado.Location = new System.Drawing.Point(87, 318);
             this.Hora_Inicio_Sábado.Name = "Hora_Inicio_Sábado";
             this.Hora_Inicio_Sábado.ShowUpDown = true;
             this.Hora_Inicio_Sábado.Size = new System.Drawing.Size(34, 20);
@@ -1835,7 +2004,7 @@ namespace CapaPresentaciones
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(125, 296);
+            this.label11.Location = new System.Drawing.Point(125, 297);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(10, 13);
             this.label11.TabIndex = 75;
@@ -1844,7 +2013,7 @@ namespace CapaPresentaciones
             // Hora_Fin_Viernes
             // 
             this.Hora_Fin_Viernes.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.Hora_Fin_Viernes.Location = new System.Drawing.Point(139, 293);
+            this.Hora_Fin_Viernes.Location = new System.Drawing.Point(139, 294);
             this.Hora_Fin_Viernes.Name = "Hora_Fin_Viernes";
             this.Hora_Fin_Viernes.ShowUpDown = true;
             this.Hora_Fin_Viernes.Size = new System.Drawing.Size(34, 20);
@@ -1855,7 +2024,7 @@ namespace CapaPresentaciones
             // Hora_Inicio_Viernes
             // 
             this.Hora_Inicio_Viernes.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.Hora_Inicio_Viernes.Location = new System.Drawing.Point(87, 293);
+            this.Hora_Inicio_Viernes.Location = new System.Drawing.Point(87, 294);
             this.Hora_Inicio_Viernes.Name = "Hora_Inicio_Viernes";
             this.Hora_Inicio_Viernes.ShowUpDown = true;
             this.Hora_Inicio_Viernes.Size = new System.Drawing.Size(34, 20);
@@ -1866,7 +2035,7 @@ namespace CapaPresentaciones
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(125, 273);
+            this.label12.Location = new System.Drawing.Point(125, 274);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(10, 13);
             this.label12.TabIndex = 72;
@@ -1875,7 +2044,7 @@ namespace CapaPresentaciones
             // Hora_Fin_Jueves
             // 
             this.Hora_Fin_Jueves.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.Hora_Fin_Jueves.Location = new System.Drawing.Point(139, 269);
+            this.Hora_Fin_Jueves.Location = new System.Drawing.Point(139, 270);
             this.Hora_Fin_Jueves.Name = "Hora_Fin_Jueves";
             this.Hora_Fin_Jueves.ShowUpDown = true;
             this.Hora_Fin_Jueves.Size = new System.Drawing.Size(34, 20);
@@ -1886,7 +2055,7 @@ namespace CapaPresentaciones
             // Hora_Inicio_Jueves
             // 
             this.Hora_Inicio_Jueves.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.Hora_Inicio_Jueves.Location = new System.Drawing.Point(87, 269);
+            this.Hora_Inicio_Jueves.Location = new System.Drawing.Point(87, 270);
             this.Hora_Inicio_Jueves.Name = "Hora_Inicio_Jueves";
             this.Hora_Inicio_Jueves.ShowUpDown = true;
             this.Hora_Inicio_Jueves.Size = new System.Drawing.Size(34, 20);
@@ -2071,11 +2240,11 @@ namespace CapaPresentaciones
             this.Botón_Guardar.ColorContrastOnClick = 45;
             this.Botón_Guardar.ColorContrastOnHover = 45;
             this.Botón_Guardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges8.BottomLeft = true;
-            borderEdges8.BottomRight = true;
-            borderEdges8.TopLeft = true;
-            borderEdges8.TopRight = true;
-            this.Botón_Guardar.CustomizableEdges = borderEdges8;
+            borderEdges12.BottomLeft = true;
+            borderEdges12.BottomRight = true;
+            borderEdges12.TopLeft = true;
+            borderEdges12.TopRight = true;
+            this.Botón_Guardar.CustomizableEdges = borderEdges12;
             this.Botón_Guardar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Botón_Guardar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.Botón_Guardar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -2198,7 +2367,7 @@ namespace CapaPresentaciones
             // Check_Día_Sábado
             // 
             this.Check_Día_Sábado.AutoSize = true;
-            this.Check_Día_Sábado.Location = new System.Drawing.Point(19, 320);
+            this.Check_Día_Sábado.Location = new System.Drawing.Point(19, 319);
             this.Check_Día_Sábado.Name = "Check_Día_Sábado";
             this.Check_Día_Sábado.Size = new System.Drawing.Size(63, 17);
             this.Check_Día_Sábado.TabIndex = 15;
@@ -2209,7 +2378,7 @@ namespace CapaPresentaciones
             // Check_Día_Viernes
             // 
             this.Check_Día_Viernes.AutoSize = true;
-            this.Check_Día_Viernes.Location = new System.Drawing.Point(19, 296);
+            this.Check_Día_Viernes.Location = new System.Drawing.Point(19, 295);
             this.Check_Día_Viernes.Name = "Check_Día_Viernes";
             this.Check_Día_Viernes.Size = new System.Drawing.Size(61, 17);
             this.Check_Día_Viernes.TabIndex = 14;
@@ -2220,7 +2389,7 @@ namespace CapaPresentaciones
             // Check_Día_Jueves
             // 
             this.Check_Día_Jueves.AutoSize = true;
-            this.Check_Día_Jueves.Location = new System.Drawing.Point(19, 272);
+            this.Check_Día_Jueves.Location = new System.Drawing.Point(19, 271);
             this.Check_Día_Jueves.Name = "Check_Día_Jueves";
             this.Check_Día_Jueves.Size = new System.Drawing.Size(60, 17);
             this.Check_Día_Jueves.TabIndex = 13;
@@ -2348,180 +2517,11 @@ namespace CapaPresentaciones
             // 
             this.tAsignaturaTableAdapter.ClearBeforeFill = true;
             // 
-            // Panel_Info
-            // 
-            this.Panel_Info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(198)))), ((int)(((byte)(227)))));
-            this.Panel_Info.Controls.Add(this.label34);
-            this.Panel_Info.Controls.Add(this.label33);
-            this.Panel_Info.Controls.Add(this.label32);
-            this.Panel_Info.Controls.Add(this.label31);
-            this.Panel_Info.Controls.Add(this.label30);
-            this.Panel_Info.Controls.Add(this.label29);
-            this.Panel_Info.Controls.Add(this.label28);
-            this.Panel_Info.Controls.Add(this.label27);
-            this.Panel_Info.Controls.Add(this.label26);
-            this.Panel_Info.Location = new System.Drawing.Point(577, 305);
-            this.Panel_Info.Name = "Panel_Info";
-            this.Panel_Info.Size = new System.Drawing.Size(140, 245);
-            this.Panel_Info.TabIndex = 227;
-            // 
-            // label34
-            // 
-            this.label34.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label34.Location = new System.Drawing.Point(11, 214);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(113, 27);
-            this.label34.TabIndex = 8;
-            this.label34.Text = "Futura actualización para la interfaz ...";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(3, 174);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(18, 13);
-            this.label33.TabIndex = 7;
-            this.label33.Text = "4)";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(3, 118);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(18, 13);
-            this.label32.TabIndex = 6;
-            this.label32.Text = "3)";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(3, 64);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(18, 13);
-            this.label31.TabIndex = 5;
-            this.label31.Text = "2)";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(3, 9);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(18, 13);
-            this.label30.TabIndex = 4;
-            this.label30.Text = "1)";
-            // 
-            // label29
-            // 
-            this.label29.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(22, 173);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(113, 38);
-            this.label29.TabIndex = 3;
-            this.label29.Text = "Al guardar, automáticamente se cierra la ventana.";
-            // 
-            // label28
-            // 
-            this.label28.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(22, 118);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(109, 48);
-            this.label28.TabIndex = 2;
-            this.label28.Text = "Al escoger 2 docentes, si es un curso solo de P, el primer docente va a la primer" +
-    "a hora.";
-            // 
-            // label27
-            // 
-            this.label27.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(22, 64);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(109, 48);
-            this.label27.TabIndex = 1;
-            this.label27.Text = "Al escoger 2 docentes, si es un curso de T y P, el primero va al de T y el segund" +
-    "o al de P.";
-            // 
-            // label26
-            // 
-            this.label26.Font = new System.Drawing.Font("Microsoft PhagsPa", 6.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(22, 9);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(109, 48);
-            this.label26.TabIndex = 0;
-            this.label26.Text = "Si aún no se tiene designado los docente, puede dejarlo en 1 solo docente por def" +
-    "ecto.";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label35.Location = new System.Drawing.Point(16, 527);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(111, 13);
-            this.label35.TabIndex = 228;
-            this.label35.Text = "Horario Docente 1";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label36.Location = new System.Drawing.Point(16, 542);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(111, 13);
-            this.label36.TabIndex = 229;
-            this.label36.Text = "Horario Docente 2";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label37.Location = new System.Drawing.Point(16, 557);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(147, 13);
-            this.label37.TabIndex = 230;
-            this.label37.Text = "Horario Ambos Docentes";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.BackColor = System.Drawing.Color.Orange;
-            this.label38.Location = new System.Drawing.Point(136, 542);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(13, 13);
-            this.label38.TabIndex = 231;
-            this.label38.Text = "  ";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.BackColor = System.Drawing.Color.DarkViolet;
-            this.label39.Location = new System.Drawing.Point(169, 557);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(13, 13);
-            this.label39.TabIndex = 232;
-            this.label39.Text = "  ";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.BackColor = System.Drawing.Color.LawnGreen;
-            this.label40.Location = new System.Drawing.Point(136, 527);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(13, 13);
-            this.label40.TabIndex = 233;
-            this.label40.Text = "  ";
-            // 
             // P_Catálogo_Agregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 624);
+            this.ClientSize = new System.Drawing.Size(750, 625);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -2533,10 +2533,10 @@ namespace CapaPresentaciones
             ((System.ComponentModel.ISupportInitialize)(this.Salir)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Información)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDSistemaGestionDataSet)).EndInit();
             this.Panel_Info.ResumeLayout(false);
             this.Panel_Info.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Información)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDSistemaGestionDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
