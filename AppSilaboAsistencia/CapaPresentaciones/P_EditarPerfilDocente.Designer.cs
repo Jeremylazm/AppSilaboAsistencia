@@ -1010,9 +1010,9 @@
             this.imgPerfil.BorderSize = 2;
             this.imgPerfil.GradientAngle = 50F;
             this.imgPerfil.Image = global::CapaPresentaciones.Properties.Resources.Perfil_Docente;
-            this.imgPerfil.Location = new System.Drawing.Point(699, 74);
+            this.imgPerfil.Location = new System.Drawing.Point(664, 63);
             this.imgPerfil.Name = "imgPerfil";
-            this.imgPerfil.Size = new System.Drawing.Size(352, 352);
+            this.imgPerfil.Size = new System.Drawing.Size(378, 378);
             this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgPerfil.TabIndex = 48;
             this.imgPerfil.TabStop = false;
