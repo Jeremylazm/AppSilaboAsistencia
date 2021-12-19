@@ -9,7 +9,7 @@ namespace ControlesPerzonalizados
 {
     public partial class C_CambioContraseñaCodigo : UserControl
     {
-        private string codigo_verificacion = "";
+        public static string codigo_verificacion;
         public static string Email;
         public static string Usuario;
         public C_CambioContraseñaCodigo()
@@ -17,17 +17,12 @@ namespace ControlesPerzonalizados
             InitializeComponent();
         }
 
-        public static void Inicializar(string pEmail, string pUsuario)
+        public static void Inicializar(string pEmail, string pUsuario, string pcodigo_verificacion)
         {
             Email = pEmail;
             Usuario = pUsuario;
+            codigo_verificacion = pcodigo_verificacion;
         } //Listo
-
-        public void Inicializar2()
-        {
-            lblEmail.Text = Email;
-            Verificar();
-        }
 
         private void MensajeError(string Mensaje)
         {
