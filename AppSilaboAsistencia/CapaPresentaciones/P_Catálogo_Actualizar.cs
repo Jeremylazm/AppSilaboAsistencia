@@ -62,7 +62,6 @@ namespace CapaPresentaciones
             Seleccionar_Docente_Cod_Nom2.DisplayMember = "NombreCompleto";
         }
 
-
         private void LlenarDatosAsignatura()
         {
             Seleccionar_Asignatura_Cod_Nom.DataSource = N_Asignatura.MostrarAsignaturas("IF");
@@ -893,6 +892,7 @@ namespace CapaPresentaciones
                 Seleccionar_Docente_Cod_Nom2.Enabled = true;
                 Check_2_Docentes.Checked = true;
                 Actualizar_Color();
+                Borrar_Color();
             }
         }
 
@@ -907,6 +907,7 @@ namespace CapaPresentaciones
                 label25.Visible = true;
                 Label_Horas_Asignadas_Docente2.Visible = true;
                 Actualizar_Color();
+                Borrar_Color();
             }
             else
             {
@@ -918,6 +919,7 @@ namespace CapaPresentaciones
                 label25.Visible = false;
                 Label_Horas_Asignadas_Docente2.Visible = false;
                 Actualizar_Color();
+                Borrar_Color();
             }
         }
 
@@ -1045,6 +1047,7 @@ namespace CapaPresentaciones
                 Check_Grupo_C.Checked = false;
                 Recuperar_Horas_Docentes();
                 DescontarHoras();
+                Borrar_Color();
             }
             else
             {
@@ -1063,6 +1066,7 @@ namespace CapaPresentaciones
                 Check_Grupo_C.Checked = false;
                 Recuperar_Horas_Docentes();
                 DescontarHoras();
+                Borrar_Color();
             }
             else
             {
@@ -1081,6 +1085,7 @@ namespace CapaPresentaciones
                 Check_Grupo_B.Checked = false;
                 Recuperar_Horas_Docentes();
                 DescontarHoras();
+                Borrar_Color();
             }
             else
             {
@@ -2123,6 +2128,7 @@ namespace CapaPresentaciones
                 Recuperar_Horas_Docentes();
                 DescontarHoras();
                 Actualizar_Color();
+                Borrar_Color();
             }
             catch
             {
@@ -2141,6 +2147,7 @@ namespace CapaPresentaciones
                 Recuperar_Horas_Docentes();
                 DescontarHoras();
                 Actualizar_Color();
+                Borrar_Color();
             }
             catch
             {
@@ -2163,6 +2170,7 @@ namespace CapaPresentaciones
                 Recuperar_Horas_Asignaturas();
                 Recuperar_Horas_Docentes();
                 DescontarHoras();
+                Borrar_Color();
             }
             catch
             {
@@ -2170,12 +2178,12 @@ namespace CapaPresentaciones
             }
         }
 
-
         private void Seleccionar_Semestre_SelectedIndexChanged(object sender, EventArgs e)
         {
             Recuperar_Horas_Docentes();
             DescontarHoras();
             Actualizar_Color();
+            Borrar_Color();
         }
 
         public bool Buscar(string CS, string CA, string EP, string G)
@@ -2466,6 +2474,25 @@ namespace CapaPresentaciones
             }
         }
 
+        public void Designar2(string Día, string HoraInicio, string HoraFin)
+        {
+            int[] Horas = { 0, 0, 0, 0, 0 };
+            Horas[0] = Convert.ToInt32(HoraInicio);
+            for (int i = 1; i < 5; i++)
+            {
+                if (Convert.ToInt32(HoraInicio) + i <= Convert.ToInt32(HoraFin))
+                    Horas[i] = Convert.ToInt32(HoraInicio) + i;
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                if (Horas[i] != 0 && Horas[i + 1] != 0)
+                {
+                    Borrar(Día, Horas[i], Horas[i + 1]);
+                }
+            }
+        }
+
         public void Limpiar_Colores()
         {
             //Lunes
@@ -2558,6 +2585,196 @@ namespace CapaPresentaciones
             S18_19.BackColor = Color.White;
             S19_20.BackColor = Color.White;
             S20_21.BackColor = Color.White;
+        }
+
+        public void Borrar(string Día, int HoraInicio, int HoraFin)
+        {
+            if (Día == "LU")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                    L7_8.BackColor = Color.White;
+                else if (HoraInicio == 8 && HoraFin == 9)
+                    L8_9.BackColor = Color.White;
+                else if (HoraInicio == 9 && HoraFin == 10)
+                    L9_10.BackColor = Color.White;
+                else if (HoraInicio == 10 && HoraFin == 11)
+                    L10_11.BackColor = Color.White;
+                else if (HoraInicio == 11 && HoraFin == 12)
+                    L11_12.BackColor = Color.White;
+                else if (HoraInicio == 12 && HoraFin == 13)
+                    L12_13.BackColor = Color.White;
+                else if (HoraInicio == 13 && HoraFin == 14)
+                    L13_14.BackColor = Color.White;
+                else if (HoraInicio == 14 && HoraFin == 15)
+                    L14_15.BackColor = Color.White;
+                else if (HoraInicio == 15 && HoraFin == 16)
+                    L15_16.BackColor = Color.White;
+                else if (HoraInicio == 16 && HoraFin == 17)
+                    L16_17.BackColor = Color.White;
+                else if (HoraInicio == 17 && HoraFin == 18)
+                    L17_18.BackColor = Color.White;
+                else if (HoraInicio == 18 && HoraFin == 19)
+                    L18_19.BackColor = Color.White;
+                else if (HoraInicio == 19 && HoraFin == 20)
+                    L19_20.BackColor = Color.White;
+                else if (HoraInicio == 20 && HoraFin == 21)
+                    L20_21.BackColor = Color.White;
+            }
+            else if (Día == "MA")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                    M7_8.BackColor = Color.White;
+                else if (HoraInicio == 8 && HoraFin == 9)
+                    M8_9.BackColor = Color.White;
+                else if (HoraInicio == 9 && HoraFin == 10)
+                    M9_10.BackColor = Color.White;
+                else if (HoraInicio == 10 && HoraFin == 11)
+                    M10_11.BackColor = Color.White;
+                else if (HoraInicio == 11 && HoraFin == 12)
+                    M11_12.BackColor = Color.White;
+                else if (HoraInicio == 12 && HoraFin == 13)
+                    M12_13.BackColor = Color.White;
+                else if (HoraInicio == 13 && HoraFin == 14)
+                    M13_14.BackColor = Color.White;
+                else if (HoraInicio == 14 && HoraFin == 15)
+                    M14_15.BackColor = Color.White;
+                else if (HoraInicio == 15 && HoraFin == 16)
+                    M15_16.BackColor = Color.White;
+                else if (HoraInicio == 16 && HoraFin == 17)
+                    M16_17.BackColor = Color.White;
+                else if (HoraInicio == 17 && HoraFin == 18)
+                    M17_18.BackColor = Color.White;
+                else if (HoraInicio == 18 && HoraFin == 19)
+                    M18_19.BackColor = Color.White;
+                else if (HoraInicio == 19 && HoraFin == 20)
+                    M19_20.BackColor = Color.White;
+                else if (HoraInicio == 20 && HoraFin == 21)
+                    M20_21.BackColor = Color.White;
+            }
+            else if (Día == "MI")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                    Mi7_8.BackColor = Color.White;
+                else if (HoraInicio == 8 && HoraFin == 9)
+                    Mi8_9.BackColor = Color.White;
+                else if (HoraInicio == 9 && HoraFin == 10)
+                    Mi9_10.BackColor = Color.White;
+                else if (HoraInicio == 10 && HoraFin == 11)
+                    Mi10_11.BackColor = Color.White;
+                else if (HoraInicio == 11 && HoraFin == 12)
+                    Mi11_12.BackColor = Color.White;
+                else if (HoraInicio == 12 && HoraFin == 13)
+                    Mi12_13.BackColor = Color.White;
+                else if (HoraInicio == 13 && HoraFin == 14)
+                    Mi13_14.BackColor = Color.White;
+                else if (HoraInicio == 14 && HoraFin == 15)
+                    Mi14_15.BackColor = Color.White;
+                else if (HoraInicio == 15 && HoraFin == 16)
+                    Mi15_16.BackColor = Color.White;
+                else if (HoraInicio == 16 && HoraFin == 17)
+                    Mi16_17.BackColor = Color.White;
+                else if (HoraInicio == 17 && HoraFin == 18)
+                    Mi17_18.BackColor = Color.White;
+                else if (HoraInicio == 18 && HoraFin == 19)
+                    Mi18_19.BackColor = Color.White;
+                else if (HoraInicio == 19 && HoraFin == 20)
+                    Mi19_20.BackColor = Color.White;
+                else if (HoraInicio == 20 && HoraFin == 21)
+                    Mi20_21.BackColor = Color.White;
+            }
+            else if (Día == "JU")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                    J7_8.BackColor = Color.White;
+                else if (HoraInicio == 8 && HoraFin == 9)
+                    J8_9.BackColor = Color.White;
+                else if (HoraInicio == 9 && HoraFin == 10)
+                    J9_10.BackColor = Color.White;
+                else if (HoraInicio == 10 && HoraFin == 11)
+                    J10_11.BackColor = Color.White;
+                else if (HoraInicio == 11 && HoraFin == 12)
+                    J11_12.BackColor = Color.White;
+                else if (HoraInicio == 12 && HoraFin == 13)
+                    J12_13.BackColor = Color.White;
+                else if (HoraInicio == 13 && HoraFin == 14)
+                    J13_14.BackColor = Color.White;
+                else if (HoraInicio == 14 && HoraFin == 15)
+                    J14_15.BackColor = Color.White;
+                else if (HoraInicio == 15 && HoraFin == 16)
+                    J15_16.BackColor = Color.White;
+                else if (HoraInicio == 16 && HoraFin == 17)
+                    J16_17.BackColor = Color.White;
+                else if (HoraInicio == 17 && HoraFin == 18)
+                    J17_18.BackColor = Color.White;
+                else if (HoraInicio == 18 && HoraFin == 19)
+                    J18_19.BackColor = Color.White;
+                else if (HoraInicio == 19 && HoraFin == 20)
+                    J19_20.BackColor = Color.White;
+                else if (HoraInicio == 20 && HoraFin == 21)
+                    J20_21.BackColor = Color.White;
+            }
+            else if (Día == "VI")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                    V7_8.BackColor = Color.White;
+                else if (HoraInicio == 8 && HoraFin == 9)
+                    V8_9.BackColor = Color.White;
+                else if (HoraInicio == 9 && HoraFin == 10)
+                    V9_10.BackColor = Color.White;
+                else if (HoraInicio == 10 && HoraFin == 11)
+                    V10_11.BackColor = Color.White;
+                else if (HoraInicio == 11 && HoraFin == 12)
+                    V11_12.BackColor = Color.White;
+                else if (HoraInicio == 12 && HoraFin == 13)
+                    V12_13.BackColor = Color.White;
+                else if (HoraInicio == 13 && HoraFin == 14)
+                    V13_14.BackColor = Color.White;
+                else if (HoraInicio == 14 && HoraFin == 15)
+                    V14_15.BackColor = Color.White;
+                else if (HoraInicio == 15 && HoraFin == 16)
+                    V15_16.BackColor = Color.White;
+                else if (HoraInicio == 16 && HoraFin == 17)
+                    V16_17.BackColor = Color.White;
+                else if (HoraInicio == 17 && HoraFin == 18)
+                    V17_18.BackColor = Color.White;
+                else if (HoraInicio == 18 && HoraFin == 19)
+                    V18_19.BackColor = Color.White;
+                else if (HoraInicio == 19 && HoraFin == 20)
+                    V19_20.BackColor = Color.White;
+                else if (HoraInicio == 20 && HoraFin == 21)
+                    V20_21.BackColor = Color.White;
+            }
+            else if (Día == "SA")
+            {
+                if (HoraInicio == 7 && HoraFin == 8)
+                    S7_8.BackColor = Color.White;
+                else if (HoraInicio == 8 && HoraFin == 9)
+                    S8_9.BackColor = Color.White;
+                else if (HoraInicio == 9 && HoraFin == 10)
+                    S9_10.BackColor = Color.White;
+                else if (HoraInicio == 10 && HoraFin == 11)
+                    S10_11.BackColor = Color.White;
+                else if (HoraInicio == 11 && HoraFin == 12)
+                    S11_12.BackColor = Color.White;
+                else if (HoraInicio == 12 && HoraFin == 13)
+                    S12_13.BackColor = Color.White;
+                else if (HoraInicio == 13 && HoraFin == 14)
+                    S13_14.BackColor = Color.White;
+                else if (HoraInicio == 14 && HoraFin == 15)
+                    S14_15.BackColor = Color.White;
+                else if (HoraInicio == 15 && HoraFin == 16)
+                    S15_16.BackColor = Color.White;
+                else if (HoraInicio == 16 && HoraFin == 17)
+                    S16_17.BackColor = Color.White;
+                else if (HoraInicio == 17 && HoraFin == 18)
+                    S17_18.BackColor = Color.White;
+                else if (HoraInicio == 18 && HoraFin == 19)
+                    S18_19.BackColor = Color.White;
+                else if (HoraInicio == 19 && HoraFin == 20)
+                    S19_20.BackColor = Color.White;
+                else if (HoraInicio == 20 && HoraFin == 21)
+                    S20_21.BackColor = Color.White;
+            }
         }
 
         public void Colorear1(string Día, int HoraInicio, int HoraFin)
@@ -3397,6 +3614,65 @@ namespace CapaPresentaciones
                             HI = T2.Rows[i]["HoraInicio"].ToString();
                             HF = T2.Rows[i]["HoraFin"].ToString();
                             Designar(Día, HI, HF, 2);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void Borrar_Color()
+        {
+            string Grupo;
+            if (Check_Grupo_A.Checked == true)
+                Grupo = "A";
+            else if (Check_Grupo_A.Checked == true)
+                Grupo = "B";
+            else
+                Grupo = "C";
+
+            DataTable T1 = N_HorarioAsignatura.HorarioSemanalDocente(Seleccionar_Semestre.Text, CódigoDocente1);
+            DataTable T2 = N_HorarioAsignatura.HorarioSemanalDocente(Seleccionar_Semestre.Text, CódigoDocente2);
+
+            string CodA;
+            string grupo;
+            string cod_asignatura;
+            string Día;
+            string HI;
+            string HF;
+
+            if (CódigoD1A == CódigoDocente1 && CódigoSemestreA == Seleccionar_Semestre.Text && CódigoAsignaturaA == CódigoAsignatura && Grupo == GrupoA)
+            {
+                if (CódigoDocente1 != "00000")
+                {
+                    for (int i = 0; i < T1.Rows.Count; i++)
+                    {
+                        CodA = T1.Rows[i]["CodAsignatura"].ToString();
+                        cod_asignatura = CodA.Substring(0, 5);
+                        grupo = CodA.Substring(5, 1);
+                        Día = T1.Rows[i]["Dia"].ToString();
+                        HI = T1.Rows[i]["HoraInicio"].ToString();
+                        HF = T1.Rows[i]["HoraFin"].ToString();
+                        if (cod_asignatura == CódigoAsignaturaA && grupo == GrupoA)
+                            Designar2(Día,HI,HF);
+                    }
+                }
+            }
+            if (CódigoD2A == CódigoDocente2 && CódigoSemestreA == Seleccionar_Semestre.Text && CódigoAsignaturaA == CódigoAsignatura && Grupo == GrupoA)
+            {
+                if (CódigoDocente2 != "00000")
+                {
+                    if (Seleccionar_Docente_Cod_Nom2.Enabled == true)
+                    {
+                        for (int i = 0; i < T2.Rows.Count; i++)
+                        {
+                            CodA = T2.Rows[i]["CodAsignatura"].ToString();
+                            cod_asignatura = CodA.Substring(0, 5);
+                            grupo = CodA.Substring(5, 1);
+                            Día = T2.Rows[i]["Dia"].ToString();
+                            HI = T2.Rows[i]["HoraInicio"].ToString();
+                            HF = T2.Rows[i]["HoraFin"].ToString();
+                            if (cod_asignatura == CódigoAsignaturaA && grupo == GrupoA)
+                                Designar2(Día, HI, HF);
                         }
                     }
                 }
