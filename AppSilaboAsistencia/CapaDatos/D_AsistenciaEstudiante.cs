@@ -89,7 +89,9 @@ namespace CapaDatos
             Conectar.Open();
             Comando.Parameters.AddWithValue("@CodSemestre", AsistenciaEstudiante.CodSemestre);
             Comando.Parameters.AddWithValue("@CodAsignatura", AsistenciaEstudiante.CodAsignatura);
-            Comando.Parameters.AddWithValue("@Fecha", AsistenciaEstudiante.Fecha); 
+            Comando.Parameters.AddWithValue("@HoraInicio", AsistenciaEstudiante.HoraInicio);
+            Comando.Parameters.AddWithValue("@Fecha", AsistenciaEstudiante.Fecha);
+            Comando.Parameters.AddWithValue("@CodEstudiante", AsistenciaEstudiante.CodEstudiante);
             Comando.Parameters.AddWithValue("@NCodSemestre", NCodSemestre);
             Comando.Parameters.AddWithValue("@NCodAsignatura", NCodAsignatura);
             Comando.Parameters.AddWithValue("@NHoraInicio", NHoraInicio);
