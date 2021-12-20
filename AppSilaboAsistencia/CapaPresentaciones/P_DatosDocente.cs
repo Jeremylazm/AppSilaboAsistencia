@@ -69,7 +69,7 @@ namespace CapaPresentaciones
             else
             {
                 cxtDepartamento.DataSource = N_DepartamentoAcademico.MostrarDepartamentos();
-                cxtDepartamento.SelectedIndex = 4;
+                cxtDepartamento.SelectedIndex = 6;
                 cxtDepartamento.Enabled = false;
 
                 cxtEscuela.DataSource = N_EscuelaProfesional.MostrarEscuelas();

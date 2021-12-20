@@ -50,7 +50,7 @@ namespace CapaPresentaciones
         {
             if (E_InicioSesion.Perfil == null)
             {
-                if ((E_InicioSesion.Acceso == "Director de Escuela") || (E_InicioSesion.Acceso == "Administrador"))
+                if ((E_InicioSesion.Acceso == "Jefe de Departamento") || (E_InicioSesion.Acceso == "Director de Escuela") || (E_InicioSesion.Acceso == "Administrador"))
                 {
                     pbPerfil.Image = Properties.Resources.Perfil as Image;
                     pbEditarPerfil.Image = Properties.Resources.Perfil as Image;
@@ -395,21 +395,6 @@ namespace CapaPresentaciones
         private void pbCerrarSesion_Click(object sender, EventArgs e)
         {
             CerrarSesion();
-        }
-
-        private void P_Menu_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Desea salir de la aplicación?") == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
-            }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

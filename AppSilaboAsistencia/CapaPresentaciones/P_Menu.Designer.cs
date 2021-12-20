@@ -1473,7 +1473,6 @@ namespace CapaPresentaciones
             this.Name = "P_Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Principal";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.P_Menu_FormClosing);
             this.Load += new System.EventHandler(this.P_Menu_Load);
             this.pnPrincipal.ResumeLayout(false);
             this.pnOpciones.ResumeLayout(false);
