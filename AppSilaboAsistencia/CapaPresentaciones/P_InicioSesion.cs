@@ -153,5 +153,12 @@ namespace CapaPresentaciones
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
                 IniciarSesion();
         }
+
+
+        private void btnOlvidarContraseña_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            P_RecuperacionContraseña RC = new P_RecuperacionContraseña();
+            RC.ShowDialog();
+        }
     }
 }

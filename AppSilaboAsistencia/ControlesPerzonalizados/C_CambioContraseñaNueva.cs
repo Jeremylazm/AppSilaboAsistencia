@@ -9,8 +9,10 @@ namespace ControlesPerzonalizados
     public partial class C_CambioContraseñaNueva : UserControl
     {
         public static string Usuario;
+        readonly A_Validador Validador;
         public C_CambioContraseñaNueva()
         {
+            Validador = new A_Validador();
             InitializeComponent();
         }
 
@@ -115,7 +117,8 @@ namespace ControlesPerzonalizados
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if(Cambiar_Contraseña() == "1")
+            bool Validar = Validación();
+            if(Cambiar_Contraseña() == "1" && Validar)
             {
                 BunifuPictureBox PictureActual = (BunifuPictureBox)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("pbPaso3", false)[0];
                 PictureActual.Image = Properties.Resources.Circulo_Checked;
@@ -125,6 +128,39 @@ namespace ControlesPerzonalizados
         private void btnAtras_Click(object sender, EventArgs e)
         {
             new A_Paso().Atras(ParentForm, "Paso3", "Paso2", "C_CambioContraseñaCodigo");
+        }
+
+        public bool Validación()
+        {
+            bool ContraseñaAnterior = Validador.ValidarCampoLleno(txtContraseñaAnterior, lblErrorContraseñaAnterior, pbErrorContraseñaAnterior);
+            bool ContraseñaNueva = Validador.ValidarCampoLleno(txtContraseñaNueva, lblErrorContraseñaNueva, pbErrorContraseñaNueva);
+            bool ConfirmarContraseña = Validador.ValidarCampoLleno(txtConfirmarContraseña, lblErrorConfirmarContraseña, pbErrorConfirmarContraseña);
+            if (ContraseñaAnterior && ContraseñaNueva && ConfirmarContraseña)
+                return true;
+            else
+                return false;
+        }
+
+        public void Verificar()
+        {
+            bool ContraseñaAnterior = Validador.ValidarCampoLleno(txtContraseñaAnterior, lblErrorContraseñaAnterior, pbErrorContraseñaAnterior);
+            bool ContraseñaNueva = Validador.ValidarCampoLleno(txtContraseñaNueva, lblErrorContraseñaNueva, pbErrorContraseñaNueva);
+            bool ConfirmarContraseña = Validador.ValidarCampoLleno(txtConfirmarContraseña, lblErrorConfirmarContraseña, pbErrorConfirmarContraseña);
+        }
+
+        private void txtContraseñaAnterior_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Verificar();
+        }
+
+        private void txtContraseñaNueva_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Verificar();
+        }
+
+        private void txtConfirmarContraseña_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Verificar();
         }
     }
 }
