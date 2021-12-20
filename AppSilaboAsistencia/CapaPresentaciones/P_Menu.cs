@@ -307,6 +307,7 @@ namespace CapaPresentaciones
                 Dock = DockStyle.Fill
             };
             Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
+            //Editar.Load += new EventHandler(ActualizarPerfil);
 
             pnContenedor.Controls.Add(Editar);
             pnContenedor.Tag = Editar;
@@ -427,6 +428,12 @@ namespace CapaPresentaciones
             {
                 Formularios.BringToFront();
             }
+        }
+
+        public void ActualizarpPerfilJefeODirector(Image perfil)
+        {
+            pbPerfil.Image = perfil;
+            pbEditarPerfil.Image = perfil;
         }
     }
 }
