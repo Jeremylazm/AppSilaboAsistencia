@@ -7,6 +7,7 @@ namespace CapaDatos
     public class D_DepartamentoAcademico
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
+        //readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
 
         // Método para mostrar las escuelas profesionales.
         public DataTable MostrarDepartamentos()

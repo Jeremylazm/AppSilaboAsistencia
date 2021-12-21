@@ -13,7 +13,7 @@ namespace ControlesPerzonalizados
         public string codigo_verificacion;
         public string Email;
         public string Usuario;
-        bool CodigoVerificacion;
+        bool CodigoVerificacion_Lleno = false;
         readonly A_Validador Validador;
         public C_CambioContraseñaCodigo()
         {
@@ -33,28 +33,26 @@ namespace ControlesPerzonalizados
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            if (ValidarCodigo())
+            if (CodigoVerificacion_Lleno)
             {
-                BunifuLabel UsuarioCN = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
-                UsuarioCN.Text = Usuario;
-                new A_Paso().Siguiente(ParentForm, "Paso2", "Paso3", "C_CambioContraseñaNueva");
+                if (ValidarCodigo())
+                {
+                    BunifuLabel UsuarioCN = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
+                    UsuarioCN.Text = Usuario;
+                    new A_Paso().Siguiente(ParentForm, "Paso2", "Paso3", "C_CambioContraseñaNueva");
+                }
             }
+            else
+                MensajeError("Campo codigo de verificación vacio, intente de nuevo");
         } //Listo
 
         private bool ValidarCodigo()
         {
             string ans = validarpanelVerificarCodigo(codigo_verificacion, txtCodigoVerificacion.Text);
-            if (ans == "00") // codigo ingresado incorrecto
+            if (ans == "Código no Coincide") // codigo ingresado incorrecto
             {
                 MensajeError("Los codigos no coinciden, intente de nuevo");
                 txtCodigoVerificacion.Text = "";
-                txtCodigoVerificacion.Focus();
-                return false;
-            }
-            else if (ans == "01") // codigo ingresado vacío
-            {
-                txtCodigoVerificacion.Focus();
-                MensajeError("Campo codigo de verificación vacio, intente de nuevo");
                 return false;
             }
             else // validacion correcta
@@ -65,17 +63,11 @@ namespace ControlesPerzonalizados
 
         public string validarpanelVerificarCodigo(string codigoValido, string codigoIngresado)
         {
-            // Verificar que se ingresó codigo
-            if (codigoIngresado != "")
-                // Verifcar código valido
-                if (codigoIngresado == codigoValido)
-                    return "1";
-                // Codigo no coincide
-                else
-                    return "00";
-            // Codigo no fue ingresado
+            if (codigoIngresado == codigoValido)
+                return "Código Válido";
+            // Codigo no coincide
             else
-                return "01";
+                return "Código no Coincide";
         }
 
         private void btnVolverEnviar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -147,8 +139,8 @@ namespace ControlesPerzonalizados
 
         private void txtCodigoVerificacion_TextChange(object sender, EventArgs e)
         {
-            CodigoVerificacion = Validador.ValidarCampoLleno(txtCodigoVerificacion, lblErrorCodigo, pbErrorCodigo);
-            if (CodigoVerificacion)
+            CodigoVerificacion_Lleno = Validador.ValidarCampoLleno(txtCodigoVerificacion, lblErrorCodigo, pbErrorCodigo);
+            if (CodigoVerificacion_Lleno)
             {
                 lblErrorCodigo.Visible = false;
                 pbErrorCodigo.Visible = false;

@@ -8,6 +8,7 @@ namespace CapaDatos
     public class D_Matricula
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
+        //readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
 
         // Método para mostrar los estudiantes matriculados en un semestre de una escuela profesional.
         public DataTable MostrarEstudiantesMatriculados(string CodSemestre, string CodEscuelaP)

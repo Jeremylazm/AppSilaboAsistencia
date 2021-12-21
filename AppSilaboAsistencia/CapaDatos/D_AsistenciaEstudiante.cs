@@ -8,6 +8,7 @@ namespace CapaDatos
     public class D_AsistenciaEstudiante
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
+        //readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
 
         // Método para mostrar el registro de asistencia de los estudiantes de una asignatura en una fecha especifica. 
         public DataTable AsistenciaEstudiantes(string CodSemestre, string CodDepartamentoA, string Texto, string HoraInicio, string Fecha)
