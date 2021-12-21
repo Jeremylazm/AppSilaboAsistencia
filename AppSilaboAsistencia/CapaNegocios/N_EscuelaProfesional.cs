@@ -1,5 +1,4 @@
 ﻿using CapaDatos;
-using CapaEntidades;
 using System.Data;
 
 namespace CapaNegocios
@@ -9,6 +8,11 @@ namespace CapaNegocios
         public static DataTable MostrarEscuelas()
         {
             return new D_EscuelaProfesional().MostrarEscuelas();
+        }
+
+        public static string BuscarNombraEscuela(string CodEscuelaP)
+        {
+            return new D_EscuelaProfesional().BuscarNombreEscuela(CodEscuelaP);
         }
     }
 }

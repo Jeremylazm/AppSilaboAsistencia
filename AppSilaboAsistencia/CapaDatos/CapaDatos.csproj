@@ -40,6 +40,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,12 +54,14 @@
     <Compile Include="D_AsistenciaDocente.cs" />
     <Compile Include="D_AsistenciaEstudiante.cs" />
     <Compile Include="D_Catalogo.cs" />
+    <Compile Include="D_DepartamentoAcademico.cs" />
     <Compile Include="D_Docente.cs" />
     <Compile Include="D_EscuelaProfesional.cs" />
     <Compile Include="D_Estudiante.cs" />
     <Compile Include="D_HorarioAsignatura.cs" />
     <Compile Include="D_InicioSesion.cs" />
     <Compile Include="D_Matricula.cs" />
+    <Compile Include="D_Recursos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

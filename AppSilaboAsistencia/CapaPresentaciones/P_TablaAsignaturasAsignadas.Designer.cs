@@ -86,7 +86,7 @@ namespace CapaPresentaciones
             this.btnCerrar.FadeWhenInactive = false;
             this.btnCerrar.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
             this.btnCerrar.Image = global::CapaPresentaciones.Properties.Resources.Cerrar;
-            this.btnCerrar.ImageActive = null;
+            this.btnCerrar.ActiveImage = null;
             this.btnCerrar.ImageLocation = null;
             this.btnCerrar.ImageMargin = 10;
             this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
@@ -103,7 +103,7 @@ namespace CapaPresentaciones
             this.btnCerrar.TabIndex = 11;
             this.btnCerrar.ToolTipText = "";
             this.btnCerrar.WaitOnLoad = false;
-            this.btnCerrar.Zoom = 10;
+            this.btnCerrar.ImageMargin = 10;
             this.btnCerrar.ZoomSpeed = 10;
             // 
             // txtBuscar
@@ -330,7 +330,7 @@ namespace CapaPresentaciones
             this.dgvDatos.EnableHeadersVisualStyles = false;
             this.dgvDatos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(174)))), ((int)(((byte)(175)))));
             this.dgvDatos.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.dgvDatos.HeaderBgColor = System.Drawing.Color.Empty;
+            this.dgvDatos.HeaderBackColor = System.Drawing.Color.Empty;
             this.dgvDatos.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.dgvDatos.Location = new System.Drawing.Point(12, 104);
             this.dgvDatos.MultiSelect = false;
