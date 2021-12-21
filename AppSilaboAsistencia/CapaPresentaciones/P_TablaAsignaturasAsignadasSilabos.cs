@@ -146,7 +146,7 @@ namespace CapaPresentaciones
                 // Escuela profesional
                 wb.Worksheet(1).Cell("C18").Value = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
 
-                saveFileDialog.FileName = "Sílabo - " + CodAsignatura;
+                saveFileDialog.FileName = "Plantilla Sílabo - " + CodAsignatura;
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
