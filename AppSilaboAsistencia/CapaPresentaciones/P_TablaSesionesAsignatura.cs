@@ -56,8 +56,8 @@ namespace CapaPresentaciones
                 // Descargar el plan de sesiones
                 if (Asignaturas.Rows.Count != 0)
                 {
-                    saveFileDialog.InitialDirectory = @"C:\";
-                    saveFileDialog.FileName = "Plan de Sesiones " + " - " + CodAsignatura.Substring(0, 5);
+                    saveFileDialog.Title = "Descargar Plan de Sesiones";
+                    saveFileDialog.FileName = "Plan de Sesiones " + " - " + CodAsignatura;
                     saveFileDialog.Filter = "Archivo de Excel | *.xlsx";
                     saveFileDialog.DefaultExt = "xlsx";
                     saveFileDialog.FilterIndex = 1;

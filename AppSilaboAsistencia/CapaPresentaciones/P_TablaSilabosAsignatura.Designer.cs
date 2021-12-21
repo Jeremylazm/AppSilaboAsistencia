@@ -44,11 +44,12 @@ namespace CapaPresentaciones
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.txtBuscar = new Bunifu.UI.WinForms.BunifuTextBox();
             this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.btnSilabo = new System.Windows.Forms.DataGridViewImageColumn();
             this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.pbLogo = new Bunifu.UI.WinForms.BunifuImageButton();
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
-            this.btnSilabo = new System.Windows.Forms.DataGridViewImageColumn();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -283,6 +284,14 @@ namespace CapaPresentaciones
             this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             // 
+            // btnSilabo
+            // 
+            this.btnSilabo.HeaderText = "Sílabo";
+            this.btnSilabo.Image = global::CapaPresentaciones.Properties.Resources.Descargar_2;
+            this.btnSilabo.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.btnSilabo.Name = "btnSilabo";
+            this.btnSilabo.ReadOnly = true;
+            // 
             // sbDatos
             // 
             this.sbDatos.AllowCursorChanges = true;
@@ -395,13 +404,12 @@ namespace CapaPresentaciones
             this.btnCerrar.ZoomSpeed = 10;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // btnSilabo
+            // Movimiento
             // 
-            this.btnSilabo.HeaderText = "Sílabo";
-            this.btnSilabo.Image = global::CapaPresentaciones.Properties.Resources.Descargar_2;
-            this.btnSilabo.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.btnSilabo.Name = "btnSilabo";
-            this.btnSilabo.ReadOnly = true;
+            this.Movimiento.Fixed = true;
+            this.Movimiento.Horizontal = true;
+            this.Movimiento.TargetControl = this.lblTitulo;
+            this.Movimiento.Vertical = true;
             // 
             // P_TablaSilabosAsignatura
             // 
@@ -436,5 +444,6 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuImageButton btnCerrar;
         private System.Windows.Forms.DataGridViewImageColumn btnSilabo;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private Bunifu.Framework.UI.BunifuDragControl Movimiento;
     }
 }

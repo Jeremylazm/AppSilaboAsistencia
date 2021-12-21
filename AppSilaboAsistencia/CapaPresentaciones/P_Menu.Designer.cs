@@ -950,7 +950,7 @@ namespace CapaPresentaciones
             this.btnSesiones.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSesiones.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSesiones.BackgroundImage")));
             this.btnSesiones.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnSesiones.ButtonText = "Sesiones";
+            this.btnSesiones.ButtonText = "Plan de Sesiones";
             this.btnSesiones.ButtonTextMarginLeft = 0;
             this.btnSesiones.ColorContrastOnClick = 45;
             this.btnSesiones.ColorContrastOnHover = 45;
