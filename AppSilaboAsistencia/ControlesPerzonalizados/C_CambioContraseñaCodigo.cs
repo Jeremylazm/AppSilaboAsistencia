@@ -100,10 +100,10 @@ namespace ControlesPerzonalizados
                 clientDetails.EnableSsl = true;
                 clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
                 clientDetails.UseDefaultCredentials = false;
-                clientDetails.Credentials = new NetworkCredential("elvis.ff.jorge@gmail.com", "ingdesoftware");
+                clientDetails.Credentials = new NetworkCredential("Correo", "Contraseña");
 
                 MailMessage mailDetails = new MailMessage();
-                mailDetails.From = new MailAddress("elvis.ff.jorge@gmail.com");
+                mailDetails.From = new MailAddress("Correo");
                 mailDetails.To.Add(Correo);
                 mailDetails.Subject = "Código de verificación";
                 mailDetails.IsBodyHtml = true;
