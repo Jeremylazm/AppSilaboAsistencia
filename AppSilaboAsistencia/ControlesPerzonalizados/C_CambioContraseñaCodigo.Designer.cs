@@ -222,12 +222,12 @@ namespace ControlesPerzonalizados
             this.lblCodigoVerificacion.AutoEllipsis = false;
             this.lblCodigoVerificacion.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblCodigoVerificacion.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblCodigoVerificacion.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigoVerificacion.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigoVerificacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblCodigoVerificacion.Location = new System.Drawing.Point(218, 116);
             this.lblCodigoVerificacion.Name = "lblCodigoVerificacion";
             this.lblCodigoVerificacion.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblCodigoVerificacion.Size = new System.Drawing.Size(181, 23);
+            this.lblCodigoVerificacion.Size = new System.Drawing.Size(190, 23);
             this.lblCodigoVerificacion.TabIndex = 24;
             this.lblCodigoVerificacion.Text = "Código de Verificación";
             this.lblCodigoVerificacion.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
