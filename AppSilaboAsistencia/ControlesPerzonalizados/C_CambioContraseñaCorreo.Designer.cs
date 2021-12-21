@@ -46,6 +46,8 @@ namespace ControlesPerzonalizados
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuTextBox1 = new Bunifu.UI.WinForms.BunifuTextBox();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.pbErrorUsuario = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.lblErrorUsuario = new Bunifu.UI.WinForms.BunifuLabel();
             this.SuspendLayout();
             // 
             // btnSiguiente
@@ -232,6 +234,7 @@ namespace ControlesPerzonalizados
             this.txtUsuario.TextPlaceholder = "Usuario";
             this.txtUsuario.UseSystemPasswordChar = false;
             this.txtUsuario.WordWrap = true;
+            this.txtUsuario.TextChange += new System.EventHandler(this.txtUsuario_TextChange);
             // 
             // lblCorreo
             // 
@@ -362,11 +365,67 @@ namespace ControlesPerzonalizados
             this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
+            // pbErrorUsuario
+            // 
+            this.pbErrorUsuario.ActiveImage = null;
+            this.pbErrorUsuario.AllowAnimations = true;
+            this.pbErrorUsuario.AllowBuffering = false;
+            this.pbErrorUsuario.AllowToggling = false;
+            this.pbErrorUsuario.AllowZooming = false;
+            this.pbErrorUsuario.AllowZoomingOnFocus = false;
+            this.pbErrorUsuario.BackColor = System.Drawing.Color.White;
+            this.pbErrorUsuario.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pbErrorUsuario.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pbErrorUsuario.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbErrorUsuario.ErrorImage")));
+            this.pbErrorUsuario.FadeWhenInactive = false;
+            this.pbErrorUsuario.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.pbErrorUsuario.Image = global::ControlesPerzonalizados.Properties.Resources.Cerrar_2;
+            this.pbErrorUsuario.ImageActive = null;
+            this.pbErrorUsuario.ImageLocation = null;
+            this.pbErrorUsuario.ImageMargin = 0;
+            this.pbErrorUsuario.ImageSize = new System.Drawing.Size(18, 18);
+            this.pbErrorUsuario.ImageZoomSize = new System.Drawing.Size(18, 18);
+            this.pbErrorUsuario.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorUsuario.InitialImage")));
+            this.pbErrorUsuario.Location = new System.Drawing.Point(224, 169);
+            this.pbErrorUsuario.Name = "pbErrorUsuario";
+            this.pbErrorUsuario.Rotation = 0;
+            this.pbErrorUsuario.ShowActiveImage = false;
+            this.pbErrorUsuario.ShowCursorChanges = false;
+            this.pbErrorUsuario.ShowImageBorders = true;
+            this.pbErrorUsuario.ShowSizeMarkers = false;
+            this.pbErrorUsuario.Size = new System.Drawing.Size(18, 18);
+            this.pbErrorUsuario.TabIndex = 34;
+            this.pbErrorUsuario.ToolTipText = "";
+            this.pbErrorUsuario.Visible = false;
+            this.pbErrorUsuario.WaitOnLoad = false;
+            this.pbErrorUsuario.Zoom = 0;
+            this.pbErrorUsuario.ZoomSpeed = 10;
+            // 
+            // lblErrorUsuario
+            // 
+            this.lblErrorUsuario.AllowParentOverrides = false;
+            this.lblErrorUsuario.AutoEllipsis = false;
+            this.lblErrorUsuario.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblErrorUsuario.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblErrorUsuario.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblErrorUsuario.Location = new System.Drawing.Point(248, 167);
+            this.lblErrorUsuario.Name = "lblErrorUsuario";
+            this.lblErrorUsuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblErrorUsuario.Size = new System.Drawing.Size(101, 19);
+            this.lblErrorUsuario.TabIndex = 33;
+            this.lblErrorUsuario.Text = "Error de Código";
+            this.lblErrorUsuario.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblErrorUsuario.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblErrorUsuario.Visible = false;
+            // 
             // C_CambioContraseñaCorreo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.pbErrorUsuario);
+            this.Controls.Add(this.lblErrorUsuario);
             this.Controls.Add(this.bunifuLabel1);
             this.Controls.Add(this.bunifuTextBox1);
             this.Controls.Add(this.bunifuLabel2);
@@ -390,5 +449,7 @@ namespace ControlesPerzonalizados
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private Bunifu.UI.WinForms.BunifuTextBox bunifuTextBox1;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
+        private Bunifu.UI.WinForms.BunifuImageButton pbErrorUsuario;
+        private Bunifu.UI.WinForms.BunifuLabel lblErrorUsuario;
     }
 }
