@@ -112,7 +112,16 @@ namespace CapaPresentaciones
                 DataGridViewTextBoxCell textBoxcell = (DataGridViewTextBoxCell)(fila.Cells["txtObservaciones"]);
                 textBoxcell.Value = fila.Cells[9].Value;
                 fila.Cells[0].Value = (fila.Cells[8].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
-                fila.Cells[0].Tag = (fila.Cells[0].Value == ListaImagenes.Images[1]) ? true : false;
+                if(fila.Cells[8].Value.Equals("SI"))
+                {
+                    fila.Cells[0].Tag = true;
+                }
+                else
+				{
+                    fila.Cells[0].Tag = false;
+
+                }
+                //fila.Cells[0].Tag = (fila.Cells[0].Value == ListaImagenes.Images[1]) ? true : false;
             }
         }
 
@@ -323,6 +332,8 @@ namespace CapaPresentaciones
                     DataGrid.Rows[e.RowIndex].Cells[0].Tag = false;
                 }
             }
+        
+            
         }
 
         private void ckbMarcarTodos_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
@@ -392,13 +403,13 @@ namespace CapaPresentaciones
                 }
                 MostrarEstudiantesNuevoRegistro();
                 InicializarValores();
-                Program.Evento = 0;
+                //Program.Evento = 0;
             }
             else
             {
                 MostrarEstudiantesRegistrados();
                 InicializarValoresEditar();
-                Program.Evento = 1;
+                //Program.Evento = 1;
             }
         }
 
@@ -441,14 +452,18 @@ namespace CapaPresentaciones
                 arreglo = File.ReadAllBytes(fullFilePath);
 
                 ObjNegocio.ActualizarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodDocente, arreglo);
-                GuardarRegistroDocente();
-                Close();
+                //GuardarRegistroDocente();
+                //Close();
             }
             else
             {
-                GuardarRegistroDocente();
-                Close();
+                //GuardarRegistroDocente();
+                //Close();
+                //ActulizarTag();
             }
+            
+            GuardarRegistroDocente();
+            Close();
         }
     }
 }

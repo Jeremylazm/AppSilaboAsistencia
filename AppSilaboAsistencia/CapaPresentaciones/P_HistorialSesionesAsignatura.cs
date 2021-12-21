@@ -70,7 +70,7 @@ namespace CapaPresentaciones
             DataTable HoraInicioThAsg = N_HorarioAsignatura.BuscarHorarioAsignatura(CodSemestre, CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), CodAsignatura.Substring(5, 1));
             string horainicioAsignatura = HoraInicioThAsg.Rows[0][6].ToString();
             P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente,EstudiantesAsigantura);
-            Program.Evento = 0;
+            //Program.Evento = 0;
 
             NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
             
