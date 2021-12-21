@@ -13,8 +13,11 @@ namespace ControlesPerzonalizados
         string codigo_verificacion = "";
         public string Usuario;
         public string Correo;
+        bool VerificarUsuario = false;
+        readonly A_Validador Validador;
         public C_CambioContraseñaCorreo()
         {
+            Validador = new A_Validador();
             InitializeComponent();
         }
 
@@ -100,10 +103,10 @@ namespace ControlesPerzonalizados
                 clientDetails.EnableSsl = true;
                 clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
                 clientDetails.UseDefaultCredentials = false;
-                clientDetails.Credentials = new NetworkCredential("Correo", "Contraseña");
+                clientDetails.Credentials = new NetworkCredential("elvis.ff.jorge@gmail.com", "ingdesoftware");
 
                 MailMessage mailDetails = new MailMessage();
-                mailDetails.From = new MailAddress("Correo");
+                mailDetails.From = new MailAddress("elvis.ff.jorge@gmail.com");
                 mailDetails.To.Add(Correo);
                 mailDetails.Subject = "Código de verificación";
                 mailDetails.IsBodyHtml = true;
@@ -117,6 +120,16 @@ namespace ControlesPerzonalizados
                 // Mostrar error
                 MessageBox.Show(ex.Message);
                 return "-1";
+            }
+        }
+
+        private void txtUsuario_TextChange(object sender, EventArgs e)
+        {
+            VerificarUsuario = Validador.ValidarCampoLleno(txtUsuario, lblErrorUsuario, pbErrorUsuario);
+            if (VerificarUsuario)
+            {
+                lblErrorUsuario.Visible = false;
+                pbErrorUsuario.Visible = false;
             }
         }
     }
