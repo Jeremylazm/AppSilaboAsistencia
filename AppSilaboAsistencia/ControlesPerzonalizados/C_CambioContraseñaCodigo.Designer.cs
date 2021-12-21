@@ -423,9 +423,9 @@ namespace ControlesPerzonalizados
             this.lblErrorCodigo.Location = new System.Drawing.Point(251, 184);
             this.lblErrorCodigo.Name = "lblErrorCodigo";
             this.lblErrorCodigo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblErrorCodigo.Size = new System.Drawing.Size(101, 19);
+            this.lblErrorCodigo.Size = new System.Drawing.Size(188, 19);
             this.lblErrorCodigo.TabIndex = 31;
-            this.lblErrorCodigo.Text = "Error de Código";
+            this.lblErrorCodigo.Text = "Error de Contraseña Anterior";
             this.lblErrorCodigo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblErrorCodigo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.lblErrorCodigo.Visible = false;

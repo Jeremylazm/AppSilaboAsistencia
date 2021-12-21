@@ -11,13 +11,10 @@ namespace ControlesPerzonalizados
     public partial class C_CambioContraseñaCorreo : UserControl
     {
         string codigo_verificacion = "";
-        string Usuario;
-        string Correo;
-        bool IngresarUsuario = false;
-        readonly A_Validador Validador;
+        public string Usuario;
+        public string Correo;
         public C_CambioContraseñaCorreo()
         {
-            Validador = new A_Validador();
             InitializeComponent();
         }
 
@@ -56,7 +53,7 @@ namespace ControlesPerzonalizados
                 BunifuLabel CorreoCC = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblCorreo", false)[0];
                 CorreoCC.Text = txtUsuario.Text + lblDominio.Text;
                 BunifuLabel UsuarioCC = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
-                UsuarioCC.Text = Usuario;
+                UsuarioCC.Text = txtUsuario.Text;
                 BunifuLabel CodigoVerificacionCC = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblCodVerificacion", false)[0];
                 CodigoVerificacionCC.Text = codigo_verificacion;
                 new A_Paso().Siguiente(ParentForm, "Paso1", "Paso2", "C_CambioContraseñaCodigo");
@@ -69,8 +66,8 @@ namespace ControlesPerzonalizados
         public string validarpanelEnviarCodigo(string correoIngresado) //Cambiar
         {
 
-            // Correo ingresado
-            if (IngresarUsuario)
+            // Verificar correo ingresado
+            if (correoIngresado != "")
                 // verificar correo valido
                 return EnviarCodigo(correoIngresado);
                 /*
@@ -103,10 +100,10 @@ namespace ControlesPerzonalizados
                 clientDetails.EnableSsl = true;
                 clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
                 clientDetails.UseDefaultCredentials = false;
-                clientDetails.Credentials = new NetworkCredential("elvis.ff.jorge@gmail.com", "ingdesoftware");
+                clientDetails.Credentials = new NetworkCredential("Correo", "Contraseña");
 
                 MailMessage mailDetails = new MailMessage();
-                mailDetails.From = new MailAddress("elvis.ff.jorge@gmail.com");
+                mailDetails.From = new MailAddress("Correo");
                 mailDetails.To.Add(Correo);
                 mailDetails.Subject = "Código de verificación";
                 mailDetails.IsBodyHtml = true;
@@ -120,16 +117,6 @@ namespace ControlesPerzonalizados
                 // Mostrar error
                 MessageBox.Show(ex.Message);
                 return "-1";
-            }
-        }
-
-        private void txtUsuario_TextChange(object sender, EventArgs e)
-        {
-            IngresarUsuario = Validador.ValidarCampoLleno(txtUsuario, lblErrorUsuario, pbErrorUsuario);
-            if (IngresarUsuario)
-            {
-                lblErrorUsuario.Visible = false;
-                pbErrorUsuario.Visible = false;
             }
         }
     }

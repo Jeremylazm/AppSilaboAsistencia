@@ -116,7 +116,7 @@ namespace CapaPresentaciones
                 wb.Worksheet(1).Cell("A5").Value = wb.Worksheet(1).Cell("A5").Value + " " + APaterno + "-" + AMaterno + "-" + Nombre; 
 
                 // Guardar el archivo
-                saveFileDialog.FileName = "Plan de Sesiones - " + CodAsignatura;
+                saveFileDialog.FileName = "Plantilla Plan de Sesiones - " + CodAsignatura;
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
