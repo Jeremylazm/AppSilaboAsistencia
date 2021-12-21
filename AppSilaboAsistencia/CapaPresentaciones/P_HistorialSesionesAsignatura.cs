@@ -15,7 +15,8 @@ namespace CapaPresentaciones
     public partial class P_HistorialSesionesAsignatura : Form
     {
         public string CodAsignatura;
-        public string CodDocente;
+        private readonly string CodDocente = E_InicioSesion.Usuario;
+        //public string CodDocente;
 
         public string CodSemestre;
         public string LimtFechaInf = "14/12/2021";
@@ -24,7 +25,7 @@ namespace CapaPresentaciones
         public P_HistorialSesionesAsignatura(string pCodAsignatura, string pCodDocente)
         {
             CodAsignatura = pCodAsignatura;
-            CodDocente = pCodDocente;
+            //CodDocente = pCodDocente;
             CodSemestre = "2021-II";
             InitializeComponent();
             MostrarRegistros();

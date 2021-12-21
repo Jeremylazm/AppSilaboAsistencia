@@ -46,6 +46,7 @@ namespace CapaPresentaciones
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
+           
             Close();
         }
 
