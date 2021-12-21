@@ -1512,4 +1512,7 @@
   <data name="lblErrorConfirmarContraseña.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 9.749999pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
   </data>
+  <data name="lblPrueba.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; font-family: 'Segoe UI'; font-size: 9pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
+  </data>
 </root>
