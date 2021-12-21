@@ -48,7 +48,7 @@ namespace CapaPresentaciones
             // Plantilla
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
-                saveFileDialog.InitialDirectory = @"C:\";
+                saveFileDialog.Title = "Descargar plantilla de sílabo";
                 saveFileDialog.Filter = "Archivo de Excel | *.xlsx";
                 saveFileDialog.DefaultExt = "xlsx";
                 saveFileDialog.FilterIndex = 1;
@@ -146,7 +146,7 @@ namespace CapaPresentaciones
                 // Escuela profesional
                 wb.Worksheet(1).Cell("C18").Value = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
 
-                saveFileDialog.FileName = "Sílabo - " + CodAsignatura;
+                saveFileDialog.FileName = "Plantilla Sílabo - " + CodAsignatura;
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {

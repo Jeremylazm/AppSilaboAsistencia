@@ -11,10 +11,14 @@ namespace ControlesPerzonalizados
     public partial class C_CambioContraseñaCorreo : UserControl
     {
         string codigo_verificacion = "";
-        public string Usuario;
-        public string Correo;
+        string Usuario;
+        string Correo;
+        string CorreoValido;
+        bool Usuario_Lleno = false;
+        readonly A_Validador Validador;
         public C_CambioContraseñaCorreo()
         {
+            Validador = new A_Validador();
             InitializeComponent();
         }
 
@@ -36,14 +40,18 @@ namespace ControlesPerzonalizados
 
             string ans = validarpanelEnviarCodigo(correoIngresado);
 
-            if (ans == "-1")
+            if (ans == "Error Enviar Código")
             {
                 MessageBox.Show("El código no se pudo enviar");
             }
             // Correo no ingresado
-            else if (ans == "01")
+            else if (ans == "Correo Vacío")
             {
                 MensajeError("Correo no ingresado, intente de nuevo");
+            }
+            else if (ans == "Correo no Válido")
+            {
+                MensajeError("Correo ingresado no es igual al correo que aparece en el perfil");
             }
             else
             {
@@ -51,36 +59,27 @@ namespace ControlesPerzonalizados
 
                 codigo_verificacion = ans;
                 BunifuLabel CorreoCC = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblCorreo", false)[0];
-                CorreoCC.Text = txtUsuario.Text + lblDominio.Text;
+                CorreoCC.Text = Correo;
                 BunifuLabel UsuarioCC = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
-                UsuarioCC.Text = txtUsuario.Text;
+                UsuarioCC.Text = Usuario;
                 BunifuLabel CodigoVerificacionCC = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblCodVerificacion", false)[0];
                 CodigoVerificacionCC.Text = codigo_verificacion;
                 new A_Paso().Siguiente(ParentForm, "Paso1", "Paso2", "C_CambioContraseñaCodigo");
-
-                // mostrar panel de verificacion de codigo
-                //lblEmail.Text = correoIngresado;
             }
         }
 
         public string validarpanelEnviarCodigo(string correoIngresado) //Cambiar
         {
-
-            // Verificar correo ingresado
-            if (correoIngresado != "")
-                // verificar correo valido
-                return EnviarCodigo(correoIngresado);
-                /*
-                if (correoIngresado == correoValido)
-                    // enviar codigo de verificacion
-                    return EnviarCodigo(correoValido);
-                // Correo invalido
+            if (Usuario_Lleno)
+                return EnviarCodigo(correoIngresado);//Borrar o no?
+            /*
+                if (correoIngresado == CorreoValido)
+                    return EnviarCodigo(correoIngresado);
                 else
-                    return "00"; // 0: correo invalido
-                */
-            // Correo no ingresado
+                    return "Correo no Válido";
+            */
             else
-                return "01"; // correo vacio
+                return "Correo Vacío";
         }
 
         public string EnviarCodigo(string Correo)
@@ -100,10 +99,10 @@ namespace ControlesPerzonalizados
                 clientDetails.EnableSsl = true;
                 clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
                 clientDetails.UseDefaultCredentials = false;
-                clientDetails.Credentials = new NetworkCredential("Correo", "Contraseña");
+                clientDetails.Credentials = new NetworkCredential("elvis.ff.jorge@gmail.com", "ingdesoftware");
 
                 MailMessage mailDetails = new MailMessage();
-                mailDetails.From = new MailAddress("Correo");
+                mailDetails.From = new MailAddress("elvis.ff.jorge@gmail.com");
                 mailDetails.To.Add(Correo);
                 mailDetails.Subject = "Código de verificación";
                 mailDetails.IsBodyHtml = true;
@@ -116,8 +115,28 @@ namespace ControlesPerzonalizados
             {
                 // Mostrar error
                 MessageBox.Show(ex.Message);
-                return "-1";
+                return "Error Enviar Código";
             }
+        }
+
+        private void txtUsuario_TextChange(object sender, EventArgs e)
+        {
+            Usuario_Lleno = Validador.ValidarCampoLleno(txtUsuario, lblErrorUsuario, pbErrorUsuario);
+            if (Usuario_Lleno)
+            {
+                lblErrorUsuario.Visible = false;
+                pbErrorUsuario.Visible = false;
+            }
+        }
+
+        private void C_CambioContraseñaCorreo_Enter(object sender, EventArgs e)
+        {
+            /*
+            BunifuLabel UsuarioMC = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
+            Usuario = UsuarioMC.Text;
+            BunifuLabel CorreoVerdaderoMC = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblCorreoVerdadero", false)[0];
+            CorreoValido = CorreoVerdaderoMC.Text;
+            */
         }
     }
 }

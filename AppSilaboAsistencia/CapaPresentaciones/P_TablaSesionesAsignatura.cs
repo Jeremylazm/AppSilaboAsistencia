@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using CapaNegocios;
 using CapaPresentaciones.Ayudas;
 using CapaEntidades;
+
+
 namespace CapaPresentaciones
 {
     public partial class P_TablaSesionesAsignatura : Form
@@ -24,7 +26,11 @@ namespace CapaPresentaciones
             this.CodAsignatura = CodAsignatura;
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
-            Asignaturas = N_Catalogo.BuscarPlanSesionesAsignatura(CodAsignatura.Substring(0, 5),CodDocente);
+
+            
+
+            Asignaturas = N_Catalogo.BuscarPlanSesionesAsignatura(CodAsignatura.Substring(0, 5), E_InicioSesion.Usuario);
+
             MostrarAsignaturas();
         }
 
@@ -55,8 +61,8 @@ namespace CapaPresentaciones
                 // Descargar el plan de sesiones
                 if (Asignaturas.Rows.Count != 0)
                 {
-                    saveFileDialog.InitialDirectory = @"C:\";
-                    saveFileDialog.FileName = "Plan de Sesiones " + " - " + CodAsignatura.Substring(0, 5);
+                    saveFileDialog.Title = "Descargar Plan de Sesiones";
+                    saveFileDialog.FileName = "Plan de Sesiones " + " - " + CodAsignatura;
                     saveFileDialog.Filter = "Archivo de Excel | *.xlsx";
                     saveFileDialog.DefaultExt = "xlsx";
                     saveFileDialog.FilterIndex = 1;

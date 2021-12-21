@@ -54,8 +54,8 @@ namespace CapaPresentaciones
             {
                 if (Asignaturas.Rows.Count != 0)
                 {
-                    saveFileDialog.InitialDirectory = @"C:\";
-                    saveFileDialog.FileName = "Sílabo " + CodAsignatura.Substring(0, 5);
+                    saveFileDialog.Title = "Descargar Sílabo";
+                    saveFileDialog.FileName = "Sílabo " + CodAsignatura;
                     saveFileDialog.Filter = "Archivo de Excel | *.xlsx";
                     saveFileDialog.DefaultExt = "xlsx";
                     saveFileDialog.FilterIndex = 1;

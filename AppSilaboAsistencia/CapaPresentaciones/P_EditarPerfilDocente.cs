@@ -7,6 +7,7 @@ using CapaEntidades;
 using System.IO;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using Bunifu.UI.WinForms;
 using CapaPresentaciones.Ayudas;
 
 namespace CapaPresentaciones
@@ -214,6 +215,14 @@ namespace CapaPresentaciones
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
         {
             P_CambioContraseña C = new P_CambioContraseña();
+
+            /*
+            BunifuLabel UsuarioMC = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
+            UsuarioMC.Text = lblCodigo2.Text;
+            BunifuLabel CorreoVerdaderoMC = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblCorreoVerdadero", false)[0];
+            CorreoVerdaderoMC.Text = txtEmail.Text;
+            */
+
             C.Show();
         }
       

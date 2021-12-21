@@ -50,7 +50,7 @@ namespace CapaPresentaciones
         private void btnBuscarArchivo_Click(object sender, EventArgs e)
         {
             ActualizarColor();
-            openFileDialog.InitialDirectory = @"C:\";
+            openFileDialog.Title = "Subir archivo";
             openFileDialog.Filter = "Archivos de Excel | *.xlsx";
             openFileDialog.FilterIndex = 1;
             openFileDialog.RestoreDirectory = true;
