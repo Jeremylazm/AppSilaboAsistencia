@@ -135,7 +135,6 @@ namespace CapaPresentaciones
             {
                 P_DatosDocente EditarRegistro = new P_DatosDocente();
                 EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-
                 //editar
                 Program.Evento = 1;
 
@@ -193,7 +192,14 @@ namespace CapaPresentaciones
 
                 // EditarRegistro.cxtEscuela.SelectedValue = dgvTabla.CurrentRow.Cells[13].Value.ToString();
 
-                EditarRegistro.ShowDialog();
+                DialogResult dr = EditarRegistro.ShowDialog();
+                if (dr == DialogResult.Cancel)
+                {
+                    if ((this.Parent.Parent.Parent as P_Menu).Acceso == "Jefe de Departamento")
+                    {
+                        (this.Parent.Parent.Parent as P_Menu).ActualizarpPerfilJefeODirector(EditarRegistro.pbPerfil.Image);
+                    } 
+                }
 
                 EditarRegistro.Dispose();
             }

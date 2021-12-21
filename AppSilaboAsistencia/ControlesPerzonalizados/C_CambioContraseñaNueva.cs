@@ -8,16 +8,13 @@ namespace ControlesPerzonalizados
 {
     public partial class C_CambioContraseñaNueva : UserControl
     {
-        public static string Usuario;
+        public string Usuario;
+        readonly A_Validador Validador;
         public C_CambioContraseñaNueva()
         {
+            Validador = new A_Validador();
             InitializeComponent();
         }
-
-        public static void Inicializar(string pUsuario)
-        {
-            Usuario = pUsuario;
-        } //Listo
 
         private DialogResult MensajeConfirmacionD(string Mensaje)
         {
@@ -29,44 +26,18 @@ namespace ControlesPerzonalizados
             MessageBox.Show(Mensaje, "Sistema Sílabo Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
         } //Listo
 
-        public bool usuarioValido(string usuario, string contraseña)
+        private void btnAtras_Click(object sender, EventArgs e)
         {
-            N_InicioSesion InicioSesion = new N_InicioSesion();
-            return InicioSesion.IniciarSesion(usuario, contraseña);
+            new A_Paso().Atras(ParentForm, "Paso3", "Paso2", "C_CambioContraseñaCodigo");
         }
 
-        public string validarpanelCambiarContraseña(string usuario, string contraseña, string contraseñaNueva, string confirmarContraseña, bool test)
+        private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (contraseña == "")
-                return "000"; // contraseña vacia
-            else if (contraseñaNueva == "")
-                return "001"; // nueva contraseña vacia
-            else if (confirmarContraseña == "")
-                return "010"; // longitud de confirmar contraeña vacia
-            else if (contraseñaNueva.Length < 6 || contraseñaNueva.Length > 8)
-                return "011"; // nueva contraseña no esta en intervalo [6, 8]
-            else if (contraseñaNueva != confirmarContraseña)
-                return "100"; // contraseña nueva y repeticion son diferentes
-            else
+            bool Validar = true;
+            if (Cambiar_Contraseña() == "1" && Validar)
             {
-                if (!usuarioValido(usuario, contraseña))
-                    return "-1"; // contraseña incorrecta
-
-                DialogResult Opcion = DialogResult.OK; // Ok para test unitario
-
-                if (!test)
-                    Opcion = MensajeConfirmacionD("¿Realmente desea cambiar la contraseña ? ");
-
-                if (Opcion == DialogResult.OK)
-                {
-                    N_InicioSesion InicioSesion = new N_InicioSesion();
-                    bool CambioContraseñaValido = InicioSesion.CambiarContraseña(usuario, contraseñaNueva);
-                    if (CambioContraseñaValido)
-                        return "1"; // contraseña cambiada
-                    else
-                        return "-2"; // contraseña no se pudo cambiar
-                }
-                return "2"; // Cancelar
+                BunifuPictureBox PictureActual = (BunifuPictureBox)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("pbPaso3", false)[0];
+                PictureActual.Image = Properties.Resources.Circulo_Checked;
             }
         }
 
@@ -113,18 +84,97 @@ namespace ControlesPerzonalizados
             return ans;
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        public string validarpanelCambiarContraseña(string usuario, string contraseña, string contraseñaNueva, string confirmarContraseña, bool test)
         {
-            if(Cambiar_Contraseña() == "1")
+            if (contraseña == "")
+                return "000"; // contraseña vacia
+            else if (contraseñaNueva == "")
+                return "001"; // nueva contraseña vacia
+            else if (confirmarContraseña == "")
+                return "010"; // longitud de confirmar contraeña vacia
+            else if (contraseñaNueva.Length < 6 || contraseñaNueva.Length > 8)
+                return "011"; // nueva contraseña no esta en intervalo [6, 8]
+            else if (contraseñaNueva != confirmarContraseña)
+                return "100"; // contraseña nueva y repeticion son diferentes
+            else
             {
-                BunifuPictureBox PictureActual = (BunifuPictureBox)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("pbPaso3", false)[0];
-                PictureActual.Image = Properties.Resources.Circulo_Checked;
-            }            
+                if (!usuarioValido(usuario, contraseña))
+                    return "-1"; // contraseña incorrecta
+
+                DialogResult Opcion = DialogResult.OK; // Ok para test unitario
+
+                if (!test)
+                    Opcion = MensajeConfirmacionD("¿Realmente desea cambiar la contraseña ? ");
+
+                if (Opcion == DialogResult.OK)
+                {
+                    N_InicioSesion InicioSesion = new N_InicioSesion();
+                    bool CambioContraseñaValido = InicioSesion.CambiarContraseña(usuario, contraseñaNueva);
+                    if (CambioContraseñaValido)
+                        return "1"; // contraseña cambiada
+                    else
+                        return "-2"; // contraseña no se pudo cambiar
+                }
+                return "2"; // Cancelar
+            }
         }
 
-        private void btnAtras_Click(object sender, EventArgs e)
+        public bool usuarioValido(string usuario, string contraseña)
         {
-            new A_Paso().Atras(ParentForm, "Paso3", "Paso2", "C_CambioContraseñaCodigo");
+            N_InicioSesion InicioSesion = new N_InicioSesion();
+            return InicioSesion.IniciarSesion(usuario, contraseña);
+        }
+
+        private void txtContraseñaAnterior_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void txtContraseñaNueva_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void txtConfirmarContraseña_KeyPress(object sender, KeyPressEventArgs e)
+        {
+         
+        }
+
+        private void txtContraseñaAnterior_TextChange(object sender, EventArgs e)
+        {
+            bool ContraseñaAnterior = Validador.ValidarUsuario(txtContraseñaAnterior, lblErrorContraseñaAnterior, pbErrorContraseñaAnterior);
+            if (ContraseñaAnterior)
+            {
+                lblErrorContraseñaAnterior.Visible = false;
+                pbErrorContraseñaAnterior.Visible = false;
+            }
+        }
+
+        private void txtContraseñaNueva_TextChange(object sender, EventArgs e)
+        {
+            bool ContraseñaNueva = Validador.ValidarContraseña(txtContraseñaNueva, lblErrorContraseñaNueva, pbErrorContraseñaNueva);
+            if (ContraseñaNueva)
+            {
+                lblErrorContraseñaNueva.Visible = false;
+                pbErrorContraseñaNueva.Visible = false;
+            }
+        }
+
+        private void txtConfirmarContraseña_TextChange(object sender, EventArgs e)
+        {
+            bool ConfirmarContraseña = Validador.ValidarComparar(txtConfirmarContraseña, lblErrorConfirmarContraseña, txtContraseñaNueva.Text, pbErrorConfirmarContraseña, "La contraseña ingresada");
+            if (ConfirmarContraseña)
+            {
+                lblErrorConfirmarContraseña.Visible = false;
+                pbErrorConfirmarContraseña.Visible = false;
+            }
+        }
+
+        private void C_CambioContraseñaNueva_Enter(object sender, EventArgs e)
+        {
+            BunifuLabel UsuarioCN = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
+            Usuario = UsuarioCN.Text;
+            lblPrueba.Text = Usuario;
         }
     }
 }

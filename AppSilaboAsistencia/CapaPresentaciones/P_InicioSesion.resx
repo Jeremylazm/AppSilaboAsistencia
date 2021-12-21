@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lblTitulo.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 24px;font-family: 'Montserrat Alternates'; font-size: 14pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(232, 158, 31); text-align: center; }</value>
+    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 20px;font-family: 'Montserrat Alternates'; font-size: 14pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(232, 158, 31); text-align: center; }</value>
   </data>
   <metadata name="Bordeado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>168, 21</value>
@@ -1005,82 +1005,73 @@
 </value>
   </data>
   <data name="lblErrorContraseña.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: -11px;font-family: 'Montserrat Alternates'; font-size: 9,749999pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
+    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 9.749999pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
   </data>
   <data name="lblErrorUsuario.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: -11px;font-family: 'Montserrat Alternates'; font-size: 9,749999pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
+    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 9.749999pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
   </data>
   <data name="btnIngresar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAWcAAAAwCAYAAADNRLt2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAKZSURBVHhe7do/aJRnHMDxd3QRk9Scibn3HgcHXTtJFweX
-        DE5uRSwuYgYLQjtEyJBFKEXbkLv4B6OnQ4cSdBDEQRS6dOgiOFna3l0o+dM/eoKtCg5v+5xRqbxjfPsM
-        nx98tt/d+OXleZ7s3em2w5a1xXD01/P1c51mfn/9SigA2Fyxr71W/drqYpjqt8PQRoLLZ70d9nXm8+U7
-        J8afXj1YK7748INiaus2ADZZ7OviZK24fXzs73+7+/vqpTC5keL/TrcZTj04PdGf2T1S+kcAvB+fTwwX
-        P8zs7D8825jbSPKriV/MMcxlPwKgGt99Nv6412ocGYQ5njH3mvnadBguXQagGidrQ8Uvc/mfv7XDWLZ+
-        OZy8eXTHi7JFAKoV7/vig4ysu5AvXTgwWroEQLXiRWF8yZF1W3lndq9LQIAUxKONlYuNZ1l8b1e2AMD/
-        I3ZZnAESI84ACRJngASJM0CCxBkgQeIMkCBxBkiQOAMkSJwBEiTOAAkSZ4AEiTNAgsQZIEHiDJAgcQZI
-        kDgDJEicARIkzgAJEmeABIkzQILEGSBB4gyQIHEGSJA4AyRInAESJM4ACRJngASJM0CCxBkgQeIMkCBx
-        BkjQIM7L5xp/TIfh0gUAqnViZKhYvdR4mXWa+b25j7aXLgFQrdm9I0W3lXeytcth+vrhHS/LlgCo1uJk
-        rei16teytXbY9dNX9X78lC5bBKA6D05P9NfbYV8Wp9dqHLv76fiTskUAqvHtx2NPf/46PzMI8+uJZ883
-        Phn7yxc0QPW+OVR7/uPZ+vfddtiykeW3s7wQZh9+mT+6cGB0cChd9gcAbI6Z3SNFa//o4CijOz8xXxrm
-        17PSDnu6C/lSvC2Mb+0AeD96C42VTjO/9eaM+c1k2T9INw7pmPXE+gAAAABJRU5ErkJggg==
+        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
 </value>
   </data>
   <data name="txtContraseña.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAbwAAAAxCAYAAACh6RxtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAB3SURBVHhe7cMBDQAgCAAwCyA1aUk0rOHYv/0AAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAwM8qblfkqOreOQ8bw58Ss8LjigAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAU0AAAAoCAYAAAB6vqiZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABXSURBVHhe7cMxDQAwCACwGWDYxCXSmISdPG3SAwAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAuorbFTmq/uY8QUX3Nsim
+        eBUAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="lblContraseña.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 0px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
+    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
   </data>
   <data name="txtUsuario.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAbwAAAAxCAYAAACh6RxtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAB3SURBVHhe7cMBDQAgCAAwCyA1aUk0rOHYv/0AAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAwM8qblfkqOreOQ8bw58Ss8LjigAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAU0AAAAoCAYAAAB6vqiZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABXSURBVHhe7cMxDQAwCACwGWDYxCXSmISdPG3SAwAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAuorbFTmq/uY8QUX3Nsim
+        eBUAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="lblUsuario.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 0px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
+    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
   </data>
   <data name="pnLogo.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAVQAAAHeCAYAAADEufMLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAZ2SURBVHhe7dShEYAwAMBANunmLNYF2KKAr+GIfPEqPsd1
-        jvlYAPzzDnUbAPjGUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFD
-        BYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDE
-        UAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQ
-        MVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKEC
-        RAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKo
-        ABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgY
-        KkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEi
-        hgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSA
-        iKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwV
-        IGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFD
-        BYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDE
-        UAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQ
-        MVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKEC
-        RAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKo
-        ABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgY
-        KkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEi
-        hgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSA
-        iKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwV
-        IGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFD
-        BYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDE
-        UAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQ
-        MVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKEC
-        RAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKo
-        ABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgY
-        KkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEi
-        hgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSA
-        iKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECRAwVIGKoABFDBYgYKkDEUAEihgoQMVSAiKECJMa6
-        Aen1xHFEbXSQAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAP8AAAGECAYAAAD5mvZ8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAASCSURBVHhe7dMxAYAwAMAwnMw5xjAwF9v4UUBz5Orda97j
+        ORbQ8s7/GYB/Mz9EmR+izA9R5oco80OU+SHK/BBlfogyP0SZH6LMD1HmhyjzQ5T5Icr8EGV+iDI/RJkf
+        oswPUeaHKPNDlPkhyvwQZX6IMj9EmR+izA9R5oco80OU+SHK/BBlfogyP0SZH6LMD1HmhyjzQ5T5Icr8
+        EGV+iDI/RJkfoswPUeaHKPNDlPkhyvwQZX6IMj9EmR+izA9R5oco80OU+SHK/BBlfogyP0SZH6LMD1Hm
+        hyjzQ5T5Icr8EGV+iDI/RJkfoswPUeaHKPNDlPkhyvwQZX6IMj9EmR+izA9R5oco80OU+SHK/BBlfogy
+        P0SZH6LMD1HmhyjzQ5T5Icr8EGV+iDI/RJkfoswPUeaHKPNDlPkhyvwQZX6IMj9EmR+izA9R5oco80OU
+        +SHK/BBlfogyP0SZH6LMD1HmhyjzQ5T5Icr8EGV+iDI/RJkfoswPUeaHKPNDlPkhyvwQZX6IMj9EmR+i
+        zA9R5oco80OU+SHK/BBlfogyP0SZH6LMD1HmhyjzQ5T5Icr8EGV+iDI/RJkfoswPUeaHKPNDlPkhyvwQ
+        ZX6IMj9EmR+izA9R5oco80OU+SHK/BBlfogyP0SZH6LMD1HmhyjzQ5T5Icr8EGV+iDI/RJkfoswPUeaH
+        KPNDlPkhyvwQZX6IMj9EmR+izA9R5oco80OU+SHK/BBlfogyP0SZH6LMD1HmhyjzQ5T5Icr8EGV+iDI/
+        RJkfoswPUeaHKPNDlPkhyvwQZX6IMj9EmR+izA9R5oco80OU+SHK/BBlfogyP0SZH6LMD1HmhyjzQ5T5
+        Icr8EGV+iDI/RJkfoswPUeaHKPNDlPkhyvwQZX6IMj9EmR+izA9R5oco80OU+SHK/BBlfogyP0SZH6LM
+        D1HmhyjzQ5T5Icr8EGV+iDI/RJkfoswPUeaHKPNDlPkhyvwQZX6IMj9EmR+izA9R5oco80OU+SHK/BBl
+        fogyP0SZH6LMD1HmhyjzQ5T5Icr8EGV+iDI/RJkfoswPUeaHKPNDlPkhyvwQZX6IMj9EmR+izA9R5oco
+        80OU+SHK/BBlfogyP0SZH6LMD1HmhyjzQ5T5Icr8EGV+iDI/RJkfoswPUeaHKPNDlPkhyvwQZX6IMj9E
+        mR+izA9R5oco80OU+SHK/BBlfogyP0SZH6LMD1HmhyjzQ5T5Icr8EGV+iDI/RJkfoswPUeaHKPNDlPkh
+        yvwQZX6IMj9EmR+izA9R5oco80OU+SHK/BBlfogyP0SZH6LMD1HmhyjzQ5T5Icr8EGV+iDI/RJkfoswP
+        UeaHKPNDlPkhyvwQZX6IMj9EmR+izA9R5oco80OU+SHK/BBlfogyP0SZH6LMD1HmhyjzQ5T5Icr8EGV+
+        iDI/RJkfoswPUeaHKPNDlPkhyvwQZX6IMj9EmR+izA9R5oco80OU+SHK/BBlfogyP0SZH6LMD1Hmhyjz
+        Q5T5Icr8EGV+iDI/RJkfoswPUeaHKPNDlPkhyvwQZX6IMj9EmR+SxtrUFcsRET9ZQAAAAABJRU5ErkJg
+        gg==
 </value>
   </data>
   <data name="btnCerrar.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

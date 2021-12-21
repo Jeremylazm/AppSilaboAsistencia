@@ -44,6 +44,9 @@ namespace CapaPresentaciones
             this.lnPaso3 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.lnPaso2 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.lblCorreo = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblUsuario = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblCodVerificacion = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPaso1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPaso2)).BeginInit();
@@ -117,6 +120,9 @@ namespace CapaPresentaciones
             this.pnContenedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pnContenedor.BorderRadius = 20;
             this.pnContenedor.BorderThickness = 1;
+            this.pnContenedor.Controls.Add(this.lblCodVerificacion);
+            this.pnContenedor.Controls.Add(this.lblUsuario);
+            this.pnContenedor.Controls.Add(this.lblCorreo);
             this.pnContenedor.Controls.Add(this.pnPasos);
             this.pnContenedor.Controls.Add(this.lblPaso3);
             this.pnContenedor.Controls.Add(this.pbPaso1);
@@ -282,6 +288,54 @@ namespace CapaPresentaciones
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this.pnContenedor;
             // 
+            // lblCorreo
+            // 
+            this.lblCorreo.AllowParentOverrides = false;
+            this.lblCorreo.AutoEllipsis = false;
+            this.lblCorreo.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblCorreo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblCorreo.Location = new System.Drawing.Point(71, 100);
+            this.lblCorreo.Name = "lblCorreo";
+            this.lblCorreo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblCorreo.Size = new System.Drawing.Size(46, 15);
+            this.lblCorreo.TabIndex = 21;
+            this.lblCorreo.Text = "CORREO";
+            this.lblCorreo.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblCorreo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblCorreo.Visible = false;
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AllowParentOverrides = false;
+            this.lblUsuario.AutoEllipsis = false;
+            this.lblUsuario.CursorType = null;
+            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblUsuario.Location = new System.Drawing.Point(136, 100);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblUsuario.Size = new System.Drawing.Size(49, 15);
+            this.lblUsuario.TabIndex = 22;
+            this.lblUsuario.Text = "USUARIO";
+            this.lblUsuario.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblUsuario.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblUsuario.Visible = false;
+            // 
+            // lblCodVerificacion
+            // 
+            this.lblCodVerificacion.AllowParentOverrides = false;
+            this.lblCodVerificacion.AutoEllipsis = false;
+            this.lblCodVerificacion.CursorType = null;
+            this.lblCodVerificacion.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblCodVerificacion.Location = new System.Drawing.Point(206, 100);
+            this.lblCodVerificacion.Name = "lblCodVerificacion";
+            this.lblCodVerificacion.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblCodVerificacion.Size = new System.Drawing.Size(50, 15);
+            this.lblCodVerificacion.TabIndex = 23;
+            this.lblCodVerificacion.Text = "COD_VER";
+            this.lblCodVerificacion.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblCodVerificacion.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblCodVerificacion.Visible = false;
+            // 
             // P_CambioContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -317,5 +371,8 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuLabel lblPaso2;
         private Bunifu.UI.WinForms.BunifuSeparator lnPaso3;
         private Bunifu.UI.WinForms.BunifuSeparator lnPaso2;
+        private Bunifu.UI.WinForms.BunifuLabel lblCodVerificacion;
+        private Bunifu.UI.WinForms.BunifuLabel lblUsuario;
+        private Bunifu.UI.WinForms.BunifuLabel lblCorreo;
     }
 }

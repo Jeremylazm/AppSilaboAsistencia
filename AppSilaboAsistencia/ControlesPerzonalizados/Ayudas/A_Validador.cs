@@ -1,7 +1,7 @@
 ﻿using Bunifu.UI.WinForms;
 using System.Text.RegularExpressions;
 
-namespace CapaPresentaciones.Ayudas
+namespace ControlesPerzonalizados.Ayudas
 {
     public class A_Validador
     {
@@ -42,10 +42,10 @@ namespace CapaPresentaciones.Ayudas
             return ContraseñaLlena && ContraseñaCorrecta;
         }
 
-        public bool ValidarConfirmarContraseña(BunifuTextBox TextBox1, BunifuLabel Label, BunifuTextBox TextBox2, BunifuImageButton Imagen)
+        public bool ValidarComparar(BunifuTextBox TextBox1, BunifuLabel Label, string Texto, BunifuImageButton Imagen, string Objeto)
         {
             bool ContraseñaLlena = Validar(@"^(?!\s*$).+", TextBox1, Label, Imagen, "El campo no debe estar vacío");
-            bool CompararContraseñas = (TextBox1.Text == TextBox2.Text) || Validar(@"(^$)", TextBox1, Label, Imagen, "La contraseña no es igual");
+            bool CompararContraseñas = (TextBox1.Text == Texto) || Validar(@"(^$)", TextBox1, Label, Imagen, Objeto + " no es igual");
 
             return ContraseñaLlena && CompararContraseñas;
         }
@@ -72,13 +72,6 @@ namespace CapaPresentaciones.Ayudas
             bool DigitoCorrecto = Validar(@"(^$)|(^[" + Min + @"-" + Max + @"]$)", TextBox, Label, Imagen, "El campo debe estar entre " + Min + " y " + Max);
 
             return DigitoLleno && DigitoCorrecto;
-        }
-
-        public bool ValidarEmail(BunifuTextBox TextBox, BunifuLabel Label, BunifuImageButton Imagen)
-        {
-            bool EmailCorrecto = Validar(@"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$", TextBox, Label, Imagen, "Formato de Email incorrecto");
-
-            return EmailCorrecto;
         }
 
         public void EnfocarCursor(BunifuTextBox TextBox)
