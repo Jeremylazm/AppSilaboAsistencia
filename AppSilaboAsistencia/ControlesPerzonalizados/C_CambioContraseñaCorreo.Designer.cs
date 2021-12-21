@@ -242,12 +242,12 @@ namespace ControlesPerzonalizados
             this.lblCorreo.AutoEllipsis = false;
             this.lblCorreo.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblCorreo.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblCorreo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCorreo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblCorreo.Location = new System.Drawing.Point(216, 98);
             this.lblCorreo.Name = "lblCorreo";
             this.lblCorreo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblCorreo.Size = new System.Drawing.Size(161, 23);
+            this.lblCorreo.Size = new System.Drawing.Size(171, 23);
             this.lblCorreo.TabIndex = 11;
             this.lblCorreo.Text = "Correo Institucional";
             this.lblCorreo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -386,7 +386,7 @@ namespace ControlesPerzonalizados
             this.pbErrorUsuario.ImageSize = new System.Drawing.Size(18, 18);
             this.pbErrorUsuario.ImageZoomSize = new System.Drawing.Size(18, 18);
             this.pbErrorUsuario.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorUsuario.InitialImage")));
-            this.pbErrorUsuario.Location = new System.Drawing.Point(224, 169);
+            this.pbErrorUsuario.Location = new System.Drawing.Point(227, 169);
             this.pbErrorUsuario.Name = "pbErrorUsuario";
             this.pbErrorUsuario.Rotation = 0;
             this.pbErrorUsuario.ShowActiveImage = false;
@@ -409,12 +409,12 @@ namespace ControlesPerzonalizados
             this.lblErrorUsuario.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblErrorUsuario.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblErrorUsuario.Location = new System.Drawing.Point(248, 167);
+            this.lblErrorUsuario.Location = new System.Drawing.Point(251, 167);
             this.lblErrorUsuario.Name = "lblErrorUsuario";
             this.lblErrorUsuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblErrorUsuario.Size = new System.Drawing.Size(101, 19);
+            this.lblErrorUsuario.Size = new System.Drawing.Size(105, 19);
             this.lblErrorUsuario.TabIndex = 33;
-            this.lblErrorUsuario.Text = "Error de Código";
+            this.lblErrorUsuario.Text = "Error de Usuario";
             this.lblErrorUsuario.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblErrorUsuario.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.lblErrorUsuario.Visible = false;
@@ -435,6 +435,7 @@ namespace ControlesPerzonalizados
             this.Controls.Add(this.btnSiguiente);
             this.Name = "C_CambioContraseñaCorreo";
             this.Size = new System.Drawing.Size(758, 314);
+            this.Enter += new System.EventHandler(this.C_CambioContraseñaCorreo_Enter);
             this.ResumeLayout(false);
             this.PerformLayout();
 
