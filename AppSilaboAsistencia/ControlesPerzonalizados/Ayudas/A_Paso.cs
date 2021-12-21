@@ -30,6 +30,7 @@ namespace ControlesPerzonalizados.Ayudas
             SeparatorSiguiente.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
 
             Contenedor(FormularioPadre).Controls.Find("pnPasos", false)[0].Controls.Find(NombrePaginaSiguiente, false)[0].BringToFront();
+            FormularioPadre.ActiveControl = Contenedor(FormularioPadre).Controls.Find("pnPasos", false)[0].Controls.Find(NombrePaginaSiguiente, false)[0];
         }
 
         public void Atras(Form FormularioPadre, string Actual, string Anterior, string NombrePaginaAnterior)

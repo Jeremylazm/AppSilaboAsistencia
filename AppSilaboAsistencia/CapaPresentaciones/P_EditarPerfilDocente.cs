@@ -213,10 +213,10 @@ namespace CapaPresentaciones
 
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
         {
-            P_CambioContraseña CC = new P_CambioContraseña();
-            CC.Show();
+            P_CambioContraseña C = new P_CambioContraseña();
+            C.Show();
         }
-
+      
         private void txtEmail_TextChange(object sender, EventArgs e)
         {
             if (Validador.ValidarEmail(txtEmail, lblErrorEmail, pbErrorEmail) || txtEmail.Text == "")

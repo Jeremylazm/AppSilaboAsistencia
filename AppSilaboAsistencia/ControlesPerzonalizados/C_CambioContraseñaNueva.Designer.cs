@@ -58,6 +58,7 @@ namespace ControlesPerzonalizados
             this.lblErrorContraseñaNueva = new Bunifu.UI.WinForms.BunifuLabel();
             this.pbErrorConfirmarContraseña = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblErrorConfirmarContraseña = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblPrueba = new Bunifu.UI.WinForms.BunifuLabel();
             this.SuspendLayout();
             // 
             // txtContraseñaAnterior
@@ -137,6 +138,7 @@ namespace ControlesPerzonalizados
             this.txtContraseñaAnterior.TextPlaceholder = "Escriba su contraseña anterior";
             this.txtContraseñaAnterior.UseSystemPasswordChar = false;
             this.txtContraseñaAnterior.WordWrap = true;
+            this.txtContraseñaAnterior.TextChange += new System.EventHandler(this.txtContraseñaAnterior_TextChange);
             this.txtContraseñaAnterior.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseñaAnterior_KeyPress);
             // 
             // lblContraseñaAnterior
@@ -413,6 +415,7 @@ namespace ControlesPerzonalizados
             this.txtContraseñaNueva.TextPlaceholder = "Escriba su contraseña nueva";
             this.txtContraseñaNueva.UseSystemPasswordChar = false;
             this.txtContraseñaNueva.WordWrap = true;
+            this.txtContraseñaNueva.TextChange += new System.EventHandler(this.txtContraseñaNueva_TextChange);
             this.txtContraseñaNueva.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseñaNueva_KeyPress);
             // 
             // lblContraseñaNueva
@@ -509,6 +512,7 @@ namespace ControlesPerzonalizados
             this.txtConfirmarContraseña.TextPlaceholder = "Confirme su contraseña nueva";
             this.txtConfirmarContraseña.UseSystemPasswordChar = false;
             this.txtConfirmarContraseña.WordWrap = true;
+            this.txtConfirmarContraseña.TextChange += new System.EventHandler(this.txtConfirmarContraseña_TextChange);
             this.txtConfirmarContraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtConfirmarContraseña_KeyPress);
             // 
             // lblConfirmarContraseña
@@ -539,9 +543,9 @@ namespace ControlesPerzonalizados
             this.lblErrorContraseñaAnterior.Location = new System.Drawing.Point(253, 86);
             this.lblErrorContraseñaAnterior.Name = "lblErrorContraseñaAnterior";
             this.lblErrorContraseñaAnterior.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblErrorContraseñaAnterior.Size = new System.Drawing.Size(131, 19);
+            this.lblErrorContraseñaAnterior.Size = new System.Drawing.Size(188, 19);
             this.lblErrorContraseñaAnterior.TabIndex = 23;
-            this.lblErrorContraseñaAnterior.Text = "Error de Contraseña";
+            this.lblErrorContraseñaAnterior.Text = "Error de Contraseña Anterior";
             this.lblErrorContraseñaAnterior.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblErrorContraseñaAnterior.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.lblErrorContraseñaAnterior.Visible = false;
@@ -629,9 +633,9 @@ namespace ControlesPerzonalizados
             this.lblErrorContraseñaNueva.Location = new System.Drawing.Point(253, 170);
             this.lblErrorContraseñaNueva.Name = "lblErrorContraseñaNueva";
             this.lblErrorContraseñaNueva.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblErrorContraseñaNueva.Size = new System.Drawing.Size(131, 19);
+            this.lblErrorContraseñaNueva.Size = new System.Drawing.Size(177, 19);
             this.lblErrorContraseñaNueva.TabIndex = 25;
-            this.lblErrorContraseñaNueva.Text = "Error de Contraseña";
+            this.lblErrorContraseñaNueva.Text = "Error de Contraseña Nueva";
             this.lblErrorContraseñaNueva.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblErrorContraseñaNueva.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.lblErrorContraseñaNueva.Visible = false;
@@ -683,18 +687,34 @@ namespace ControlesPerzonalizados
             this.lblErrorConfirmarContraseña.Location = new System.Drawing.Point(253, 254);
             this.lblErrorConfirmarContraseña.Name = "lblErrorConfirmarContraseña";
             this.lblErrorConfirmarContraseña.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblErrorConfirmarContraseña.Size = new System.Drawing.Size(131, 19);
+            this.lblErrorConfirmarContraseña.Size = new System.Drawing.Size(201, 19);
             this.lblErrorConfirmarContraseña.TabIndex = 27;
-            this.lblErrorConfirmarContraseña.Text = "Error de Contraseña";
+            this.lblErrorConfirmarContraseña.Text = "Error de Confirmar Contraseña";
             this.lblErrorConfirmarContraseña.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblErrorConfirmarContraseña.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.lblErrorConfirmarContraseña.Visible = false;
+            // 
+            // lblPrueba
+            // 
+            this.lblPrueba.AllowParentOverrides = false;
+            this.lblPrueba.AutoEllipsis = false;
+            this.lblPrueba.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblPrueba.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblPrueba.Location = new System.Drawing.Point(47, 71);
+            this.lblPrueba.Name = "lblPrueba";
+            this.lblPrueba.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblPrueba.Size = new System.Drawing.Size(69, 15);
+            this.lblPrueba.TabIndex = 29;
+            this.lblPrueba.Text = "bunifuLabel1";
+            this.lblPrueba.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblPrueba.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // C_CambioContraseñaNueva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblPrueba);
             this.Controls.Add(this.pbErrorConfirmarContraseña);
             this.Controls.Add(this.lblErrorConfirmarContraseña);
             this.Controls.Add(this.pbErrorContraseñaNueva);
@@ -711,6 +731,7 @@ namespace ControlesPerzonalizados
             this.Controls.Add(this.btnAceptar);
             this.Name = "C_CambioContraseñaNueva";
             this.Size = new System.Drawing.Size(758, 314);
+            this.Enter += new System.EventHandler(this.C_CambioContraseñaNueva_Enter);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -731,5 +752,6 @@ namespace ControlesPerzonalizados
         private Bunifu.UI.WinForms.BunifuLabel lblErrorContraseñaNueva;
         private Bunifu.UI.WinForms.BunifuImageButton pbErrorConfirmarContraseña;
         private Bunifu.UI.WinForms.BunifuLabel lblErrorConfirmarContraseña;
+        private Bunifu.UI.WinForms.BunifuLabel lblPrueba;
     }
 }

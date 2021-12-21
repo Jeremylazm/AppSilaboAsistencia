@@ -42,10 +42,10 @@ namespace ControlesPerzonalizados.Ayudas
             return ContraseñaLlena && ContraseñaCorrecta;
         }
 
-        public bool ValidarConfirmarContraseña(BunifuTextBox TextBox1, BunifuLabel Label, BunifuTextBox TextBox2, BunifuImageButton Imagen)
+        public bool ValidarComparar(BunifuTextBox TextBox1, BunifuLabel Label, string Texto, BunifuImageButton Imagen, string Objeto)
         {
             bool ContraseñaLlena = Validar(@"^(?!\s*$).+", TextBox1, Label, Imagen, "El campo no debe estar vacío");
-            bool CompararContraseñas = (TextBox1.Text == TextBox2.Text) || Validar(@"(^$)", TextBox1, Label, Imagen, "La contraseña no es igual");
+            bool CompararContraseñas = (TextBox1.Text == Texto) || Validar(@"(^$)", TextBox1, Label, Imagen, Objeto + " no es igual");
 
             return ContraseñaLlena && CompararContraseñas;
         }

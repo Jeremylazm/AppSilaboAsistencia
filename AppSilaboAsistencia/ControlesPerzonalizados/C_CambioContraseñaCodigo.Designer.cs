@@ -43,6 +43,8 @@ namespace ControlesPerzonalizados
             this.lblMensajeCorreo = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblEmail = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnSiguiente = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            this.pbErrorCodigo = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.lblErrorCodigo = new Bunifu.UI.WinForms.BunifuLabel();
             this.SuspendLayout();
             // 
             // btnAtras
@@ -212,6 +214,7 @@ namespace ControlesPerzonalizados
             this.txtCodigoVerificacion.TextPlaceholder = "Escriba su código de verificación";
             this.txtCodigoVerificacion.UseSystemPasswordChar = false;
             this.txtCodigoVerificacion.WordWrap = true;
+            this.txtCodigoVerificacion.TextChange += new System.EventHandler(this.txtCodigoVerificacion_TextChange);
             // 
             // lblCodigoVerificacion
             // 
@@ -237,7 +240,7 @@ namespace ControlesPerzonalizados
             this.btnVolverEnviar.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVolverEnviar.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.btnVolverEnviar.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnVolverEnviar.Location = new System.Drawing.Point(226, 192);
+            this.btnVolverEnviar.Location = new System.Drawing.Point(226, 203);
             this.btnVolverEnviar.Name = "btnVolverEnviar";
             this.btnVolverEnviar.Size = new System.Drawing.Size(312, 22);
             this.btnVolverEnviar.TabIndex = 27;
@@ -371,12 +374,69 @@ namespace ControlesPerzonalizados
             this.btnSiguiente.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnSiguiente.UseDefaultRadiusAndThickness = true;
             this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            this.btnSiguiente.MouseEnter += new System.EventHandler(this.btnSiguiente_MouseEnter);
+            // 
+            // pbErrorCodigo
+            // 
+            this.pbErrorCodigo.ActiveImage = null;
+            this.pbErrorCodigo.AllowAnimations = true;
+            this.pbErrorCodigo.AllowBuffering = false;
+            this.pbErrorCodigo.AllowToggling = false;
+            this.pbErrorCodigo.AllowZooming = false;
+            this.pbErrorCodigo.AllowZoomingOnFocus = false;
+            this.pbErrorCodigo.BackColor = System.Drawing.Color.White;
+            this.pbErrorCodigo.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pbErrorCodigo.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pbErrorCodigo.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbErrorCodigo.ErrorImage")));
+            this.pbErrorCodigo.FadeWhenInactive = false;
+            this.pbErrorCodigo.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.pbErrorCodigo.Image = global::ControlesPerzonalizados.Properties.Resources.Cerrar_2;
+            this.pbErrorCodigo.ImageActive = null;
+            this.pbErrorCodigo.ImageLocation = null;
+            this.pbErrorCodigo.ImageMargin = 0;
+            this.pbErrorCodigo.ImageSize = new System.Drawing.Size(18, 18);
+            this.pbErrorCodigo.ImageZoomSize = new System.Drawing.Size(18, 18);
+            this.pbErrorCodigo.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorCodigo.InitialImage")));
+            this.pbErrorCodigo.Location = new System.Drawing.Point(227, 186);
+            this.pbErrorCodigo.Name = "pbErrorCodigo";
+            this.pbErrorCodigo.Rotation = 0;
+            this.pbErrorCodigo.ShowActiveImage = false;
+            this.pbErrorCodigo.ShowCursorChanges = false;
+            this.pbErrorCodigo.ShowImageBorders = true;
+            this.pbErrorCodigo.ShowSizeMarkers = false;
+            this.pbErrorCodigo.Size = new System.Drawing.Size(18, 18);
+            this.pbErrorCodigo.TabIndex = 32;
+            this.pbErrorCodigo.ToolTipText = "";
+            this.pbErrorCodigo.Visible = false;
+            this.pbErrorCodigo.WaitOnLoad = false;
+            this.pbErrorCodigo.Zoom = 0;
+            this.pbErrorCodigo.ZoomSpeed = 10;
+            // 
+            // lblErrorCodigo
+            // 
+            this.lblErrorCodigo.AllowParentOverrides = false;
+            this.lblErrorCodigo.AutoEllipsis = false;
+            this.lblErrorCodigo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblErrorCodigo.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblErrorCodigo.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblErrorCodigo.Location = new System.Drawing.Point(251, 184);
+            this.lblErrorCodigo.Name = "lblErrorCodigo";
+            this.lblErrorCodigo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblErrorCodigo.Size = new System.Drawing.Size(188, 19);
+            this.lblErrorCodigo.TabIndex = 31;
+            this.lblErrorCodigo.Text = "Error de Contraseña Anterior";
+            this.lblErrorCodigo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblErrorCodigo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblErrorCodigo.Visible = false;
             // 
             // C_CambioContraseñaCodigo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.pbErrorCodigo);
+            this.Controls.Add(this.lblErrorCodigo);
             this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblMensajeCorreo);
@@ -386,6 +446,8 @@ namespace ControlesPerzonalizados
             this.Controls.Add(this.lblCodigoVerificacion);
             this.Name = "C_CambioContraseñaCodigo";
             this.Size = new System.Drawing.Size(758, 314);
+            this.Enter += new System.EventHandler(this.C_CambioContraseñaCodigo_Enter);
+            this.MouseEnter += new System.EventHandler(this.C_CambioContraseñaCodigo_MouseEnter);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -397,7 +459,9 @@ namespace ControlesPerzonalizados
         private Bunifu.UI.WinForms.BunifuLabel lblCodigoVerificacion;
         private System.Windows.Forms.LinkLabel btnVolverEnviar;
         private Bunifu.UI.WinForms.BunifuLabel lblMensajeCorreo;
-        private Bunifu.UI.WinForms.BunifuLabel lblEmail;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnSiguiente;
+        internal Bunifu.UI.WinForms.BunifuLabel lblEmail;
+        private Bunifu.UI.WinForms.BunifuImageButton pbErrorCodigo;
+        private Bunifu.UI.WinForms.BunifuLabel lblErrorCodigo;
     }
 }
