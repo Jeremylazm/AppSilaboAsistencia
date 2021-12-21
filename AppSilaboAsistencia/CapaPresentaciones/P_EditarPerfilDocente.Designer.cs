@@ -48,8 +48,12 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
+            this.lblErrorEmail = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblErrorTelefono = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnCambiarContraseña = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.gbDatos = new Bunifu.UI.WinForms.BunifuGroupBox();
+            this.pbErrorTelefono = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.pbErrorEmail = new Bunifu.UI.WinForms.BunifuImageButton();
             this.txtTelefono = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtDireccion = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtEmail = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -75,10 +79,6 @@
             this.imgPerfil = new ControlesPerzonalizados.C_CircularPictureBox();
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
-            this.pbErrorEmail = new Bunifu.UI.WinForms.BunifuImageButton();
-            this.pbErrorTelefono = new Bunifu.UI.WinForms.BunifuImageButton();
-            this.lblErrorTelefono = new Bunifu.UI.WinForms.BunifuLabel();
-            this.lblErrorEmail = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnContenedor.SuspendLayout();
             this.gbDatos.SuspendLayout();
             this.bunifuGroupBox1.SuspendLayout();
@@ -117,6 +117,42 @@
             this.pnContenedor.ShowBorders = true;
             this.pnContenedor.Size = new System.Drawing.Size(1134, 670);
             this.pnContenedor.TabIndex = 18;
+            // 
+            // lblErrorEmail
+            // 
+            this.lblErrorEmail.AllowParentOverrides = false;
+            this.lblErrorEmail.AutoEllipsis = false;
+            this.lblErrorEmail.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblErrorEmail.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblErrorEmail.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblErrorEmail.Location = new System.Drawing.Point(271, 235);
+            this.lblErrorEmail.Name = "lblErrorEmail";
+            this.lblErrorEmail.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblErrorEmail.Size = new System.Drawing.Size(0, 0);
+            this.lblErrorEmail.TabIndex = 69;
+            this.lblErrorEmail.Text = "Error de Contraseña";
+            this.lblErrorEmail.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblErrorEmail.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblErrorEmail.Visible = false;
+            // 
+            // lblErrorTelefono
+            // 
+            this.lblErrorTelefono.AllowParentOverrides = false;
+            this.lblErrorTelefono.AutoEllipsis = false;
+            this.lblErrorTelefono.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblErrorTelefono.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblErrorTelefono.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblErrorTelefono.Location = new System.Drawing.Point(272, 290);
+            this.lblErrorTelefono.Name = "lblErrorTelefono";
+            this.lblErrorTelefono.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblErrorTelefono.Size = new System.Drawing.Size(0, 0);
+            this.lblErrorTelefono.TabIndex = 68;
+            this.lblErrorTelefono.Text = "Error de Contraseña";
+            this.lblErrorTelefono.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblErrorTelefono.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblErrorTelefono.Visible = false;
             // 
             // btnCambiarContraseña
             // 
@@ -239,6 +275,78 @@
             this.gbDatos.TabStop = false;
             this.gbDatos.Text = "Datos";
             // 
+            // pbErrorTelefono
+            // 
+            this.pbErrorTelefono.ActiveImage = null;
+            this.pbErrorTelefono.AllowAnimations = true;
+            this.pbErrorTelefono.AllowBuffering = false;
+            this.pbErrorTelefono.AllowToggling = false;
+            this.pbErrorTelefono.AllowZooming = false;
+            this.pbErrorTelefono.AllowZoomingOnFocus = false;
+            this.pbErrorTelefono.BackColor = System.Drawing.Color.White;
+            this.pbErrorTelefono.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pbErrorTelefono.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pbErrorTelefono.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbErrorTelefono.ErrorImage")));
+            this.pbErrorTelefono.FadeWhenInactive = false;
+            this.pbErrorTelefono.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.pbErrorTelefono.Image = global::CapaPresentaciones.Properties.Resources.Dialogo_Error;
+            this.pbErrorTelefono.ImageActive = null;
+            this.pbErrorTelefono.ImageLocation = null;
+            this.pbErrorTelefono.ImageMargin = 0;
+            this.pbErrorTelefono.ImageSize = new System.Drawing.Size(18, 18);
+            this.pbErrorTelefono.ImageZoomSize = new System.Drawing.Size(18, 18);
+            this.pbErrorTelefono.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorTelefono.InitialImage")));
+            this.pbErrorTelefono.Location = new System.Drawing.Point(210, 227);
+            this.pbErrorTelefono.Name = "pbErrorTelefono";
+            this.pbErrorTelefono.Rotation = 0;
+            this.pbErrorTelefono.ShowActiveImage = false;
+            this.pbErrorTelefono.ShowCursorChanges = false;
+            this.pbErrorTelefono.ShowImageBorders = true;
+            this.pbErrorTelefono.ShowSizeMarkers = false;
+            this.pbErrorTelefono.Size = new System.Drawing.Size(18, 18);
+            this.pbErrorTelefono.TabIndex = 20;
+            this.pbErrorTelefono.ToolTipText = "";
+            this.pbErrorTelefono.Visible = false;
+            this.pbErrorTelefono.WaitOnLoad = false;
+            this.pbErrorTelefono.Zoom = 0;
+            this.pbErrorTelefono.ZoomSpeed = 10;
+            // 
+            // pbErrorEmail
+            // 
+            this.pbErrorEmail.ActiveImage = null;
+            this.pbErrorEmail.AllowAnimations = true;
+            this.pbErrorEmail.AllowBuffering = false;
+            this.pbErrorEmail.AllowToggling = false;
+            this.pbErrorEmail.AllowZooming = false;
+            this.pbErrorEmail.AllowZoomingOnFocus = false;
+            this.pbErrorEmail.BackColor = System.Drawing.Color.White;
+            this.pbErrorEmail.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pbErrorEmail.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.pbErrorEmail.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbErrorEmail.ErrorImage")));
+            this.pbErrorEmail.FadeWhenInactive = false;
+            this.pbErrorEmail.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.pbErrorEmail.Image = global::CapaPresentaciones.Properties.Resources.Dialogo_Error;
+            this.pbErrorEmail.ImageActive = null;
+            this.pbErrorEmail.ImageLocation = null;
+            this.pbErrorEmail.ImageMargin = 0;
+            this.pbErrorEmail.ImageSize = new System.Drawing.Size(18, 18);
+            this.pbErrorEmail.ImageZoomSize = new System.Drawing.Size(18, 18);
+            this.pbErrorEmail.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorEmail.InitialImage")));
+            this.pbErrorEmail.Location = new System.Drawing.Point(210, 172);
+            this.pbErrorEmail.Name = "pbErrorEmail";
+            this.pbErrorEmail.Rotation = 0;
+            this.pbErrorEmail.ShowActiveImage = false;
+            this.pbErrorEmail.ShowCursorChanges = false;
+            this.pbErrorEmail.ShowImageBorders = true;
+            this.pbErrorEmail.ShowSizeMarkers = false;
+            this.pbErrorEmail.Size = new System.Drawing.Size(18, 18);
+            this.pbErrorEmail.TabIndex = 19;
+            this.pbErrorEmail.ToolTipText = "";
+            this.pbErrorEmail.Visible = false;
+            this.pbErrorEmail.WaitOnLoad = false;
+            this.pbErrorEmail.Zoom = 0;
+            this.pbErrorEmail.ZoomSpeed = 10;
+            // 
             // txtTelefono
             // 
             this.txtTelefono.AcceptsReturn = false;
@@ -306,7 +414,7 @@
             this.txtTelefono.SelectionLength = 0;
             this.txtTelefono.SelectionStart = 0;
             this.txtTelefono.ShortcutsEnabled = true;
-            this.txtTelefono.Size = new System.Drawing.Size(224, 24);
+            this.txtTelefono.Size = new System.Drawing.Size(224, 42);
             this.txtTelefono.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtTelefono.TabIndex = 13;
             this.txtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -385,7 +493,7 @@
             this.txtDireccion.SelectionLength = 0;
             this.txtDireccion.SelectionStart = 0;
             this.txtDireccion.ShortcutsEnabled = true;
-            this.txtDireccion.Size = new System.Drawing.Size(224, 24);
+            this.txtDireccion.Size = new System.Drawing.Size(224, 42);
             this.txtDireccion.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtDireccion.TabIndex = 12;
             this.txtDireccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -463,7 +571,7 @@
             this.txtEmail.SelectionLength = 0;
             this.txtEmail.SelectionStart = 0;
             this.txtEmail.ShortcutsEnabled = true;
-            this.txtEmail.Size = new System.Drawing.Size(224, 24);
+            this.txtEmail.Size = new System.Drawing.Size(224, 42);
             this.txtEmail.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtEmail.TabIndex = 11;
             this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -488,7 +596,7 @@
             this.lblEscuelaP2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblEscuelaP2.Size = new System.Drawing.Size(275, 53);
             this.lblEscuelaP2.TabIndex = 10;
-            this.lblEscuelaP2.Text = "Código: ";
+            this.lblEscuelaP2.Text = "Escuela Profesional";
             this.lblEscuelaP2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.lblEscuelaP2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -505,7 +613,7 @@
             this.lblNombres2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblNombres2.Size = new System.Drawing.Size(275, 48);
             this.lblNombres2.TabIndex = 7;
-            this.lblNombres2.Text = "Código: ";
+            this.lblNombres2.Text = "Nombres";
             this.lblNombres2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.lblNombres2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -924,9 +1032,9 @@
             this.lblRegimen2.Location = new System.Drawing.Point(210, 89);
             this.lblRegimen2.Name = "lblRegimen2";
             this.lblRegimen2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblRegimen2.Size = new System.Drawing.Size(67, 24);
+            this.lblRegimen2.Size = new System.Drawing.Size(79, 24);
             this.lblRegimen2.TabIndex = 11;
-            this.lblRegimen2.Text = "Código: ";
+            this.lblRegimen2.Text = "Régimen";
             this.lblRegimen2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.lblRegimen2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -972,9 +1080,9 @@
             this.lblCategoria2.Location = new System.Drawing.Point(210, 29);
             this.lblCategoria2.Name = "lblCategoria2";
             this.lblCategoria2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblCategoria2.Size = new System.Drawing.Size(67, 24);
+            this.lblCategoria2.Size = new System.Drawing.Size(88, 24);
             this.lblCategoria2.TabIndex = 9;
-            this.lblCategoria2.Text = "Código: ";
+            this.lblCategoria2.Text = "Categoría";
             this.lblCategoria2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.lblCategoria2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -1004,9 +1112,9 @@
             this.lblSubcategoria2.Location = new System.Drawing.Point(210, 59);
             this.lblSubcategoria2.Name = "lblSubcategoria2";
             this.lblSubcategoria2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblSubcategoria2.Size = new System.Drawing.Size(67, 24);
+            this.lblSubcategoria2.Size = new System.Drawing.Size(119, 24);
             this.lblSubcategoria2.TabIndex = 8;
-            this.lblSubcategoria2.Text = "Código: ";
+            this.lblSubcategoria2.Text = "Subcategoría";
             this.lblSubcategoria2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.lblSubcategoria2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -1082,114 +1190,6 @@
             this.lblTitulo.Text = "Editar Perfil";
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // pbErrorEmail
-            // 
-            this.pbErrorEmail.ActiveImage = null;
-            this.pbErrorEmail.AllowAnimations = true;
-            this.pbErrorEmail.AllowBuffering = false;
-            this.pbErrorEmail.AllowToggling = false;
-            this.pbErrorEmail.AllowZooming = false;
-            this.pbErrorEmail.AllowZoomingOnFocus = false;
-            this.pbErrorEmail.BackColor = System.Drawing.Color.White;
-            this.pbErrorEmail.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pbErrorEmail.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.pbErrorEmail.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbErrorEmail.ErrorImage")));
-            this.pbErrorEmail.FadeWhenInactive = false;
-            this.pbErrorEmail.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            this.pbErrorEmail.Image = global::CapaPresentaciones.Properties.Resources.Dialogo_Error;
-            this.pbErrorEmail.ImageActive = null;
-            this.pbErrorEmail.ImageLocation = null;
-            this.pbErrorEmail.ImageMargin = 0;
-            this.pbErrorEmail.ImageSize = new System.Drawing.Size(18, 18);
-            this.pbErrorEmail.ImageZoomSize = new System.Drawing.Size(18, 18);
-            this.pbErrorEmail.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorEmail.InitialImage")));
-            this.pbErrorEmail.Location = new System.Drawing.Point(210, 172);
-            this.pbErrorEmail.Name = "pbErrorEmail";
-            this.pbErrorEmail.Rotation = 0;
-            this.pbErrorEmail.ShowActiveImage = false;
-            this.pbErrorEmail.ShowCursorChanges = false;
-            this.pbErrorEmail.ShowImageBorders = true;
-            this.pbErrorEmail.ShowSizeMarkers = false;
-            this.pbErrorEmail.Size = new System.Drawing.Size(18, 18);
-            this.pbErrorEmail.TabIndex = 19;
-            this.pbErrorEmail.ToolTipText = "";
-            this.pbErrorEmail.Visible = false;
-            this.pbErrorEmail.WaitOnLoad = false;
-            this.pbErrorEmail.Zoom = 0;
-            this.pbErrorEmail.ZoomSpeed = 10;
-            // 
-            // pbErrorTelefono
-            // 
-            this.pbErrorTelefono.ActiveImage = null;
-            this.pbErrorTelefono.AllowAnimations = true;
-            this.pbErrorTelefono.AllowBuffering = false;
-            this.pbErrorTelefono.AllowToggling = false;
-            this.pbErrorTelefono.AllowZooming = false;
-            this.pbErrorTelefono.AllowZoomingOnFocus = false;
-            this.pbErrorTelefono.BackColor = System.Drawing.Color.White;
-            this.pbErrorTelefono.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pbErrorTelefono.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.pbErrorTelefono.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbErrorTelefono.ErrorImage")));
-            this.pbErrorTelefono.FadeWhenInactive = false;
-            this.pbErrorTelefono.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            this.pbErrorTelefono.Image = global::CapaPresentaciones.Properties.Resources.Dialogo_Error;
-            this.pbErrorTelefono.ImageActive = null;
-            this.pbErrorTelefono.ImageLocation = null;
-            this.pbErrorTelefono.ImageMargin = 0;
-            this.pbErrorTelefono.ImageSize = new System.Drawing.Size(18, 18);
-            this.pbErrorTelefono.ImageZoomSize = new System.Drawing.Size(18, 18);
-            this.pbErrorTelefono.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorTelefono.InitialImage")));
-            this.pbErrorTelefono.Location = new System.Drawing.Point(210, 227);
-            this.pbErrorTelefono.Name = "pbErrorTelefono";
-            this.pbErrorTelefono.Rotation = 0;
-            this.pbErrorTelefono.ShowActiveImage = false;
-            this.pbErrorTelefono.ShowCursorChanges = false;
-            this.pbErrorTelefono.ShowImageBorders = true;
-            this.pbErrorTelefono.ShowSizeMarkers = false;
-            this.pbErrorTelefono.Size = new System.Drawing.Size(18, 18);
-            this.pbErrorTelefono.TabIndex = 20;
-            this.pbErrorTelefono.ToolTipText = "";
-            this.pbErrorTelefono.Visible = false;
-            this.pbErrorTelefono.WaitOnLoad = false;
-            this.pbErrorTelefono.Zoom = 0;
-            this.pbErrorTelefono.ZoomSpeed = 10;
-            // 
-            // lblErrorTelefono
-            // 
-            this.lblErrorTelefono.AllowParentOverrides = false;
-            this.lblErrorTelefono.AutoEllipsis = false;
-            this.lblErrorTelefono.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblErrorTelefono.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblErrorTelefono.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblErrorTelefono.Location = new System.Drawing.Point(272, 290);
-            this.lblErrorTelefono.Name = "lblErrorTelefono";
-            this.lblErrorTelefono.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblErrorTelefono.Size = new System.Drawing.Size(0, 0);
-            this.lblErrorTelefono.TabIndex = 68;
-            this.lblErrorTelefono.Text = "Error de Contraseña";
-            this.lblErrorTelefono.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblErrorTelefono.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            this.lblErrorTelefono.Visible = false;
-            // 
-            // lblErrorEmail
-            // 
-            this.lblErrorEmail.AllowParentOverrides = false;
-            this.lblErrorEmail.AutoEllipsis = false;
-            this.lblErrorEmail.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblErrorEmail.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblErrorEmail.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblErrorEmail.Location = new System.Drawing.Point(271, 235);
-            this.lblErrorEmail.Name = "lblErrorEmail";
-            this.lblErrorEmail.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblErrorEmail.Size = new System.Drawing.Size(0, 0);
-            this.lblErrorEmail.TabIndex = 69;
-            this.lblErrorEmail.Text = "Error de Contraseña";
-            this.lblErrorEmail.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblErrorEmail.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            this.lblErrorEmail.Visible = false;
             // 
             // P_EditarPerfilDocente
             // 
