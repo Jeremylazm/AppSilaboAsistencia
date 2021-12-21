@@ -14,6 +14,8 @@ namespace CapaPresentaciones
     public partial class P_EditarPerfilDocente : Form
     {
 
+        readonly A_Validador Validador;
+
         // Instanciar la capa entidad y negocio de docente
         readonly E_Docente ObjEntidad = new E_Docente();
         readonly N_Docente ObjNegocio = new N_Docente();
@@ -28,6 +30,8 @@ namespace CapaPresentaciones
 
         public P_EditarPerfilDocente()
         {
+            Validador = new A_Validador();
+
             InitializeComponent();
         }
 
@@ -157,36 +161,53 @@ namespace CapaPresentaciones
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            // Mostrar mensaje para saber si realmente se desea editar los datos
-            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea actualizar su perfil?") == DialogResult.Yes)
+            bool EmailCorrecto = Validador.ValidarEmail(txtEmail, lblErrorEmail, pbErrorEmail);
+            bool TelefonoCorrecto = Validador.ValidarNumeroLimitado(txtTelefono, lblErrorTelefono, pbErrorTelefono, 9);
+
+            if (EmailCorrecto)
             {
-                // Asignar campo por campo, los datos editados en el objeto entidad del docente
-                byte[] Perfil = new byte[0];
-                using (MemoryStream MemoriaPerfil = new MemoryStream())
+                if (TelefonoCorrecto)
                 {
-                    imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
-                    Perfil = MemoriaPerfil.ToArray();
+                    // Mostrar mensaje para saber si realmente se desea editar los datos
+                    if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea actualizar su perfil?") == DialogResult.Yes)
+                    {
+                        // Asignar campo por campo, los datos editados en el objeto entidad del docente
+                        byte[] Perfil = new byte[0];
+                        using (MemoryStream MemoriaPerfil = new MemoryStream())
+                        {
+                            imgPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
+                            Perfil = MemoriaPerfil.ToArray();
+                        }
+                        E_InicioSesion.Perfil = Perfil;
+                        ObjEntidad.Perfil = Perfil;
+                        ObjEntidad.CodDocente = lblCodigo2.Text;
+                        ObjEntidad.APaterno = APaterno;
+                        ObjEntidad.AMaterno = AMaterno;
+                        ObjEntidad.Nombre = Nombre;
+                        ObjEntidad.Email = txtEmail.Text;
+                        ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
+                        ObjEntidad.Telefono = txtTelefono.Text;
+                        ObjEntidad.Categoria = lblCategoria2.Text;
+                        ObjEntidad.Subcategoria = lblSubcategoria2.Text;
+                        ObjEntidad.Regimen = lblRegimen2.Text;
+                        ObjEntidad.CodDepartamentoA = CodDepartamentoA;
+                        ObjEntidad.CodEscuelaP = CodEscuelaP;
+
+                        // Editar el registro en la base de datos con sus datos
+                        ObjNegocio.ActualizarDocente(ObjEntidad);
+
+                        // Mostrar mensaje de confirmacion dando entender que se edito sus datos del docente
+                        A_Dialogo.DialogoConfirmacion("Perfil guardado exitosamente");
+                    }
                 }
-                E_InicioSesion.Perfil = Perfil;
-                ObjEntidad.Perfil = Perfil;
-                ObjEntidad.CodDocente = lblCodigo2.Text;
-                ObjEntidad.APaterno = APaterno;
-                ObjEntidad.AMaterno = AMaterno;
-                ObjEntidad.Nombre = Nombre;
-                ObjEntidad.Email = txtEmail.Text;
-                ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
-                ObjEntidad.Telefono = txtTelefono.Text;
-                ObjEntidad.Categoria = lblCategoria2.Text;
-                ObjEntidad.Subcategoria = lblSubcategoria2.Text;
-                ObjEntidad.Regimen = lblRegimen2.Text;
-                ObjEntidad.CodDepartamentoA = CodDepartamentoA;
-                ObjEntidad.CodEscuelaP = CodEscuelaP;
-
-                // Editar el registro en la base de datos con sus datos
-                ObjNegocio.ActualizarDocente(ObjEntidad);
-
-                // Mostrar mensaje de confirmacion dando entender que se edito sus datos del docente
-                A_Dialogo.DialogoConfirmacion("Perfil guardado exitosamente");
+                else
+                {
+                    Validador.EnfocarCursor(txtTelefono);
+                }
+            }
+            else
+            {
+                Validador.EnfocarCursor(txtEmail);
             }
         }
 
@@ -195,7 +216,23 @@ namespace CapaPresentaciones
             P_CambioContraseña C = new P_CambioContraseña();
             C.Show();
         }
+      
+        private void txtEmail_TextChange(object sender, EventArgs e)
+        {
+            if (Validador.ValidarEmail(txtEmail, lblErrorEmail, pbErrorEmail) || txtEmail.Text == "")
+            {
+                pbErrorEmail.Visible = false;
+                lblErrorEmail.Visible = false;
+            }
+        }
 
-        
+        private void txtTelefono_TextChange(object sender, EventArgs e)
+        {
+            if (Validador.ValidarNumeroLimitado(txtTelefono, lblErrorTelefono, pbErrorTelefono, 9) || txtTelefono.Text == "")
+            {
+                pbErrorTelefono.Visible = false;
+                lblErrorTelefono.Visible = false;
+            }
+        }
     }
 }

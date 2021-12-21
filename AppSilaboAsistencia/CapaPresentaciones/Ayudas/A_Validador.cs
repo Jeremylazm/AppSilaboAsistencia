@@ -74,6 +74,13 @@ namespace CapaPresentaciones.Ayudas
             return DigitoLleno && DigitoCorrecto;
         }
 
+        public bool ValidarEmail(BunifuTextBox TextBox, BunifuLabel Label, BunifuImageButton Imagen)
+        {
+            bool EmailCorrecto = Validar(@"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$", TextBox, Label, Imagen, "Formato de Email incorrecto");
+
+            return EmailCorrecto;
+        }
+
         public void EnfocarCursor(BunifuTextBox TextBox)
         {
             string PlaceHolder = TextBox.PlaceholderText;
