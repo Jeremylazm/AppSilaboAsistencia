@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocios;
 using CapaPresentaciones.Ayudas;
+using CapaEntidades;
 
 namespace CapaPresentaciones
 {
@@ -24,7 +25,7 @@ namespace CapaPresentaciones
             this.CodAsignatura = CodAsignatura;
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
-            Asignaturas = N_Catalogo.BuscarPlanSesionesAsignatura(CodAsignatura.Substring(0, 5), "65475");
+            Asignaturas = N_Catalogo.BuscarPlanSesionesAsignatura(CodAsignatura.Substring(0, 5), E_InicioSesion.Usuario);
             MostrarAsignaturas();
         }
 
