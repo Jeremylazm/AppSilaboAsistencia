@@ -55,7 +55,7 @@ namespace CapaPresentaciones
             // Plantilla
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
-                saveFileDialog.InitialDirectory = @"C:\";
+                saveFileDialog.Title = "Descargar plantilla de plan de sesiones";
                 saveFileDialog.Filter = "Archivo de Excel | *.xlsx";
                 saveFileDialog.DefaultExt = "xlsx";
                 saveFileDialog.FilterIndex = 1;
