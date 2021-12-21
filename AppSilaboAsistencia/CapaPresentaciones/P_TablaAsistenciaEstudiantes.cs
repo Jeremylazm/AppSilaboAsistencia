@@ -176,8 +176,8 @@ namespace CapaPresentaciones
                 //ObjEntidadEstd.Estado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
                 string EstadoActualizado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
 
-
-                string ObsActualizada = dr.Cells[1].Value.ToString();
+                
+                string ObsActualizada = (dr.Cells[1].Value==null)?"":dr.Cells[1].Value.ToString();
                 ObjNegocioEstd.ActualizarAsistenciaEstudiante(ObjEntidadEstd, CodSemestre, CodAsignatura, horainicioAsignatura, txtFecha.Text.ToString(), dr.Cells[3].Value.ToString(), EstadoActualizado, ObsActualizada);
 
 

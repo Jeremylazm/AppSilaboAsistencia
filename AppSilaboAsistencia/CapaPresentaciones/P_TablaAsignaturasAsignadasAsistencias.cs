@@ -12,6 +12,7 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasAsistencias : Form
     {
+        private readonly string CodDocente = E_InicioSesion.Usuario;
         public P_TablaAsignaturasAsignadasAsistencias()
         {
             InitializeComponent();
@@ -31,17 +32,18 @@ namespace CapaPresentaciones
 
         private void MostrarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente("2021-II", "IF", "65475");
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente("2021-II", "IF", CodDocente);
             AccionesTabla();
         }
 
         public void BuscarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente("2021-II", "IF", "65475", txtBuscar.Text);
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente("2021-II", "IF", CodDocente, txtBuscar.Text);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
+            Program.Evento = 0;
             Close();
         }
 
@@ -50,7 +52,7 @@ namespace CapaPresentaciones
             // Estudiantes
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
-                P_HistorialSesionesAsignatura Estudiantes = new P_HistorialSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), "65475");//codasignatura y coddocente
+                P_HistorialSesionesAsignatura Estudiantes = new P_HistorialSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), CodDocente);//codasignatura y coddocente
 
                 Estudiantes.ShowDialog();
                 Estudiantes.Dispose();
