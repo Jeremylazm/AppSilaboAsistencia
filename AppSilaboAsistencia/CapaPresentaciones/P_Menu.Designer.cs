@@ -70,8 +70,8 @@ namespace CapaPresentaciones
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.Transicion = new Bunifu.UI.WinForms.BunifuTransition(this.components);
-            this.pbEditarPerfil = new ControlesPerzonalizados.C_CircularPictureBox();
-            this.pbPerfil = new ControlesPerzonalizados.C_CircularPictureBox();
+            this.pbEditarPerfil = new DreamTeamControls.DreamTeamPictureBox();
+            this.pbPerfil = new DreamTeamControls.DreamTeamPictureBox();
             this.pnPrincipal.SuspendLayout();
             this.pnOpciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbEditarPerfil)).BeginInit();
@@ -1509,8 +1509,8 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnCatálogo;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnSesiones;
         private Bunifu.UI.WinForms.BunifuSeparator SeparadorMenu1;
-        private ControlesPerzonalizados.C_CircularPictureBox pbPerfil;
-        private ControlesPerzonalizados.C_CircularPictureBox pbEditarPerfil;
+        private DreamTeamControls.DreamTeamPictureBox pbPerfil;
+        private DreamTeamControls.DreamTeamPictureBox pbEditarPerfil;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnCerrarSesion;
         private Bunifu.UI.WinForms.BunifuSeparator SeparadorMenu2;
         private Bunifu.UI.WinForms.BunifuImageButton pbCerrarSesion;

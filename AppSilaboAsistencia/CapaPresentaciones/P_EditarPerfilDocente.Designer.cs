@@ -76,7 +76,7 @@
             this.lblCategoria2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblCategoria1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblSubcategoria2 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.imgPerfil = new ControlesPerzonalizados.C_CircularPictureBox();
+            this.imgPerfil = new DreamTeamControls.DreamTeamPictureBox();
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnContenedor.SuspendLayout();
@@ -1220,7 +1220,7 @@
         private Bunifu.UI.WinForms.BunifuPanel pnContenedor;
         private Bunifu.UI.WinForms.BunifuImageButton btnCerrar;
         private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
-        public ControlesPerzonalizados.C_CircularPictureBox imgPerfil;
+        public DreamTeamControls.DreamTeamPictureBox imgPerfil;
         private Bunifu.UI.WinForms.BunifuGroupBox bunifuGroupBox1;
         private Bunifu.UI.WinForms.BunifuLabel lblRegimen1;
         private Bunifu.UI.WinForms.BunifuLabel lblSubcategoria1;

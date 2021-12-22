@@ -135,6 +135,9 @@
     <Reference Include="Bunifu.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.Utils.1.0.0\lib\net45\Bunifu.Utils.dll</HintPath>
     </Reference>
+    <Reference Include="DreamTeamControls">
+      <HintPath>..\packages\DreamTeamControls.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -166,9 +169,6 @@
     </Compile>
     <Compile Include="C_CambioContraseñaNueva.Designer.cs">
       <DependentUpon>C_CambioContraseñaNueva.cs</DependentUpon>
-    </Compile>
-    <Compile Include="C_CircularPictureBox.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="C_PlanSemanasPeriodoParcial.cs">
       <SubType>UserControl</SubType>

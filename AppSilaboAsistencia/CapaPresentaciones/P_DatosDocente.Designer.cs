@@ -111,7 +111,7 @@ namespace CapaPresentaciones
             this.lblErrorCorreo = new Bunifu.UI.WinForms.BunifuLabel();
             this.pbErrorDireccion = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblErrorDireccion = new Bunifu.UI.WinForms.BunifuLabel();
-            this.pbPerfil = new ControlesPerzonalizados.C_CircularPictureBox();
+            this.pbPerfil = new DreamTeamControls.DreamTeamPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).BeginInit();
             this.SuspendLayout();
             // 
@@ -2118,7 +2118,7 @@ namespace CapaPresentaciones
         public Bunifu.UI.WinForms.BunifuDropdown cxtRegimen;
         public Bunifu.UI.WinForms.BunifuDropdown cxtSubcategoria;
         public Bunifu.UI.WinForms.BunifuDropdown cxtCategoria;
-        public ControlesPerzonalizados.C_CircularPictureBox pbPerfil;
+        public DreamTeamControls.DreamTeamPictureBox pbPerfil;
         private Bunifu.UI.WinForms.BunifuImageButton pbErrorCodigo;
         private Bunifu.UI.WinForms.BunifuLabel lblErrorCodigo;
         private Bunifu.UI.WinForms.BunifuImageButton pbErrorTelefono;
