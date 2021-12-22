@@ -49,6 +49,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>App.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu.Charts.WinForms, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.Charts.WinForms.1.1.5\lib\net40\Bunifu.Charts.WinForms.dll</HintPath>
@@ -451,6 +454,7 @@
     <EmbeddedResource Include="P_TablaSilabosAsignatura.resx">
       <DependentUpon>P_TablaSilabosAsignatura.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="App.manifest" />
     <None Include="BDSistemaGestionDataSet.xsc">
       <DependentUpon>BDSistemaGestionDataSet.xsd</DependentUpon>
     </None>

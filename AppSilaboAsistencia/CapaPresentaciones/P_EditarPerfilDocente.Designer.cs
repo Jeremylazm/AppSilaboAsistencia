@@ -43,8 +43,8 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
@@ -76,13 +76,15 @@
             this.lblCategoria2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblCategoria1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblSubcategoria2 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.imgPerfil = new DreamTeamControls.DreamTeamPictureBox();
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
+            this.imgPerfil = new DreamTeamControls.DreamTeamPictureBox();
+            this.panel = new Bunifu.UI.WinForms.BunifuPanel();
             this.pnContenedor.SuspendLayout();
             this.gbDatos.SuspendLayout();
             this.bunifuGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
+            this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Bordeado
@@ -92,9 +94,7 @@
             // 
             // pnContenedor
             // 
-            this.pnContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnContenedor.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnContenedor.BackgroundColor = System.Drawing.Color.White;
             this.pnContenedor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnContenedor.BackgroundImage")));
             this.pnContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -103,19 +103,14 @@
             this.pnContenedor.BorderThickness = 1;
             this.pnContenedor.Controls.Add(this.lblErrorEmail);
             this.pnContenedor.Controls.Add(this.lblErrorTelefono);
-            this.pnContenedor.Controls.Add(this.btnCambiarContraseña);
-            this.pnContenedor.Controls.Add(this.gbDatos);
-            this.pnContenedor.Controls.Add(this.btnGuardar);
-            this.pnContenedor.Controls.Add(this.btnSubirPerfil);
-            this.pnContenedor.Controls.Add(this.btnRestablecerPerfil);
             this.pnContenedor.Controls.Add(this.bunifuGroupBox1);
-            this.pnContenedor.Controls.Add(this.imgPerfil);
             this.pnContenedor.Controls.Add(this.btnCerrar);
             this.pnContenedor.Controls.Add(this.lblTitulo);
+            this.pnContenedor.Controls.Add(this.panel);
             this.pnContenedor.Location = new System.Drawing.Point(6, 5);
             this.pnContenedor.Name = "pnContenedor";
             this.pnContenedor.ShowBorders = true;
-            this.pnContenedor.Size = new System.Drawing.Size(1134, 670);
+            this.pnContenedor.Size = new System.Drawing.Size(1112, 671);
             this.pnContenedor.TabIndex = 18;
             // 
             // lblErrorEmail
@@ -162,6 +157,7 @@
             this.btnCambiarContraseña.AnimationSpeed = 200;
             this.btnCambiarContraseña.AutoGenerateColors = false;
             this.btnCambiarContraseña.AutoRoundBorders = false;
+            this.btnCambiarContraseña.AutoSize = true;
             this.btnCambiarContraseña.AutoSizeLeftIcon = true;
             this.btnCambiarContraseña.AutoSizeRightIcon = true;
             this.btnCambiarContraseña.BackColor = System.Drawing.Color.Transparent;
@@ -201,7 +197,7 @@
             this.btnCambiarContraseña.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Guardar;
             this.btnCambiarContraseña.IdleIconRightImage = null;
             this.btnCambiarContraseña.IndicateFocus = false;
-            this.btnCambiarContraseña.Location = new System.Drawing.Point(628, 611);
+            this.btnCambiarContraseña.Location = new System.Drawing.Point(655, 560);
             this.btnCambiarContraseña.Name = "btnCambiarContraseña";
             this.btnCambiarContraseña.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnCambiarContraseña.OnDisabledState.BorderRadius = 15;
@@ -235,7 +231,7 @@
             this.btnCambiarContraseña.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnCambiarContraseña.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Guardar;
             this.btnCambiarContraseña.OnPressedState.IconRightImage = null;
-            this.btnCambiarContraseña.Size = new System.Drawing.Size(217, 39);
+            this.btnCambiarContraseña.Size = new System.Drawing.Size(232, 38);
             this.btnCambiarContraseña.TabIndex = 67;
             this.btnCambiarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnCambiarContraseña.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -246,6 +242,7 @@
             // 
             // gbDatos
             // 
+            this.gbDatos.AutoSize = true;
             this.gbDatos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.gbDatos.BorderRadius = 15;
             this.gbDatos.BorderThickness = 2;
@@ -268,9 +265,9 @@
             this.gbDatos.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.gbDatos.LabelIndent = 10;
             this.gbDatos.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
-            this.gbDatos.Location = new System.Drawing.Point(40, 63);
+            this.gbDatos.Location = new System.Drawing.Point(33, 23);
             this.gbDatos.Name = "gbDatos";
-            this.gbDatos.Size = new System.Drawing.Size(530, 375);
+            this.gbDatos.Size = new System.Drawing.Size(581, 378);
             this.gbDatos.TabIndex = 66;
             this.gbDatos.TabStop = false;
             this.gbDatos.Text = "Datos";
@@ -354,6 +351,7 @@
             this.txtTelefono.AnimationSpeed = 200;
             this.txtTelefono.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtTelefono.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txtTelefono.AutoSize = true;
             this.txtTelefono.AutoSizeHeight = true;
             this.txtTelefono.BackColor = System.Drawing.Color.White;
             this.txtTelefono.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtTelefono.BackgroundImage")));
@@ -414,7 +412,7 @@
             this.txtTelefono.SelectionLength = 0;
             this.txtTelefono.SelectionStart = 0;
             this.txtTelefono.ShortcutsEnabled = true;
-            this.txtTelefono.Size = new System.Drawing.Size(224, 42);
+            this.txtTelefono.Size = new System.Drawing.Size(196, 24);
             this.txtTelefono.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtTelefono.TabIndex = 13;
             this.txtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -433,6 +431,7 @@
             this.txtDireccion.AnimationSpeed = 200;
             this.txtDireccion.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtDireccion.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txtDireccion.AutoSize = true;
             this.txtDireccion.AutoSizeHeight = true;
             this.txtDireccion.BackColor = System.Drawing.Color.White;
             this.txtDireccion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtDireccion.BackgroundImage")));
@@ -493,7 +492,7 @@
             this.txtDireccion.SelectionLength = 0;
             this.txtDireccion.SelectionStart = 0;
             this.txtDireccion.ShortcutsEnabled = true;
-            this.txtDireccion.Size = new System.Drawing.Size(224, 42);
+            this.txtDireccion.Size = new System.Drawing.Size(330, 24);
             this.txtDireccion.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtDireccion.TabIndex = 12;
             this.txtDireccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -511,6 +510,7 @@
             this.txtEmail.AnimationSpeed = 200;
             this.txtEmail.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtEmail.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txtEmail.AutoSize = true;
             this.txtEmail.AutoSizeHeight = true;
             this.txtEmail.BackColor = System.Drawing.Color.White;
             this.txtEmail.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtEmail.BackgroundImage")));
@@ -571,7 +571,7 @@
             this.txtEmail.SelectionLength = 0;
             this.txtEmail.SelectionStart = 0;
             this.txtEmail.ShortcutsEnabled = true;
-            this.txtEmail.Size = new System.Drawing.Size(224, 42);
+            this.txtEmail.Size = new System.Drawing.Size(330, 24);
             this.txtEmail.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtEmail.TabIndex = 11;
             this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -587,14 +587,14 @@
             // 
             this.lblEscuelaP2.AllowParentOverrides = false;
             this.lblEscuelaP2.AutoEllipsis = false;
-            this.lblEscuelaP2.AutoSize = false;
             this.lblEscuelaP2.CursorType = null;
             this.lblEscuelaP2.Font = new System.Drawing.Font("Montserrat Alternates", 13F);
             this.lblEscuelaP2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblEscuelaP2.Location = new System.Drawing.Point(210, 310);
+            this.lblEscuelaP2.MaximumSize = new System.Drawing.Size(280, 48);
             this.lblEscuelaP2.Name = "lblEscuelaP2";
             this.lblEscuelaP2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblEscuelaP2.Size = new System.Drawing.Size(275, 53);
+            this.lblEscuelaP2.Size = new System.Drawing.Size(170, 24);
             this.lblEscuelaP2.TabIndex = 10;
             this.lblEscuelaP2.Text = "Escuela Profesional";
             this.lblEscuelaP2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
@@ -604,14 +604,14 @@
             // 
             this.lblNombres2.AllowParentOverrides = false;
             this.lblNombres2.AutoEllipsis = false;
-            this.lblNombres2.AutoSize = false;
             this.lblNombres2.CursorType = null;
             this.lblNombres2.Font = new System.Drawing.Font("Montserrat Alternates", 13F);
             this.lblNombres2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblNombres2.Location = new System.Drawing.Point(210, 90);
+            this.lblNombres2.MaximumSize = new System.Drawing.Size(280, 48);
             this.lblNombres2.Name = "lblNombres2";
             this.lblNombres2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblNombres2.Size = new System.Drawing.Size(275, 48);
+            this.lblNombres2.Size = new System.Drawing.Size(80, 24);
             this.lblNombres2.TabIndex = 7;
             this.lblNombres2.Text = "Nombres";
             this.lblNombres2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
@@ -737,6 +737,7 @@
             this.btnGuardar.AnimationSpeed = 200;
             this.btnGuardar.AutoGenerateColors = false;
             this.btnGuardar.AutoRoundBorders = false;
+            this.btnGuardar.AutoSize = true;
             this.btnGuardar.AutoSizeLeftIcon = true;
             this.btnGuardar.AutoSizeRightIcon = true;
             this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
@@ -748,11 +749,11 @@
             this.btnGuardar.ColorContrastOnClick = 45;
             this.btnGuardar.ColorContrastOnHover = 45;
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnGuardar.CustomizableEdges = borderEdges2;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            this.btnGuardar.CustomizableEdges = borderEdges3;
             this.btnGuardar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnGuardar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnGuardar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -776,7 +777,7 @@
             this.btnGuardar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Guardar;
             this.btnGuardar.IdleIconRightImage = null;
             this.btnGuardar.IndicateFocus = false;
-            this.btnGuardar.Location = new System.Drawing.Point(864, 611);
+            this.btnGuardar.Location = new System.Drawing.Point(930, 560);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnGuardar.OnDisabledState.BorderRadius = 15;
@@ -810,7 +811,7 @@
             this.btnGuardar.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnGuardar.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Guardar;
             this.btnGuardar.OnPressedState.IconRightImage = null;
-            this.btnGuardar.Size = new System.Drawing.Size(217, 39);
+            this.btnGuardar.Size = new System.Drawing.Size(128, 38);
             this.btnGuardar.TabIndex = 14;
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnGuardar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -827,6 +828,7 @@
             this.btnSubirPerfil.AnimationSpeed = 200;
             this.btnSubirPerfil.AutoGenerateColors = false;
             this.btnSubirPerfil.AutoRoundBorders = false;
+            this.btnSubirPerfil.AutoSize = true;
             this.btnSubirPerfil.AutoSizeLeftIcon = true;
             this.btnSubirPerfil.AutoSizeRightIcon = true;
             this.btnSubirPerfil.BackColor = System.Drawing.Color.Transparent;
@@ -838,11 +840,11 @@
             this.btnSubirPerfil.ColorContrastOnClick = 45;
             this.btnSubirPerfil.ColorContrastOnHover = 45;
             this.btnSubirPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            this.btnSubirPerfil.CustomizableEdges = borderEdges3;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnSubirPerfil.CustomizableEdges = borderEdges2;
             this.btnSubirPerfil.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnSubirPerfil.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSubirPerfil.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -866,7 +868,7 @@
             this.btnSubirPerfil.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Subir_Perfil;
             this.btnSubirPerfil.IdleIconRightImage = null;
             this.btnSubirPerfil.IndicateFocus = false;
-            this.btnSubirPerfil.Location = new System.Drawing.Point(864, 472);
+            this.btnSubirPerfil.Location = new System.Drawing.Point(909, 421);
             this.btnSubirPerfil.Name = "btnSubirPerfil";
             this.btnSubirPerfil.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSubirPerfil.OnDisabledState.BorderRadius = 15;
@@ -900,7 +902,7 @@
             this.btnSubirPerfil.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnSubirPerfil.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Subir_Perfil;
             this.btnSubirPerfil.OnPressedState.IconRightImage = null;
-            this.btnSubirPerfil.Size = new System.Drawing.Size(217, 39);
+            this.btnSubirPerfil.Size = new System.Drawing.Size(149, 38);
             this.btnSubirPerfil.TabIndex = 65;
             this.btnSubirPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSubirPerfil.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -917,6 +919,7 @@
             this.btnRestablecerPerfil.AnimationSpeed = 200;
             this.btnRestablecerPerfil.AutoGenerateColors = false;
             this.btnRestablecerPerfil.AutoRoundBorders = false;
+            this.btnRestablecerPerfil.AutoSize = true;
             this.btnRestablecerPerfil.AutoSizeLeftIcon = true;
             this.btnRestablecerPerfil.AutoSizeRightIcon = true;
             this.btnRestablecerPerfil.BackColor = System.Drawing.Color.Transparent;
@@ -956,7 +959,7 @@
             this.btnRestablecerPerfil.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Restablecer_Perfil;
             this.btnRestablecerPerfil.IdleIconRightImage = null;
             this.btnRestablecerPerfil.IndicateFocus = false;
-            this.btnRestablecerPerfil.Location = new System.Drawing.Point(628, 472);
+            this.btnRestablecerPerfil.Location = new System.Drawing.Point(655, 421);
             this.btnRestablecerPerfil.Name = "btnRestablecerPerfil";
             this.btnRestablecerPerfil.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnRestablecerPerfil.OnDisabledState.BorderRadius = 15;
@@ -990,7 +993,7 @@
             this.btnRestablecerPerfil.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnRestablecerPerfil.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Restablecer_Perfil;
             this.btnRestablecerPerfil.OnPressedState.IconRightImage = null;
-            this.btnRestablecerPerfil.Size = new System.Drawing.Size(217, 39);
+            this.btnRestablecerPerfil.Size = new System.Drawing.Size(205, 38);
             this.btnRestablecerPerfil.TabIndex = 64;
             this.btnRestablecerPerfil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnRestablecerPerfil.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1001,6 +1004,7 @@
             // 
             // bunifuGroupBox1
             // 
+            this.bunifuGroupBox1.AutoSize = true;
             this.bunifuGroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.bunifuGroupBox1.BorderRadius = 15;
             this.bunifuGroupBox1.BorderThickness = 2;
@@ -1015,9 +1019,9 @@
             this.bunifuGroupBox1.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.bunifuGroupBox1.LabelIndent = 10;
             this.bunifuGroupBox1.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
-            this.bunifuGroupBox1.Location = new System.Drawing.Point(40, 528);
+            this.bunifuGroupBox1.Location = new System.Drawing.Point(40, 515);
             this.bunifuGroupBox1.Name = "bunifuGroupBox1";
-            this.bunifuGroupBox1.Size = new System.Drawing.Size(530, 122);
+            this.bunifuGroupBox1.Size = new System.Drawing.Size(581, 142);
             this.bunifuGroupBox1.TabIndex = 50;
             this.bunifuGroupBox1.TabStop = false;
             this.bunifuGroupBox1.Text = "Información Profesional";
@@ -1118,23 +1122,6 @@
             this.lblSubcategoria2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.lblSubcategoria2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // imgPerfil
-            // 
-            this.imgPerfil.BackColor = System.Drawing.Color.Transparent;
-            this.imgPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.imgPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.imgPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.imgPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.imgPerfil.BorderSize = 2;
-            this.imgPerfil.GradientAngle = 50F;
-            this.imgPerfil.Image = global::CapaPresentaciones.Properties.Resources.Perfil_Docente;
-            this.imgPerfil.Location = new System.Drawing.Point(664, 63);
-            this.imgPerfil.Name = "imgPerfil";
-            this.imgPerfil.Size = new System.Drawing.Size(378, 378);
-            this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgPerfil.TabIndex = 48;
-            this.imgPerfil.TabStop = false;
-            // 
             // btnCerrar
             // 
             this.btnCerrar.ActiveImage = null;
@@ -1156,7 +1143,7 @@
             this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
             this.btnCerrar.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.btnCerrar.InitialImage = null;
-            this.btnCerrar.Location = new System.Drawing.Point(1096, 7);
+            this.btnCerrar.Location = new System.Drawing.Point(1074, 7);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Rotation = 0;
             this.btnCerrar.ShowActiveImage = true;
@@ -1185,18 +1172,58 @@
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTitulo.Size = new System.Drawing.Size(1134, 46);
+            this.lblTitulo.Size = new System.Drawing.Size(1112, 46);
             this.lblTitulo.TabIndex = 1;
             this.lblTitulo.Text = "Editar Perfil";
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // imgPerfil
+            // 
+            this.imgPerfil.BackColor = System.Drawing.Color.Transparent;
+            this.imgPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.imgPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.imgPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.imgPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.imgPerfil.BorderSize = 2;
+            this.imgPerfil.GradientAngle = 50F;
+            this.imgPerfil.Image = global::CapaPresentaciones.Properties.Resources.Perfil_Docente;
+            this.imgPerfil.Location = new System.Drawing.Point(671, 23);
+            this.imgPerfil.Name = "imgPerfil";
+            this.imgPerfil.Size = new System.Drawing.Size(378, 378);
+            this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgPerfil.TabIndex = 48;
+            this.imgPerfil.TabStop = false;
+            // 
+            // panel
+            // 
+            this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel.BackgroundColor = System.Drawing.Color.Transparent;
+            this.panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel.BackgroundImage")));
+            this.panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel.BorderColor = System.Drawing.Color.Transparent;
+            this.panel.BorderRadius = 3;
+            this.panel.BorderThickness = 1;
+            this.panel.Controls.Add(this.imgPerfil);
+            this.panel.Controls.Add(this.gbDatos);
+            this.panel.Controls.Add(this.btnCambiarContraseña);
+            this.panel.Controls.Add(this.btnSubirPerfil);
+            this.panel.Controls.Add(this.btnGuardar);
+            this.panel.Controls.Add(this.btnRestablecerPerfil);
+            this.panel.Location = new System.Drawing.Point(7, 52);
+            this.panel.Name = "panel";
+            this.panel.ShowBorders = true;
+            this.panel.Size = new System.Drawing.Size(1097, 611);
+            this.panel.TabIndex = 70;
             // 
             // P_EditarPerfilDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1146, 680);
+            this.ClientSize = new System.Drawing.Size(1130, 680);
             this.Controls.Add(this.pnContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1211,6 +1238,8 @@
             this.bunifuGroupBox1.ResumeLayout(false);
             this.bunifuGroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).EndInit();
+            this.panel.ResumeLayout(false);
+            this.panel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1220,7 +1249,6 @@
         private Bunifu.UI.WinForms.BunifuPanel pnContenedor;
         private Bunifu.UI.WinForms.BunifuImageButton btnCerrar;
         private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
-        public DreamTeamControls.DreamTeamPictureBox imgPerfil;
         private Bunifu.UI.WinForms.BunifuGroupBox bunifuGroupBox1;
         private Bunifu.UI.WinForms.BunifuLabel lblRegimen1;
         private Bunifu.UI.WinForms.BunifuLabel lblSubcategoria1;
@@ -1249,5 +1277,7 @@
         private Bunifu.UI.WinForms.BunifuImageButton pbErrorTelefono;
         private Bunifu.UI.WinForms.BunifuLabel lblErrorTelefono;
         private Bunifu.UI.WinForms.BunifuLabel lblErrorEmail;
+        public DreamTeamControls.DreamTeamPictureBox imgPerfil;
+        private Bunifu.UI.WinForms.BunifuPanel panel;
     }
 }
