@@ -462,6 +462,7 @@ BEGIN
 		WHERE Usuario = @Usuario
 END;
 GO
+
 -- Retornar contraseña desencriptada
 CREATE PROCEDURE spuRetornarContraseña @Usuario VARCHAR(6)			
 AS

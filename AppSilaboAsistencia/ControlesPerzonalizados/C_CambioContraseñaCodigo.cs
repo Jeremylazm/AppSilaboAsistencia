@@ -43,7 +43,7 @@ namespace ControlesPerzonalizados
                 }
             }
             else
-                MensajeError("Campo codigo de verificación vacio, intente de nuevo");
+                MensajeError("Campo código de verificación vacío, intente de nuevo");
         } //Listo
 
         private bool ValidarCodigo()
@@ -51,7 +51,7 @@ namespace ControlesPerzonalizados
             string ans = validarpanelVerificarCodigo(codigo_verificacion, txtCodigoVerificacion.Text);
             if (ans == "Código no Coincide") // codigo ingresado incorrecto
             {
-                MensajeError("Los codigos no coinciden, intente de nuevo");
+                MensajeError("Los códigos no coinciden, intente de nuevo");
                 txtCodigoVerificacion.Text = "";
                 return false;
             }

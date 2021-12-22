@@ -58,7 +58,6 @@ namespace ControlesPerzonalizados
             this.lblErrorContraseñaNueva = new Bunifu.UI.WinForms.BunifuLabel();
             this.pbErrorConfirmarContraseña = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblErrorConfirmarContraseña = new Bunifu.UI.WinForms.BunifuLabel();
-            this.lblPrueba = new Bunifu.UI.WinForms.BunifuLabel();
             this.SuspendLayout();
             // 
             // txtContraseñaAnterior
@@ -694,27 +693,11 @@ namespace ControlesPerzonalizados
             this.lblErrorConfirmarContraseña.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.lblErrorConfirmarContraseña.Visible = false;
             // 
-            // lblPrueba
-            // 
-            this.lblPrueba.AllowParentOverrides = false;
-            this.lblPrueba.AutoEllipsis = false;
-            this.lblPrueba.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblPrueba.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblPrueba.Location = new System.Drawing.Point(47, 71);
-            this.lblPrueba.Name = "lblPrueba";
-            this.lblPrueba.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblPrueba.Size = new System.Drawing.Size(69, 15);
-            this.lblPrueba.TabIndex = 29;
-            this.lblPrueba.Text = "bunifuLabel1";
-            this.lblPrueba.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.lblPrueba.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
             // C_CambioContraseñaNueva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.lblPrueba);
             this.Controls.Add(this.pbErrorConfirmarContraseña);
             this.Controls.Add(this.lblErrorConfirmarContraseña);
             this.Controls.Add(this.pbErrorContraseñaNueva);
@@ -752,6 +735,5 @@ namespace ControlesPerzonalizados
         private Bunifu.UI.WinForms.BunifuLabel lblErrorContraseñaNueva;
         private Bunifu.UI.WinForms.BunifuImageButton pbErrorConfirmarContraseña;
         private Bunifu.UI.WinForms.BunifuLabel lblErrorConfirmarContraseña;
-        private Bunifu.UI.WinForms.BunifuLabel lblPrueba;
     }
 }

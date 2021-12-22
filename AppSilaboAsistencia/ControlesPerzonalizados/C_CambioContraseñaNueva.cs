@@ -36,11 +36,16 @@ namespace ControlesPerzonalizados
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (Cambiar_Contraseña() && Validar())
+            if (Validar())
             {
-                BunifuPictureBox PictureActual = (BunifuPictureBox)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("pbPaso3", false)[0];
-                PictureActual.Image = Properties.Resources.Circulo_Checked;
-            }
+                if (Cambiar_Contraseña())
+                {
+                    BunifuPictureBox PictureActual = (BunifuPictureBox)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("pbPaso3", false)[0];
+                    PictureActual.Image = Properties.Resources.Circulo_Checked;
+                    MessageBox.Show("La contraseña se cambio exitosamente");
+                    ParentForm.Close();
+                }
+            } 
         }
 
         public bool Validar()
@@ -54,35 +59,30 @@ namespace ControlesPerzonalizados
                     else
                     {
                         txtConfirmarContraseña.Clear();
-                        MensajeError("La confirmación de la contraseña no es igual a la escrita previamente");
+                        Validador.EnfocarCursor(txtConfirmarContraseña);
+                        
                         return false;
                     }
                 }
                 else
                 {
-                    MensajeError("La contraseña nueva no puede estar vacío o debe tener por lo menos un número y una mayúscula");
+                    Validador.EnfocarCursor(txtContraseñaNueva);
+                    
                     return false;
                 }
             }
             else
             {
-                MensajeError("La contraseña anterior no puede estar vacío");
+                Validador.EnfocarCursor(txtContraseñaAnterior);
                 return false;
             }
         }
 
         public bool Cambiar_Contraseña()
         {
-            string ans = validarpanelCambiarContraseña(Usuario, txtContraseñaAnterior.Text, txtContraseñaNueva.Text, txtConfirmarContraseña.Text, false);
+            string ans = validarpanelCambiarContraseña(Usuario, txtContraseñaAnterior.Text, txtContraseñaNueva.Text, false);
 
-            if (ans == "Tamaño no Válido") // longitud de nueva contraseña mayor que 5
-            {
-                MensajeError("Error, la longitud de la nueva contraseña debe ser mayor a 5");
-                txtContraseñaNueva.Clear();
-                txtConfirmarContraseña.Clear();
-                return false;
-            }
-            else if (ans == "Contrasela Anterior Incorrecta")
+            if (ans == "Contraseña Anterior Incorrecta")
             {
                 MensajeError("Contraseña anterior incorrecta, intente de nuevo");
                 txtContraseñaAnterior.Clear();
@@ -101,36 +101,30 @@ namespace ControlesPerzonalizados
             }
             else
             {
-                MessageBox.Show("La contraseña se cambio éxitosamente");
                 return true;
             }
         }
 
-        public string validarpanelCambiarContraseña(string usuario, string contraseña, string contraseñaNueva, string confirmarContraseña, bool test)
+        public string validarpanelCambiarContraseña(string usuario, string contraseña, string contraseñaNueva, bool test)
         {
-            if (contraseñaNueva.Length < 6)
-                return "Tamaño no Válido";
-            else
+            if (!usuarioValido(usuario, contraseña))
+                return "Contraseña Anterior Incorrecta";
+
+            DialogResult Opcion = DialogResult.OK; // OK para test unitario
+
+            if (!test)
+                Opcion = MensajeConfirmacionD("¿Realmente desea cambiar la contraseña? ");
+
+            if (Opcion == DialogResult.OK)
             {
-                if (!usuarioValido(usuario, contraseña))
-                    return "Contrasela Anterior Incorrecta";
-
-                DialogResult Opcion = DialogResult.OK; // OK para test unitario
-
-                if (!test)
-                    Opcion = MensajeConfirmacionD("¿Realmente desea cambiar la contraseña ? ");
-
-                if (Opcion == DialogResult.OK)
-                {
-                    N_InicioSesion InicioSesion = new N_InicioSesion();
-                    bool CambioContraseñaValido = InicioSesion.CambiarContraseña(usuario, contraseñaNueva);
-                    if (CambioContraseñaValido)
-                        return "Cambio Exitoso";
-                    else
-                        return "No se pudo Cambiar Contraseña";
-                }
-                return "Cancelar Cambio";
+                N_InicioSesion InicioSesion = new N_InicioSesion();
+                bool CambioContraseñaValido = InicioSesion.CambiarContraseña(usuario, contraseñaNueva);
+                if (CambioContraseñaValido)
+                    return "Cambio Exitoso";
+                else
+                    return "No se pudo Cambiar Contraseña";
             }
+            return "Cancelar Cambio";
         }
 
         public bool usuarioValido(string usuario, string contraseña)
@@ -156,11 +150,19 @@ namespace ControlesPerzonalizados
 
         private void txtContraseñaAnterior_TextChange(object sender, EventArgs e)
         {
-            ContraseñaAnterior = Validador.ValidarUsuario(txtContraseñaAnterior, lblErrorContraseñaAnterior, pbErrorContraseñaAnterior);
+            ContraseñaAnterior = Validador.ValidarCampoLleno(txtContraseñaAnterior, lblErrorContraseñaAnterior, pbErrorContraseñaAnterior);
             if (ContraseñaAnterior)
             {
                 lblErrorContraseñaAnterior.Visible = false;
                 pbErrorContraseñaAnterior.Visible = false;
+            }
+            if (txtContraseñaAnterior.Text != "")
+            {
+                txtContraseñaAnterior.UseSystemPasswordChar = true;
+            }
+            else
+            {
+                txtContraseñaAnterior.UseSystemPasswordChar = false;
             }
         }
 
@@ -172,6 +174,14 @@ namespace ControlesPerzonalizados
                 lblErrorContraseñaNueva.Visible = false;
                 pbErrorContraseñaNueva.Visible = false;
             }
+            if (txtContraseñaNueva.Text != "")
+            {
+                txtContraseñaNueva.UseSystemPasswordChar = true;
+            }
+            else
+            {
+                txtContraseñaNueva.UseSystemPasswordChar = false;
+            }
         }
 
         private void txtConfirmarContraseña_TextChange(object sender, EventArgs e)
@@ -182,13 +192,20 @@ namespace ControlesPerzonalizados
                 lblErrorConfirmarContraseña.Visible = false;
                 pbErrorConfirmarContraseña.Visible = false;
             }
+            if (txtConfirmarContraseña.Text != "")
+            {
+                txtConfirmarContraseña.UseSystemPasswordChar = true;
+            }
+            else
+            {
+                txtConfirmarContraseña.UseSystemPasswordChar = false;
+            }
         }
 
         private void C_CambioContraseñaNueva_Enter(object sender, EventArgs e)
         {
             BunifuLabel UsuarioCN = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
             Usuario = UsuarioCN.Text;
-            lblPrueba.Text = Usuario;
         }
     }
 }
