@@ -19,19 +19,9 @@ namespace ControlesPerzonalizados
             InitializeComponent();
         }
 
-        private DialogResult MensajeConfirmacionD(string Mensaje)
-        {
-            return MessageBox.Show(Mensaje, "Sistema de Tutoría", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-        }
-
-        private void MensajeError(string Mensaje)
-        {
-            MessageBox.Show(Mensaje, "Sistema Sílabo Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        } //Listo
-
         private void btnAtras_Click(object sender, EventArgs e)
         {
-            new A_Paso().Atras(ParentForm, "Paso3", "Paso2", "C_CambioContraseñaCodigo");
+            new A_Paso().Atras(ParentForm, "Paso3", "Paso1", "C_CambioContraseñaCorreo");
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -42,7 +32,8 @@ namespace ControlesPerzonalizados
                 {
                     BunifuPictureBox PictureActual = (BunifuPictureBox)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("pbPaso3", false)[0];
                     PictureActual.Image = Properties.Resources.Circulo_Checked;
-                    MessageBox.Show("La contraseña se cambio exitosamente");
+                    A_Dialogo.DialogoConfirmacion("La contraseña se cambio exitosamente");
+                    //MessageBox.Show("La contraseña se cambio exitosamente");
                     ParentForm.Close();
                 }
             } 
@@ -84,7 +75,7 @@ namespace ControlesPerzonalizados
 
             if (ans == "Contraseña Anterior Incorrecta")
             {
-                MensajeError("Contraseña anterior incorrecta, intente de nuevo");
+                A_Dialogo.DialogoError("La contraseña anterior es incorrecta, intente de nuevo");
                 txtContraseñaAnterior.Clear();
                 txtContraseñaNueva.Clear();
                 txtConfirmarContraseña.Clear();
@@ -92,7 +83,7 @@ namespace ControlesPerzonalizados
             }
             else if (ans == "No se pudo Cambiar Contraseña")
             {
-                MensajeError("Error al cambiar la contraseña");
+                A_Dialogo.DialogoError("Error al cambiar la contraseña");
                 return false;
             }
             else if (ans == "Cancelar Cambio")
@@ -110,12 +101,12 @@ namespace ControlesPerzonalizados
             if (!usuarioValido(usuario, contraseña))
                 return "Contraseña Anterior Incorrecta";
 
-            DialogResult Opcion = DialogResult.OK; // OK para test unitario
+            DialogResult Opcion = DialogResult.Yes; // OK para test unitario
 
             if (!test)
-                Opcion = MensajeConfirmacionD("¿Realmente desea cambiar la contraseña? ");
+                Opcion = A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea cambiar la contraseña? ");
 
-            if (Opcion == DialogResult.OK)
+            if (Opcion == DialogResult.Yes)
             {
                 N_InicioSesion InicioSesion = new N_InicioSesion();
                 bool CambioContraseñaValido = InicioSesion.CambiarContraseña(usuario, contraseñaNueva);

@@ -453,6 +453,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Dialogo_Pregunta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dialogo_Informacion.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\Dialogo_Error.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
