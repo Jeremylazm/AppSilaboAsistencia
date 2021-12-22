@@ -135,6 +135,9 @@
     <Reference Include="Bunifu.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.Utils.1.0.0\lib\net45\Bunifu.Utils.dll</HintPath>
     </Reference>
+    <Reference Include="DreamTeamControls">
+      <HintPath>..\packages\DreamTeamControls.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -147,8 +150,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ayudas\A_Paso.cs" />
-    <Compile Include="Ayudas\A_Validador.cs" />
     <Compile Include="C_CambioContraseñaCodigo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -166,9 +167,6 @@
     </Compile>
     <Compile Include="C_CambioContraseñaNueva.Designer.cs">
       <DependentUpon>C_CambioContraseñaNueva.cs</DependentUpon>
-    </Compile>
-    <Compile Include="C_CircularPictureBox.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="C_PlanSemanasPeriodoParcial.cs">
       <SubType>UserControl</SubType>
@@ -445,10 +443,20 @@
     <None Include="Resources\Circulo_Unchecked.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ayudas\Ayudas.csproj">
+      <Project>{0d90f849-0d44-4350-afd1-6eb543629009}</Project>
+      <Name>Ayudas</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CapaNegocios\CapaNegocios.csproj">
       <Project>{18201101-fced-479f-9dcf-ff8e765c613d}</Project>
       <Name>CapaNegocios</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dialogo_Pregunta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dialogo_Informacion.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Dialogo_Error.png" />

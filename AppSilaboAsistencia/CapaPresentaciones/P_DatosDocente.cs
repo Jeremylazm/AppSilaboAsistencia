@@ -7,7 +7,7 @@ using System.IO;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
-using CapaPresentaciones.Ayudas;
+using Ayudas;
 
 namespace CapaPresentaciones
 {

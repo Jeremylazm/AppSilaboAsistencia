@@ -111,7 +111,7 @@ namespace CapaPresentaciones
             this.lblErrorCorreo = new Bunifu.UI.WinForms.BunifuLabel();
             this.pbErrorDireccion = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblErrorDireccion = new Bunifu.UI.WinForms.BunifuLabel();
-            this.pbPerfil = new ControlesPerzonalizados.C_CircularPictureBox();
+            this.pbPerfil = new DreamTeamControls.DreamTeamPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1487,7 +1487,7 @@ namespace CapaPresentaciones
             this.btnRestablecerPerfil.IdleBorderRadius = 15;
             this.btnRestablecerPerfil.IdleBorderThickness = 1;
             this.btnRestablecerPerfil.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnRestablecerPerfil.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Restablecer_Perfil;
+            this.btnRestablecerPerfil.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.RestablecerImagen;
             this.btnRestablecerPerfil.IdleIconRightImage = null;
             this.btnRestablecerPerfil.IndicateFocus = false;
             this.btnRestablecerPerfil.Location = new System.Drawing.Point(273, 522);
@@ -1514,7 +1514,7 @@ namespace CapaPresentaciones
             this.btnRestablecerPerfil.OnIdleState.BorderThickness = 1;
             this.btnRestablecerPerfil.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnRestablecerPerfil.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnRestablecerPerfil.OnIdleState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Restablecer_Perfil;
+            this.btnRestablecerPerfil.OnIdleState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.RestablecerImagen;
             this.btnRestablecerPerfil.OnIdleState.IconRightImage = null;
             this.btnRestablecerPerfil.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnRestablecerPerfil.OnPressedState.BorderRadius = 15;
@@ -1577,7 +1577,7 @@ namespace CapaPresentaciones
             this.btnSubirPerfil.IdleBorderRadius = 15;
             this.btnSubirPerfil.IdleBorderThickness = 1;
             this.btnSubirPerfil.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnSubirPerfil.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Subir_Perfil;
+            this.btnSubirPerfil.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.SubirImagen;
             this.btnSubirPerfil.IdleIconRightImage = null;
             this.btnSubirPerfil.IndicateFocus = false;
             this.btnSubirPerfil.Location = new System.Drawing.Point(18, 522);
@@ -1604,7 +1604,7 @@ namespace CapaPresentaciones
             this.btnSubirPerfil.OnIdleState.BorderThickness = 1;
             this.btnSubirPerfil.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSubirPerfil.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnSubirPerfil.OnIdleState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Subir_Perfil;
+            this.btnSubirPerfil.OnIdleState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.SubirImagen;
             this.btnSubirPerfil.OnIdleState.IconRightImage = null;
             this.btnSubirPerfil.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnSubirPerfil.OnPressedState.BorderRadius = 15;
@@ -2118,7 +2118,7 @@ namespace CapaPresentaciones
         public Bunifu.UI.WinForms.BunifuDropdown cxtRegimen;
         public Bunifu.UI.WinForms.BunifuDropdown cxtSubcategoria;
         public Bunifu.UI.WinForms.BunifuDropdown cxtCategoria;
-        public ControlesPerzonalizados.C_CircularPictureBox pbPerfil;
+        public DreamTeamControls.DreamTeamPictureBox pbPerfil;
         private Bunifu.UI.WinForms.BunifuImageButton pbErrorCodigo;
         private Bunifu.UI.WinForms.BunifuLabel lblErrorCodigo;
         private Bunifu.UI.WinForms.BunifuImageButton pbErrorTelefono;

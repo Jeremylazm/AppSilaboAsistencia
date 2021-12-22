@@ -5,7 +5,7 @@ using System.Linq;
 using CapaEntidades;
 using System.IO;
 using System.Drawing.Drawing2D;
-using CapaPresentaciones.Ayudas;
+using Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -302,7 +302,7 @@ namespace CapaPresentaciones
 
             P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
             {
-                Usuario = E_InicioSesion.Usuario,
+                UsuarioE = E_InicioSesion.Usuario,
                 TopLevel = false,
                 Dock = DockStyle.Fill
             };
@@ -392,7 +392,7 @@ namespace CapaPresentaciones
         }
 
         // Abrir Formularios
-        private void AbrirFormularios<FormularioAbrir>() where FormularioAbrir : Form, new()
+        public void AbrirFormularios<FormularioAbrir>() where FormularioAbrir : Form, new()
         {
             Form Formularios = pnContenedor.Controls.OfType<FormularioAbrir>().FirstOrDefault();
 

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using CapaNegocios;
 using ClosedXML.Excel;
 using CapaEntidades;
-using CapaPresentaciones.Ayudas;
+using Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -46,7 +46,7 @@ namespace CapaPresentaciones
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-           
+            Program.Evento = 0;
             Close();
         }
 

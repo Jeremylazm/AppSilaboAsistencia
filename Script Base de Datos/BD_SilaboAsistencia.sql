@@ -462,6 +462,7 @@ BEGIN
 		WHERE Usuario = @Usuario
 END;
 GO
+
 -- Retornar contraseña desencriptada
 CREATE PROCEDURE spuRetornarContraseña @Usuario VARCHAR(6)			
 AS
@@ -1619,10 +1620,10 @@ CREATE PROCEDURE spuAsistenciaEstudiantes @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar el registro de asistencia de los estudiantes
-	SELECT ROW_NUMBER() OVER (ORDER BY ET.APaterno ASC) AS Id, AE.CodEstudiante, ET.APaterno, ET.AMaterno, ET.Nombre,
+	SELECT ROW_NUMBER() OVER (ORDER BY M.APaterno ASC) AS Id, AE.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre,
 	       AE.Hora, AE.Estado, AE.Observación
-		FROM (TAsistenciaEstudiante AE INNER JOIN TEstudiante ET ON
-			 AE.CodEstudiante = ET.CodEstudiante) INNER JOIN TAsignatura A ON
+		FROM (TAsistenciaEstudiante AE INNER JOIN TMatricula M ON
+			 AE.CodEstudiante = M.CodEstudiante) INNER JOIN TAsignatura A ON
 			 SUBSTRING(AE.CodAsignatura,1,LEN(A.CodAsignatura)) = A.CodAsignatura
 	    WHERE AE.CodSemestre = @CodSemestre AND AE.HoraInicio = @HoraInicio AND
               SUBSTRING(AE.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
@@ -1643,16 +1644,16 @@ AS
 BEGIN
 	-- Mostrar el registro de asistencia en el rango de fechas
 	SELECT AE.Fecha, AE.Hora, AE.Estado, AE.Observación
-		FROM (TAsistenciaEstudiante AE INNER JOIN TEstudiante ET ON
-			 AE.CodEstudiante = ET.CodEstudiante) INNER JOIN TAsignatura A ON
+		FROM (TAsistenciaEstudiante AE INNER JOIN TMatricula M ON
+			 AE.CodEstudiante = M.CodEstudiante) INNER JOIN TAsignatura A ON
 			 SUBSTRING(AE.CodAsignatura,1,LEN(A.CodAsignatura)) = A.CodAsignatura
 	    WHERE AE.CodSemestre = @CodSemestre AND AE.HoraInicio = @HoraInicio AND
               SUBSTRING(AE.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
 		      (AE.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
 			  (AE.CodEstudiante LIKE (@Texto1 + '%') OR
-			   ET.Nombre LIKE (@Texto1 + '%') OR
-			   ET.APaterno LIKE (@Texto1 + '%') OR
-			   ET.AMaterno LIKE (@Texto1 + '%')) AND
+			   M.Nombre LIKE (@Texto1 + '%') OR
+			   M.APaterno LIKE (@Texto1 + '%') OR
+			   M.AMaterno LIKE (@Texto1 + '%')) AND
 			  (AE.CodAsignatura LIKE (@Texto2 + '%') OR A.NombreAsignatura LIKE (@Texto2 + '%'))
 END;
 GO

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.IO;
 using CapaNegocios;
-using CapaPresentaciones.Ayudas;
+using Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -122,6 +122,7 @@ namespace CapaPresentaciones
 
             Process.Start(fullFilePath);
             */
+            Program.Evento = 0;
             Close();
         }
     }

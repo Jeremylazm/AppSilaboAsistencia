@@ -12,7 +12,7 @@ using CapaEntidades;
 using System.IO;
 using SpreadsheetLight;
 using ClosedXML.Excel;
-using CapaPresentaciones.Ayudas;
+using Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -31,6 +31,7 @@ namespace CapaPresentaciones
         public DataTable dgvTabla;
         public string horainicioAsignatura;
         public string LmFechaInf = "15/12/2021";
+        
         public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente, DataTable pdgv)
         {
             ObjNegocio = new N_Catalogo();
@@ -157,12 +158,12 @@ namespace CapaPresentaciones
                 ObjEntidadEstd.CodEstudiante = dr.Cells[3].Value.ToString();
                 ObjEntidadEstd.Estado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
 
-                ObjEntidadEstd.Observacion = dr.Cells[1].Value.ToString();
+                ObjEntidadEstd.Observacion = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
                 ObjNegocioEstd.RegistrarAsistenciaEstudiante(ObjEntidadEstd);
 
 
             }
-            A_Dialogo.DialogoConfirmacion("El registro de la asistencia de los estudiantes se insertó éxitosamente");
+            //A_Dialogo.DialogoConfirmacion("El registro de la asistencia de los estudiantes se insertó éxitosamente");
         }
         public void EditarRegistroEstudiantes()
         {
@@ -182,14 +183,11 @@ namespace CapaPresentaciones
 
 
             }
-            A_Dialogo.DialogoConfirmacion("El registro de la asistencia de los estudiantes se Editó éxitosamente");
+            //A_Dialogo.DialogoConfirmacion("El registro de la asistencia de los estudiantes se Editó éxitosamente");
 
         }
         public void GuardarRegistroDocente()
         {
-            // HoraInicioThAsg = N_HorarioAsignatura.BuscarHorarioAsignatura(CodSemestre, CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), CodAsignatura.Substring(5, 1));
-            //horainicioAsignatura = HoraInicioThAsg.Rows[0][6].ToString();
-            //guardar asistencia de estudainte en la asigantura
 
             if (Program.Evento == 0)//add
             {
@@ -209,15 +207,16 @@ namespace CapaPresentaciones
                         ObjEntidadDoc.NombreTema = txtTema.Text.ToString();
 
                         ObjNegocioDoc.RegistrarAsistenciaDocente(ObjEntidadDoc);
-                        A_Dialogo.DialogoConfirmacion("El registro de Asistencia Docente se insertó éxitosamente");
+                        //A_Dialogo.DialogoConfirmacion("El registro de Asistencia Docente se insertó éxitosamente");
                         AgregarRgistroEstudiantes();
-                        A_Dialogo.DialogoConfirmacion("Guardado con Exito");
+                        A_Dialogo.DialogoConfirmacion("Se ha registrado correctamente la asistencia" + Environment.NewLine+" del Docente y los Estudiantes");
                         Program.Evento = 0;
                         Close();
                     }
                     else
                     {
-                        A_Dialogo.DialogoConfirmacion("El registro de Hoy, ya existe");
+                        A_Dialogo.DialogoInformacion("El registro de Hoy, ¡Ya existe!");
+                        
                     }
                 }
                 catch (Exception)
@@ -233,8 +232,7 @@ namespace CapaPresentaciones
                     if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea editar el registro?") == DialogResult.Yes)
                     {
                         DataTable Resultado = N_AsistenciaDocente.AsistenciaDocenteAsignatura(CodSemestre, "IF", CodDocente, CodAsignatura, horainicioAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString());
-                        //HoraInicioThAsg = N_HorarioAsignatura.BuscarHorarioAsignatura(CodSemestre, CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), CodAsignatura.Substring(5, 1));
-                        //string EhorainicioAsignatura = HoraInicioThAsg.Rows[0][6].ToString();
+                        
                         if (Resultado.Rows.Count != 0)
                         {
 
@@ -251,7 +249,7 @@ namespace CapaPresentaciones
                             string NuevaHoraInicioAsignatura = horainicioAsignatura;
 
                             ObjNegocioDoc.ActualizarAsistenciaDocente(ObjEntidadDoc, CodSemestre, CodAsignatura, NuevaHoraInicioAsignatura, fechaActualizada, CodDocente, NombreTemaActualizado);
-                            A_Dialogo.DialogoConfirmacion("Registro Docente editado exitosamente");
+                            A_Dialogo.DialogoConfirmacion("Se ha Editado  la Asistencia" + Environment.NewLine+" del Docente y los Estudiantes");
                             EditarRegistroEstudiantes();
                             Program.Evento = 0;
 
@@ -459,7 +457,7 @@ namespace CapaPresentaciones
             {
                 //GuardarRegistroDocente();
                 //Close();
-                //ActulizarTag();
+                
             }
             
             GuardarRegistroDocente();
