@@ -66,6 +66,13 @@ namespace Ayudas
             return NumeroLleno && NumeroCorrecto;
         }
 
+        public bool ValidarTelefono(BunifuTextBox TextBox, BunifuLabel Label, BunifuImageButton Imagen, int NroDigitos)
+        {
+            bool NumeroCorrecto = Validar(@"(^$)|(^\d{" + NroDigitos + @"}$)", TextBox, Label, Imagen, "El campo debe ser de " + NroDigitos + " dígitos");
+
+            return NumeroCorrecto;
+        }
+
         public bool ValidarDigitoIntervalo(BunifuTextBox TextBox, BunifuLabel Label, BunifuImageButton Imagen, int Min, int Max)
         {
             bool DigitoLleno = Validar(@"^(?!\s*$).+", TextBox, Label, Imagen, "El campo no debe estar vacío");
