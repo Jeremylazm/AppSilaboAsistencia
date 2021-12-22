@@ -39,9 +39,9 @@ namespace CapaPresentaciones
 
             dgvDatos.Columns[1].HeaderText = "Fecha";
             dgvDatos.Columns[2].HeaderText = "Hora";
-            dgvDatos.Columns[3].HeaderText = "TEMA(S)";
-            dgvDatos.Columns[4].HeaderText = "TotalAsis";
-            dgvDatos.Columns[5].HeaderText = "TotalFalt";
+            dgvDatos.Columns[3].HeaderText = "Tema(s)";
+            dgvDatos.Columns[4].HeaderText = "TotalAsistieron";
+            dgvDatos.Columns[5].HeaderText = "TotalFaltaron";
 
         }
         public void MostrarRegistros()
