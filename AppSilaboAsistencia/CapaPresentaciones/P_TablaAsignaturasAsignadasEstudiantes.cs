@@ -162,13 +162,16 @@ namespace CapaPresentaciones
                         }
                         else
                         {
-                            // Eliminar de la tabla matricula 
-                            ObjEntidadMatricula.CodSemestre = CodSemestre;
-                            ObjEntidadMatricula.CodEscuelaP = CodAsignatura.Substring(6);
-                            ObjEntidadMatricula.CodAsignatura = CodAsignatura;
-                            ObjEntidadMatricula.CodEstudiante = codigo;
-                            ObjNegocioMatricula.EliminarMatricula(ObjEntidadMatricula);
-                            desmatriculados += 1;
+                            if (codigo != "")
+                            {
+                                // Eliminar de la tabla matricula 
+                                ObjEntidadMatricula.CodSemestre = CodSemestre;
+                                ObjEntidadMatricula.CodEscuelaP = CodAsignatura.Substring(6);
+                                ObjEntidadMatricula.CodAsignatura = CodAsignatura;
+                                ObjEntidadMatricula.CodEstudiante = codigo;
+                                ObjNegocioMatricula.EliminarMatricula(ObjEntidadMatricula);
+                                desmatriculados += 1;
+                            }
                         }
                     }
                     // Agregar los estudiantes que quedan en la lista actualizada
