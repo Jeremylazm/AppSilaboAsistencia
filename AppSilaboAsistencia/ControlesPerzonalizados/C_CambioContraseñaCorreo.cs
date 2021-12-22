@@ -13,11 +13,13 @@ namespace ControlesPerzonalizados
         string codigo_verificacion = "";
         string Usuario;
         string Correo;
-        string CorreoValido;
+        string CorreoVálido;
         bool Usuario_Lleno = false;
         readonly A_Validador Validador;
-        public C_CambioContraseñaCorreo()
+        public C_CambioContraseñaCorreo(string pUsuario, string pCorreoVálido)
         {
+            Usuario = pUsuario;
+            CorreoVálido = pCorreoVálido;
             Validador = new A_Validador();
             InitializeComponent();
         }
@@ -30,7 +32,6 @@ namespace ControlesPerzonalizados
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
             Correo = txtUsuario.Text + lblDominio.Text;
-            Usuario = txtUsuario.Text;
             Verificar();
         }
 
@@ -51,7 +52,7 @@ namespace ControlesPerzonalizados
             }
             else if (ans == "Correo no Válido")
             {
-                MensajeError("Correo ingresado no es igual al correo que aparece en el perfil");
+                MensajeError("El correo ingresado no es igual al correo que aparece en el perfil");
             }
             else
             {
@@ -71,13 +72,12 @@ namespace ControlesPerzonalizados
         public string validarpanelEnviarCodigo(string correoIngresado) //Cambiar
         {
             if (Usuario_Lleno)
-                return EnviarCodigo(correoIngresado);//Borrar o no?
-            /*
-                if (correoIngresado == CorreoValido)
+            {
+                if (correoIngresado == CorreoVálido)
                     return EnviarCodigo(correoIngresado);
                 else
                     return "Correo no Válido";
-            */
+            }
             else
                 return "Correo Vacío";
         }

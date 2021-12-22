@@ -34,6 +34,7 @@ namespace CapaPresentaciones
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
+            this.lblCorreoVerdadero = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblCodVerificacion = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblUsuario = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblCorreo = new Bunifu.UI.WinForms.BunifuLabel();
@@ -47,7 +48,6 @@ namespace CapaPresentaciones
             this.lnPaso3 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.lnPaso2 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.lblCorreoVerdadero = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPaso1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPaso2)).BeginInit();
@@ -141,6 +141,22 @@ namespace CapaPresentaciones
             this.pnContenedor.ShowBorders = true;
             this.pnContenedor.Size = new System.Drawing.Size(791, 453);
             this.pnContenedor.TabIndex = 17;
+            // 
+            // lblCorreoVerdadero
+            // 
+            this.lblCorreoVerdadero.AllowParentOverrides = false;
+            this.lblCorreoVerdadero.AutoEllipsis = false;
+            this.lblCorreoVerdadero.CursorType = null;
+            this.lblCorreoVerdadero.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblCorreoVerdadero.Location = new System.Drawing.Point(273, 100);
+            this.lblCorreoVerdadero.Name = "lblCorreoVerdadero";
+            this.lblCorreoVerdadero.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblCorreoVerdadero.Size = new System.Drawing.Size(58, 15);
+            this.lblCorreoVerdadero.TabIndex = 24;
+            this.lblCorreoVerdadero.Text = "CORREO_V";
+            this.lblCorreoVerdadero.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblCorreoVerdadero.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblCorreoVerdadero.Visible = false;
             // 
             // lblCodVerificacion
             // 
@@ -338,22 +354,6 @@ namespace CapaPresentaciones
             // 
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this.pnContenedor;
-            // 
-            // lblCorreoVerdadero
-            // 
-            this.lblCorreoVerdadero.AllowParentOverrides = false;
-            this.lblCorreoVerdadero.AutoEllipsis = false;
-            this.lblCorreoVerdadero.CursorType = null;
-            this.lblCorreoVerdadero.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblCorreoVerdadero.Location = new System.Drawing.Point(273, 100);
-            this.lblCorreoVerdadero.Name = "lblCorreoVerdadero";
-            this.lblCorreoVerdadero.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblCorreoVerdadero.Size = new System.Drawing.Size(58, 15);
-            this.lblCorreoVerdadero.TabIndex = 24;
-            this.lblCorreoVerdadero.Text = "CORREO_V";
-            this.lblCorreoVerdadero.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.lblCorreoVerdadero.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            this.lblCorreoVerdadero.Visible = false;
             // 
             // P_CambioContraseña
             // 

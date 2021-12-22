@@ -14,11 +14,13 @@ namespace CapaPresentaciones
 {
     public partial class P_CambioContraseña : Form
     {
-        public P_CambioContraseña()
+        public P_CambioContraseña(string CorreoVálido)
         {
             InitializeComponent();
+            lblCorreoVerdadero.Text = CorreoVálido;
             lblCorreo.Text = E_InicioSesion.Usuario;
-            pnPasos.Controls.Add(new C_CambioContraseñaCorreo());
+            lblUsuario.Text = E_InicioSesion.Usuario;
+            pnPasos.Controls.Add(new C_CambioContraseñaCorreo(lblUsuario.Text, lblCorreoVerdadero.Text));
             pnPasos.Controls.Add(new C_CambioContraseñaCodigo());
             pnPasos.Controls.Add(new C_CambioContraseñaNueva());
         }

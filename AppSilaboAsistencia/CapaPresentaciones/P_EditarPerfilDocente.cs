@@ -9,6 +9,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using Bunifu.UI.WinForms;
 using CapaPresentaciones.Ayudas;
+using System.Linq;
 
 namespace CapaPresentaciones
 {
@@ -22,7 +23,7 @@ namespace CapaPresentaciones
         readonly N_Docente ObjNegocio = new N_Docente();
 
         // Inicializar atributos constantes (no modificables por el docente)
-        public string Usuario = "";
+        public string UsuarioE = "";
         private string APaterno = "";
         private string AMaterno = "";
         private string Nombre = "";
@@ -39,7 +40,7 @@ namespace CapaPresentaciones
         private void CargarDatosUsuario()
         {
             // Buscar sus datos del docente con su usuario
-            DataTable Datos = N_Docente.BuscarDocente("IF", Usuario);
+            DataTable Datos = N_Docente.BuscarDocente("IF", UsuarioE);
 
             // Obtener la primera fila con los datos
             object[] Fila = Datos.Rows[0].ItemArray;
@@ -214,16 +215,17 @@ namespace CapaPresentaciones
 
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
         {
-            P_CambioContraseña C = new P_CambioContraseña();
+            Form CambioContraseña = ParentForm.Controls.Find("pnPrincipal", false)[0].Controls.Find("pnContenedor", false)[0].Controls.OfType<P_CambioContraseña>().FirstOrDefault();
+            CambioContraseña = new P_CambioContraseña(txtEmail.Text)
+            {
+                TopLevel = false,
+                Dock = DockStyle.Fill
+            };
 
-            /*
-            BunifuLabel UsuarioMC = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
-            UsuarioMC.Text = lblCodigo2.Text;
-            BunifuLabel CorreoVerdaderoMC = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblCorreoVerdadero", false)[0];
-            CorreoVerdaderoMC.Text = txtEmail.Text;
-            */
+            ParentForm.Controls.Find("pnPrincipal", false)[0].Controls.Find("pnContenedor", false)[0].Controls.Add(CambioContraseña);
 
-            C.Show();
+            CambioContraseña.Show();
+            CambioContraseña.BringToFront();
         }
       
         private void txtEmail_TextChange(object sender, EventArgs e)
