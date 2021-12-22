@@ -46,6 +46,7 @@ namespace CapaPresentaciones
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
+           
             Close();
         }
 
@@ -101,10 +102,10 @@ namespace CapaPresentaciones
                 // Completar información
 
                 // Nombre y código del curso
-                wb.Worksheet(1).Cell("A3").Value = dtDatosAsignatura.Rows[0]["NombreAsignatura"].ToString() + " (" + CodAsignatura + ")";
+                wb.Worksheet(1).Cell("A4").Value = dtDatosAsignatura.Rows[0]["NombreAsignatura"].ToString() + " (" + CodAsignatura + ")";
 
                 // Semestre
-                wb.Worksheet(1).Cell("A4").Value = wb.Worksheet(1).Cell("A4").Value + "2021-II";
+                wb.Worksheet(1).Cell("A5").Value = wb.Worksheet(1).Cell("A5").Value + "2021-II";
 
                 // Completar información del docente
                 DataTable dtDatosDocente = N_Docente.BuscarDocente(CodAsignatura.Substring(0, 2), CodDocente);
@@ -113,7 +114,7 @@ namespace CapaPresentaciones
                 string AMaterno = dtDatosDocente.Rows[0]["AMaterno"].ToString();
 
                 // Nombre del docente
-                wb.Worksheet(1).Cell("A5").Value = wb.Worksheet(1).Cell("A5").Value + " " + APaterno + "-" + AMaterno + "-" + Nombre; 
+                wb.Worksheet(1).Cell("A6").Value = wb.Worksheet(1).Cell("A6").Value + " " + APaterno + "-" + AMaterno + "-" + Nombre; 
 
                 // Guardar el archivo
                 saveFileDialog.FileName = "Plantilla Plan de Sesiones - " + CodAsignatura;

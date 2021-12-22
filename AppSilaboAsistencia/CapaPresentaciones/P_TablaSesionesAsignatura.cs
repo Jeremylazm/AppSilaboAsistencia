@@ -12,12 +12,13 @@ using CapaNegocios;
 using CapaPresentaciones.Ayudas;
 using CapaEntidades;
 
+
 namespace CapaPresentaciones
 {
     public partial class P_TablaSesionesAsignatura : Form
     {
         readonly private string CodAsignatura;
-
+        private readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly DataTable Asignaturas;
 
         public P_TablaSesionesAsignatura(string CodAsignatura)
@@ -25,7 +26,11 @@ namespace CapaPresentaciones
             this.CodAsignatura = CodAsignatura;
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
+
+            
+
             Asignaturas = N_Catalogo.BuscarPlanSesionesAsignatura(CodAsignatura.Substring(0, 5), E_InicioSesion.Usuario);
+
             MostrarAsignaturas();
         }
 
