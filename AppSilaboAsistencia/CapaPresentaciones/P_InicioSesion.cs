@@ -2,7 +2,7 @@
 using CapaEntidades;
 using CapaNegocios;
 using System;
-using CapaPresentaciones.Ayudas;
+using Ayudas;
 
 namespace CapaPresentaciones
 {

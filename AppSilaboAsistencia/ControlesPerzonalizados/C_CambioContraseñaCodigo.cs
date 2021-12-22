@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
-using ControlesPerzonalizados.Ayudas;
+using Ayudas;
 using ControlesPerzonalizados;
 using Bunifu.UI.WinForms;
 

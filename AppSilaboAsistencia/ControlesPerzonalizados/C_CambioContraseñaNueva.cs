@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Bunifu.UI.WinForms;
-using ControlesPerzonalizados.Ayudas;
+using Ayudas;
 using CapaNegocios;
 
 namespace ControlesPerzonalizados

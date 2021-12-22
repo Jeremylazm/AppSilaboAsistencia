@@ -5,7 +5,7 @@ using System.Linq;
 using CapaEntidades;
 using System.IO;
 using System.Drawing.Drawing2D;
-using CapaPresentaciones.Ayudas;
+using Ayudas;
 
 namespace CapaPresentaciones
 {

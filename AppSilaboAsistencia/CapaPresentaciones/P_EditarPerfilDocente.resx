@@ -216,10 +216,10 @@
 </value>
   </data>
   <data name="lblErrorEmail.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: -8px;font-family: 'Montserrat Alternates'; font-size: 9,749999pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
+    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 9.749999pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
   </data>
   <data name="lblErrorTelefono.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: -8px;font-family: 'Montserrat Alternates'; font-size: 9,749999pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
+    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 9.749999pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
   </data>
   <data name="lblRegimen2.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; font-family: 'Montserrat Alternates'; font-size: 13pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: left; }</value>
@@ -1197,23 +1197,25 @@
   </data>
   <data name="txtTelefono.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAMQAAAAYCAYAAAClWlI/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAySURBVHhe7cMBDQAwCACgF/DWtKXRNIiw8QAAAAAAAAAA
-        AAAAAAAAAAAAOK3id0WOmrM4LSgbOU8uqQAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAMQAAAAqCAYAAADs6PSZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABBSURBVHhe7cMBCQAwCACwF/DWtKXRNIewwR4AAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAeRW/K3LUnAVvXygbEu3VQwAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="txtDireccion.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAUoAAAAYCAYAAACcGLRNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABCSURBVHhe7cMBDQAgCAAwCyA1aUk0LGAC9m8/AAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACsUHG7IkfV35wHcUHyrZBV2O0AAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAAUoAAAAqCAYAAADVqhLrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABZSURBVHhe7cMBDQAgCAAwCyA1aUk0LGAD/u0HAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGUqblfkqPqb8wDOI/Kt
+        906JMgAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="txtEmail.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAUoAAAAYCAYAAACcGLRNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABCSURBVHhe7cMBDQAgCAAwCyA1aUk0LGAC9m8/AAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACsUHG7IkfV35wHcUHyrZBV2O0AAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAAUoAAAAqCAYAAADVqhLrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABZSURBVHhe7cMBDQAgCAAwCyA1aUk0LGAD/u0HAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgGUqblfkqPqb8wDOI/Kt
+        906JMgAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="lblEscuelaP2.BaseStylesheet" xml:space="preserve">
