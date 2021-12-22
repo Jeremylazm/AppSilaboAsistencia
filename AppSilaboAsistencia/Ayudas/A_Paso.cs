@@ -17,10 +17,10 @@ namespace Ayudas
 
         public void Siguiente(Form FormularioPadre, string Actual, string Siguiente, string NombrePaginaSiguiente)
         {
-            BunifuPictureBox PictureActual = (BunifuPictureBox)Contenedor(FormularioPadre).Controls.Find("pb" + Actual, false)[0];
+            PictureBox PictureActual = (PictureBox)Contenedor(FormularioPadre).Controls.Find("pb" + Actual, false)[0];
             PictureActual.Image = Properties.Resources.Circulo_Checked;
 
-            BunifuPictureBox PictureSiguiente = (BunifuPictureBox)Contenedor(FormularioPadre).Controls.Find("pb" + Siguiente, false)[0];
+            PictureBox PictureSiguiente = (PictureBox)Contenedor(FormularioPadre).Controls.Find("pb" + Siguiente, false)[0];
             PictureSiguiente.Image = Properties.Resources.Circulo_Unchecked;
 
             BunifuLabel LabelSiguiente = (BunifuLabel)Contenedor(FormularioPadre).Controls.Find("lbl" + Siguiente, false)[0];
@@ -35,7 +35,7 @@ namespace Ayudas
 
         public void Atras(Form FormularioPadre, string Actual, string Anterior, string NombrePaginaAnterior)
         {
-            BunifuPictureBox PictureActual = (BunifuPictureBox)Contenedor(FormularioPadre).Controls.Find("pb" + Actual, false)[0];
+            PictureBox PictureActual = (PictureBox)Contenedor(FormularioPadre).Controls.Find("pb" + Actual, false)[0];
             PictureActual.Image = Properties.Resources.Circulo;
 
             BunifuLabel LabelActual = (BunifuLabel)Contenedor(FormularioPadre).Controls.Find("lbl" + Actual, false)[0];
@@ -44,7 +44,7 @@ namespace Ayudas
             BunifuSeparator SeparatorActual = (BunifuSeparator)Contenedor(FormularioPadre).Controls.Find("ln" + Actual, false)[0];
             SeparatorActual.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
 
-            BunifuPictureBox PictureAnterior = (BunifuPictureBox)Contenedor(FormularioPadre).Controls.Find("pb" + Anterior, false)[0];
+            PictureBox PictureAnterior = (PictureBox)Contenedor(FormularioPadre).Controls.Find("pb" + Anterior, false)[0];
             PictureAnterior.Image = Properties.Resources.Circulo_Unchecked;
 
             Contenedor(FormularioPadre).Controls.Find("pnPasos", false)[0].Controls.Find(NombrePaginaAnterior, false)[0].BringToFront();

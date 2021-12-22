@@ -37,7 +37,7 @@ namespace ControlesPerzonalizados
 
             if (ans == "Error Enviar Código")
             {
-                A_Dialogo.DialogoError("Error al enviar el códiog de verificación");
+                A_Dialogo.DialogoError("Error al enviar el código de verificación");
                 //MessageBox.Show("El código no se pudo enviar");
             }
             else if (ans == "Correo no Válido")
@@ -100,7 +100,7 @@ namespace ControlesPerzonalizados
                 mailDetails.Subject = "Código de verificación";
                 mailDetails.IsBodyHtml = true;
                 mailDetails.Body = "Ingresa el siguiente código: " + s;
-
+                //MessageBox.Show(s);
                 clientDetails.Send(mailDetails);
                 return s;
             }
