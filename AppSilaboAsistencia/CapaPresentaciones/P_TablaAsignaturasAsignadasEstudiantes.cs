@@ -6,7 +6,7 @@ using OpenQA.Selenium.Chrome;
 using CapaNegocios;
 using System.Data;
 using CapaEntidades;
-using CapaPresentaciones.Ayudas;
+using Ayudas;
 
 namespace CapaPresentaciones
 {

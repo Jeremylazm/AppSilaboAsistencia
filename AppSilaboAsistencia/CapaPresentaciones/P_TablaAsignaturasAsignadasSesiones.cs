@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using CapaNegocios;
 using ClosedXML.Excel;
 using CapaEntidades;
-using CapaPresentaciones.Ayudas;
+using Ayudas;
 
 namespace CapaPresentaciones
 {

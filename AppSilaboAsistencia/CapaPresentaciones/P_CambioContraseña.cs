@@ -20,9 +20,21 @@ namespace CapaPresentaciones
             lblCorreoVerdadero.Text = CorreoVálido;
             lblCorreo.Text = E_InicioSesion.Usuario;
             lblUsuario.Text = E_InicioSesion.Usuario;
-            pnPasos.Controls.Add(new C_CambioContraseñaCorreo(lblUsuario.Text, lblCorreoVerdadero.Text));
-            pnPasos.Controls.Add(new C_CambioContraseñaCodigo());
-            pnPasos.Controls.Add(new C_CambioContraseñaNueva());
+            C_CambioContraseñaCorreo Correo = new C_CambioContraseñaCorreo(lblUsuario.Text, lblCorreoVerdadero.Text)
+            {
+                Dock = DockStyle.Fill
+            };
+            pnPasos.Controls.Add(Correo);
+            C_CambioContraseñaCodigo Codigo = new C_CambioContraseñaCodigo()
+            {
+                Dock = DockStyle.Fill
+            };
+            pnPasos.Controls.Add(Codigo);
+            C_CambioContraseñaNueva Nueva = new C_CambioContraseñaNueva()
+            {
+                Dock = DockStyle.Fill
+            };
+            pnPasos.Controls.Add(Nueva);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

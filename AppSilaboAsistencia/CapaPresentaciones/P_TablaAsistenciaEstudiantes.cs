@@ -12,7 +12,7 @@ using CapaEntidades;
 using System.IO;
 using SpreadsheetLight;
 using ClosedXML.Excel;
-using CapaPresentaciones.Ayudas;
+using Ayudas;
 
 namespace CapaPresentaciones
 {

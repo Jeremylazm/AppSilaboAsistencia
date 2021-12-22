@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocios;
-using CapaPresentaciones.Ayudas;
+using Ayudas;
 using CapaEntidades;
 
 

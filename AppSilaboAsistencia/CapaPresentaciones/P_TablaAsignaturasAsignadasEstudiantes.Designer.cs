@@ -355,7 +355,7 @@ namespace CapaPresentaciones
             // btnActualizar
             // 
             this.btnActualizar.HeaderText = "Actualizar";
-            this.btnActualizar.Image = global::CapaPresentaciones.Properties.Resources.Descargar_2;
+            this.btnActualizar.Image = global::CapaPresentaciones.Properties.Resources.Actualizar;
             this.btnActualizar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.ReadOnly = true;
