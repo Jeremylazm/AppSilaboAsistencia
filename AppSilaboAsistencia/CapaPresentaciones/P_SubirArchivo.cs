@@ -122,6 +122,7 @@ namespace CapaPresentaciones
 
             Process.Start(fullFilePath);
             */
+            Program.Evento = 0;
             Close();
         }
     }
