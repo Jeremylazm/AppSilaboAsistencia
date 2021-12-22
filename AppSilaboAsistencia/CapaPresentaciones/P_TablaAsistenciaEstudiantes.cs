@@ -30,7 +30,7 @@ namespace CapaPresentaciones
         private DataTable PlanSesion;
         public DataTable dgvTabla;
         public string horainicioAsignatura;
-        public string LmFechaInf = "15/12/2021";
+        public string LmFechaInf = "18/12/2021";
         
         public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente, DataTable pdgv)
         {

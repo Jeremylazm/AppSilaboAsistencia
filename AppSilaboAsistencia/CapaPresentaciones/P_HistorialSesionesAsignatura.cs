@@ -19,7 +19,7 @@ namespace CapaPresentaciones
         //public string CodDocente;
 
         public string CodSemestre;
-        public string LimtFechaInf = "14/12/2021";
+        public string LimtFechaInf = "18/12/2021";
         public string LimtFechaSup = DateTime.Now.ToString("dd/MM/yyyy").ToString();
 
         public P_HistorialSesionesAsignatura(string pCodAsignatura, string pCodDocente)
