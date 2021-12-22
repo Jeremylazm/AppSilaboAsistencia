@@ -128,11 +128,11 @@ namespace CapaPresentaciones
 
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
-
             // Estudiantes
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
+                string CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
+
                 P_TablaEstudiantesAsignatura Estudiantes = new P_TablaEstudiantesAsignatura(CodAsignatura);
 
                 Estudiantes.ShowDialog();
@@ -142,6 +142,8 @@ namespace CapaPresentaciones
             // Actualizar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
+                string CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
+
                 List<Tuple<string, string>> ListaActualizada = Parse(CodAsignatura);
                 if (ListaActualizada != null)
                 {
