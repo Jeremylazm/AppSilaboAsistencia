@@ -353,6 +353,7 @@ namespace ControlesPerzonalizados
             this.txtCodigoVerificacion.UseSystemPasswordChar = false;
             this.txtCodigoVerificacion.WordWrap = true;
             this.txtCodigoVerificacion.TextChanged += new System.EventHandler(this.txtCodigoVerificacion_TextChanged);
+            this.txtCodigoVerificacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoVerificacion_KeyPress);
             // 
             // lblCodigoVerificacion
             // 

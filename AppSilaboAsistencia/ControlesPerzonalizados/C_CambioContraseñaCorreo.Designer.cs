@@ -429,6 +429,7 @@ namespace ControlesPerzonalizados
             this.txtUsuario.UseSystemPasswordChar = false;
             this.txtUsuario.WordWrap = true;
             this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChange);
+            this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
             // lblCorreo
             // 

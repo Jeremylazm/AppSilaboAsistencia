@@ -522,6 +522,7 @@ namespace ControlesPerzonalizados
             this.txtConfirmarContraseña.UseSystemPasswordChar = false;
             this.txtConfirmarContraseña.WordWrap = true;
             this.txtConfirmarContraseña.TextChanged += new System.EventHandler(this.txtConfirmarContraseña_TextChanged);
+            this.txtConfirmarContraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtConfirmarContraseña_KeyPress);
             // 
             // lblConfirmarContraseña
             // 
@@ -620,6 +621,7 @@ namespace ControlesPerzonalizados
             this.txtContraseñaNueva.UseSystemPasswordChar = false;
             this.txtContraseñaNueva.WordWrap = true;
             this.txtContraseñaNueva.TextChanged += new System.EventHandler(this.txtContraseñaNueva_TextChanged);
+            this.txtContraseñaNueva.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseñaNueva_KeyPress);
             // 
             // lblContraseñaNueva
             // 
@@ -718,6 +720,7 @@ namespace ControlesPerzonalizados
             this.txtContraseñaAnterior.UseSystemPasswordChar = false;
             this.txtContraseñaAnterior.WordWrap = true;
             this.txtContraseñaAnterior.TextChanged += new System.EventHandler(this.txtContraseñaAnterior_TextChanged);
+            this.txtContraseñaAnterior.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseñaAnterior_KeyPress);
             // 
             // lblContraseñaAnterior
             // 
