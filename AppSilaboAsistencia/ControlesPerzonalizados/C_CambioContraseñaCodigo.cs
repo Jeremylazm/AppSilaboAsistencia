@@ -2,8 +2,7 @@
 using System.Net;
 using System.Net.Mail;
 using System.Windows.Forms;
-using ControlesPerzonalizados.Ayudas;
-using ControlesPerzonalizados;
+using Ayudas;
 using Bunifu.UI.WinForms;
 
 namespace ControlesPerzonalizados
@@ -21,16 +20,6 @@ namespace ControlesPerzonalizados
             InitializeComponent();
         }
 
-        private void MensajeError(string Mensaje)
-        {
-            MessageBox.Show(Mensaje, "Sistema Sílabo Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        } //Listo
-
-        private void btnAtras_Click(object sender, EventArgs e)
-        {
-            new A_Paso().Atras(ParentForm, "Paso2", "Paso1", "C_CambioContraseñaCorreo");
-        } //Listo
-
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
             if (CodigoVerificacion_Lleno)
@@ -43,7 +32,9 @@ namespace ControlesPerzonalizados
                 }
             }
             else
-                MensajeError("Campo código de verificación vacío, intente de nuevo");
+            {
+                Validador.EnfocarCursor(txtCodigoVerificacion);
+            }
         } //Listo
 
         private bool ValidarCodigo()
@@ -51,7 +42,7 @@ namespace ControlesPerzonalizados
             string ans = validarpanelVerificarCodigo(codigo_verificacion, txtCodigoVerificacion.Text);
             if (ans == "Código no Coincide") // codigo ingresado incorrecto
             {
-                MensajeError("Los códigos no coinciden, intente de nuevo");
+                A_Dialogo.DialogoError("Los códigos no coinciden, intente de nuevo");
                 txtCodigoVerificacion.Text = "";
                 return false;
             }
@@ -107,7 +98,8 @@ namespace ControlesPerzonalizados
             catch (Exception ex)
             {
                 // Mostrar error
-                MessageBox.Show(ex.Message);
+                A_Dialogo.DialogoError("Error al enviar el código de verificación");
+                //MessageBox.Show(ex.Message);
                 return "-1";
             }
         }
@@ -122,19 +114,6 @@ namespace ControlesPerzonalizados
             BunifuLabel CodigoVerificacionCC = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblCodVerificacion", false)[0];
             codigo_verificacion = CodigoVerificacionCC.Text;
             lblEmail.Text = Email;
-        }
-
-        private void C_CambioContraseñaCodigo_MouseEnter(object sender, EventArgs e)
-        {
-            //MessageBox.Show(ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblCorreo", false).Length.ToString());
-            //BunifuLabel CorreoE = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblCorreo", false)[0];
-            //lblEmail.Text = CorreoE.Text;
-        }
-
-        private void btnSiguiente_MouseEnter(object sender, EventArgs e)
-        {
-            //BunifuLabel CorreoE = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblCorreo", false)[0];
-            //lblEmail.Text = CorreoE.Text;
         }
 
         private void txtCodigoVerificacion_TextChange(object sender, EventArgs e)

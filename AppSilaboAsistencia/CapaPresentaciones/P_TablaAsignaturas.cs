@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
-using CapaPresentaciones.Ayudas;
+using Ayudas;
 using System.Drawing;
 
 namespace CapaPresentaciones
@@ -19,16 +19,6 @@ namespace CapaPresentaciones
 			InitializeComponent();
 			MostrarRegistros();
 			Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
-		}
-		
-		private void MensajeConfirmacion(string Mensaje)
-		{
-			MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-		}
-
-		private void MensajeError(string Mensaje)
-		{
-			MessageBox.Show(Mensaje, "Sistema de Gestión de Sílabo y Control de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
 
 		public void AccionesTabla()
@@ -102,7 +92,6 @@ namespace CapaPresentaciones
 
                 Fondo.Dispose();
             }
-            
         }
 
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)

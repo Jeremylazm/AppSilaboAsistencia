@@ -109,8 +109,6 @@ namespace CapaPresentaciones
             this.lblErrorTelefono = new Bunifu.UI.WinForms.BunifuLabel();
             this.pbErrorCorreo = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblErrorCorreo = new Bunifu.UI.WinForms.BunifuLabel();
-            this.pbErrorDireccion = new Bunifu.UI.WinForms.BunifuImageButton();
-            this.lblErrorDireccion = new Bunifu.UI.WinForms.BunifuLabel();
             this.pbPerfil = new DreamTeamControls.DreamTeamPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).BeginInit();
             this.SuspendLayout();
@@ -688,8 +686,6 @@ namespace CapaPresentaciones
             this.txtDireccion.TextPlaceholder = "Escriba su dirección";
             this.txtDireccion.UseSystemPasswordChar = false;
             this.txtDireccion.WordWrap = true;
-            this.txtDireccion.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
-            this.txtDireccion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDireccion_KeyPress);
             // 
             // lblDireccion
             // 
@@ -1487,7 +1483,7 @@ namespace CapaPresentaciones
             this.btnRestablecerPerfil.IdleBorderRadius = 15;
             this.btnRestablecerPerfil.IdleBorderThickness = 1;
             this.btnRestablecerPerfil.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnRestablecerPerfil.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Restablecer_Perfil;
+            this.btnRestablecerPerfil.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.RestablecerImagen;
             this.btnRestablecerPerfil.IdleIconRightImage = null;
             this.btnRestablecerPerfil.IndicateFocus = false;
             this.btnRestablecerPerfil.Location = new System.Drawing.Point(273, 522);
@@ -1514,7 +1510,7 @@ namespace CapaPresentaciones
             this.btnRestablecerPerfil.OnIdleState.BorderThickness = 1;
             this.btnRestablecerPerfil.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnRestablecerPerfil.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnRestablecerPerfil.OnIdleState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Restablecer_Perfil;
+            this.btnRestablecerPerfil.OnIdleState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.RestablecerImagen;
             this.btnRestablecerPerfil.OnIdleState.IconRightImage = null;
             this.btnRestablecerPerfil.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnRestablecerPerfil.OnPressedState.BorderRadius = 15;
@@ -1577,7 +1573,7 @@ namespace CapaPresentaciones
             this.btnSubirPerfil.IdleBorderRadius = 15;
             this.btnSubirPerfil.IdleBorderThickness = 1;
             this.btnSubirPerfil.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnSubirPerfil.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Subir_Perfil;
+            this.btnSubirPerfil.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.SubirImagen;
             this.btnSubirPerfil.IdleIconRightImage = null;
             this.btnSubirPerfil.IndicateFocus = false;
             this.btnSubirPerfil.Location = new System.Drawing.Point(18, 522);
@@ -1604,7 +1600,7 @@ namespace CapaPresentaciones
             this.btnSubirPerfil.OnIdleState.BorderThickness = 1;
             this.btnSubirPerfil.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnSubirPerfil.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnSubirPerfil.OnIdleState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Subir_Perfil;
+            this.btnSubirPerfil.OnIdleState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.SubirImagen;
             this.btnSubirPerfil.OnIdleState.IconRightImage = null;
             this.btnSubirPerfil.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnSubirPerfil.OnPressedState.BorderRadius = 15;
@@ -1947,60 +1943,6 @@ namespace CapaPresentaciones
             this.lblErrorCorreo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.lblErrorCorreo.Visible = false;
             // 
-            // pbErrorDireccion
-            // 
-            this.pbErrorDireccion.ActiveImage = null;
-            this.pbErrorDireccion.AllowAnimations = true;
-            this.pbErrorDireccion.AllowBuffering = false;
-            this.pbErrorDireccion.AllowToggling = false;
-            this.pbErrorDireccion.AllowZooming = false;
-            this.pbErrorDireccion.AllowZoomingOnFocus = false;
-            this.pbErrorDireccion.BackColor = System.Drawing.Color.White;
-            this.pbErrorDireccion.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pbErrorDireccion.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.pbErrorDireccion.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbErrorDireccion.ErrorImage")));
-            this.pbErrorDireccion.FadeWhenInactive = false;
-            this.pbErrorDireccion.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            this.pbErrorDireccion.Image = global::CapaPresentaciones.Properties.Resources.Dialogo_Error;
-            this.pbErrorDireccion.ImageActive = null;
-            this.pbErrorDireccion.ImageLocation = null;
-            this.pbErrorDireccion.ImageMargin = 0;
-            this.pbErrorDireccion.ImageSize = new System.Drawing.Size(18, 18);
-            this.pbErrorDireccion.ImageZoomSize = new System.Drawing.Size(18, 18);
-            this.pbErrorDireccion.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorDireccion.InitialImage")));
-            this.pbErrorDireccion.Location = new System.Drawing.Point(328, 495);
-            this.pbErrorDireccion.Name = "pbErrorDireccion";
-            this.pbErrorDireccion.Rotation = 0;
-            this.pbErrorDireccion.ShowActiveImage = false;
-            this.pbErrorDireccion.ShowCursorChanges = false;
-            this.pbErrorDireccion.ShowImageBorders = true;
-            this.pbErrorDireccion.ShowSizeMarkers = false;
-            this.pbErrorDireccion.Size = new System.Drawing.Size(18, 18);
-            this.pbErrorDireccion.TabIndex = 77;
-            this.pbErrorDireccion.ToolTipText = "";
-            this.pbErrorDireccion.Visible = false;
-            this.pbErrorDireccion.WaitOnLoad = false;
-            this.pbErrorDireccion.Zoom = 0;
-            this.pbErrorDireccion.ZoomSpeed = 10;
-            // 
-            // lblErrorDireccion
-            // 
-            this.lblErrorDireccion.AllowParentOverrides = false;
-            this.lblErrorDireccion.AutoEllipsis = false;
-            this.lblErrorDireccion.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblErrorDireccion.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblErrorDireccion.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblErrorDireccion.Location = new System.Drawing.Point(352, 493);
-            this.lblErrorDireccion.Name = "lblErrorDireccion";
-            this.lblErrorDireccion.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblErrorDireccion.Size = new System.Drawing.Size(117, 19);
-            this.lblErrorDireccion.TabIndex = 76;
-            this.lblErrorDireccion.Text = "Error de Dirección";
-            this.lblErrorDireccion.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblErrorDireccion.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            this.lblErrorDireccion.Visible = false;
-            // 
             // pbPerfil
             // 
             this.pbPerfil.BackColor = System.Drawing.Color.Transparent;
@@ -2025,8 +1967,6 @@ namespace CapaPresentaciones
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(933, 580);
-            this.Controls.Add(this.pbErrorDireccion);
-            this.Controls.Add(this.lblErrorDireccion);
             this.Controls.Add(this.pbErrorCorreo);
             this.Controls.Add(this.lblErrorCorreo);
             this.Controls.Add(this.pbErrorTelefono);
@@ -2076,6 +2016,7 @@ namespace CapaPresentaciones
             this.Name = "P_DatosDocente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos de Docente";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -2129,8 +2070,6 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuLabel lblErrorAMaterno;
         private Bunifu.UI.WinForms.BunifuImageButton pbErrorAPaterno;
         private Bunifu.UI.WinForms.BunifuLabel lblErrorAPaterno;
-        private Bunifu.UI.WinForms.BunifuImageButton pbErrorDireccion;
-        private Bunifu.UI.WinForms.BunifuLabel lblErrorDireccion;
         private Bunifu.UI.WinForms.BunifuImageButton pbErrorCorreo;
         private Bunifu.UI.WinForms.BunifuLabel lblErrorCorreo;
     }

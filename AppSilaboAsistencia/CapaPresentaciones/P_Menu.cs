@@ -5,7 +5,7 @@ using System.Linq;
 using CapaEntidades;
 using System.IO;
 using System.Drawing.Drawing2D;
-using CapaPresentaciones.Ayudas;
+using Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -84,14 +84,21 @@ namespace CapaPresentaciones
         {
             if (Acceso == "Administrador")
             {
-                /*btnTutorias.Visible = false;
-                btnTutorados.Visible = false;
+                btnEditarPerfil.Visible = false;
+                pbEditarPerfil.Visible = false;
+
+                btnAsignaturasAsignadas.Visible = false;
+                btnAsistencia.Visible = false;
+                btnSilabos.Visible = false;
+                btnSesiones.Visible = false;
+
+                btnCatálogo.Visible = true;
+                btnAsignaturas.Visible = true;
                 btnDocentes.Visible = true;
-                btnTutores.Visible = true;
-                btnEstudiantes.Visible = true;
-                btnMiTutor.Visible = false;
-                btnSolicitarCita.Visible = false;
-                separador.Visible = false;*/
+
+                btnCatálogo.Location = new Point(0, 332);
+                btnAsignaturas.Location = new Point(0, 373);
+                btnDocentes.Location = new Point(0, 414);
 
                 // Administrador 
             }
