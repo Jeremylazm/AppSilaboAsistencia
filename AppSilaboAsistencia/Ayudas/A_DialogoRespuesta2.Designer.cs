@@ -30,10 +30,10 @@ namespace Ayudas
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuAnimatorNS.Animation animation1 = new Bunifu.UI.WinForms.BunifuAnimatorNS.Animation();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuAnimatorNS.Animation animation2 = new Bunifu.UI.WinForms.BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(A_DialogoRespuesta2));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.FormAparicion = new System.Windows.Forms.Timer(this.components);
@@ -83,11 +83,11 @@ namespace Ayudas
             this.btnVerdadero.ColorContrastOnClick = 45;
             this.btnVerdadero.ColorContrastOnHover = 45;
             this.btnVerdadero.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnVerdadero.CustomizableEdges = borderEdges2;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            this.btnVerdadero.CustomizableEdges = borderEdges4;
             this.ImagenAparicion.SetDecoration(this.btnVerdadero, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.btnVerdadero.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnVerdadero.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
@@ -160,22 +160,22 @@ namespace Ayudas
             // 
             this.ImagenAparicion.AnimationType = Bunifu.UI.WinForms.BunifuAnimatorNS.AnimationType.ScaleAndRotate;
             this.ImagenAparicion.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(30);
-            animation1.RotateCoeff = 0.5F;
-            animation1.RotateLimit = 0.2F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.ImagenAparicion.DefaultAnimation = animation1;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(30);
+            animation2.RotateCoeff = 0.5F;
+            animation2.RotateLimit = 0.2F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.ImagenAparicion.DefaultAnimation = animation2;
             // 
             // btnFalso
             // 
@@ -197,11 +197,11 @@ namespace Ayudas
             this.btnFalso.ColorContrastOnClick = 45;
             this.btnFalso.ColorContrastOnHover = 45;
             this.btnFalso.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnFalso.CustomizableEdges = borderEdges1;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            this.btnFalso.CustomizableEdges = borderEdges3;
             this.ImagenAparicion.SetDecoration(this.btnFalso, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.btnFalso.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnFalso.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
@@ -367,11 +367,11 @@ namespace Ayudas
             this.Docker.TitleBarOptions.TitleBarControl = null;
             this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
-            // P_DialogoRespuesta2
+            // A_DialogoRespuesta2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(429, 382);
             this.Controls.Add(this.btnFalso);
             this.Controls.Add(this.btnVerdadero);
@@ -380,9 +380,10 @@ namespace Ayudas
             this.Controls.Add(this.lblPregunta);
             this.ImagenAparicion.SetDecoration(this, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "P_DialogoRespuesta2";
+            this.Name = "A_DialogoRespuesta2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dialogo de Pregunta";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.P_DialogoRespuesta2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
             this.ResumeLayout(false);

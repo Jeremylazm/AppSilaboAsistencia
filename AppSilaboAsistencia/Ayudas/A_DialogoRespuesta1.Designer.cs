@@ -30,9 +30,9 @@ namespace Ayudas
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Bunifu.UI.WinForms.BunifuAnimatorNS.Animation animation3 = new Bunifu.UI.WinForms.BunifuAnimatorNS.Animation();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuAnimatorNS.Animation animation2 = new Bunifu.UI.WinForms.BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(A_DialogoRespuesta1));
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.BordeadoForm = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.FormAparicion = new System.Windows.Forms.Timer(this.components);
@@ -40,8 +40,8 @@ namespace Ayudas
             this.btnAceptar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.pbImagen = new System.Windows.Forms.PictureBox();
             this.lblMensaje = new Bunifu.UI.WinForms.BunifuLabel();
-            this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
+            this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,22 +65,22 @@ namespace Ayudas
             // 
             this.ImagenAparicion.AnimationType = Bunifu.UI.WinForms.BunifuAnimatorNS.AnimationType.ScaleAndRotate;
             this.ImagenAparicion.Cursor = null;
-            animation3.AnimateOnlyDifferences = true;
-            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
-            animation3.LeafCoeff = 0F;
-            animation3.MaxTime = 1F;
-            animation3.MinTime = 0F;
-            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
-            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
-            animation3.MosaicSize = 0;
-            animation3.Padding = new System.Windows.Forms.Padding(30);
-            animation3.RotateCoeff = 0.5F;
-            animation3.RotateLimit = 0.2F;
-            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
-            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
-            animation3.TimeCoeff = 0F;
-            animation3.TransparencyCoeff = 0F;
-            this.ImagenAparicion.DefaultAnimation = animation3;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(30);
+            animation2.RotateCoeff = 0.5F;
+            animation2.RotateLimit = 0.2F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.ImagenAparicion.DefaultAnimation = animation2;
             // 
             // btnAceptar
             // 
@@ -102,11 +102,11 @@ namespace Ayudas
             this.btnAceptar.ColorContrastOnClick = 45;
             this.btnAceptar.ColorContrastOnHover = 45;
             this.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            this.btnAceptar.CustomizableEdges = borderEdges3;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnAceptar.CustomizableEdges = borderEdges2;
             this.ImagenAparicion.SetDecoration(this.btnAceptar, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnAceptar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
@@ -190,7 +190,7 @@ namespace Ayudas
             // lblMensaje
             // 
             this.lblMensaje.AllowParentOverrides = false;
-            this.lblMensaje.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.lblMensaje.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMensaje.AutoEllipsis = false;
             this.lblMensaje.AutoSize = false;
@@ -208,6 +208,28 @@ namespace Ayudas
             this.lblMensaje.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblMensaje.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.lblMensaje.Visible = false;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AllowParentOverrides = false;
+            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTitulo.AutoEllipsis = false;
+            this.lblTitulo.AutoSize = false;
+            this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblTitulo.CursorType = System.Windows.Forms.Cursors.Default;
+            this.ImagenAparicion.SetDecoration(this.lblTitulo, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblTitulo.Location = new System.Drawing.Point(23, 12);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblTitulo.Size = new System.Drawing.Size(384, 52);
+            this.lblTitulo.TabIndex = 65;
+            this.lblTitulo.Text = "SISTEMA DE GESTIÓN DE SILABOS Y CONTROL DE ASISTENCIA - UNSAAC";
+            this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblTitulo.Visible = false;
             // 
             // Docker
             // 
@@ -249,43 +271,22 @@ namespace Ayudas
             this.Docker.TitleBarOptions.TitleBarControl = null;
             this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AllowParentOverrides = false;
-            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTitulo.AutoEllipsis = false;
-            this.lblTitulo.AutoSize = false;
-            this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblTitulo.CursorType = System.Windows.Forms.Cursors.Default;
-            this.ImagenAparicion.SetDecoration(this.lblTitulo, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblTitulo.Location = new System.Drawing.Point(23, 12);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTitulo.Size = new System.Drawing.Size(384, 52);
-            this.lblTitulo.TabIndex = 65;
-            this.lblTitulo.Text = "SISTEMA DE GESTIÓN DE SILABOS Y CONTROL DE ASISTENCIA - UNSAAC";
-            this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            this.lblTitulo.Visible = false;
-            // 
-            // P_DialogoRespuesta1
+            // A_DialogoRespuesta1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(429, 382);
-            this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.pbImagen);
+            this.Controls.Add(this.btnAceptar);
+            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.lblMensaje);
             this.ImagenAparicion.SetDecoration(this, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "P_DialogoRespuesta1";
+            this.Name = "A_DialogoRespuesta1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dialogo de Error";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.P_DialogoRespuesta1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
             this.ResumeLayout(false);
