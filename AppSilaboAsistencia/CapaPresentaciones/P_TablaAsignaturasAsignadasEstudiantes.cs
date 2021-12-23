@@ -7,6 +7,7 @@ using CapaNegocios;
 using System.Data;
 using CapaEntidades;
 using Ayudas;
+using System.Drawing;
 
 namespace CapaPresentaciones
 {
@@ -133,10 +134,25 @@ namespace CapaPresentaciones
             {
                 string CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
 
-                P_TablaEstudiantesAsignatura Estudiantes = new P_TablaEstudiantesAsignatura(CodAsignatura);
+                Form Fondo = new Form();
+                using (P_TablaEstudiantesAsignatura Estudiantes = new P_TablaEstudiantesAsignatura(CodAsignatura))
+                {
+                    Fondo.StartPosition = FormStartPosition.Manual;
+                    Fondo.FormBorderStyle = FormBorderStyle.None;
+                    Fondo.Opacity = .70d;
+                    Fondo.BackColor = Color.Black;
+                    Fondo.WindowState = FormWindowState.Maximized;
+                    Fondo.TopMost = true;
+                    Fondo.Location = this.Location;
+                    Fondo.ShowInTaskbar = false;
+                    Fondo.Show();
 
-                Estudiantes.ShowDialog();
-                Estudiantes.Dispose();
+                    Estudiantes.Owner = Fondo;
+                    Estudiantes.ShowDialog();
+                    Estudiantes.Dispose();
+
+                    Fondo.Dispose();
+                }
             }
 
             // Actualizar
