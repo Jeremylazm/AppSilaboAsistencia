@@ -95,7 +95,7 @@ namespace ControlesPerzonalizados
                 // Mostrar error
                 A_Dialogo.DialogoError("Error al enviar el código de verificación");
                 //MessageBox.Show(ex.Message);
-                return "-1";
+                return "Error Enviar Código";
             }
         }
 
@@ -123,6 +123,10 @@ namespace ControlesPerzonalizados
         private void btnVolverEnviar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             codigo_verificacion = EnviarCodigo(Email);
+            if (codigo_verificacion == "Error Enviar Código")
+                A_Dialogo.DialogoError("Error al enviar el código de verificación");
+            else
+                A_Dialogo.DialogoInformacion("El código de verificación fue enviado, revise su correo institucional");
         }
 
         private void btnSiguiente_KeyPress(object sender, KeyPressEventArgs e)
