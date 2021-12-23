@@ -13,6 +13,7 @@ namespace ControlesPerzonalizados
         bool ContraseñaNueva = false;
         bool ConfirmarContraseña = false;
         readonly A_Validador Validador;
+
         public C_CambioContraseñaNueva()
         {
             Validador = new A_Validador();
@@ -30,7 +31,7 @@ namespace ControlesPerzonalizados
             {
                 if (Cambiar_Contraseña())
                 {
-                    BunifuPictureBox PictureActual = (BunifuPictureBox)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("pbPaso3", false)[0];
+                    PictureBox PictureActual = (PictureBox)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("pbPaso3", false)[0];
                     PictureActual.Image = Properties.Resources.Circulo_Checked;
                     A_Dialogo.DialogoConfirmacion("La contraseña se cambio exitosamente");
                     //MessageBox.Show("La contraseña se cambio exitosamente");
@@ -122,22 +123,13 @@ namespace ControlesPerzonalizados
             return InicioSesion.IniciarSesion(usuario, contraseña);
         }
 
-        private void txtContraseñaAnterior_KeyPress(object sender, KeyPressEventArgs e)
+        private void C_CambioContraseñaNueva_Enter(object sender, EventArgs e)
         {
-            
+            BunifuLabel UsuarioCN = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
+            Usuario = UsuarioCN.Text;
         }
 
-        private void txtContraseñaNueva_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
-        private void txtConfirmarContraseña_KeyPress(object sender, KeyPressEventArgs e)
-        {
-         
-        }
-
-        private void txtContraseñaAnterior_TextChange(object sender, EventArgs e)
+        private void txtContraseñaAnterior_TextChanged(object sender, EventArgs e)
         {
             ContraseñaAnterior = Validador.ValidarCampoLleno(txtContraseñaAnterior, lblErrorContraseñaAnterior, pbErrorContraseñaAnterior);
             if (ContraseñaAnterior)
@@ -155,7 +147,7 @@ namespace ControlesPerzonalizados
             }
         }
 
-        private void txtContraseñaNueva_TextChange(object sender, EventArgs e)
+        private void txtContraseñaNueva_TextChanged(object sender, EventArgs e)
         {
             ContraseñaNueva = Validador.ValidarContraseña(txtContraseñaNueva, lblErrorContraseñaNueva, pbErrorContraseñaNueva);
             if (ContraseñaNueva)
@@ -173,7 +165,7 @@ namespace ControlesPerzonalizados
             }
         }
 
-        private void txtConfirmarContraseña_TextChange(object sender, EventArgs e)
+        private void txtConfirmarContraseña_TextChanged(object sender, EventArgs e)
         {
             ConfirmarContraseña = Validador.ValidarComparar(txtConfirmarContraseña, lblErrorConfirmarContraseña, txtContraseñaNueva.Text, pbErrorConfirmarContraseña, "La contraseña ingresada");
             if (ConfirmarContraseña)
@@ -189,12 +181,6 @@ namespace ControlesPerzonalizados
             {
                 txtConfirmarContraseña.UseSystemPasswordChar = false;
             }
-        }
-
-        private void C_CambioContraseñaNueva_Enter(object sender, EventArgs e)
-        {
-            BunifuLabel UsuarioCN = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
-            Usuario = UsuarioCN.Text;
         }
     }
 }
