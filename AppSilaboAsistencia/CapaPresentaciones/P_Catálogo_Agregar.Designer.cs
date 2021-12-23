@@ -31,7 +31,7 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_Catálogo_Agregar));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges12 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.Salir = new System.Windows.Forms.PictureBox();
@@ -2240,11 +2240,11 @@ namespace CapaPresentaciones
             this.Botón_Guardar.ColorContrastOnClick = 45;
             this.Botón_Guardar.ColorContrastOnHover = 45;
             this.Botón_Guardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges12.BottomLeft = true;
-            borderEdges12.BottomRight = true;
-            borderEdges12.TopLeft = true;
-            borderEdges12.TopRight = true;
-            this.Botón_Guardar.CustomizableEdges = borderEdges12;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.Botón_Guardar.CustomizableEdges = borderEdges2;
             this.Botón_Guardar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Botón_Guardar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.Botón_Guardar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -2526,7 +2526,9 @@ namespace CapaPresentaciones
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_Catálogo_Agregar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P_Catálogo_Agregar";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.P_Catálogo_Agregar_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

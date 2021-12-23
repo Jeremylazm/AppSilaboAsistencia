@@ -12,16 +12,52 @@ namespace Ayudas
     {
         public static DialogResult DialogoPreguntaAceptarCancelar(string Pregunta)
         {
-            A_DialogoRespuesta2 Dialogo = new A_DialogoRespuesta2(Pregunta, "Aceptar", "Cancelar");
-            Dialogo.ShowDialog();
-            return Dialogo.DialogResult;
+            Form Fondo = new Form();
+            using (A_DialogoRespuesta2 Dialogo = new A_DialogoRespuesta2(Pregunta, "Aceptar", "Cancelar"))
+            {
+                Fondo.StartPosition = FormStartPosition.Manual;
+                Fondo.FormBorderStyle = FormBorderStyle.None;
+                Fondo.Opacity = .70d;
+                Fondo.BackColor = Color.Black;
+                Fondo.WindowState = FormWindowState.Maximized;
+                Fondo.TopMost = true;
+                //Fondo.Location = Formulario.Location;
+                Fondo.ShowInTaskbar = false;
+                Fondo.Show();
+
+                Dialogo.Owner = Fondo;
+                Dialogo.ShowDialog();
+                Dialogo.Dispose();
+
+                Fondo.Dispose();
+
+                return Dialogo.DialogResult;
+            }
         }
 
         public static DialogResult DialogoPreguntaSiNo(string Pregunta)
         {
-            A_DialogoRespuesta2 Dialogo = new A_DialogoRespuesta2(Pregunta, "Sí", "No");
-            Dialogo.ShowDialog();
-            return Dialogo.DialogResult;
+            Form Fondo = new Form();
+            using (A_DialogoRespuesta2 Dialogo = new A_DialogoRespuesta2(Pregunta, "Sí", "No"))
+            {
+                Fondo.StartPosition = FormStartPosition.Manual;
+                Fondo.FormBorderStyle = FormBorderStyle.None;
+                Fondo.Opacity = .70d;
+                Fondo.BackColor = Color.Black;
+                Fondo.WindowState = FormWindowState.Maximized;
+                Fondo.TopMost = true;
+                //Fondo.Location = Formulario.Location;
+                Fondo.ShowInTaskbar = false;
+                Fondo.Show();
+
+                Dialogo.Owner = Fondo;
+                Dialogo.ShowDialog();
+                Dialogo.Dispose();
+
+                Fondo.Dispose();
+
+                return Dialogo.DialogResult;
+            }
         }
 
         public static void DialogoConfirmacion(string Mensaje)

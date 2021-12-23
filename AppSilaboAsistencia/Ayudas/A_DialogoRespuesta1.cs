@@ -18,8 +18,25 @@ namespace Ayudas
 
         public static void Mostrar(string Mensaje, Image Imagen)
         {
-            A_DialogoRespuesta1 Dialogo = new A_DialogoRespuesta1(Mensaje, Imagen);
-            Dialogo.ShowDialog();
+            Form Fondo = new Form();
+            using (A_DialogoRespuesta1 Dialogo = new A_DialogoRespuesta1(Mensaje, Imagen))
+            {
+                Fondo.StartPosition = FormStartPosition.Manual;
+                Fondo.FormBorderStyle = FormBorderStyle.None;
+                Fondo.Opacity = .70d;
+                Fondo.BackColor = Color.Black;
+                Fondo.WindowState = FormWindowState.Maximized;
+                Fondo.TopMost = true;
+                //Fondo.Location = Formulario.Location;
+                Fondo.ShowInTaskbar = false;
+                Fondo.Show();
+
+                Dialogo.Owner = Fondo;
+                Dialogo.ShowDialog();
+                Dialogo.Dispose();
+
+                Fondo.Dispose();
+            }
         }
 
         private void P_DialogoRespuesta1_Load(object sender, EventArgs e)

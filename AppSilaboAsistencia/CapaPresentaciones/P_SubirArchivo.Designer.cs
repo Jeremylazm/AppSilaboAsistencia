@@ -31,22 +31,20 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_SubirArchivo));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuIconButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuIconButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuIconButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuIconButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
+            this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.btnSubir = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnBuscarArchivo = new Bunifu.UI.WinForms.BunifuButton.BunifuIconButton();
             this.txtRuta = new Bunifu.UI.WinForms.BunifuTextBox();
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
-            this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.pnContenedor.SuspendLayout();
             this.SuspendLayout();
             // 
             // Bordeado
@@ -58,25 +56,11 @@ namespace CapaPresentaciones
             // 
             this.openFileDialog.RestoreDirectory = true;
             // 
-            // pnContenedor
+            // Movimiento
             // 
-            this.pnContenedor.BackgroundColor = System.Drawing.Color.White;
-            this.pnContenedor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnContenedor.BackgroundImage")));
-            this.pnContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnContenedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.pnContenedor.BorderRadius = 20;
-            this.pnContenedor.BorderThickness = 1;
-            this.pnContenedor.Controls.Add(this.btnSubir);
-            this.pnContenedor.Controls.Add(this.btnBuscarArchivo);
-            this.pnContenedor.Controls.Add(this.txtRuta);
-            this.pnContenedor.Controls.Add(this.btnCerrar);
-            this.pnContenedor.Controls.Add(this.lblTitulo);
-            this.pnContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnContenedor.Location = new System.Drawing.Point(0, 0);
-            this.pnContenedor.Name = "pnContenedor";
-            this.pnContenedor.ShowBorders = true;
-            this.pnContenedor.Size = new System.Drawing.Size(808, 199);
-            this.pnContenedor.TabIndex = 20;
+            this.Movimiento.Fixed = true;
+            this.Movimiento.Horizontal = true;
+            this.Movimiento.Vertical = true;
             // 
             // btnSubir
             // 
@@ -98,11 +82,11 @@ namespace CapaPresentaciones
             this.btnSubir.ColorContrastOnClick = 45;
             this.btnSubir.ColorContrastOnHover = 45;
             this.btnSubir.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnSubir.CustomizableEdges = borderEdges1;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            this.btnSubir.CustomizableEdges = borderEdges3;
             this.btnSubir.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnSubir.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSubir.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -126,7 +110,7 @@ namespace CapaPresentaciones
             this.btnSubir.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Ingresar;
             this.btnSubir.IdleIconRightImage = null;
             this.btnSubir.IndicateFocus = false;
-            this.btnSubir.Location = new System.Drawing.Point(607, 138);
+            this.btnSubir.Location = new System.Drawing.Point(578, 112);
             this.btnSubir.Name = "btnSubir";
             this.btnSubir.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSubir.OnDisabledState.BorderRadius = 15;
@@ -161,13 +145,12 @@ namespace CapaPresentaciones
             this.btnSubir.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Ingresar;
             this.btnSubir.OnPressedState.IconRightImage = null;
             this.btnSubir.Size = new System.Drawing.Size(170, 39);
-            this.btnSubir.TabIndex = 30;
+            this.btnSubir.TabIndex = 35;
             this.btnSubir.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSubir.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnSubir.TextMarginLeft = 0;
             this.btnSubir.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnSubir.UseDefaultRadiusAndThickness = true;
-            this.btnSubir.Click += new System.EventHandler(this.btnSubir_Click);
             // 
             // btnBuscarArchivo
             // 
@@ -184,22 +167,21 @@ namespace CapaPresentaciones
             this.btnBuscarArchivo.ColorContrastOnClick = 30;
             this.btnBuscarArchivo.ColorContrastOnHover = 30;
             this.btnBuscarArchivo.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnBuscarArchivo.CustomizableEdges = borderEdges2;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            this.btnBuscarArchivo.CustomizableEdges = borderEdges4;
             this.btnBuscarArchivo.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnBuscarArchivo.Image = global::CapaPresentaciones.Properties.Resources.buscar_archivo;
             this.btnBuscarArchivo.ImageMargin = new System.Windows.Forms.Padding(0);
-            this.btnBuscarArchivo.Location = new System.Drawing.Point(737, 81);
+            this.btnBuscarArchivo.Location = new System.Drawing.Point(709, 66);
             this.btnBuscarArchivo.Name = "btnBuscarArchivo";
             this.btnBuscarArchivo.RoundBorders = true;
             this.btnBuscarArchivo.ShowBorders = true;
             this.btnBuscarArchivo.Size = new System.Drawing.Size(35, 35);
             this.btnBuscarArchivo.Style = Bunifu.UI.WinForms.BunifuButton.BunifuIconButton.ButtonStyles.Round;
-            this.btnBuscarArchivo.TabIndex = 14;
-            this.btnBuscarArchivo.Click += new System.EventHandler(this.btnBuscarArchivo_Click);
+            this.btnBuscarArchivo.TabIndex = 34;
             // 
             // txtRuta
             // 
@@ -229,32 +211,32 @@ namespace CapaPresentaciones
             this.txtRuta.IconRight = null;
             this.txtRuta.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRuta.Lines = new string[0];
-            this.txtRuta.Location = new System.Drawing.Point(12, 75);
+            this.txtRuta.Location = new System.Drawing.Point(12, 61);
             this.txtRuta.MaxLength = 32767;
             this.txtRuta.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtRuta.Modified = false;
             this.txtRuta.Multiline = false;
             this.txtRuta.Name = "txtRuta";
-            stateProperties1.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties1.FillColor = System.Drawing.Color.Empty;
-            stateProperties1.ForeColor = System.Drawing.Color.Empty;
-            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtRuta.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtRuta.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties3.FillColor = System.Drawing.Color.Empty;
-            stateProperties3.ForeColor = System.Drawing.Color.Empty;
-            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtRuta.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = System.Drawing.Color.Silver;
-            stateProperties4.FillColor = System.Drawing.Color.White;
-            stateProperties4.ForeColor = System.Drawing.Color.Empty;
-            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtRuta.OnIdleState = stateProperties4;
+            stateProperties5.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties5.FillColor = System.Drawing.Color.Empty;
+            stateProperties5.ForeColor = System.Drawing.Color.Empty;
+            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtRuta.OnActiveState = stateProperties5;
+            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtRuta.OnDisabledState = stateProperties6;
+            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties7.FillColor = System.Drawing.Color.Empty;
+            stateProperties7.ForeColor = System.Drawing.Color.Empty;
+            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtRuta.OnHoverState = stateProperties7;
+            stateProperties8.BorderColor = System.Drawing.Color.Silver;
+            stateProperties8.FillColor = System.Drawing.Color.White;
+            stateProperties8.ForeColor = System.Drawing.Color.Empty;
+            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtRuta.OnIdleState = stateProperties8;
             this.txtRuta.Padding = new System.Windows.Forms.Padding(3);
             this.txtRuta.PasswordChar = '\0';
             this.txtRuta.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -265,9 +247,9 @@ namespace CapaPresentaciones
             this.txtRuta.SelectionLength = 0;
             this.txtRuta.SelectionStart = 0;
             this.txtRuta.ShortcutsEnabled = true;
-            this.txtRuta.Size = new System.Drawing.Size(765, 45);
+            this.txtRuta.Size = new System.Drawing.Size(737, 45);
             this.txtRuta.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtRuta.TabIndex = 12;
+            this.txtRuta.TabIndex = 33;
             this.txtRuta.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtRuta.TextMarginBottom = 0;
             this.txtRuta.TextMarginLeft = 3;
@@ -297,7 +279,7 @@ namespace CapaPresentaciones
             this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
             this.btnCerrar.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.btnCerrar.InitialImage = null;
-            this.btnCerrar.Location = new System.Drawing.Point(770, 7);
+            this.btnCerrar.Location = new System.Drawing.Point(718, 8);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Rotation = 0;
             this.btnCerrar.ShowActiveImage = true;
@@ -305,12 +287,11 @@ namespace CapaPresentaciones
             this.btnCerrar.ShowImageBorders = true;
             this.btnCerrar.ShowSizeMarkers = false;
             this.btnCerrar.Size = new System.Drawing.Size(30, 30);
-            this.btnCerrar.TabIndex = 11;
+            this.btnCerrar.TabIndex = 32;
             this.btnCerrar.ToolTipText = "";
             this.btnCerrar.WaitOnLoad = false;
             this.btnCerrar.Zoom = 10;
             this.btnCerrar.ZoomSpeed = 10;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lblTitulo
             // 
@@ -326,30 +307,28 @@ namespace CapaPresentaciones
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTitulo.Size = new System.Drawing.Size(808, 46);
-            this.lblTitulo.TabIndex = 1;
+            this.lblTitulo.Size = new System.Drawing.Size(760, 46);
+            this.lblTitulo.TabIndex = 31;
             this.lblTitulo.Text = "Subir";
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // Movimiento
-            // 
-            this.Movimiento.Fixed = true;
-            this.Movimiento.Horizontal = true;
-            this.Movimiento.TargetControl = this.lblTitulo;
-            this.Movimiento.Vertical = true;
             // 
             // P_SubirArchivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 199);
-            this.Controls.Add(this.pnContenedor);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(760, 162);
+            this.Controls.Add(this.btnSubir);
+            this.Controls.Add(this.btnBuscarArchivo);
+            this.Controls.Add(this.txtRuta);
+            this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_SubirArchivo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P_SubirSilabo";
-            this.pnContenedor.ResumeLayout(false);
+            this.TopMost = true;
             this.ResumeLayout(false);
 
         }
@@ -358,12 +337,11 @@ namespace CapaPresentaciones
 
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private Bunifu.UI.WinForms.BunifuPanel pnContenedor;
+        private Bunifu.Framework.UI.BunifuDragControl Movimiento;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnSubir;
         private Bunifu.UI.WinForms.BunifuButton.BunifuIconButton btnBuscarArchivo;
         private Bunifu.UI.WinForms.BunifuTextBox txtRuta;
         private Bunifu.UI.WinForms.BunifuImageButton btnCerrar;
         private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
-        private Bunifu.Framework.UI.BunifuDragControl Movimiento;
     }
 }

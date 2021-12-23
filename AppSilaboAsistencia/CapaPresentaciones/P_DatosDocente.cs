@@ -115,8 +115,7 @@ namespace CapaPresentaciones
             bool APaternoCorrecto = Validador.ValidarCampoLleno(txtAPaterno, lblErrorAPaterno, pbErrorAPaterno);
             bool AMaternoCorrecto = Validador.ValidarCampoLleno(txtAMaterno, lblErrorAMaterno, pbErrorAMaterno);
             bool NombreCorrecto = Validador.ValidarCampoLleno(txtNombre, lblErrorNombre, pbErrorNombre);
-            bool TelefonoCorrecto = Validador.ValidarNumeroLimitado(txtTelefono, lblErrorTelefono, pbErrorTelefono, 9);
-            bool DireccionCorrecta = Validador.ValidarCampoLleno(txtDireccion, lblErrorDireccion, pbErrorDireccion);
+            bool TelefonoCorrecto = Validador.ValidarTelefono(txtTelefono, lblErrorTelefono, pbErrorTelefono, 9);
 
             if (CodigoCorrecto)
             {
@@ -130,16 +129,90 @@ namespace CapaPresentaciones
                             {
                                 if (TelefonoCorrecto)
                                 {
-                                    if (DireccionCorrecta)
+                                    // Agregar
+                                    if (Program.Evento == 0)
                                     {
-                                        // Agregar
-                                        if (Program.Evento == 0)
+                                        try
                                         {
-                                            try
+                                            DataTable Resultado = N_Docente.BuscarDocente("IF", txtCodigo.Text);
+
+                                            if (Resultado.Rows.Count == 0)
+                                            {
+                                                byte[] Perfil = new byte[0];
+                                                using (MemoryStream MemoriaPerfil = new MemoryStream())
+                                                {
+                                                    pbPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
+                                                    Perfil = MemoriaPerfil.ToArray();
+                                                }
+                                                ObjEntidad.Perfil = Perfil;
+                                                ObjEntidad.CodDocente = txtCodigo.Text;
+                                                ObjEntidad.APaterno = txtAPaterno.Text.ToUpper();
+                                                ObjEntidad.AMaterno = txtAMaterno.Text.ToUpper();
+                                                ObjEntidad.Nombre = txtNombre.Text.ToUpper();
+                                                ObjEntidad.Email = txtEmail.Text + lblDominioEmail.Text;
+                                                ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
+                                                ObjEntidad.Telefono = txtTelefono.Text;
+                                                ObjEntidad.Categoria = cxtCategoria.SelectedItem.ToString();
+                                                ObjEntidad.Subcategoria = cxtSubcategoria.SelectedItem.ToString();
+                                                ObjEntidad.Regimen = cxtRegimen.SelectedItem.ToString();
+                                                ObjEntidad.CodDepartamentoA = cxtDepartamento.SelectedValue.ToString();
+                                                ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
+
+                                                ObjNegocio.InsertarDocente(ObjEntidad);
+                                                A_Dialogo.DialogoConfirmacion("Registro insertado exitosamente");
+                                                Program.Evento = 0;
+
+                                                N_InicioSesion InicioSesion = new N_InicioSesion();
+                                                string Contrasena = InicioSesion.RetornarContraseña(txtCodigo.Text);
+                                                /*
+                                                // Enviar un correo con la contraseña para un nuevo usuario
+                                                try
+                                                {
+                                                    SmtpClient clientDetails = new SmtpClient();
+                                                    clientDetails.Port = 587;
+                                                    clientDetails.Host = "smtp.gmail.com";
+                                                    clientDetails.EnableSsl = true;
+                                                    clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
+                                                    clientDetails.UseDefaultCredentials = false;
+                                                    clientDetails.Credentials = new NetworkCredential("denisomarcuyottito@gmail.com", "Tutoriasunsaac5");
+
+                                                    MailMessage mailDetails = new MailMessage();
+                                                    mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
+                                                    mailDetails.To.Add(ObjEntidad.Email);
+                                                    mailDetails.Subject = "Contraseña del Sistema de Tutoría UNSAAC";
+                                                    mailDetails.IsBodyHtml = true;
+                                                    mailDetails.Body = "Tu contraseña es " + Contrasena;
+                                                    clientDetails.Send(mailDetails);
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    MessageBox.Show(ex.Message);
+                                                }*/
+
+                                                LimpiarCajas();
+                                                Close();
+                                            }
+                                            else
+                                            {
+                                                A_Dialogo.DialogoError("El registro de docente ya existe");
+                                            }
+                                        }
+                                        catch (Exception)
+                                        {
+                                            A_Dialogo.DialogoError("Error al insertar el registro");
+                                        }
+                                    }
+
+                                    // Editar
+                                    else
+                                    {
+                                        try
+                                        {
+                                            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea editar el registro?") == DialogResult.Yes)
                                             {
                                                 DataTable Resultado = N_Docente.BuscarDocente("IF", txtCodigo.Text);
 
-                                                if (Resultado.Rows.Count == 0)
+                                                if (Resultado.Rows.Count != 0)
                                                 {
                                                     byte[] Perfil = new byte[0];
                                                     using (MemoryStream MemoriaPerfil = new MemoryStream())
@@ -161,103 +234,22 @@ namespace CapaPresentaciones
                                                     ObjEntidad.CodDepartamentoA = cxtDepartamento.SelectedValue.ToString();
                                                     ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
 
-                                                    ObjNegocio.InsertarDocente(ObjEntidad);
-                                                    A_Dialogo.DialogoConfirmacion("Registro insertado exitosamente");
+                                                    ObjNegocio.ActualizarDocente(ObjEntidad);
+                                                    A_Dialogo.DialogoConfirmacion("Registro editado exitosamente");
                                                     Program.Evento = 0;
-
-                                                    N_InicioSesion InicioSesion = new N_InicioSesion();
-                                                    string Contrasena = InicioSesion.RetornarContraseña(txtCodigo.Text);
-                                                    /*
-                                                    // Enviar un correo con la contraseña para un nuevo usuario
-                                                    try
-                                                    {
-                                                        SmtpClient clientDetails = new SmtpClient();
-                                                        clientDetails.Port = 587;
-                                                        clientDetails.Host = "smtp.gmail.com";
-                                                        clientDetails.EnableSsl = true;
-                                                        clientDetails.DeliveryMethod = SmtpDeliveryMethod.Network;
-                                                        clientDetails.UseDefaultCredentials = false;
-                                                        clientDetails.Credentials = new NetworkCredential("denisomarcuyottito@gmail.com", "Tutoriasunsaac5");
-
-                                                        MailMessage mailDetails = new MailMessage();
-                                                        mailDetails.From = new MailAddress("denisomarcuyottito@gmail.com");
-                                                        mailDetails.To.Add(ObjEntidad.Email);
-                                                        mailDetails.Subject = "Contraseña del Sistema de Tutoría UNSAAC";
-                                                        mailDetails.IsBodyHtml = true;
-                                                        mailDetails.Body = "Tu contraseña es " + Contrasena;
-                                                        clientDetails.Send(mailDetails);
-                                                    }
-                                                    catch (Exception ex)
-                                                    {
-                                                        MessageBox.Show(ex.Message);
-                                                    }*/
-
                                                     LimpiarCajas();
                                                     Close();
                                                 }
                                                 else
                                                 {
-                                                    A_Dialogo.DialogoError("El registro de docente ya existe");
+                                                    A_Dialogo.DialogoError("El registro de docente no existe");
                                                 }
                                             }
-                                            catch (Exception)
-                                            {
-                                                A_Dialogo.DialogoError("Error al insertar el registro");
-                                            }
                                         }
-
-                                        // Editar
-                                        else
+                                        catch (Exception)
                                         {
-                                            try
-                                            {
-                                                if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea editar el registro?") == DialogResult.Yes)
-                                                {
-                                                    DataTable Resultado = N_Docente.BuscarDocente("IF", txtCodigo.Text);
-
-                                                    if (Resultado.Rows.Count != 0)
-                                                    {
-                                                        byte[] Perfil = new byte[0];
-                                                        using (MemoryStream MemoriaPerfil = new MemoryStream())
-                                                        {
-                                                            pbPerfil.Image.Save(MemoriaPerfil, ImageFormat.Bmp);
-                                                            Perfil = MemoriaPerfil.ToArray();
-                                                        }
-                                                        ObjEntidad.Perfil = Perfil;
-                                                        ObjEntidad.CodDocente = txtCodigo.Text;
-                                                        ObjEntidad.APaterno = txtAPaterno.Text.ToUpper();
-                                                        ObjEntidad.AMaterno = txtAMaterno.Text.ToUpper();
-                                                        ObjEntidad.Nombre = txtNombre.Text.ToUpper();
-                                                        ObjEntidad.Email = txtEmail.Text + lblDominioEmail.Text;
-                                                        ObjEntidad.Direccion = txtDireccion.Text.ToUpper();
-                                                        ObjEntidad.Telefono = txtTelefono.Text;
-                                                        ObjEntidad.Categoria = cxtCategoria.SelectedItem.ToString();
-                                                        ObjEntidad.Subcategoria = cxtSubcategoria.SelectedItem.ToString();
-                                                        ObjEntidad.Regimen = cxtRegimen.SelectedItem.ToString();
-                                                        ObjEntidad.CodDepartamentoA = cxtDepartamento.SelectedValue.ToString();
-                                                        ObjEntidad.CodEscuelaP = cxtEscuela.SelectedValue.ToString();
-
-                                                        ObjNegocio.ActualizarDocente(ObjEntidad);
-                                                        A_Dialogo.DialogoConfirmacion("Registro editado exitosamente");
-                                                        Program.Evento = 0;
-                                                        LimpiarCajas();
-                                                        Close();
-                                                    }
-                                                    else
-                                                    {
-                                                        A_Dialogo.DialogoError("El registro de docente no existe");
-                                                    }
-                                                }
-                                            }
-                                            catch (Exception)
-                                            {
-                                                A_Dialogo.DialogoError("Error al editar el registro");
-                                            }
+                                            A_Dialogo.DialogoError("Error al editar el registro");
                                         }
-                                    }
-                                    else
-                                    {
-                                        Validador.EnfocarCursor(txtDireccion);
                                     }
                                 }
                                 else
@@ -382,19 +374,10 @@ namespace CapaPresentaciones
 
         private void txtTelefono_TextChanged(object sender, EventArgs e)
         {
-            if (Validador.ValidarNumeroLimitado(txtTelefono, lblErrorTelefono, pbErrorTelefono, 9))
+            if (Validador.ValidarTelefono(txtTelefono, lblErrorTelefono, pbErrorTelefono, 9))
             {
                 pbErrorTelefono.Visible = false;
                 lblErrorTelefono.Visible = false;
-            }
-        }
-
-        private void txtDireccion_TextChanged(object sender, EventArgs e)
-        {
-            if (Validador.ValidarCampoLleno(txtDireccion, lblErrorDireccion, pbErrorDireccion))
-            {
-                pbErrorDireccion.Visible = false;
-                lblErrorDireccion.Visible = false;
             }
         }
 
@@ -429,12 +412,6 @@ namespace CapaPresentaciones
         }
 
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-                RegistrarDocente();
-        }
-
-        private void txtDireccion_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
                 RegistrarDocente();

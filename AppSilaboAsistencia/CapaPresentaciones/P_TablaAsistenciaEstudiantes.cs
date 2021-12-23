@@ -30,7 +30,7 @@ namespace CapaPresentaciones
         private DataTable PlanSesion;
         public DataTable dgvTabla;
         public string horainicioAsignatura;
-        public string LmFechaInf = "18/12/2021";
+        public string LmFechaInf = "2021/12/18";
         
         public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente, DataTable pdgv)
         {
@@ -395,6 +395,7 @@ namespace CapaPresentaciones
                 }
                 else
                 {
+                    btnSesiones.Enabled = false;
                     A_Dialogo.DialogoInformacion("Aun no subio un plan de sesiones");
                     txtTema.Text = "No hay tema a sugerir";
                     btnGuardar.Enabled = false;

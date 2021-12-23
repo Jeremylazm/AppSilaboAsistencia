@@ -19,9 +19,9 @@ namespace CapaPresentaciones
         //public string CodDocente;
 
         public string CodSemestre;
-        public string LimtFechaInf = "18/12/2021";
-        public string LimtFechaSup = DateTime.Now.ToString("dd/MM/yyyy").ToString();
-
+        public string LimtFechaInf = "2021/12/18";
+        //public string LimtFechaSup = DateTime.Now.ToString("dd/MM/yyyy").ToString();
+        public string LimtFechaSup = DateTime.Now.ToString("yyyy/MM/dd").ToString();
         public P_HistorialSesionesAsignatura(string pCodAsignatura, string pCodDocente)
         {
             CodAsignatura = pCodAsignatura;
@@ -87,12 +87,12 @@ namespace CapaPresentaciones
             {
                 DataTable HoraInicioThAsg = N_HorarioAsignatura.BuscarHorarioAsignatura(CodSemestre, CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), CodAsignatura.Substring(5, 1));
                 string horainicioAsignatura = HoraInicioThAsg.Rows[0][6].ToString();
-                DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, "IF", CodAsignatura, horainicioAsignatura, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString());
+                DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, "IF", CodAsignatura, horainicioAsignatura, Convert.ToDateTime(dgvDatos.Rows[e.RowIndex].Cells[1].Value).ToString("yyyy/MM/dd"));
                 
                 P_TablaAsistenciaEstudiantes EditarRegistro = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente,AsistenciaEstudiantesAsignatura);
                 Program.Evento = 1;
                 EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                EditarRegistro.txtFecha.Text = Convert.ToDateTime(dgvDatos.Rows[e.RowIndex].Cells[1].Value).ToString("dd/MM/yyyy");
+                EditarRegistro.txtFecha.Text = Convert.ToDateTime(dgvDatos.Rows[e.RowIndex].Cells[1].Value).ToString("yyyy/MM/dd");
                 EditarRegistro.txtTema.Text = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
                 EditarRegistro.horainicioAsignatura = horainicioAsignatura;
 
