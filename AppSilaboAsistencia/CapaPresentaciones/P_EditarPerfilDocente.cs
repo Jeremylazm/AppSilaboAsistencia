@@ -207,27 +207,15 @@ namespace CapaPresentaciones
 
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
         {
-            Form CambioContraseña = ParentForm.Controls.Find("pnPrincipal", false)[0].Controls.Find("pnContenedor", false)[0].Controls.OfType<P_CambioContraseña>().FirstOrDefault();
-            CambioContraseña = new P_CambioContraseña(lblEmail2.Text)
+            P_CambioContraseña CambioContraseña = new P_CambioContraseña(lblEmail2.Text)
             {
                 TopLevel = false,
                 Dock = DockStyle.Fill
             };
-
             ParentForm.Controls.Find("pnPrincipal", false)[0].Controls.Find("pnContenedor", false)[0].Controls.Add(CambioContraseña);
-
             CambioContraseña.Show();
             CambioContraseña.BringToFront();
         }
-        /*
-        private void txtEmail_TextChange(object sender, EventArgs e)
-        {
-            if (Validador.ValidarEmail(txtEmail, lblErrorEmail, pbErrorEmail) || txtEmail.Text == "")
-            {
-                pbErrorEmail.Visible = false;
-                lblErrorEmail.Visible = false;
-            }
-        }*/
 
         private void txtTelefono_TextChange(object sender, EventArgs e)
         {

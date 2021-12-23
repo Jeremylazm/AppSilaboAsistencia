@@ -52,10 +52,15 @@ namespace CapaPresentaciones
             // Estudiantes
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
-                P_HistorialSesionesAsignatura Estudiantes = new P_HistorialSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), CodDocente);//codasignatura y coddocente
-
-                Estudiantes.ShowDialog();
-                Estudiantes.Dispose();
+                P_HistorialSesionesAsignatura HistorialSesiones = new P_HistorialSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), CodDocente)//codasignatura y coddocente
+                {
+                    TopLevel = false,
+                    Dock = DockStyle.Fill
+                };
+                ParentForm.Controls.Find("pnPrincipal", false)[0].Controls.Find("pnContenedor", false)[0].Controls.Add(HistorialSesiones);
+                HistorialSesiones.Show();
+                HistorialSesiones.BringToFront();
+                HistorialSesiones.Dispose();
             }
         }
 
