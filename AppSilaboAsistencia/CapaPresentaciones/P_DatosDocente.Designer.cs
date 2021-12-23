@@ -686,7 +686,6 @@ namespace CapaPresentaciones
             this.txtDireccion.TextPlaceholder = "Escriba su dirección";
             this.txtDireccion.UseSystemPasswordChar = false;
             this.txtDireccion.WordWrap = true;
-            //this.txtDireccion.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
             // 
             // lblDireccion
             // 
@@ -2017,6 +2016,7 @@ namespace CapaPresentaciones
             this.Name = "P_DatosDocente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos de Docente";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

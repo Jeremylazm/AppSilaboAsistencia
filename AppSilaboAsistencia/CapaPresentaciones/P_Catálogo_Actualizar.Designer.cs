@@ -2531,6 +2531,7 @@ namespace CapaPresentaciones
             this.Name = "P_Catálogo_Actualizar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.P_Catálogo_Actualizar_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
