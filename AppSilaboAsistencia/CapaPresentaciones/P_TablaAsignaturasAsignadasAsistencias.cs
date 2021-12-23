@@ -60,7 +60,7 @@ namespace CapaPresentaciones
                 ParentForm.Controls.Find("pnPrincipal", false)[0].Controls.Find("pnContenedor", false)[0].Controls.Add(HistorialSesiones);
                 HistorialSesiones.Show();
                 HistorialSesiones.BringToFront();
-                HistorialSesiones.Dispose();
+                //HistorialSesiones.Dispose();
             }
         }
 
