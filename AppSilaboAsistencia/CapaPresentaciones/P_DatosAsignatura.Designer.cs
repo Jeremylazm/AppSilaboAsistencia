@@ -265,7 +265,7 @@ namespace CapaPresentaciones
             this.txtCodigo.OnIdleState = stateProperties4;
             this.txtCodigo.Padding = new System.Windows.Forms.Padding(3);
             this.txtCodigo.PasswordChar = '\0';
-            this.txtCodigo.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtCodigo.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtCodigo.PlaceholderText = "Escriba el código";
             this.txtCodigo.ReadOnly = false;
             this.txtCodigo.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -362,7 +362,7 @@ namespace CapaPresentaciones
             this.txtNombre.OnIdleState = stateProperties8;
             this.txtNombre.Padding = new System.Windows.Forms.Padding(3);
             this.txtNombre.PasswordChar = '\0';
-            this.txtNombre.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtNombre.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtNombre.PlaceholderText = "Escriba el nombre";
             this.txtNombre.ReadOnly = false;
             this.txtNombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -459,7 +459,7 @@ namespace CapaPresentaciones
             this.txtCreditos.OnIdleState = stateProperties12;
             this.txtCreditos.Padding = new System.Windows.Forms.Padding(3);
             this.txtCreditos.PasswordChar = '\0';
-            this.txtCreditos.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtCreditos.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtCreditos.PlaceholderText = "Escriba el número de créditos";
             this.txtCreditos.ReadOnly = false;
             this.txtCreditos.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -556,7 +556,7 @@ namespace CapaPresentaciones
             this.txtPrerrequisito.OnIdleState = stateProperties16;
             this.txtPrerrequisito.Padding = new System.Windows.Forms.Padding(3);
             this.txtPrerrequisito.PasswordChar = '\0';
-            this.txtPrerrequisito.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtPrerrequisito.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtPrerrequisito.PlaceholderText = "Escriba el prerrequisito";
             this.txtPrerrequisito.ReadOnly = false;
             this.txtPrerrequisito.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -652,7 +652,7 @@ namespace CapaPresentaciones
             this.txtHorasPractica.OnIdleState = stateProperties20;
             this.txtHorasPractica.Padding = new System.Windows.Forms.Padding(3);
             this.txtHorasPractica.PasswordChar = '\0';
-            this.txtHorasPractica.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtHorasPractica.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtHorasPractica.PlaceholderText = "Escriba las horas de práctica";
             this.txtHorasPractica.ReadOnly = false;
             this.txtHorasPractica.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -749,7 +749,7 @@ namespace CapaPresentaciones
             this.txtHorasTeoria.OnIdleState = stateProperties24;
             this.txtHorasTeoria.Padding = new System.Windows.Forms.Padding(3);
             this.txtHorasTeoria.PasswordChar = '\0';
-            this.txtHorasTeoria.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtHorasTeoria.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtHorasTeoria.PlaceholderText = "Escriba las horas de teoría";
             this.txtHorasTeoria.ReadOnly = false;
             this.txtHorasTeoria.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -1123,7 +1123,7 @@ namespace CapaPresentaciones
             this.txtSumilla.OnIdleState = stateProperties28;
             this.txtSumilla.Padding = new System.Windows.Forms.Padding(3);
             this.txtSumilla.PasswordChar = '\0';
-            this.txtSumilla.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtSumilla.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtSumilla.PlaceholderText = "Escriba la sumilla";
             this.txtSumilla.ReadOnly = false;
             this.txtSumilla.ScrollBars = System.Windows.Forms.ScrollBars.None;

@@ -503,7 +503,7 @@ namespace ControlesPerzonalizados
             this.txtConfirmarContraseña.OnIdleState = stateProperties4;
             this.txtConfirmarContraseña.Padding = new System.Windows.Forms.Padding(3);
             this.txtConfirmarContraseña.PasswordChar = '\0';
-            this.txtConfirmarContraseña.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtConfirmarContraseña.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtConfirmarContraseña.PlaceholderText = "Confirme su contraseña nueva";
             this.txtConfirmarContraseña.ReadOnly = false;
             this.txtConfirmarContraseña.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -602,7 +602,7 @@ namespace ControlesPerzonalizados
             this.txtContraseñaNueva.OnIdleState = stateProperties8;
             this.txtContraseñaNueva.Padding = new System.Windows.Forms.Padding(3);
             this.txtContraseñaNueva.PasswordChar = '\0';
-            this.txtContraseñaNueva.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtContraseñaNueva.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtContraseñaNueva.PlaceholderText = "Escriba su contraseña nueva";
             this.txtContraseñaNueva.ReadOnly = false;
             this.txtContraseñaNueva.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -701,7 +701,7 @@ namespace ControlesPerzonalizados
             this.txtContraseñaAnterior.OnIdleState = stateProperties12;
             this.txtContraseñaAnterior.Padding = new System.Windows.Forms.Padding(3);
             this.txtContraseñaAnterior.PasswordChar = '\0';
-            this.txtContraseñaAnterior.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtContraseñaAnterior.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtContraseñaAnterior.PlaceholderText = "Escriba su contraseña anterior";
             this.txtContraseñaAnterior.ReadOnly = false;
             this.txtContraseñaAnterior.ScrollBars = System.Windows.Forms.ScrollBars.None;

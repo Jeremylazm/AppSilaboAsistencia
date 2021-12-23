@@ -292,6 +292,7 @@ namespace CapaPresentaciones
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.label40);
             this.panel2.Controls.Add(this.label39);
             this.panel2.Controls.Add(this.label38);

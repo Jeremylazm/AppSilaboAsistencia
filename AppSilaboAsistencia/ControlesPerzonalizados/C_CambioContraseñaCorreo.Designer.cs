@@ -410,7 +410,7 @@ namespace ControlesPerzonalizados
             this.txtUsuario.OnIdleState = stateProperties8;
             this.txtUsuario.Padding = new System.Windows.Forms.Padding(3);
             this.txtUsuario.PasswordChar = '\0';
-            this.txtUsuario.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtUsuario.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtUsuario.PlaceholderText = "Usuario";
             this.txtUsuario.ReadOnly = false;
             this.txtUsuario.ScrollBars = System.Windows.Forms.ScrollBars.None;

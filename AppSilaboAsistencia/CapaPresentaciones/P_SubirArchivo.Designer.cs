@@ -195,7 +195,7 @@ namespace CapaPresentaciones
             this.txtRuta.BorderThickness = 1;
             this.txtRuta.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtRuta.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtRuta.DefaultFont = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRuta.DefaultFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRuta.DefaultText = "";
             this.txtRuta.FillColor = System.Drawing.Color.White;
             this.txtRuta.HideSelection = true;
@@ -233,7 +233,7 @@ namespace CapaPresentaciones
             this.txtRuta.OnIdleState = stateProperties4;
             this.txtRuta.Padding = new System.Windows.Forms.Padding(3);
             this.txtRuta.PasswordChar = '\0';
-            this.txtRuta.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtRuta.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtRuta.PlaceholderText = "Ruta del archivo";
             this.txtRuta.ReadOnly = true;
             this.txtRuta.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -241,7 +241,7 @@ namespace CapaPresentaciones
             this.txtRuta.SelectionLength = 0;
             this.txtRuta.SelectionStart = 0;
             this.txtRuta.ShortcutsEnabled = true;
-            this.txtRuta.Size = new System.Drawing.Size(737, 45);
+            this.txtRuta.Size = new System.Drawing.Size(737, 42);
             this.txtRuta.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.txtRuta.TabIndex = 33;
             this.txtRuta.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;

@@ -364,7 +364,7 @@
             this.txtDireccion.OnIdleState = stateProperties4;
             this.txtDireccion.Padding = new System.Windows.Forms.Padding(3);
             this.txtDireccion.PasswordChar = '\0';
-            this.txtDireccion.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtDireccion.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtDireccion.PlaceholderText = "Escriba su dirección";
             this.txtDireccion.ReadOnly = false;
             this.txtDireccion.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -444,7 +444,7 @@
             this.txtTelefono.OnIdleState = stateProperties8;
             this.txtTelefono.Padding = new System.Windows.Forms.Padding(3);
             this.txtTelefono.PasswordChar = '\0';
-            this.txtTelefono.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtTelefono.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtTelefono.PlaceholderText = "Escriba su teléfono";
             this.txtTelefono.ReadOnly = false;
             this.txtTelefono.ScrollBars = System.Windows.Forms.ScrollBars.None;

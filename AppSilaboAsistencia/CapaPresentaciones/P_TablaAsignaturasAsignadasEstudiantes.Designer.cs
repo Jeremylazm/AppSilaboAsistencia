@@ -45,9 +45,9 @@ namespace CapaPresentaciones
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
             this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.btnEstudiantes = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnActualizar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
@@ -169,8 +169,8 @@ namespace CapaPresentaciones
             this.txtBuscar.OnIdleState = stateProperties4;
             this.txtBuscar.Padding = new System.Windows.Forms.Padding(3);
             this.txtBuscar.PasswordChar = '\0';
-            this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtBuscar.PlaceholderText = "Buscar...";
+            this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.DimGray;
+            this.txtBuscar.PlaceholderText = "Buscar";
             this.txtBuscar.ReadOnly = false;
             this.txtBuscar.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtBuscar.SelectedText = "";
@@ -184,7 +184,7 @@ namespace CapaPresentaciones
             this.txtBuscar.TextMarginBottom = 0;
             this.txtBuscar.TextMarginLeft = 7;
             this.txtBuscar.TextMarginTop = 0;
-            this.txtBuscar.TextPlaceholder = "Buscar...";
+            this.txtBuscar.TextPlaceholder = "Buscar";
             this.txtBuscar.UseSystemPasswordChar = false;
             this.txtBuscar.WordWrap = true;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
@@ -339,11 +339,6 @@ namespace CapaPresentaciones
             this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             // 
-            // Bordeado
-            // 
-            this.Bordeado.ElipseRadius = 15;
-            this.Bordeado.TargetControl = this.pnContenedor;
-            // 
             // btnEstudiantes
             // 
             this.btnEstudiantes.HeaderText = "Estudiantes";
@@ -359,6 +354,11 @@ namespace CapaPresentaciones
             this.btnActualizar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.ReadOnly = true;
+            // 
+            // Bordeado
+            // 
+            this.Bordeado.ElipseRadius = 15;
+            this.Bordeado.TargetControl = this.pnContenedor;
             // 
             // P_TablaAsignaturasAsignadasEstudiantes
             // 

@@ -139,13 +139,13 @@
   </data>
   <data name="txtRuta.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAuEAAAAtCAYAAAAA9bV0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEkSURBVHhe7dYxDQMxAARB80fll2EERgAksuQmALxpZqRr
+        iVBORw0KGgoAAAANSUhEUgAAAuEAAAAqCAYAAAAd8IXMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEVSURBVHhe7dYxDQMxAARB80fll2EERgAksuQmALxpZqRr
         DsEOAADgD9Zarznnx8zMzMzM7m1390nwMfYBAADctbv7JLgIBwCAgggHAICYCAcAgJgIBwCAmAgHAICY
         CAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICY
         CAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICY
-        CAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICYCAcAgJgIBwCA2E+EP8/z
-        3oeZmZmZmd3b7u6T4AAAQGeMLxdBiJ7O4TrYAAAAAElFTkSuQmCC
+        CAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICYCAcAgJgIBwCA2E+EP8/z3oeZmZmZmd3b7u6T4AAA
+        QGeMLwfWOYIcQQOCAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="lblTitulo.BaseStylesheet" xml:space="preserve">

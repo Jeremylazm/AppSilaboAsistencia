@@ -334,7 +334,7 @@ namespace ControlesPerzonalizados
             this.txtCodigoVerificacion.OnIdleState = stateProperties4;
             this.txtCodigoVerificacion.Padding = new System.Windows.Forms.Padding(3);
             this.txtCodigoVerificacion.PasswordChar = '\0';
-            this.txtCodigoVerificacion.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtCodigoVerificacion.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtCodigoVerificacion.PlaceholderText = "Escriba su código de verificación";
             this.txtCodigoVerificacion.ReadOnly = false;
             this.txtCodigoVerificacion.ScrollBars = System.Windows.Forms.ScrollBars.None;

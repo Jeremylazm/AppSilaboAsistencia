@@ -203,7 +203,7 @@ namespace CapaPresentaciones
             this.txtCorreo.OnIdleState = stateProperties4;
             this.txtCorreo.Padding = new System.Windows.Forms.Padding(3);
             this.txtCorreo.PasswordChar = '\0';
-            this.txtCorreo.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtCorreo.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtCorreo.PlaceholderText = "Código";
             this.txtCorreo.ReadOnly = false;
             this.txtCorreo.ScrollBars = System.Windows.Forms.ScrollBars.None;
