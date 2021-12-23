@@ -395,6 +395,7 @@ namespace CapaPresentaciones
                 }
                 else
                 {
+                    btnSesiones.Enabled = false;
                     A_Dialogo.DialogoInformacion("Aun no subio un plan de sesiones");
                     txtTema.Text = "No hay tema a sugerir";
                     btnGuardar.Enabled = false;
