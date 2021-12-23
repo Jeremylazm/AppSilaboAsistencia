@@ -110,17 +110,20 @@ namespace CapaPresentaciones
                 btnSilabos.Visible = true;
                 btnSesiones.Visible = true;
 
-                Bunifu.UI.WinForms.BunifuSeparator bs1 = new Bunifu.UI.WinForms.BunifuSeparator
-                {
-                    LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded,
-                    Location = new Point(5, 496),
-                    Size = new Size(209, 14),
-                    BackColor = Color.Transparent,
-                    LineColor = Color.FromArgb(232, 158, 31)
-                };
+                SeparadorMenu2.Location = new Point(5, 496);
+                SeparadorMenu2.Visible = true;
 
-                pnOpciones.Controls.Add(bs1);
-                pnOpciones.Tag = bs1;
+                //Bunifu.UI.WinForms.BunifuSeparator bs1 = new Bunifu.UI.WinForms.BunifuSeparator
+                //{
+                //    LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded,
+                //    Location = new Point(5, 496),
+                //    Size = new Size(209, 14),
+                //    BackColor = Color.Transparent,
+                //    LineColor = Color.FromArgb(232, 158, 31)
+                //};
+
+                //pnOpciones.Controls.Add(bs1);
+                //pnOpciones.Tag = bs1;
 
                 btnCatálogo.Location = new Point(0, 507);
                 btnDocentes.Location = new Point(0, 549);
@@ -137,17 +140,20 @@ namespace CapaPresentaciones
                 btnSilabos.Visible = true;
                 btnSesiones.Visible = true;
 
-                Bunifu.UI.WinForms.BunifuSeparator bs1 = new Bunifu.UI.WinForms.BunifuSeparator
-                {
-                    LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded,
-                    Location = new Point(5, 496),
-                    Size = new Size(209, 14),
-                    BackColor = Color.Transparent,
-                    LineColor = Color.FromArgb(232, 158, 31)
-                };
+                SeparadorMenu2.Location = new Point(5, 496);
+                SeparadorMenu2.Visible = true;
 
-                pnOpciones.Controls.Add(bs1);
-                pnOpciones.Tag = bs1;
+                //Bunifu.UI.WinForms.BunifuSeparator bs1 = new Bunifu.UI.WinForms.BunifuSeparator
+                //{
+                //    LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded,
+                //    Location = new Point(5, 496),
+                //    Size = new Size(209, 14),
+                //    BackColor = Color.Transparent,
+                //    LineColor = Color.FromArgb(232, 158, 31)
+                //};
+
+                //pnOpciones.Controls.Add(bs1);
+                //pnOpciones.Tag = bs1;
 
                 btnAsignaturas.Location = new Point(0, 507);
 
@@ -180,6 +186,7 @@ namespace CapaPresentaciones
                 pbLogo.Location = new Point(225, 5);
                 SeparadorMenu1.Width = 209;
                 SeparadorMenu2.Width = 209;
+                SeparadorMenu3.Width = 209;
                 pbPerfil.Visible = true;
                 btnEditarPerfil.Visible = true;
                 pbEditarPerfil.Visible = false;
@@ -198,6 +205,7 @@ namespace CapaPresentaciones
                 pbLogo.Location = new Point(49, 5);
                 SeparadorMenu1.Width = 35;
                 SeparadorMenu2.Width = 35;
+                SeparadorMenu3.Width = 35;
                 pbPerfil.Visible = false;
                 btnEditarPerfil.Visible = false;
                 pbEditarPerfil.Visible = true;

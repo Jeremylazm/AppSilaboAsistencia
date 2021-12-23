@@ -135,7 +135,7 @@ namespace ControlesPerzonalizados
             this.btnSiguiente.OnPressedState.IconLeftImage = null;
             this.btnSiguiente.OnPressedState.IconRightImage = null;
             this.btnSiguiente.Size = new System.Drawing.Size(148, 39);
-            this.btnSiguiente.TabIndex = 8;
+            this.btnSiguiente.TabIndex = 2;
             this.btnSiguiente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSiguiente.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnSiguiente.TextMarginLeft = 0;
@@ -273,7 +273,7 @@ namespace ControlesPerzonalizados
             this.bunifuPanel1.Name = "bunifuPanel1";
             this.bunifuPanel1.ShowBorders = true;
             this.bunifuPanel1.Size = new System.Drawing.Size(749, 226);
-            this.bunifuPanel1.TabIndex = 35;
+            this.bunifuPanel1.TabIndex = 0;
             // 
             // pbErrorUsuario
             // 
@@ -419,7 +419,7 @@ namespace ControlesPerzonalizados
             this.txtUsuario.ShortcutsEnabled = true;
             this.txtUsuario.Size = new System.Drawing.Size(301, 40);
             this.txtUsuario.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
-            this.txtUsuario.TabIndex = 36;
+            this.txtUsuario.TabIndex = 0;
             this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtUsuario.TextMarginBottom = 0;
             this.txtUsuario.TextMarginLeft = 7;
@@ -427,6 +427,7 @@ namespace ControlesPerzonalizados
             this.txtUsuario.TextPlaceholder = "Usuario";
             this.txtUsuario.UseSystemPasswordChar = false;
             this.txtUsuario.WordWrap = true;
+            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChange);
             // 
             // lblCorreo
             // 

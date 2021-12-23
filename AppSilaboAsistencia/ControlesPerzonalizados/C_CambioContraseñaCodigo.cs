@@ -61,11 +61,6 @@ namespace ControlesPerzonalizados
                 return "Código no Coincide";
         }
 
-        private void btnVolverEnviar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            codigo_verificacion = EnviarCodigo(Email);
-        }
-
         public string EnviarCodigo(string Correo)
         {
             // Enviar un correo con un codigo de verificiacion random
@@ -104,7 +99,6 @@ namespace ControlesPerzonalizados
             }
         }
 
-
         private void C_CambioContraseñaCodigo_Enter(object sender, EventArgs e)
         {      
             BunifuLabel CorreoCC = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblCorreo", false)[0];
@@ -116,7 +110,7 @@ namespace ControlesPerzonalizados
             lblEmail.Text = Email;
         }
 
-        private void txtCodigoVerificacion_TextChange(object sender, EventArgs e)
+        private void txtCodigoVerificacion_TextChanged(object sender, EventArgs e)
         {
             CodigoVerificacion_Lleno = Validador.ValidarCampoLleno(txtCodigoVerificacion, lblErrorCodigo, pbErrorCodigo);
             if (CodigoVerificacion_Lleno)
@@ -124,6 +118,11 @@ namespace ControlesPerzonalizados
                 lblErrorCodigo.Visible = false;
                 pbErrorCodigo.Visible = false;
             }
+        }
+
+        private void btnVolverEnviar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            codigo_verificacion = EnviarCodigo(Email);
         }
     }
 }
