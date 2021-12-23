@@ -122,5 +122,11 @@ namespace ControlesPerzonalizados
                 pbErrorUsuario.Visible = false;
             }
         }
+
+        private void btnSiguiente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Correo = txtUsuario.Text + lblDominio.Text;
+            Verificar();
+        }
     }
 }

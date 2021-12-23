@@ -124,5 +124,22 @@ namespace ControlesPerzonalizados
         {
             codigo_verificacion = EnviarCodigo(Email);
         }
+
+        private void btnSiguiente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (CodigoVerificacion_Lleno)
+            {
+                if (ValidarCodigo())
+                {
+                    BunifuLabel UsuarioCN = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
+                    UsuarioCN.Text = Usuario;
+                    new A_Paso().Siguiente(ParentForm, "Paso2", "Paso3", "C_CambioContraseñaNueva");
+                }
+            }
+            else
+            {
+                Validador.EnfocarCursor(txtCodigoVerificacion);
+            }
+        }
     }
 }

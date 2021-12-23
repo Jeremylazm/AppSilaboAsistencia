@@ -182,5 +182,20 @@ namespace ControlesPerzonalizados
                 txtConfirmarContraseña.UseSystemPasswordChar = false;
             }
         }
+
+        private void btnAceptar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Validar())
+            {
+                if (Cambiar_Contraseña())
+                {
+                    PictureBox PictureActual = (PictureBox)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("pbPaso3", false)[0];
+                    PictureActual.Image = Properties.Resources.Circulo_Checked;
+                    A_Dialogo.DialogoConfirmacion("La contraseña se cambio exitosamente");
+                    //MessageBox.Show("La contraseña se cambio exitosamente");
+                    ParentForm.Close();
+                }
+            }
+        }
     }
 }
