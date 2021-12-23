@@ -74,8 +74,8 @@ namespace CapaPresentaciones
             //Program.Evento = 0;
 
             NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-            
-            NuevoRegistroAsistencia.txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy").ToString();
+
+            NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
             NuevoRegistroAsistencia.horainicioAsignatura = horainicioAsignatura;
             NuevoRegistroAsistencia.ShowDialog();
             NuevoRegistroAsistencia.Dispose();
