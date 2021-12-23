@@ -18,6 +18,8 @@ namespace CapaPresentaciones
         public P_RecuperacionContraseña()
         {
             InitializeComponent();
+            Control[] Controles = { this, lblTitulo, pnLogo, pbLogo, lblUniversidad, lblCorreo, lblDominio, Separador1 };
+            Docker.SubscribeControlsToDragEvents(Controles);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

@@ -23,6 +23,8 @@ namespace CapaPresentaciones
             ObjNegocio = new N_Catalogo();
 
             InitializeComponent();
+            Control[] Controles = { this, lblTitulo };
+            Docker.SubscribeControlsToDragEvents(Controles);
 
             this.Tipo = Tipo;
 
