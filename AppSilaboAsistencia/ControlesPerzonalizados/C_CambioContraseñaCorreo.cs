@@ -44,6 +44,10 @@ namespace ControlesPerzonalizados
             {
                 A_Dialogo.DialogoError("El correo ingresado no es igual al correo que aparece en el perfil");
             }
+            else if (ans == "Correo Vacío")
+            {
+                Validador.EnfocarCursor(txtUsuario);
+            }
             else
             {
                 A_Dialogo.DialogoInformacion("El código de verificación fue enviado, revise su correo institucional");
@@ -70,7 +74,6 @@ namespace ControlesPerzonalizados
             }
             else
             {
-                Validador.EnfocarCursor(txtUsuario);
                 return "Correo Vacío";
             }
         }

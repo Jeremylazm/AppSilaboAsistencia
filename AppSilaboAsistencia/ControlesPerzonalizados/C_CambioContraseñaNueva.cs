@@ -51,14 +51,12 @@ namespace ControlesPerzonalizados
                     {
                         txtConfirmarContraseña.Clear();
                         Validador.EnfocarCursor(txtConfirmarContraseña);
-                        
                         return false;
                     }
                 }
                 else
                 {
                     Validador.EnfocarCursor(txtContraseñaNueva);
-                    
                     return false;
                 }
             }
