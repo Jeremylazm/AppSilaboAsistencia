@@ -152,6 +152,7 @@ namespace ControlesPerzonalizados
             this.btnAceptar.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnAceptar.UseDefaultRadiusAndThickness = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            this.btnAceptar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnAceptar_KeyPress);
             // 
             // btnAtras
             // 
