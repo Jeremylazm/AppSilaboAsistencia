@@ -27,17 +27,7 @@ namespace ControlesPerzonalizados
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (Validar())
-            {
-                if (Cambiar_Contraseña())
-                {
-                    PictureBox PictureActual = (PictureBox)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("pbPaso3", false)[0];
-                    PictureActual.Image = Properties.Resources.Circulo_Checked;
-                    A_Dialogo.DialogoConfirmacion("La contraseña se cambio exitosamente");
-                    //MessageBox.Show("La contraseña se cambio exitosamente");
-                    ParentForm.Close();
-                }
-            } 
+            Finalizar_Pasos();
         }
 
         public bool Validar()
@@ -184,6 +174,25 @@ namespace ControlesPerzonalizados
         }
 
         private void btnAceptar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        }
+
+        private void txtContraseñaAnterior_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Finalizar_Pasos();
+        }
+
+        private void txtContraseñaNueva_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Finalizar_Pasos();
+        }
+
+        private void txtConfirmarContraseña_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Finalizar_Pasos();
+        }
+
+        public void Finalizar_Pasos()
         {
             if (Validar())
             {
