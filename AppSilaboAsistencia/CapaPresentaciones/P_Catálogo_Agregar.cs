@@ -32,6 +32,8 @@ namespace CapaPresentaciones
             ObjEntidadHA = new E_HorarioAsignatura();
             ObjNegocioHA = new N_HorarioAsignatura();
             InitializeComponent();
+            Control[] Controles = { panel1, panel2, label1 };
+            Docker.SubscribeControlsToDragEvents(Controles);
             Inicializar();
             LlenarDatosDocente();
             LlenarDatosAsignatura();

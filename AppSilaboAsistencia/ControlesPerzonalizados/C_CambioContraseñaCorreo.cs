@@ -25,8 +25,7 @@ namespace ControlesPerzonalizados
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            Correo = txtUsuario.Text + lblDominio.Text;
-            Verificar();
+            Siguiente_Paso();
         }
 
         public void Verificar()
@@ -121,6 +120,21 @@ namespace ControlesPerzonalizados
                 lblErrorUsuario.Visible = false;
                 pbErrorUsuario.Visible = false;
             }
+        }
+
+        private void btnSiguiente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Siguiente_Paso();
+        }
+
+        public void Siguiente_Paso()
+        {
+            Correo = txtUsuario.Text + lblDominio.Text;
+            Verificar();
         }
     }
 }

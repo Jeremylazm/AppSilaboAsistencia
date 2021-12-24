@@ -142,6 +142,7 @@ namespace ControlesPerzonalizados
             this.btnSiguiente.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnSiguiente.UseDefaultRadiusAndThickness = true;
             this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            this.btnSiguiente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnSiguiente_KeyPress);
             // 
             // bunifuLabel1
             // 
@@ -409,7 +410,7 @@ namespace ControlesPerzonalizados
             this.txtUsuario.OnIdleState = stateProperties8;
             this.txtUsuario.Padding = new System.Windows.Forms.Padding(3);
             this.txtUsuario.PasswordChar = '\0';
-            this.txtUsuario.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtUsuario.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtUsuario.PlaceholderText = "Usuario";
             this.txtUsuario.ReadOnly = false;
             this.txtUsuario.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -428,6 +429,7 @@ namespace ControlesPerzonalizados
             this.txtUsuario.UseSystemPasswordChar = false;
             this.txtUsuario.WordWrap = true;
             this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChange);
+            this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
             // lblCorreo
             // 

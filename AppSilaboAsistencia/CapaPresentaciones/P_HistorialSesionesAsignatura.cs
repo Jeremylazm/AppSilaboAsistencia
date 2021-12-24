@@ -70,15 +70,32 @@ namespace CapaPresentaciones
             DataTable EstudiantesAsigantura = N_Matricula.BuscarEstudiantesAsignatura(CodSemestre, CodAsignatura.Substring(6), CodAsignatura);
             DataTable HoraInicioThAsg = N_HorarioAsignatura.BuscarHorarioAsignatura(CodSemestre, CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), CodAsignatura.Substring(5, 1));
             string horainicioAsignatura = HoraInicioThAsg.Rows[0][6].ToString();
-            P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente,EstudiantesAsigantura);
-            //Program.Evento = 0;
 
-            NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+            Form Fondo = new Form();
+            using (P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura))
+            {
+                Fondo.StartPosition = FormStartPosition.Manual;
+                Fondo.FormBorderStyle = FormBorderStyle.None;
+                Fondo.Opacity = .70d;
+                Fondo.BackColor = Color.Black;
+                Fondo.WindowState = FormWindowState.Maximized;
+                Fondo.TopMost = true;
+                Fondo.Location = this.Location;
+                Fondo.ShowInTaskbar = false;
+                Fondo.Show();
 
-            NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
-            NuevoRegistroAsistencia.horainicioAsignatura = horainicioAsignatura;
-            NuevoRegistroAsistencia.ShowDialog();
-            NuevoRegistroAsistencia.Dispose();
+                NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+
+                NuevoRegistroAsistencia.txtFecha.Text = DateTime.Now.ToString("yyyy/MM/dd").ToString();
+                NuevoRegistroAsistencia.horainicioAsignatura = horainicioAsignatura;
+
+
+                NuevoRegistroAsistencia.Owner = Fondo;
+                NuevoRegistroAsistencia.ShowDialog();
+                NuevoRegistroAsistencia.Dispose();
+
+                Fondo.Dispose();
+            }
         }
 
 		private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -88,17 +105,35 @@ namespace CapaPresentaciones
                 DataTable HoraInicioThAsg = N_HorarioAsignatura.BuscarHorarioAsignatura(CodSemestre, CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), CodAsignatura.Substring(5, 1));
                 string horainicioAsignatura = HoraInicioThAsg.Rows[0][6].ToString();
                 DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, "IF", CodAsignatura, horainicioAsignatura, Convert.ToDateTime(dgvDatos.Rows[e.RowIndex].Cells[1].Value).ToString("yyyy/MM/dd"));
-                
-                P_TablaAsistenciaEstudiantes EditarRegistro = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente,AsistenciaEstudiantesAsignatura);
-                Program.Evento = 1;
-                EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                EditarRegistro.txtFecha.Text = Convert.ToDateTime(dgvDatos.Rows[e.RowIndex].Cells[1].Value).ToString("yyyy/MM/dd");
-                EditarRegistro.txtTema.Text = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
-                EditarRegistro.horainicioAsignatura = horainicioAsignatura;
+
+                Form Fondo = new Form();
+                using (P_TablaAsistenciaEstudiantes EditarRegistro = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, AsistenciaEstudiantesAsignatura))
+                {
+                    Fondo.StartPosition = FormStartPosition.Manual;
+                    Fondo.FormBorderStyle = FormBorderStyle.None;
+                    Fondo.Opacity = .70d;
+                    Fondo.BackColor = Color.Black;
+                    Fondo.WindowState = FormWindowState.Maximized;
+                    Fondo.TopMost = true;
+                    Fondo.Location = this.Location;
+                    Fondo.ShowInTaskbar = false;
+                    Fondo.Show();
+
+                    Program.Evento = 1;
+
+                    EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+
+                    EditarRegistro.txtFecha.Text = Convert.ToDateTime(dgvDatos.Rows[e.RowIndex].Cells[1].Value).ToString("yyyy/MM/dd");
+                    EditarRegistro.txtTema.Text = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    EditarRegistro.horainicioAsignatura = horainicioAsignatura;
 
 
-                EditarRegistro.ShowDialog();
-                EditarRegistro.Dispose();
+                    EditarRegistro.Owner = Fondo;
+                    EditarRegistro.ShowDialog();
+                    EditarRegistro.Dispose();
+
+                    Fondo.Dispose();
+                }
             }
         }
 	}

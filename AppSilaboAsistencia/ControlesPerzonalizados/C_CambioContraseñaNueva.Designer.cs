@@ -152,6 +152,7 @@ namespace ControlesPerzonalizados
             this.btnAceptar.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnAceptar.UseDefaultRadiusAndThickness = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            this.btnAceptar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnAceptar_KeyPress);
             // 
             // btnAtras
             // 
@@ -502,7 +503,7 @@ namespace ControlesPerzonalizados
             this.txtConfirmarContraseña.OnIdleState = stateProperties4;
             this.txtConfirmarContraseña.Padding = new System.Windows.Forms.Padding(3);
             this.txtConfirmarContraseña.PasswordChar = '\0';
-            this.txtConfirmarContraseña.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtConfirmarContraseña.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtConfirmarContraseña.PlaceholderText = "Confirme su contraseña nueva";
             this.txtConfirmarContraseña.ReadOnly = false;
             this.txtConfirmarContraseña.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -521,6 +522,7 @@ namespace ControlesPerzonalizados
             this.txtConfirmarContraseña.UseSystemPasswordChar = false;
             this.txtConfirmarContraseña.WordWrap = true;
             this.txtConfirmarContraseña.TextChanged += new System.EventHandler(this.txtConfirmarContraseña_TextChanged);
+            this.txtConfirmarContraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtConfirmarContraseña_KeyPress);
             // 
             // lblConfirmarContraseña
             // 
@@ -600,7 +602,7 @@ namespace ControlesPerzonalizados
             this.txtContraseñaNueva.OnIdleState = stateProperties8;
             this.txtContraseñaNueva.Padding = new System.Windows.Forms.Padding(3);
             this.txtContraseñaNueva.PasswordChar = '\0';
-            this.txtContraseñaNueva.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtContraseñaNueva.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtContraseñaNueva.PlaceholderText = "Escriba su contraseña nueva";
             this.txtContraseñaNueva.ReadOnly = false;
             this.txtContraseñaNueva.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -619,6 +621,7 @@ namespace ControlesPerzonalizados
             this.txtContraseñaNueva.UseSystemPasswordChar = false;
             this.txtContraseñaNueva.WordWrap = true;
             this.txtContraseñaNueva.TextChanged += new System.EventHandler(this.txtContraseñaNueva_TextChanged);
+            this.txtContraseñaNueva.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseñaNueva_KeyPress);
             // 
             // lblContraseñaNueva
             // 
@@ -698,7 +701,7 @@ namespace ControlesPerzonalizados
             this.txtContraseñaAnterior.OnIdleState = stateProperties12;
             this.txtContraseñaAnterior.Padding = new System.Windows.Forms.Padding(3);
             this.txtContraseñaAnterior.PasswordChar = '\0';
-            this.txtContraseñaAnterior.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtContraseñaAnterior.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtContraseñaAnterior.PlaceholderText = "Escriba su contraseña anterior";
             this.txtContraseñaAnterior.ReadOnly = false;
             this.txtContraseñaAnterior.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -717,6 +720,7 @@ namespace ControlesPerzonalizados
             this.txtContraseñaAnterior.UseSystemPasswordChar = false;
             this.txtContraseñaAnterior.WordWrap = true;
             this.txtContraseñaAnterior.TextChanged += new System.EventHandler(this.txtContraseñaAnterior_TextChanged);
+            this.txtContraseñaAnterior.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContraseñaAnterior_KeyPress);
             // 
             // lblContraseñaAnterior
             // 

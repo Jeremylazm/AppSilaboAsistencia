@@ -24,13 +24,13 @@ namespace CapaPresentaciones
         public P_TablaSesionesAsignatura(string CodAsignatura)
         {
             this.CodAsignatura = CodAsignatura;
+
             InitializeComponent();
+            Control[] Controles = { this, lblTitulo, pbLogo };
+            Docker.SubscribeControlsToDragEvents(Controles);
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
 
-            
-
             Asignaturas = N_Catalogo.BuscarPlanSesionesAsignatura(CodAsignatura.Substring(0, 5), E_InicioSesion.Usuario);
-
             MostrarAsignaturas();
         }
 

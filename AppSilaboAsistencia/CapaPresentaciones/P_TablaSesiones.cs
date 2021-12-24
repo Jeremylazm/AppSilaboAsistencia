@@ -26,6 +26,8 @@ namespace CapaPresentaciones
             CodAsignatura = pCodAsignatura;
             CodDocente = pCodDocente;
             InitializeComponent();
+            Control[] Controles = { this, lblTitulo, pbLogo };
+            Docker.SubscribeControlsToDragEvents(Controles);
             PlanSesion = N_Catalogo.RecuperarPlanDeSesionAsignatura("2021-II", CodAsignatura, CodDocente);
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvSesiones, sbDatos);
         }

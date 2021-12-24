@@ -39,12 +39,12 @@ namespace CapaPresentaciones
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.btnSubir = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnBuscarArchivo = new Bunifu.UI.WinForms.BunifuButton.BunifuIconButton();
             this.txtRuta = new Bunifu.UI.WinForms.BunifuTextBox();
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
+            this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.SuspendLayout();
             // 
             // Bordeado
@@ -55,12 +55,6 @@ namespace CapaPresentaciones
             // openFileDialog
             // 
             this.openFileDialog.RestoreDirectory = true;
-            // 
-            // Movimiento
-            // 
-            this.Movimiento.Fixed = true;
-            this.Movimiento.Horizontal = true;
-            this.Movimiento.Vertical = true;
             // 
             // btnSubir
             // 
@@ -151,6 +145,7 @@ namespace CapaPresentaciones
             this.btnSubir.TextMarginLeft = 0;
             this.btnSubir.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnSubir.UseDefaultRadiusAndThickness = true;
+            this.btnSubir.Click += new System.EventHandler(this.btnSubir_Click);
             // 
             // btnBuscarArchivo
             // 
@@ -182,6 +177,7 @@ namespace CapaPresentaciones
             this.btnBuscarArchivo.Size = new System.Drawing.Size(35, 35);
             this.btnBuscarArchivo.Style = Bunifu.UI.WinForms.BunifuButton.BunifuIconButton.ButtonStyles.Round;
             this.btnBuscarArchivo.TabIndex = 34;
+            this.btnBuscarArchivo.Click += new System.EventHandler(this.btnBuscarArchivo_Click);
             // 
             // txtRuta
             // 
@@ -201,7 +197,7 @@ namespace CapaPresentaciones
             this.txtRuta.BorderThickness = 1;
             this.txtRuta.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtRuta.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtRuta.DefaultFont = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRuta.DefaultFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRuta.DefaultText = "";
             this.txtRuta.FillColor = System.Drawing.Color.White;
             this.txtRuta.HideSelection = true;
@@ -239,7 +235,7 @@ namespace CapaPresentaciones
             this.txtRuta.OnIdleState = stateProperties8;
             this.txtRuta.Padding = new System.Windows.Forms.Padding(3);
             this.txtRuta.PasswordChar = '\0';
-            this.txtRuta.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtRuta.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtRuta.PlaceholderText = "Ruta del archivo";
             this.txtRuta.ReadOnly = true;
             this.txtRuta.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -247,7 +243,7 @@ namespace CapaPresentaciones
             this.txtRuta.SelectionLength = 0;
             this.txtRuta.SelectionStart = 0;
             this.txtRuta.ShortcutsEnabled = true;
-            this.txtRuta.Size = new System.Drawing.Size(737, 45);
+            this.txtRuta.Size = new System.Drawing.Size(737, 42);
             this.txtRuta.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.txtRuta.TabIndex = 33;
             this.txtRuta.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -292,6 +288,7 @@ namespace CapaPresentaciones
             this.btnCerrar.WaitOnLoad = false;
             this.btnCerrar.Zoom = 10;
             this.btnCerrar.ZoomSpeed = 10;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lblTitulo
             // 
@@ -312,6 +309,46 @@ namespace CapaPresentaciones
             this.lblTitulo.Text = "Subir";
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // Docker
+            // 
+            this.Docker.AllowFormDragging = true;
+            this.Docker.AllowFormDropShadow = true;
+            this.Docker.AllowFormResizing = true;
+            this.Docker.AllowHidingBottomRegion = true;
+            this.Docker.AllowOpacityChangesWhileDragging = false;
+            this.Docker.BorderOptions.BottomBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.BottomBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.BottomBorder.ShowBorder = true;
+            this.Docker.BorderOptions.LeftBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.LeftBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.LeftBorder.ShowBorder = true;
+            this.Docker.BorderOptions.RightBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.RightBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.RightBorder.ShowBorder = true;
+            this.Docker.BorderOptions.TopBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.TopBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.TopBorder.ShowBorder = true;
+            this.Docker.ContainerControl = this;
+            this.Docker.DockingIndicatorsColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(215)))), ((int)(((byte)(233)))));
+            this.Docker.DockingIndicatorsOpacity = 0.5D;
+            this.Docker.DockingOptions.DockAll = false;
+            this.Docker.DockingOptions.DockBottomLeft = false;
+            this.Docker.DockingOptions.DockBottomRight = false;
+            this.Docker.DockingOptions.DockFullScreen = false;
+            this.Docker.DockingOptions.DockLeft = false;
+            this.Docker.DockingOptions.DockRight = false;
+            this.Docker.DockingOptions.DockTopLeft = false;
+            this.Docker.DockingOptions.DockTopRight = false;
+            this.Docker.FormDraggingOpacity = 0.9D;
+            this.Docker.ParentForm = this;
+            this.Docker.ShowCursorChanges = true;
+            this.Docker.ShowDockingIndicators = false;
+            this.Docker.TitleBarOptions.AllowFormDragging = true;
+            this.Docker.TitleBarOptions.BunifuFormDock = this.Docker;
+            this.Docker.TitleBarOptions.DoubleClickToExpandWindow = true;
+            this.Docker.TitleBarOptions.TitleBarControl = null;
+            this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
             // P_SubirArchivo
             // 
@@ -337,11 +374,11 @@ namespace CapaPresentaciones
 
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private Bunifu.Framework.UI.BunifuDragControl Movimiento;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnSubir;
         private Bunifu.UI.WinForms.BunifuButton.BunifuIconButton btnBuscarArchivo;
         private Bunifu.UI.WinForms.BunifuTextBox txtRuta;
         private Bunifu.UI.WinForms.BunifuImageButton btnCerrar;
         private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
+        private Bunifu.UI.WinForms.BunifuFormDock Docker;
     }
 }

@@ -137,6 +137,7 @@ namespace ControlesPerzonalizados
             this.btnSiguiente.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnSiguiente.UseDefaultRadiusAndThickness = true;
             this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            this.btnSiguiente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnSiguiente_KeyPress);
             // 
             // bunifuPanel1
             // 
@@ -333,7 +334,7 @@ namespace ControlesPerzonalizados
             this.txtCodigoVerificacion.OnIdleState = stateProperties4;
             this.txtCodigoVerificacion.Padding = new System.Windows.Forms.Padding(3);
             this.txtCodigoVerificacion.PasswordChar = '\0';
-            this.txtCodigoVerificacion.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtCodigoVerificacion.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtCodigoVerificacion.PlaceholderText = "Escriba su código de verificación";
             this.txtCodigoVerificacion.ReadOnly = false;
             this.txtCodigoVerificacion.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -352,6 +353,7 @@ namespace ControlesPerzonalizados
             this.txtCodigoVerificacion.UseSystemPasswordChar = false;
             this.txtCodigoVerificacion.WordWrap = true;
             this.txtCodigoVerificacion.TextChanged += new System.EventHandler(this.txtCodigoVerificacion_TextChanged);
+            this.txtCodigoVerificacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoVerificacion_KeyPress);
             // 
             // lblCodigoVerificacion
             // 

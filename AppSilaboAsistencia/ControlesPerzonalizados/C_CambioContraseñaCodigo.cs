@@ -22,20 +22,8 @@ namespace ControlesPerzonalizados
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            if (CodigoVerificacion_Lleno)
-            {
-                if (ValidarCodigo())
-                {
-                    BunifuLabel UsuarioCN = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
-                    UsuarioCN.Text = Usuario;
-                    new A_Paso().Siguiente(ParentForm, "Paso2", "Paso3", "C_CambioContraseñaNueva");
-                }
-            }
-            else
-            {
-                Validador.EnfocarCursor(txtCodigoVerificacion);
-            }
-        } //Listo
+            Siguiente_Paso();
+        }
 
         private bool ValidarCodigo()
         {
@@ -95,7 +83,7 @@ namespace ControlesPerzonalizados
                 // Mostrar error
                 A_Dialogo.DialogoError("Error al enviar el código de verificación");
                 //MessageBox.Show(ex.Message);
-                return "-1";
+                return "Error Enviar Código";
             }
         }
 
@@ -123,6 +111,36 @@ namespace ControlesPerzonalizados
         private void btnVolverEnviar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             codigo_verificacion = EnviarCodigo(Email);
+            if (codigo_verificacion == "Error Enviar Código")
+                A_Dialogo.DialogoError("Error al enviar el código de verificación");
+            else
+                A_Dialogo.DialogoInformacion("El código de verificación fue enviado, revise su correo institucional");
+        }
+
+        private void btnSiguiente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        }
+
+        private void txtCodigoVerificacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Siguiente_Paso();
+        }
+
+        public void Siguiente_Paso()
+        {
+            if (CodigoVerificacion_Lleno)
+            {
+                if (ValidarCodigo())
+                {
+                    BunifuLabel UsuarioCN = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
+                    UsuarioCN.Text = Usuario;
+                    new A_Paso().Siguiente(ParentForm, "Paso2", "Paso3", "C_CambioContraseñaNueva");
+                }
+            }
+            else
+            {
+                Validador.EnfocarCursor(txtCodigoVerificacion);
+            }
         }
     }
 }

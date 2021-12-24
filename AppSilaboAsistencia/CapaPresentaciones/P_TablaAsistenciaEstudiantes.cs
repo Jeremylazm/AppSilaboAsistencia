@@ -43,7 +43,8 @@ namespace CapaPresentaciones
             ObjEntidadDoc = new E_AsistenciaDocente();
             ObjNegocioDoc = new N_AsistenciaDocente();
             InitializeComponent();
-
+            Control[] Controles = { this, lblTitulo, pbLogo, lblFecha, lblMarcarTodos, lblTema, txtFecha };
+            Docker.SubscribeControlsToDragEvents(Controles);
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             lblTitulo.Text += CodAsignatura;
             lblFecha.Text += "    ";

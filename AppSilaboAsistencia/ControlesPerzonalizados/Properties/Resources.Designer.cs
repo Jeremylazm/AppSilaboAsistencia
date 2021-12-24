@@ -743,6 +743,26 @@ namespace ControlesPerzonalizados.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap RestablecerImagen {
+            get {
+                object obj = ResourceManager.GetObject("RestablecerImagen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RestablecerImagen2 {
+            get {
+                object obj = ResourceManager.GetObject("RestablecerImagen2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Restaurar {
             get {
                 object obj = ResourceManager.GetObject("Restaurar", resourceCulture);
@@ -806,6 +826,26 @@ namespace ControlesPerzonalizados.Properties {
         internal static System.Drawing.Bitmap Subir_Perfil {
             get {
                 object obj = ResourceManager.GetObject("Subir_Perfil", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SubirImagen {
+            get {
+                object obj = ResourceManager.GetObject("SubirImagen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SubirImagen2 {
+            get {
+                object obj = ResourceManager.GetObject("SubirImagen2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -13,6 +13,8 @@ namespace CapaPresentaciones
         {
             CodAsignatura = pCodAsignatura;
             InitializeComponent();
+            Control[] Controles = { this, lblTitulo, pbLogo };
+            Docker.SubscribeControlsToDragEvents(Controles);
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             lblTitulo.Text += CodAsignatura;
             MostrarEstudiantes();
