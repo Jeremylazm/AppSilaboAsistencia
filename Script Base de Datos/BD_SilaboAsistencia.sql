@@ -19,7 +19,6 @@ USE BDSistemaGestion
 	EXEC SP_ADDTYPE tyCodEscuelaP,				'VARCHAR(3)', 'NOT NULL'
 	EXEC SP_ADDTYPE tyCodDepartamentoA,		    'VARCHAR(3)', 'NOT NULL'
 	EXEC SP_ADDTYPE tyCodDocente,				'VARCHAR(5)', 'NOT NULL'
-	EXEC SP_ADDTYPE tyCodEstudiante,			'VARCHAR(6)', 'NOT NULL'
 	EXEC SP_ADDTYPE tyCodAsignatura,			'VARCHAR(6)', 'NOT NULL'
 	EXEC sp_addtype tyCodSemestre,				'VARCHAR(7)', 'NOT NULL'
 	EXEC SP_ADDTYPE tyCodSilabo,				'VARCHAR(4)', 'NOT NULL'
@@ -29,6 +28,25 @@ GO
 					        CREACION DE TABLAS
    ******************************************************************** */
 USE BDSistemaGestion
+GO
+
+/* ************************* TABLA SEMESTRE ACADÉMICO ************************** */
+IF EXISTS (SELECT * 
+				FROM SYSOBJECTS
+				WHERE NAME = 'TSemestre')
+	DROP TABLE TSemestre
+GO
+CREATE TABLE TSemestre
+(
+	-- Lista de atributos
+	IdSemestre INT IDENTITY(1,1),
+	Denominacion VARCHAR(7), -- ej. 2021-II
+	FechaInicio DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+	FechaInicio_Formatted AS (CONVERT(VARCHAR(10), FechaInicio, 103)) 
+
+	-- Determinar las claves 
+	PRIMARY KEY (Denominacion),
+);
 GO
 
 /* ********************* TABLA ESCUELA-PROFESIONAL ********************* */
@@ -58,38 +76,10 @@ CREATE TABLE TDepartamentoAcademico
 (
 	-- Lista de atributos
 	CodDepartamentoA tyCodDepartamentoA,
-
 	Nombre VARCHAR(80) NOT NULL,
 
 	-- Determinar las claves 
 	PRIMARY KEY (CodDepartamentoA)
-);
-GO
-
-/* ************************* TABLA ESTUDIANTE ************************** */
-IF EXISTS (SELECT * 
-				FROM SYSOBJECTS
-				WHERE NAME = 'TEstudiante')
-	DROP TABLE TEstudiante
-GO
-CREATE TABLE TEstudiante
-(
-	-- Lista de atributos
-	Perfil VARBINARY(MAX),
-	CodEstudiante tyCodEstudiante,
-	APaterno VARCHAR(35) NOT NULL,
-	AMaterno VARCHAR(35) NOT NULL,
-	Nombre VARCHAR(35) NOT NULL,
-	Email VARCHAR(50) NOT NULL,
-	Direccion VARCHAR(50) NOT NULL,
-	Telefono VARCHAR(15) NOT NULL,
-	CodEscuelaP tyCodEscuelaP
-
-	-- Determinar las claves 
-	PRIMARY KEY (CodEstudiante),
-	CONSTRAINT FKE_CodEscuelaP FOREIGN KEY (CodEscuelaP)
-		REFERENCES TEscuelaProfesional
-		ON UPDATE CASCADE
 );
 GO
 
@@ -518,103 +508,52 @@ BEGIN
 END;
 GO
 
-/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ESTUDIANTE ****************** */
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA SEMESTRE ****************** */
 
--- Procedimiento para mostrar los estudiantes de una escuela profesional. 
-CREATE PROCEDURE spuMostrarEstudiantes @CodEscuelaP VARCHAR(3)
+-- Procedimiento para mostrar el semestre actual. 
+CREATE PROCEDURE spuSemestreActual
 AS
 BEGIN
-	-- Mostrar la tabla TEstudiante
-	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodEstudiante, APaterno, AMaterno, Nombre, Email, Direccion, Telefono
-		FROM TEstudiante 
-	    WHERE CodEscuelaP = @CodEscuelaP
+	-- Mostrar el semestre actual
+	SELECT TOP 1 Denominacion, FechaInicio = FechaInicio_Formatted 
+	    FROM TSemestre
+		ORDER BY IdSemestre DESC
 END;
 GO
 
--- Procedimiento para buscar un estudiante (por su código) de una escuela profesional.
-CREATE PROCEDURE spuBuscarEstudiante @CodEscuelaP VARCHAR(3),
-									 @CodEstudiante VARCHAR(6)
+-- Procedimiento para insertar los datos de un semestre.
+CREATE PROCEDURE spuInsertarSemestre @Denominacion VARCHAR(7),
+									 @FechaInicio DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
 AS
 BEGIN
-	-- Mostrar la información del estudiante
-	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodEstudiante, APaterno, AMaterno, Nombre, Email, Direccion, Telefono
-		FROM TEstudiante
-		WHERE CodEscuelaP = @CodEscuelaP AND CodEstudiante = @CodEstudiante
+	-- Insertar los datos de un nuevo semestre en la tabla TSemestre
+	INSERT INTO TSemestre
+		VALUES (@Denominacion, @FechaInicio)
 END;
 GO
 
--- Procedimiento para buscar por cualquier atributo los estudiantes de una escuela profesional.
-CREATE PROCEDURE spuBuscarEstudiantes @CodEscuelaP VARCHAR(3),
-									  @Texto VARCHAR(35)
+-- Procedimiento para actualizar los datos de un semestre.
+CREATE PROCEDURE spuActualizarSemestre @Denominacion VARCHAR(7),
+									   @NDenominacion VARCHAR(7), -- Nueva Denominación
+									   @NFechaInicio DATE -- Nueva FechaInicio (Formato: dd/mm/yyyy o dd-mm-yyyy)
 AS
 BEGIN
-	-- Mostrar la tabla TEstudiante por el texto que se desea buscar
-	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodEstudiante, APaterno, AMaterno, Nombre, Email, Direccion, Telefono
-		FROM TEstudiante
-		WHERE CodEscuelaP = @CodEscuelaP AND
-		     (CodEstudiante LIKE (@Texto + '%') OR
-			  APaterno LIKE (@Texto + '%') OR
-			  AMaterno LIKE (@Texto + '%') OR
-			  Nombre LIKE (@Texto + '%') OR
-			  Email LIKE (@Texto + '%') OR
-			  Direccion LIKE (@Texto + '%') OR
-			  Telefono LIKE (@Texto + '%'))
+	-- Actualizar los datos de un semestre.
+	UPDATE TSemestre
+		SET Denominacion = @NDenominacion,
+		    FechaInicio = @NFechaInicio
+
+		WHERE Denominacion = @Denominacion
 END;
 GO
 
--- Procedimiento para insertar un estudiante.
-CREATE PROCEDURE spuInsertarEstudiante @Perfil VARBINARY(MAX),
-									   @CodEstudiante VARCHAR(6),
-									   @APaterno VARCHAR(35),
-									   @AMaterno VARCHAR(35),
-									   @Nombre VARCHAR(35),
-									   @Email VARCHAR(50),
-									   @Direccion VARCHAR(50),
-									   @Telefono VARCHAR(15),
-									   @CodEscuelaP VARCHAR(3)
-AS
-BEGIN
-	-- Insertar un estudiante en la tabla TEstudiante
-	INSERT INTO TEstudiante
-		VALUES (@Perfil, @CodEstudiante, @APaterno, @AMaterno, @Nombre, @Email, @Direccion, @Telefono, @CodEscuelaP)
-END;
-GO
-
--- Procedimiento para actualizar un estudiante.
-CREATE PROCEDURE spuActualizarEstudiante @Perfil VARBINARY(MAX),
-										 @CodEstudiante VARCHAR(6),
-										 @APaterno VARCHAR(35),
-										 @AMaterno VARCHAR(35),
-										 @Nombre VARCHAR(35),
-										 @Email VARCHAR(50),
-										 @Direccion VARCHAR(50),
-										 @Telefono VARCHAR(15),
-										 @CodEscuelaP VARCHAR(3)					
-AS
-BEGIN
-	-- Actualizar un estudiante de la tabla TEstudiante
-	UPDATE TEstudiante
-		SET Perfil = @Perfil,
-		    CodEstudiante = @CodEstudiante,
-			APaterno = @APaterno,
-			AMaterno = @AMaterno,
-			Nombre = @Nombre, 
-		    Email = @Email,
-			Direccion = @Direccion,
-			Telefono = @Telefono,
-			CodEscuelaP = @CodEscuelaP
-
-		WHERE CodEstudiante = @CodEstudiante
-END;
-GO
-
--- Procedimiento para eliminar un estudiante.
-CREATE PROCEDURE spuEliminarEstudiante @CodEstudiante VARCHAR(6)					
+-- Procedimiento para eliminar el registro de un semestre.
+CREATE PROCEDURE spuEliminarSemestre @Denominacion VARCHAR(7)	
 AS
 BEGIN
 	-- Eliminar un estudiante de la tabla TEstudiante
-	DELETE FROM TEstudiante
-		WHERE CodEstudiante = @CodEstudiante
+	DELETE FROM TSemestre
+		WHERE Denominacion = @Denominacion
 END;
 GO
 
