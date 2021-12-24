@@ -19,16 +19,20 @@ namespace CapaPresentaciones
     public partial class P_TablaSesiones : Form
     {
         private DataTable PlanSesion;
+        private readonly string CodSemestre;
         public string CodAsignatura;
         public string CodDocente;
+
         public P_TablaSesiones(string pCodAsignatura, string pCodDocente)
         {
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
             CodAsignatura = pCodAsignatura;
             CodDocente = pCodDocente;
             InitializeComponent();
             Control[] Controles = { this, lblTitulo, pbLogo };
             Docker.SubscribeControlsToDragEvents(Controles);
-            PlanSesion = N_Catalogo.RecuperarPlanDeSesionAsignatura("2021-II", CodAsignatura, CodDocente);
+            PlanSesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, CodAsignatura, CodDocente);
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvSesiones, sbDatos);
         }
 

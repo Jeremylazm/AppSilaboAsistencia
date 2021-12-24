@@ -16,12 +16,14 @@ namespace CapaPresentaciones
         readonly N_Catalogo ObjCatalogo;
         readonly E_Matricula ObjEntidadMatricula;
         readonly N_Matricula ObjNegocioMatricula;
-        private readonly string CodSemestre = "2021-II";
+        private readonly string CodSemestre;
         private readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodEscuelaP = "IF";
 
         public P_TablaAsignaturasAsignadasEstudiantes()
         {
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
             ObjCatalogo = new N_Catalogo();
             ObjEntidadMatricula = new E_Matricula();
             ObjNegocioMatricula = new N_Matricula();

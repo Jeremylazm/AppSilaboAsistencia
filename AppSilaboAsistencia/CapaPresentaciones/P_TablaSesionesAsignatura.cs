@@ -18,7 +18,6 @@ namespace CapaPresentaciones
     public partial class P_TablaSesionesAsignatura : Form
     {
         readonly private string CodAsignatura;
-        private readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly DataTable Asignaturas;
 
         public P_TablaSesionesAsignatura(string CodAsignatura)

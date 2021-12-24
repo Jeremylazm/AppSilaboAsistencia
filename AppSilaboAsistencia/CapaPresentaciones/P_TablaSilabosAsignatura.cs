@@ -16,7 +16,6 @@ namespace CapaPresentaciones
     public partial class P_TablaSilabosAsignatura : Form
     {
         readonly private string CodAsignatura;
-
         private readonly DataTable Asignaturas;
 
         public P_TablaSilabosAsignatura(string CodAsignatura)
