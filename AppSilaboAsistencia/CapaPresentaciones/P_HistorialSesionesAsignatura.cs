@@ -16,23 +16,23 @@ namespace CapaPresentaciones
     {
         public string CodAsignatura;
         private readonly string CodDocente = E_InicioSesion.Usuario;
-        //public string CodDocente;
+        private readonly string CodSemestre;
+        public string LimtFechaInf;
+        public string LimtFechaSup = DateTime.Now.ToString("dd/MM/yyyy").ToString();
 
-        public string CodSemestre;
-        public string LimtFechaInf = "2021/01/01";
-        public string LimtFechaSup = DateTime.Now.ToString("yyyy/MM/dd").ToString();
-
-        public P_HistorialSesionesAsignatura(string pCodAsignatura, string pCodDocente)
+        public P_HistorialSesionesAsignatura(string pCodAsignatura)
         {
             CodAsignatura = pCodAsignatura;
-            //CodDocente = pCodDocente;
-            CodSemestre = "2021-II";
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
+            LimtFechaInf = Semestre.Rows[0][1].ToString();
             InitializeComponent();
             MostrarRegistros();
 
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             lblTitulo.Text += CodAsignatura;
         }
+
         public void AccionesTabla()
         {
             dgvDatos.Columns[0].DisplayIndex = 5;
@@ -44,6 +44,7 @@ namespace CapaPresentaciones
             dgvDatos.Columns[5].HeaderText = "TotalFaltaron";
 
         }
+
         public void MostrarRegistros()
         {
             DataTable HoraInicioThAsg = N_HorarioAsignatura.BuscarHorarioAsignatura(CodSemestre, CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), CodAsignatura.Substring(5, 1));
@@ -51,10 +52,12 @@ namespace CapaPresentaciones
             dgvDatos.DataSource = N_AsistenciaDocente.AsistenciaDocenteAsignatura(CodSemestre, "IF", CodDocente, CodAsignatura, horainicioAsignatura, LimtFechaInf, LimtFechaSup);
             AccionesTabla();
         }
+
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
         {
             MostrarRegistros();
         }
+
         public void BuscarRegistros()
         {
             //dgvDatos.DataSource = N_Asignatura.BuscarAsignaturas("IF", txtBuscar.Text);

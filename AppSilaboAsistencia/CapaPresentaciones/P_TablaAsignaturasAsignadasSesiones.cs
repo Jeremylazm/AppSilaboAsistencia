@@ -17,10 +17,13 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasSesiones : Form
     {
+        private readonly string CodSemestre;
         private readonly string CodDocente = E_InicioSesion.Usuario;
 
         public P_TablaAsignaturasAsignadasSesiones()
         {
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             MostrarAsignaturas();
@@ -40,7 +43,7 @@ namespace CapaPresentaciones
 
         private void MostrarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente("2021-II", "IF", CodDocente);
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, "IF", CodDocente);
             AccionesTabla();
         }
 
@@ -105,7 +108,7 @@ namespace CapaPresentaciones
                 wb.Worksheet(1).Cell("A4").Value = dtDatosAsignatura.Rows[0]["NombreAsignatura"].ToString() + " (" + CodAsignatura + ")";
 
                 // Semestre
-                wb.Worksheet(1).Cell("A5").Value = wb.Worksheet(1).Cell("A5").Value + "2021-II";
+                wb.Worksheet(1).Cell("A5").Value = wb.Worksheet(1).Cell("A5").Value + CodSemestre;
 
                 // Completar información del docente
                 DataTable dtDatosDocente = N_Docente.BuscarDocente(CodAsignatura.Substring(0, 2), CodDocente);

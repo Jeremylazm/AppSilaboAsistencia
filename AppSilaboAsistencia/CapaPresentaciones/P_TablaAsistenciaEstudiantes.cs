@@ -19,7 +19,7 @@ namespace CapaPresentaciones
     public partial class P_TablaAsistenciaEstudiantes : Form
     {
         readonly N_Catalogo ObjNegocio;
-        public string CodSemestre = "2021-II";
+        private readonly string CodSemestre;
         public string CodAsignatura;
         public string CodDocente;
         readonly E_AsistenciaEstudiante ObjEntidadEstd;
@@ -30,10 +30,13 @@ namespace CapaPresentaciones
         private DataTable PlanSesion;
         public DataTable dgvTabla;
         public string horainicioAsignatura;
-        public string LmFechaInf = "2021/12/21";
+        public string LmFechaInf;
         
         public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente, DataTable pdgv)
         {
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
+            LmFechaInf = Semestre.Rows[0][1].ToString();
             ObjNegocio = new N_Catalogo();
             CodAsignatura = pCodAsignatura;
             CodDocente = pCodDocente;
