@@ -57,7 +57,7 @@
     <Compile Include="D_DepartamentoAcademico.cs" />
     <Compile Include="D_Docente.cs" />
     <Compile Include="D_EscuelaProfesional.cs" />
-    <Compile Include="D_Estudiante.cs" />
+    <Compile Include="D_Semestre.cs" />
     <Compile Include="D_HorarioAsignatura.cs" />
     <Compile Include="D_InicioSesion.cs" />
     <Compile Include="D_Matricula.cs" />
