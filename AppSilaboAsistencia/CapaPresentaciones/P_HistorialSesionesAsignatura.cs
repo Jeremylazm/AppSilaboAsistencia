@@ -19,6 +19,7 @@ namespace CapaPresentaciones
         private readonly string CodSemestre;
         public string LimtFechaInf;
         public string LimtFechaSup = DateTime.Now.ToString("dd/MM/yyyy").ToString();
+        public string HoraRegistro= DateTime.Now.ToString("hh:mm:ss");
 
         public P_HistorialSesionesAsignatura(string pCodAsignatura)
         {
@@ -69,7 +70,7 @@ namespace CapaPresentaciones
             DataTable EstudiantesAsigantura = N_Matricula.BuscarEstudiantesAsignatura(CodSemestre, CodAsignatura.Substring(6), CodAsignatura);
 
             Form Fondo = new Form();
-            using (P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura))
+            /*using (P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura))
             {
                 Fondo.StartPosition = FormStartPosition.Manual;
                 Fondo.FormBorderStyle = FormBorderStyle.None;
@@ -82,25 +83,32 @@ namespace CapaPresentaciones
                 Fondo.Show();
 
                 NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                NuevoRegistroAsistencia.txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy").ToString();
+                NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
+                NuevoRegistroAsistencia.hora = HoraRegistro;
                 NuevoRegistroAsistencia.Owner = Fondo;
                 NuevoRegistroAsistencia.ShowDialog();
                 NuevoRegistroAsistencia.Dispose();
 
                 Fondo.Dispose();
-            }
+            }*/
+            P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
+            NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+            NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
+            NuevoRegistroAsistencia.hora = HoraRegistro;
+            NuevoRegistroAsistencia.Owner = Fondo;
+            NuevoRegistroAsistencia.ShowDialog();
+            NuevoRegistroAsistencia.Dispose();
         }
 
 		private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
-                DataTable HoraInicioThAsg = N_HorarioAsignatura.BuscarHorarioAsignatura(CodSemestre, CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), CodAsignatura.Substring(5, 1));
-                string horainicioAsignatura = HoraInicioThAsg.Rows[0][6].ToString();
+                
                 DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, CodAsignatura, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
 
                 Form Fondo = new Form();
-                using (P_TablaAsistenciaEstudiantes EditarRegistro = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, AsistenciaEstudiantesAsignatura))
+                /*using (P_TablaAsistenciaEstudiantes EditarRegistro = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, AsistenciaEstudiantesAsignatura))
                 {
                     Fondo.StartPosition = FormStartPosition.Manual;
                     Fondo.FormBorderStyle = FormBorderStyle.None;
@@ -114,15 +122,24 @@ namespace CapaPresentaciones
 
                     Program.Evento = 1;
                     EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                    EditarRegistro.txtFecha.Text = Convert.ToDateTime(dgvDatos.Rows[e.RowIndex].Cells[1].Value).ToString("yyyy/MM/dd");
+                    EditarRegistro.txtFecha.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
                     EditarRegistro.txtTema.Text = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    EditarRegistro.horainicioAsignatura = horainicioAsignatura;
+                    EditarRegistro.hora = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
                     EditarRegistro.Owner = Fondo;
                     EditarRegistro.ShowDialog();
                     EditarRegistro.Dispose();
 
                     Fondo.Dispose();
-                }
+                }*/
+                P_TablaAsistenciaEstudiantes EditarRegistro = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, AsistenciaEstudiantesAsignatura);
+                Program.Evento = 1;
+                EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                EditarRegistro.txtFecha.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
+                EditarRegistro.txtTema.Text = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
+                EditarRegistro.hora = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
+                EditarRegistro.Owner = Fondo;
+                EditarRegistro.ShowDialog();
+                EditarRegistro.Dispose();
             }
         }
 	}
