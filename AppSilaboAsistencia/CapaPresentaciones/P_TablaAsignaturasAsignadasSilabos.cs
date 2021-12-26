@@ -177,7 +177,7 @@ namespace CapaPresentaciones
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
                 Form Fondo = new Form();
-                using (P_TablaSesionesAsignatura silabosAsignatura = new P_TablaSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString()))
+                using (P_TablaSilabosAsignatura silabosAsignatura = new P_TablaSilabosAsignatura(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString()))
                 {
                     Fondo.StartPosition = FormStartPosition.Manual;
                     Fondo.FormBorderStyle = FormBorderStyle.None;
