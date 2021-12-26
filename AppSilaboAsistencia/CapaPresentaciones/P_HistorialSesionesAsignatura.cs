@@ -57,7 +57,7 @@ namespace CapaPresentaciones
 
         public void BuscarRegistros()
         {
-            //dgvDatos.DataSource = N_Asignatura.BuscarAsignaturas("IF", txtBuscar.Text);
+            dgvDatos.DataSource = N_AsistenciaDocente.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, LimtFechaInf, LimtFechaSup,txtBuscar.Text);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -142,5 +142,10 @@ namespace CapaPresentaciones
                 EditarRegistro.Dispose();
             }
         }
+
+		private void txtBuscar_TextChanged(object sender, EventArgs e)
+		{
+            BuscarRegistros();
+		}
 	}
 }
