@@ -306,8 +306,7 @@
             // 
             this.txtDireccion.AcceptsReturn = false;
             this.txtDireccion.AcceptsTab = false;
-            this.txtDireccion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtDireccion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDireccion.AnimationSpeed = 200;
             this.txtDireccion.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
@@ -335,7 +334,7 @@
             this.txtDireccion.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDireccion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtDireccion.Lines = new string[0];
-            this.txtDireccion.Location = new System.Drawing.Point(236, 249);
+            this.txtDireccion.Location = new System.Drawing.Point(236, 298);
             this.txtDireccion.Margin = new System.Windows.Forms.Padding(0);
             this.txtDireccion.MaxLength = 32767;
             this.txtDireccion.MinimumSize = new System.Drawing.Size(1, 1);
@@ -372,7 +371,7 @@
             this.txtDireccion.SelectionLength = 0;
             this.txtDireccion.SelectionStart = 0;
             this.txtDireccion.ShortcutsEnabled = true;
-            this.txtDireccion.Size = new System.Drawing.Size(309, 121);
+            this.txtDireccion.Size = new System.Drawing.Size(309, 84);
             this.txtDireccion.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtDireccion.TabIndex = 84;
             this.txtDireccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -415,7 +414,7 @@
             this.txtTelefono.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTelefono.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtTelefono.Lines = new string[0];
-            this.txtTelefono.Location = new System.Drawing.Point(236, 184);
+            this.txtTelefono.Location = new System.Drawing.Point(236, 227);
             this.txtTelefono.Margin = new System.Windows.Forms.Padding(0);
             this.txtTelefono.MaxLength = 32767;
             this.txtTelefono.MinimumSize = new System.Drawing.Size(1, 1);
@@ -472,10 +471,10 @@
             this.lblErrorTelefono.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblErrorTelefono.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorTelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblErrorTelefono.Location = new System.Drawing.Point(260, 227);
+            this.lblErrorTelefono.Location = new System.Drawing.Point(260, 270);
             this.lblErrorTelefono.Name = "lblErrorTelefono";
             this.lblErrorTelefono.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblErrorTelefono.Size = new System.Drawing.Size(111, 19);
+            this.lblErrorTelefono.Size = new System.Drawing.Size(0, 0);
             this.lblErrorTelefono.TabIndex = 82;
             this.lblErrorTelefono.Text = "Error de Teléfono";
             this.lblErrorTelefono.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -519,7 +518,7 @@
             this.pbErrorTelefono.ImageSize = new System.Drawing.Size(18, 18);
             this.pbErrorTelefono.ImageZoomSize = new System.Drawing.Size(18, 18);
             this.pbErrorTelefono.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbErrorTelefono.InitialImage")));
-            this.pbErrorTelefono.Location = new System.Drawing.Point(236, 227);
+            this.pbErrorTelefono.Location = new System.Drawing.Point(236, 270);
             this.pbErrorTelefono.Name = "pbErrorTelefono";
             this.pbErrorTelefono.Rotation = 0;
             this.pbErrorTelefono.ShowActiveImage = false;
@@ -607,7 +606,7 @@
             this.lblDireccion.CursorType = null;
             this.lblDireccion.Font = new System.Drawing.Font("Montserrat Alternates", 13F);
             this.lblDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblDireccion.Location = new System.Drawing.Point(34, 252);
+            this.lblDireccion.Location = new System.Drawing.Point(34, 298);
             this.lblDireccion.Name = "lblDireccion";
             this.lblDireccion.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblDireccion.Size = new System.Drawing.Size(88, 24);
@@ -655,7 +654,7 @@
             this.lblTelefono1.CursorType = null;
             this.lblTelefono1.Font = new System.Drawing.Font("Montserrat Alternates", 13F);
             this.lblTelefono1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblTelefono1.Location = new System.Drawing.Point(34, 196);
+            this.lblTelefono1.Location = new System.Drawing.Point(34, 239);
             this.lblTelefono1.Name = "lblTelefono1";
             this.lblTelefono1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblTelefono1.Size = new System.Drawing.Size(79, 24);
