@@ -26,10 +26,10 @@ namespace CapaPresentaciones
         readonly N_AsistenciaEstudiante ObjNegocioEstd;
         readonly E_AsistenciaDocente ObjEntidadDoc;
         readonly N_AsistenciaDocente ObjNegocioDoc;
-        public string hora = DateTime.Now.ToString("hh:mm:ss");
+        public string hora;
         private DataTable PlanSesion;
         public DataTable dgvTabla;
-        public string horainicioAsignatura;
+        
         public string LmFechaInf;
         
         public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente, DataTable pdgv)
@@ -73,8 +73,8 @@ namespace CapaPresentaciones
 
         private void AccionesTablaEditar()
         {
-            dgvDatos.Columns[0].DisplayIndex = 9;
-            dgvDatos.Columns[1].DisplayIndex = 9;
+            dgvDatos.Columns[0].DisplayIndex = 8;
+            dgvDatos.Columns[1].DisplayIndex = 8;
             dgvDatos.Columns[2].HeaderText = "Id.";
             dgvDatos.Columns[2].ReadOnly = true;
             dgvDatos.Columns[3].HeaderText = "Código";
@@ -105,9 +105,9 @@ namespace CapaPresentaciones
             foreach (DataGridViewRow fila in dgvDatos.Rows)
             {
                 DataGridViewTextBoxCell textBoxcell = (DataGridViewTextBoxCell)(fila.Cells["txtObservaciones"]);
-                textBoxcell.Value = fila.Cells[9].Value;
-                fila.Cells[0].Value = (fila.Cells[8].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
-                if(fila.Cells[8].Value.Equals("SI"))
+                textBoxcell.Value = fila.Cells[8].Value;
+                fila.Cells[0].Value = (fila.Cells[7].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
+                if(fila.Cells[7].Value.Equals("SI"))
                 {
                     fila.Cells[0].Tag = true;
                 }
@@ -140,9 +140,10 @@ namespace CapaPresentaciones
             foreach (DataGridViewRow dr in dgvDatos.Rows)
             {
                 ObjEntidadEstd.CodSemestre = CodSemestre;
+                ObjEntidadEstd.CodEscuelaP = CodAsignatura.Substring(6);
                 ObjEntidadEstd.CodAsignatura = CodAsignatura;
-                ObjEntidadEstd.Fecha = txtFecha.Text.ToString();//asistencia
-                ObjEntidadEstd.Hora = hora;//asistencia
+                ObjEntidadEstd.Fecha = txtFecha.Text.ToString();//actual del registro
+                ObjEntidadEstd.Hora = hora;//actual del registro
                 ObjEntidadEstd.CodEstudiante = dr.Cells[3].Value.ToString();
                 ObjEntidadEstd.Estado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
                 ObjEntidadEstd.Observacion = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
@@ -156,12 +157,15 @@ namespace CapaPresentaciones
             foreach (DataGridViewRow dr in dgvDatos.Rows)
             {
                 ObjEntidadEstd.CodSemestre = CodSemestre;
+                ObjEntidadEstd.CodEscuelaP = CodAsignatura.Substring(6);
                 ObjEntidadEstd.CodAsignatura = CodAsignatura;
-                ObjEntidadEstd.Fecha = txtFecha.Text.ToString();//asistencia
+                ObjEntidadEstd.Fecha = txtFecha.Text.ToString();//fecha en la que fue registrado
+                ObjEntidadEstd.Hora = hora;//hora en el que fue registrado
                 ObjEntidadEstd.CodEstudiante = dr.Cells[3].Value.ToString();
-                //ObjEntidadEstd.Estado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
+                
                 string EstadoActualizado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";              
                 string ObsActualizada = (dr.Cells[1].Value==null)?"":dr.Cells[1].Value.ToString();
+
                 ObjNegocioEstd.ActualizarAsistenciaEstudiante(ObjEntidadEstd, EstadoActualizado, ObsActualizada);
             }
             //A_Dialogo.DialogoConfirmacion("El registro de la asistencia de los estudiantes se Editó éxitosamente");
@@ -223,7 +227,7 @@ namespace CapaPresentaciones
 
                             string NombreTemaActualizado = txtTema.Text.ToString();
                             string fechaActualizada = txtFecha.Text.ToString();
-                            string NuevaHoraInicioAsignatura = horainicioAsignatura;
+                            
 
                             ObjNegocioDoc.ActualizarAsistenciaDocente(ObjEntidadDoc, NombreTemaActualizado);
                             A_Dialogo.DialogoConfirmacion("Se ha Editado  la Asistencia" + Environment.NewLine+" del Docente y los Estudiantes");
