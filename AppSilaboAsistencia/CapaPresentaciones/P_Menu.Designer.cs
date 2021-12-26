@@ -51,6 +51,7 @@ namespace CapaPresentaciones
             this.lblInferior = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblSuperior = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnOpciones = new System.Windows.Forms.Panel();
+            this.SeparadorMenu2 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.btnAsignaturasAsignadas = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnCerrarSesion = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.pbCerrarSesion = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -72,7 +73,6 @@ namespace CapaPresentaciones
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.Transicion = new Bunifu.UI.WinForms.BunifuTransition(this.components);
-            this.SeparadorMenu2 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.pnPrincipal.SuspendLayout();
             this.pnOpciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbEditarPerfil)).BeginInit();
@@ -370,6 +370,23 @@ namespace CapaPresentaciones
             this.pnOpciones.Name = "pnOpciones";
             this.pnOpciones.Size = new System.Drawing.Size(220, 768);
             this.pnOpciones.TabIndex = 15;
+            // 
+            // SeparadorMenu2
+            // 
+            this.SeparadorMenu2.BackColor = System.Drawing.Color.Transparent;
+            this.SeparadorMenu2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SeparadorMenu2.BackgroundImage")));
+            this.SeparadorMenu2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SeparadorMenu2.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
+            this.Transicion.SetDecoration(this.SeparadorMenu2, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.SeparadorMenu2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.SeparadorMenu2.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
+            this.SeparadorMenu2.LineThickness = 1;
+            this.SeparadorMenu2.Location = new System.Drawing.Point(5, 626);
+            this.SeparadorMenu2.Name = "SeparadorMenu2";
+            this.SeparadorMenu2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
+            this.SeparadorMenu2.Size = new System.Drawing.Size(209, 14);
+            this.SeparadorMenu2.TabIndex = 65;
+            this.SeparadorMenu2.Visible = false;
             // 
             // btnAsignaturasAsignadas
             // 
@@ -1461,23 +1478,6 @@ namespace CapaPresentaciones
             animation1.TransparencyCoeff = 0F;
             this.Transicion.DefaultAnimation = animation1;
             this.Transicion.TimeStep = 1F;
-            // 
-            // SeparadorMenu2
-            // 
-            this.SeparadorMenu2.BackColor = System.Drawing.Color.Transparent;
-            this.SeparadorMenu2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SeparadorMenu2.BackgroundImage")));
-            this.SeparadorMenu2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SeparadorMenu2.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
-            this.Transicion.SetDecoration(this.SeparadorMenu2, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.SeparadorMenu2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.SeparadorMenu2.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
-            this.SeparadorMenu2.LineThickness = 1;
-            this.SeparadorMenu2.Location = new System.Drawing.Point(5, 626);
-            this.SeparadorMenu2.Name = "SeparadorMenu2";
-            this.SeparadorMenu2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.SeparadorMenu2.Size = new System.Drawing.Size(209, 14);
-            this.SeparadorMenu2.TabIndex = 65;
-            this.SeparadorMenu2.Visible = false;
             // 
             // P_Menu
             // 

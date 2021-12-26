@@ -7,9 +7,7 @@ using CapaEntidades;
 using System.IO;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using Bunifu.UI.WinForms;
 using Ayudas;
-using System.Linq;
 
 namespace CapaPresentaciones
 {
@@ -29,6 +27,8 @@ namespace CapaPresentaciones
         private string Nombre = "";
         private string CodDepartamentoA = "";
         private string CodEscuelaP = "";
+
+        public Image perfil;
 
         public P_EditarPerfilDocente()
         {
@@ -55,6 +55,10 @@ namespace CapaPresentaciones
             {
                 // Asignar una imagen por defecto para docente
                 imgPerfil.Image = Properties.Resources.Perfil_Docente as Image;
+            }
+            else if (perfil != null)
+            {
+                imgPerfil.Image = perfil;
             }
             else
             {

@@ -8,7 +8,6 @@ namespace CapaDatos
     public class D_AsistenciaDocente
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
-        //readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
 
         // Método para mostrar el registro de asistencia de los docentes en una fecha especifica.
         public DataTable AsistenciaDocentes(string CodSemestre, string CodDepartamentoA, string Fecha)
@@ -21,29 +20,46 @@ namespace CapaDatos
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
-            Comando.Parameters.AddWithValue("@Fecha", Fecha); // formato: yyyy-mm-dd
+            Comando.Parameters.AddWithValue("@Fecha", Fecha); // Formato: dd/mm/yyyy o dd-mm-yyyy
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
         }
 
-        // Método para mostrar el registro de asistencias de un docente que dicta una asignatura en un rango de fechas.
-        public DataTable AsistenciaDocenteAsignatura(string CodSemestre, string CodDepartamentoA, string Texto1, string Texto2, 
-                                                     string HoraInicio, string LimFechaInf, string LimFechaSup)
+        // Método para mostrar los registros de las sesiones para una asignatura en un rango de fechas.
+        public DataTable MostrarSesionesAsignatura(string CodSemestre, string CodDocente, string CodAsignatura, string LimFechaInf, string LimFechaSup)
         {
             DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("spuAsistenciaDocenteAsignatura", Conectar)
+            SqlCommand Comando = new SqlCommand("spuMostrarSesionesAsignatura", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
-            Comando.Parameters.AddWithValue("@Texto1", Texto1); // código o nombre del estudiante
-            Comando.Parameters.AddWithValue("@Texto2", Texto2); // código(ej.IF085AIN) o nombre de la asignatura
-            Comando.Parameters.AddWithValue("@HoraInicio", HoraInicio); // Hora inicio de la asignatura (obtener de THorarioAsignatura)
-            Comando.Parameters.AddWithValue("@LimFechaInf", LimFechaInf); // formato: yyyy-mm-dd
-            Comando.Parameters.AddWithValue("@LimFechaSup", LimFechaSup); // formato: yyyy-mm-dd
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); // Código (ej. IF085AIN)
+            Comando.Parameters.AddWithValue("@LimFechaInf", LimFechaInf); // Formato: yyyy-mm-dd
+            Comando.Parameters.AddWithValue("@LimFechaSup", LimFechaSup); // Formato: yyyy-mm-dd
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
+        // Método para buscar un registro de una sesión para una asignatura dado el tema y en un rango de fechas.
+        public DataTable BuscarSesionAsignatura(string CodSemestre, string CodDocente, string CodAsignatura, string LimFechaInf, string LimFechaSup, string Texto)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuBuscarSesionAsignatura", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); // Código (ej. IF085AIN)
+            Comando.Parameters.AddWithValue("@LimFechaInf", LimFechaInf); // Formato: yyyy-mm-dd
+            Comando.Parameters.AddWithValue("@LimFechaSup", LimFechaSup); // Formato: yyyy-mm-dd
+            Comando.Parameters.AddWithValue("@Texto", Texto); // Tema de avance
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
@@ -59,10 +75,9 @@ namespace CapaDatos
 
             Conectar.Open();
             Comando.Parameters.AddWithValue("@CodSemestre", AsistenciaDocente.CodSemestre);
-            Comando.Parameters.AddWithValue("@CodAsignatura", AsistenciaDocente.CodAsignatura);
-            Comando.Parameters.AddWithValue("@HoraInicio", AsistenciaDocente.HoraInicio); // Hora inicio de la asignatura (obtener de THorarioAsignatura)
-            Comando.Parameters.AddWithValue("@Fecha", AsistenciaDocente.Fecha); // formato: yyyy-mm-dd
-            Comando.Parameters.AddWithValue("@Hora", AsistenciaDocente.Hora); // hora: hh:mm:ss
+            Comando.Parameters.AddWithValue("@CodAsignatura", AsistenciaDocente.CodAsignatura); // Código (ej. IF085AIN)
+            Comando.Parameters.AddWithValue("@Fecha", AsistenciaDocente.Fecha); // Formato: yyyy-mm-dd
+            Comando.Parameters.AddWithValue("@Hora", AsistenciaDocente.Hora); // Hora: hh:mm:ss
             Comando.Parameters.AddWithValue("@CodDocente", AsistenciaDocente.CodDocente);
             Comando.Parameters.AddWithValue("@NombreTema", AsistenciaDocente.NombreTema); 
             Comando.ExecuteNonQuery();
@@ -70,13 +85,7 @@ namespace CapaDatos
         }
 
         // Método para actualizar la asistencia de un docente:
-        public void ActualizarAsistenciaDocente(E_AsistenciaDocente AsistenciaDocente,
-                                                string NCodSemestre,   // Atributo nuevo
-                                                string NCodAsignatura, // Atributo nuevo
-                                                string NHoraInicio,    // Atributo nuevo
-                                                string NFecha,         // Atributo nuevo: solo se puede actualizar fecha, no la hora
-                                                string NCodDocente,    // Atributo nuevo
-                                                string NNombreTema)    // Atributo nuevo
+        public void ActualizarAsistenciaDocente(E_AsistenciaDocente AsistenciaDocente, string NNombreTema)
         {
             SqlCommand Comando = new SqlCommand("spuActualizarAsistenciaDocente", Conectar)
             {
@@ -86,13 +95,8 @@ namespace CapaDatos
             Conectar.Open();
             Comando.Parameters.AddWithValue("@CodSemestre", AsistenciaDocente.CodSemestre);
             Comando.Parameters.AddWithValue("@CodAsignatura", AsistenciaDocente.CodAsignatura);
-            Comando.Parameters.AddWithValue("@HoraInicio", AsistenciaDocente.HoraInicio);
             Comando.Parameters.AddWithValue("@Fecha", AsistenciaDocente.Fecha);
-            Comando.Parameters.AddWithValue("@NCodSemestre", NCodSemestre);
-            Comando.Parameters.AddWithValue("@NCodAsignatura", NCodAsignatura);
-            Comando.Parameters.AddWithValue("@NHoraInicio",NHoraInicio);
-            Comando.Parameters.AddWithValue("@NFecha", NFecha); // formato: yyyy-mm-dd
-            Comando.Parameters.AddWithValue("@NCodDocente", NCodDocente);
+            Comando.Parameters.AddWithValue("@Hora", AsistenciaDocente.Hora);
             Comando.Parameters.AddWithValue("@NNombreTema", NNombreTema);
             Comando.ExecuteNonQuery();
             Conectar.Close();
@@ -109,8 +113,8 @@ namespace CapaDatos
             Conectar.Open();
             Comando.Parameters.AddWithValue("@CodSemestre", AsistenciaDocente.CodSemestre);
             Comando.Parameters.AddWithValue("@CodAsignatura", AsistenciaDocente.CodAsignatura);
-            Comando.Parameters.AddWithValue("@HoraInicio", AsistenciaDocente.HoraInicio);
             Comando.Parameters.AddWithValue("@Fecha", AsistenciaDocente.Fecha);
+            Comando.Parameters.AddWithValue("@Hora", AsistenciaDocente.Hora);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }
