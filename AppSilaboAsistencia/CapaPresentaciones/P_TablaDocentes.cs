@@ -218,7 +218,7 @@ namespace CapaPresentaciones
                     {
                         if ((this.Parent.Parent.Parent as P_Menu).Acceso == "Jefe de Departamento")
                         {
-                            (this.Parent.Parent.Parent as P_Menu).ActualizarpPerfilJefeODirector(EditarRegistro.pbPerfil.Image);
+                            (this.Parent.Parent.Parent as P_Menu).ActualizarPerfilJefe(EditarRegistro.pbPerfil.Image);
                         }
                     }
 

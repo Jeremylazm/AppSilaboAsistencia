@@ -13,6 +13,7 @@ namespace CapaPresentaciones
     {
 
         public string Acceso = "";
+        private Image JefeActualizarPerfil = null;
 
         public P_Menu()
         {
@@ -318,11 +319,12 @@ namespace CapaPresentaciones
             P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
             {
                 UsuarioE = E_InicioSesion.Usuario,
+                perfil = JefeActualizarPerfil,
                 TopLevel = false,
                 Dock = DockStyle.Fill
             };
+
             Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
-            //Editar.Load += new EventHandler(ActualizarPerfil);
 
             pnContenedor.Controls.Add(Editar);
             pnContenedor.Tag = Editar;
@@ -430,10 +432,11 @@ namespace CapaPresentaciones
             }
         }
 
-        public void ActualizarpPerfilJefeODirector(Image perfil)
+        public void ActualizarPerfilJefe(Image perfil)
         {
             pbPerfil.Image = perfil;
             pbEditarPerfil.Image = perfil;
+            JefeActualizarPerfil = perfil;
         }
     }
 }
