@@ -36,20 +36,16 @@ namespace CapaPresentaciones
         public void AccionesTabla()
         {
             dgvDatos.Columns[0].DisplayIndex = 5;
-
             dgvDatos.Columns[1].HeaderText = "Fecha";
             dgvDatos.Columns[2].HeaderText = "Hora";
             dgvDatos.Columns[3].HeaderText = "Tema(s)";
             dgvDatos.Columns[4].HeaderText = "TotalAsistieron";
             dgvDatos.Columns[5].HeaderText = "TotalFaltaron";
-
         }
 
         public void MostrarRegistros()
         {
-            DataTable HoraInicioThAsg = N_HorarioAsignatura.BuscarHorarioAsignatura(CodSemestre, CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), CodAsignatura.Substring(5, 1));
-            string horainicioAsignatura = HoraInicioThAsg.Rows[0][6].ToString();
-            dgvDatos.DataSource = N_AsistenciaDocente.AsistenciaDocenteAsignatura(CodSemestre, "IF", CodDocente, CodAsignatura, horainicioAsignatura, LimtFechaInf, LimtFechaSup);
+            dgvDatos.DataSource = N_AsistenciaDocente.MostrarSesionesAsignatura(CodSemestre, CodDocente, CodAsignatura, LimtFechaInf, LimtFechaSup);
             AccionesTabla();
         }
 
@@ -71,8 +67,6 @@ namespace CapaPresentaciones
 		private void btnAgregar_Click(object sender, EventArgs e)
 		{
             DataTable EstudiantesAsigantura = N_Matricula.BuscarEstudiantesAsignatura(CodSemestre, CodAsignatura.Substring(6), CodAsignatura);
-            DataTable HoraInicioThAsg = N_HorarioAsignatura.BuscarHorarioAsignatura(CodSemestre, CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), CodAsignatura.Substring(5, 1));
-            string horainicioAsignatura = HoraInicioThAsg.Rows[0][6].ToString();
 
             Form Fondo = new Form();
             using (P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura))
@@ -88,11 +82,7 @@ namespace CapaPresentaciones
                 Fondo.Show();
 
                 NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-
-                NuevoRegistroAsistencia.txtFecha.Text = DateTime.Now.ToString("yyyy/MM/dd").ToString();
-                NuevoRegistroAsistencia.horainicioAsignatura = horainicioAsignatura;
-
-
+                NuevoRegistroAsistencia.txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy").ToString();
                 NuevoRegistroAsistencia.Owner = Fondo;
                 NuevoRegistroAsistencia.ShowDialog();
                 NuevoRegistroAsistencia.Dispose();
@@ -107,7 +97,7 @@ namespace CapaPresentaciones
             {
                 DataTable HoraInicioThAsg = N_HorarioAsignatura.BuscarHorarioAsignatura(CodSemestre, CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), CodAsignatura.Substring(5, 1));
                 string horainicioAsignatura = HoraInicioThAsg.Rows[0][6].ToString();
-                DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, "IF", CodAsignatura, horainicioAsignatura, Convert.ToDateTime(dgvDatos.Rows[e.RowIndex].Cells[1].Value).ToString("yyyy/MM/dd"));
+                DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, CodAsignatura, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
 
                 Form Fondo = new Form();
                 using (P_TablaAsistenciaEstudiantes EditarRegistro = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, AsistenciaEstudiantesAsignatura))
@@ -123,14 +113,10 @@ namespace CapaPresentaciones
                     Fondo.Show();
 
                     Program.Evento = 1;
-
                     EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-
                     EditarRegistro.txtFecha.Text = Convert.ToDateTime(dgvDatos.Rows[e.RowIndex].Cells[1].Value).ToString("yyyy/MM/dd");
                     EditarRegistro.txtTema.Text = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
                     EditarRegistro.horainicioAsignatura = horainicioAsignatura;
-
-
                     EditarRegistro.Owner = Fondo;
                     EditarRegistro.ShowDialog();
                     EditarRegistro.Dispose();
