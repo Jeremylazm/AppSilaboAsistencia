@@ -419,7 +419,6 @@ namespace CapaPresentaciones
             this.Name = "P_TablaSesionesAsignatura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P_TablaSesionesAsignatura";
-            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
 

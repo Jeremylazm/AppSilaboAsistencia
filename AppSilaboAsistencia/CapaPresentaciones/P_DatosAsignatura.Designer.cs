@@ -1529,7 +1529,6 @@ namespace CapaPresentaciones
             this.Name = "P_DatosAsignatura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos de Asignatura";
-            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

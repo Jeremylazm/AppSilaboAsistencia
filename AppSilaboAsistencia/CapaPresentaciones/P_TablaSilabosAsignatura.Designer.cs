@@ -427,7 +427,6 @@ namespace CapaPresentaciones
             this.Name = "P_TablaSilabosAsignatura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P_TablaSilabosAsignatura";
-            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
 

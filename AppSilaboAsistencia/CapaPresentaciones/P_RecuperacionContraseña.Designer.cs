@@ -135,7 +135,7 @@ namespace CapaPresentaciones
             this.lblCorreo.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblCorreo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblCorreo.Location = new System.Drawing.Point(21, 175);
+            this.lblCorreo.Location = new System.Drawing.Point(21, 156);
             this.lblCorreo.Name = "lblCorreo";
             this.lblCorreo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblCorreo.Size = new System.Drawing.Size(161, 23);
@@ -174,7 +174,7 @@ namespace CapaPresentaciones
             this.txtCorreo.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCorreo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtCorreo.Lines = new string[0];
-            this.txtCorreo.Location = new System.Drawing.Point(21, 201);
+            this.txtCorreo.Location = new System.Drawing.Point(21, 182);
             this.txtCorreo.Margin = new System.Windows.Forms.Padding(0);
             this.txtCorreo.MaxLength = 32767;
             this.txtCorreo.MinimumSize = new System.Drawing.Size(1, 1);
@@ -269,7 +269,7 @@ namespace CapaPresentaciones
             this.btnRecuperar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Cambiar_Contraseña;
             this.btnRecuperar.IdleIconRightImage = null;
             this.btnRecuperar.IndicateFocus = false;
-            this.btnRecuperar.Location = new System.Drawing.Point(21, 260);
+            this.btnRecuperar.Location = new System.Drawing.Point(21, 241);
             this.btnRecuperar.Name = "btnRecuperar";
             this.btnRecuperar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnRecuperar.OnDisabledState.BorderRadius = 15;
@@ -446,7 +446,7 @@ namespace CapaPresentaciones
             this.lblDominio.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblDominio.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDominio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblDominio.Location = new System.Drawing.Point(153, 210);
+            this.lblDominio.Location = new System.Drawing.Point(153, 191);
             this.lblDominio.Name = "lblDominio";
             this.lblDominio.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblDominio.Size = new System.Drawing.Size(137, 23);
@@ -464,12 +464,12 @@ namespace CapaPresentaciones
             this.lblMensaje.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblMensaje.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensaje.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblMensaje.Location = new System.Drawing.Point(9, 311);
+            this.lblMensaje.Location = new System.Drawing.Point(21, 283);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblMensaje.Size = new System.Drawing.Size(293, 29);
+            this.lblMensaje.Size = new System.Drawing.Size(269, 68);
             this.lblMensaje.TabIndex = 134;
-            this.lblMensaje.Text = "Se te envió un correo electrónico";
+            this.lblMensaje.Text = "Se le envió un mensaje a su correo electrónico";
             this.lblMensaje.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblMensaje.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.lblMensaje.Visible = false;
@@ -532,7 +532,6 @@ namespace CapaPresentaciones
             this.Name = "P_RecuperacionContraseña";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Recuperación de Contraseña";
-            this.TopMost = true;
             this.pnLogo.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -146,42 +146,42 @@ namespace CapaPresentaciones
             // Descargar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
-                Form Fondo = new Form();
+                //Form Fondo = new Form();
                 using (P_TablaSesionesAsignatura sesionesAsignatura = new P_TablaSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString()))
                 {
-                    Fondo.StartPosition = FormStartPosition.Manual;
-                    Fondo.FormBorderStyle = FormBorderStyle.None;
-                    Fondo.Opacity = .70d;
-                    Fondo.BackColor = Color.Black;
-                    Fondo.WindowState = FormWindowState.Maximized;
-                    Fondo.TopMost = true;
-                    Fondo.Location = this.Location;
-                    Fondo.ShowInTaskbar = false;
-                    Fondo.Show();
+                    //Fondo.StartPosition = FormStartPosition.Manual;
+                    //Fondo.FormBorderStyle = FormBorderStyle.None;
+                    //Fondo.Opacity = .70d;
+                    //Fondo.BackColor = Color.Black;
+                    //Fondo.WindowState = FormWindowState.Maximized;
+                    //Fondo.TopMost = true;
+                    //Fondo.Location = this.Location;
+                    //Fondo.ShowInTaskbar = false;
+                    //Fondo.Show();
 
-                    sesionesAsignatura.Owner = Fondo;
+                    //sesionesAsignatura.Owner = Fondo;
                     sesionesAsignatura.ShowDialog();
                     sesionesAsignatura.Dispose();
 
-                    Fondo.Dispose();
+                    //Fondo.Dispose();
                 }                
             }
 
             // Subir
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 2))
             {
-                Form Fondo = new Form();
+                //Form Fondo = new Form();
                 using (P_SubirArchivo SubirPlanSesiones = new P_SubirArchivo("Plan de Sesiones"))
                 {
-                    Fondo.StartPosition = FormStartPosition.Manual;
-                    Fondo.FormBorderStyle = FormBorderStyle.None;
-                    Fondo.Opacity = .70d;
-                    Fondo.BackColor = Color.Black;
-                    Fondo.WindowState = FormWindowState.Maximized;
-                    Fondo.TopMost = true;
-                    Fondo.Location = this.Location;
-                    Fondo.ShowInTaskbar = false;
-                    Fondo.Show();
+                    //Fondo.StartPosition = FormStartPosition.Manual;
+                    //Fondo.FormBorderStyle = FormBorderStyle.None;
+                    //Fondo.Opacity = .70d;
+                    //Fondo.BackColor = Color.Black;
+                    //Fondo.WindowState = FormWindowState.Maximized;
+                    //Fondo.TopMost = true;
+                    //Fondo.Location = this.Location;
+                    //Fondo.ShowInTaskbar = false;
+                    //Fondo.Show();
 
                     Program.Evento = 1;
 
@@ -191,11 +191,11 @@ namespace CapaPresentaciones
                     SubirPlanSesiones.Grupo = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
                     SubirPlanSesiones.CodDocente = CodDocente;
 
-                    SubirPlanSesiones.Owner = Fondo;
+                    //SubirPlanSesiones.Owner = Fondo;
                     SubirPlanSesiones.ShowDialog();
                     SubirPlanSesiones.Dispose();
 
-                    Fondo.Dispose();
+                    //Fondo.Dispose();
                 }
             }
         }

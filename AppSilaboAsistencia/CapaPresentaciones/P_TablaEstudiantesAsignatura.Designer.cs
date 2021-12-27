@@ -408,7 +408,6 @@ namespace CapaPresentaciones
             this.Name = "P_TablaEstudiantesAsignatura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabla de Estudiantes - ASIGNATURA";
-            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
 

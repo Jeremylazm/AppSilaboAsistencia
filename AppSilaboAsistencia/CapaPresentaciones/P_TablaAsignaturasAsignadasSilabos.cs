@@ -176,42 +176,42 @@ namespace CapaPresentaciones
             // Descargar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
-                Form Fondo = new Form();
+                //Form Fondo = new Form();
                 using (P_TablaSilabosAsignatura silabosAsignatura = new P_TablaSilabosAsignatura(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString()))
                 {
-                    Fondo.StartPosition = FormStartPosition.Manual;
-                    Fondo.FormBorderStyle = FormBorderStyle.None;
-                    Fondo.Opacity = .70d;
-                    Fondo.BackColor = Color.Black;
-                    Fondo.WindowState = FormWindowState.Maximized;
-                    Fondo.TopMost = true;
-                    Fondo.Location = this.Location;
-                    Fondo.ShowInTaskbar = false;
-                    Fondo.Show();
+                    //Fondo.StartPosition = FormStartPosition.Manual;
+                    //Fondo.FormBorderStyle = FormBorderStyle.None;
+                    //Fondo.Opacity = .70d;
+                    //Fondo.BackColor = Color.Black;
+                    //Fondo.WindowState = FormWindowState.Maximized;
+                    //Fondo.TopMost = true;
+                    //Fondo.Location = this.Location;
+                    //Fondo.ShowInTaskbar = false;
+                    //Fondo.Show();
 
-                    silabosAsignatura.Owner = Fondo;
+                    //silabosAsignatura.Owner = Fondo;
                     silabosAsignatura.ShowDialog();
                     silabosAsignatura.Dispose();
 
-                    Fondo.Dispose();
+                    //Fondo.Dispose();
                 }
             }
 
             // Subir sílabo
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 2))
             {
-                Form Fondo = new Form();
+                //Form Fondo = new Form();
                 using (P_SubirArchivo SubirSilabo = new P_SubirArchivo("Silabo"))
                 {
-                    Fondo.StartPosition = FormStartPosition.Manual;
-                    Fondo.FormBorderStyle = FormBorderStyle.None;
-                    Fondo.Opacity = .70d;
-                    Fondo.BackColor = Color.Black;
-                    Fondo.WindowState = FormWindowState.Maximized;
-                    Fondo.TopMost = true;
-                    Fondo.Location = this.Location;
-                    Fondo.ShowInTaskbar = false;
-                    Fondo.Show();
+                    //Fondo.StartPosition = FormStartPosition.Manual;
+                    //Fondo.FormBorderStyle = FormBorderStyle.None;
+                    //Fondo.Opacity = .70d;
+                    //Fondo.BackColor = Color.Black;
+                    //Fondo.WindowState = FormWindowState.Maximized;
+                    //Fondo.TopMost = true;
+                    //Fondo.Location = this.Location;
+                    //Fondo.ShowInTaskbar = false;
+                    //Fondo.Show();
 
                     Program.Evento = 1;
 
@@ -221,11 +221,11 @@ namespace CapaPresentaciones
                     SubirSilabo.Grupo = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
                     SubirSilabo.CodDocente = CodDocente;
 
-                    SubirSilabo.Owner = Fondo;
+                    //SubirSilabo.Owner = Fondo;
                     SubirSilabo.ShowDialog();
                     SubirSilabo.Dispose();
 
-                    Fondo.Dispose();
+                    //Fondo.Dispose();
                 }
             }
 
