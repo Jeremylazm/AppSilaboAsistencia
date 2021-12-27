@@ -20,11 +20,6 @@ namespace ControlesPerzonalizados
             InitializeComponent();
         }
 
-        private void btnAtras_Click(object sender, EventArgs e)
-        {
-            new A_Paso().Atras(ParentForm, "Paso3", "Paso1", "C_CambioContraseñaCorreo");
-        }
-
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Finalizar_Pasos();
@@ -179,17 +174,20 @@ namespace ControlesPerzonalizados
 
         private void txtContraseñaAnterior_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Finalizar_Pasos();
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                Finalizar_Pasos();
         }
 
         private void txtContraseñaNueva_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Finalizar_Pasos();
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                Finalizar_Pasos();
         }
 
         private void txtConfirmarContraseña_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Finalizar_Pasos();
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                Finalizar_Pasos();
         }
 
         public void Finalizar_Pasos()
@@ -204,6 +202,51 @@ namespace ControlesPerzonalizados
                     //MessageBox.Show("La contraseña se cambio exitosamente");
                     ParentForm.Close();
                 }
+            }
+        }
+
+        private void btnMostrarOcultarAnteriorContraseña_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnMostrarOcultarAnteriorContraseña.Image = Properties.Resources.Mostrar;
+            txtContraseñaAnterior.UseSystemPasswordChar = false;
+        }
+
+        private void btnMostrarOcultarAnteriorContraseña_MouseUp(object sender, MouseEventArgs e)
+        {
+            btnMostrarOcultarAnteriorContraseña.Image = Properties.Resources.Ocultar;
+            if (txtContraseñaAnterior.Text != "")
+            {
+                txtContraseñaAnterior.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void btnMostrarOcultarNuevaContraseña_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnMostrarOcultarNuevaContraseña.Image = Properties.Resources.Mostrar;
+            txtContraseñaNueva.UseSystemPasswordChar = false;
+        }
+
+        private void btnMostrarOcultarNuevaContraseña_MouseUp(object sender, MouseEventArgs e)
+        {
+            btnMostrarOcultarNuevaContraseña.Image = Properties.Resources.Ocultar;
+            if (txtContraseñaNueva.Text != "")
+            {
+                txtContraseñaNueva.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void btnMostrarOcultarConfirmarContraseña_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnMostrarOcultarConfirmarContraseña.Image = Properties.Resources.Mostrar;
+            txtConfirmarContraseña.UseSystemPasswordChar = false;
+        }
+
+        private void btnMostrarOcultarConfirmarContraseña_MouseUp(object sender, MouseEventArgs e)
+        {
+            btnMostrarOcultarConfirmarContraseña.Image = Properties.Resources.Ocultar;
+            if (txtConfirmarContraseña.Text != "")
+            {
+                txtConfirmarContraseña.UseSystemPasswordChar = true;
             }
         }
     }

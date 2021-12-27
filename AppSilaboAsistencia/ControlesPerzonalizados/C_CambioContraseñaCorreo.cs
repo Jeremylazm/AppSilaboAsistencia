@@ -128,7 +128,8 @@ namespace ControlesPerzonalizados
 
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Siguiente_Paso();
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                Siguiente_Paso();
         }
 
         public void Siguiente_Paso()

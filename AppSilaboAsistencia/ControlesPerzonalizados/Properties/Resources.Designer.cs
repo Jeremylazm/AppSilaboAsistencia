@@ -633,6 +633,26 @@ namespace ControlesPerzonalizados.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Mostrar {
+            get {
+                object obj = ResourceManager.GetObject("Mostrar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ocultar {
+            get {
+                object obj = ResourceManager.GetObject("Ocultar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Perfil {
             get {
                 object obj = ResourceManager.GetObject("Perfil", resourceCulture);

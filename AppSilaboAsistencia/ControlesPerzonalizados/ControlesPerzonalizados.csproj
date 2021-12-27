@@ -473,5 +473,11 @@
   <ItemGroup>
     <None Include="Resources\SubirImagen.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ocultar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mostrar.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

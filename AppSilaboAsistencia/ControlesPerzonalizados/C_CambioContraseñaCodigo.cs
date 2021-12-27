@@ -100,7 +100,7 @@ namespace ControlesPerzonalizados
 
         private void txtCodigoVerificacion_TextChanged(object sender, EventArgs e)
         {
-            CodigoVerificacion_Lleno = Validador.ValidarCampoLleno(txtCodigoVerificacion, lblErrorCodigo, pbErrorCodigo);
+            CodigoVerificacion_Lleno = Validador.ValidarNumeroLimitado(txtCodigoVerificacion, lblErrorCodigo, pbErrorCodigo, 6);
             if (CodigoVerificacion_Lleno)
             {
                 lblErrorCodigo.Visible = false;
@@ -123,7 +123,8 @@ namespace ControlesPerzonalizados
 
         private void txtCodigoVerificacion_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Siguiente_Paso();
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                Siguiente_Paso();
         }
 
         public void Siguiente_Paso()
