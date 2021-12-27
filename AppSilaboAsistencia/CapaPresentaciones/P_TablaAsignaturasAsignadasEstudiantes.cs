@@ -192,14 +192,14 @@ namespace CapaPresentaciones
                                 ObjNegocioMatricula.EliminarMatricula(ObjEntidadMatricula);
                                 desmatriculados += 1;
                             }
-                        }
+                        } 
                     }
                     // Agregar los estudiantes que quedan en la lista actualizada
                     foreach (var estudiante in ListaActualizada)
                     {
                         NuevaLista.Add(estudiante.Item1);
                         // Agregar a la tabla matricula
-                        string[] NombresApellidos = estudiante.Item2.Split('-');
+                        string[] NombresApellidos = estudiante.Item2.Split(new string[] { "-", "--" }, StringSplitOptions.RemoveEmptyEntries);
                         ObjEntidadMatricula.CodSemestre = CodSemestre;
                         ObjEntidadMatricula.CodEscuelaP = CodAsignatura.Substring(6);
                         ObjEntidadMatricula.CodAsignatura = CodAsignatura;
