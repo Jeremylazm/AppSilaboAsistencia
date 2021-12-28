@@ -51,11 +51,14 @@ namespace CapaPresentaciones
             this.lblInferior = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblSuperior = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnOpciones = new System.Windows.Forms.Panel();
+            this.SeparadorMenu2 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.btnAsignaturasAsignadas = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnCerrarSesion = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.pbCerrarSesion = new Bunifu.UI.WinForms.BunifuImageButton();
-            this.SeparadorMenu2 = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.SeparadorMenu3 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.btnEditarPerfil = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            this.pbEditarPerfil = new DreamTeamControls.DreamTeamPictureBox();
+            this.pbPerfil = new DreamTeamControls.DreamTeamPictureBox();
             this.SeparadorMenu1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.btnAsignaturas = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnCatálogo = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
@@ -70,8 +73,6 @@ namespace CapaPresentaciones
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.Transicion = new Bunifu.UI.WinForms.BunifuTransition(this.components);
-            this.pbEditarPerfil = new DreamTeamControls.DreamTeamPictureBox();
-            this.pbPerfil = new DreamTeamControls.DreamTeamPictureBox();
             this.pnPrincipal.SuspendLayout();
             this.pnOpciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbEditarPerfil)).BeginInit();
@@ -101,7 +102,7 @@ namespace CapaPresentaciones
             this.pnPrincipal.Margin = new System.Windows.Forms.Padding(0);
             this.pnPrincipal.Name = "pnPrincipal";
             this.pnPrincipal.ShowBorders = true;
-            this.pnPrincipal.Size = new System.Drawing.Size(1350, 768);
+            this.pnPrincipal.Size = new System.Drawing.Size(1330, 768);
             this.pnPrincipal.TabIndex = 0;
             // 
             // btnMaximizar
@@ -126,7 +127,7 @@ namespace CapaPresentaciones
             this.btnMaximizar.ImageSize = new System.Drawing.Size(20, 20);
             this.btnMaximizar.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.btnMaximizar.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.InitialImage")));
-            this.btnMaximizar.Location = new System.Drawing.Point(1281, 8);
+            this.btnMaximizar.Location = new System.Drawing.Point(1261, 8);
             this.btnMaximizar.Name = "btnMaximizar";
             this.btnMaximizar.Rotation = 0;
             this.btnMaximizar.ShowActiveImage = true;
@@ -163,7 +164,7 @@ namespace CapaPresentaciones
             this.btnRestaurar.ImageSize = new System.Drawing.Size(20, 20);
             this.btnRestaurar.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.btnRestaurar.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnRestaurar.InitialImage")));
-            this.btnRestaurar.Location = new System.Drawing.Point(1282, 8);
+            this.btnRestaurar.Location = new System.Drawing.Point(1262, 8);
             this.btnRestaurar.Name = "btnRestaurar";
             this.btnRestaurar.Rotation = 0;
             this.btnRestaurar.ShowActiveImage = true;
@@ -185,7 +186,7 @@ namespace CapaPresentaciones
             this.pnContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnContenedor.Location = new System.Drawing.Point(220, 44);
             this.pnContenedor.Name = "pnContenedor";
-            this.pnContenedor.Size = new System.Drawing.Size(1130, 680);
+            this.pnContenedor.Size = new System.Drawing.Size(1110, 680);
             this.pnContenedor.TabIndex = 16;
             // 
             // btnMinimizar
@@ -210,7 +211,7 @@ namespace CapaPresentaciones
             this.btnMinimizar.ImageSize = new System.Drawing.Size(20, 20);
             this.btnMinimizar.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.btnMinimizar.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.InitialImage")));
-            this.btnMinimizar.Location = new System.Drawing.Point(1251, 8);
+            this.btnMinimizar.Location = new System.Drawing.Point(1231, 8);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Rotation = 0;
             this.btnMinimizar.ShowActiveImage = true;
@@ -247,7 +248,7 @@ namespace CapaPresentaciones
             this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
             this.btnCerrar.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.btnCerrar.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnCerrar.InitialImage")));
-            this.btnCerrar.Location = new System.Drawing.Point(1311, 8);
+            this.btnCerrar.Location = new System.Drawing.Point(1291, 8);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Rotation = 0;
             this.btnCerrar.ShowActiveImage = true;
@@ -313,7 +314,7 @@ namespace CapaPresentaciones
             this.lblInferior.Location = new System.Drawing.Point(220, 724);
             this.lblInferior.Name = "lblInferior";
             this.lblInferior.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblInferior.Size = new System.Drawing.Size(1130, 44);
+            this.lblInferior.Size = new System.Drawing.Size(1110, 44);
             this.lblInferior.TabIndex = 5;
             this.lblInferior.Text = "Realizado por estudiantes de la Escuela Profesional de Ingeniería Informática y d" +
     "e Sistemas";
@@ -335,7 +336,7 @@ namespace CapaPresentaciones
             this.lblSuperior.Location = new System.Drawing.Point(220, 0);
             this.lblSuperior.Name = "lblSuperior";
             this.lblSuperior.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblSuperior.Size = new System.Drawing.Size(1130, 44);
+            this.lblSuperior.Size = new System.Drawing.Size(1110, 44);
             this.lblSuperior.TabIndex = 4;
             this.lblSuperior.Text = "Sistema de Gestión de Sílabo y Control de Asistencia - UNSAAC";
             this.lblSuperior.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -344,10 +345,11 @@ namespace CapaPresentaciones
             // pnOpciones
             // 
             this.pnOpciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pnOpciones.Controls.Add(this.SeparadorMenu2);
             this.pnOpciones.Controls.Add(this.btnAsignaturasAsignadas);
             this.pnOpciones.Controls.Add(this.btnCerrarSesion);
             this.pnOpciones.Controls.Add(this.pbCerrarSesion);
-            this.pnOpciones.Controls.Add(this.SeparadorMenu2);
+            this.pnOpciones.Controls.Add(this.SeparadorMenu3);
             this.pnOpciones.Controls.Add(this.btnEditarPerfil);
             this.pnOpciones.Controls.Add(this.pbEditarPerfil);
             this.pnOpciones.Controls.Add(this.pbPerfil);
@@ -368,6 +370,23 @@ namespace CapaPresentaciones
             this.pnOpciones.Name = "pnOpciones";
             this.pnOpciones.Size = new System.Drawing.Size(220, 768);
             this.pnOpciones.TabIndex = 15;
+            // 
+            // SeparadorMenu2
+            // 
+            this.SeparadorMenu2.BackColor = System.Drawing.Color.Transparent;
+            this.SeparadorMenu2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SeparadorMenu2.BackgroundImage")));
+            this.SeparadorMenu2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SeparadorMenu2.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
+            this.Transicion.SetDecoration(this.SeparadorMenu2, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.SeparadorMenu2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.SeparadorMenu2.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
+            this.SeparadorMenu2.LineThickness = 1;
+            this.SeparadorMenu2.Location = new System.Drawing.Point(5, 626);
+            this.SeparadorMenu2.Name = "SeparadorMenu2";
+            this.SeparadorMenu2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
+            this.SeparadorMenu2.Size = new System.Drawing.Size(209, 14);
+            this.SeparadorMenu2.TabIndex = 65;
+            this.SeparadorMenu2.Visible = false;
             // 
             // btnAsignaturasAsignadas
             // 
@@ -591,22 +610,22 @@ namespace CapaPresentaciones
             this.pbCerrarSesion.ZoomSpeed = 10;
             this.pbCerrarSesion.Click += new System.EventHandler(this.pbCerrarSesion_Click);
             // 
-            // SeparadorMenu2
+            // SeparadorMenu3
             // 
-            this.SeparadorMenu2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SeparadorMenu2.BackColor = System.Drawing.Color.Transparent;
-            this.SeparadorMenu2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SeparadorMenu2.BackgroundImage")));
-            this.SeparadorMenu2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SeparadorMenu2.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
-            this.Transicion.SetDecoration(this.SeparadorMenu2, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.SeparadorMenu2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.SeparadorMenu2.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
-            this.SeparadorMenu2.LineThickness = 1;
-            this.SeparadorMenu2.Location = new System.Drawing.Point(5, 702);
-            this.SeparadorMenu2.Name = "SeparadorMenu2";
-            this.SeparadorMenu2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.SeparadorMenu2.Size = new System.Drawing.Size(209, 14);
-            this.SeparadorMenu2.TabIndex = 62;
+            this.SeparadorMenu3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SeparadorMenu3.BackColor = System.Drawing.Color.Transparent;
+            this.SeparadorMenu3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("SeparadorMenu3.BackgroundImage")));
+            this.SeparadorMenu3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SeparadorMenu3.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
+            this.Transicion.SetDecoration(this.SeparadorMenu3, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.SeparadorMenu3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.SeparadorMenu3.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
+            this.SeparadorMenu3.LineThickness = 1;
+            this.SeparadorMenu3.Location = new System.Drawing.Point(5, 702);
+            this.SeparadorMenu3.Name = "SeparadorMenu3";
+            this.SeparadorMenu3.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
+            this.SeparadorMenu3.Size = new System.Drawing.Size(209, 14);
+            this.SeparadorMenu3.TabIndex = 62;
             // 
             // btnEditarPerfil
             // 
@@ -698,6 +717,45 @@ namespace CapaPresentaciones
             this.btnEditarPerfil.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnEditarPerfil.UseDefaultRadiusAndThickness = true;
             this.btnEditarPerfil.Click += new System.EventHandler(this.btnEditarPerfil_Click);
+            // 
+            // pbEditarPerfil
+            // 
+            this.pbEditarPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pbEditarPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.pbEditarPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.pbEditarPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.pbEditarPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.pbEditarPerfil.BorderSize = 2;
+            this.pbEditarPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Transicion.SetDecoration(this.pbEditarPerfil, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.pbEditarPerfil.GradientAngle = 50F;
+            this.pbEditarPerfil.Image = ((System.Drawing.Image)(resources.GetObject("pbEditarPerfil.Image")));
+            this.pbEditarPerfil.Location = new System.Drawing.Point(5, 271);
+            this.pbEditarPerfil.Name = "pbEditarPerfil";
+            this.pbEditarPerfil.Size = new System.Drawing.Size(34, 34);
+            this.pbEditarPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbEditarPerfil.TabIndex = 61;
+            this.pbEditarPerfil.TabStop = false;
+            this.pbEditarPerfil.Visible = false;
+            this.pbEditarPerfil.Click += new System.EventHandler(this.pbEditarPerfil_Click);
+            // 
+            // pbPerfil
+            // 
+            this.pbPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pbPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.pbPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.pbPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.pbPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.pbPerfil.BorderSize = 2;
+            this.Transicion.SetDecoration(this.pbPerfil, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.pbPerfil.GradientAngle = 50F;
+            this.pbPerfil.Image = ((System.Drawing.Image)(resources.GetObject("pbPerfil.Image")));
+            this.pbPerfil.Location = new System.Drawing.Point(61, 12);
+            this.pbPerfil.Name = "pbPerfil";
+            this.pbPerfil.Size = new System.Drawing.Size(100, 100);
+            this.pbPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPerfil.TabIndex = 46;
+            this.pbPerfil.TabStop = false;
             // 
             // SeparadorMenu1
             // 
@@ -1421,55 +1479,16 @@ namespace CapaPresentaciones
             this.Transicion.DefaultAnimation = animation1;
             this.Transicion.TimeStep = 1F;
             // 
-            // pbEditarPerfil
-            // 
-            this.pbEditarPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.pbEditarPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.pbEditarPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.pbEditarPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.pbEditarPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.pbEditarPerfil.BorderSize = 2;
-            this.pbEditarPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Transicion.SetDecoration(this.pbEditarPerfil, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.pbEditarPerfil.GradientAngle = 50F;
-            this.pbEditarPerfil.Image = ((System.Drawing.Image)(resources.GetObject("pbEditarPerfil.Image")));
-            this.pbEditarPerfil.Location = new System.Drawing.Point(5, 271);
-            this.pbEditarPerfil.Name = "pbEditarPerfil";
-            this.pbEditarPerfil.Size = new System.Drawing.Size(34, 34);
-            this.pbEditarPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbEditarPerfil.TabIndex = 61;
-            this.pbEditarPerfil.TabStop = false;
-            this.pbEditarPerfil.Visible = false;
-            this.pbEditarPerfil.Click += new System.EventHandler(this.pbEditarPerfil_Click);
-            // 
-            // pbPerfil
-            // 
-            this.pbPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.pbPerfil.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.pbPerfil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.pbPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.pbPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.pbPerfil.BorderSize = 2;
-            this.Transicion.SetDecoration(this.pbPerfil, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
-            this.pbPerfil.GradientAngle = 50F;
-            this.pbPerfil.Image = ((System.Drawing.Image)(resources.GetObject("pbPerfil.Image")));
-            this.pbPerfil.Location = new System.Drawing.Point(61, 12);
-            this.pbPerfil.Name = "pbPerfil";
-            this.pbPerfil.Size = new System.Drawing.Size(100, 100);
-            this.pbPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbPerfil.TabIndex = 46;
-            this.pbPerfil.TabStop = false;
-            // 
             // P_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1350, 768);
+            this.ClientSize = new System.Drawing.Size(1330, 768);
             this.Controls.Add(this.pnPrincipal);
             this.Transicion.SetDecoration(this, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimumSize = new System.Drawing.Size(1328, 766);
+            this.MinimumSize = new System.Drawing.Size(1330, 768);
             this.Name = "P_Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Principal";
@@ -1512,8 +1531,9 @@ namespace CapaPresentaciones
         private DreamTeamControls.DreamTeamPictureBox pbPerfil;
         private DreamTeamControls.DreamTeamPictureBox pbEditarPerfil;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnCerrarSesion;
-        private Bunifu.UI.WinForms.BunifuSeparator SeparadorMenu2;
+        private Bunifu.UI.WinForms.BunifuSeparator SeparadorMenu3;
         private Bunifu.UI.WinForms.BunifuImageButton pbCerrarSesion;
         private System.Windows.Forms.Panel pnContenedor;
+        private Bunifu.UI.WinForms.BunifuSeparator SeparadorMenu2;
     }
 }

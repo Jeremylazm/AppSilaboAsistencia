@@ -160,5 +160,20 @@ namespace CapaPresentaciones
             P_RecuperacionContraseña RC = new P_RecuperacionContraseña();
             RC.ShowDialog();
         }
+
+        private void btnMostrarOcultarContraseña_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnMostrarOcultarContraseña.Image = Properties.Resources.Mostrar;
+            txtContraseña.UseSystemPasswordChar = false;
+        }
+
+        private void btnMostrarOcultarContraseña_MouseUp(object sender, MouseEventArgs e)
+        {
+            btnMostrarOcultarContraseña.Image = Properties.Resources.Ocultar;
+            if (txtContraseña.Text != "")
+            {
+                txtContraseña.UseSystemPasswordChar = true;
+            }
+        }
     }
 }

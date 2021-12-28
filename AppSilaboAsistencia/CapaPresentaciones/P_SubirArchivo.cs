@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
 using System.IO;
 using CapaNegocios;
@@ -10,6 +11,7 @@ namespace CapaPresentaciones
     {
         readonly N_Catalogo ObjNegocio;
 
+        private readonly string CodSemestre;
         public string CodAsignatura;
         public string CodDocente;
         public string NombreAsignatura;
@@ -21,8 +23,12 @@ namespace CapaPresentaciones
         public P_SubirArchivo(string Tipo)
         {
             ObjNegocio = new N_Catalogo();
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
 
             InitializeComponent();
+            Control[] Controles = { this, lblTitulo };
+            Docker.SubscribeControlsToDragEvents(Controles);
 
             this.Tipo = Tipo;
 
@@ -84,16 +90,15 @@ namespace CapaPresentaciones
 
                 if (Tipo == "Silabo")
                 {
-                    ObjNegocio.ActualizarSilaboAsignatura("2021-II", CodAsignatura, CodDocente, archivo);
-                    A_Dialogo.DialogoConfirmacion("Archivo subido exitosamente");
+                    ObjNegocio.ActualizarSilaboAsignatura(CodSemestre, CodAsignatura, CodDocente, archivo);
                     //MensajeConfirmacion("Archivo subido exitosamente");
                 }
                 else if (Tipo == "Plan de Sesiones")
                 {
-                    ObjNegocio.ActualizarPlanSesionesAsignatura("2021-II", CodAsignatura, CodDocente, archivo);
-                    A_Dialogo.DialogoConfirmacion("Archivo subido exitosamente");
+                    ObjNegocio.ActualizarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodDocente, archivo);
                     //MensajeConfirmacion("Archivo subido exitosamente");
                 }
+                A_Dialogo.DialogoConfirmacion("Archivo subido exitosamente");
             }
             catch (IOException)
             {

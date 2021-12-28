@@ -50,7 +50,7 @@
     <Compile Include="E_DepartamentoAcademico.cs" />
     <Compile Include="E_Docente.cs" />
     <Compile Include="E_EscuelaProfesional.cs" />
-    <Compile Include="E_Estudiante.cs" />
+    <Compile Include="E_Semestre.cs" />
     <Compile Include="E_HorarioAsignatura.cs" />
     <Compile Include="E_InicioSesion.cs" />
     <Compile Include="E_Matricula.cs" />

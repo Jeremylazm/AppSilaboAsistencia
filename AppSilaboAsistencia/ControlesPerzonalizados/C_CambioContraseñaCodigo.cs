@@ -22,20 +22,8 @@ namespace ControlesPerzonalizados
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            if (CodigoVerificacion_Lleno)
-            {
-                if (ValidarCodigo())
-                {
-                    BunifuLabel UsuarioCN = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
-                    UsuarioCN.Text = Usuario;
-                    new A_Paso().Siguiente(ParentForm, "Paso2", "Paso3", "C_CambioContraseñaNueva");
-                }
-            }
-            else
-            {
-                Validador.EnfocarCursor(txtCodigoVerificacion);
-            }
-        } //Listo
+            Siguiente_Paso();
+        }
 
         private bool ValidarCodigo()
         {
@@ -59,11 +47,6 @@ namespace ControlesPerzonalizados
             // Codigo no coincide
             else
                 return "Código no Coincide";
-        }
-
-        private void btnVolverEnviar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            codigo_verificacion = EnviarCodigo(Email);
         }
 
         public string EnviarCodigo(string Correo)
@@ -100,10 +83,9 @@ namespace ControlesPerzonalizados
                 // Mostrar error
                 A_Dialogo.DialogoError("Error al enviar el código de verificación");
                 //MessageBox.Show(ex.Message);
-                return "-1";
+                return "Error Enviar Código";
             }
         }
-
 
         private void C_CambioContraseñaCodigo_Enter(object sender, EventArgs e)
         {      
@@ -116,13 +98,49 @@ namespace ControlesPerzonalizados
             lblEmail.Text = Email;
         }
 
-        private void txtCodigoVerificacion_TextChange(object sender, EventArgs e)
+        private void txtCodigoVerificacion_TextChanged(object sender, EventArgs e)
         {
-            CodigoVerificacion_Lleno = Validador.ValidarCampoLleno(txtCodigoVerificacion, lblErrorCodigo, pbErrorCodigo);
+            CodigoVerificacion_Lleno = Validador.ValidarNumeroLimitado(txtCodigoVerificacion, lblErrorCodigo, pbErrorCodigo, 6);
             if (CodigoVerificacion_Lleno)
             {
                 lblErrorCodigo.Visible = false;
                 pbErrorCodigo.Visible = false;
+            }
+        }
+
+        private void btnVolverEnviar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            codigo_verificacion = EnviarCodigo(Email);
+            if (codigo_verificacion == "Error Enviar Código")
+                A_Dialogo.DialogoError("Error al enviar el código de verificación");
+            else
+                A_Dialogo.DialogoInformacion("El código de verificación fue enviado, revise su correo institucional");
+        }
+
+        private void btnSiguiente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        }
+
+        private void txtCodigoVerificacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                Siguiente_Paso();
+        }
+
+        public void Siguiente_Paso()
+        {
+            if (CodigoVerificacion_Lleno)
+            {
+                if (ValidarCodigo())
+                {
+                    BunifuLabel UsuarioCN = (BunifuLabel)ParentForm.Controls.Find("pnContenedor", false)[0].Controls.Find("lblUsuario", false)[0];
+                    UsuarioCN.Text = Usuario;
+                    new A_Paso().Siguiente(ParentForm, "Paso2", "Paso3", "C_CambioContraseñaNueva");
+                }
+            }
+            else
+            {
+                Validador.EnfocarCursor(txtCodigoVerificacion);
             }
         }
     }

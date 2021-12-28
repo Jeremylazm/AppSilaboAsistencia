@@ -7,6 +7,7 @@ using CapaNegocios;
 using System.Data;
 using CapaEntidades;
 using Ayudas;
+using System.Drawing;
 
 namespace CapaPresentaciones
 {
@@ -15,12 +16,14 @@ namespace CapaPresentaciones
         readonly N_Catalogo ObjCatalogo;
         readonly E_Matricula ObjEntidadMatricula;
         readonly N_Matricula ObjNegocioMatricula;
-        private readonly string CodSemestre = "2021-II";
+        private readonly string CodSemestre;
         private readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodEscuelaP = "IF";
 
         public P_TablaAsignaturasAsignadasEstudiantes()
         {
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
             ObjCatalogo = new N_Catalogo();
             ObjEntidadMatricula = new E_Matricula();
             ObjNegocioMatricula = new N_Matricula();
@@ -48,7 +51,7 @@ namespace CapaPresentaciones
 
         public void BuscarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodDocente, CodEscuelaP, CodDocente, txtBuscar.Text);
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodSemestre, CodEscuelaP, CodDocente, txtBuscar.Text);
         }
 
         private void btnCerrar_Click(object sender, System.EventArgs e)
@@ -133,10 +136,25 @@ namespace CapaPresentaciones
             {
                 string CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
 
-                P_TablaEstudiantesAsignatura Estudiantes = new P_TablaEstudiantesAsignatura(CodAsignatura);
+                //Form Fondo = new Form();
+                using (P_TablaEstudiantesAsignatura Estudiantes = new P_TablaEstudiantesAsignatura(CodAsignatura))
+                {
+                    //Fondo.StartPosition = FormStartPosition.Manual;
+                    //Fondo.FormBorderStyle = FormBorderStyle.None;
+                    //Fondo.Opacity = .70d;
+                    //Fondo.BackColor = Color.Black;
+                    //Fondo.WindowState = FormWindowState.Maximized;
+                    //Fondo.TopMost = true;
+                    //Fondo.Location = this.Location;
+                    //Fondo.ShowInTaskbar = false;
+                    //Fondo.Show();
 
-                Estudiantes.ShowDialog();
-                Estudiantes.Dispose();
+                    //Estudiantes.Owner = Fondo;
+                    Estudiantes.ShowDialog();
+                    Estudiantes.Dispose();
+
+                    //Fondo.Dispose();
+                }
             }
 
             // Actualizar
@@ -174,14 +192,14 @@ namespace CapaPresentaciones
                                 ObjNegocioMatricula.EliminarMatricula(ObjEntidadMatricula);
                                 desmatriculados += 1;
                             }
-                        }
+                        } 
                     }
                     // Agregar los estudiantes que quedan en la lista actualizada
                     foreach (var estudiante in ListaActualizada)
                     {
                         NuevaLista.Add(estudiante.Item1);
                         // Agregar a la tabla matricula
-                        string[] NombresApellidos = estudiante.Item2.Split('-');
+                        string[] NombresApellidos = estudiante.Item2.Split(new string[] { "-", "--" }, StringSplitOptions.RemoveEmptyEntries);
                         ObjEntidadMatricula.CodSemestre = CodSemestre;
                         ObjEntidadMatricula.CodEscuelaP = CodAsignatura.Substring(6);
                         ObjEntidadMatricula.CodAsignatura = CodAsignatura;

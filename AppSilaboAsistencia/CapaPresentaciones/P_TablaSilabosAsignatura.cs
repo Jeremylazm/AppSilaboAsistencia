@@ -16,14 +16,17 @@ namespace CapaPresentaciones
     public partial class P_TablaSilabosAsignatura : Form
     {
         readonly private string CodAsignatura;
-
         private readonly DataTable Asignaturas;
 
         public P_TablaSilabosAsignatura(string CodAsignatura)
         {
             this.CodAsignatura = CodAsignatura;
+
             InitializeComponent();
+            Control[] Controles = { this, lblTitulo, pbLogo };
+            Docker.SubscribeControlsToDragEvents(Controles);
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
+
             Asignaturas = N_Catalogo.BuscarSilabosAsignatura(CodAsignatura.Substring(0, 5));
             MostrarAsignaturas();
         }

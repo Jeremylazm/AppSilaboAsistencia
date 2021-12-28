@@ -31,11 +31,11 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_RecuperacionContraseña));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
@@ -47,9 +47,10 @@ namespace CapaPresentaciones
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblUniversidad = new Bunifu.UI.WinForms.BunifuLabel();
             this.pbLogo = new Bunifu.UI.WinForms.BunifuImageButton();
-            this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.Separador1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.lblDominio = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblMensaje = new Bunifu.UI.WinForms.BunifuLabel();
+            this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.pnLogo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -134,7 +135,7 @@ namespace CapaPresentaciones
             this.lblCorreo.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblCorreo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblCorreo.Location = new System.Drawing.Point(21, 175);
+            this.lblCorreo.Location = new System.Drawing.Point(21, 156);
             this.lblCorreo.Name = "lblCorreo";
             this.lblCorreo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblCorreo.Size = new System.Drawing.Size(161, 23);
@@ -173,36 +174,36 @@ namespace CapaPresentaciones
             this.txtCorreo.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCorreo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtCorreo.Lines = new string[0];
-            this.txtCorreo.Location = new System.Drawing.Point(21, 201);
+            this.txtCorreo.Location = new System.Drawing.Point(21, 182);
             this.txtCorreo.Margin = new System.Windows.Forms.Padding(0);
             this.txtCorreo.MaxLength = 32767;
             this.txtCorreo.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtCorreo.Modified = false;
             this.txtCorreo.Multiline = false;
             this.txtCorreo.Name = "txtCorreo";
-            stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties5.FillColor = System.Drawing.Color.Empty;
-            stateProperties5.ForeColor = System.Drawing.Color.Empty;
-            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtCorreo.OnActiveState = stateProperties5;
-            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtCorreo.OnDisabledState = stateProperties6;
-            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties7.FillColor = System.Drawing.Color.Empty;
-            stateProperties7.ForeColor = System.Drawing.Color.Empty;
-            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtCorreo.OnHoverState = stateProperties7;
-            stateProperties8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties8.FillColor = System.Drawing.Color.White;
-            stateProperties8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtCorreo.OnIdleState = stateProperties8;
-            this.txtCorreo.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties1.FillColor = System.Drawing.Color.Empty;
+            stateProperties1.ForeColor = System.Drawing.Color.Empty;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCorreo.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtCorreo.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCorreo.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties4.FillColor = System.Drawing.Color.White;
+            stateProperties4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCorreo.OnIdleState = stateProperties4;
+            this.txtCorreo.Padding = new System.Windows.Forms.Padding(3);
             this.txtCorreo.PasswordChar = '\0';
-            this.txtCorreo.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtCorreo.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtCorreo.PlaceholderText = "Código";
             this.txtCorreo.ReadOnly = false;
             this.txtCorreo.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -240,11 +241,11 @@ namespace CapaPresentaciones
             this.btnRecuperar.ColorContrastOnClick = 45;
             this.btnRecuperar.ColorContrastOnHover = 45;
             this.btnRecuperar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnRecuperar.CustomizableEdges = borderEdges2;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnRecuperar.CustomizableEdges = borderEdges1;
             this.btnRecuperar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnRecuperar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnRecuperar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -268,7 +269,7 @@ namespace CapaPresentaciones
             this.btnRecuperar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Cambiar_Contraseña;
             this.btnRecuperar.IdleIconRightImage = null;
             this.btnRecuperar.IndicateFocus = false;
-            this.btnRecuperar.Location = new System.Drawing.Point(21, 260);
+            this.btnRecuperar.Location = new System.Drawing.Point(21, 241);
             this.btnRecuperar.Name = "btnRecuperar";
             this.btnRecuperar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnRecuperar.OnDisabledState.BorderRadius = 15;
@@ -421,21 +422,21 @@ namespace CapaPresentaciones
             this.pbLogo.Zoom = 10;
             this.pbLogo.ZoomSpeed = 10;
             // 
-            // bunifuSeparator1
+            // Separador1
             // 
-            this.bunifuSeparator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.bunifuSeparator1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuSeparator1.BackgroundImage")));
-            this.bunifuSeparator1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuSeparator1.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
-            this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.bunifuSeparator1.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
-            this.bunifuSeparator1.LineThickness = 2;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(0, 72);
-            this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.bunifuSeparator1.Size = new System.Drawing.Size(311, 14);
-            this.bunifuSeparator1.TabIndex = 9;
+            this.Separador1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.Separador1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Separador1.BackgroundImage")));
+            this.Separador1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Separador1.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
+            this.Separador1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.Separador1.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
+            this.Separador1.LineThickness = 2;
+            this.Separador1.Location = new System.Drawing.Point(0, 72);
+            this.Separador1.Margin = new System.Windows.Forms.Padding(4);
+            this.Separador1.Name = "Separador1";
+            this.Separador1.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
+            this.Separador1.Size = new System.Drawing.Size(311, 14);
+            this.Separador1.TabIndex = 9;
             // 
             // lblDominio
             // 
@@ -445,7 +446,7 @@ namespace CapaPresentaciones
             this.lblDominio.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblDominio.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDominio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblDominio.Location = new System.Drawing.Point(153, 210);
+            this.lblDominio.Location = new System.Drawing.Point(153, 191);
             this.lblDominio.Name = "lblDominio";
             this.lblDominio.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblDominio.Size = new System.Drawing.Size(137, 23);
@@ -463,15 +464,55 @@ namespace CapaPresentaciones
             this.lblMensaje.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblMensaje.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensaje.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblMensaje.Location = new System.Drawing.Point(9, 311);
+            this.lblMensaje.Location = new System.Drawing.Point(21, 283);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblMensaje.Size = new System.Drawing.Size(293, 29);
+            this.lblMensaje.Size = new System.Drawing.Size(269, 68);
             this.lblMensaje.TabIndex = 134;
-            this.lblMensaje.Text = "Se te envió un correo electrónico";
+            this.lblMensaje.Text = "Se le envió un mensaje a su correo electrónico";
             this.lblMensaje.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblMensaje.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.lblMensaje.Visible = false;
+            // 
+            // Docker
+            // 
+            this.Docker.AllowFormDragging = true;
+            this.Docker.AllowFormDropShadow = true;
+            this.Docker.AllowFormResizing = true;
+            this.Docker.AllowHidingBottomRegion = true;
+            this.Docker.AllowOpacityChangesWhileDragging = false;
+            this.Docker.BorderOptions.BottomBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.BottomBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.BottomBorder.ShowBorder = true;
+            this.Docker.BorderOptions.LeftBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.LeftBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.LeftBorder.ShowBorder = true;
+            this.Docker.BorderOptions.RightBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.RightBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.RightBorder.ShowBorder = true;
+            this.Docker.BorderOptions.TopBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.TopBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.TopBorder.ShowBorder = true;
+            this.Docker.ContainerControl = this;
+            this.Docker.DockingIndicatorsColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(215)))), ((int)(((byte)(233)))));
+            this.Docker.DockingIndicatorsOpacity = 0.5D;
+            this.Docker.DockingOptions.DockAll = false;
+            this.Docker.DockingOptions.DockBottomLeft = false;
+            this.Docker.DockingOptions.DockBottomRight = false;
+            this.Docker.DockingOptions.DockFullScreen = false;
+            this.Docker.DockingOptions.DockLeft = false;
+            this.Docker.DockingOptions.DockRight = false;
+            this.Docker.DockingOptions.DockTopLeft = false;
+            this.Docker.DockingOptions.DockTopRight = false;
+            this.Docker.FormDraggingOpacity = 0.9D;
+            this.Docker.ParentForm = this;
+            this.Docker.ShowCursorChanges = true;
+            this.Docker.ShowDockingIndicators = false;
+            this.Docker.TitleBarOptions.AllowFormDragging = true;
+            this.Docker.TitleBarOptions.BunifuFormDock = this.Docker;
+            this.Docker.TitleBarOptions.DoubleClickToExpandWindow = true;
+            this.Docker.TitleBarOptions.TitleBarControl = null;
+            this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
             // P_RecuperacionContraseña
             // 
@@ -481,7 +522,7 @@ namespace CapaPresentaciones
             this.ClientSize = new System.Drawing.Size(545, 360);
             this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.lblDominio);
-            this.Controls.Add(this.bunifuSeparator1);
+            this.Controls.Add(this.Separador1);
             this.Controls.Add(this.btnRecuperar);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.lblCorreo);
@@ -491,7 +532,6 @@ namespace CapaPresentaciones
             this.Name = "P_RecuperacionContraseña";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Recuperación de Contraseña";
-            this.TopMost = true;
             this.pnLogo.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -511,8 +551,9 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuImageButton pbLogo;
         private Bunifu.UI.WinForms.BunifuLabel lblUniversidad;
         private Bunifu.UI.WinForms.BunifuImageButton btnCerrar;
-        private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator1;
+        private Bunifu.UI.WinForms.BunifuSeparator Separador1;
         private Bunifu.UI.WinForms.BunifuLabel lblDominio;
         private Bunifu.UI.WinForms.BunifuLabel lblMensaje;
+        private Bunifu.UI.WinForms.BunifuFormDock Docker;
     }
 }

@@ -247,10 +247,10 @@ namespace CapaPresentaciones
             stateProperties4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
             this.txtBuscar.OnIdleState = stateProperties4;
-            this.txtBuscar.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.txtBuscar.Padding = new System.Windows.Forms.Padding(3);
             this.txtBuscar.PasswordChar = '\0';
-            this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtBuscar.PlaceholderText = "Buscar...";
+            this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.DimGray;
+            this.txtBuscar.PlaceholderText = "Buscar";
             this.txtBuscar.ReadOnly = false;
             this.txtBuscar.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtBuscar.SelectedText = "";
@@ -264,7 +264,7 @@ namespace CapaPresentaciones
             this.txtBuscar.TextMarginBottom = 0;
             this.txtBuscar.TextMarginLeft = 7;
             this.txtBuscar.TextMarginTop = 0;
-            this.txtBuscar.TextPlaceholder = "Buscar...";
+            this.txtBuscar.TextPlaceholder = "Buscar";
             this.txtBuscar.UseSystemPasswordChar = false;
             this.txtBuscar.WordWrap = true;
             // 
@@ -290,7 +290,7 @@ namespace CapaPresentaciones
             this.sbDatos.DurationBeforeShrink = 2000;
             this.sbDatos.LargeChange = 10;
             this.sbDatos.Location = new System.Drawing.Point(772, 93);
-            this.sbDatos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sbDatos.Margin = new System.Windows.Forms.Padding(4);
             this.sbDatos.Maximum = 100;
             this.sbDatos.Minimum = 0;
             this.sbDatos.MinimumThumbLength = 18;

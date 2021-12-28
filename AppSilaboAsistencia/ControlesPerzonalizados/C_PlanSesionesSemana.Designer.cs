@@ -37,12 +37,12 @@ namespace ControlesPerzonalizados
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
             this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
-            this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
-            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuDataGridView1 = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.txtSesion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtTema = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ckbTema = new System.Windows.Forms.DataGridViewImageColumn();
+            this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
+            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.ListaImagenes = new System.Windows.Forms.ImageList(this.components);
             this.pnContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuDataGridView1)).BeginInit();
@@ -83,6 +83,7 @@ namespace ControlesPerzonalizados
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sbDatos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbDatos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sbDatos.BackgroundImage")));
+            this.sbDatos.BindingContainer = null;
             this.sbDatos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbDatos.BorderRadius = 0;
             this.sbDatos.BorderThickness = 1;
@@ -107,29 +108,6 @@ namespace ControlesPerzonalizados
             this.sbDatos.ThumbMargin = 1;
             this.sbDatos.ThumbStyle = Bunifu.UI.WinForms.BunifuVScrollBar.ThumbStyles.Inset;
             this.sbDatos.Value = 0;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AllowParentOverrides = false;
-            this.lblTitulo.AutoEllipsis = false;
-            this.lblTitulo.BackColor = System.Drawing.Color.White;
-            this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblTitulo.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblTitulo.Location = new System.Drawing.Point(615, 3);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTitulo.Size = new System.Drawing.Size(70, 25);
-            this.lblTitulo.TabIndex = 1;
-            this.lblTitulo.Text = "Semana ";
-            this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // Bordeado
-            // 
-            this.Bordeado.ElipseRadius = 15;
-            this.Bordeado.TargetControl = this.pnContenedor;
             // 
             // bunifuDataGridView1
             // 
@@ -234,6 +212,29 @@ namespace ControlesPerzonalizados
             this.ckbTema.HeaderText = "Seleccionar";
             this.ckbTema.Image = global::ControlesPerzonalizados.Properties.Resources.Unchecked_16x16;
             this.ckbTema.Name = "ckbTema";
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AllowParentOverrides = false;
+            this.lblTitulo.AutoEllipsis = false;
+            this.lblTitulo.BackColor = System.Drawing.Color.White;
+            this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblTitulo.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblTitulo.Location = new System.Drawing.Point(615, 3);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblTitulo.Size = new System.Drawing.Size(70, 23);
+            this.lblTitulo.TabIndex = 1;
+            this.lblTitulo.Text = "Semana ";
+            this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // Bordeado
+            // 
+            this.Bordeado.ElipseRadius = 15;
+            this.Bordeado.TargetControl = this.pnContenedor;
             // 
             // ListaImagenes
             // 

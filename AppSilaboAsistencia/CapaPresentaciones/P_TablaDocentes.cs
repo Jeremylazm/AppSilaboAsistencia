@@ -97,25 +97,25 @@ namespace CapaPresentaciones
         {
             ActualizarColor();
 
-            Form Fondo = new Form();
+            //Form Fondo = new Form();
             using (P_DatosDocente NuevoRegistro = new P_DatosDocente())
             {
-                Fondo.StartPosition = FormStartPosition.Manual;
-                Fondo.FormBorderStyle = FormBorderStyle.None;
-                Fondo.Opacity = .70d;
-                Fondo.BackColor = Color.Black;
-                Fondo.WindowState = FormWindowState.Maximized;
-                Fondo.TopMost = true;
-                Fondo.Location = this.Location;
-                Fondo.ShowInTaskbar = false;
-                Fondo.Show();
+                //Fondo.StartPosition = FormStartPosition.Manual;
+                //Fondo.FormBorderStyle = FormBorderStyle.None;
+                //Fondo.Opacity = .70d;
+                //Fondo.BackColor = Color.Black;
+                //Fondo.WindowState = FormWindowState.Maximized;
+                //Fondo.TopMost = true;
+                //Fondo.Location = this.Location;
+                //Fondo.ShowInTaskbar = false;
+                //Fondo.Show();
 
                 NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                NuevoRegistro.Owner = Fondo;
+                //NuevoRegistro.Owner = Fondo;
                 NuevoRegistro.ShowDialog();
                 NuevoRegistro.Dispose();
 
-                Fondo.Dispose();
+                //Fondo.Dispose();
             }
         }
 
@@ -140,18 +140,18 @@ namespace CapaPresentaciones
         {
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
-                Form Fondo = new Form();
+                //Form Fondo = new Form();
                 using (P_DatosDocente EditarRegistro = new P_DatosDocente())
                 {
-                    Fondo.StartPosition = FormStartPosition.Manual;
-                    Fondo.FormBorderStyle = FormBorderStyle.None;
-                    Fondo.Opacity = .70d;
-                    Fondo.BackColor = Color.Black;
-                    Fondo.WindowState = FormWindowState.Maximized;
-                    Fondo.TopMost = true;
-                    Fondo.Location = this.Location;
-                    Fondo.ShowInTaskbar = false;
-                    Fondo.Show();
+                    //Fondo.StartPosition = FormStartPosition.Manual;
+                    //Fondo.FormBorderStyle = FormBorderStyle.None;
+                    //Fondo.Opacity = .70d;
+                    //Fondo.BackColor = Color.Black;
+                    //Fondo.WindowState = FormWindowState.Maximized;
+                    //Fondo.TopMost = true;
+                    //Fondo.Location = this.Location;
+                    //Fondo.ShowInTaskbar = false;
+                    //Fondo.Show();
 
                     EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
                     //editar
@@ -211,19 +211,19 @@ namespace CapaPresentaciones
 
                     // EditarRegistro.cxtEscuela.SelectedValue = dgvTabla.CurrentRow.Cells[13].Value.ToString();
 
-                    EditarRegistro.Owner = Fondo;
+                    //EditarRegistro.Owner = Fondo;
 
                     DialogResult dr = EditarRegistro.ShowDialog();
                     if (dr == DialogResult.Cancel)
                     {
                         if ((this.Parent.Parent.Parent as P_Menu).Acceso == "Jefe de Departamento")
                         {
-                            (this.Parent.Parent.Parent as P_Menu).ActualizarpPerfilJefeODirector(EditarRegistro.pbPerfil.Image);
+                            (this.Parent.Parent.Parent as P_Menu).ActualizarPerfilJefe(EditarRegistro.pbPerfil.Image);
                         }
                     }
 
                     EditarRegistro.Dispose();
-                    Fondo.Dispose();
+                    //Fondo.Dispose();
                 }
             }
 

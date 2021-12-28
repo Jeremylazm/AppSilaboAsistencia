@@ -170,8 +170,8 @@ namespace CapaPresentaciones
 			this.txtBuscar.OnIdleState = stateProperties4;
 			this.txtBuscar.Padding = new System.Windows.Forms.Padding(3);
 			this.txtBuscar.PasswordChar = '\0';
-			this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.Silver;
-			this.txtBuscar.PlaceholderText = "Buscar...";
+			this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.DimGray;
+			this.txtBuscar.PlaceholderText = "Buscar";
 			this.txtBuscar.ReadOnly = false;
 			this.txtBuscar.ScrollBars = System.Windows.Forms.ScrollBars.None;
 			this.txtBuscar.SelectedText = "";
@@ -185,9 +185,10 @@ namespace CapaPresentaciones
 			this.txtBuscar.TextMarginBottom = 0;
 			this.txtBuscar.TextMarginLeft = 7;
 			this.txtBuscar.TextMarginTop = 0;
-			this.txtBuscar.TextPlaceholder = "Buscar...";
+			this.txtBuscar.TextPlaceholder = "Buscar";
 			this.txtBuscar.UseSystemPasswordChar = false;
 			this.txtBuscar.WordWrap = true;
+			this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
 			// 
 			// dgvDatos
 			// 

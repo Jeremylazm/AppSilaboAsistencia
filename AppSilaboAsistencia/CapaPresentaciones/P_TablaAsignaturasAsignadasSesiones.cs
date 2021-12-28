@@ -17,10 +17,13 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasSesiones : Form
     {
+        private readonly string CodSemestre;
         private readonly string CodDocente = E_InicioSesion.Usuario;
 
         public P_TablaAsignaturasAsignadasSesiones()
         {
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             MostrarAsignaturas();
@@ -40,7 +43,7 @@ namespace CapaPresentaciones
 
         private void MostrarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente("2021-II", "IF", CodDocente);
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, "IF", CodDocente);
             AccionesTabla();
         }
 
@@ -105,7 +108,7 @@ namespace CapaPresentaciones
                 wb.Worksheet(1).Cell("A4").Value = dtDatosAsignatura.Rows[0]["NombreAsignatura"].ToString() + " (" + CodAsignatura + ")";
 
                 // Semestre
-                wb.Worksheet(1).Cell("A5").Value = wb.Worksheet(1).Cell("A5").Value + "2021-II";
+                wb.Worksheet(1).Cell("A5").Value = wb.Worksheet(1).Cell("A5").Value + CodSemestre;
 
                 // Completar información del docente
                 DataTable dtDatosDocente = N_Docente.BuscarDocente(CodAsignatura.Substring(0, 2), CodDocente);
@@ -143,27 +146,57 @@ namespace CapaPresentaciones
             // Descargar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
-                P_TablaSesionesAsignatura sesionesAsignatura = new P_TablaSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString());
+                //Form Fondo = new Form();
+                using (P_TablaSesionesAsignatura sesionesAsignatura = new P_TablaSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString()))
+                {
+                    //Fondo.StartPosition = FormStartPosition.Manual;
+                    //Fondo.FormBorderStyle = FormBorderStyle.None;
+                    //Fondo.Opacity = .70d;
+                    //Fondo.BackColor = Color.Black;
+                    //Fondo.WindowState = FormWindowState.Maximized;
+                    //Fondo.TopMost = true;
+                    //Fondo.Location = this.Location;
+                    //Fondo.ShowInTaskbar = false;
+                    //Fondo.Show();
 
-                sesionesAsignatura.ShowDialog();
-                sesionesAsignatura.Dispose();
+                    //sesionesAsignatura.Owner = Fondo;
+                    sesionesAsignatura.ShowDialog();
+                    sesionesAsignatura.Dispose();
+
+                    //Fondo.Dispose();
+                }                
             }
 
             // Subir
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 2))
             {
-                P_SubirArchivo SubirPlanSesiones = new P_SubirArchivo("Plan de Sesiones");
+                //Form Fondo = new Form();
+                using (P_SubirArchivo SubirPlanSesiones = new P_SubirArchivo("Plan de Sesiones"))
+                {
+                    //Fondo.StartPosition = FormStartPosition.Manual;
+                    //Fondo.FormBorderStyle = FormBorderStyle.None;
+                    //Fondo.Opacity = .70d;
+                    //Fondo.BackColor = Color.Black;
+                    //Fondo.WindowState = FormWindowState.Maximized;
+                    //Fondo.TopMost = true;
+                    //Fondo.Location = this.Location;
+                    //Fondo.ShowInTaskbar = false;
+                    //Fondo.Show();
 
-                Program.Evento = 1;
+                    Program.Evento = 1;
 
-                SubirPlanSesiones.CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
-                SubirPlanSesiones.NombreAsignatura = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
-                SubirPlanSesiones.EscuelaProfesional = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
-                SubirPlanSesiones.Grupo = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
-                SubirPlanSesiones.CodDocente = CodDocente;
+                    SubirPlanSesiones.CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    SubirPlanSesiones.NombreAsignatura = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    SubirPlanSesiones.EscuelaProfesional = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    SubirPlanSesiones.Grupo = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    SubirPlanSesiones.CodDocente = CodDocente;
 
-                SubirPlanSesiones.ShowDialog();
-                SubirPlanSesiones.Dispose();
+                    //SubirPlanSesiones.Owner = Fondo;
+                    SubirPlanSesiones.ShowDialog();
+                    SubirPlanSesiones.Dispose();
+
+                    //Fondo.Dispose();
+                }
             }
         }
     }

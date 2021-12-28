@@ -237,7 +237,8 @@ namespace CapaPresentaciones
             this.bDSistemaGestionDataSet = new CapaPresentaciones.BDSistemaGestionDataSet();
             this.tDocenteTableAdapter = new CapaPresentaciones.BDSistemaGestionDataSetTableAdapters.TDocenteTableAdapter();
             this.tAsignaturaTableAdapter = new CapaPresentaciones.BDSistemaGestionDataSetTableAdapters.TAsignaturaTableAdapter();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Salir)).BeginInit();
             this.panel2.SuspendLayout();
@@ -284,6 +285,7 @@ namespace CapaPresentaciones
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.Panel_Info);
             this.panel2.Controls.Add(this.S20_21);
             this.panel2.Controls.Add(this.S19_20);
@@ -2515,10 +2517,50 @@ namespace CapaPresentaciones
             // 
             this.tAsignaturaTableAdapter.ClearBeforeFill = true;
             // 
-            // bunifuElipse1
+            // Bordeado
             // 
-            this.bunifuElipse1.ElipseRadius = 15;
-            this.bunifuElipse1.TargetControl = this;
+            this.Bordeado.ElipseRadius = 15;
+            this.Bordeado.TargetControl = this;
+            // 
+            // Docker
+            // 
+            this.Docker.AllowFormDragging = true;
+            this.Docker.AllowFormDropShadow = true;
+            this.Docker.AllowFormResizing = true;
+            this.Docker.AllowHidingBottomRegion = true;
+            this.Docker.AllowOpacityChangesWhileDragging = false;
+            this.Docker.BorderOptions.BottomBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.BottomBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.BottomBorder.ShowBorder = true;
+            this.Docker.BorderOptions.LeftBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.LeftBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.LeftBorder.ShowBorder = true;
+            this.Docker.BorderOptions.RightBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.RightBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.RightBorder.ShowBorder = true;
+            this.Docker.BorderOptions.TopBorder.BorderColor = System.Drawing.Color.Silver;
+            this.Docker.BorderOptions.TopBorder.BorderThickness = 1;
+            this.Docker.BorderOptions.TopBorder.ShowBorder = true;
+            this.Docker.ContainerControl = this;
+            this.Docker.DockingIndicatorsColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(215)))), ((int)(((byte)(233)))));
+            this.Docker.DockingIndicatorsOpacity = 0.5D;
+            this.Docker.DockingOptions.DockAll = false;
+            this.Docker.DockingOptions.DockBottomLeft = false;
+            this.Docker.DockingOptions.DockBottomRight = false;
+            this.Docker.DockingOptions.DockFullScreen = false;
+            this.Docker.DockingOptions.DockLeft = false;
+            this.Docker.DockingOptions.DockRight = false;
+            this.Docker.DockingOptions.DockTopLeft = false;
+            this.Docker.DockingOptions.DockTopRight = false;
+            this.Docker.FormDraggingOpacity = 0.9D;
+            this.Docker.ParentForm = this;
+            this.Docker.ShowCursorChanges = true;
+            this.Docker.ShowDockingIndicators = false;
+            this.Docker.TitleBarOptions.AllowFormDragging = true;
+            this.Docker.TitleBarOptions.BunifuFormDock = this.Docker;
+            this.Docker.TitleBarOptions.DoubleClickToExpandWindow = true;
+            this.Docker.TitleBarOptions.TitleBarControl = null;
+            this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
             // P_Catálogo_Actualizar
             // 
@@ -2628,7 +2670,7 @@ namespace CapaPresentaciones
         private BDSistemaGestionDataSet bDSistemaGestionDataSet;
         private BDSistemaGestionDataSetTableAdapters.TDocenteTableAdapter tDocenteTableAdapter;
         private BDSistemaGestionDataSetTableAdapters.TAsignaturaTableAdapter tAsignaturaTableAdapter;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private System.Windows.Forms.ComboBox Seleccionar_Asignatura_Cod_Nom;
         private System.Windows.Forms.ComboBox Seleccionar_Docente_Cod_Nom2;
         private System.Windows.Forms.ComboBox Seleccionar_Docente_Cod_Nom;
@@ -2754,5 +2796,6 @@ namespace CapaPresentaciones
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label42;
+        private Bunifu.UI.WinForms.BunifuFormDock Docker;
     }
 }

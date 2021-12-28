@@ -48,7 +48,7 @@
     <Compile Include="N_DepartamentoAcademico.cs" />
     <Compile Include="N_Docente.cs" />
     <Compile Include="N_EscuelaProfesional.cs" />
-    <Compile Include="N_Estudiante.cs" />
+    <Compile Include="N_Semestre.cs" />
     <Compile Include="N_HorarioAsignatura.cs" />
     <Compile Include="N_InicioSesion.cs" />
     <Compile Include="N_Matricula.cs" />

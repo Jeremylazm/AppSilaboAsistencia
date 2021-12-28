@@ -7,9 +7,7 @@ using CapaEntidades;
 using System.IO;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using Bunifu.UI.WinForms;
 using Ayudas;
-using System.Linq;
 
 namespace CapaPresentaciones
 {
@@ -30,11 +28,18 @@ namespace CapaPresentaciones
         private string CodDepartamentoA = "";
         private string CodEscuelaP = "";
 
+        public Image perfil;
+
         public P_EditarPerfilDocente()
         {
             Validador = new A_Validador();
 
             InitializeComponent();
+        }
+
+        private void ActualizarColor()
+        {
+            lblTitulo.Focus();
         }
 
         private void CargarDatosUsuario()
@@ -50,6 +55,10 @@ namespace CapaPresentaciones
             {
                 // Asignar una imagen por defecto para docente
                 imgPerfil.Image = Properties.Resources.Perfil_Docente as Image;
+            }
+            else if (perfil != null)
+            {
+                imgPerfil.Image = perfil;
             }
             else
             {
@@ -128,6 +137,8 @@ namespace CapaPresentaciones
 
         private void btnRestablecerPerfil_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
+
             if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea restablecer su perfil?") == DialogResult.Yes)
             {
                 // Cargar imagen por defecto en el formulario
@@ -137,6 +148,8 @@ namespace CapaPresentaciones
 
         private void btnSubirPerfil_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
+
             try
             {
                 // Abrir una ventana para seleccionar una imagen
@@ -163,6 +176,8 @@ namespace CapaPresentaciones
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
+
             bool TelefonoCorrecto = Validador.ValidarTelefono(txtTelefono, lblErrorTelefono, pbErrorTelefono, 9);
 
             if (TelefonoCorrecto)
@@ -207,29 +222,19 @@ namespace CapaPresentaciones
 
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
         {
-            Form CambioContraseña = ParentForm.Controls.Find("pnPrincipal", false)[0].Controls.Find("pnContenedor", false)[0].Controls.OfType<P_CambioContraseña>().FirstOrDefault();
-            CambioContraseña = new P_CambioContraseña(lblEmail2.Text)
+            ActualizarColor();
+
+            P_CambioContraseña CambioContraseña = new P_CambioContraseña(lblEmail2.Text)
             {
                 TopLevel = false,
                 Dock = DockStyle.Fill
             };
-
             ParentForm.Controls.Find("pnPrincipal", false)[0].Controls.Find("pnContenedor", false)[0].Controls.Add(CambioContraseña);
-
             CambioContraseña.Show();
             CambioContraseña.BringToFront();
         }
-        /*
-        private void txtEmail_TextChange(object sender, EventArgs e)
-        {
-            if (Validador.ValidarEmail(txtEmail, lblErrorEmail, pbErrorEmail) || txtEmail.Text == "")
-            {
-                pbErrorEmail.Visible = false;
-                lblErrorEmail.Visible = false;
-            }
-        }*/
 
-        private void txtTelefono_TextChange(object sender, EventArgs e)
+        private void txtTelefono_TextChanged(object sender, EventArgs e)
         {
             if (Validador.ValidarTelefono(txtTelefono, lblErrorTelefono, pbErrorTelefono, 9))
             {

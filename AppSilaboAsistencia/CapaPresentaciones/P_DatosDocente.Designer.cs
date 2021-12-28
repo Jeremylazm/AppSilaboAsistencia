@@ -280,7 +280,7 @@ namespace CapaPresentaciones
             this.txtCodigo.OnIdleState = stateProperties4;
             this.txtCodigo.Padding = new System.Windows.Forms.Padding(3);
             this.txtCodigo.PasswordChar = '\0';
-            this.txtCodigo.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtCodigo.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtCodigo.PlaceholderText = "Escriba su código";
             this.txtCodigo.ReadOnly = false;
             this.txtCodigo.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -377,7 +377,7 @@ namespace CapaPresentaciones
             this.txtNombre.OnIdleState = stateProperties8;
             this.txtNombre.Padding = new System.Windows.Forms.Padding(3);
             this.txtNombre.PasswordChar = '\0';
-            this.txtNombre.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtNombre.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtNombre.PlaceholderText = "Escriba el nombre";
             this.txtNombre.ReadOnly = false;
             this.txtNombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -457,7 +457,7 @@ namespace CapaPresentaciones
             this.txtAPaterno.OnIdleState = stateProperties12;
             this.txtAPaterno.Padding = new System.Windows.Forms.Padding(3);
             this.txtAPaterno.PasswordChar = '\0';
-            this.txtAPaterno.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtAPaterno.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtAPaterno.PlaceholderText = "Escriba su apellido paterno";
             this.txtAPaterno.ReadOnly = false;
             this.txtAPaterno.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -554,7 +554,7 @@ namespace CapaPresentaciones
             this.txtTelefono.OnIdleState = stateProperties16;
             this.txtTelefono.Padding = new System.Windows.Forms.Padding(3);
             this.txtTelefono.PasswordChar = '\0';
-            this.txtTelefono.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtTelefono.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtTelefono.PlaceholderText = "Escriba su teléfono";
             this.txtTelefono.ReadOnly = false;
             this.txtTelefono.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -668,7 +668,7 @@ namespace CapaPresentaciones
             this.txtDireccion.OnIdleState = stateProperties20;
             this.txtDireccion.Padding = new System.Windows.Forms.Padding(3);
             this.txtDireccion.PasswordChar = '\0';
-            this.txtDireccion.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtDireccion.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtDireccion.PlaceholderText = "Escriba su dirección";
             this.txtDireccion.ReadOnly = false;
             this.txtDireccion.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -988,7 +988,7 @@ namespace CapaPresentaciones
             this.txtAMaterno.OnIdleState = stateProperties28;
             this.txtAMaterno.Padding = new System.Windows.Forms.Padding(3);
             this.txtAMaterno.PasswordChar = '\0';
-            this.txtAMaterno.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtAMaterno.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtAMaterno.PlaceholderText = "Escriba su apellido materno";
             this.txtAMaterno.ReadOnly = false;
             this.txtAMaterno.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -1085,7 +1085,7 @@ namespace CapaPresentaciones
             this.txtEmail.OnIdleState = stateProperties24;
             this.txtEmail.Padding = new System.Windows.Forms.Padding(3);
             this.txtEmail.PasswordChar = '\0';
-            this.txtEmail.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtEmail.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtEmail.PlaceholderText = "Usuario";
             this.txtEmail.ReadOnly = false;
             this.txtEmail.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -2016,7 +2016,6 @@ namespace CapaPresentaciones
             this.Name = "P_DatosDocente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos de Docente";
-            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

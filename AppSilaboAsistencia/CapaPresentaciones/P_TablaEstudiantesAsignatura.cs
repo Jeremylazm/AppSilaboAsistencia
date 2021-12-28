@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
@@ -7,12 +8,17 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaEstudiantesAsignatura : Form
     {
+        private readonly string CodSemestre;
         public string CodAsignatura;
 
         public P_TablaEstudiantesAsignatura(string pCodAsignatura)
         {
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
             CodAsignatura = pCodAsignatura;
             InitializeComponent();
+            Control[] Controles = { this, lblTitulo, pbLogo };
+            Docker.SubscribeControlsToDragEvents(Controles);
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             lblTitulo.Text += CodAsignatura;
             MostrarEstudiantes();
@@ -29,13 +35,13 @@ namespace CapaPresentaciones
 
         private void MostrarEstudiantes()
         {
-            dgvDatos.DataSource = N_Matricula.BuscarEstudiantesAsignatura("2021-II", CodAsignatura.Substring(6), CodAsignatura);
+            dgvDatos.DataSource = N_Matricula.BuscarEstudiantesAsignatura(CodSemestre, CodAsignatura.Substring(6), CodAsignatura);
             AccionesTabla();
         }
 
         public void BuscarEstudiantes()
         {
-            dgvDatos.DataSource = N_Matricula.BuscarEstudiantesMatriculadosAsignatura("2021-II", CodAsignatura.Substring(6), CodAsignatura, txtBuscar.Text);
+            dgvDatos.DataSource = N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodAsignatura.Substring(6), CodAsignatura, txtBuscar.Text);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

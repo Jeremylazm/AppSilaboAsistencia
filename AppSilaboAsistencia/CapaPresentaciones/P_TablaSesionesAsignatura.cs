@@ -18,19 +18,18 @@ namespace CapaPresentaciones
     public partial class P_TablaSesionesAsignatura : Form
     {
         readonly private string CodAsignatura;
-        private readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly DataTable Asignaturas;
 
         public P_TablaSesionesAsignatura(string CodAsignatura)
         {
             this.CodAsignatura = CodAsignatura;
+
             InitializeComponent();
+            Control[] Controles = { this, lblTitulo, pbLogo };
+            Docker.SubscribeControlsToDragEvents(Controles);
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
 
-            
-
             Asignaturas = N_Catalogo.BuscarPlanSesionesAsignatura(CodAsignatura.Substring(0, 5), E_InicioSesion.Usuario);
-
             MostrarAsignaturas();
         }
 
@@ -51,6 +50,7 @@ namespace CapaPresentaciones
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
+            Program.Evento = 0;
             Close();
         }
 

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
 using Ayudas;
+using System.Drawing;
 
 namespace CapaPresentaciones
 {

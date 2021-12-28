@@ -286,8 +286,14 @@
   <data name="Modificar_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Modificar_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Mostrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mostrar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Más_Detalles" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Más Detalles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ocultar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ocultar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Perfil" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Perfil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -319,6 +325,12 @@
   <data name="Reportes_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Reportes 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="RestablecerImagen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RestablecerImagen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RestablecerImagen2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RestablecerImagen2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Restablecer_Perfil" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Restablecer Perfil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -330,6 +342,12 @@
   </data>
   <data name="Solicitud" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Solicitud.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SubirImagen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SubirImagen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SubirImagen2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SubirImagen2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Subir_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Subir 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

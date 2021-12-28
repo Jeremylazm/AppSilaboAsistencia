@@ -130,13 +130,14 @@ namespace ControlesPerzonalizados
             this.btnSiguiente.OnPressedState.IconLeftImage = null;
             this.btnSiguiente.OnPressedState.IconRightImage = null;
             this.btnSiguiente.Size = new System.Drawing.Size(148, 39);
-            this.btnSiguiente.TabIndex = 30;
+            this.btnSiguiente.TabIndex = 1;
             this.btnSiguiente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSiguiente.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnSiguiente.TextMarginLeft = 0;
             this.btnSiguiente.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnSiguiente.UseDefaultRadiusAndThickness = true;
             this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            this.btnSiguiente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnSiguiente_KeyPress);
             // 
             // bunifuPanel1
             // 
@@ -160,7 +161,7 @@ namespace ControlesPerzonalizados
             this.bunifuPanel1.Name = "bunifuPanel1";
             this.bunifuPanel1.ShowBorders = true;
             this.bunifuPanel1.Size = new System.Drawing.Size(749, 226);
-            this.bunifuPanel1.TabIndex = 33;
+            this.bunifuPanel1.TabIndex = 0;
             // 
             // pbErrorCodigo
             // 
@@ -271,6 +272,7 @@ namespace ControlesPerzonalizados
             this.btnVolverEnviar.Text = "Volver a enviar código de verificación";
             this.btnVolverEnviar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnVolverEnviar.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnVolverEnviar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnVolverEnviar_LinkClicked);
             // 
             // txtCodigoVerificacion
             // 
@@ -332,7 +334,7 @@ namespace ControlesPerzonalizados
             this.txtCodigoVerificacion.OnIdleState = stateProperties4;
             this.txtCodigoVerificacion.Padding = new System.Windows.Forms.Padding(3);
             this.txtCodigoVerificacion.PasswordChar = '\0';
-            this.txtCodigoVerificacion.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtCodigoVerificacion.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtCodigoVerificacion.PlaceholderText = "Escriba su código de verificación";
             this.txtCodigoVerificacion.ReadOnly = false;
             this.txtCodigoVerificacion.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -342,7 +344,7 @@ namespace ControlesPerzonalizados
             this.txtCodigoVerificacion.ShortcutsEnabled = true;
             this.txtCodigoVerificacion.Size = new System.Drawing.Size(320, 40);
             this.txtCodigoVerificacion.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
-            this.txtCodigoVerificacion.TabIndex = 34;
+            this.txtCodigoVerificacion.TabIndex = 0;
             this.txtCodigoVerificacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCodigoVerificacion.TextMarginBottom = 0;
             this.txtCodigoVerificacion.TextMarginLeft = 7;
@@ -350,6 +352,8 @@ namespace ControlesPerzonalizados
             this.txtCodigoVerificacion.TextPlaceholder = "Escriba su código de verificación";
             this.txtCodigoVerificacion.UseSystemPasswordChar = false;
             this.txtCodigoVerificacion.WordWrap = true;
+            this.txtCodigoVerificacion.TextChanged += new System.EventHandler(this.txtCodigoVerificacion_TextChanged);
+            this.txtCodigoVerificacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoVerificacion_KeyPress);
             // 
             // lblCodigoVerificacion
             // 

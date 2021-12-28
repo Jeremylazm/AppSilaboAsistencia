@@ -25,8 +25,7 @@ namespace ControlesPerzonalizados
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            Correo = txtUsuario.Text + lblDominio.Text;
-            Verificar();
+            Siguiente_Paso();
         }
 
         public void Verificar()
@@ -43,6 +42,10 @@ namespace ControlesPerzonalizados
             else if (ans == "Correo no Válido")
             {
                 A_Dialogo.DialogoError("El correo ingresado no es igual al correo que aparece en el perfil");
+            }
+            else if (ans == "Correo Vacío")
+            {
+                Validador.EnfocarCursor(txtUsuario);
             }
             else
             {
@@ -70,7 +73,6 @@ namespace ControlesPerzonalizados
             }
             else
             {
-                Validador.EnfocarCursor(txtUsuario);
                 return "Correo Vacío";
             }
         }
@@ -118,6 +120,22 @@ namespace ControlesPerzonalizados
                 lblErrorUsuario.Visible = false;
                 pbErrorUsuario.Visible = false;
             }
+        }
+
+        private void btnSiguiente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                Siguiente_Paso();
+        }
+
+        public void Siguiente_Paso()
+        {
+            Correo = txtUsuario.Text + lblDominio.Text;
+            Verificar();
         }
     }
 }

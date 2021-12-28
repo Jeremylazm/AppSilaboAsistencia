@@ -29,7 +29,6 @@ namespace CapaPresentaciones
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_InicioSesion));
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties21 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties22 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -41,7 +40,7 @@ namespace CapaPresentaciones
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties20 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
-            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse();
             this.lblUsuario = new Bunifu.UI.WinForms.BunifuLabel();
             this.txtUsuario = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtContraseña = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -57,6 +56,7 @@ namespace CapaPresentaciones
             this.pbErrorUsuario = new Bunifu.UI.WinForms.BunifuImageButton();
             this.pbErrorContraseña = new Bunifu.UI.WinForms.BunifuImageButton();
             this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
+            this.btnMostrarOcultarContraseña = new Bunifu.UI.WinForms.BunifuImageButton();
             this.pnLogo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -159,9 +159,9 @@ namespace CapaPresentaciones
             stateProperties24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             stateProperties24.PlaceholderForeColor = System.Drawing.Color.Empty;
             this.txtUsuario.OnIdleState = stateProperties24;
-            this.txtUsuario.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.txtUsuario.Padding = new System.Windows.Forms.Padding(3);
             this.txtUsuario.PasswordChar = '\0';
-            this.txtUsuario.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtUsuario.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtUsuario.PlaceholderText = "Escriba su usuario";
             this.txtUsuario.ReadOnly = false;
             this.txtUsuario.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -238,9 +238,9 @@ namespace CapaPresentaciones
             stateProperties20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             stateProperties20.PlaceholderForeColor = System.Drawing.Color.Empty;
             this.txtContraseña.OnIdleState = stateProperties20;
-            this.txtContraseña.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.txtContraseña.Padding = new System.Windows.Forms.Padding(3);
             this.txtContraseña.PasswordChar = '\0';
-            this.txtContraseña.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtContraseña.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtContraseña.PlaceholderText = "Escriba su contraseña";
             this.txtContraseña.ReadOnly = false;
             this.txtContraseña.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -643,12 +643,50 @@ namespace CapaPresentaciones
             this.Docker.TitleBarOptions.TitleBarControl = null;
             this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
+            // btnMostrarOcultarContraseña
+            // 
+            this.btnMostrarOcultarContraseña.ActiveImage = null;
+            this.btnMostrarOcultarContraseña.AllowAnimations = true;
+            this.btnMostrarOcultarContraseña.AllowBuffering = false;
+            this.btnMostrarOcultarContraseña.AllowToggling = false;
+            this.btnMostrarOcultarContraseña.AllowZooming = false;
+            this.btnMostrarOcultarContraseña.AllowZoomingOnFocus = false;
+            this.btnMostrarOcultarContraseña.BackColor = System.Drawing.Color.White;
+            this.btnMostrarOcultarContraseña.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMostrarOcultarContraseña.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnMostrarOcultarContraseña.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnMostrarOcultarContraseña.ErrorImage")));
+            this.btnMostrarOcultarContraseña.FadeWhenInactive = false;
+            this.btnMostrarOcultarContraseña.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.btnMostrarOcultarContraseña.Image = global::CapaPresentaciones.Properties.Resources.Ocultar;
+            this.btnMostrarOcultarContraseña.ImageActive = null;
+            this.btnMostrarOcultarContraseña.ImageLocation = null;
+            this.btnMostrarOcultarContraseña.ImageMargin = 0;
+            this.btnMostrarOcultarContraseña.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnMostrarOcultarContraseña.ImageZoomSize = new System.Drawing.Size(25, 25);
+            this.btnMostrarOcultarContraseña.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnMostrarOcultarContraseña.InitialImage")));
+            this.btnMostrarOcultarContraseña.Location = new System.Drawing.Point(329, 232);
+            this.btnMostrarOcultarContraseña.Name = "btnMostrarOcultarContraseña";
+            this.btnMostrarOcultarContraseña.Rotation = 0;
+            this.btnMostrarOcultarContraseña.ShowActiveImage = false;
+            this.btnMostrarOcultarContraseña.ShowCursorChanges = false;
+            this.btnMostrarOcultarContraseña.ShowImageBorders = true;
+            this.btnMostrarOcultarContraseña.ShowSizeMarkers = false;
+            this.btnMostrarOcultarContraseña.Size = new System.Drawing.Size(25, 25);
+            this.btnMostrarOcultarContraseña.TabIndex = 14;
+            this.btnMostrarOcultarContraseña.ToolTipText = "";
+            this.btnMostrarOcultarContraseña.WaitOnLoad = false;
+            this.btnMostrarOcultarContraseña.Zoom = 0;
+            this.btnMostrarOcultarContraseña.ZoomSpeed = 10;
+            this.btnMostrarOcultarContraseña.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMostrarOcultarContraseña_MouseDown);
+            this.btnMostrarOcultarContraseña.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMostrarOcultarContraseña_MouseUp);
+            // 
             // P_InicioSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(631, 388);
+            this.Controls.Add(this.btnMostrarOcultarContraseña);
             this.Controls.Add(this.pbErrorContraseña);
             this.Controls.Add(this.pbErrorUsuario);
             this.Controls.Add(this.lblErrorContraseña);
@@ -689,5 +727,6 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuImageButton pbErrorContraseña;
         private Bunifu.UI.WinForms.BunifuImageButton pbErrorUsuario;
         private Bunifu.UI.WinForms.BunifuFormDock Docker;
+        private Bunifu.UI.WinForms.BunifuImageButton btnMostrarOcultarContraseña;
     }
 }

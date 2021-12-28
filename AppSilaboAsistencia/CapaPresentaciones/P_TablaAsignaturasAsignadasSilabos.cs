@@ -6,15 +6,19 @@ using System.IO;
 using System.Data;
 using ClosedXML.Excel;
 using Ayudas;
+using System.Drawing;
 
 namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasSilabos : Form
     {
+        private readonly string CodSemestre;
         private readonly string CodDocente = E_InicioSesion.Usuario;
 
         public P_TablaAsignaturasAsignadasSilabos()
         {
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             MostrarAsignaturas();
@@ -34,7 +38,7 @@ namespace CapaPresentaciones
 
         private void MostrarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente("2021-II", "IF", CodDocente);
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, "IF", CodDocente);
             AccionesTabla();
         }
 
@@ -92,7 +96,7 @@ namespace CapaPresentaciones
                 wb.Worksheet(1).Cell("A21").Value = dtDatosAsignatura.Rows[0]["Sumilla"].ToString();
 
                 // Horario de la asignatura
-                DataTable dtHorarioAsignatura = N_HorarioAsignatura.BuscarHorarioAsignatura("2021-II", CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());
+                DataTable dtHorarioAsignatura = N_HorarioAsignatura.BuscarHorarioAsignatura(CodSemestre, CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6, 2), dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString());
 
                 wb.Worksheet(1).Cell("C14").Value = dtHorarioAsignatura.Rows[0]["Modalidad"].ToString();
 
@@ -128,7 +132,7 @@ namespace CapaPresentaciones
                 wb.Worksheet(1).Cell("C12").Value = NumeroHoras;
 
                 // Aula y horario
-                DataTable dtAulaHorario = N_HorarioAsignatura.HorarioAsignaturaDocente("2021-II", CodAsignatura, CodDocente);
+                DataTable dtAulaHorario = N_HorarioAsignatura.HorarioAsignaturaDocente(CodSemestre, CodAsignatura, CodDocente);
 
                 wb.Worksheet(1).Cell("C13").Value = dtAulaHorario.Rows[0]["HorarioGeneral"].ToString();
                 
@@ -138,7 +142,7 @@ namespace CapaPresentaciones
                 string APaterno = dtDatosDocente.Rows[0]["APaterno"].ToString();
                 string AMaterno = dtDatosDocente.Rows[0]["AMaterno"].ToString();
 
-                wb.Worksheet(1).Cell("C15").Value = "2021-II";
+                wb.Worksheet(1).Cell("C15").Value = CodSemestre;
 
                 wb.Worksheet(1).Cell("C16").Value = APaterno + "-" + AMaterno + "-" + Nombre;
                 wb.Worksheet(1).Cell("C17").Value = dtDatosDocente.Rows[0]["Email"].ToString();
@@ -172,27 +176,57 @@ namespace CapaPresentaciones
             // Descargar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
-                P_TablaSilabosAsignatura silabosAsignatura = new P_TablaSilabosAsignatura(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString());
+                //Form Fondo = new Form();
+                using (P_TablaSilabosAsignatura silabosAsignatura = new P_TablaSilabosAsignatura(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString()))
+                {
+                    //Fondo.StartPosition = FormStartPosition.Manual;
+                    //Fondo.FormBorderStyle = FormBorderStyle.None;
+                    //Fondo.Opacity = .70d;
+                    //Fondo.BackColor = Color.Black;
+                    //Fondo.WindowState = FormWindowState.Maximized;
+                    //Fondo.TopMost = true;
+                    //Fondo.Location = this.Location;
+                    //Fondo.ShowInTaskbar = false;
+                    //Fondo.Show();
 
-                silabosAsignatura.ShowDialog();
-                silabosAsignatura.Dispose();
+                    //silabosAsignatura.Owner = Fondo;
+                    silabosAsignatura.ShowDialog();
+                    silabosAsignatura.Dispose();
+
+                    //Fondo.Dispose();
+                }
             }
 
             // Subir sílabo
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 2))
             {
-                P_SubirArchivo SubirSilabo = new P_SubirArchivo("Silabo");
+                //Form Fondo = new Form();
+                using (P_SubirArchivo SubirSilabo = new P_SubirArchivo("Silabo"))
+                {
+                    //Fondo.StartPosition = FormStartPosition.Manual;
+                    //Fondo.FormBorderStyle = FormBorderStyle.None;
+                    //Fondo.Opacity = .70d;
+                    //Fondo.BackColor = Color.Black;
+                    //Fondo.WindowState = FormWindowState.Maximized;
+                    //Fondo.TopMost = true;
+                    //Fondo.Location = this.Location;
+                    //Fondo.ShowInTaskbar = false;
+                    //Fondo.Show();
 
-                Program.Evento = 1;
+                    Program.Evento = 1;
 
-                SubirSilabo.CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
-                SubirSilabo.NombreAsignatura = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
-                SubirSilabo.EscuelaProfesional = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
-                SubirSilabo.Grupo = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
-                SubirSilabo.CodDocente = CodDocente;
+                    SubirSilabo.CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    SubirSilabo.NombreAsignatura = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    SubirSilabo.EscuelaProfesional = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    SubirSilabo.Grupo = dgvDatos.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    SubirSilabo.CodDocente = CodDocente;
 
-                SubirSilabo.ShowDialog();
-                SubirSilabo.Dispose();
+                    //SubirSilabo.Owner = Fondo;
+                    SubirSilabo.ShowDialog();
+                    SubirSilabo.Dispose();
+
+                    //Fondo.Dispose();
+                }
             }
 
             /*
