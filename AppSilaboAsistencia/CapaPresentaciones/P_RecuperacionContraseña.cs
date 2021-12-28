@@ -28,7 +28,7 @@ namespace CapaPresentaciones
         }
 
         // Recupera la contraseña asociada a un usuario
-        void Recuperar(string Email, string Dominio)
+        void Recuperar(string Email)
         {
             // Verificar si hay un usuario asociado al correo puesto en el textbox
             N_InicioSesion InicioSesion = new N_InicioSesion();
@@ -49,7 +49,7 @@ namespace CapaPresentaciones
 
                     MailMessage mailDetails = new MailMessage();
                     mailDetails.From = new MailAddress("elvis.ff.jorge@gmail.com");
-                    mailDetails.To.Add(Email + Dominio);
+                    mailDetails.To.Add(Email);
                     mailDetails.Subject = "Recuperación de contraseña de Sistema de Silabos y Asistencia UNSAAC";
                     mailDetails.IsBodyHtml = true;
 
@@ -89,12 +89,12 @@ namespace CapaPresentaciones
         private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
-                Recuperar(txtCorreo.Text, lblDominio.Text);
+                Recuperar(txtCorreo.Text + lblDominio.Text);
         }
 
         private void btnRecuperar_Click_1(object sender, EventArgs e)
         {
-            Recuperar(txtCorreo.Text, lblDominio.Text);
+            Recuperar(txtCorreo.Text + lblDominio.Text);
         }
     }
 }

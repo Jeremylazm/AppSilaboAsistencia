@@ -78,7 +78,7 @@ namespace CapaDatos
         }
 
         // Método para obtener la contraseña.
-        public string RetornarContraseña(string Usuario)
+        public string RetornarContraseña(string Email)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuRetornarContraseña", Conectar)
@@ -89,7 +89,7 @@ namespace CapaDatos
             Conectar.Open();
             try
             {
-                Comando.Parameters.AddWithValue("@Usuario", Usuario);
+                Comando.Parameters.AddWithValue("@Email", Email);
                 SqlDataAdapter Data = new SqlDataAdapter(Comando);
                 Data.Fill(Resultado);
 

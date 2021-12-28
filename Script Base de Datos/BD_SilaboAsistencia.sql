@@ -460,13 +460,13 @@ END;
 GO
 
 -- Retornar contraseña desencriptada
-CREATE PROCEDURE spuRetornarContraseña @Usuario VARCHAR(6)			
+CREATE PROCEDURE spuRetornarContraseña @Email VARCHAR(50)			
 AS
 BEGIN
 	-- Actualizar un estudiante de la tabla de TEstudiante
-	SELECT DBO.fnDesencriptarContraseña(Contraseña) as 'Contraseña'
-		FROM TUsuario
-		WHERE Usuario = @Usuario
+	SELECT DBO.fnDesencriptarContraseña(U.Contraseña) as 'Contraseña'
+		FROM TUsuario U INNER JOIN TDocente D ON U.Usuario = D.CodDocente
+		WHERE D.Email = @Email
 END;
 GO
 
