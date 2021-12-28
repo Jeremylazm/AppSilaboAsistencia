@@ -51,7 +51,7 @@ namespace CapaPresentaciones
 
         public void BuscarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodDocente, CodEscuelaP, CodDocente, txtBuscar.Text);
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodSemestre, CodEscuelaP, CodDocente, txtBuscar.Text);
         }
 
         private void btnCerrar_Click(object sender, System.EventArgs e)
