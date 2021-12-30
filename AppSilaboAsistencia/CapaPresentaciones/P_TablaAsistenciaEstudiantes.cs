@@ -24,8 +24,8 @@ namespace CapaPresentaciones
         public string CodDocente;
         readonly E_AsistenciaEstudiante ObjEntidadEstd;
         readonly N_AsistenciaEstudiante ObjNegocioEstd;
-        readonly E_AsistenciaDocente ObjEntidadDoc;
-        readonly N_AsistenciaDocente ObjNegocioDoc;
+        readonly E_AsistenciaDocentePorAsignatura ObjEntidadDoc;
+        readonly N_AsistenciaDocentePorAsignatura ObjNegocioDoc;
         public string hora;
         private DataTable PlanSesion;
         public DataTable dgvTabla;
@@ -43,8 +43,8 @@ namespace CapaPresentaciones
             dgvTabla = pdgv;
             ObjEntidadEstd = new E_AsistenciaEstudiante();
             ObjNegocioEstd = new N_AsistenciaEstudiante();
-            ObjEntidadDoc = new E_AsistenciaDocente();
-            ObjNegocioDoc = new N_AsistenciaDocente();
+            ObjEntidadDoc = new E_AsistenciaDocentePorAsignatura();
+            ObjNegocioDoc = new N_AsistenciaDocentePorAsignatura();
             InitializeComponent();
             Control[] Controles = { this, lblTitulo, pbLogo, lblFecha, lblMarcarTodos, lblTema, txtFecha };
             Docker.SubscribeControlsToDragEvents(Controles);
@@ -178,7 +178,7 @@ namespace CapaPresentaciones
                 try
                 {
                     // buscar el registro de asistencia de Docente de la fecha actual
-                    DataTable Resultado = N_AsistenciaDocente.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString(),"");
+                    DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString(),"");
 
                     if (Resultado.Rows.Count == 0)
                     {
@@ -213,7 +213,7 @@ namespace CapaPresentaciones
                 {
                     if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea editar el registro?") == DialogResult.Yes)
                     {
-                        DataTable Resultado = N_AsistenciaDocente.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString(), "");
+                        DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString(), "");
                         
                         if (Resultado.Rows.Count != 0)
                         {
