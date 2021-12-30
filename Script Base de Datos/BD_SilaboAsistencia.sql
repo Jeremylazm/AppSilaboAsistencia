@@ -1524,9 +1524,9 @@ GO
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ASISTENCIA-DOCENTE POR ASIGNATURA ****************** */
 
 -- Procedimiento para mostrar el registro de asistencia de los docentes en una fecha especifica.
-CREATE PROCEDURE spuAsistenciaDocentes @CodSemestre VARCHAR(7),
-									   @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
-									   @Fecha DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
+CREATE PROCEDURE spuAsistenciaDocentesPorAsignatura @CodSemestre VARCHAR(7),
+									                @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
+									                @Fecha DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
 AS
 BEGIN
 	-- Mostrar el registro de asistencia
@@ -1592,16 +1592,16 @@ END;
 GO
 
 -- Procedimiento para registrar la asistencia de un docente.
-CREATE PROCEDURE spuRegistrarAsistenciaDocente @CodSemestre VARCHAR(7),
-											   @CodDepartamentoA VARCHAR(3),
-								               @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
-										       @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
-											   @Hora TIME(0),-- Formato: hh:mm:ss (Hora del control de asistencia)
-									           @CodDocente VARCHAR(5),
-											   @Asistió VARCHAR(2), -- SI/NO
-											   @TipoSesión VARCHAR(20), -- NORMAL/RECUPERACIÓN
-										       @NombreTema VARCHAR(100),
-											   @Observación VARCHAR(50)
+CREATE PROCEDURE spuRegistrarAsistenciaDocentePorAsignatura @CodSemestre VARCHAR(7),
+											                @CodDepartamentoA VARCHAR(3),
+								                            @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
+															@Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+															@Hora TIME(0),-- Formato: hh:mm:ss (Hora del control de asistencia)
+															@CodDocente VARCHAR(5),
+															@Asistió VARCHAR(2), -- SI/NO
+															@TipoSesión VARCHAR(20), -- NORMAL/RECUPERACIÓN
+															@NombreTema VARCHAR(100),
+															@Observación VARCHAR(50)
 AS
 BEGIN
 	-- Registrar la asistencia en la tabla TAsistenciaDocentePorAsignatura
@@ -1612,13 +1612,13 @@ END;
 GO
 
 -- Procedimiento para actualizar la asistencia de un docente:
-CREATE PROCEDURE spuActualizarAsistenciaDocente @CodSemestre VARCHAR(7),
-								                @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
-										        @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
-												@Hora TIME(0), -- Formato: hh:mm:ss (Hora del control de asistencia)
-										        @NTipoSesión VARCHAR(20), -- NORMAL/RECUPERACION
-												@NNombreTema VARCHAR(100), -- Nuevo Nombre Tema
-												@NObservacion VARCHAR(50)
+CREATE PROCEDURE spuActualizarAsistenciaDocentePorAsignatura @CodSemestre VARCHAR(7),
+															 @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
+														     @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+															 @Hora TIME(0), -- Formato: hh:mm:ss (Hora del control de asistencia)
+															 @NTipoSesión VARCHAR(20), -- NORMAL/RECUPERACION
+															 @NNombreTema VARCHAR(100), -- Nuevo Nombre Tema
+															 @NObservacion VARCHAR(50)
 
 AS
 BEGIN
@@ -1633,10 +1633,10 @@ END;
 GO
 
 -- Procedimiento para eliminar la asistencia de un docente.
-CREATE PROCEDURE spuEliminarAsistenciaDocente @CodSemestre VARCHAR(7),
-								              @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
-										      @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
-										      @Hora TIME(0) -- Formato: hh:mm:ss (Hora del control de asistencia)
+CREATE PROCEDURE spuEliminarAsistenciaDocentePorAsignatura @CodSemestre VARCHAR(7),
+														   @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
+														   @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+														   @Hora TIME(0) -- Formato: hh:mm:ss (Hora del control de asistencia)
 AS
 BEGIN
 	-- Eliminar una asistencia en la tabla de TAsistenciaDocentePorAsignatura
