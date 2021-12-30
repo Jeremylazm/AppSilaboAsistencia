@@ -235,27 +235,58 @@ CREATE TABLE TMatricula
 );
 GO
 
-/* ********************* TABLA ASISTENCIA-DOCENTE ********************** */
+/* ********************* TABLA ASISTENCIA-DOCENTE POR ASIGNATURA ********************** */
 IF EXISTS (SELECT * 
 				FROM SYSOBJECTS
-				WHERE NAME = 'TAsistenciaDocente')
-	DROP TABLE TAsistenciaDocente
+				WHERE NAME = 'TAsistenciaDocentePorAsignatura')
+	DROP TABLE TAsistenciaDocentePorAsignatura
 GO
-CREATE TABLE TAsistenciaDocente
+CREATE TABLE TAsistenciaDocentePorAsignatura
 (
 	-- Lista de atributos
-	IdAsistenciaDocente INT IDENTITY(1,1),
+	IdAsistenciaDocentePorAsignatura INT IDENTITY(1,1),
 	CodSemestre tyCodSemestre,
+	CodDepartamentoA varchar(3),
 	CodAsignatura VARCHAR(9) NOT NULL, -- ej. IF085AIN
 	Fecha DATE NOT NULL,   -- Formato: dd/mm/yyyy o dd-mm-yyyy
 	Fecha_Formatted AS (CONVERT(VARCHAR(10), Fecha, 103)), 
 	Hora TIME(0) NOT NULL, -- Formato: hh:mm:ss (Hora del control de asistencia)
-	CodDocente tyCodDocente NOT NULL,
-	NombreTema VARCHAR(100)
+	CodDocente tyCodDocente, 
+	Asistió VARCHAR(2) NOT NULL,  -- SI/NO (Presente/No presente)
+	TipoSesión VARCHAR(20), -- NORMAL / RECUPERACION
+	NombreTema VARCHAR(100), 
+	Observación VARCHAR(50), -- permisos, feriado, justificación, etc
 
 	-- Determinar las claves
-	PRIMARY KEY (IdAsistenciaDocente),
-	CONSTRAINT FKAD_CodDocente FOREIGN KEY (CodDocente)
+	PRIMARY KEY (IdAsistenciaDocentePorAsignatura),
+	CONSTRAINT FKAD_CodDocenteAsistenciaAsignatura FOREIGN KEY (CodDocente)
+		REFERENCES TDocente
+		ON UPDATE NO ACTION
+);
+GO
+
+/* ********************* TABLA ASISTENCIA-DIARIA-DOCENTE ********************** */
+IF EXISTS (SELECT * 
+				FROM SYSOBJECTS
+				WHERE NAME = 'TAsistenciaDiariaDocente')
+	DROP TABLE TAsistenciaDiariaDocente
+GO
+CREATE TABLE TAsistenciaDiariaDocente
+(
+	-- Lista de atributos
+	IdAsistenciaDiariaDocente INT IDENTITY(1,1),
+	CodSemestre tyCodSemestre,
+	CodDepartamentoA varchar(3),
+	Fecha DATE NOT NULL,   -- Formato: dd/mm/yyyy o dd-mm-yyyy
+	Fecha_Formatted AS (CONVERT(VARCHAR(10), Fecha, 103)), 
+	Hora TIME(0) NOT NULL, -- Formato: hh:mm:ss (Hora del control de asistencia)
+	CodDocente tyCodDocente, 
+	Asistió VARCHAR(2) NOT NULL,  -- SI/NO (Presente/No presente)
+	Observación VARCHAR(50), -- permisos, feriado, justificación, etc
+
+	-- Determinar las claves
+	PRIMARY KEY (IdAsistenciaDiariaDocente),
+	CONSTRAINT FKAD_CodDocenteAsistenciaDiaria FOREIGN KEY (CodDocente)
 		REFERENCES TDocente
 		ON UPDATE NO ACTION
 );
@@ -278,7 +309,7 @@ CREATE TABLE TAsistenciaEstudiante
 	Fecha_Formatted AS (CONVERT(VARCHAR(10), Fecha, 103)), 
 	Hora TIME(0) NOT NULL, -- Formato: hh:mm:ss (Hora del control de asistencia)
 	CodEstudiante VARCHAR(6) NOT NULL,
-	Estado VARCHAR(2) NOT NULL,  -- SI/NO (Presente/No presente)
+	Asistió VARCHAR(2) NOT NULL,  -- SI/NO (Presente/No presente)
 	Observación VARCHAR(25) -- tardanza, permisos
 
 	-- Determinar las claves
@@ -289,6 +320,27 @@ CREATE TABLE TAsistenciaEstudiante
 		ON UPDATE NO ACTION
 	*/
 );
+
+/* *************************** TABLA HORARIO-REGISTRO-ASISTENCIA *************************** */
+IF EXISTS (SELECT * 
+				FROM SYSOBJECTS
+				WHERE NAME = 'THorarioRegistroAsistencia')
+	DROP TABLE THorarioRegistroAsistencia
+GO
+CREATE TABLE THorarioRegistroAsistencia
+(
+	-- Lista de atributos
+	IdHorarioRegistroAsistencia INT IDENTITY(1,1),
+	CodSemestre tyCodSemestre,
+	CodDepartamentoA tyCodDepartamentoA,
+	CodJefeDepartamento tyCodDocente NOT NULL, 
+	HoraInicio TIME(0) NOT NULL, -- Formato: hh:mm:ss (Hora de inicio del control de asistencia)
+	HoraFin TIME(0) NOT NULL, -- Formato: hh:mm:ss (Hora de fin del control de asistencia)
+
+	-- Definir la clave primaria
+	PRIMARY KEY(IdHorarioRegistroAsistencia)
+)
+GO
 
 /* *************************** TABLA RECURSOS *************************** */
 IF EXISTS (SELECT * 
@@ -322,7 +374,9 @@ CREATE TABLE TUsuario
 	Usuario VARCHAR(6) NOT NULL,
 	Contraseña VARBINARY(MAX) NOT NULL,
 	Acceso VARCHAR(20) NOT NULL,
-	Datos VARCHAR(53) NOT NULL
+	NombreUsuario VARCHAR(53) NOT NULL,
+	CodDepartamentoA tyCodDepartamentoA,
+	CodEscuelaP tyCodEscuelaP,
 
 	-- Definir la clave primaria
 	PRIMARY KEY(Usuario)
@@ -434,16 +488,32 @@ GO
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA USUARIO ****************** */
 USE BDSistemaGestion
 GO
+
+-- Procedimiento para el inicio de sesión.
+CREATE PROCEDURE spuIniciarSesion @Usuario VARCHAR(6),
+                                  @Contraseña VARCHAR(20)
+AS
+BEGIN
+	-- Seleccionar los datos del usuario valido
+	SELECT Perfil, Usuario, DBO.fnDesencriptarContraseña(Contraseña), Acceso, NombreUsuario
+		FROM TUsuario
+		WHERE Usuario = @Usuario AND DBO.fnDesencriptarContraseña(Contraseña) = @Contraseña
+END;
+GO
+
 -- Procedimiento insertar nuevo usuario, encripta la contraseña
 CREATE PROCEDURE spuInsertarUsuario	@Perfil VARBINARY(MAX),
 									@Usuario VARCHAR(6),
 									@Contraseña VARCHAR(8),
 									@Acceso VARCHAR(20),
-									@Datos VARCHAR(53)
+									@NombreUsuario VARCHAR(50),
+									@CodDepartamentoA VARCHAR(3),
+									@CodEscuelaP VARCHAR(3)
 AS
 BEGIN
 	-- Actualizar un estudiante de la tabla de TEstudiante
-	Insert INTO TUsuario values(@Perfil,@Usuario, DBO.fnEncriptarContraseña(@Contraseña),@Acceso,@Datos)
+	Insert INTO TUsuario values(@Perfil, @Usuario, DBO.fnEncriptarContraseña(@Contraseña), @Acceso,
+	            @NombreUsuario, @CodDepartamentoA, @CodEscuelaP)
 END;
 GO
 
@@ -662,11 +732,11 @@ BEGIN
          		@Regimen, @CodDepartamentoA, @CodEscuelaP)
 
 	-- Insertar un usuario con el codigo del docente en la tabla TUsuario
-	DECLARE @Datos VARCHAR(53);
+	DECLARE @NombreUsuario VARCHAR(50);
 	DECLARE @Contraseña VARCHAR(8);
-	SET @Datos = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre);
+	SET @NombreUsuario = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre);
 	SET @Contraseña = @CodDocente;
-	EXEC DBO.spuInsertarUsuario @Perfil, @CodDocente, @Contraseña, 'Docente', @Datos
+	EXEC DBO.spuInsertarUsuario @Perfil, @CodDocente, @Contraseña, 'Docente', @NombreUsuario, CodDepartamentoA, @CodEscuelaP
 END;
 GO
 
@@ -706,8 +776,11 @@ BEGIN
 
 	-- Actualizar un docente de la tabla TUsuario
 	UPDATE TUsuario
-		SET Perfil = @Perfil, Usuario = @CodDocente, 
-			Datos = @APaterno + ' ' + @AMaterno + ', ' + @Nombre
+		SET Perfil = @Perfil,
+		    Usuario = @CodDocente,
+			NombreUsuario = @APaterno + ' ' + @AMaterno + ', ' + @Nombre,
+			CodDepartamentoA = @CodDepartamentoA,
+			CodEscuelaP = @CodEscuelaP
 		WHERE Usuario = @CodDocente
 END;
 GO
@@ -776,14 +849,14 @@ CREATE PROCEDURE spuObtenerHorasAsignatura @CodAsignatura VARCHAR(6)
 AS                                                         
 BEGIN                                 
 	--Obtener las horas de teoría y práctica
-	SELECT HorasTeoria,HorasPractica
+	SELECT HorasTeoria, HorasPractica
 		FROM TAsignatura
 		WHERE CodAsignatura = @CodAsignatura
 END;
 GO
 
 --Procedimiento para obtener el código de una asignatura por su nombre.
-CREATE PROCEDURE spuObtenerCodigoAsignatura @NombreAsignatura VARCHAR(50)
+CREATE PROCEDURE spuObtenerCodigoAsignatura @NombreAsignatura VARCHAR(100)
 AS
 BEGIN
 	--Obtener el código de la asignatura
@@ -1448,7 +1521,7 @@ BEGIN
 END;
 GO
 
-/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ASISTENCIA-DOCENTE ****************** */
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ASISTENCIA-DOCENTE POR ASIGNATURA ****************** */
 
 -- Procedimiento para mostrar el registro de asistencia de los docentes en una fecha especifica.
 CREATE PROCEDURE spuAsistenciaDocentes @CodSemestre VARCHAR(7),
@@ -1458,12 +1531,11 @@ AS
 BEGIN
 	-- Mostrar el registro de asistencia
 	SELECT ROW_NUMBER() OVER (ORDER BY D.APaterno ASC) AS Id, AD.CodDocente, D.APaterno, D.AMaterno, D.Nombre, 
-	       AD.CodAsignatura, A.NombreAsignatura, AD.Hora, AD.NombreTema
-		FROM (TAsistenciaDocente AD INNER JOIN TDocente D ON
+	       AD.CodAsignatura, A.NombreAsignatura, AD.Hora, AD.Asistió, AD.TipoSesión, AD.NombreTema, AD.Observación
+		FROM (TAsistenciaDocentePorAsignatura AD INNER JOIN TDocente D ON
 			 AD.CodDocente = D.CodDocente) INNER JOIN TAsignatura A ON
 			 SUBSTRING(AD.CodAsignatura,1,LEN(A.CodAsignatura)) = A.CodAsignatura
-	    WHERE AD.CodSemestre = @CodSemestre AND AD.Fecha = @Fecha AND
-              SUBSTRING(AD.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA
+	    WHERE AD.CodSemestre = @CodSemestre AND AD.Fecha = @Fecha AND AD.CodDepartamentoA = @CodDepartamentoA
 END;
 GO
 
@@ -1475,17 +1547,19 @@ CREATE PROCEDURE spuMostrarSesionesAsignatura @CodSemestre VARCHAR(7),
 											  @LimFechaSup DATE  -- Formato: dd/mm/yyyy o dd-mm-yyyy
 AS
 BEGIN
-	-- Mostrar el registro de asistencia en el rango de fechas
-	SELECT Fecha = AD.Fecha_Formatted, AD.Hora, AD.NombreTema, 
-	       TotalAsistieron = SUM(CASE WHEN AE.Estado = 'SI' THEN 1 ELSE 0 END),
-		   TotalFaltaron = SUM(CASE WHEN AE.Estado = 'NO' THEN 1 ELSE 0 END)
-		FROM TAsistenciaDocente AD INNER JOIN TAsistenciaEstudiante AE ON
+	-- Mostrar el registro de sesiones en el rango de fechas
+	SELECT Fecha = AD.Fecha_Formatted, AD.Hora, 
+	       SesiónDictada = AD.Asistió, TipoSesión = AD.TipoSesión, AD.NombreTema,
+	       TotalAsistieron = SUM(CASE WHEN AE.Asistió = 'SI' THEN 1 ELSE 0 END),
+		   TotalFaltaron = SUM(CASE WHEN AE.Asistió = 'NO' THEN 1 ELSE 0 END),
+		   AD.Observación
+		FROM TAsistenciaDocentePorAsignatura AD INNER JOIN TAsistenciaEstudiante AE ON
 			 (AD.CodSemestre = AE.CodSemestre AND AD.CodAsignatura = AE.CodAsignatura AND AD.Fecha = AE.Fecha)
 	    WHERE AD.CodSemestre = @CodSemestre AND
 			  AD.CodDocente = @CodDocente AND
 			  AD.CodAsignatura = @CodAsignatura AND
 			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
-	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Hora, AD.NombreTema
+	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Hora, AD.Asistió, AD.TipoSesión, AD.NombreTema, AD.Observación
 	   ORDER BY AD.Fecha DESC
 END;
 GO
@@ -1500,33 +1574,40 @@ CREATE PROCEDURE spuBuscarSesionAsignatura @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar el registro de asistencia en el rango de fechas
-	SELECT Fecha = AD.Fecha_Formatted, AD.Hora, AD.NombreTema, 
-	       TotalAsistieron = SUM(CASE WHEN AE.Estado = 'SI' THEN 1 ELSE 0 END),
-		   TotalFaltaron = SUM(CASE WHEN AE.Estado = 'NO' THEN 1 ELSE 0 END)
-		FROM TAsistenciaDocente AD INNER JOIN TAsistenciaEstudiante AE ON
+	SELECT Fecha = AD.Fecha_Formatted, AD.Hora, 
+	       SesiónDictada = AD.Asistió, TipoSesión = AD.TipoSesión, AD.NombreTema,
+	       TotalAsistieron = SUM(CASE WHEN AE.Asistió = 'SI' THEN 1 ELSE 0 END),
+		   TotalFaltaron = SUM(CASE WHEN AE.Asistió = 'NO' THEN 1 ELSE 0 END),
+		   AD.Observación
+		FROM TAsistenciaDocentePorAsignatura AD INNER JOIN TAsistenciaEstudiante AE ON
 			 (AD.CodSemestre = AE.CodSemestre AND AD.CodAsignatura = AE.CodAsignatura AND AD.Fecha = AE.Fecha)
 	    WHERE AD.CodSemestre = @CodSemestre AND
 			  AD.CodDocente = @CodDocente AND
 			  AD.CodAsignatura = @CodAsignatura AND
 			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
-			  AD.NombreTema LIKE (@Texto + '%')
-	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Hora, AD.NombreTema
+			  (AD.NombreTema LIKE (@Texto + '%') OR AD.Fecha LIKE (@Texto + '%'))
+	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Hora, AD.Asistió, AD.TipoSesión, AD.NombreTema, AD.Observación
 	   ORDER BY AD.Fecha DESC
 END;
 GO
 
 -- Procedimiento para registrar la asistencia de un docente.
 CREATE PROCEDURE spuRegistrarAsistenciaDocente @CodSemestre VARCHAR(7),
+											   @CodDepartamentoA VARCHAR(3),
 								               @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
 										       @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 											   @Hora TIME(0),-- Formato: hh:mm:ss (Hora del control de asistencia)
 									           @CodDocente VARCHAR(5),
-										       @NombreTema VARCHAR(100)
+											   @Asistió VARCHAR(2), -- SI/NO
+											   @TipoSesión VARCHAR(20), -- NORMAL/RECUPERACIÓN
+										       @NombreTema VARCHAR(100),
+											   @Observación VARCHAR(50)
 AS
 BEGIN
-	-- Registrar la asistencia en la tabla TAsistenciaDocente
-	INSERT INTO TAsistenciaDocente
-		VALUES (@CodSemestre, @CodAsignatura, @Fecha, @Hora, @CodDocente, @NombreTema)
+	-- Registrar la asistencia en la tabla TAsistenciaDocentePorAsignatura
+	INSERT INTO TAsistenciaDocentePorAsignatura
+		VALUES (@CodSemestre, @CodDepartamentoA, @CodAsignatura, @Fecha, @Hora, @CodDocente, @Asistió,
+		        @TipoSesión, @NombreTema, @Observación)
 END;
 GO
 
@@ -1535,13 +1616,17 @@ CREATE PROCEDURE spuActualizarAsistenciaDocente @CodSemestre VARCHAR(7),
 								                @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
 										        @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 												@Hora TIME(0), -- Formato: hh:mm:ss (Hora del control de asistencia)
-										        @NNombreTema VARCHAR(100) -- Nuevo Nombre Tema
+										        @NTipoSesión VARCHAR(20), -- NORMAL/RECUPERACION
+												@NNombreTema VARCHAR(100), -- Nuevo Nombre Tema
+												@NObservacion VARCHAR(50)
 
 AS
 BEGIN
-	-- Actualizar la asistencia en la tabla TAsistenciaDocente
-	UPDATE TAsistenciaDocente
-		SET NombreTema = @NNombreTema
+	-- Actualizar la asistencia en la tabla TAsistenciaDocentePorAsignatura
+	UPDATE TAsistenciaDocentePorAsignatura
+		SET TipoSesión = @NTipoSesión,
+		    NombreTema = @NNombreTema,
+			Observación = @NObservacion
 
 		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND Fecha = @Fecha AND Hora = @Hora
 END;
@@ -1554,9 +1639,72 @@ CREATE PROCEDURE spuEliminarAsistenciaDocente @CodSemestre VARCHAR(7),
 										      @Hora TIME(0) -- Formato: hh:mm:ss (Hora del control de asistencia)
 AS
 BEGIN
-	-- Eliminar una asistencia en la tabla de TAsistenciaDocente
-	DELETE FROM TAsistenciaDocente
+	-- Eliminar una asistencia en la tabla de TAsistenciaDocentePorAsignatura
+	DELETE FROM TAsistenciaDocentePorAsignatura
 		WHERE CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND Fecha = @Fecha AND Hora = @Hora
+END;
+GO
+
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ASISTENCIA-DIARIA-DOCENTE  ****************** */
+
+-- Procedimiento para mostrar el registro de asistencia diaria de los docentes en una fecha especifica.
+CREATE PROCEDURE spuAsistenciaDiariaDocentes @CodSemestre VARCHAR(7),
+									         @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
+									         @Fecha DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
+AS
+BEGIN
+	-- Mostrar el registro de asistencia
+	SELECT ROW_NUMBER() OVER (ORDER BY D.APaterno ASC) AS Id, AD.CodDocente, D.APaterno, D.AMaterno, D.Nombre, 
+	       AD.Hora, AD.Asistió, AD.Observación
+		FROM TAsistenciaDiariaDocente AD INNER JOIN TDocente D ON
+			 AD.CodDocente = D.CodDocente
+	    WHERE AD.CodSemestre = @CodSemestre AND AD.Fecha = @Fecha AND AD.CodDepartamentoA = @CodDepartamentoA
+END;
+GO
+
+-- Procedimiento para registrar la asistencia diaria de un docente.
+CREATE PROCEDURE spuRegistrarAsistenciaDiariaDocente @CodSemestre VARCHAR(7),
+											         @CodDepartamentoA VARCHAR(3),			
+										             @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+											         @Hora TIME(0),-- Formato: hh:mm:ss (Hora del control de asistencia)
+									                 @CodDocente VARCHAR(5),
+											         @Asistió VARCHAR(2), -- SI/NO
+											         @Observación VARCHAR(50)
+AS
+BEGIN
+	-- Registrar la asistencia en la tabla TAsistenciaDiariaDocente
+	INSERT INTO TAsistenciaDiariaDocente
+		VALUES (@CodSemestre, @CodDepartamentoA, @Fecha, @Hora, @CodDocente, @Asistió, @Observación)
+END;
+GO
+
+-- Procedimiento para actualizar la asistencia de un docente:
+CREATE PROCEDURE spuActualizarAsistenciaDiariaDocente @CodSemestre VARCHAR(7),
+										              @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+												      @Hora TIME(0), -- Formato: hh:mm:ss (Hora del control de asistencia)
+													  @CodDocente VARCHAR(5),
+													  @NObservacion VARCHAR(50)
+
+AS
+BEGIN
+	-- Actualizar la asistencia en la tabla TAsistenciaDiariaDocente
+	UPDATE TAsistenciaDiariaDocente
+		SET Observación = @NObservacion
+
+		WHERE CodSemestre = @CodSemestre AND Fecha = @Fecha AND Hora = @Hora AND CodDocente = @CodDocente
+END;
+GO
+
+-- Procedimiento para eliminar la asistencia de un docente.
+CREATE PROCEDURE spuEliminarAsistenciaDiariaDocente @CodSemestre VARCHAR(7),
+										            @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+												    @Hora TIME(0), -- Formato: hh:mm:ss (Hora del control de asistencia)
+													@CodDocente VARCHAR(5)
+AS
+BEGIN
+	-- Eliminar una asistencia en la tabla de TAsistenciaDiariaDocente
+	DELETE FROM TAsistenciaDiariaDocente
+		WHERE CodSemestre = @CodSemestre AND Fecha = @Fecha AND Hora = @Hora AND CodDocente = @CodDocente
 END;
 GO
 
@@ -1571,7 +1719,7 @@ AS
 BEGIN
 	-- Mostrar el registro de asistencia de los estudiantes
 	SELECT ROW_NUMBER() OVER (ORDER BY M.APaterno ASC) AS Id, AE.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre,
-	       AE.Estado, AE.Observación
+	       AE.Asistió, AE.Observación
 		FROM TAsistenciaEstudiante AE INNER JOIN TMatricula M ON
 			 AE.CodEstudiante = M.CodEstudiante
 	    WHERE AE.CodSemestre = @CodSemestre AND
@@ -1590,13 +1738,13 @@ CREATE PROCEDURE spuAsistenciaEstudianteAsignatura @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar el registro de asistencia en el rango de fechas
-	SELECT Fecha_Formatted, Hora, Estado, Observación
+	SELECT Fecha_Formatted, Hora, Asistió, Observación
 		FROM TAsistenciaEstudiante
 	    WHERE CodSemestre = @CodSemestre AND
 			  CodEstudiante = @CodEstudiante AND
 			  CodAsignatura = @CodAsignatura AND
 			  (Fecha_Formatted BETWEEN @LimFechaInf AND @LimFechaSup)
-		GROUP BY Fecha, Fecha_Formatted, Hora, Estado, Observación
+		GROUP BY Fecha, Fecha_Formatted, Hora, Asistió, Observación
 	    ORDER BY Fecha DESC
 END;
 GO
@@ -1608,13 +1756,13 @@ CREATE PROCEDURE spuRegistrarAsistenciaEstudiante @CodSemestre VARCHAR(7),
 										          @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 												  @Hora TIME(0), -- Formato: hh:mm:ss (Hora del control de asistencia)
 									              @CodEstudiante VARCHAR(6),
-										          @Estado VARCHAR(2),
+										          @Asistió VARCHAR(2),
 											      @Observación VARCHAR(25)
 AS
 BEGIN
 	-- Registrar la asistencia en la tabla TAsistenciaEstudiante
 	INSERT INTO TAsistenciaEstudiante
-		VALUES (@CodSemestre, @CodEscuelaP, @CodAsignatura, @Fecha, @Hora, @CodEstudiante, @Estado, @Observación)
+		VALUES (@CodSemestre, @CodEscuelaP, @CodAsignatura, @Fecha, @Hora, @CodEstudiante, @Asistió, @Observación)
 END;
 GO
 
@@ -1625,13 +1773,13 @@ CREATE PROCEDURE spuActualizarAsistenciaEstudiante @CodSemestre VARCHAR(7),
 										           @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 												   @Hora TIME(0), -- Formato: hh:mm:ss (Hora del control de asistencia)
 									               @CodEstudiante VARCHAR(6),
-										           @NEstado VARCHAR(2),
+										           @NAsistió VARCHAR(2),
 											       @NObservación VARCHAR(25)
 AS
 BEGIN
 	-- Actualizar la asistencia en la tabla TAsistenciaEstudiante
 	UPDATE TAsistenciaEstudiante
-		SET Estado = @NEstado,
+		SET Asistió = @NAsistió,
 			Observación = @NObservación
 
 		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND CodAsignatura = @CodAsignatura AND 
@@ -1655,6 +1803,67 @@ BEGIN
 END;
 GO
 
+/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA HORARIO-REGISTRO-ASISTENCIA ****************** */
+
+-- Buscar el horario de registro de asistencia diaria de los docentes.
+CREATE PROCEDURE spuBuscarHorarioRegistroAsistencia @CodSemestre VARCHAR(7),
+											        @CodDepartamentoA VARCHAR(3),
+											        @CodJefeDepartamentoA VARCHAR(5)
+AS
+BEGIN
+	-- Mostrar el horario de registro de asistencia
+	SELECT TOP 1 HoraInicio, HoraFin
+		FROM THorarioRegistroAsistencia
+	    WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA AND @CodJefeDepartamentoA = @CodJefeDepartamentoA
+		ORDER BY IdHorarioRegistroAsistencia DESC
+END;
+GO
+
+-- Procedimiento para registrar el horario de registro de asistencia diaria de los docentes.
+CREATE PROCEDURE spuInsertarHorarioRegistroAsistencia @CodSemestre VARCHAR(7),
+											          @CodDepartamentoA VARCHAR(3),
+											          @CodJefeDepartamentoA VARCHAR(5),
+											          @HoraInicio TIME(0), -- Formato: hh:mm:ss (Hora de inicio del control de asistencia)
+											          @HoraFin TIME(0) -- Formato: hh:mm:ss (Hora de finalización del control de asistencia)
+AS
+BEGIN
+	-- Registrar el horario en la tabla THorarioRegistroAsistencia
+	INSERT INTO THorarioRegistroAsistencia
+		VALUES (@CodSemestre, @CodDepartamentoA, @CodJefeDepartamentoA, @HoraInicio, @HoraFin)
+END;
+GO
+
+-- Procedimiento para actualizar el horario de registro de asistencia diaria de los docentes .
+CREATE PROCEDURE spuActualizarHorarioRegistroAsistencia @CodSemestre VARCHAR(7),
+											            @CodDepartamentoA VARCHAR(3),
+											            @CodJefeDepartamentoA VARCHAR(5),
+											            @NHoraInicio TIME(0), -- Nueva Hora de inicio
+											            @NHoraFin TIME(0) -- Nueva Hora de finalización
+AS
+BEGIN
+	-- Actualizar el horario en la tabla THorarioRegistroAsistencia
+	UPDATE THorarioRegistroAsistencia	
+		SET HoraInicio = @NHoraInicio,
+			HoraFin = @NHoraFin
+		FROM (SELECT TOP 1 HoraInicio, HoraFin
+				FROM THorarioRegistroAsistencia
+				WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA AND @CodJefeDepartamentoA = @CodJefeDepartamentoA
+				ORDER BY IdHorarioRegistroAsistencia DESC) THorarioRegistroAsistencia	
+END;
+GO
+
+-- Procedimiento para eliminar el horario de registro de asistencia diaria de los docentes .
+CREATE PROCEDURE spuEliminarHorarioRegistroAsistencia @CodSemestre VARCHAR(7),
+											          @CodDepartamentoA VARCHAR(3),
+											          @CodJefeDepartamentoA VARCHAR(5)
+AS
+BEGIN
+	-- Eliminar una asistencia en la tabla de THorarioRegistroAsistencia
+	DELETE FROM THorarioRegistroAsistencia
+		WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA AND @CodJefeDepartamentoA = @CodJefeDepartamentoA
+END;
+GO
+
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA RECURSOS ****************** */
 
 -- Procedimiento para el descargar la plantilla del silabo
@@ -1662,7 +1871,7 @@ CREATE PROCEDURE spuDescargarPlantillaSilabo
 AS
 BEGIN
 	-- Mostrar la plantilla en la tabla TRecursos
-	SELECT PlantillaSilabo FROM TRecursos WHERE IdRecurso = 1
+	SELECT TOP 1 PlantillaSilabo FROM TRecursos
 END;
 GO
 
@@ -1671,7 +1880,7 @@ CREATE PROCEDURE spuDescargarPlantillaPlanSesiones2y3
 AS
 BEGIN
 	-- Mostrar la plantilla en la tabla TRecursos
-	SELECT PlantillaPlanSesiones2y3 FROM TRecursos WHERE IdRecurso = 1
+	SELECT TOP 1 PlantillaPlanSesiones2y3 FROM TRecursos
 END;
 GO
 
@@ -1680,7 +1889,7 @@ CREATE PROCEDURE spuDescargarPlantillaPlanSesiones4
 AS
 BEGIN
 	-- Mostrar la plantilla en la tabla TRecursos
-	SELECT PlantillaPlanSesiones4 FROM TRecursos WHERE IdRecurso = 1
+	SELECT TOP 1 PlantillaPlanSesiones4 FROM TRecursos
 END;
 GO
 
@@ -1714,19 +1923,5 @@ BEGIN
 	UPDATE TRecursos
 		SET PlantillaPlanSesiones4 = @PlantillaPlanSesiones4
 		WHERE IdRecurso = 1
-END;
-GO
-
-/* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA USUARIO ****************** */
-
--- Procedimiento para el inicio de sesión.
-CREATE PROCEDURE spuIniciarSesion @Usuario VARCHAR(6),
-                                  @Contraseña VARCHAR(20)
-AS
-BEGIN
-	-- Seleccionar los datos del usuario valido
-	SELECT Perfil, Usuario, DBO.fnDesencriptarContraseña(Contraseña), Acceso, Datos
-		FROM TUsuario
-		WHERE Usuario = @Usuario AND DBO.fnDesencriptarContraseña(Contraseña) = @Contraseña
 END;
 GO
