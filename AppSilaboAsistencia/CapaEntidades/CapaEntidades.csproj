@@ -43,13 +43,15 @@
   <ItemGroup>
     <Compile Include="E_Acceso.cs" />
     <Compile Include="E_Asignatura.cs" />
-    <Compile Include="E_AsistenciaDocente.cs" />
+    <Compile Include="E_AsistenciaDiariaDocente.cs" />
+    <Compile Include="E_AsistenciaDocentePorAsignatura.cs" />
     <Compile Include="E_AsistenciaEstudiante.cs" />
     <Compile Include="E_Catalogo.cs" />
     <Compile Include="E_Criptografia.cs" />
     <Compile Include="E_DepartamentoAcademico.cs" />
     <Compile Include="E_Docente.cs" />
     <Compile Include="E_EscuelaProfesional.cs" />
+    <Compile Include="E_HorarioRegistroAsistencia.cs" />
     <Compile Include="E_Semestre.cs" />
     <Compile Include="E_HorarioAsignatura.cs" />
     <Compile Include="E_InicioSesion.cs" />

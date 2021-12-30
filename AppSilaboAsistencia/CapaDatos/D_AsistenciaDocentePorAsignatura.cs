@@ -5,15 +5,15 @@ using System.Data.SqlClient;
 
 namespace CapaDatos
 {
-    public class D_AsistenciaDocente
+    public class D_AsistenciaDocentePorAsignatura
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
 
         // Método para mostrar el registro de asistencia de los docentes en una fecha especifica.
-        public DataTable AsistenciaDocentes(string CodSemestre, string CodDepartamentoA, string Fecha)
+        public DataTable AsistenciaDocentesPorAsignatura(string CodSemestre, string CodDepartamentoA, string Fecha)
         {
             DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("spuAsistenciaDocentes", Conectar)
+            SqlCommand Comando = new SqlCommand("spuAsistenciaDocentesPorAsignatura", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -66,28 +66,35 @@ namespace CapaDatos
         }
 
         // Método para registrar la asistencia de un docente.
-        public void RegistrarAsistenciaDocente(E_AsistenciaDocente AsistenciaDocente)
+        public void RegistrarAsistenciaDocentePorAsignatura(E_AsistenciaDocentePorAsignatura AsistenciaDocente)
         {
-            SqlCommand Comando = new SqlCommand("spuRegistrarAsistenciaDocente", Conectar)
+            SqlCommand Comando = new SqlCommand("spuRegistrarAsistenciaDocentePorAsignatura", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
 
             Conectar.Open();
             Comando.Parameters.AddWithValue("@CodSemestre", AsistenciaDocente.CodSemestre);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", AsistenciaDocente.CodDepartamentoA);
             Comando.Parameters.AddWithValue("@CodAsignatura", AsistenciaDocente.CodAsignatura); // Código (ej. IF085AIN)
             Comando.Parameters.AddWithValue("@Fecha", AsistenciaDocente.Fecha); // Formato: yyyy-mm-dd
             Comando.Parameters.AddWithValue("@Hora", AsistenciaDocente.Hora); // Hora: hh:mm:ss
             Comando.Parameters.AddWithValue("@CodDocente", AsistenciaDocente.CodDocente);
-            Comando.Parameters.AddWithValue("@NombreTema", AsistenciaDocente.NombreTema); 
+            Comando.Parameters.AddWithValue("@Asistió", AsistenciaDocente.Asistio); // SI/NO
+            Comando.Parameters.AddWithValue("@TipoSesión", AsistenciaDocente.TipoSsesion); // NORMAL/RECUPERACIÓN
+            Comando.Parameters.AddWithValue("@NombreTema", AsistenciaDocente.NombreTema);
+            Comando.Parameters.AddWithValue("@Observación", AsistenciaDocente.Observacion);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }
 
         // Método para actualizar la asistencia de un docente:
-        public void ActualizarAsistenciaDocente(E_AsistenciaDocente AsistenciaDocente, string NNombreTema)
+        public void ActualizarAsistenciaDocentePorAsignatura(E_AsistenciaDocentePorAsignatura AsistenciaDocente, 
+                                                string NTipoSesion,
+                                                string NNombreTema,
+                                                string NObservacion)
         {
-            SqlCommand Comando = new SqlCommand("spuActualizarAsistenciaDocente", Conectar)
+            SqlCommand Comando = new SqlCommand("spuActualizarAsistenciaDocentePorAsignatura", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -97,15 +104,17 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodAsignatura", AsistenciaDocente.CodAsignatura);
             Comando.Parameters.AddWithValue("@Fecha", AsistenciaDocente.Fecha);
             Comando.Parameters.AddWithValue("@Hora", AsistenciaDocente.Hora);
-            Comando.Parameters.AddWithValue("@NNombreTema", NNombreTema);
+            Comando.Parameters.AddWithValue("@NTipoSesión", NTipoSesion); // NORMAL/RECUPERACIÓN
+            Comando.Parameters.AddWithValue("@NNombreTema", NNombreTema); // Nuevo Nombre Tema
+            Comando.Parameters.AddWithValue("@NObservación", NObservacion);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }
 
         // Método para eliminar la asistencia de un docente.
-        public void EliminarAsistenciaDocente(E_AsistenciaDocente AsistenciaDocente)
+        public void EliminarAsistenciaDocentePorAsignatura(E_AsistenciaDocentePorAsignatura AsistenciaDocente)
         {
-            SqlCommand Comando = new SqlCommand("spuEliminarAsistenciaDocente", Conectar)
+            SqlCommand Comando = new SqlCommand("spuEliminarAsistenciaDocentePorAsignatura", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
