@@ -51,12 +51,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="D_Asignatura.cs" />
-    <Compile Include="D_AsistenciaDocente.cs" />
+    <Compile Include="D_AsistenciaDiariaDocente.cs" />
+    <Compile Include="D_AsistenciaDocentePorAsignatura.cs" />
     <Compile Include="D_AsistenciaEstudiante.cs" />
     <Compile Include="D_Catalogo.cs" />
     <Compile Include="D_DepartamentoAcademico.cs" />
     <Compile Include="D_Docente.cs" />
     <Compile Include="D_EscuelaProfesional.cs" />
+    <Compile Include="D_HorarioRegistroAsistencia.cs" />
     <Compile Include="D_Semestre.cs" />
     <Compile Include="D_HorarioAsignatura.cs" />
     <Compile Include="D_InicioSesion.cs" />

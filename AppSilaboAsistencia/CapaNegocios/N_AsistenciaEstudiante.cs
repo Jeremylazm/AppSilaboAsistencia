@@ -23,9 +23,9 @@ namespace CapaNegocios
             ObjAsistenciaEstudiante.RegistrarAsistenciaEstudiante(AsistenciaEstudiante);
         }
 
-        public void ActualizarAsistenciaEstudiante(E_AsistenciaEstudiante AsistenciaEstudiante, string NEstado, string NObservacion)   
+        public void ActualizarAsistenciaEstudiante(E_AsistenciaEstudiante AsistenciaEstudiante, string NAsistio, string NObservacion)   
         {
-            ObjAsistenciaEstudiante.ActualizarAsistenciaEstudiante(AsistenciaEstudiante, NEstado, NObservacion);
+            ObjAsistenciaEstudiante.ActualizarAsistenciaEstudiante(AsistenciaEstudiante, NAsistio, NObservacion);
         }
 
         public void EliminarAsistenciaEstudiante(E_AsistenciaEstudiante AsistenciaEstudiante)
