@@ -71,14 +71,30 @@ namespace ControlesPerzonalizados
                 MailMessage mailDetails = new MailMessage();
                 mailDetails.From = new MailAddress("elvis.ff.jorge@gmail.com");
                 mailDetails.To.Add(Correo);
-                mailDetails.Subject = "Código de verificación";
+                mailDetails.Subject = "Cambio de contraseña de Sistema de Silabos y Asistencia UNSAAC";
                 mailDetails.IsBodyHtml = true;
-                mailDetails.Body = "Ingresa el siguiente código: " + s;
 
+                // Llenamos el contenido de la solicitud
+                string TextoSolicitud = "<!DOCTYPE html>";
+                TextoSolicitud += "<html lang='es'>";
+                TextoSolicitud += "<body style='background - color: black '>";
+                TextoSolicitud += "<tr>";
+                TextoSolicitud += "<h2 style='color: #000000; text-align: center; margin: 0 0 7px'>" + "Solicitud de cambio de contraseña de Silabo-Asistencia UNSAAC" + "</h2>";
+                TextoSolicitud += "<p style='color: #000000; margin: 2px; font - size: 15px'>";
+                TextoSolicitud += "<br/>";
+                TextoSolicitud += "<b>" + "CÓDIGO DE VERIFICACIÓN: " + "<span style='font-size: 45px'>" + s + "</span>" + "</b>" + "<br/>";
+                TextoSolicitud += "</p>";
+                TextoSolicitud += "<p style='color: #b3b3b3; font-size: 12px; text-align: center;margin: 30px 0 0'>Atte. Dream Team UNSAAC</p>";
+
+                TextoSolicitud += "</tr>";
+                TextoSolicitud += "</body>";
+                TextoSolicitud += "</html>";
+
+                mailDetails.Body = TextoSolicitud;
                 clientDetails.Send(mailDetails);
                 return s;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Mostrar error
                 A_Dialogo.DialogoError("Error al enviar el código de verificación");

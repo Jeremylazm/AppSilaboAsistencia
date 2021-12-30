@@ -42,12 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="N_Asignatura.cs" />
-    <Compile Include="N_AsistenciaDocente.cs" />
+    <Compile Include="N_AsistenciaDiariaDocente.cs" />
+    <Compile Include="N_AsistenciaDocentePorAsignatura.cs" />
     <Compile Include="N_AsistenciaEstudiante.cs" />
     <Compile Include="N_Catalogo.cs" />
     <Compile Include="N_DepartamentoAcademico.cs" />
     <Compile Include="N_Docente.cs" />
     <Compile Include="N_EscuelaProfesional.cs" />
+    <Compile Include="N_HorarioRegistroAsistencia.cs" />
     <Compile Include="N_Semestre.cs" />
     <Compile Include="N_HorarioAsignatura.cs" />
     <Compile Include="N_InicioSesion.cs" />

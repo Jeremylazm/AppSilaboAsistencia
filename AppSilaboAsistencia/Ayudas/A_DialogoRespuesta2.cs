@@ -26,7 +26,7 @@ namespace Ayudas
         private void P_DialogoRespuesta2_Load(object sender, EventArgs e)
         {
             this.Opacity = 0.0;
-            FormAparicion.Start();
+            AparicionFormulario.Start();
         }
 
         private void FormAparicion_Tick(object sender, EventArgs e)
@@ -35,8 +35,8 @@ namespace Ayudas
                 this.Opacity += 0.2;
             if (this.Opacity == 1)
             {
-                FormAparicion.Stop();
-                ImagenAparicion.ShowSync(pbImagen);
+                AparicionFormulario.Stop();
+                AparicionImagen.ShowSync(pbImagen);
                 lblTitulo.Visible = true;
                 lblPregunta.Visible = true;
                 btnVerdadero.Visible = true;
