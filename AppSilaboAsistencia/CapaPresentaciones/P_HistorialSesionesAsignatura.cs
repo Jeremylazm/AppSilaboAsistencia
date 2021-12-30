@@ -36,12 +36,15 @@ namespace CapaPresentaciones
 
         public void AccionesTabla()
         {
-            dgvDatos.Columns[0].DisplayIndex = 5;
+            dgvDatos.Columns[0].DisplayIndex = 8;
             dgvDatos.Columns[1].HeaderText = "Fecha";
             dgvDatos.Columns[2].HeaderText = "Hora";
-            dgvDatos.Columns[3].HeaderText = "Tema(s)";
-            dgvDatos.Columns[4].HeaderText = "TotalAsistieron";
-            dgvDatos.Columns[5].HeaderText = "TotalFaltaron";
+            dgvDatos.Columns[3].HeaderText = "Sesiópn Dictada";
+            dgvDatos.Columns[4].HeaderText = "Tipo de Sesión";
+            dgvDatos.Columns[5].HeaderText = "Nombre del Tema";
+            dgvDatos.Columns[6].HeaderText = "TotalAsistieron";
+            dgvDatos.Columns[7].HeaderText = "TotalFaltaron";
+            dgvDatos.Columns[8].HeaderText = "Observación";
         }
 
         public void MostrarRegistros()
