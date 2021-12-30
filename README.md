@@ -1,4 +1,4 @@
-# **<center> Aplicación de Escritorio de un Sistema de Gestión de Sílabos y Control de Asistencia para el Departamento Académico de Ing. Informática y de Sistemas </center>**
+# **<center> Aplicación de Escritorio de un Sistema de Gestión de Silabos, Plan de Sesiones y Control de Asistencia para el Departamento Académico de Ing. Informática y de Sistemas </center>**
 
 ## Creado por estudiantes de la Universidad Nacional de San Antonio Abad del Cusco
 
