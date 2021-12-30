@@ -333,7 +333,7 @@ CREATE TABLE THorarioRegistroAsistencia
 	IdHorarioRegistroAsistencia INT IDENTITY(1,1),
 	CodSemestre tyCodSemestre,
 	CodDepartamentoA tyCodDepartamentoA,
-	CodJefeDepartamento tyCodDocente NOT NULL, 
+	CodJefeDepartamentoA tyCodDocente NOT NULL, 
 	HoraInicio TIME(0) NOT NULL, -- Formato: hh:mm:ss (Hora de inicio del control de asistencia)
 	HoraFin TIME(0) NOT NULL, -- Formato: hh:mm:ss (Hora de fin del control de asistencia)
 
@@ -1814,7 +1814,7 @@ BEGIN
 	-- Mostrar el horario de registro de asistencia
 	SELECT TOP 1 HoraInicio, HoraFin
 		FROM THorarioRegistroAsistencia
-	    WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA AND @CodJefeDepartamentoA = @CodJefeDepartamentoA
+	    WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA AND CodJefeDepartamentoA = @CodJefeDepartamentoA
 		ORDER BY IdHorarioRegistroAsistencia DESC
 END;
 GO
@@ -1847,7 +1847,7 @@ BEGIN
 			HoraFin = @NHoraFin
 		FROM (SELECT TOP 1 HoraInicio, HoraFin
 				FROM THorarioRegistroAsistencia
-				WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA AND @CodJefeDepartamentoA = @CodJefeDepartamentoA
+				WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA AND CodJefeDepartamentoA = @CodJefeDepartamentoA
 				ORDER BY IdHorarioRegistroAsistencia DESC) THorarioRegistroAsistencia	
 END;
 GO
@@ -1860,7 +1860,7 @@ AS
 BEGIN
 	-- Eliminar una asistencia en la tabla de THorarioRegistroAsistencia
 	DELETE FROM THorarioRegistroAsistencia
-		WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA AND @CodJefeDepartamentoA = @CodJefeDepartamentoA
+		WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA AND CodJefeDepartamentoA = @CodJefeDepartamentoA
 END;
 GO
 
