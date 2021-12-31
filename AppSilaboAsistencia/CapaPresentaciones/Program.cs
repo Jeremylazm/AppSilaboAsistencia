@@ -30,7 +30,8 @@ namespace CapaPresentaciones
 
             SetProcessDpiAwareness((int)DpiAwareness.PerMonitorAware);
 
-            Application.Run(new P_ReporteDocente());
+            //Application.Run(new P_ReporteDocente());
+            Application.Run(new P_InicioSesion());
         }
     }
 }

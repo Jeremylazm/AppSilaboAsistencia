@@ -106,7 +106,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@Hora", AsistenciaDocente.Hora);
             Comando.Parameters.AddWithValue("@NTipoSesión", NTipoSesion); // NORMAL/RECUPERACIÓN
             Comando.Parameters.AddWithValue("@NNombreTema", NNombreTema); // Nuevo Nombre Tema
-            Comando.Parameters.AddWithValue("@NObservación", NObservacion);
+            Comando.Parameters.AddWithValue("@NObservacion", NObservacion);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }

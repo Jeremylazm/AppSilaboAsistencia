@@ -19,6 +19,8 @@ namespace CapaPresentaciones
         private readonly string CodSemestre;
         public string LimtFechaInf;
         public string LimtFechaSup = DateTime.Now.ToString("dd/MM/yyyy").ToString();
+        public DateTime HoraIniAsignatura;
+        public DateTime HoraLimiteR;
         //public string HoraRegistro= DateTime.Now.ToString("HH:mm:ss");
 
         public P_HistorialSesionesAsignatura(string pCodAsignatura)
@@ -62,23 +64,27 @@ namespace CapaPresentaciones
         {
             dgvDatos.DataSource = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, LimtFechaInf, LimtFechaSup,txtBuscar.Text);
         }
-        public string validarHoraDeRegistro(string HoraSolicitadaRegistro,string Dia)
+        public bool validarHoraDeRegistro(string HoraSolicitadaRegistro,string Dia)
 		{
 
             DataTable Horario = N_HorarioAsignatura.BuscarHorarioAsignatura(CodSemestre, CodAsignatura.Substring(0, 5), CodAsignatura.Substring(6), CodAsignatura.Substring(5, 1));
-            string dia;
-            string HoraInicio;
-            string HoraFin;
+            
+            DateTime HoraCompletaInicio;
+            DateTime HoraCompletaFinal;
             
             foreach (DataRow fila in Horario.Rows)
 			{
-				if (fila[2].Equals(Dia)&& (fila[6].Equals(HoraSolicitadaRegistro)|| fila[7].Equals(HoraSolicitadaRegistro)))
+                HoraCompletaInicio =Convert.ToDateTime(fila[6].ToString()+":00:00");
+                HoraCompletaFinal = Convert.ToDateTime(fila[7].ToString() + ":10:59");
+                if (fila[2].Equals(Dia)&& ((Convert.ToDateTime(HoraSolicitadaRegistro)>=HoraCompletaInicio)&&(Convert.ToDateTime(HoraSolicitadaRegistro)<=HoraCompletaFinal)))
 				{
-                    HoraFin = fila[7].ToString();
-                    return HoraFin;
+                    
+                    HoraIniAsignatura =HoraCompletaInicio;
+                    HoraLimiteR = HoraCompletaFinal;
+                    return true;
 				}
 			}
-            return null;
+            return false;
         }
         public string nombre_Dia_Actual()
 		{
@@ -86,14 +92,14 @@ namespace CapaPresentaciones
             string dia = fechaActual.ToString("dddd");
             return dia.Substring(0,2).ToUpper();
 		}
-        public bool buscarUnRegistro(string HoraLimte)
+        public bool buscarUnRegistro(DateTime pHoraIni,DateTime pHoraLimte)
 		{
             DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, LimtFechaSup, LimtFechaSup, "");
             foreach (DataRow fila in Resultado.Rows)
             {
-                string horaRegistrada = fila[1].ToString();
+                DateTime horaRegistrada =Convert.ToDateTime(fila[1]);
 
-                if (Convert.ToDateTime(horaRegistrada)<=Convert.ToDateTime(HoraLimte))
+                if ((horaRegistrada<=pHoraLimte)&&(horaRegistrada >= pHoraIni))
                 {
                     return true;
                 }
@@ -109,55 +115,40 @@ namespace CapaPresentaciones
 		{
             string DiaActual = nombre_Dia_Actual();
             string HoraCompletaActual= DateTime.Now.ToString("HH:mm:ss");
-            string Hora = HoraCompletaActual.Substring(0,2);
+            //string Hora = HoraCompletaActual.Substring(0,2);
 
             DataTable EstudiantesAsigantura = N_Matricula.BuscarEstudiantesAsignatura(CodSemestre, CodAsignatura.Substring(6), CodAsignatura);
             
-            if (validarHoraDeRegistro(Hora,DiaActual)!=null)
+            if (validarHoraDeRegistro(HoraCompletaActual,DiaActual)!=true)
 			{
-                string Horalimite = validarHoraDeRegistro(Hora, DiaActual)+":10:00";
-                if (Convert.ToDateTime(HoraCompletaActual) <= Convert.ToDateTime(Horalimite))
-                {
-                    //registrar la asistencia Normal
+                //DateTime Horalimite = validarHoraDeRegistro(HoraCompletaActual, DiaActual);
+                
+                
+                //registrar la asistencia Normal
                     
-                    if (buscarUnRegistro(Horalimite) != true)
-					{
-
-                        Form Fondo = new Form();
-                        P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
-                        NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                        NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
-                        NuevoRegistroAsistencia.hora = HoraCompletaActual;
-                        NuevoRegistroAsistencia.Owner = Fondo;
-                        NuevoRegistroAsistencia.ShowDialog();
-                        NuevoRegistroAsistencia.Dispose();
-                    }
-					else
-					{
-                        A_Dialogo.DialogoInformacion("El registro de Hoy, ¡Ya existe!");
-                    }
-                }
-                else
+                if (buscarUnRegistro(HoraIniAsignatura,HoraLimiteR) != true)
 				{
-                    //registrar la sistencia como Recuperacion
-                    if(A_Dialogo.DialogoPreguntaAceptarCancelar("¿Desea Recuperar una Sesion?") == DialogResult.Yes)
-					{
-                        Form Fondo = new Form();
-                        P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
-                        NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                        NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
-                        NuevoRegistroAsistencia.hora = HoraCompletaActual;
-                        NuevoRegistroAsistencia.Owner = Fondo;
-                        NuevoRegistroAsistencia.ShowDialog();
-                        NuevoRegistroAsistencia.Dispose();
-                    }
+
+                    Form Fondo = new Form();
+                    P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
+                    NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                    NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
+                    NuevoRegistroAsistencia.hora = HoraCompletaActual;
+                    NuevoRegistroAsistencia.Owner = Fondo;
+                    NuevoRegistroAsistencia.ShowDialog();
+                    NuevoRegistroAsistencia.Dispose();
                 }
-                    
+				else
+				{
+                    A_Dialogo.DialogoInformacion("El registro de Hoy, ¡Ya existe!");
+                }
+                
+                 
 			}
 			else
 			{
                 // registrar la asistencia como recuperacion
-                if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Desea Recuperar una Sesion?") == DialogResult.Yes)
+                if (A_Dialogo.DialogoPreguntaAceptarCancelar(" Se encuentra fuera del Horario de la Asignatura" + Environment.NewLine + "¿Desea Recuperar una Sesion?") == DialogResult.Yes)
                 {
                     Form Fondo = new Form();
                     P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
