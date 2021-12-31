@@ -61,7 +61,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@Fecha", AsistenciaEstudiante.Fecha); // Formato: dd/mm/yyyy o dd-mm-yyyy
             Comando.Parameters.AddWithValue("@Hora", AsistenciaEstudiante.Hora); // Formato: hh: mm: ss (Hora del control de asistencia)
             Comando.Parameters.AddWithValue("@CodEstudiante", AsistenciaEstudiante.CodEstudiante);
-            Comando.Parameters.AddWithValue("@Estado", AsistenciaEstudiante.Asistio); // SI/NO (Presente/No presente)
+            Comando.Parameters.AddWithValue("@Asistió", AsistenciaEstudiante.Asistio); // SI/NO (Presente/No presente)
             Comando.Parameters.AddWithValue("@Observación", AsistenciaEstudiante.Observacion); // tardanza, permiso
             Comando.ExecuteNonQuery();
             Conectar.Close();
