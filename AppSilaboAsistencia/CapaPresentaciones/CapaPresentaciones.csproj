@@ -287,6 +287,12 @@
     <Compile Include="P_RecuperacionContraseña.Designer.cs">
       <DependentUpon>P_RecuperacionContraseña.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_ReporteDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_ReporteDocente.Designer.cs">
+      <DependentUpon>P_ReporteDocente.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_SubirArchivo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -403,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_RecuperacionContraseña.resx">
       <DependentUpon>P_RecuperacionContraseña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_ReporteDocente.resx">
+      <DependentUpon>P_ReporteDocente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_SubirArchivo.resx">
       <DependentUpon>P_SubirArchivo.cs</DependentUpon>
