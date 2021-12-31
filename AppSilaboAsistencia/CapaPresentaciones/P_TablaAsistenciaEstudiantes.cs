@@ -145,7 +145,7 @@ namespace CapaPresentaciones
                 ObjEntidadEstd.Fecha = txtFecha.Text.ToString();//actual del registro
                 ObjEntidadEstd.Hora = hora;//actual del registro
                 ObjEntidadEstd.CodEstudiante = dr.Cells[3].Value.ToString();
-                ObjEntidadEstd.Estado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
+                ObjEntidadEstd.Asistio = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
                 ObjEntidadEstd.Observacion = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
                 ObjNegocioEstd.RegistrarAsistenciaEstudiante(ObjEntidadEstd);
             }
@@ -189,7 +189,7 @@ namespace CapaPresentaciones
                         ObjEntidadDoc.CodDocente = CodDocente;
                         ObjEntidadDoc.NombreTema = txtTema.Text.ToString();
 
-                        ObjNegocioDoc.RegistrarAsistenciaDocente(ObjEntidadDoc);
+                        //ObjNegocioDoc.RegistrarAsistenciaDocente(ObjEntidadDoc);
                         //A_Dialogo.DialogoConfirmacion("El registro de Asistencia Docente se insertó éxitosamente");
                         AgregarRgistroEstudiantes();
                         A_Dialogo.DialogoConfirmacion("Se ha registrado correctamente la asistencia" + Environment.NewLine+" del Docente y los Estudiantes");
@@ -229,7 +229,7 @@ namespace CapaPresentaciones
                             string fechaActualizada = txtFecha.Text.ToString();
                             
 
-                            ObjNegocioDoc.ActualizarAsistenciaDocente(ObjEntidadDoc, NombreTemaActualizado);
+                            //ObjNegocioDoc.ActualizarAsistenciaDocente(ObjEntidadDoc, NombreTemaActualizado);
                             A_Dialogo.DialogoConfirmacion("Se ha Editado  la Asistencia" + Environment.NewLine+" del Docente y los Estudiantes");
                             EditarRegistroEstudiantes();
                             Program.Evento = 0;
