@@ -553,6 +553,16 @@ namespace CapaPresentaciones.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Más_Detalles_2 {
+            get {
+                object obj = ResourceManager.GetObject("Más_Detalles_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Maximizar {
             get {
                 object obj = ResourceManager.GetObject("Maximizar", resourceCulture);
@@ -846,6 +856,26 @@ namespace CapaPresentaciones.Properties {
         internal static System.Drawing.Bitmap SubirImagen2 {
             get {
                 object obj = ResourceManager.GetObject("SubirImagen2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tabla {
+            get {
+                object obj = ResourceManager.GetObject("Tabla", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tabla_2 {
+            get {
+                object obj = ResourceManager.GetObject("Tabla_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
