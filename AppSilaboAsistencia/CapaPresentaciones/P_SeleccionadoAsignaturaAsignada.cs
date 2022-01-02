@@ -36,6 +36,8 @@ namespace CapaPresentaciones
             dgvDatos.Columns[3].Visible = false;
 
             dgvDatos.Columns[0].HeaderText = "Código";
+            dgvDatos.Columns[0].MinimumWidth = 95;
+            dgvDatos.Columns[0].Width = 95;
             dgvDatos.Columns[1].HeaderText = "Nombre";
             dgvDatos.Columns[2].HeaderText = "Escuela Profesional";
         }
@@ -49,6 +51,7 @@ namespace CapaPresentaciones
         public void BuscarAsignaturas()
         {
             dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodSemestre, CodEscuelaP, CodDocente, txtBuscar.Text);
+            dgvDatos.ClearSelection();
         }
 
         private void btnCerrar_Click(object sender, System.EventArgs e)
@@ -72,13 +75,7 @@ namespace CapaPresentaciones
 
         private void P_SeleccionadoAsignaturaAsignada_Load(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow Fila in dgvDatos.Rows)
-            {
-                if (Fila.Cells[0].Value.Equals(CodAsignatura))
-                {
-                    Fila.Selected = true;
-                }
-            }
+            dgvDatos.ClearSelection();
         }
     }
 }

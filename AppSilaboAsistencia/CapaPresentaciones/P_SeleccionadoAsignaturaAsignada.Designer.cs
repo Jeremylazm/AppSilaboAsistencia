@@ -69,7 +69,7 @@ namespace CapaPresentaciones
             this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
             this.btnCerrar.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.btnCerrar.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnCerrar.InitialImage")));
-            this.btnCerrar.Location = new System.Drawing.Point(762, 7);
+            this.btnCerrar.Location = new System.Drawing.Point(845, 7);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Rotation = 0;
             this.btnCerrar.ShowActiveImage = true;
@@ -98,7 +98,7 @@ namespace CapaPresentaciones
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTitulo.Size = new System.Drawing.Size(800, 46);
+            this.lblTitulo.Size = new System.Drawing.Size(883, 46);
             this.lblTitulo.TabIndex = 12;
             this.lblTitulo.Text = "Tabla de Asignaturas Asignadas";
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -130,7 +130,7 @@ namespace CapaPresentaciones
             this.sbDatos.BorderThickness = 1;
             this.sbDatos.DurationBeforeShrink = 2000;
             this.sbDatos.LargeChange = 10;
-            this.sbDatos.Location = new System.Drawing.Point(781, 127);
+            this.sbDatos.Location = new System.Drawing.Point(864, 127);
             this.sbDatos.Maximum = 100;
             this.sbDatos.Minimum = 0;
             this.sbDatos.MinimumThumbLength = 18;
@@ -141,7 +141,7 @@ namespace CapaPresentaciones
             this.sbDatos.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbDatos.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbDatos.ShrinkSizeLimit = 3;
-            this.sbDatos.Size = new System.Drawing.Size(10, 311);
+            this.sbDatos.Size = new System.Drawing.Size(10, 315);
             this.sbDatos.SmallChange = 1;
             this.sbDatos.TabIndex = 34;
             this.sbDatos.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
@@ -229,7 +229,7 @@ namespace CapaPresentaciones
             this.dgvDatos.RowTemplate.Height = 26;
             this.dgvDatos.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(782, 337);
+            this.dgvDatos.Size = new System.Drawing.Size(865, 341);
             this.dgvDatos.TabIndex = 35;
             this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             this.dgvDatos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentDoubleClick);
@@ -303,7 +303,7 @@ namespace CapaPresentaciones
             this.txtBuscar.SelectionLength = 0;
             this.txtBuscar.SelectionStart = 0;
             this.txtBuscar.ShortcutsEnabled = true;
-            this.txtBuscar.Size = new System.Drawing.Size(782, 40);
+            this.txtBuscar.Size = new System.Drawing.Size(865, 40);
             this.txtBuscar.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtBuscar.TabIndex = 33;
             this.txtBuscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -320,7 +320,7 @@ namespace CapaPresentaciones
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(883, 454);
             this.Controls.Add(this.sbDatos);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.txtBuscar);
