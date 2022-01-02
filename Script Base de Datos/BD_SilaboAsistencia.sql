@@ -1698,7 +1698,7 @@ BEGIN
 			  AD.CodDepartamentoA = @CodDepartamentoA AND
 			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
 			  AD.Observación = '' -- No se considera Feriado, Suspensión, Permiso y Falta in Justificar
-		GROUP BY AD.CodAsignatura, A.NombreAsignatura
+		GROUP BY AD.CodAsignatura, A.NombreAsignatura, D.APaterno, D.AMaterno, D.Nombre
 		ORDER BY A.NombreAsignatura
 END;
 GO
@@ -1841,7 +1841,7 @@ GO
 
 -- Procedimiento para registrar la asistencia diaria de un docente.
 CREATE PROCEDURE spuRegistrarAsistenciaDiariaDocente @CodSemestre VARCHAR(7),
-											         @CodDepartamentoA VARCHAR(3),			
+											         @CodDepartamentoA VARCHAR(3),	-- Atrib. Docente (Jefe de Dep.)		
 										             @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 											         @Hora TIME(0),-- Formato: hh:mm:ss (Hora del control de asistencia)
 									                 @CodDocente VARCHAR(5),
@@ -1973,7 +1973,7 @@ GO
 
 -- Procedimiento para mostrar el porcentaje de asistencia de los estudiantes de todas las asignatura de una dpto academico.
 CREATE PROCEDURE spuAsistenciaEstudiantesPorAsignaturas @CodSemestre VARCHAR(7),
-													    @CodDepartamentoA VARCHAR(3),
+													    @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Director Escuela)
 														@LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 														@LimFechaSup DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
 AS
@@ -2033,7 +2033,6 @@ GO
 
 -- Procedimiento para registrar la asistencia de un estudiante.
 CREATE PROCEDURE spuRegistrarAsistenciaEstudiante @CodSemestre VARCHAR(7),
-												  @CodEscuelaP VARCHAR(3),
 								                  @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
 										          @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 												  @Hora TIME(0), -- Formato: hh:mm:ss (Hora del control de asistencia)
@@ -2050,7 +2049,6 @@ GO
 
 -- Procedimiento para actualizar la asistencia de un estudiante.
 CREATE PROCEDURE spuActualizarAsistenciaEstudiante @CodSemestre VARCHAR(7),
-												   @CodEscuelaP VARCHAR(3),
 								                   @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
 										           @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 												   @Hora TIME(0), -- Formato: hh:mm:ss (Hora del control de asistencia)
@@ -2070,8 +2068,7 @@ END;
 GO
 
 -- Procedimiento para eliminar la asistencia de un estudiante.
-CREATE PROCEDURE spuEliminarAsistenciaEstudiante @CodSemestre VARCHAR(7),
-												 @CodEscuelaP VARCHAR(3), 
+CREATE PROCEDURE spuEliminarAsistenciaEstudiante @CodSemestre VARCHAR(7), 
 								                 @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
 										         @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 												 @Hora TIME(0), -- Formato: hh:mm:ss (Hora del control de asistencia)
