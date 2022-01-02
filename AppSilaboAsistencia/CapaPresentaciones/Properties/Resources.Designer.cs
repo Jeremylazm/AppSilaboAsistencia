@@ -803,6 +803,16 @@ namespace CapaPresentaciones.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Salir_2 {
+            get {
+                object obj = ResourceManager.GetObject("Salir_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Sílabos {
             get {
                 object obj = ResourceManager.GetObject("Sílabos", resourceCulture);

@@ -293,6 +293,12 @@
     <Compile Include="P_ReporteDocente.Designer.cs">
       <DependentUpon>P_ReporteDocente.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_SeleccionadoAsignaturaAsignada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_SeleccionadoAsignaturaAsignada.Designer.cs">
+      <DependentUpon>P_SeleccionadoAsignaturaAsignada.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_SubirArchivo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -412,6 +418,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_ReporteDocente.resx">
       <DependentUpon>P_ReporteDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_SeleccionadoAsignaturaAsignada.resx">
+      <DependentUpon>P_SeleccionadoAsignaturaAsignada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_SubirArchivo.resx">
       <DependentUpon>P_SubirArchivo.cs</DependentUpon>
@@ -747,6 +756,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Tabla_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir_2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.96.0.4664.4500\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.96.0.4664.4500\build\Selenium.WebDriver.ChromeDriver.targets')" />
