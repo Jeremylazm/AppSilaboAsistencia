@@ -10,7 +10,7 @@
         public string Hora { get; set; }
         public string CodDocente { get; set; }
         public string Asistio { get; set; }
-        public string TipoSsesion { get; set; }
+        public string TipoSesion { get; set; }
         public string NombreTema { get; set; }
         public string Observacion { get; set; }
     }

@@ -23,6 +23,36 @@ namespace CapaNegocios
             return new D_AsistenciaDocentePorAsignatura().BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, LimFechaInf, LimFechaSup, Texto);
         }
 
+        public static DataTable AsistenciaDocenteAsignatura(string CodSemestre, string CodDocente, string CodAsignatura, string LimFechaInf, string LimFechaSup)
+        {
+            return new D_AsistenciaDocentePorAsignatura().AsistenciaDocenteAsignatura(CodSemestre, CodDocente, CodAsignatura, LimFechaInf, LimFechaSup);
+        }
+
+        public static DataTable AsistenciaDocentesPorAsignaturas(string CodSemestre, string CodDepartamentoA, string LimFechaInf, string LimFechaSup)
+        {
+            return new D_AsistenciaDocentePorAsignatura().AsistenciaDocentesPorAsignaturas(CodSemestre, CodDepartamentoA, LimFechaInf, LimFechaSup);
+        }
+
+        public static DataTable AvanceAsignatura(string CodSemestre, string CodDocente, string CodAsignatura, string LimFechaInf, string LimFechaSup)
+        {
+            return new D_AsistenciaDocentePorAsignatura().AvanceAsignatura(CodSemestre, CodDocente, CodAsignatura, LimFechaInf, LimFechaSup);
+        }
+
+        public static DataTable AvanceAsignaturasDocente(string CodSemestre, string CodDocente, string LimFechaInf, string LimFechaSup)
+        {
+            return new D_AsistenciaDocentePorAsignatura().AvanceAsignaturasDocente(CodSemestre, CodDocente, LimFechaInf, LimFechaSup);
+        }
+
+        public static DataTable AvanceAsignaturasDpto(string CodSemestre, string CodDepartamentoA, string LimFechaInf, string LimFechaSup)
+        {
+            return new D_AsistenciaDocentePorAsignatura().AvanceAsignaturasDpto(CodSemestre, CodDepartamentoA, LimFechaInf, LimFechaSup);
+        }
+
+        public static DataTable AsistenciaAsignaturasDocente(string CodSemestre, string CodDocente, string LimFechaInf, string LimFechaSup)
+        {
+            return new D_AsistenciaDocentePorAsignatura().AsistenciaAsignaturasDocente(CodSemestre, CodDocente, LimFechaInf, LimFechaSup);
+        }
+
         public void RegistrarAsistenciaDocentePorAsignatura(E_AsistenciaDocentePorAsignatura AsistenciaDocente)
         {
             ObjAsistenciaDocentePorAsignatura.RegistrarAsistenciaDocentePorAsignatura(AsistenciaDocente);

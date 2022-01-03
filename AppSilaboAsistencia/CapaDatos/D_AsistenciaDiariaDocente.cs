@@ -19,8 +19,43 @@ namespace CapaDatos
             };
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
-            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA); // Atrib. Docente (Jefe de Dep.)
             Comando.Parameters.AddWithValue("@Fecha", Fecha); // Formato: dd/mm/yyyy o dd-mm-yyyy
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
+        // Método para mostrar el registro de asistencia diaria de un docente en un rango de fechas.
+        public DataTable AsistenciasDocente(string CodSemestre, string CodDocente, string LimFechaInf, string LimFechaSup)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuAsistenciasDocente", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
+            Comando.Parameters.AddWithValue("@LimFechaInf", LimFechaInf); // Formato: yyyy-mm-dd
+            Comando.Parameters.AddWithValue("@LimFechaSup", LimFechaSup); // Formato: yyyy-mm-dd
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
+        // Método para mostrar la asistencia de los docentes por fechas en un rango.
+        public DataTable AsistenciaDocentesPorFechas(string CodSemestre, string LimFechaInf, string LimFechaSup)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuAsistenciaDocentesPorFechas", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@LimFechaInf", LimFechaInf); // Formato: yyyy-mm-dd
+            Comando.Parameters.AddWithValue("@LimFechaSup", LimFechaSup); // Formato: yyyy-mm-dd
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
