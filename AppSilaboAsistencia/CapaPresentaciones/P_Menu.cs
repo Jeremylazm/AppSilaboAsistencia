@@ -6,15 +6,12 @@ using CapaEntidades;
 using System.IO;
 using System.Drawing.Drawing2D;
 using Ayudas;
-using System.Diagnostics;
-using System.ServiceProcess;
-using Microsoft.Build.Utilities;
-using System.Collections.ObjectModel;
 
 namespace CapaPresentaciones
 {
     public partial class P_Menu : Form
     {
+
         public string Acceso = "";
         private Image JefeActualizarPerfil = null;
 
@@ -386,93 +383,7 @@ namespace CapaPresentaciones
         {
             CargarDatosUsuario();
             GestionarAcceso();
-            /*
-            // Get time in local time zone 
-            DateTime thisTime = DateTime.Now;
-            Console.WriteLine("Time in {0} zone: {1}", TimeZoneInfo.Local.IsDaylightSavingTime(thisTime) ?
-                              TimeZoneInfo.Local.DaylightName : TimeZoneInfo.Local.StandardName, thisTime);
-            Console.WriteLine("   UTC Time: {0}", TimeZoneInfo.ConvertTimeToUtc(thisTime, TimeZoneInfo.Local));
-            // Get Tokyo Standard Time zone
-            TimeZoneInfo tst = TimeZoneInfo.FindSystemTimeZoneById("SA Pacific Standard Time");
-            DateTime tstTime = TimeZoneInfo.ConvertTime(thisTime, TimeZoneInfo.Local, tst);
-            //
-            Console.WriteLine("Time in {0} zone: {1}", tst.IsDaylightSavingTime(tstTime) ?
-                              tst.DaylightName : tst.StandardName, tstTime); //tstTime
-            ///
-            Console.WriteLine("   UTC Time: {0}", TimeZoneInfo.ConvertTimeToUtc(tstTime, tst));
-
-            Console.WriteLine(DateTime.Now);
-
-            ReadOnlyCollection<TimeZoneInfo> zones = TimeZoneInfo.GetSystemTimeZones();
-            Console.WriteLine("The local system has the following {0} time zones", zones.Count);
-            foreach (TimeZoneInfo zone in zones)
-                Console.WriteLine(zone.Id);*/
-
-            //
-            DateTime a = GetNISTDate(true);
-            Real = a;
-            Console.WriteLine(Real.Hour.ToString());
-            Console.WriteLine(Real.Minute.ToString());
-            Console.WriteLine(Real.Second.ToString());
         }
-        private DateTime Real;
-
-        public static DateTime GetNISTDate(bool convertToLocalTime)
-        {
-            Random ran = new Random(DateTime.Now.Millisecond);
-            DateTime date = DateTime.Today;
-            string serverResponse = string.Empty;
-
-            // Represents the list of NIST servers
-            string[] servers = new string[] { "129.6.15.28", "132.163.97.1", "132.163.97.2", "132.163.96.1", "global address for all servers", "128.138.141.172" };
-
-            // Try each server in random order to avoid blocked requests due to too frequent request
-            for (int i = 0; i < 5; i++)
-            {
-                try
-                {
-                    // Open a StreamReader to a random time server
-                    StreamReader reader = new StreamReader(new System.Net.Sockets.TcpClient(servers[ran.Next(0, servers.Length)], 13).GetStream());
-                    serverResponse = reader.ReadToEnd();
-                    reader.Close();
-
-                    // Check to see that the signiture is there
-                    if (serverResponse.Length > 47 && serverResponse.Substring(38, 9).Equals("UTC(NIST)"))
-                    {
-                        // Parse the date
-                        int jd = int.Parse(serverResponse.Substring(1, 5));
-                        int yr = int.Parse(serverResponse.Substring(7, 2));
-                        int mo = int.Parse(serverResponse.Substring(10, 2));
-                        int dy = int.Parse(serverResponse.Substring(13, 2));
-                        int hr = int.Parse(serverResponse.Substring(16, 2));
-                        int mm = int.Parse(serverResponse.Substring(19, 2));
-                        int sc = int.Parse(serverResponse.Substring(22, 2));
-
-                        if (jd > 51544)
-                            yr += 2000;
-                        else
-                            yr += 1999;
-
-                        date = new DateTime(yr, mo, dy, hr, mm, sc);
-
-                        // Convert it to the current timezone if desired
-                        if (convertToLocalTime)
-                            date = date.ToLocalTime();
-
-                        // Exit the loop
-                        break;
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    /* Do Nothing...try the next server */
-                }
-            }
-
-            return date;
-        }
-
 
         private void pbEditarPerfil_Click(object sender, EventArgs e)
         {
@@ -496,36 +407,6 @@ namespace CapaPresentaciones
                 Application.Exit();
             }
         }
-
-        private void btnMiAsistencia_Click(object sender, EventArgs e)
-        {
-            DateTime a = GetNISTDate(true);
-            int HoraInicio = 13;
-            int HoraFin = 15;
-            bunifuLabel1.Text = a.ToString("hh:mm:ss");
-
-            int Hora = a.Hour;
-            MessageBox.Show(a.Hour.ToString());
-        }
-
-        /*private void timer1_Tick(object sender, EventArgs e)
-        {
-            DateTime a = GetNISTDate(true);
-            int HoraInicio = 14;
-            int HoraFin = 15;
-            //bunifuLabel1.Text = a.ToString("hh:mm:ss");
-
-            int Hora = a.Hour;
-
-            if (HoraInicio <= Hora && Hora <= HoraFin)
-            {
-                btnMiAsistencia.Visible = true;
-            }
-            else
-            {
-                btnMiAsistencia.Visible = false;
-            }
-        }*/
 
         // Abrir Formularios
         public void AbrirFormularios<FormularioAbrir>() where FormularioAbrir : Form, new()
