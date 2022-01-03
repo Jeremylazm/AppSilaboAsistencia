@@ -189,7 +189,7 @@ namespace CapaPresentaciones
                     ObjEntidadDoc.Hora = hora;
                     ObjEntidadDoc.CodDocente = CodDocente;
                     ObjEntidadDoc.Asistio = "SI";
-                    ObjEntidadDoc.TipoSsesion = "Seleccionar";
+                    ObjEntidadDoc.TipoSesion = "Seleccionar";
                     ObjEntidadDoc.NombreTema = txtTema.Text.ToString();
                     ObjEntidadDoc.Observacion = "recuDelComboboX";
 

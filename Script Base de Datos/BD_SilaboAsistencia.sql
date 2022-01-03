@@ -1551,7 +1551,7 @@ BEGIN
 	SELECT Fecha = AD.Fecha_Formatted, AD.Hora, 
 	       SesiónDictada = AD.Asistió, TipoSesión = AD.TipoSesión, AD.NombreTema,
 	       TotalAsistieron = SUM(CASE WHEN AE.Asistió = 'SI' THEN 1 ELSE 0 END),
-		   TotalFaltaron = SUM(CASE WHEN AE.Asistió = 'NO' THEN 1 ELSE 0 END),
+		   TotalFaltaron = CASE WHEN AD.Observación = '' THEN SUM(CASE WHEN AE.Asistió = 'NO' THEN 1 ELSE 0 END) ELSE 0 END,
 		   AD.Observación
 		FROM TAsistenciaDocentePorAsignatura AD INNER JOIN TAsistenciaEstudiante AE ON
 			 (AD.CodSemestre = AE.CodSemestre AND AD.CodAsignatura = AE.CodAsignatura AND AD.Fecha = AE.Fecha)
@@ -2033,6 +2033,7 @@ GO
 
 -- Procedimiento para registrar la asistencia de un estudiante.
 CREATE PROCEDURE spuRegistrarAsistenciaEstudiante @CodSemestre VARCHAR(7),
+												  @CodEscuelaP VARCHAR(3),
 								                  @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
 										          @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 												  @Hora TIME(0), -- Formato: hh:mm:ss (Hora del control de asistencia)
@@ -2049,6 +2050,7 @@ GO
 
 -- Procedimiento para actualizar la asistencia de un estudiante.
 CREATE PROCEDURE spuActualizarAsistenciaEstudiante @CodSemestre VARCHAR(7),
+												   @CodEscuelaP VARCHAR(3),
 								                   @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
 										           @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 												   @Hora TIME(0), -- Formato: hh:mm:ss (Hora del control de asistencia)
@@ -2069,6 +2071,7 @@ GO
 
 -- Procedimiento para eliminar la asistencia de un estudiante.
 CREATE PROCEDURE spuEliminarAsistenciaEstudiante @CodSemestre VARCHAR(7), 
+                                                 @CodEscuelaP VARCHAR(3),
 								                 @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
 										         @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 												 @Hora TIME(0), -- Formato: hh:mm:ss (Hora del control de asistencia)
