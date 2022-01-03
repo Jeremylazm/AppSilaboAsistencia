@@ -13,6 +13,16 @@ namespace CapaNegocios
             return new D_AsistenciaDiariaDocente().AsistenciaDiariaDocentes(CodSemestre, CodDepartamentoA, Fecha);
         }
 
+        public static DataTable AsistenciasDocente(string CodSemestre, string CodDocente, string LimFechaInf, string LimFechaSup)
+        {
+            return new D_AsistenciaDiariaDocente().AsistenciasDocente(CodSemestre, CodDocente, LimFechaInf, LimFechaSup);
+        }
+
+        public static DataTable AsistenciaDocentesPorFechas(string CodSemestre, string LimFechaInf, string LimFechaSup)
+        {
+            return new D_AsistenciaDiariaDocente().AsistenciaDocentesPorFechas(CodSemestre, LimFechaInf, LimFechaSup);
+        }
+
         public void RegistrarAsistenciaDiariaDocente(E_AsistenciaDiariaDocente AsistenciaDiariaDocente)
         {
             ObjAsistenciaDiariaDocente.RegistrarAsistenciaDiariaDocente(AsistenciaDiariaDocente);

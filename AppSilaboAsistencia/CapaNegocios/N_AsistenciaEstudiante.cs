@@ -18,6 +18,26 @@ namespace CapaNegocios
             return new D_AsistenciaEstudiante().AsistenciaEstudianteAsignatura(CodSemestre, CodEstudiante, CodAsignatura, LimFechaInf, LimFechaSup);
         }
 
+        public static DataTable AsistenciaEstudiantesPorFechas(string CodSemestre, string CodDocente, string CodAsignatura, string LimFechaInf, string LimFechaSup)
+        {
+            return new D_AsistenciaEstudiante().AsistenciaEstudiantesPorFechas(CodSemestre, CodDocente, CodAsignatura, LimFechaInf, LimFechaSup);
+        }
+
+        public static DataTable AsistenciaEstudiantesPorEstudiante(string CodSemestre, string CodAsignatura, string LimFechaInf, string LimFechaSup)
+        {
+            return new D_AsistenciaEstudiante().AsistenciaEstudiantesPorEstudiante(CodSemestre, CodAsignatura, LimFechaInf, LimFechaSup);
+        }
+
+        public static DataTable AsistenciaEstudiantesPorAsignaturas(string CodSemestre, string CodDepartamentoA, string LimFechaInf, string LimFechaSup)
+        {
+            return new D_AsistenciaEstudiante().AsistenciaEstudiantesPorAsignaturas(CodSemestre, CodDepartamentoA, LimFechaInf, LimFechaSup);
+        }
+
+        public static DataTable AsistenciaAsignaturasEstudiante(string CodSemestre, string CodEstudiante, string LimFechaInf, string LimFechaSup)
+        {
+            return new D_AsistenciaEstudiante().AsistenciaAsignaturasEstudiante(CodSemestre, CodEstudiante, LimFechaInf, LimFechaSup);
+        }
+
         public void RegistrarAsistenciaEstudiante(E_AsistenciaEstudiante AsistenciaEstudiante)
         {
             ObjAsistenciaEstudiante.RegistrarAsistenciaEstudiante(AsistenciaEstudiante);
