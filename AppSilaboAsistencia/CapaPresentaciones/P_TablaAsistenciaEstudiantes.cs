@@ -24,14 +24,14 @@ namespace CapaPresentaciones
         public string CodDocente;
         readonly E_AsistenciaEstudiante ObjEntidadEstd;
         readonly N_AsistenciaEstudiante ObjNegocioEstd;
-        readonly E_AsistenciaDocente ObjEntidadDoc;
-        readonly N_AsistenciaDocente ObjNegocioDoc;
+        readonly E_AsistenciaDocentePorAsignatura ObjEntidadDoc;
+        readonly N_AsistenciaDocentePorAsignatura ObjNegocioDoc;
         public string hora;
         private DataTable PlanSesion;
         public DataTable dgvTabla;
         
         public string LmFechaInf;
-        
+        //private readonly string CodDepartamento = E_DepartamentoAcademico.CodDepartamentoA;
         public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente, DataTable pdgv)
         {
             DataTable Semestre = N_Semestre.SemestreActual();
@@ -43,8 +43,8 @@ namespace CapaPresentaciones
             dgvTabla = pdgv;
             ObjEntidadEstd = new E_AsistenciaEstudiante();
             ObjNegocioEstd = new N_AsistenciaEstudiante();
-            ObjEntidadDoc = new E_AsistenciaDocente();
-            ObjNegocioDoc = new N_AsistenciaDocente();
+            ObjEntidadDoc = new E_AsistenciaDocentePorAsignatura();
+            ObjNegocioDoc = new N_AsistenciaDocentePorAsignatura();
             InitializeComponent();
             Control[] Controles = { this, lblTitulo, pbLogo, lblFecha, lblMarcarTodos, lblTema, txtFecha };
             Docker.SubscribeControlsToDragEvents(Controles);
@@ -145,7 +145,7 @@ namespace CapaPresentaciones
                 ObjEntidadEstd.Fecha = txtFecha.Text.ToString();//actual del registro
                 ObjEntidadEstd.Hora = hora;//actual del registro
                 ObjEntidadEstd.CodEstudiante = dr.Cells[3].Value.ToString();
-                ObjEntidadEstd.Estado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
+                ObjEntidadEstd.Asistio = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
                 ObjEntidadEstd.Observacion = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
                 ObjNegocioEstd.RegistrarAsistenciaEstudiante(ObjEntidadEstd);
             }
@@ -163,10 +163,10 @@ namespace CapaPresentaciones
                 ObjEntidadEstd.Hora = hora;//hora en el que fue registrado
                 ObjEntidadEstd.CodEstudiante = dr.Cells[3].Value.ToString();
                 
-                string EstadoActualizado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";              
+                string AsistioActualizado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";              
                 string ObsActualizada = (dr.Cells[1].Value==null)?"":dr.Cells[1].Value.ToString();
 
-                ObjNegocioEstd.ActualizarAsistenciaEstudiante(ObjEntidadEstd, EstadoActualizado, ObsActualizada);
+                ObjNegocioEstd.ActualizarAsistenciaEstudiante(ObjEntidadEstd, AsistioActualizado, ObsActualizada);
             }
             //A_Dialogo.DialogoConfirmacion("El registro de la asistencia de los estudiantes se Editó éxitosamente");
         }
@@ -175,32 +175,33 @@ namespace CapaPresentaciones
         {
             if (Program.Evento == 0)//add
             {
+
+
+                // buscar el registro de asistencia de Docente de la fecha actual
+                //DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString(),"");
+
                 try
                 {
-                    // buscar el registro de asistencia de Docente de la fecha actual
-                    DataTable Resultado = N_AsistenciaDocente.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString(),"");
+                    ObjEntidadDoc.CodSemestre = CodSemestre;
+                    ObjEntidadDoc.CodDepartamentoA = "IF";
+                    ObjEntidadDoc.CodAsignatura = CodAsignatura;
+                    ObjEntidadDoc.Fecha = txtFecha.Text.ToString();
+                    ObjEntidadDoc.Hora = hora;
+                    ObjEntidadDoc.CodDocente = CodDocente;
+                    ObjEntidadDoc.Asistio = "SI";
+                    ObjEntidadDoc.TipoSsesion = "Seleccionar";
+                    ObjEntidadDoc.NombreTema = txtTema.Text.ToString();
+                    ObjEntidadDoc.Observacion = "recuDelComboboX";
 
-                    if (Resultado.Rows.Count == 0)
-                    {
-                        ObjEntidadDoc.CodSemestre = CodSemestre;
-                        ObjEntidadDoc.CodAsignatura = CodAsignatura;
-                        ObjEntidadDoc.Fecha = txtFecha.Text.ToString();
-                        ObjEntidadDoc.Hora = hora;
-                        ObjEntidadDoc.CodDocente = CodDocente;
-                        ObjEntidadDoc.NombreTema = txtTema.Text.ToString();
+                    ObjNegocioDoc.RegistrarAsistenciaDocentePorAsignatura(ObjEntidadDoc);
+                    //A_Dialogo.DialogoConfirmacion("El registro de Asistencia Docente se insertó éxitosamente");
+                    AgregarRgistroEstudiantes();
+                    A_Dialogo.DialogoConfirmacion("Se ha registrado correctamente la asistencia" + Environment.NewLine + " del Docente y los Estudiantes");
+                    Program.Evento = 0;
+                    Close();
 
-                        ObjNegocioDoc.RegistrarAsistenciaDocente(ObjEntidadDoc);
-                        //A_Dialogo.DialogoConfirmacion("El registro de Asistencia Docente se insertó éxitosamente");
-                        AgregarRgistroEstudiantes();
-                        A_Dialogo.DialogoConfirmacion("Se ha registrado correctamente la asistencia" + Environment.NewLine+" del Docente y los Estudiantes");
-                        Program.Evento = 0;
-                        Close();
-                    }
-                    else
-                    {
-                        A_Dialogo.DialogoInformacion("El registro de Hoy, ¡Ya existe!");                       
-                    }
                 }
+                
                 catch (Exception)
                 {
                     A_Dialogo.DialogoError("Error al insertar el registro");
@@ -209,44 +210,44 @@ namespace CapaPresentaciones
             // Editar
             else
             {
-                try
+
+
+                if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea editar el registro?") == DialogResult.Yes)
                 {
-                    if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea editar el registro?") == DialogResult.Yes)
+                    DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString(), "");
+
+                    if (Resultado.Rows.Count != 0)
                     {
-                        DataTable Resultado = N_AsistenciaDocente.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString(), "");
-                        
-                        if (Resultado.Rows.Count != 0)
-                        {
 
-                            ObjEntidadDoc.CodSemestre = CodSemestre;
-                            ObjEntidadDoc.CodAsignatura = CodAsignatura;
-                            ObjEntidadDoc.Fecha = txtFecha.Text.ToString();
-                            ObjEntidadDoc.Hora = hora;
-                            ObjEntidadDoc.CodDocente = CodDocente;
-                            ObjEntidadDoc.NombreTema = txtTema.Text.ToString();
+                        ObjEntidadDoc.CodSemestre = CodSemestre;
+                        ObjEntidadDoc.CodAsignatura = CodAsignatura;
+                        ObjEntidadDoc.Fecha = txtFecha.Text.ToString();
+                        ObjEntidadDoc.Hora = hora;
 
-                            string NombreTemaActualizado = txtTema.Text.ToString();
-                            string fechaActualizada = txtFecha.Text.ToString();
-                            
+                        string TipoSesionActualizado = "SeleccionarActualizado";
+                        string NombreTemaActualizado = txtTema.Text.ToString();
+                        string fechaActualizado = txtFecha.Text.ToString();
+                        string ObsActulizado = "recuDelComboboX";
 
-                            ObjNegocioDoc.ActualizarAsistenciaDocente(ObjEntidadDoc, NombreTemaActualizado);
-                            A_Dialogo.DialogoConfirmacion("Se ha Editado  la Asistencia" + Environment.NewLine+" del Docente y los Estudiantes");
-                            EditarRegistroEstudiantes();
-                            Program.Evento = 0;
 
-                            Close();
-                        }
-                        else
-                        {
-                            A_Dialogo.DialogoError("El registro de Docente no existe");
-                        }
+                        ObjNegocioDoc.ActualizarAsistenciaDocentePorAsignatura(ObjEntidadDoc, TipoSesionActualizado, NombreTemaActualizado, ObsActulizado);
+                        A_Dialogo.DialogoConfirmacion("Se ha Editado  la Asistencia" + Environment.NewLine + " del Docente y los Estudiantes");
+                        EditarRegistroEstudiantes();
+                        Program.Evento = 0;
 
+                        Close();
+                    }
+                    else
+                    {
+                        A_Dialogo.DialogoError("El registro de Docente no existe");
                     }
                 }
-                catch (Exception)
+                    
+                
+                /*catch (Exception)
                 {
                     A_Dialogo.DialogoError("Error al editar el registro");
-                }
+                }*/
             }
         }
 

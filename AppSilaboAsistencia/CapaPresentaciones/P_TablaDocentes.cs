@@ -30,6 +30,10 @@ namespace CapaPresentaciones
             dgvDatos.Columns[2].Visible = false;
 
             dgvDatos.Columns[3].HeaderText = "";
+            //dgvDatos.Columns[3].FillWeight = 1;
+            dgvDatos.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[3].MinimumWidth = 30;
+            dgvDatos.Columns[3].Width = 30;
             dgvDatos.Columns[4].HeaderText = "Código";
             dgvDatos.Columns[5].HeaderText = "A. Paterno";
             dgvDatos.Columns[6].HeaderText = "A. Materno";

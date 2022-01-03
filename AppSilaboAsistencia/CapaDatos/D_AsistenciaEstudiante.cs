@@ -61,14 +61,14 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@Fecha", AsistenciaEstudiante.Fecha); // Formato: dd/mm/yyyy o dd-mm-yyyy
             Comando.Parameters.AddWithValue("@Hora", AsistenciaEstudiante.Hora); // Formato: hh: mm: ss (Hora del control de asistencia)
             Comando.Parameters.AddWithValue("@CodEstudiante", AsistenciaEstudiante.CodEstudiante);
-            Comando.Parameters.AddWithValue("@Estado", AsistenciaEstudiante.Estado); // SI/NO (Presente/No presente)
+            Comando.Parameters.AddWithValue("@Asistió", AsistenciaEstudiante.Asistio); // SI/NO (Presente/No presente)
             Comando.Parameters.AddWithValue("@Observación", AsistenciaEstudiante.Observacion); // tardanza, permiso
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }
 
         // Método para actualizar la asistencia de un estudiante.
-        public void ActualizarAsistenciaEstudiante(E_AsistenciaEstudiante AsistenciaEstudiante, string NEstado, string NObservacion)
+        public void ActualizarAsistenciaEstudiante(E_AsistenciaEstudiante AsistenciaEstudiante, string NAsistio, string NObservacion)
         {
             SqlCommand Comando = new SqlCommand("spuActualizarAsistenciaEstudiante", Conectar)
             {
@@ -82,7 +82,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@Fecha", AsistenciaEstudiante.Fecha); 
             Comando.Parameters.AddWithValue("@Hora", AsistenciaEstudiante.Hora); 
             Comando.Parameters.AddWithValue("@CodEstudiante", AsistenciaEstudiante.CodEstudiante);
-            Comando.Parameters.AddWithValue("@NEstado", NEstado); 
+            Comando.Parameters.AddWithValue("@NAsistió", NAsistio); 
             Comando.Parameters.AddWithValue("@NObservación", NObservacion); 
             Comando.ExecuteNonQuery();
             Conectar.Close();
