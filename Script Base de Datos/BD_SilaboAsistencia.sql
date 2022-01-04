@@ -1551,7 +1551,7 @@ BEGIN
 	SELECT Fecha = AD.Fecha_Formatted, AD.Hora, 
 	       SesiónDictada = AD.Asistió, TipoSesión = AD.TipoSesión, AD.NombreTema,
 	       TotalAsistieron = SUM(CASE WHEN AE.Asistió = 'SI' THEN 1 ELSE 0 END),
-		   TotalFaltaron = SUM(CASE WHEN AE.Asistió = 'NO' THEN 1 ELSE 0 END),
+		   TotalFaltaron = CASE WHEN AD.Observación = '' THEN SUM(CASE WHEN AE.Asistió = 'NO' THEN 1 ELSE 0 END) ELSE 0 END,
 		   AD.Observación
 		FROM TAsistenciaDocentePorAsignatura AD INNER JOIN TAsistenciaEstudiante AE ON
 			 (AD.CodSemestre = AE.CodSemestre AND AD.CodAsignatura = AE.CodAsignatura AND AD.Fecha = AE.Fecha)
@@ -1591,7 +1591,148 @@ BEGIN
 END;
 GO
 
--- Procedimiento para registrar la asistencia de un docente.
+-- Procedimiento para mostrar el registro de asistencia de un docente de una asignatura en un rango de fechas.
+CREATE PROCEDURE spuAsistenciaDocenteAsignatura @CodSemestre VARCHAR(7),
+												@CodDocente VARCHAR(5),
+												@CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
+												@LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+												@LimFechaSup DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
+AS
+BEGIN
+	-- Mostrar el registro de asistencia en el rango de fechas
+	SELECT Fecha = AD.Fecha_Formatted, AD.Asistió, AD.Observación
+		FROM TAsistenciaDocentePorAsignatura AD
+	    WHERE AD.CodSemestre = @CodSemestre AND
+			  AD.CodDocente = @CodDocente AND
+			  AD.CodAsignatura = @CodAsignatura AND
+			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
+		GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Asistió, AD.Observación
+	    ORDER BY AD.Fecha DESC
+END;
+GO
+
+-- Procedimiento para mostrar el porcentaje de asistencia de los docentes de todas las asignaturas de un departamento académico
+CREATE PROCEDURE spuAsistenciaDocentesPorAsignaturas @CodSemestre VARCHAR(7),
+											         @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe Dpto.)
+											         @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+											         @LimFechaSup DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
+AS
+BEGIN
+	-- Mostrar el registro de asistencia en el rango de fechas
+	WITH Resumen  AS (
+		SELECT AD.CodAsignatura, A.NombreAsignatura, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre),
+		       SUM(CASE WHEN AD.Asistió = 'SI' THEN 1 ELSE 0 END) AS TotalAsistencias,
+			   SUM(CASE WHEN AD.Asistió = 'NO' AND AD.Observación NOT IN ('FERIADO','SUSPENSION')
+		                     THEN 1 ELSE 0 END) AS TotalFaltas
+		FROM (TAsistenciaDocentePorAsignatura AD  INNER JOIN TAsignatura A ON
+			 SUBSTRING(AD.CodAsignatura,1,LEN(A.CodAsignatura)) = A.CodAsignatura) INNER JOIN TDocente D ON
+			 AD.CodDocente = D.CodDocente
+	    WHERE AD.CodSemestre = @CodSemestre  AND
+			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
+			  AD.CodDepartamentoA = @CodDepartamentoA
+		GROUP BY AD.CodAsignatura, A.NombreAsignatura, D.APaterno, D.AMaterno, D.Nombre)
+
+	SELECT CodAsignatura, NombreAsignatura, Docente,
+	       PorcentajeAsistencias = ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2),
+	       PorcentajeFaltas = ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2)
+	FROM Resumen
+	GROUP BY CodAsignatura, NombreAsignatura, Docente, TotalAsistencias, TotalFaltas
+	ORDER BY NombreAsignatura
+END;
+GO
+
+-- Procedimiento para mostrar el avance de los temas en una asignatura.
+CREATE PROCEDURE spuAvanceAsignatura @CodSemestre VARCHAR(7),
+								     @CodDocente VARCHAR(5),
+									 @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)									
+									 @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+									 @LimFechaSup DATE  -- Formato: dd/mm/yyyy o dd-mm-yyyy
+AS
+BEGIN
+	-- Mostrar el registro de avance de una asignatura
+	SELECT ROW_NUMBER() OVER (ORDER BY AD.Fecha) AS Sesión, AD.NombreTema, Fecha = AD.Fecha_Formatted
+		FROM TAsistenciaDocentePorAsignatura AD 
+	    WHERE AD.CodSemestre = @CodSemestre AND
+			  AD.CodDocente = @CodDocente AND
+			  AD.CodAsignatura = @CodAsignatura AND
+			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
+			  AD.Observación = ''
+		ORDER BY AD.Fecha ASC
+END;
+GO
+
+-- Procedimiento para mostrar el avance de los temas en todas las asignaturas de un docente.
+CREATE PROCEDURE spuAvanceAsignaturasDocente @CodSemestre VARCHAR(7),
+											 @CodDocente VARCHAR(5),							
+										     @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+											 @LimFechaSup DATE  -- Formato: dd/mm/yyyy o dd-mm-yyyy
+AS
+BEGIN
+	-- Mostrar el registro avance de las asignaturas
+	SELECT AD.CodAsignatura, A.NombreAsignatura, TemasAvanzados = COUNT(AD.NombreTema)
+		FROM TAsistenciaDocentePorAsignatura AD INNER JOIN TAsignatura A ON
+			 SUBSTRING(AD.CodAsignatura,1,LEN(A.CodAsignatura)) = A.CodAsignatura
+	    WHERE AD.CodSemestre = @CodSemestre AND
+			  AD.CodDocente = @CodDocente AND
+			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
+			  AD.Observación = '' -- No se considera Feriado, Suspensión, Permiso y Falta in Justificar
+		GROUP BY AD.CodAsignatura, A.NombreAsignatura
+		ORDER BY A.NombreAsignatura
+END;
+GO
+
+-- Procedimiento para mostrar el avance de los temas en todas las asignaturas de un departamento académico
+CREATE PROCEDURE spuAvanceAsignaturasDpto @CodSemestre VARCHAR(7),
+									      @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
+									      @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+										  @LimFechaSup DATE  -- Formato: dd/mm/yyyy o dd-mm-yyyy
+AS
+BEGIN
+	-- Mostrar el registro de avance de las asignaturas
+	SELECT AD.CodAsignatura, A.NombreAsignatura, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre),
+	       TemasAvanzados = COUNT(AD.NombreTema)
+		FROM (TAsistenciaDocentePorAsignatura AD INNER JOIN TAsignatura A ON
+			 SUBSTRING(AD.CodAsignatura,1,LEN(A.CodAsignatura)) = A.CodAsignatura) INNER JOIN TDocente D ON
+			 AD.CodDocente = D.CodDocente
+	    WHERE AD.CodSemestre = @CodSemestre AND
+			  AD.CodDepartamentoA = @CodDepartamentoA AND
+			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
+			  AD.Observación = '' -- No se considera Feriado, Suspensión, Permiso y Falta in Justificar
+		GROUP BY AD.CodAsignatura, A.NombreAsignatura, D.APaterno, D.AMaterno, D.Nombre
+		ORDER BY A.NombreAsignatura
+END;
+GO
+
+-- Procedimiento para mostrar el porcentaje de asistencia de un docente para cada una de sus asignaturas
+CREATE PROCEDURE spuAsistenciaAsignaturasDocente @CodSemestre VARCHAR(7),
+												 @CodDocente VARCHAR(5),
+												 @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+											     @LimFechaSup DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
+AS
+BEGIN
+	-- Mostrar el registro de asistencia de los estudiantes en el rango de fechas
+	WITH Resumen  AS (
+		SELECT AD.CodAsignatura, A.NombreAsignatura,
+		       SUM(CASE WHEN AD.Asistió = 'SI' THEN 1 ELSE 0 END) AS TotalAsistencias,
+			   SUM(CASE WHEN AD.Asistió = 'NO' AND AD.Observación NOT IN ('FERIADO','SUSPENSION')
+		                     THEN 1 ELSE 0 END) AS TotalFaltas
+		FROM TAsistenciaDocentePorAsignatura AD INNER JOIN TAsignatura A ON
+			 SUBSTRING(AD.CodAsignatura,1,LEN(A.CodAsignatura)) = A.CodAsignatura
+	    WHERE AD.CodSemestre = @CodSemestre AND
+			  AD.CodDocente = @CodDocente AND
+			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
+		GROUP BY AD.CodAsignatura, A.NombreAsignatura)
+
+	SELECT CodAsignatura, NombreAsignatura,
+	       PorcentajeAsistencias = ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2),
+	       PorcentajeFaltas = ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2)
+	FROM Resumen
+	GROUP BY CodAsignatura, NombreAsignatura, TotalAsistencias, TotalFaltas
+	ORDER BY NombreAsignatura
+END;
+GO
+
+-- Procedimiento para registrar la asistencia de un docente por asignatura.
 CREATE PROCEDURE spuRegistrarAsistenciaDocentePorAsignatura @CodSemestre VARCHAR(7),
 											                @CodDepartamentoA VARCHAR(3),
 								                            @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
@@ -1611,7 +1752,7 @@ BEGIN
 END;
 GO
 
--- Procedimiento para actualizar la asistencia de un docente:
+-- Procedimiento para actualizar la asistencia de un docente por asignatura:
 CREATE PROCEDURE spuActualizarAsistenciaDocentePorAsignatura @CodSemestre VARCHAR(7),
 															 @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
 														     @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
@@ -1632,7 +1773,7 @@ BEGIN
 END;
 GO
 
--- Procedimiento para eliminar la asistencia de un docente.
+-- Procedimiento para eliminar la asistencia de un docente por asignatura.
 CREATE PROCEDURE spuEliminarAsistenciaDocentePorAsignatura @CodSemestre VARCHAR(7),
 														   @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
 														   @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
@@ -1655,16 +1796,52 @@ AS
 BEGIN
 	-- Mostrar el registro de asistencia
 	SELECT ROW_NUMBER() OVER (ORDER BY D.APaterno ASC) AS Id, AD.CodDocente, D.APaterno, D.AMaterno, D.Nombre, 
-	       AD.Hora, AD.Asistió, AD.Observación
+	       AD.Asistió, AD.Observación
 		FROM TAsistenciaDiariaDocente AD INNER JOIN TDocente D ON
 			 AD.CodDocente = D.CodDocente
-	    WHERE AD.CodSemestre = @CodSemestre AND AD.Fecha = @Fecha AND AD.CodDepartamentoA = @CodDepartamentoA
+	    WHERE AD.CodSemestre = @CodSemestre AND AD.CodDepartamentoA = @CodDepartamentoA AND AD.Fecha = @Fecha 
+END;
+GO
+
+-- Procedimiento para mostrar el registro de asistencia diaria de un docente en un rango de fechas.
+CREATE PROCEDURE spuAsistenciasDocente @CodSemestre VARCHAR(7),
+									   @CodDocente VARCHAR(6),
+									   @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+									   @LimFechaSup DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
+AS
+BEGIN
+	-- Mostrar el registro de asistencia en el rango de fechas
+	SELECT Fecha = AD.Fecha_Formatted, AD.Asistió, AD.Observación
+		FROM TAsistenciaDiariaDocente AD
+	    WHERE AD.CodSemestre = @CodSemestre AND
+			  AD.CodDocente = @CodDocente AND
+			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
+	    ORDER BY AD.Fecha DESC
+END;
+GO
+
+-- Procedimiento para mostrar la asistencia de los docentes por fechas en un rango.
+CREATE PROCEDURE spuAsistenciaDocentesPorFechas @CodSemestre VARCHAR(7),									
+								                @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+									            @LimFechaSup DATE  -- Formato: dd/mm/yyyy o dd-mm-yyyy
+AS
+BEGIN
+	-- Mostrar el registro de asistencia en el rango de fechas
+	SELECT Fecha = AD.Fecha_Formatted,
+	       TotalAsistieron = SUM(CASE WHEN AD.Asistió = 'SI' THEN 1 ELSE 0 END),
+		   TotalFaltaron = SUM(CASE WHEN AD.Asistió = 'NO' AND AD.Observación NOT IN ('FERIADO','SUSPENSION') THEN 1 ELSE 0 END),
+		   Observación = CASE WHEN AD.Observación IN ('FERIADO','SUSPENSION') THEN AD.Observación ELSE '' END
+		FROM TAsistenciaDiariaDocente AD
+	    WHERE AD.CodSemestre = @CodSemestre AND
+			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
+	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Asistió, AD.Observación
+	   ORDER BY AD.Fecha DESC
 END;
 GO
 
 -- Procedimiento para registrar la asistencia diaria de un docente.
 CREATE PROCEDURE spuRegistrarAsistenciaDiariaDocente @CodSemestre VARCHAR(7),
-											         @CodDepartamentoA VARCHAR(3),			
+											         @CodDepartamentoA VARCHAR(3),	-- Atrib. Docente (Jefe de Dep.)		
 										             @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 											         @Hora TIME(0),-- Formato: hh:mm:ss (Hora del control de asistencia)
 									                 @CodDocente VARCHAR(5),
@@ -1712,16 +1889,16 @@ GO
 
 -- Procedimiento para mostrar el registro de asistencia de los estudiantes de una asignatura en una fecha y hora especifica.
 CREATE PROCEDURE spuAsistenciaEstudiantes @CodSemestre VARCHAR(7),
-									      @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
-									      @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+										  @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
+										  @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 										  @Hora TIME(0) -- Formato: hh:mm:ss (Hora del control de asistencia)
 AS
 BEGIN
-	-- Mostrar el registro de asistencia de los estudiantes
+	-- Mostrar el registro de asistencias
 	SELECT ROW_NUMBER() OVER (ORDER BY M.APaterno ASC) AS Id, AE.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre,
 	       AE.Asistió, AE.Observación
-		FROM TAsistenciaEstudiante AE INNER JOIN TMatricula M ON
-			 AE.CodEstudiante = M.CodEstudiante
+		FROM (TAsistenciaEstudiante AE INNER JOIN TMatricula M ON
+			 AE.CodEstudiante = M.CodEstudiante) 
 	    WHERE AE.CodSemestre = @CodSemestre AND
 			  AE.CodAsignatura = @CodAsignatura AND
 			  AE.Fecha_Formatted = @Fecha AND
@@ -1737,15 +1914,120 @@ CREATE PROCEDURE spuAsistenciaEstudianteAsignatura @CodSemestre VARCHAR(7),
 												   @LimFechaSup DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
 AS
 BEGIN
-	-- Mostrar el registro de asistencia en el rango de fechas
-	SELECT Fecha_Formatted, Hora, Asistió, Observación
-		FROM TAsistenciaEstudiante
-	    WHERE CodSemestre = @CodSemestre AND
-			  CodEstudiante = @CodEstudiante AND
-			  CodAsignatura = @CodAsignatura AND
-			  (Fecha_Formatted BETWEEN @LimFechaInf AND @LimFechaSup)
-		GROUP BY Fecha, Fecha_Formatted, Hora, Asistió, Observación
-	    ORDER BY Fecha DESC
+	-- Mostrar el registro de asistenciaS
+	SELECT Fecha = AE.Fecha_Formatted, AE.Asistió, AE.Observación
+		FROM TAsistenciaEstudiante AE
+	    WHERE AE.CodSemestre = @CodSemestre AND
+			  AE.CodEstudiante = @CodEstudiante AND
+			  AE.CodAsignatura = @CodAsignatura AND
+			  (AE.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
+		GROUP BY AE.Fecha, AE.Fecha_Formatted, AE.Asistió, AE.Observación
+	    ORDER BY AE.Fecha DESC
+END;
+GO
+
+-- Procedimiento para mostrar la asistencia de los estudiantes de una asignatura por fechas en un rango.
+CREATE PROCEDURE spuAsistenciaEstudiantesPorFechas @CodSemestre VARCHAR(7),
+												   @CodDocente VARCHAR(5),
+												   @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)									
+												   @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+												   @LimFechaSup DATE  -- Formato: dd/mm/yyyy o dd-mm-yyyy
+AS
+BEGIN
+	-- Mostrar el registro de asistencias
+	SELECT Fecha = AD.Fecha_Formatted, SesiónDictada = AD.Asistió,
+	       TotalAsistieron = SUM(CASE WHEN AE.Asistió = 'SI' THEN 1 ELSE 0 END),
+		   TotalFaltaron = CASE WHEN AD.Observación = '' THEN SUM(CASE WHEN AE.Asistió = 'NO' THEN 1 ELSE 0 END) ELSE 0 END,
+		   AD.Observación
+		FROM TAsistenciaDocentePorAsignatura AD INNER JOIN TAsistenciaEstudiante AE ON
+			 (AD.CodSemestre = AE.CodSemestre AND AD.CodAsignatura = AE.CodAsignatura AND AD.Fecha = AE.Fecha)
+	    WHERE AD.CodSemestre = @CodSemestre AND
+			  AD.CodDocente = @CodDocente AND
+			  AD.CodAsignatura = @CodAsignatura AND
+			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
+	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Asistió, AD.Observación
+	   ORDER BY AD.Fecha DESC
+END;
+GO
+
+-- Procedimiento para mostrar las asistencia de los estudiantes de una asignatura en un rango de fechas
+CREATE PROCEDURE spuAsistenciaEstudiantesPorEstudiante  @CodSemestre VARCHAR(7),
+												        @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
+										                @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+										                @LimFechaSup DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
+AS
+BEGIN
+	-- Mostrar el registro de asistenciaS
+	SELECT ROW_NUMBER() OVER (ORDER BY M.APaterno ASC) AS Id, AE.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre,
+	       TotalAsistencias = SUM(CASE WHEN AE.Asistió = 'SI' THEN 1 ELSE 0 END),
+		   TotalFaltas = SUM(CASE WHEN AE.Asistió = 'NO' AND AE.Observación NOT IN ('FERIADO','SUSPENSION','FALTO EL DOCENTE')
+		                     THEN 1 ELSE 0 END)
+		FROM (TAsistenciaEstudiante AE INNER JOIN TMatricula M ON
+			 AE.CodEstudiante = M.CodEstudiante) 
+	    WHERE AE.CodSemestre = @CodSemestre AND
+			  AE.CodAsignatura = @CodAsignatura AND
+			  (AE.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
+	   GROUP BY AE.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
+END;
+GO
+
+-- Procedimiento para mostrar el porcentaje de asistencia de los estudiantes de todas las asignatura de una dpto academico.
+CREATE PROCEDURE spuAsistenciaEstudiantesPorAsignaturas @CodSemestre VARCHAR(7),
+													    @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Director Escuela)
+														@LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+														@LimFechaSup DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
+AS
+BEGIN
+	-- Mostrar el porcentaje de asistencias
+	WITH Resumen  AS (
+		SELECT AE.CodAsignatura, A.NombreAsignatura, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre),
+		       SUM(CASE WHEN AE.Asistió = 'SI' THEN 1 ELSE 0 END) AS TotalAsistencias,
+			   SUM(CASE WHEN AE.Asistió = 'NO' AND AE.Observación NOT IN ('FERIADO','SUSPENSION','FALTO EL DOCENTE')
+		                     THEN 1 ELSE 0 END) AS TotalFaltas
+		FROM ((TAsistenciaEstudiante AE INNER JOIN TAsistenciaDocentePorAsignatura ADA ON
+			 AE.CodAsignatura = ADA.CodAsignatura) INNER JOIN TAsignatura A ON
+			 SUBSTRING(AE.CodAsignatura,1,LEN(A.CodAsignatura)) = A.CodAsignatura) INNER JOIN TDocente D ON
+			 ADA.CodDocente = D.CodDocente
+	    WHERE AE.CodSemestre = @CodSemestre AND
+		      ADA.CodDepartamentoA = @CodDepartamentoA AND
+			  (AE.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
+		GROUP BY AE.CodAsignatura, A.NombreAsignatura, D.APaterno, D.AMaterno, D.Nombre)
+
+	SELECT CodAsignatura, NombreAsignatura, Docente,
+	       PorcentajeAsistencias = ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2),
+	       PorcentajeFaltas = ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2)
+	FROM Resumen
+	GROUP BY CodAsignatura, NombreAsignatura, Docente, TotalAsistencias, TotalFaltas
+	ORDER BY NombreAsignatura
+END;
+GO
+
+-- Procedimiento para mostrar el porcentaje de asistencia de un estudiante para cada una de sus asignaturas
+CREATE PROCEDURE spuAsistenciaAsignaturasEstudiante @CodSemestre VARCHAR(7),
+													@CodEstudiante VARCHAR(6),
+												    @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+													@LimFechaSup DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
+AS
+BEGIN
+	-- Mostrar el registro de asistencia de los estudiantes en el rango de fechas
+	WITH Resumen  AS (
+		SELECT AE.CodAsignatura, A.NombreAsignatura,
+		       TotalAsistencias = SUM(CASE WHEN AE.Asistió = 'SI' THEN 1 ELSE 0 END),
+			   TotalFaltas = SUM(CASE WHEN AE.Asistió = 'NO' AND AE.Observación NOT IN ('FERIADO','SUSPENSION','FALTO EL DOCENTE')
+		                         THEN 1 ELSE 0 END)
+		FROM TAsistenciaEstudiante AE INNER JOIN TAsignatura A ON
+			 SUBSTRING(AE.CodAsignatura,1,LEN(A.CodAsignatura)) = A.CodAsignatura
+	    WHERE AE.CodSemestre = @CodSemestre  AND
+			  AE.CodEstudiante = @CodEstudiante AND
+			  (AE.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
+		GROUP BY AE.CodAsignatura, A.NombreAsignatura)
+
+	SELECT CodAsignatura, NombreAsignatura,
+	       PorcentajeAsistencias = ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2),
+	       PorcentajeFaltas = ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2)
+	FROM Resumen
+	GROUP BY CodAsignatura, NombreAsignatura, TotalAsistencias, TotalFaltas
+	ORDER BY NombreAsignatura
 END;
 GO
 
@@ -1788,8 +2070,8 @@ END;
 GO
 
 -- Procedimiento para eliminar la asistencia de un estudiante.
-CREATE PROCEDURE spuEliminarAsistenciaEstudiante @CodSemestre VARCHAR(7),
-												 @CodEscuelaP VARCHAR(3), 
+CREATE PROCEDURE spuEliminarAsistenciaEstudiante @CodSemestre VARCHAR(7), 
+                                                 @CodEscuelaP VARCHAR(3),
 								                 @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
 										         @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 												 @Hora TIME(0), -- Formato: hh:mm:ss (Hora del control de asistencia)

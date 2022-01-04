@@ -18,7 +18,7 @@ namespace CapaPresentaciones
         public P_Menu()
         {
             InitializeComponent();
-            Control[] Controles = { pnOpciones, pnContenedor, lblSuperior, lblInferior, pbLogo, pbPerfil, lblDatos, lblAcceso, lblUsuario };
+            Control[] Controles = { pnOpciones, pnContenedor, lblSuperior, lblInferior, pbLogo, btnEditarPerfil, lblDatos, lblAcceso, lblUsuario };
             Docker.SubscribeControlsToDragEvents(Controles);
         }
 
@@ -53,14 +53,12 @@ namespace CapaPresentaciones
             {
                 if ((E_InicioSesion.Acceso == "Jefe de Departamento") || (E_InicioSesion.Acceso == "Director de Escuela") || (E_InicioSesion.Acceso == "Administrador"))
                 {
-                    pbPerfil.Image = Properties.Resources.Perfil as Image;
-                    pbEditarPerfil.Image = Properties.Resources.Perfil as Image;
+                    btnEditarPerfil.Image = Properties.Resources.Perfil as Image;
                 }
                 
                 if (E_InicioSesion.Acceso == "Docente")
                 {
-                    pbPerfil.Image = Properties.Resources.Perfil_Docente as Image;
-                    pbEditarPerfil.Image = Properties.Resources.Perfil_Docente as Image;
+                    btnEditarPerfil.Image = Properties.Resources.Perfil_Docente as Image;
                 }
             }
             else
@@ -68,8 +66,7 @@ namespace CapaPresentaciones
                 byte[] Perfil = new byte[0];
                 Perfil = E_InicioSesion.Perfil;
                 MemoryStream MemoriaPerfil = new MemoryStream(Perfil);
-                pbPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
-                pbEditarPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
+                btnEditarPerfil.Image = HacerImagenCircular(Bitmap.FromStream(MemoriaPerfil));
             }
             lblDatos.Text = E_InicioSesion.Datos;
             lblAcceso.Text = E_InicioSesion.Acceso;
@@ -86,12 +83,13 @@ namespace CapaPresentaciones
             if (Acceso == "Administrador")
             {
                 btnEditarPerfil.Visible = false;
-                pbEditarPerfil.Visible = false;
 
                 btnAsignaturasAsignadas.Visible = false;
                 btnAsistencia.Visible = false;
                 btnSilabos.Visible = false;
                 btnSesiones.Visible = false;
+                btnReportesDocente.Visible = false;
+                btnReportes.Visible = false;
 
                 btnCatálogo.Visible = true;
                 btnAsignaturas.Visible = true;
@@ -111,7 +109,6 @@ namespace CapaPresentaciones
                 btnSilabos.Visible = true;
                 btnSesiones.Visible = true;
 
-                SeparadorMenu2.Location = new Point(5, 496);
                 SeparadorMenu2.Visible = true;
 
                 //Bunifu.UI.WinForms.BunifuSeparator bs1 = new Bunifu.UI.WinForms.BunifuSeparator
@@ -126,12 +123,12 @@ namespace CapaPresentaciones
                 //pnOpciones.Controls.Add(bs1);
                 //pnOpciones.Tag = bs1;
 
-                btnCatálogo.Location = new Point(0, 507);
-                btnDocentes.Location = new Point(0, 549);
-
                 btnCatálogo.Visible = true;
                 btnAsignaturas.Visible = false;
                 btnDocentes.Visible = true;
+
+                btnReportes.Location = new Point(0, 643);
+
             }
             else if (Acceso == "Director de Escuela")
             {
@@ -141,7 +138,6 @@ namespace CapaPresentaciones
                 btnSilabos.Visible = true;
                 btnSesiones.Visible = true;
 
-                SeparadorMenu2.Location = new Point(5, 496);
                 SeparadorMenu2.Visible = true;
 
                 //Bunifu.UI.WinForms.BunifuSeparator bs1 = new Bunifu.UI.WinForms.BunifuSeparator
@@ -156,11 +152,13 @@ namespace CapaPresentaciones
                 //pnOpciones.Controls.Add(bs1);
                 //pnOpciones.Tag = bs1;
 
-                btnAsignaturas.Location = new Point(0, 507);
+                btnAsignaturas.Location = new Point(0, 561);
 
                 btnCatálogo.Visible = false;
                 btnAsignaturas.Visible = true;
                 btnDocentes.Visible = false;
+
+                btnReportes.Location = new Point(0, 602);
             }
             else if (Acceso == "Docente")
             {
@@ -172,6 +170,7 @@ namespace CapaPresentaciones
                 btnCatálogo.Visible = false;
                 btnAsignaturas.Visible = false;
                 btnDocentes.Visible = false;
+                btnReportes.Visible = false;
             }
         }
 
@@ -188,14 +187,13 @@ namespace CapaPresentaciones
                 SeparadorMenu1.Width = 209;
                 SeparadorMenu2.Width = 209;
                 SeparadorMenu3.Width = 209;
-                pbPerfil.Visible = true;
-                btnEditarPerfil.Visible = true;
-                pbEditarPerfil.Visible = false;
-                btnCerrarSesion.Visible = true;
-                pbCerrarSesion.Visible = false;
+                btnEditarPerfil.Size = new Size(106, 106);
+                btnEditarPerfil.Location = new Point(56, 10);
                 lblDatos.Visible = true;
                 lblAcceso.Visible = true;
                 lblUsuario.Visible = true;
+                pbMarcarAsistencia.Visible = false;
+                btnMarcarAsistencia.Visible = true;
                 Transicion.ShowSync(pnOpciones);
                 Transicion.ShowSync(pnContenedor);
 
@@ -207,14 +205,13 @@ namespace CapaPresentaciones
                 SeparadorMenu1.Width = 35;
                 SeparadorMenu2.Width = 35;
                 SeparadorMenu3.Width = 35;
-                pbPerfil.Visible = false;
-                btnEditarPerfil.Visible = false;
-                pbEditarPerfil.Visible = true;
-                btnCerrarSesion.Visible = false;
-                pbCerrarSesion.Visible = true;
+                btnEditarPerfil.Size = new Size(34, 34);
+                btnEditarPerfil.Location = new Point(5, 230);
                 lblDatos.Visible = false;
                 lblAcceso.Visible = false;
                 lblUsuario.Visible = false;
+                pbMarcarAsistencia.Visible = true;
+                btnMarcarAsistencia.Visible = false;
                 Transicion.ShowSync(pnOpciones);
                 Transicion.ShowSync(pnContenedor);
             }
@@ -385,17 +382,7 @@ namespace CapaPresentaciones
             GestionarAcceso();
         }
 
-        private void pbEditarPerfil_Click(object sender, EventArgs e)
-        {
-            EditarPerfil();
-        }
-
         private void btnCerrarSesion_Click(object sender, EventArgs e)
-        {
-            CerrarSesion();
-        }
-
-        private void pbCerrarSesion_Click(object sender, EventArgs e)
         {
             CerrarSesion();
         }
@@ -406,6 +393,12 @@ namespace CapaPresentaciones
             {
                 Application.Exit();
             }
+        }
+
+        private void btnReportesDocente_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_ReporteDocente>();
         }
 
         // Abrir Formularios
@@ -434,8 +427,7 @@ namespace CapaPresentaciones
 
         public void ActualizarPerfilJefe(Image perfil)
         {
-            pbPerfil.Image = perfil;
-            pbEditarPerfil.Image = perfil;
+            btnEditarPerfil.Image = perfil;
             JefeActualizarPerfil = perfil;
         }
     }

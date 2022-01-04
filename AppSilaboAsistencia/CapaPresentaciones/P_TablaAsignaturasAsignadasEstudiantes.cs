@@ -36,11 +36,12 @@ namespace CapaPresentaciones
         {
             dgvDatos.Columns[0].DisplayIndex = 5;
             dgvDatos.Columns[1].DisplayIndex = 5;
+
             dgvDatos.Columns[5].Visible = false;
+
             dgvDatos.Columns[2].HeaderText = "Código";
             dgvDatos.Columns[3].HeaderText = "Nombre";
             dgvDatos.Columns[4].HeaderText = "Escuela Profesional";
-            dgvDatos.Columns[5].HeaderText = "Grupo";
         }
 
         private void MostrarAsignaturas()

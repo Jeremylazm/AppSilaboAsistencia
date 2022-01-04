@@ -46,6 +46,79 @@ namespace CapaDatos
             return Resultado;
         }
 
+        // Método para mostrar la asistencia de los estudiantes de una asignatura por fechas en un rango.
+        public DataTable AsistenciaEstudiantesPorFechas(string CodSemestre, string CodDocente, string CodAsignatura, string LimFechaInf, string LimFechaSup)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuAsistenciaEstudiantesPorFechas", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); // Código (ej. IF085AIN)
+            Comando.Parameters.AddWithValue("@LimFechaInf", LimFechaInf); // Formato: dd/mm/yyyy o dd-mm-yyyy
+            Comando.Parameters.AddWithValue("@LimFechaSup", LimFechaSup); // Formato: dd/mm/yyyy o dd-mm-yyyy
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
+        // Método para mostrar las asistencia de los estudiantes de una asignatura en un rango de fechas
+        public DataTable AsistenciaEstudiantesPorEstudiante(string CodSemestre, string CodAsignatura, string LimFechaInf, string LimFechaSup)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuAsistenciaEstudiantesPorEstudiante", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); // Código (ej. IF085AIN)
+            Comando.Parameters.AddWithValue("@LimFechaInf", LimFechaInf); // Formato: dd/mm/yyyy o dd-mm-yyyy
+            Comando.Parameters.AddWithValue("@LimFechaSup", LimFechaSup); // Formato: dd/mm/yyyy o dd-mm-yyyy
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
+        // Método para mostrar el porcentaje de asistencia de los estudiantes de todas las asignaturas de una dpto academico.
+        public DataTable AsistenciaEstudiantesPorAsignaturas(string CodSemestre, string CodDepartamentoA, string LimFechaInf, string LimFechaSup)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuAsistenciaEstudiantesPorAsignaturas", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA); // Atrib. Docente (Director Escuela)
+            Comando.Parameters.AddWithValue("@LimFechaInf", LimFechaInf); // Formato: dd/mm/yyyy o dd-mm-yyyy
+            Comando.Parameters.AddWithValue("@LimFechaSup", LimFechaSup); // Formato: dd/mm/yyyy o dd-mm-yyyy
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
+        // Método para mostrar el porcentaje de asistencia de un estudiante para cada una de sus asignaturas.
+        public DataTable AsistenciaAsignaturasEstudiante(string CodSemestre, string CodEstudiante, string LimFechaInf, string LimFechaSup)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuAsistenciaAsignaturasEstudiante", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodEstudiante",CodEstudiante);
+            Comando.Parameters.AddWithValue("@LimFechaInf", LimFechaInf); // Formato: dd/mm/yyyy o dd-mm-yyyy
+            Comando.Parameters.AddWithValue("@LimFechaSup", LimFechaSup); // Formato: dd/mm/yyyy o dd-mm-yyyy
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
         // Método para registrar la asistencia de un estudiante.
         public void RegistrarAsistenciaEstudiante(E_AsistenciaEstudiante AsistenciaEstudiante)
         {
@@ -61,7 +134,7 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@Fecha", AsistenciaEstudiante.Fecha); // Formato: dd/mm/yyyy o dd-mm-yyyy
             Comando.Parameters.AddWithValue("@Hora", AsistenciaEstudiante.Hora); // Formato: hh: mm: ss (Hora del control de asistencia)
             Comando.Parameters.AddWithValue("@CodEstudiante", AsistenciaEstudiante.CodEstudiante);
-            Comando.Parameters.AddWithValue("@Estado", AsistenciaEstudiante.Asistio); // SI/NO (Presente/No presente)
+            Comando.Parameters.AddWithValue("@Asistió", AsistenciaEstudiante.Asistio); // SI/NO (Presente/No presente)
             Comando.Parameters.AddWithValue("@Observación", AsistenciaEstudiante.Observacion); // tardanza, permiso
             Comando.ExecuteNonQuery();
             Conectar.Close();
