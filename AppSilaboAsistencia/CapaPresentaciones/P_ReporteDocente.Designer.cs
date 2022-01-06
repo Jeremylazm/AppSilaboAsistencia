@@ -31,6 +31,7 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_ReporteDocente));
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
             this.pnPadre = new Bunifu.UI.WinForms.BunifuPanel();
@@ -57,12 +58,23 @@ namespace CapaPresentaciones
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.Cuadricula = new System.Windows.Forms.TableLayoutPanel();
+            this.pnTipo = new Bunifu.UI.WinForms.BunifuPanel();
+            this.pnCriterio = new Bunifu.UI.WinForms.BunifuPanel();
+            this.pnInicial = new Bunifu.UI.WinForms.BunifuPanel();
+            this.pnFinal = new Bunifu.UI.WinForms.BunifuPanel();
+            this.btnGeneral = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.pnContenedor.SuspendLayout();
             this.pnPadre.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnCajas)).BeginInit();
             this.pnCajas.Panel1.SuspendLayout();
             this.pnCajas.Panel2.SuspendLayout();
             this.pnCajas.SuspendLayout();
+            this.Cuadricula.SuspendLayout();
+            this.pnTipo.SuspendLayout();
+            this.pnCriterio.SuspendLayout();
+            this.pnInicial.SuspendLayout();
+            this.pnFinal.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnContenedor
@@ -76,20 +88,14 @@ namespace CapaPresentaciones
             this.pnContenedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pnContenedor.BorderRadius = 20;
             this.pnContenedor.BorderThickness = 1;
+            this.pnContenedor.Controls.Add(this.btnGeneral);
+            this.pnContenedor.Controls.Add(this.Cuadricula);
             this.pnContenedor.Controls.Add(this.pnPadre);
             this.pnContenedor.Controls.Add(this.pnCajas);
             this.pnContenedor.Controls.Add(this.btnSeleccionar);
             this.pnContenedor.Controls.Add(this.txtCodigo);
             this.pnContenedor.Controls.Add(this.lnCodigo);
             this.pnContenedor.Controls.Add(this.lblCodigo);
-            this.pnContenedor.Controls.Add(this.dpFechaFinal);
-            this.pnContenedor.Controls.Add(this.dpFechaInicial);
-            this.pnContenedor.Controls.Add(this.lblFechaFinal);
-            this.pnContenedor.Controls.Add(this.lblFechaInicial);
-            this.pnContenedor.Controls.Add(this.cxtCriterioSeleccion);
-            this.pnContenedor.Controls.Add(this.lblCriterioSeleccion);
-            this.pnContenedor.Controls.Add(this.cxtTipoReporte);
-            this.pnContenedor.Controls.Add(this.lblTipoReporte);
             this.pnContenedor.Controls.Add(this.btnCerrar);
             this.pnContenedor.Controls.Add(this.lblTitulo);
             this.pnContenedor.Location = new System.Drawing.Point(5, 5);
@@ -110,10 +116,10 @@ namespace CapaPresentaciones
             this.pnPadre.BorderRadius = 3;
             this.pnPadre.BorderThickness = 1;
             this.pnPadre.Controls.Add(this.pnReporte);
-            this.pnPadre.Location = new System.Drawing.Point(22, 208);
+            this.pnPadre.Location = new System.Drawing.Point(22, 224);
             this.pnPadre.Name = "pnPadre";
             this.pnPadre.ShowBorders = true;
-            this.pnPadre.Size = new System.Drawing.Size(1058, 429);
+            this.pnPadre.Size = new System.Drawing.Size(1057, 413);
             this.pnPadre.TabIndex = 77;
             // 
             // pnReporte
@@ -131,15 +137,14 @@ namespace CapaPresentaciones
             this.pnReporte.Location = new System.Drawing.Point(3, 3);
             this.pnReporte.Name = "pnReporte";
             this.pnReporte.ShowBorders = true;
-            this.pnReporte.Size = new System.Drawing.Size(1052, 423);
+            this.pnReporte.Size = new System.Drawing.Size(1051, 407);
             this.pnReporte.TabIndex = 0;
             // 
             // pnCajas
             // 
             this.pnCajas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnCajas.IsSplitterFixed = true;
-            this.pnCajas.Location = new System.Drawing.Point(177, 130);
+            this.pnCajas.Location = new System.Drawing.Point(177, 138);
             this.pnCajas.Name = "pnCajas";
             // 
             // pnCajas.Panel1
@@ -154,7 +159,7 @@ namespace CapaPresentaciones
             this.pnCajas.Panel2.Controls.Add(this.lnEscuelaP);
             this.pnCajas.Panel2.Controls.Add(this.txtEscuelaP);
             this.pnCajas.Size = new System.Drawing.Size(713, 69);
-            this.pnCajas.SplitterDistance = 322;
+            this.pnCajas.SplitterDistance = 351;
             this.pnCajas.TabIndex = 75;
             // 
             // lblNombre
@@ -190,7 +195,7 @@ namespace CapaPresentaciones
             this.lnNombre.Location = new System.Drawing.Point(3, 59);
             this.lnNombre.Name = "lnNombre";
             this.lnNombre.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.lnNombre.Size = new System.Drawing.Size(259, 10);
+            this.lnNombre.Size = new System.Drawing.Size(323, 10);
             this.lnNombre.TabIndex = 68;
             // 
             // txtNombre
@@ -207,7 +212,7 @@ namespace CapaPresentaciones
             this.txtNombre.Location = new System.Drawing.Point(3, 35);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtNombre.Size = new System.Drawing.Size(259, 23);
+            this.txtNombre.Size = new System.Drawing.Size(323, 23);
             this.txtNombre.TabIndex = 69;
             this.txtNombre.Text = "Valor de Nombre";
             this.txtNombre.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
@@ -246,7 +251,7 @@ namespace CapaPresentaciones
             this.lnEscuelaP.Location = new System.Drawing.Point(3, 59);
             this.lnEscuelaP.Name = "lnEscuelaP";
             this.lnEscuelaP.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.lnEscuelaP.Size = new System.Drawing.Size(339, 10);
+            this.lnEscuelaP.Size = new System.Drawing.Size(331, 10);
             this.lnEscuelaP.TabIndex = 71;
             // 
             // txtEscuelaP
@@ -263,7 +268,7 @@ namespace CapaPresentaciones
             this.txtEscuelaP.Location = new System.Drawing.Point(3, 35);
             this.txtEscuelaP.Name = "txtEscuelaP";
             this.txtEscuelaP.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtEscuelaP.Size = new System.Drawing.Size(339, 23);
+            this.txtEscuelaP.Size = new System.Drawing.Size(331, 23);
             this.txtEscuelaP.TabIndex = 72;
             this.txtEscuelaP.Text = "Valor de Escuela Profesional";
             this.txtEscuelaP.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
@@ -289,11 +294,11 @@ namespace CapaPresentaciones
             this.btnSeleccionar.ColorContrastOnClick = 45;
             this.btnSeleccionar.ColorContrastOnHover = 45;
             this.btnSeleccionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnSeleccionar.CustomizableEdges = borderEdges1;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnSeleccionar.CustomizableEdges = borderEdges2;
             this.btnSeleccionar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnSeleccionar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSeleccionar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -317,7 +322,7 @@ namespace CapaPresentaciones
             this.btnSeleccionar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Tabla;
             this.btnSeleccionar.IdleIconRightImage = null;
             this.btnSeleccionar.IndicateFocus = false;
-            this.btnSeleccionar.Location = new System.Drawing.Point(896, 149);
+            this.btnSeleccionar.Location = new System.Drawing.Point(893, 152);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSeleccionar.OnDisabledState.BorderRadius = 15;
@@ -369,7 +374,7 @@ namespace CapaPresentaciones
             this.txtCodigo.CursorType = System.Windows.Forms.Cursors.Default;
             this.txtCodigo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtCodigo.Location = new System.Drawing.Point(24, 165);
+            this.txtCodigo.Location = new System.Drawing.Point(24, 173);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtCodigo.Size = new System.Drawing.Size(132, 23);
@@ -387,7 +392,7 @@ namespace CapaPresentaciones
             this.lnCodigo.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lnCodigo.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.lnCodigo.LineThickness = 1;
-            this.lnCodigo.Location = new System.Drawing.Point(24, 189);
+            this.lnCodigo.Location = new System.Drawing.Point(24, 197);
             this.lnCodigo.Name = "lnCodigo";
             this.lnCodigo.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnCodigo.Size = new System.Drawing.Size(132, 10);
@@ -401,7 +406,7 @@ namespace CapaPresentaciones
             this.lblCodigo.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblCodigo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblCodigo.Location = new System.Drawing.Point(24, 133);
+            this.lblCodigo.Location = new System.Drawing.Point(24, 141);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblCodigo.Size = new System.Drawing.Size(132, 23);
@@ -434,8 +439,8 @@ namespace CapaPresentaciones
             this.dpFechaFinal.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.dpFechaFinal.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Left;
             this.dpFechaFinal.LeftTextMargin = 0;
-            this.dpFechaFinal.Location = new System.Drawing.Point(794, 95);
-            this.dpFechaFinal.MinDate = new System.DateTime(2021, 9, 1, 0, 0, 0, 0);
+            this.dpFechaFinal.Location = new System.Drawing.Point(15, 34);
+            this.dpFechaFinal.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             this.dpFechaFinal.MinimumSize = new System.Drawing.Size(4, 32);
             this.dpFechaFinal.Name = "dpFechaFinal";
             this.dpFechaFinal.Size = new System.Drawing.Size(270, 32);
@@ -465,8 +470,8 @@ namespace CapaPresentaciones
             this.dpFechaInicial.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.dpFechaInicial.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Left;
             this.dpFechaInicial.LeftTextMargin = 0;
-            this.dpFechaInicial.Location = new System.Drawing.Point(502, 95);
-            this.dpFechaInicial.MinDate = new System.DateTime(2021, 9, 1, 0, 0, 0, 0);
+            this.dpFechaInicial.Location = new System.Drawing.Point(10, 34);
+            this.dpFechaInicial.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             this.dpFechaInicial.MinimumSize = new System.Drawing.Size(4, 32);
             this.dpFechaInicial.Name = "dpFechaInicial";
             this.dpFechaInicial.Size = new System.Drawing.Size(270, 32);
@@ -481,7 +486,7 @@ namespace CapaPresentaciones
             this.lblFechaFinal.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblFechaFinal.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaFinal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblFechaFinal.Location = new System.Drawing.Point(794, 61);
+            this.lblFechaFinal.Location = new System.Drawing.Point(15, 3);
             this.lblFechaFinal.Name = "lblFechaFinal";
             this.lblFechaFinal.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblFechaFinal.Size = new System.Drawing.Size(96, 23);
@@ -499,7 +504,7 @@ namespace CapaPresentaciones
             this.lblFechaInicial.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblFechaInicial.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaInicial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblFechaInicial.Location = new System.Drawing.Point(502, 61);
+            this.lblFechaInicial.Location = new System.Drawing.Point(10, 3);
             this.lblFechaInicial.Name = "lblFechaInicial";
             this.lblFechaInicial.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblFechaInicial.Size = new System.Drawing.Size(106, 23);
@@ -548,7 +553,7 @@ namespace CapaPresentaciones
             "Por Estudiantes",
             "Por Fecha"});
             this.cxtCriterioSeleccion.ItemTopMargin = 3;
-            this.cxtCriterioSeleccion.Location = new System.Drawing.Point(288, 95);
+            this.cxtCriterioSeleccion.Location = new System.Drawing.Point(16, 34);
             this.cxtCriterioSeleccion.Name = "cxtCriterioSeleccion";
             this.cxtCriterioSeleccion.Size = new System.Drawing.Size(190, 32);
             this.cxtCriterioSeleccion.TabIndex = 57;
@@ -566,7 +571,7 @@ namespace CapaPresentaciones
             this.lblCriterioSeleccion.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblCriterioSeleccion.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCriterioSeleccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblCriterioSeleccion.Location = new System.Drawing.Point(288, 61);
+            this.lblCriterioSeleccion.Location = new System.Drawing.Point(16, 3);
             this.lblCriterioSeleccion.Name = "lblCriterioSeleccion";
             this.lblCriterioSeleccion.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblCriterioSeleccion.Size = new System.Drawing.Size(165, 23);
@@ -615,7 +620,7 @@ namespace CapaPresentaciones
             "Asistencia Estudiantes",
             "Avance Asignaturas"});
             this.cxtTipoReporte.ItemTopMargin = 3;
-            this.cxtTipoReporte.Location = new System.Drawing.Point(24, 95);
+            this.cxtTipoReporte.Location = new System.Drawing.Point(7, 34);
             this.cxtTipoReporte.Name = "cxtTipoReporte";
             this.cxtTipoReporte.Size = new System.Drawing.Size(242, 32);
             this.cxtTipoReporte.TabIndex = 55;
@@ -633,7 +638,7 @@ namespace CapaPresentaciones
             this.lblTipoReporte.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblTipoReporte.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTipoReporte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblTipoReporte.Location = new System.Drawing.Point(24, 61);
+            this.lblTipoReporte.Location = new System.Drawing.Point(7, 3);
             this.lblTipoReporte.Name = "lblTipoReporte";
             this.lblTipoReporte.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblTipoReporte.Size = new System.Drawing.Size(128, 23);
@@ -703,6 +708,189 @@ namespace CapaPresentaciones
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this.pnContenedor;
             // 
+            // Cuadricula
+            // 
+            this.Cuadricula.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Cuadricula.ColumnCount = 4;
+            this.Cuadricula.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.27093F));
+            this.Cuadricula.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.88429F));
+            this.Cuadricula.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.54717F));
+            this.Cuadricula.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.35849F));
+            this.Cuadricula.Controls.Add(this.pnFinal, 3, 0);
+            this.Cuadricula.Controls.Add(this.pnInicial, 2, 0);
+            this.Cuadricula.Controls.Add(this.pnCriterio, 1, 0);
+            this.Cuadricula.Controls.Add(this.pnTipo, 0, 0);
+            this.Cuadricula.Location = new System.Drawing.Point(17, 59);
+            this.Cuadricula.Name = "Cuadricula";
+            this.Cuadricula.RowCount = 1;
+            this.Cuadricula.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.Cuadricula.Size = new System.Drawing.Size(1047, 73);
+            this.Cuadricula.TabIndex = 78;
+            // 
+            // pnTipo
+            // 
+            this.pnTipo.BackgroundColor = System.Drawing.Color.Transparent;
+            this.pnTipo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnTipo.BackgroundImage")));
+            this.pnTipo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnTipo.BorderColor = System.Drawing.Color.Transparent;
+            this.pnTipo.BorderRadius = 3;
+            this.pnTipo.BorderThickness = 1;
+            this.pnTipo.Controls.Add(this.lblTipoReporte);
+            this.pnTipo.Controls.Add(this.cxtTipoReporte);
+            this.pnTipo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnTipo.Location = new System.Drawing.Point(0, 0);
+            this.pnTipo.Margin = new System.Windows.Forms.Padding(0);
+            this.pnTipo.Name = "pnTipo";
+            this.pnTipo.ShowBorders = true;
+            this.pnTipo.Size = new System.Drawing.Size(253, 73);
+            this.pnTipo.TabIndex = 0;
+            // 
+            // pnCriterio
+            // 
+            this.pnCriterio.BackgroundColor = System.Drawing.Color.Transparent;
+            this.pnCriterio.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnCriterio.BackgroundImage")));
+            this.pnCriterio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnCriterio.BorderColor = System.Drawing.Color.Transparent;
+            this.pnCriterio.BorderRadius = 3;
+            this.pnCriterio.BorderThickness = 1;
+            this.pnCriterio.Controls.Add(this.lblCriterioSeleccion);
+            this.pnCriterio.Controls.Add(this.cxtCriterioSeleccion);
+            this.pnCriterio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnCriterio.Location = new System.Drawing.Point(253, 0);
+            this.pnCriterio.Margin = new System.Windows.Forms.Padding(0);
+            this.pnCriterio.Name = "pnCriterio";
+            this.pnCriterio.ShowBorders = true;
+            this.pnCriterio.Size = new System.Drawing.Size(218, 73);
+            this.pnCriterio.TabIndex = 1;
+            // 
+            // pnInicial
+            // 
+            this.pnInicial.BackgroundColor = System.Drawing.Color.Transparent;
+            this.pnInicial.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnInicial.BackgroundImage")));
+            this.pnInicial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnInicial.BorderColor = System.Drawing.Color.Transparent;
+            this.pnInicial.BorderRadius = 3;
+            this.pnInicial.BorderThickness = 1;
+            this.pnInicial.Controls.Add(this.lblFechaInicial);
+            this.pnInicial.Controls.Add(this.dpFechaInicial);
+            this.pnInicial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnInicial.Location = new System.Drawing.Point(471, 0);
+            this.pnInicial.Margin = new System.Windows.Forms.Padding(0);
+            this.pnInicial.Name = "pnInicial";
+            this.pnInicial.ShowBorders = true;
+            this.pnInicial.Size = new System.Drawing.Size(288, 73);
+            this.pnInicial.TabIndex = 2;
+            // 
+            // pnFinal
+            // 
+            this.pnFinal.BackgroundColor = System.Drawing.Color.Transparent;
+            this.pnFinal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnFinal.BackgroundImage")));
+            this.pnFinal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnFinal.BorderColor = System.Drawing.Color.Transparent;
+            this.pnFinal.BorderRadius = 3;
+            this.pnFinal.BorderThickness = 1;
+            this.pnFinal.Controls.Add(this.lblFechaFinal);
+            this.pnFinal.Controls.Add(this.dpFechaFinal);
+            this.pnFinal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnFinal.Location = new System.Drawing.Point(759, 0);
+            this.pnFinal.Margin = new System.Windows.Forms.Padding(0);
+            this.pnFinal.Name = "pnFinal";
+            this.pnFinal.ShowBorders = true;
+            this.pnFinal.Size = new System.Drawing.Size(288, 73);
+            this.pnFinal.TabIndex = 3;
+            // 
+            // btnGeneral
+            // 
+            this.btnGeneral.AllowAnimations = true;
+            this.btnGeneral.AllowMouseEffects = true;
+            this.btnGeneral.AllowToggling = false;
+            this.btnGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGeneral.AnimationSpeed = 200;
+            this.btnGeneral.AutoGenerateColors = false;
+            this.btnGeneral.AutoRoundBorders = false;
+            this.btnGeneral.AutoSizeLeftIcon = true;
+            this.btnGeneral.AutoSizeRightIcon = true;
+            this.btnGeneral.BackColor = System.Drawing.Color.Transparent;
+            this.btnGeneral.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGeneral.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGeneral.BackgroundImage")));
+            this.btnGeneral.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGeneral.ButtonText = "General";
+            this.btnGeneral.ButtonTextMarginLeft = 0;
+            this.btnGeneral.ColorContrastOnClick = 45;
+            this.btnGeneral.ColorContrastOnHover = 45;
+            this.btnGeneral.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnGeneral.CustomizableEdges = borderEdges1;
+            this.btnGeneral.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGeneral.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnGeneral.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnGeneral.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnGeneral.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            this.btnGeneral.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGeneral.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGeneral.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGeneral.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnGeneral.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnGeneral.IconMarginLeft = 11;
+            this.btnGeneral.IconPadding = 10;
+            this.btnGeneral.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGeneral.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnGeneral.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnGeneral.IconSize = 25;
+            this.btnGeneral.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGeneral.IdleBorderRadius = 15;
+            this.btnGeneral.IdleBorderThickness = 1;
+            this.btnGeneral.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGeneral.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Tabla;
+            this.btnGeneral.IdleIconRightImage = null;
+            this.btnGeneral.IndicateFocus = false;
+            this.btnGeneral.Location = new System.Drawing.Point(893, 172);
+            this.btnGeneral.Name = "btnGeneral";
+            this.btnGeneral.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnGeneral.OnDisabledState.BorderRadius = 15;
+            this.btnGeneral.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGeneral.OnDisabledState.BorderThickness = 1;
+            this.btnGeneral.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnGeneral.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnGeneral.OnDisabledState.IconLeftImage = null;
+            this.btnGeneral.OnDisabledState.IconRightImage = null;
+            this.btnGeneral.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGeneral.onHoverState.BorderRadius = 15;
+            this.btnGeneral.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGeneral.onHoverState.BorderThickness = 1;
+            this.btnGeneral.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGeneral.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGeneral.onHoverState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Tabla_2;
+            this.btnGeneral.onHoverState.IconRightImage = null;
+            this.btnGeneral.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGeneral.OnIdleState.BorderRadius = 15;
+            this.btnGeneral.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGeneral.OnIdleState.BorderThickness = 1;
+            this.btnGeneral.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGeneral.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGeneral.OnIdleState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Tabla;
+            this.btnGeneral.OnIdleState.IconRightImage = null;
+            this.btnGeneral.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGeneral.OnPressedState.BorderRadius = 15;
+            this.btnGeneral.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGeneral.OnPressedState.BorderThickness = 1;
+            this.btnGeneral.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGeneral.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGeneral.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Tabla;
+            this.btnGeneral.OnPressedState.IconRightImage = null;
+            this.btnGeneral.Size = new System.Drawing.Size(168, 39);
+            this.btnGeneral.TabIndex = 79;
+            this.btnGeneral.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGeneral.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnGeneral.TextMarginLeft = 0;
+            this.btnGeneral.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnGeneral.UseDefaultRadiusAndThickness = true;
+            this.btnGeneral.Visible = false;
+            // 
             // P_ReporteDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -724,6 +912,15 @@ namespace CapaPresentaciones
             this.pnCajas.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnCajas)).EndInit();
             this.pnCajas.ResumeLayout(false);
+            this.Cuadricula.ResumeLayout(false);
+            this.pnTipo.ResumeLayout(false);
+            this.pnTipo.PerformLayout();
+            this.pnCriterio.ResumeLayout(false);
+            this.pnCriterio.PerformLayout();
+            this.pnInicial.ResumeLayout(false);
+            this.pnInicial.PerformLayout();
+            this.pnFinal.ResumeLayout(false);
+            this.pnFinal.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -734,6 +931,7 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuImageButton btnCerrar;
         private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
+        private Bunifu.UI.WinForms.BunifuDatePicker dpFechaInicial;
         private Bunifu.UI.WinForms.BunifuLabel lblFechaFinal;
         private Bunifu.UI.WinForms.BunifuLabel lblFechaInicial;
         public Bunifu.UI.WinForms.BunifuDropdown cxtCriterioSeleccion;
@@ -754,6 +952,11 @@ namespace CapaPresentaciones
         public Bunifu.UI.WinForms.BunifuLabel txtCodigo;
         private Bunifu.UI.WinForms.BunifuPanel pnPadre;
         private Bunifu.UI.WinForms.BunifuPanel pnReporte;
-        private Bunifu.UI.WinForms.BunifuDatePicker dpFechaInicial;
+        private System.Windows.Forms.TableLayoutPanel Cuadricula;
+        private Bunifu.UI.WinForms.BunifuPanel pnFinal;
+        private Bunifu.UI.WinForms.BunifuPanel pnInicial;
+        private Bunifu.UI.WinForms.BunifuPanel pnCriterio;
+        private Bunifu.UI.WinForms.BunifuPanel pnTipo;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGeneral;
     }
 }

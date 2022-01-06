@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -19,7 +18,8 @@ namespace CapaPresentaciones
         readonly N_Catalogo ObjCatalogo;
         private readonly string CodSemestre;
         readonly string CodDocente = E_InicioSesion.Usuario;
-        private readonly string CodDepartamentoA = "IF";
+        private readonly string CodEscuelaP = "IF";
+        C_ReporteA Reportes = new C_ReporteA();
 
         public P_ReporteDocente()
         {
@@ -35,7 +35,7 @@ namespace CapaPresentaciones
             cxtTipoReporte.SelectedIndex = 0;
             cxtCriterioSeleccion.SelectedIndex = 0;
 
-            DataTable Asignaturas = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodDepartamentoA, CodDocente);
+            DataTable Asignaturas = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodEscuelaP, CodDocente);
             txtCodigo.Text = Asignaturas.Rows[0].ItemArray[0].ToString();
             txtNombre.Text = Asignaturas.Rows[0].ItemArray[1].ToString();
             txtEscuelaP.Text = Asignaturas.Rows[0].ItemArray[2].ToString();
@@ -53,15 +53,39 @@ namespace CapaPresentaciones
             pnReporte.Width = pnPadre.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
             pnReporte.Height = pnPadre.ClientSize.Height + SystemInformation.HorizontalScrollBarHeight;
 
-            C_ReporteA Reporte = new C_ReporteA
+            string[] Titulos = { "Semestre" };
+            string[] Valores = { "2021-I" };
+            C_ReporteA Reporte = new C_ReporteA("Reporte de Docente", Titulos, Valores, null)
             {
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
             };
-            pnReporte.Controls.Add(Reporte);
 
-            //
-            dpFechaInicial.Value = new DateTime(2021, 10, 18);
-            dpFechaFinal.Value = new DateTime(2022, 01, 10);
+            Reportes = Reporte;
+
+            Responsivo();
+            pnReporte.Controls.Add(Reporte);
+        }
+
+        private void Responsivo()
+        {
+            int AnchoTotal = 0;
+            int Filas = 1;
+
+            foreach (C_Campo cpControl in Reportes.pnSubcampos.Controls)
+            {
+                if ((AnchoTotal + cpControl.Width + 6) > Reportes.pnSubcampos.Width)
+                {
+                    Filas++;
+                    AnchoTotal = cpControl.Width + 6;
+                }
+                else
+                {
+                    AnchoTotal += cpControl.Width + 6;
+                }
+            }
+
+            Reportes.Cuadricula.RowStyles[0].Height = Filas * 92 + 51;
+            Reportes.Height = (int)Reportes.Cuadricula.RowStyles[0].Height + (int)Reportes.Cuadricula.RowStyles[1].Height + 73;
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
@@ -95,6 +119,9 @@ namespace CapaPresentaciones
                     lblFechaFinal.Visible = false;
                     dpFechaFinal.Visible = false;
                 }
+
+                btnGeneral.Visible = false;
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
@@ -106,6 +133,9 @@ namespace CapaPresentaciones
 
                 lblFechaFinal.Visible = false;
                 dpFechaFinal.Visible = false;
+
+                btnGeneral.Visible = true;
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
             }
         }
 
@@ -117,71 +147,6 @@ namespace CapaPresentaciones
 
                 lblFechaFinal.Visible = true;
                 dpFechaFinal.Visible = true;
-
-                // Tipo de reporte: Asistencia estudiantes
-                // Criterio de selección: Por Estudiantes
-                //MessageBox.Show(pnReporte.Controls.Count.ToString());
-                //MessageBox.Show(pnReporte.Controls[0].Controls.Count.ToString());
-                Control.ControlCollection main = pnReporte.Controls[0].Controls;
-                //MessageBox.Show(a[0].Name);
-
-                /*Console.WriteLine(main[7].Name);
-                Console.WriteLine(main[7].Controls.Count.ToString());*/
-                //a[7].Text = "HOLA";
-                // 7: pnCampos para la Descripción
-                /*for (int i = 0; i < main[7].Controls.Count; i++)
-                {
-                    Console.WriteLine(main[7].Controls[i].Name + " -> " + i);
-                }*/
-                Console.WriteLine("--------");
-
-                DataTable datosDocente = N_Docente.BuscarDocente(CodDepartamentoA, CodDocente);
-                string nombreDocente = datosDocente.Rows[0]["Nombre"].ToString() + " " + datosDocente.Rows[0]["APaterno"].ToString() + " " + datosDocente.Rows[0]["AMaterno"].ToString();
-
-                // Descripción
-                Control.ControlCollection descripcion = main["pnCampos"].Controls;
-
-                descripcion["lblCampo1"].Text = "Semestre";
-                descripcion["txtCampo1"].Text = CodSemestre;
-
-                descripcion["lblCampo2"].Text = "Escuela Profesional";
-                descripcion["txtCampo2"].Text = txtEscuelaP.Text;
-
-                descripcion["lblCampo3"].Text = "Asignatura";
-                descripcion["txtCampo3"].Text = txtNombre.Text;
-
-                descripcion["lblCampo4"].Text = "Cód. Asignatura";
-                descripcion["txtCampo4"].Text = txtCodigo.Text;
-
-                descripcion["lblCampo5"].Text = "Docente";
-                descripcion["txtCampo5"].Text = nombreDocente;
-
-                descripcion["lblCampo6"].Text = "Cod. Docente";
-                descripcion["txtCampo6"].Text = CodDocente;
-
-                // Resultados
-                Control.ControlCollection resultados = main["pnResultados"].Controls;
-
-                Bunifu.UI.WinForms.BunifuDataGridView dgvResultados = (resultados["dgvResultados"] as Bunifu.UI.WinForms.BunifuDataGridView);
-
-                dgvResultados.DataSource = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("eS-ES")));
-                dgvResultados.Columns[1].Visible = false;
-                dgvResultados.Columns[0].DisplayIndex = 7;
-
-                // Cuadro resumen
-                /*(main["gbxCuadroResumen"] as Bunifu.UI.WinForms.BunifuLabel).Visible = false;
-                Bunifu.UI.WinForms.BunifuPanel cuadroResumen = main["pnResumen"] as Bunifu.UI.WinForms.BunifuPanel;*/
-                /*main.Remove(main["gbxCuadroResumen"]);
-               
-                main.Remove(main["pnResumen"]);*/
-
-
-                /*for (int i = 0; i < resumen.Count; i++)
-                {
-                    Console.WriteLine(resumen[i].Name + " -> " + i);
-                }
-
-                Bunifu.UI.WinForms.BunifuDataGridView dgvResumen = (resultados["dgvResumen"] as Bunifu.UI.WinForms.BunifuDataGridView);*/
             }
             else if (cxtCriterioSeleccion.SelectedItem.Equals("Por Fecha"))
             {
@@ -189,9 +154,6 @@ namespace CapaPresentaciones
 
                 lblFechaFinal.Visible = false;
                 dpFechaFinal.Visible = false;
-
-                // Tipo de reporte: Asistencia estudiantes
-                // Criterio de selección: Por Fecha
             }
         }
     }
