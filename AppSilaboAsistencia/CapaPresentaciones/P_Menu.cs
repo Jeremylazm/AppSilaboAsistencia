@@ -429,6 +429,12 @@ namespace CapaPresentaciones
             AnimacionDirectorContenedor.Start();
         }
 
+        private void btnAsistenciasDocentes_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_HistorialAsistenciasDocentes>();
+        }
+
         // Abrir Formularios
         public void AbrirFormularios<FormularioAbrir>() where FormularioAbrir : Form, new()
         {
