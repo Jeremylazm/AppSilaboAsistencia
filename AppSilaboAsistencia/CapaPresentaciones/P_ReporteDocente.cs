@@ -19,6 +19,7 @@ namespace CapaPresentaciones
         private readonly string CodSemestre;
         readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodEscuelaP = "IF";
+        C_ReporteA Reportes = new C_ReporteA();
 
         public P_ReporteDocente()
         {
@@ -52,11 +53,39 @@ namespace CapaPresentaciones
             pnReporte.Width = pnPadre.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
             pnReporte.Height = pnPadre.ClientSize.Height + SystemInformation.HorizontalScrollBarHeight;
 
-            C_ReporteA Reporte = new C_ReporteA
+            string[] Titulos = { "Semestre" };
+            string[] Valores = { "2021-I" };
+            C_ReporteA Reporte = new C_ReporteA("Reporte de Docente", Titulos, Valores, null)
             {
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
             };
+
+            Reportes = Reporte;
+
+            Responsivo();
             pnReporte.Controls.Add(Reporte);
+        }
+
+        private void Responsivo()
+        {
+            int AnchoTotal = 0;
+            int Filas = 1;
+
+            foreach (C_Campo cpControl in Reportes.pnSubcampos.Controls)
+            {
+                if ((AnchoTotal + cpControl.Width + 6) > Reportes.pnSubcampos.Width)
+                {
+                    Filas++;
+                    AnchoTotal = cpControl.Width + 6;
+                }
+                else
+                {
+                    AnchoTotal += cpControl.Width + 6;
+                }
+            }
+
+            Reportes.Cuadricula.RowStyles[0].Height = Filas * 92 + 51;
+            Reportes.Height = (int)Reportes.Cuadricula.RowStyles[0].Height + (int)Reportes.Cuadricula.RowStyles[1].Height + 73;
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
@@ -90,6 +119,9 @@ namespace CapaPresentaciones
                     lblFechaFinal.Visible = false;
                     dpFechaFinal.Visible = false;
                 }
+
+                btnGeneral.Visible = false;
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
@@ -101,6 +133,9 @@ namespace CapaPresentaciones
 
                 lblFechaFinal.Visible = false;
                 dpFechaFinal.Visible = false;
+
+                btnGeneral.Visible = true;
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
             }
         }
 
