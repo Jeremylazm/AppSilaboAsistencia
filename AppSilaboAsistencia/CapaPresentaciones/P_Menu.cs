@@ -14,6 +14,9 @@ namespace CapaPresentaciones
 
         public string Acceso = "";
         private Image JefeActualizarPerfil = null;
+        bool DocenteColapsado = false;
+        bool JefeColapsado = true;
+        bool DirectorColapsado = true;
 
         public P_Menu()
         {
@@ -82,95 +85,23 @@ namespace CapaPresentaciones
         {
             if (Acceso == "Administrador")
             {
-                btnEditarPerfil.Visible = false;
-
-                btnAsignaturasAsignadas.Visible = false;
-                btnAsistencia.Visible = false;
-                btnSilabos.Visible = false;
-                btnSesiones.Visible = false;
-                btnReportesDocente.Visible = false;
-                btnReportes.Visible = false;
-
-                btnCatálogo.Visible = true;
-                btnAsignaturas.Visible = true;
-                btnDocentes.Visible = true;
-
-                btnCatálogo.Location = new Point(0, 332);
-                btnAsignaturas.Location = new Point(0, 373);
-                btnDocentes.Location = new Point(0, 414);
-
-                // Administrador 
+                
             }
             else if (Acceso == "Jefe de Departamento")
             {
-                // Docentes y catálogo
-                btnAsignaturasAsignadas.Visible = true;
-                btnAsistencia.Visible = true;
-                btnSilabos.Visible = true;
-                btnSesiones.Visible = true;
-
-                SeparadorMenu2.Visible = true;
-
-                //Bunifu.UI.WinForms.BunifuSeparator bs1 = new Bunifu.UI.WinForms.BunifuSeparator
-                //{
-                //    LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded,
-                //    Location = new Point(5, 496),
-                //    Size = new Size(209, 14),
-                //    BackColor = Color.Transparent,
-                //    LineColor = Color.FromArgb(232, 158, 31)
-                //};
-
-                //pnOpciones.Controls.Add(bs1);
-                //pnOpciones.Tag = bs1;
-
-                btnCatálogo.Visible = true;
-                btnAsignaturas.Visible = false;
-                btnDocentes.Visible = true;
-
-                btnReportes.Location = new Point(0, 643);
-
+                pnContenedorDirector.Visible = false;
             }
             else if (Acceso == "Director de Escuela")
             {
-                // Asignaturas
-                btnAsignaturasAsignadas.Visible = true;
-                btnAsistencia.Visible = true;
-                btnSilabos.Visible = true;
-                btnSesiones.Visible = true;
-
-                SeparadorMenu2.Visible = true;
-
-                //Bunifu.UI.WinForms.BunifuSeparator bs1 = new Bunifu.UI.WinForms.BunifuSeparator
-                //{
-                //    LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded,
-                //    Location = new Point(5, 496),
-                //    Size = new Size(209, 14),
-                //    BackColor = Color.Transparent,
-                //    LineColor = Color.FromArgb(232, 158, 31)
-                //};
-
-                //pnOpciones.Controls.Add(bs1);
-                //pnOpciones.Tag = bs1;
-
-                btnAsignaturas.Location = new Point(0, 561);
-
-                btnCatálogo.Visible = false;
-                btnAsignaturas.Visible = true;
-                btnDocentes.Visible = false;
-
-                btnReportes.Location = new Point(0, 602);
+                pnBotonesMenu.Controls.SetChildIndex(pnContenedorDirector, 2);
+                pnContenedorJefe.Visible = false;
             }
             else if (Acceso == "Docente")
             {
-                btnAsignaturasAsignadas.Visible = true;
-                btnAsistencia.Visible = true;
-                btnSilabos.Visible = true;
-                btnSesiones.Visible = true;
-
-                btnCatálogo.Visible = false;
-                btnAsignaturas.Visible = false;
-                btnDocentes.Visible = false;
-                btnReportes.Visible = false;
+                pnContenedorDocente.Controls.SetChildIndex(btnContenedorDocente, 5);
+                btnContenedorDocente.Visible = false;
+                pnContenedorJefe.Visible = false;
+                pnContenedorDirector.Visible = false;
             }
         }
 
@@ -186,7 +117,6 @@ namespace CapaPresentaciones
                 pbLogo.Location = new Point(225, 5);
                 SeparadorMenu1.Width = 209;
                 SeparadorMenu2.Width = 209;
-                SeparadorMenu3.Width = 209;
                 btnEditarPerfil.Size = new Size(106, 106);
                 btnEditarPerfil.Location = new Point(56, 10);
                 lblDatos.Visible = true;
@@ -204,7 +134,6 @@ namespace CapaPresentaciones
                 pbLogo.Location = new Point(49, 5);
                 SeparadorMenu1.Width = 35;
                 SeparadorMenu2.Width = 35;
-                SeparadorMenu3.Width = 35;
                 btnEditarPerfil.Size = new Size(34, 34);
                 btnEditarPerfil.Location = new Point(5, 230);
                 lblDatos.Visible = false;
@@ -399,6 +328,105 @@ namespace CapaPresentaciones
         {
             ActualizarColor();
             AbrirFormularios<P_ReporteDocente>();
+        }
+
+        private void AnimacionDocenteContenedor_Tick(object sender, EventArgs e)
+        {
+            if (DocenteColapsado)
+            {
+                JefeColapsado = false;
+                AnimacionJefeContenedor.Start();
+                DirectorColapsado = false;
+                AnimacionDirectorContenedor.Start();
+
+                pnContenedorDocente.Height += 10;
+                if (pnContenedorDocente.Height.Equals(pnContenedorDocente.MaximumSize.Height))
+                {
+                    DocenteColapsado = false;
+                    AnimacionDocenteContenedor.Stop();
+                }
+            }
+            else
+            {
+                pnContenedorDocente.Height -= 10;
+                if (pnContenedorDocente.Height.Equals(pnContenedorDocente.MinimumSize.Height))
+                {
+                    DocenteColapsado = true;
+                    AnimacionDocenteContenedor.Stop();
+                }
+            }
+        }
+
+        private void AnimacionJefeContenedor_Tick(object sender, EventArgs e)
+        {
+            if (JefeColapsado)
+            {
+                DocenteColapsado = false;
+                AnimacionDocenteContenedor.Start();
+                DirectorColapsado = false;
+                AnimacionDirectorContenedor.Start();
+
+                pnContenedorJefe.Height += 10;
+                if (pnContenedorJefe.Height.Equals(pnContenedorJefe.MaximumSize.Height))
+                {
+                    JefeColapsado = false;
+                    AnimacionJefeContenedor.Stop();
+                }
+            }
+            else
+            {
+                pnContenedorJefe.Height -= 10;
+                if (pnContenedorJefe.Height.Equals(pnContenedorJefe.MinimumSize.Height))
+                {
+                    JefeColapsado = true;
+                    AnimacionJefeContenedor.Stop();
+                }
+            }
+        }
+
+        private void AnimacionDirectorContenedor_Tick(object sender, EventArgs e)
+        {
+            if (DirectorColapsado)
+            {
+                DocenteColapsado = false;
+                AnimacionDocenteContenedor.Start();
+                JefeColapsado = false;
+                AnimacionJefeContenedor.Start();
+
+                pnContenedorDirector.Height += 10;
+                if (pnContenedorDirector.Height.Equals(pnContenedorDirector.MaximumSize.Height))
+                {
+                    DirectorColapsado = false;
+                    AnimacionDirectorContenedor.Stop();
+                }
+            }
+            else
+            {
+                pnContenedorDirector.Height -= 10;
+                if (pnContenedorDirector.Height.Equals(pnContenedorDirector.MinimumSize.Height))
+                {
+                    DirectorColapsado = true;
+                    AnimacionDirectorContenedor.Stop();
+                }
+            }
+        }
+
+        private void btnContenedorDocente_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AnimacionDocenteContenedor.Start();
+        }
+
+        private void btnContenedorJefe_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AnimacionJefeContenedor.Start();
+        }
+
+        private void btnContenedorDirector_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AnimacionDirectorContenedor.Start();
         }
 
         // Abrir Formularios

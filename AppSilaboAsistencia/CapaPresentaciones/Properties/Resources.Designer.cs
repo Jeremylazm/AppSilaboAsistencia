@@ -293,6 +293,26 @@ namespace CapaPresentaciones.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Desplegable {
+            get {
+                object obj = ResourceManager.GetObject("Desplegable", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Desplegable_2 {
+            get {
+                object obj = ResourceManager.GetObject("Desplegable_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Dialogo_Confirmacion {
             get {
                 object obj = ResourceManager.GetObject("Dialogo_Confirmacion", resourceCulture);
@@ -536,6 +556,16 @@ namespace CapaPresentaciones.Properties {
         internal static System.Drawing.Bitmap Logo_UNSAAC3 {
             get {
                 object obj = ResourceManager.GetObject("Logo_UNSAAC3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Marcar {
+            get {
+                object obj = ResourceManager.GetObject("Marcar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
