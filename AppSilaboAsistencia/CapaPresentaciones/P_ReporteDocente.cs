@@ -64,6 +64,9 @@ namespace CapaPresentaciones
 
             Responsivo();
             pnReporte.Controls.Add(Reporte);
+
+            dpFechaInicial.MaxDate = DateTime.Now;
+            dpFechaFinal.MaxDate = DateTime.Now;
         }
 
         private void Responsivo()
@@ -105,21 +108,6 @@ namespace CapaPresentaciones
                 lblFechaInicial.Visible = true;
                 dpFechaInicial.Visible = true;
 
-                if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
-                {
-                    lblFechaInicial.Text = "Fecha Inicial";
-
-                    lblFechaFinal.Visible = true;
-                    dpFechaFinal.Visible = true;
-                }
-                else if (cxtCriterioSeleccion.SelectedItem.Equals("Por Fecha"))
-                {
-                    lblFechaInicial.Text = "Fecha";
-
-                    lblFechaFinal.Visible = false;
-                    dpFechaFinal.Visible = false;
-                }
-
                 btnGeneral.Visible = false;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
             }
@@ -136,24 +124,6 @@ namespace CapaPresentaciones
 
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
-            }
-        }
-
-        private void cxtCriterioSeleccion_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
-            {
-                lblFechaInicial.Text = "Fecha Inicial";
-
-                lblFechaFinal.Visible = true;
-                dpFechaFinal.Visible = true;
-            }
-            else if (cxtCriterioSeleccion.SelectedItem.Equals("Por Fecha"))
-            {
-                lblFechaInicial.Text = "Fecha";
-
-                lblFechaFinal.Visible = false;
-                dpFechaFinal.Visible = false;
             }
         }
     }
