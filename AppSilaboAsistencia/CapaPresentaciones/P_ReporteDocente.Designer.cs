@@ -33,6 +33,8 @@ namespace CapaPresentaciones
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_ReporteDocente));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
+            this.pnPadre = new Bunifu.UI.WinForms.BunifuPanel();
+            this.pnReporte = new Bunifu.UI.WinForms.BunifuPanel();
             this.pnCajas = new System.Windows.Forms.SplitContainer();
             this.lblNombre = new Bunifu.UI.WinForms.BunifuLabel();
             this.lnNombre = new Bunifu.UI.WinForms.BunifuSeparator();
@@ -55,14 +57,12 @@ namespace CapaPresentaciones
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.pnPadre = new Bunifu.UI.WinForms.BunifuPanel();
-            this.pnReporte = new Bunifu.UI.WinForms.BunifuPanel();
             this.pnContenedor.SuspendLayout();
+            this.pnPadre.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnCajas)).BeginInit();
             this.pnCajas.Panel1.SuspendLayout();
             this.pnCajas.Panel2.SuspendLayout();
             this.pnCajas.SuspendLayout();
-            this.pnPadre.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnContenedor
@@ -97,6 +97,42 @@ namespace CapaPresentaciones
             this.pnContenedor.ShowBorders = true;
             this.pnContenedor.Size = new System.Drawing.Size(1090, 660);
             this.pnContenedor.TabIndex = 19;
+            // 
+            // pnPadre
+            // 
+            this.pnPadre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnPadre.BackgroundColor = System.Drawing.Color.Transparent;
+            this.pnPadre.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnPadre.BackgroundImage")));
+            this.pnPadre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnPadre.BorderColor = System.Drawing.Color.Transparent;
+            this.pnPadre.BorderRadius = 3;
+            this.pnPadre.BorderThickness = 1;
+            this.pnPadre.Controls.Add(this.pnReporte);
+            this.pnPadre.Location = new System.Drawing.Point(22, 208);
+            this.pnPadre.Name = "pnPadre";
+            this.pnPadre.ShowBorders = true;
+            this.pnPadre.Size = new System.Drawing.Size(1058, 429);
+            this.pnPadre.TabIndex = 77;
+            // 
+            // pnReporte
+            // 
+            this.pnReporte.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnReporte.AutoScroll = true;
+            this.pnReporte.BackgroundColor = System.Drawing.Color.Transparent;
+            this.pnReporte.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnReporte.BackgroundImage")));
+            this.pnReporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnReporte.BorderColor = System.Drawing.Color.Transparent;
+            this.pnReporte.BorderRadius = 3;
+            this.pnReporte.BorderThickness = 1;
+            this.pnReporte.Location = new System.Drawing.Point(3, 3);
+            this.pnReporte.Name = "pnReporte";
+            this.pnReporte.ShowBorders = true;
+            this.pnReporte.Size = new System.Drawing.Size(1052, 423);
+            this.pnReporte.TabIndex = 0;
             // 
             // pnCajas
             // 
@@ -399,7 +435,7 @@ namespace CapaPresentaciones
             this.dpFechaFinal.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Left;
             this.dpFechaFinal.LeftTextMargin = 0;
             this.dpFechaFinal.Location = new System.Drawing.Point(794, 95);
-            this.dpFechaFinal.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
+            this.dpFechaFinal.MinDate = new System.DateTime(2021, 9, 1, 0, 0, 0, 0);
             this.dpFechaFinal.MinimumSize = new System.Drawing.Size(4, 32);
             this.dpFechaFinal.Name = "dpFechaFinal";
             this.dpFechaFinal.Size = new System.Drawing.Size(270, 32);
@@ -430,7 +466,7 @@ namespace CapaPresentaciones
             this.dpFechaInicial.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Left;
             this.dpFechaInicial.LeftTextMargin = 0;
             this.dpFechaInicial.Location = new System.Drawing.Point(502, 95);
-            this.dpFechaInicial.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
+            this.dpFechaInicial.MinDate = new System.DateTime(2021, 9, 1, 0, 0, 0, 0);
             this.dpFechaInicial.MinimumSize = new System.Drawing.Size(4, 32);
             this.dpFechaInicial.Name = "dpFechaInicial";
             this.dpFechaInicial.Size = new System.Drawing.Size(270, 32);
@@ -667,42 +703,6 @@ namespace CapaPresentaciones
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this.pnContenedor;
             // 
-            // pnPadre
-            // 
-            this.pnPadre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnPadre.BackgroundColor = System.Drawing.Color.Transparent;
-            this.pnPadre.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnPadre.BackgroundImage")));
-            this.pnPadre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnPadre.BorderColor = System.Drawing.Color.Transparent;
-            this.pnPadre.BorderRadius = 3;
-            this.pnPadre.BorderThickness = 1;
-            this.pnPadre.Controls.Add(this.pnReporte);
-            this.pnPadre.Location = new System.Drawing.Point(22, 208);
-            this.pnPadre.Name = "pnPadre";
-            this.pnPadre.ShowBorders = true;
-            this.pnPadre.Size = new System.Drawing.Size(1058, 429);
-            this.pnPadre.TabIndex = 77;
-            // 
-            // pnReporte
-            // 
-            this.pnReporte.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnReporte.AutoScroll = true;
-            this.pnReporte.BackgroundColor = System.Drawing.Color.Transparent;
-            this.pnReporte.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnReporte.BackgroundImage")));
-            this.pnReporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnReporte.BorderColor = System.Drawing.Color.Transparent;
-            this.pnReporte.BorderRadius = 3;
-            this.pnReporte.BorderThickness = 1;
-            this.pnReporte.Location = new System.Drawing.Point(3, 3);
-            this.pnReporte.Name = "pnReporte";
-            this.pnReporte.ShowBorders = true;
-            this.pnReporte.Size = new System.Drawing.Size(1052, 423);
-            this.pnReporte.TabIndex = 0;
-            // 
             // P_ReporteDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -717,13 +717,13 @@ namespace CapaPresentaciones
             this.Load += new System.EventHandler(this.P_ReporteDocente_Load);
             this.pnContenedor.ResumeLayout(false);
             this.pnContenedor.PerformLayout();
+            this.pnPadre.ResumeLayout(false);
             this.pnCajas.Panel1.ResumeLayout(false);
             this.pnCajas.Panel1.PerformLayout();
             this.pnCajas.Panel2.ResumeLayout(false);
             this.pnCajas.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnCajas)).EndInit();
             this.pnCajas.ResumeLayout(false);
-            this.pnPadre.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -734,7 +734,6 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuImageButton btnCerrar;
         private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
-        private Bunifu.UI.WinForms.BunifuDatePicker dpFechaInicial;
         private Bunifu.UI.WinForms.BunifuLabel lblFechaFinal;
         private Bunifu.UI.WinForms.BunifuLabel lblFechaInicial;
         public Bunifu.UI.WinForms.BunifuDropdown cxtCriterioSeleccion;
@@ -755,5 +754,6 @@ namespace CapaPresentaciones
         public Bunifu.UI.WinForms.BunifuLabel txtCodigo;
         private Bunifu.UI.WinForms.BunifuPanel pnPadre;
         private Bunifu.UI.WinForms.BunifuPanel pnReporte;
+        private Bunifu.UI.WinForms.BunifuDatePicker dpFechaInicial;
     }
 }

@@ -67,7 +67,7 @@ namespace ControlesPerzonalizados
             this.btnVerReporte = new System.Windows.Forms.DataGridViewImageColumn();
             this.gbxResultados = new Bunifu.UI.WinForms.BunifuLabel();
             this.gbxCuadroResumen = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.pnResumen = new Bunifu.UI.WinForms.BunifuPanel();
             this.sbResumen = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.dgvResumen = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.gbxGraficos = new Bunifu.UI.WinForms.BunifuLabel();
@@ -80,7 +80,7 @@ namespace ControlesPerzonalizados
             this.pnCampos.SuspendLayout();
             this.pnResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).BeginInit();
-            this.bunifuPanel1.SuspendLayout();
+            this.pnResumen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumen)).BeginInit();
             this.pnGraficos.SuspendLayout();
             this.SuspendLayout();
@@ -679,23 +679,23 @@ namespace ControlesPerzonalizados
             this.gbxCuadroResumen.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.gbxCuadroResumen.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuPanel1
+            // pnResumen
             // 
-            this.bunifuPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnResumen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuPanel1.BackgroundColor = System.Drawing.Color.White;
-            this.bunifuPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuPanel1.BackgroundImage")));
-            this.bunifuPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.bunifuPanel1.BorderRadius = 20;
-            this.bunifuPanel1.BorderThickness = 1;
-            this.bunifuPanel1.Controls.Add(this.sbResumen);
-            this.bunifuPanel1.Controls.Add(this.dgvResumen);
-            this.bunifuPanel1.Location = new System.Drawing.Point(4, 730);
-            this.bunifuPanel1.Name = "bunifuPanel1";
-            this.bunifuPanel1.ShowBorders = true;
-            this.bunifuPanel1.Size = new System.Drawing.Size(1055, 380);
-            this.bunifuPanel1.TabIndex = 91;
+            this.pnResumen.BackgroundColor = System.Drawing.Color.White;
+            this.pnResumen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnResumen.BackgroundImage")));
+            this.pnResumen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnResumen.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pnResumen.BorderRadius = 20;
+            this.pnResumen.BorderThickness = 1;
+            this.pnResumen.Controls.Add(this.sbResumen);
+            this.pnResumen.Controls.Add(this.dgvResumen);
+            this.pnResumen.Location = new System.Drawing.Point(4, 730);
+            this.pnResumen.Name = "pnResumen";
+            this.pnResumen.ShowBorders = true;
+            this.pnResumen.Size = new System.Drawing.Size(1055, 380);
+            this.pnResumen.TabIndex = 91;
             // 
             // sbResumen
             // 
@@ -1029,7 +1029,7 @@ namespace ControlesPerzonalizados
             this.Controls.Add(this.gbxCuadroResumen);
             this.Controls.Add(this.pnGraficos);
             this.Controls.Add(this.gbxResultados);
-            this.Controls.Add(this.bunifuPanel1);
+            this.Controls.Add(this.pnResumen);
             this.Controls.Add(this.pnResultados);
             this.Controls.Add(this.gbxDescripcion);
             this.Controls.Add(this.pnCampos);
@@ -1041,7 +1041,7 @@ namespace ControlesPerzonalizados
             this.pnCampos.PerformLayout();
             this.pnResultados.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).EndInit();
-            this.bunifuPanel1.ResumeLayout(false);
+            this.pnResumen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumen)).EndInit();
             this.pnGraficos.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -1077,7 +1077,7 @@ namespace ControlesPerzonalizados
         private System.Windows.Forms.DataGridViewImageColumn btnVerReporte;
         private Bunifu.UI.WinForms.BunifuLabel gbxResultados;
         private Bunifu.UI.WinForms.BunifuLabel gbxCuadroResumen;
-        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel1;
+        private Bunifu.UI.WinForms.BunifuPanel pnResumen;
         private Bunifu.UI.WinForms.BunifuVScrollBar sbResumen;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvResumen;
         private Bunifu.UI.WinForms.BunifuLabel gbxGraficos;
