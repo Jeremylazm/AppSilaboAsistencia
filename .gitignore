@@ -403,3 +403,4 @@ AppSilaboAsistencia/CapaDatos/obj/Debug/CapaDatos.csproj.AssemblyReference.cache
 *.cache
 AppSilaboAsistencia/CapaPresentaciones/packages.config
 AppSilaboAsistencia/ControlesPerzonalizados/Properties/licenses.licx
+*.licx
