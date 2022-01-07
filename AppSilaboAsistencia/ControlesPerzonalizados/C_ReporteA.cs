@@ -15,6 +15,35 @@ namespace ControlesPerzonalizados
         public C_ReporteA()
         {
             InitializeComponent();
+
+            Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
+            dgvResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);
+            sbResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);
+        }
+
+        void dataGridView1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            ((HandledMouseEventArgs)e).Handled = true;
+            int currentIndex = this.dgvResultados.FirstDisplayedScrollingRowIndex;
+            int scrollLines = SystemInformation.MouseWheelScrollLines;
+
+            if (e.Delta > 0)
+            {
+                this.dgvResultados.FirstDisplayedScrollingRowIndex
+                    = Math.Max(0, currentIndex - scrollLines);
+                this.sbResultados.Value = Math.Max(0, currentIndex - scrollLines);
+            }
+            else if (e.Delta < 0)
+            {
+                this.dgvResultados.FirstDisplayedScrollingRowIndex
+                    = currentIndex + scrollLines;
+                this.sbResultados.Value = currentIndex + scrollLines;
+            }
+        }
+
+        public void LimpiarCampos()
+        {
+            pnSubcampos.Controls.Clear();
         }
 
         public C_ReporteA(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
@@ -66,6 +95,69 @@ namespace ControlesPerzonalizados
 
             this.Cuadricula.RowStyles[0].Height = Filas * 92 + 51;
             this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+        }
+
+        public void fnReporte1(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
+        {
+            LimpiarCampos();
+            MessageBox.Show("report1");
+            lblTitulo.Text = Titulo;
+
+            if (Titulos.Length.Equals(Valores.Length))
+            {
+                if (Titulos.Length != 0)
+                {
+                    for (int K = 0; K < Titulos.Length; K++)
+                    {
+                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
+                        pnSubcampos.Controls.Add(Nuevo);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No existen parametros");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error de parametros");
+            }
+
+            dgvResultados.DataSource = Datos;
+        }
+
+        public void fnReporte3(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
+        {
+            LimpiarCampos();
+            MessageBox.Show("report3");
+            lblTitulo.Text = Titulo;
+
+            if (Titulos.Length.Equals(Valores.Length))
+            {
+                if (Titulos.Length != 0)
+                {
+                    for (int K = 0; K < Titulos.Length; K++)
+                    {
+                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
+                        pnSubcampos.Controls.Add(Nuevo);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No existen parametros");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error de parametros");
+            }
+
+            dgvResultados.DataSource = Datos;
+            dgvResultados.Columns[1].Visible = false;
+            dgvResultados.Columns[0].DisplayIndex = 7;
+
+            // Gráficos
+
         }
     }
 }
