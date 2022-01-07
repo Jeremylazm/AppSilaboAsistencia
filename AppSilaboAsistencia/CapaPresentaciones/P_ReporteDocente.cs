@@ -139,12 +139,13 @@ namespace CapaPresentaciones
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
             }
         }
+
         private void cxtCriterioSeleccion_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            CriterioSeleccion();
+            CriterioSeleccionAsistenciaEstudiantes();
         }
 
-        public void CriterioSeleccion()
+        public void CriterioSeleccionAsistenciaEstudiantes()
         {
             if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
             {
