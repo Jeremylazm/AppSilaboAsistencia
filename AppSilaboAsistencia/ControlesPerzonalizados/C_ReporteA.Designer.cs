@@ -39,15 +39,16 @@ namespace ControlesPerzonalizados
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pnTitulo = new Bunifu.UI.WinForms.BunifuPanel();
-            this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
-            this.pnCampos = new Bunifu.UI.WinForms.BunifuPanel();
-            this.pnSubcampos = new System.Windows.Forms.FlowLayoutPanel();
-            this.gbxDescripcion = new Bunifu.UI.WinForms.BunifuLabel();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.BarrasVerticales = new Bunifu.Charts.WinForms.ChartTypes.BunifuHorizontalBarChart(this.components);
             this.Lineas = new Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart(this.components);
             this.Cuadricula = new System.Windows.Forms.TableLayoutPanel();
             this.pnSuperior = new Bunifu.UI.WinForms.BunifuPanel();
+            this.gbxDescripcion = new Bunifu.UI.WinForms.BunifuLabel();
+            this.pnCampos = new Bunifu.UI.WinForms.BunifuPanel();
+            this.pnSubcampos = new System.Windows.Forms.FlowLayoutPanel();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
             this.pnInferior = new System.Windows.Forms.FlowLayoutPanel();
             this.pnContenedorResultados = new Bunifu.UI.WinForms.BunifuPanel();
@@ -64,12 +65,13 @@ namespace ControlesPerzonalizados
             this.pnContenedorGraficos = new Bunifu.UI.WinForms.BunifuPanel();
             this.gbxGraficos = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnGraficos = new Bunifu.UI.WinForms.BunifuPanel();
-            this.Grafico2 = new Bunifu.Charts.WinForms.BunifuChartCanvas();
-            this.Grafico1 = new Bunifu.Charts.WinForms.BunifuChartCanvas();
-            this.pnTitulo.SuspendLayout();
-            this.pnCampos.SuspendLayout();
+            this.Grafico1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.bunifuLineChart1 = new Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart(this.components);
+            this.pnTitulo = new Bunifu.UI.WinForms.BunifuPanel();
+            this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.Cuadricula.SuspendLayout();
             this.pnSuperior.SuspendLayout();
+            this.pnCampos.SuspendLayout();
             this.bunifuPanel1.SuspendLayout();
             this.pnInferior.SuspendLayout();
             this.pnContenedorResultados.SuspendLayout();
@@ -80,89 +82,9 @@ namespace ControlesPerzonalizados
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumen)).BeginInit();
             this.pnContenedorGraficos.SuspendLayout();
             this.pnGraficos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Grafico1)).BeginInit();
+            this.pnTitulo.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pnTitulo
-            // 
-            this.pnTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnTitulo.BackgroundColor = System.Drawing.Color.White;
-            this.pnTitulo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnTitulo.BackgroundImage")));
-            this.pnTitulo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnTitulo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.pnTitulo.BorderRadius = 20;
-            this.pnTitulo.BorderThickness = 1;
-            this.pnTitulo.Controls.Add(this.lblTitulo);
-            this.pnTitulo.Location = new System.Drawing.Point(3, 3);
-            this.pnTitulo.Name = "pnTitulo";
-            this.pnTitulo.ShowBorders = true;
-            this.pnTitulo.Size = new System.Drawing.Size(1056, 58);
-            this.pnTitulo.TabIndex = 77;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AllowParentOverrides = false;
-            this.lblTitulo.AutoEllipsis = false;
-            this.lblTitulo.AutoSize = false;
-            this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblTitulo.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTitulo.Size = new System.Drawing.Size(1056, 55);
-            this.lblTitulo.TabIndex = 85;
-            this.lblTitulo.Text = "REPORTE DE ASISTENCIA DE ESTUDIANTES\r\nDESDE 01/01/2021 HASTA 31/01/2021\r\n";
-            this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // pnCampos
-            // 
-            this.pnCampos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnCampos.BackgroundColor = System.Drawing.Color.White;
-            this.pnCampos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnCampos.BackgroundImage")));
-            this.pnCampos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnCampos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.pnCampos.BorderRadius = 20;
-            this.pnCampos.BorderThickness = 1;
-            this.pnCampos.Controls.Add(this.pnSubcampos);
-            this.pnCampos.Location = new System.Drawing.Point(3, 17);
-            this.pnCampos.Name = "pnCampos";
-            this.pnCampos.ShowBorders = true;
-            this.pnCampos.Size = new System.Drawing.Size(1056, 208);
-            this.pnCampos.TabIndex = 86;
-            // 
-            // pnSubcampos
-            // 
-            this.pnSubcampos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnSubcampos.Location = new System.Drawing.Point(13, 15);
-            this.pnSubcampos.Name = "pnSubcampos";
-            this.pnSubcampos.Size = new System.Drawing.Size(1031, 180);
-            this.pnSubcampos.TabIndex = 0;
-            // 
-            // gbxDescripcion
-            // 
-            this.gbxDescripcion.AllowParentOverrides = false;
-            this.gbxDescripcion.AutoEllipsis = false;
-            this.gbxDescripcion.AutoSize = false;
-            this.gbxDescripcion.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gbxDescripcion.CursorType = System.Windows.Forms.Cursors.Default;
-            this.gbxDescripcion.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.gbxDescripcion.Location = new System.Drawing.Point(16, 3);
-            this.gbxDescripcion.Name = "gbxDescripcion";
-            this.gbxDescripcion.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gbxDescripcion.Size = new System.Drawing.Size(106, 23);
-            this.gbxDescripcion.TabIndex = 85;
-            this.gbxDescripcion.Text = "Descripción";
-            this.gbxDescripcion.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.gbxDescripcion.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // BarrasVerticales
             // 
@@ -243,6 +165,52 @@ namespace ControlesPerzonalizados
             this.pnSuperior.ShowBorders = true;
             this.pnSuperior.Size = new System.Drawing.Size(1062, 231);
             this.pnSuperior.TabIndex = 0;
+            // 
+            // gbxDescripcion
+            // 
+            this.gbxDescripcion.AllowParentOverrides = false;
+            this.gbxDescripcion.AutoEllipsis = false;
+            this.gbxDescripcion.AutoSize = false;
+            this.gbxDescripcion.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gbxDescripcion.CursorType = System.Windows.Forms.Cursors.Default;
+            this.gbxDescripcion.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gbxDescripcion.Location = new System.Drawing.Point(16, 3);
+            this.gbxDescripcion.Name = "gbxDescripcion";
+            this.gbxDescripcion.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.gbxDescripcion.Size = new System.Drawing.Size(106, 23);
+            this.gbxDescripcion.TabIndex = 85;
+            this.gbxDescripcion.Text = "Descripción";
+            this.gbxDescripcion.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gbxDescripcion.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // pnCampos
+            // 
+            this.pnCampos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnCampos.BackgroundColor = System.Drawing.Color.White;
+            this.pnCampos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnCampos.BackgroundImage")));
+            this.pnCampos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnCampos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pnCampos.BorderRadius = 20;
+            this.pnCampos.BorderThickness = 1;
+            this.pnCampos.Controls.Add(this.pnSubcampos);
+            this.pnCampos.Location = new System.Drawing.Point(3, 17);
+            this.pnCampos.Name = "pnCampos";
+            this.pnCampos.ShowBorders = true;
+            this.pnCampos.Size = new System.Drawing.Size(1056, 208);
+            this.pnCampos.TabIndex = 86;
+            // 
+            // pnSubcampos
+            // 
+            this.pnSubcampos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnSubcampos.Location = new System.Drawing.Point(13, 15);
+            this.pnSubcampos.Name = "pnSubcampos";
+            this.pnSubcampos.Size = new System.Drawing.Size(1031, 180);
+            this.pnSubcampos.TabIndex = 0;
             // 
             // bunifuPanel1
             // 
@@ -694,7 +662,6 @@ namespace ControlesPerzonalizados
             this.pnGraficos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pnGraficos.BorderRadius = 20;
             this.pnGraficos.BorderThickness = 1;
-            this.pnGraficos.Controls.Add(this.Grafico2);
             this.pnGraficos.Controls.Add(this.Grafico1);
             this.pnGraficos.Location = new System.Drawing.Point(3, 16);
             this.pnGraficos.Margin = new System.Windows.Forms.Padding(0);
@@ -703,123 +670,89 @@ namespace ControlesPerzonalizados
             this.pnGraficos.Size = new System.Drawing.Size(1056, 685);
             this.pnGraficos.TabIndex = 99;
             // 
-            // Grafico2
-            // 
-            this.Grafico2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Grafico2.AnimationDuration = 1000;
-            this.Grafico2.AnimationType = Bunifu.Charts.WinForms.BunifuChartCanvas.AnimationOptions.easeOutQuart;
-            this.Grafico2.BackColor = System.Drawing.Color.White;
-            this.Grafico2.CanvasPadding = new System.Windows.Forms.Padding(0);
-            this.Grafico2.Labels = null;
-            this.Grafico2.LegendAlignment = Bunifu.Charts.WinForms.BunifuChartCanvas.LegendAlignmentOptions.center;
-            this.Grafico2.LegendDisplay = true;
-            this.Grafico2.LegendFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Grafico2.LegendForeColor = System.Drawing.Color.DarkGray;
-            this.Grafico2.LegendFullWidth = true;
-            this.Grafico2.LegendPosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
-            this.Grafico2.LegendRevese = false;
-            this.Grafico2.LegendRTL = false;
-            this.Grafico2.Location = new System.Drawing.Point(19, 343);
-            this.Grafico2.Name = "Grafico2";
-            this.Grafico2.ShowXAxis = true;
-            this.Grafico2.ShowYAxis = true;
-            this.Grafico2.Size = new System.Drawing.Size(1016, 325);
-            this.Grafico2.TabIndex = 1;
-            this.Grafico2.Title = "";
-            this.Grafico2.TitleLineHeight = 1.2D;
-            this.Grafico2.TitlePadding = 10;
-            this.Grafico2.TitlePosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
-            this.Grafico2.TooltipBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico2.TooltipFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico2.TooltipForeColor = System.Drawing.Color.WhiteSmoke;
-            this.Grafico2.TooltipMode = Bunifu.Charts.WinForms.BunifuChartCanvas.TooltipModeOptions.nearest;
-            this.Grafico2.TooltipsEnabled = true;
-            this.Grafico2.XAxesBeginAtZero = true;
-            this.Grafico2.XAxesDrawTicks = true;
-            this.Grafico2.XAxesFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico2.XAxesForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico2.XAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico2.XAxesGridLines = true;
-            this.Grafico2.XAxesLabel = "";
-            this.Grafico2.XAxesLabelFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico2.XAxesLabelForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico2.XAxesLineWidth = 1;
-            this.Grafico2.XAxesStacked = false;
-            this.Grafico2.XAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico2.XAxesZeroLineWidth = 1;
-            this.Grafico2.YAxesBeginAtZero = true;
-            this.Grafico2.YAxesDrawTicks = true;
-            this.Grafico2.YAxesFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico2.YAxesForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico2.YAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico2.YAxesGridLines = true;
-            this.Grafico2.YAxesLabel = "";
-            this.Grafico2.YAxesLabelFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico2.YAxesLabelForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico2.YAxesLineWidth = 1;
-            this.Grafico2.YAxesStacked = false;
-            this.Grafico2.YAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico2.YAxesZeroLineWidth = 1;
-            // 
             // Grafico1
             // 
-            this.Grafico1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Grafico1.AnimationDuration = 1000;
-            this.Grafico1.AnimationType = Bunifu.Charts.WinForms.BunifuChartCanvas.AnimationOptions.easeOutQuart;
-            this.Grafico1.BackColor = System.Drawing.Color.White;
-            this.Grafico1.CanvasPadding = new System.Windows.Forms.Padding(0);
-            this.Grafico1.Labels = null;
-            this.Grafico1.LegendAlignment = Bunifu.Charts.WinForms.BunifuChartCanvas.LegendAlignmentOptions.center;
-            this.Grafico1.LegendDisplay = true;
-            this.Grafico1.LegendFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Grafico1.LegendForeColor = System.Drawing.Color.DarkGray;
-            this.Grafico1.LegendFullWidth = true;
-            this.Grafico1.LegendPosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
-            this.Grafico1.LegendRevese = false;
-            this.Grafico1.LegendRTL = false;
-            this.Grafico1.Location = new System.Drawing.Point(19, 16);
+            chartArea1.Name = "ChartArea1";
+            this.Grafico1.ChartAreas.Add(chartArea1);
+            this.Grafico1.Location = new System.Drawing.Point(13, 16);
             this.Grafico1.Name = "Grafico1";
-            this.Grafico1.ShowXAxis = true;
-            this.Grafico1.ShowYAxis = true;
-            this.Grafico1.Size = new System.Drawing.Size(1016, 316);
-            this.Grafico1.TabIndex = 0;
-            this.Grafico1.Title = "";
-            this.Grafico1.TitleLineHeight = 1.2D;
-            this.Grafico1.TitlePadding = 10;
-            this.Grafico1.TitlePosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
-            this.Grafico1.TooltipBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico1.TooltipFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico1.TooltipForeColor = System.Drawing.Color.WhiteSmoke;
-            this.Grafico1.TooltipMode = Bunifu.Charts.WinForms.BunifuChartCanvas.TooltipModeOptions.nearest;
-            this.Grafico1.TooltipsEnabled = true;
-            this.Grafico1.XAxesBeginAtZero = true;
-            this.Grafico1.XAxesDrawTicks = true;
-            this.Grafico1.XAxesFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico1.XAxesForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico1.XAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico1.XAxesGridLines = true;
-            this.Grafico1.XAxesLabel = "";
-            this.Grafico1.XAxesLabelFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico1.XAxesLabelForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico1.XAxesLineWidth = 1;
-            this.Grafico1.XAxesStacked = false;
-            this.Grafico1.XAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico1.XAxesZeroLineWidth = 1;
-            this.Grafico1.YAxesBeginAtZero = true;
-            this.Grafico1.YAxesDrawTicks = true;
-            this.Grafico1.YAxesFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico1.YAxesForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico1.YAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico1.YAxesGridLines = true;
-            this.Grafico1.YAxesLabel = "";
-            this.Grafico1.YAxesLabelFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico1.YAxesLabelForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico1.YAxesLineWidth = 1;
-            this.Grafico1.YAxesStacked = false;
-            this.Grafico1.YAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico1.YAxesZeroLineWidth = 1;
+            this.Grafico1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
+            series1.ChartArea = "ChartArea1";
+            series1.Name = "Series1";
+            series1.XValueMember = "{1, 2, 3, 6}";
+            series1.YValueMembers = "{2, 4, 6, 12}";
+            this.Grafico1.Series.Add(series1);
+            this.Grafico1.Size = new System.Drawing.Size(1019, 655);
+            this.Grafico1.TabIndex = 2;
+            title1.Name = "Title1";
+            this.Grafico1.Titles.Add(title1);
+            // 
+            // bunifuLineChart1
+            // 
+            this.bunifuLineChart1.BackgroundColor = System.Drawing.Color.Indigo;
+            this.bunifuLineChart1.BorderCapStyle = Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart.LineCaps.Butt;
+            this.bunifuLineChart1.BorderColor = System.Drawing.Color.Purple;
+            this.bunifuLineChart1.BorderDash = null;
+            this.bunifuLineChart1.BorderDashOffset = 0D;
+            this.bunifuLineChart1.BorderJoin = Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart.BorderJoinStyles.Miter;
+            this.bunifuLineChart1.BorderWidth = 3;
+            this.bunifuLineChart1.CubicInterpolationMode = Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart.CubicInterpolationModes.Default;
+            this.bunifuLineChart1.Data = ((System.Collections.Generic.List<double>)(resources.GetObject("bunifuLineChart1.Data")));
+            this.bunifuLineChart1.Fill = Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart.FillOptions.Blank;
+            this.bunifuLineChart1.Label = "Line Chart";
+            this.bunifuLineChart1.LineTension = 0.4D;
+            this.bunifuLineChart1.Order = 0;
+            this.bunifuLineChart1.PointBackgroundColor = System.Drawing.Color.Empty;
+            this.bunifuLineChart1.PointBorderColor = System.Drawing.Color.Empty;
+            this.bunifuLineChart1.PointBorderWidth = 1;
+            this.bunifuLineChart1.PointHitRadius = 1;
+            this.bunifuLineChart1.PointHoverBackgroundColor = System.Drawing.Color.Empty;
+            this.bunifuLineChart1.PointHoverBorderColor = System.Drawing.Color.Empty;
+            this.bunifuLineChart1.PointHoverBorderWidth = 4;
+            this.bunifuLineChart1.PointHoverRadius = 1;
+            this.bunifuLineChart1.PointRadius = 3;
+            this.bunifuLineChart1.PointRotation = 0;
+            this.bunifuLineChart1.PointStyle = Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart.PointStyles.Circle;
+            this.bunifuLineChart1.ShowLine = true;
+            this.bunifuLineChart1.SpanGaps = false;
+            this.bunifuLineChart1.SteppedLine = Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart.SteppedLineStyles.False;
+            this.bunifuLineChart1.TargetCanvas = null;
+            // 
+            // pnTitulo
+            // 
+            this.pnTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnTitulo.BackgroundColor = System.Drawing.Color.White;
+            this.pnTitulo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnTitulo.BackgroundImage")));
+            this.pnTitulo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnTitulo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pnTitulo.BorderRadius = 20;
+            this.pnTitulo.BorderThickness = 1;
+            this.pnTitulo.Controls.Add(this.lblTitulo);
+            this.pnTitulo.Location = new System.Drawing.Point(3, 3);
+            this.pnTitulo.Name = "pnTitulo";
+            this.pnTitulo.ShowBorders = true;
+            this.pnTitulo.Size = new System.Drawing.Size(1056, 58);
+            this.pnTitulo.TabIndex = 77;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AllowParentOverrides = false;
+            this.lblTitulo.AutoEllipsis = false;
+            this.lblTitulo.AutoSize = false;
+            this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblTitulo.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblTitulo.Location = new System.Drawing.Point(0, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblTitulo.Size = new System.Drawing.Size(1056, 55);
+            this.lblTitulo.TabIndex = 85;
+            this.lblTitulo.Text = "REPORTE DE ASISTENCIA DE ESTUDIANTES\r\nDESDE 01/01/2021 HASTA 31/01/2021\r\n";
+            this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // C_ReporteA
             // 
@@ -831,10 +764,9 @@ namespace ControlesPerzonalizados
             this.Name = "C_ReporteA";
             this.Size = new System.Drawing.Size(1062, 1735);
             this.Resize += new System.EventHandler(this.C_ReporteA_Resize);
-            this.pnTitulo.ResumeLayout(false);
-            this.pnCampos.ResumeLayout(false);
             this.Cuadricula.ResumeLayout(false);
             this.pnSuperior.ResumeLayout(false);
+            this.pnCampos.ResumeLayout(false);
             this.bunifuPanel1.ResumeLayout(false);
             this.pnInferior.ResumeLayout(false);
             this.pnContenedorResultados.ResumeLayout(false);
@@ -845,6 +777,8 @@ namespace ControlesPerzonalizados
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumen)).EndInit();
             this.pnContenedorGraficos.ResumeLayout(false);
             this.pnGraficos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Grafico1)).EndInit();
+            this.pnTitulo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -875,7 +809,7 @@ namespace ControlesPerzonalizados
         private Bunifu.UI.WinForms.BunifuPanel pnContenedorGraficos;
         private Bunifu.UI.WinForms.BunifuLabel gbxGraficos;
         private Bunifu.UI.WinForms.BunifuPanel pnGraficos;
-        private Bunifu.Charts.WinForms.BunifuChartCanvas Grafico2;
-        private Bunifu.Charts.WinForms.BunifuChartCanvas Grafico1;
+        private Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart bunifuLineChart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Grafico1;
     }
 }
