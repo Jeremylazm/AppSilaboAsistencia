@@ -124,6 +124,9 @@ namespace CapaPresentaciones
                 lblFechaInicial.Visible = true;
                 dpFechaInicial.Visible = true;
 
+                lblFechaFinal.Visible = true;
+                dpFechaFinal.Visible = true;
+
                 btnGeneral.Visible = false;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
             }
@@ -143,6 +146,11 @@ namespace CapaPresentaciones
             }
         }
         private void cxtCriterioSeleccion_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            CriterioSeleccion();
+        }
+
+        public void CriterioSeleccion()
         {
             if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
             {
@@ -175,72 +183,12 @@ namespace CapaPresentaciones
 
             string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
             string[] Titulos = { "Semestre", "Escuela Profesional", "Asignatura", "Cód. Asignatura", "Docente", "Cod. Docente" };
-            string[] Valores = { CodSemestre, txtEscuelaP.Text, txtNombre.Text, txtCodigo.Text, CodDocente, nombreDocente};
+            string[] Valores = { CodSemestre, txtEscuelaP.Text, txtNombre.Text, txtCodigo.Text, CodDocente, nombreDocente };
 
 
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
             Reportes.fnReporte3(Titulo, Titulos, Valores, resultados);
-
-
-            /*
-            // Tipo de reporte: Asistencia estudiantes
-            // Criterio de selección: Por Estudiantes
-            //MessageBox.Show(pnReporte.Controls.Count.ToString());
-            //MessageBox.Show(pnReporte.Controls[0].Controls.Count.ToString());
-            Control.ControlCollection main = pnReporte.Controls[0].Controls;
-            //MessageBox.Show(a[0].Name);
-
-            //Console.WriteLine(main[7].Name);
-            //Console.WriteLine(main[7].Controls.Count.ToString());
-            //a[7].Text = "HOLA";
-            // 7: pnCampos para la Descripción
-            //for (int i = 0; i < main[7].Controls.Count; i++)
-            //{
-                Console.WriteLine(main[7].Controls[i].Name + " -> " + i);
-            //}
-            Console.WriteLine("--------");
-
-            DataTable datosDocente = N_Docente.BuscarDocente(CodDepartamentoA, CodDocente);
-            string nombreDocente = datosDocente.Rows[0]["Nombre"].ToString() + " " + datosDocente.Rows[0]["APaterno"].ToString() + " " + datosDocente.Rows[0]["AMaterno"].ToString();
-
-            // Descripción
-            Control.ControlCollection descripcion = main["pnCampos"].Controls;
-
-            descripcion["lblCampo1"].Text = "Semestre";
-            descripcion["txtCampo1"].Text = CodSemestre;
-
-            descripcion["lblCampo2"].Text = "Escuela Profesional";
-            descripcion["txtCampo2"].Text = txtEscuelaP.Text;
-
-            descripcion["lblCampo3"].Text = "Asignatura";
-            descripcion["txtCampo3"].Text = txtNombre.Text;
-
-            descripcion["lblCampo4"].Text = "Cód. Asignatura";
-            descripcion["txtCampo4"].Text = txtCodigo.Text;
-
-            descripcion["lblCampo5"].Text = "Docente";
-            descripcion["txtCampo5"].Text = nombreDocente;
-
-            descripcion["lblCampo6"].Text = "Cod. Docente";
-            descripcion["txtCampo6"].Text = CodDocente;
-
-            // Resultados
-            Control.ControlCollection resultados = main["pnResultados"].Controls;
-
-            Bunifu.UI.WinForms.BunifuDataGridView dgvResultados = (resultados["dgvResultados"] as Bunifu.UI.WinForms.BunifuDataGridView);
-
-            dgvResultados.DataSource = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
-            dgvResultados.Columns[1].Visible = false;
-            dgvResultados.Columns[0].DisplayIndex = 7;
-
-            // Cuadro resumen
-            //(main["gbxCuadroResumen"] as Bunifu.UI.WinForms.BunifuLabel).Visible = false;
-            //Bunifu.UI.WinForms.BunifuPanel cuadroResumen = main["pnResumen"] as Bunifu.UI.WinForms.BunifuPanel;
-            //main.Remove(main["gbxCuadroResumen"]);
-
-            main.Remove(main["pnResumen"]);*/
         }
-
     }
 }
