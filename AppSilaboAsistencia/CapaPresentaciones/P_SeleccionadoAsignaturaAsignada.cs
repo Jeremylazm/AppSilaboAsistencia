@@ -67,9 +67,18 @@ namespace CapaPresentaciones
         private void dgvDatos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             P_ReporteDocente DatosAsingatura = Owner as P_ReporteDocente;
+
+            string codTemp = DatosAsingatura.txtCodigo.Text;
+
             DatosAsingatura.txtCodigo.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
             DatosAsingatura.txtNombre.Text = dgvDatos.CurrentRow.Cells[1].Value.ToString();
             DatosAsingatura.txtEscuelaP.Text = dgvDatos.CurrentRow.Cells[2].Value.ToString();
+
+            if (codTemp != DatosAsingatura.txtCodigo.Text)
+            {
+                DatosAsingatura.CriterioSeleccion();
+            }
+
             Close();
         }
 
