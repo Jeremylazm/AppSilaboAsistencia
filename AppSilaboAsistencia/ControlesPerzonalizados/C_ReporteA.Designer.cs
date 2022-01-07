@@ -62,8 +62,8 @@ namespace ControlesPerzonalizados
             this.pnContenedorGraficos = new Bunifu.UI.WinForms.BunifuPanel();
             this.gbxGraficos = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnGraficos = new Bunifu.UI.WinForms.BunifuPanel();
-            this.pnSuperior = new Bunifu.UI.WinForms.BunifuPanel();
             this.Grafico1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pnSuperior = new Bunifu.UI.WinForms.BunifuPanel();
             this.pnTitulo.SuspendLayout();
             this.pnCampos.SuspendLayout();
             this.Cuadricula.SuspendLayout();
@@ -76,8 +76,8 @@ namespace ControlesPerzonalizados
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumen)).BeginInit();
             this.pnContenedorGraficos.SuspendLayout();
             this.pnGraficos.SuspendLayout();
-            this.pnSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grafico1)).BeginInit();
+            this.pnSuperior.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnTitulo
@@ -614,6 +614,22 @@ namespace ControlesPerzonalizados
             this.pnGraficos.Size = new System.Drawing.Size(1056, 685);
             this.pnGraficos.TabIndex = 99;
             // 
+            // Grafico1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.Grafico1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.Grafico1.Legends.Add(legend1);
+            this.Grafico1.Location = new System.Drawing.Point(23, 38);
+            this.Grafico1.Name = "Grafico1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.Grafico1.Series.Add(series1);
+            this.Grafico1.Size = new System.Drawing.Size(1010, 624);
+            this.Grafico1.TabIndex = 0;
+            this.Grafico1.Text = "chart1";
+            // 
             // pnSuperior
             // 
             this.pnSuperior.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -632,22 +648,6 @@ namespace ControlesPerzonalizados
             this.pnSuperior.ShowBorders = true;
             this.pnSuperior.Size = new System.Drawing.Size(1062, 231);
             this.pnSuperior.TabIndex = 0;
-            // 
-            // Grafico1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.Grafico1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.Grafico1.Legends.Add(legend1);
-            this.Grafico1.Location = new System.Drawing.Point(23, 38);
-            this.Grafico1.Name = "Grafico1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.Grafico1.Series.Add(series1);
-            this.Grafico1.Size = new System.Drawing.Size(1010, 624);
-            this.Grafico1.TabIndex = 0;
-            this.Grafico1.Text = "chart1";
             // 
             // C_ReporteA
             // 
@@ -671,8 +671,8 @@ namespace ControlesPerzonalizados
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumen)).EndInit();
             this.pnContenedorGraficos.ResumeLayout(false);
             this.pnGraficos.ResumeLayout(false);
-            this.pnSuperior.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Grafico1)).EndInit();
+            this.pnSuperior.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

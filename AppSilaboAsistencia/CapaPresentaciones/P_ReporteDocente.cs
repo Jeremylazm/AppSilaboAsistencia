@@ -135,12 +135,6 @@ namespace CapaPresentaciones
                 lblCriterioSeleccion.Visible = false;
                 cxtCriterioSeleccion.Visible = false;
 
-                lblFechaInicial.Visible = false;
-                dpFechaInicial.Visible = false;
-
-                lblFechaFinal.Visible = false;
-                dpFechaFinal.Visible = false;
-
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
             }
