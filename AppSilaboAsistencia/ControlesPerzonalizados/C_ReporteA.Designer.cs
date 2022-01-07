@@ -38,43 +38,46 @@ namespace ControlesPerzonalizados
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnTitulo = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnCampos = new Bunifu.UI.WinForms.BunifuPanel();
             this.pnSubcampos = new System.Windows.Forms.FlowLayoutPanel();
             this.gbxDescripcion = new Bunifu.UI.WinForms.BunifuLabel();
             this.Cuadricula = new System.Windows.Forms.TableLayoutPanel();
-            this.pnSuperior = new Bunifu.UI.WinForms.BunifuPanel();
             this.pnInferior = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnContenedorResultados = new Bunifu.UI.WinForms.BunifuPanel();
+            this.gbxResultados = new Bunifu.UI.WinForms.BunifuLabel();
+            this.pnResultados = new Bunifu.UI.WinForms.BunifuPanel();
+            this.sbResultados = new Bunifu.UI.WinForms.BunifuVScrollBar();
+            this.dgvResultados = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.btnVerReporte = new System.Windows.Forms.DataGridViewImageColumn();
+            this.pnContenedorCuadro = new Bunifu.UI.WinForms.BunifuPanel();
+            this.gbxCuadroResumen = new Bunifu.UI.WinForms.BunifuLabel();
+            this.pnCuadroResumen = new Bunifu.UI.WinForms.BunifuPanel();
+            this.sbResumen = new Bunifu.UI.WinForms.BunifuVScrollBar();
+            this.dgvResumen = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.pnContenedorGraficos = new Bunifu.UI.WinForms.BunifuPanel();
             this.gbxGraficos = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnGraficos = new Bunifu.UI.WinForms.BunifuPanel();
-            this.Grafico2 = new Bunifu.Charts.WinForms.BunifuChartCanvas();
-            this.Grafico1 = new Bunifu.Charts.WinForms.BunifuChartCanvas();
-            this.pnResultados = new Bunifu.UI.WinForms.BunifuPanel();
-            this.dgvResultados = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.btnVerReporte = new System.Windows.Forms.DataGridViewImageColumn();
-            this.sbResultados = new Bunifu.UI.WinForms.BunifuVScrollBar();
-            this.pnContenedorResultados = new Bunifu.UI.WinForms.BunifuPanel();
-            this.gbxResultados = new Bunifu.UI.WinForms.BunifuLabel();
-            this.pnCuadroResumen = new Bunifu.UI.WinForms.BunifuPanel();
-            this.dgvResumen = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.sbResumen = new Bunifu.UI.WinForms.BunifuVScrollBar();
-            this.pnContenedorCuadro = new Bunifu.UI.WinForms.BunifuPanel();
-            this.gbxCuadroResumen = new Bunifu.UI.WinForms.BunifuLabel();
+            this.pnSuperior = new Bunifu.UI.WinForms.BunifuPanel();
+            this.Grafico1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pnTitulo.SuspendLayout();
             this.pnCampos.SuspendLayout();
             this.Cuadricula.SuspendLayout();
-            this.pnSuperior.SuspendLayout();
             this.pnInferior.SuspendLayout();
-            this.pnContenedorGraficos.SuspendLayout();
-            this.pnGraficos.SuspendLayout();
+            this.pnContenedorResultados.SuspendLayout();
             this.pnResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).BeginInit();
-            this.pnContenedorResultados.SuspendLayout();
+            this.pnContenedorCuadro.SuspendLayout();
             this.pnCuadroResumen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumen)).BeginInit();
-            this.pnContenedorCuadro.SuspendLayout();
+            this.pnContenedorGraficos.SuspendLayout();
+            this.pnGraficos.SuspendLayout();
+            this.pnSuperior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Grafico1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnTitulo
@@ -176,25 +179,6 @@ namespace ControlesPerzonalizados
             this.Cuadricula.Size = new System.Drawing.Size(1062, 1648);
             this.Cuadricula.TabIndex = 95;
             // 
-            // pnSuperior
-            // 
-            this.pnSuperior.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnSuperior.BackgroundColor = System.Drawing.Color.Transparent;
-            this.pnSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnSuperior.BackgroundImage")));
-            this.pnSuperior.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnSuperior.BorderColor = System.Drawing.Color.Transparent;
-            this.pnSuperior.BorderRadius = 3;
-            this.pnSuperior.BorderThickness = 1;
-            this.pnSuperior.Controls.Add(this.gbxDescripcion);
-            this.pnSuperior.Controls.Add(this.pnCampos);
-            this.pnSuperior.Location = new System.Drawing.Point(0, 0);
-            this.pnSuperior.Margin = new System.Windows.Forms.Padding(0);
-            this.pnSuperior.Name = "pnSuperior";
-            this.pnSuperior.ShowBorders = true;
-            this.pnSuperior.Size = new System.Drawing.Size(1062, 231);
-            this.pnSuperior.TabIndex = 0;
-            // 
             // pnInferior
             // 
             this.pnInferior.Controls.Add(this.pnContenedorResultados);
@@ -207,180 +191,40 @@ namespace ControlesPerzonalizados
             this.pnInferior.Size = new System.Drawing.Size(1062, 1431);
             this.pnInferior.TabIndex = 98;
             // 
-            // pnContenedorGraficos
+            // pnContenedorResultados
             // 
-            this.pnContenedorGraficos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnContenedorGraficos.BackgroundColor = System.Drawing.Color.Transparent;
-            this.pnContenedorGraficos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnContenedorGraficos.BackgroundImage")));
-            this.pnContenedorGraficos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnContenedorGraficos.BorderColor = System.Drawing.Color.Transparent;
-            this.pnContenedorGraficos.BorderRadius = 3;
-            this.pnContenedorGraficos.BorderThickness = 1;
-            this.pnContenedorGraficos.Controls.Add(this.gbxGraficos);
-            this.pnContenedorGraficos.Controls.Add(this.pnGraficos);
-            this.pnContenedorGraficos.Location = new System.Drawing.Point(0, 713);
-            this.pnContenedorGraficos.Margin = new System.Windows.Forms.Padding(0);
-            this.pnContenedorGraficos.Name = "pnContenedorGraficos";
-            this.pnContenedorGraficos.ShowBorders = true;
-            this.pnContenedorGraficos.Size = new System.Drawing.Size(1062, 701);
-            this.pnContenedorGraficos.TabIndex = 2;
+            this.pnContenedorResultados.BackgroundColor = System.Drawing.Color.Transparent;
+            this.pnContenedorResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnContenedorResultados.BackgroundImage")));
+            this.pnContenedorResultados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnContenedorResultados.BorderColor = System.Drawing.Color.Transparent;
+            this.pnContenedorResultados.BorderRadius = 3;
+            this.pnContenedorResultados.BorderThickness = 1;
+            this.pnContenedorResultados.Controls.Add(this.gbxResultados);
+            this.pnContenedorResultados.Controls.Add(this.pnResultados);
+            this.pnContenedorResultados.Location = new System.Drawing.Point(0, 0);
+            this.pnContenedorResultados.Margin = new System.Windows.Forms.Padding(0);
+            this.pnContenedorResultados.Name = "pnContenedorResultados";
+            this.pnContenedorResultados.ShowBorders = true;
+            this.pnContenedorResultados.Size = new System.Drawing.Size(1062, 314);
+            this.pnContenedorResultados.TabIndex = 0;
             // 
-            // gbxGraficos
+            // gbxResultados
             // 
-            this.gbxGraficos.AllowParentOverrides = false;
-            this.gbxGraficos.AutoEllipsis = false;
-            this.gbxGraficos.AutoSize = false;
-            this.gbxGraficos.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gbxGraficos.CursorType = System.Windows.Forms.Cursors.Default;
-            this.gbxGraficos.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxGraficos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.gbxGraficos.Location = new System.Drawing.Point(16, 3);
-            this.gbxGraficos.Name = "gbxGraficos";
-            this.gbxGraficos.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gbxGraficos.Size = new System.Drawing.Size(80, 23);
-            this.gbxGraficos.TabIndex = 100;
-            this.gbxGraficos.Text = "Gráficos";
-            this.gbxGraficos.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.gbxGraficos.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // pnGraficos
-            // 
-            this.pnGraficos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnGraficos.BackgroundColor = System.Drawing.Color.White;
-            this.pnGraficos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnGraficos.BackgroundImage")));
-            this.pnGraficos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnGraficos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.pnGraficos.BorderRadius = 20;
-            this.pnGraficos.BorderThickness = 1;
-            this.pnGraficos.Controls.Add(this.Grafico2);
-            this.pnGraficos.Controls.Add(this.Grafico1);
-            this.pnGraficos.Location = new System.Drawing.Point(3, 16);
-            this.pnGraficos.Margin = new System.Windows.Forms.Padding(0);
-            this.pnGraficos.Name = "pnGraficos";
-            this.pnGraficos.ShowBorders = true;
-            this.pnGraficos.Size = new System.Drawing.Size(1056, 685);
-            this.pnGraficos.TabIndex = 99;
-            // 
-            // Grafico2
-            // 
-            this.Grafico2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Grafico2.AnimationDuration = 1000;
-            this.Grafico2.AnimationType = Bunifu.Charts.WinForms.BunifuChartCanvas.AnimationOptions.easeOutQuart;
-            this.Grafico2.BackColor = System.Drawing.Color.White;
-            this.Grafico2.CanvasPadding = new System.Windows.Forms.Padding(0);
-            this.Grafico2.Labels = null;
-            this.Grafico2.LegendAlignment = Bunifu.Charts.WinForms.BunifuChartCanvas.LegendAlignmentOptions.center;
-            this.Grafico2.LegendDisplay = true;
-            this.Grafico2.LegendFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Grafico2.LegendForeColor = System.Drawing.Color.DarkGray;
-            this.Grafico2.LegendFullWidth = true;
-            this.Grafico2.LegendPosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
-            this.Grafico2.LegendRevese = false;
-            this.Grafico2.LegendRTL = false;
-            this.Grafico2.Location = new System.Drawing.Point(19, 343);
-            this.Grafico2.Name = "Grafico2";
-            this.Grafico2.ShowXAxis = true;
-            this.Grafico2.ShowYAxis = true;
-            this.Grafico2.Size = new System.Drawing.Size(1016, 325);
-            this.Grafico2.TabIndex = 1;
-            this.Grafico2.Title = "";
-            this.Grafico2.TitleLineHeight = 1.2D;
-            this.Grafico2.TitlePadding = 10;
-            this.Grafico2.TitlePosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
-            this.Grafico2.TooltipBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico2.TooltipFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico2.TooltipForeColor = System.Drawing.Color.WhiteSmoke;
-            this.Grafico2.TooltipMode = Bunifu.Charts.WinForms.BunifuChartCanvas.TooltipModeOptions.nearest;
-            this.Grafico2.TooltipsEnabled = true;
-            this.Grafico2.XAxesBeginAtZero = true;
-            this.Grafico2.XAxesDrawTicks = true;
-            this.Grafico2.XAxesFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico2.XAxesForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico2.XAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico2.XAxesGridLines = true;
-            this.Grafico2.XAxesLabel = "";
-            this.Grafico2.XAxesLabelFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico2.XAxesLabelForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico2.XAxesLineWidth = 1;
-            this.Grafico2.XAxesStacked = false;
-            this.Grafico2.XAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico2.XAxesZeroLineWidth = 1;
-            this.Grafico2.YAxesBeginAtZero = true;
-            this.Grafico2.YAxesDrawTicks = true;
-            this.Grafico2.YAxesFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico2.YAxesForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico2.YAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico2.YAxesGridLines = true;
-            this.Grafico2.YAxesLabel = "";
-            this.Grafico2.YAxesLabelFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico2.YAxesLabelForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico2.YAxesLineWidth = 1;
-            this.Grafico2.YAxesStacked = false;
-            this.Grafico2.YAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico2.YAxesZeroLineWidth = 1;
-            // 
-            // Grafico1
-            // 
-            this.Grafico1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Grafico1.AnimationDuration = 1000;
-            this.Grafico1.AnimationType = Bunifu.Charts.WinForms.BunifuChartCanvas.AnimationOptions.easeOutQuart;
-            this.Grafico1.BackColor = System.Drawing.Color.White;
-            this.Grafico1.CanvasPadding = new System.Windows.Forms.Padding(0);
-            this.Grafico1.Labels = null;
-            this.Grafico1.LegendAlignment = Bunifu.Charts.WinForms.BunifuChartCanvas.LegendAlignmentOptions.center;
-            this.Grafico1.LegendDisplay = true;
-            this.Grafico1.LegendFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Grafico1.LegendForeColor = System.Drawing.Color.DarkGray;
-            this.Grafico1.LegendFullWidth = true;
-            this.Grafico1.LegendPosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
-            this.Grafico1.LegendRevese = false;
-            this.Grafico1.LegendRTL = false;
-            this.Grafico1.Location = new System.Drawing.Point(19, 16);
-            this.Grafico1.Name = "Grafico1";
-            this.Grafico1.ShowXAxis = true;
-            this.Grafico1.ShowYAxis = true;
-            this.Grafico1.Size = new System.Drawing.Size(1016, 316);
-            this.Grafico1.TabIndex = 0;
-            this.Grafico1.Title = "";
-            this.Grafico1.TitleLineHeight = 1.2D;
-            this.Grafico1.TitlePadding = 10;
-            this.Grafico1.TitlePosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
-            this.Grafico1.TooltipBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico1.TooltipFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico1.TooltipForeColor = System.Drawing.Color.WhiteSmoke;
-            this.Grafico1.TooltipMode = Bunifu.Charts.WinForms.BunifuChartCanvas.TooltipModeOptions.nearest;
-            this.Grafico1.TooltipsEnabled = true;
-            this.Grafico1.XAxesBeginAtZero = true;
-            this.Grafico1.XAxesDrawTicks = true;
-            this.Grafico1.XAxesFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico1.XAxesForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico1.XAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico1.XAxesGridLines = true;
-            this.Grafico1.XAxesLabel = "";
-            this.Grafico1.XAxesLabelFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico1.XAxesLabelForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico1.XAxesLineWidth = 1;
-            this.Grafico1.XAxesStacked = false;
-            this.Grafico1.XAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico1.XAxesZeroLineWidth = 1;
-            this.Grafico1.YAxesBeginAtZero = true;
-            this.Grafico1.YAxesDrawTicks = true;
-            this.Grafico1.YAxesFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico1.YAxesForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico1.YAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico1.YAxesGridLines = true;
-            this.Grafico1.YAxesLabel = "";
-            this.Grafico1.YAxesLabelFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Grafico1.YAxesLabelForeColor = System.Drawing.SystemColors.ControlText;
-            this.Grafico1.YAxesLineWidth = 1;
-            this.Grafico1.YAxesStacked = false;
-            this.Grafico1.YAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Grafico1.YAxesZeroLineWidth = 1;
+            this.gbxResultados.AllowParentOverrides = false;
+            this.gbxResultados.AutoEllipsis = false;
+            this.gbxResultados.AutoSize = false;
+            this.gbxResultados.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gbxResultados.CursorType = System.Windows.Forms.Cursors.Default;
+            this.gbxResultados.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxResultados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gbxResultados.Location = new System.Drawing.Point(16, 3);
+            this.gbxResultados.Name = "gbxResultados";
+            this.gbxResultados.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.gbxResultados.Size = new System.Drawing.Size(106, 23);
+            this.gbxResultados.TabIndex = 93;
+            this.gbxResultados.Text = "Resultados";
+            this.gbxResultados.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gbxResultados.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // pnResultados
             // 
@@ -399,6 +243,47 @@ namespace ControlesPerzonalizados
             this.pnResultados.ShowBorders = true;
             this.pnResultados.Size = new System.Drawing.Size(1056, 298);
             this.pnResultados.TabIndex = 92;
+            // 
+            // sbResultados
+            // 
+            this.sbResultados.AllowCursorChanges = true;
+            this.sbResultados.AllowHomeEndKeysDetection = false;
+            this.sbResultados.AllowIncrementalClickMoves = true;
+            this.sbResultados.AllowMouseDownEffects = true;
+            this.sbResultados.AllowMouseHoverEffects = true;
+            this.sbResultados.AllowScrollingAnimations = true;
+            this.sbResultados.AllowScrollKeysDetection = true;
+            this.sbResultados.AllowScrollOptionsMenu = true;
+            this.sbResultados.AllowShrinkingOnFocusLost = false;
+            this.sbResultados.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbResultados.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.sbResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sbResultados.BackgroundImage")));
+            this.sbResultados.BindingContainer = null;
+            this.sbResultados.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.sbResultados.BorderRadius = 0;
+            this.sbResultados.BorderThickness = 1;
+            this.sbResultados.DurationBeforeShrink = 2000;
+            this.sbResultados.LargeChange = 10;
+            this.sbResultados.Location = new System.Drawing.Point(1035, 48);
+            this.sbResultados.Maximum = 100;
+            this.sbResultados.Minimum = 0;
+            this.sbResultados.MinimumThumbLength = 18;
+            this.sbResultados.Name = "sbResultados";
+            this.sbResultados.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
+            this.sbResultados.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
+            this.sbResultados.OnDisable.ThumbColor = System.Drawing.Color.Silver;
+            this.sbResultados.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.sbResultados.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.sbResultados.ShrinkSizeLimit = 3;
+            this.sbResultados.Size = new System.Drawing.Size(10, 238);
+            this.sbResultados.SmallChange = 1;
+            this.sbResultados.TabIndex = 90;
+            this.sbResultados.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.sbResultados.ThumbLength = 23;
+            this.sbResultados.ThumbMargin = 1;
+            this.sbResultados.ThumbStyle = Bunifu.UI.WinForms.BunifuVScrollBar.ThumbStyles.Inset;
+            this.sbResultados.Value = 0;
             // 
             // dgvResultados
             // 
@@ -492,81 +377,42 @@ namespace ControlesPerzonalizados
             this.btnVerReporte.Name = "btnVerReporte";
             this.btnVerReporte.ReadOnly = true;
             // 
-            // sbResultados
+            // pnContenedorCuadro
             // 
-            this.sbResultados.AllowCursorChanges = true;
-            this.sbResultados.AllowHomeEndKeysDetection = false;
-            this.sbResultados.AllowIncrementalClickMoves = true;
-            this.sbResultados.AllowMouseDownEffects = true;
-            this.sbResultados.AllowMouseHoverEffects = true;
-            this.sbResultados.AllowScrollingAnimations = true;
-            this.sbResultados.AllowScrollKeysDetection = true;
-            this.sbResultados.AllowScrollOptionsMenu = true;
-            this.sbResultados.AllowShrinkingOnFocusLost = false;
-            this.sbResultados.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pnContenedorCuadro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbResultados.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.sbResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sbResultados.BackgroundImage")));
-            this.sbResultados.BindingContainer = null;
-            this.sbResultados.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.sbResultados.BorderRadius = 0;
-            this.sbResultados.BorderThickness = 1;
-            this.sbResultados.DurationBeforeShrink = 2000;
-            this.sbResultados.LargeChange = 10;
-            this.sbResultados.Location = new System.Drawing.Point(1035, 48);
-            this.sbResultados.Maximum = 100;
-            this.sbResultados.Minimum = 0;
-            this.sbResultados.MinimumThumbLength = 18;
-            this.sbResultados.Name = "sbResultados";
-            this.sbResultados.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
-            this.sbResultados.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
-            this.sbResultados.OnDisable.ThumbColor = System.Drawing.Color.Silver;
-            this.sbResultados.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.sbResultados.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.sbResultados.ShrinkSizeLimit = 3;
-            this.sbResultados.Size = new System.Drawing.Size(10, 238);
-            this.sbResultados.SmallChange = 1;
-            this.sbResultados.TabIndex = 90;
-            this.sbResultados.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.sbResultados.ThumbLength = 23;
-            this.sbResultados.ThumbMargin = 1;
-            this.sbResultados.ThumbStyle = Bunifu.UI.WinForms.BunifuVScrollBar.ThumbStyles.Inset;
-            this.sbResultados.Value = 0;
+            this.pnContenedorCuadro.BackgroundColor = System.Drawing.Color.Transparent;
+            this.pnContenedorCuadro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnContenedorCuadro.BackgroundImage")));
+            this.pnContenedorCuadro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnContenedorCuadro.BorderColor = System.Drawing.Color.Transparent;
+            this.pnContenedorCuadro.BorderRadius = 3;
+            this.pnContenedorCuadro.BorderThickness = 1;
+            this.pnContenedorCuadro.Controls.Add(this.gbxCuadroResumen);
+            this.pnContenedorCuadro.Controls.Add(this.pnCuadroResumen);
+            this.pnContenedorCuadro.Location = new System.Drawing.Point(0, 314);
+            this.pnContenedorCuadro.Margin = new System.Windows.Forms.Padding(0);
+            this.pnContenedorCuadro.Name = "pnContenedorCuadro";
+            this.pnContenedorCuadro.ShowBorders = true;
+            this.pnContenedorCuadro.Size = new System.Drawing.Size(1062, 399);
+            this.pnContenedorCuadro.TabIndex = 1;
             // 
-            // pnContenedorResultados
+            // gbxCuadroResumen
             // 
-            this.pnContenedorResultados.BackgroundColor = System.Drawing.Color.Transparent;
-            this.pnContenedorResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnContenedorResultados.BackgroundImage")));
-            this.pnContenedorResultados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnContenedorResultados.BorderColor = System.Drawing.Color.Transparent;
-            this.pnContenedorResultados.BorderRadius = 3;
-            this.pnContenedorResultados.BorderThickness = 1;
-            this.pnContenedorResultados.Controls.Add(this.gbxResultados);
-            this.pnContenedorResultados.Controls.Add(this.pnResultados);
-            this.pnContenedorResultados.Location = new System.Drawing.Point(0, 0);
-            this.pnContenedorResultados.Margin = new System.Windows.Forms.Padding(0);
-            this.pnContenedorResultados.Name = "pnContenedorResultados";
-            this.pnContenedorResultados.ShowBorders = true;
-            this.pnContenedorResultados.Size = new System.Drawing.Size(1062, 314);
-            this.pnContenedorResultados.TabIndex = 0;
-            // 
-            // gbxResultados
-            // 
-            this.gbxResultados.AllowParentOverrides = false;
-            this.gbxResultados.AutoEllipsis = false;
-            this.gbxResultados.AutoSize = false;
-            this.gbxResultados.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gbxResultados.CursorType = System.Windows.Forms.Cursors.Default;
-            this.gbxResultados.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxResultados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.gbxResultados.Location = new System.Drawing.Point(16, 3);
-            this.gbxResultados.Name = "gbxResultados";
-            this.gbxResultados.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gbxResultados.Size = new System.Drawing.Size(106, 23);
-            this.gbxResultados.TabIndex = 93;
-            this.gbxResultados.Text = "Resultados";
-            this.gbxResultados.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.gbxResultados.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.gbxCuadroResumen.AllowParentOverrides = false;
+            this.gbxCuadroResumen.AutoEllipsis = false;
+            this.gbxCuadroResumen.AutoSize = false;
+            this.gbxCuadroResumen.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gbxCuadroResumen.CursorType = System.Windows.Forms.Cursors.Default;
+            this.gbxCuadroResumen.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxCuadroResumen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gbxCuadroResumen.Location = new System.Drawing.Point(16, 3);
+            this.gbxCuadroResumen.Name = "gbxCuadroResumen";
+            this.gbxCuadroResumen.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.gbxCuadroResumen.Size = new System.Drawing.Size(183, 23);
+            this.gbxCuadroResumen.TabIndex = 96;
+            this.gbxCuadroResumen.Text = "Cuadro de Resumen";
+            this.gbxCuadroResumen.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gbxCuadroResumen.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // pnCuadroResumen
             // 
@@ -587,6 +433,47 @@ namespace ControlesPerzonalizados
             this.pnCuadroResumen.ShowBorders = true;
             this.pnCuadroResumen.Size = new System.Drawing.Size(1056, 380);
             this.pnCuadroResumen.TabIndex = 95;
+            // 
+            // sbResumen
+            // 
+            this.sbResumen.AllowCursorChanges = true;
+            this.sbResumen.AllowHomeEndKeysDetection = false;
+            this.sbResumen.AllowIncrementalClickMoves = true;
+            this.sbResumen.AllowMouseDownEffects = true;
+            this.sbResumen.AllowMouseHoverEffects = true;
+            this.sbResumen.AllowScrollingAnimations = true;
+            this.sbResumen.AllowScrollKeysDetection = true;
+            this.sbResumen.AllowScrollOptionsMenu = true;
+            this.sbResumen.AllowShrinkingOnFocusLost = false;
+            this.sbResumen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sbResumen.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.sbResumen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sbResumen.BackgroundImage")));
+            this.sbResumen.BindingContainer = null;
+            this.sbResumen.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.sbResumen.BorderRadius = 0;
+            this.sbResumen.BorderThickness = 1;
+            this.sbResumen.DurationBeforeShrink = 2000;
+            this.sbResumen.LargeChange = 10;
+            this.sbResumen.Location = new System.Drawing.Point(1035, 48);
+            this.sbResumen.Maximum = 100;
+            this.sbResumen.Minimum = 0;
+            this.sbResumen.MinimumThumbLength = 18;
+            this.sbResumen.Name = "sbResumen";
+            this.sbResumen.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
+            this.sbResumen.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
+            this.sbResumen.OnDisable.ThumbColor = System.Drawing.Color.Silver;
+            this.sbResumen.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.sbResumen.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.sbResumen.ShrinkSizeLimit = 3;
+            this.sbResumen.Size = new System.Drawing.Size(10, 320);
+            this.sbResumen.SmallChange = 1;
+            this.sbResumen.TabIndex = 90;
+            this.sbResumen.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.sbResumen.ThumbLength = 31;
+            this.sbResumen.ThumbMargin = 1;
+            this.sbResumen.ThumbStyle = Bunifu.UI.WinForms.BunifuVScrollBar.ThumbStyles.Inset;
+            this.sbResumen.Value = 0;
             // 
             // dgvResumen
             // 
@@ -671,83 +558,96 @@ namespace ControlesPerzonalizados
             this.dgvResumen.TabIndex = 89;
             this.dgvResumen.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             // 
-            // sbResumen
+            // pnContenedorGraficos
             // 
-            this.sbResumen.AllowCursorChanges = true;
-            this.sbResumen.AllowHomeEndKeysDetection = false;
-            this.sbResumen.AllowIncrementalClickMoves = true;
-            this.sbResumen.AllowMouseDownEffects = true;
-            this.sbResumen.AllowMouseHoverEffects = true;
-            this.sbResumen.AllowScrollingAnimations = true;
-            this.sbResumen.AllowScrollKeysDetection = true;
-            this.sbResumen.AllowScrollOptionsMenu = true;
-            this.sbResumen.AllowShrinkingOnFocusLost = false;
-            this.sbResumen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pnContenedorGraficos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbResumen.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.sbResumen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sbResumen.BackgroundImage")));
-            this.sbResumen.BindingContainer = null;
-            this.sbResumen.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.sbResumen.BorderRadius = 0;
-            this.sbResumen.BorderThickness = 1;
-            this.sbResumen.DurationBeforeShrink = 2000;
-            this.sbResumen.LargeChange = 10;
-            this.sbResumen.Location = new System.Drawing.Point(1035, 48);
-            this.sbResumen.Maximum = 100;
-            this.sbResumen.Minimum = 0;
-            this.sbResumen.MinimumThumbLength = 18;
-            this.sbResumen.Name = "sbResumen";
-            this.sbResumen.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
-            this.sbResumen.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
-            this.sbResumen.OnDisable.ThumbColor = System.Drawing.Color.Silver;
-            this.sbResumen.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.sbResumen.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.sbResumen.ShrinkSizeLimit = 3;
-            this.sbResumen.Size = new System.Drawing.Size(10, 320);
-            this.sbResumen.SmallChange = 1;
-            this.sbResumen.TabIndex = 90;
-            this.sbResumen.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.sbResumen.ThumbLength = 31;
-            this.sbResumen.ThumbMargin = 1;
-            this.sbResumen.ThumbStyle = Bunifu.UI.WinForms.BunifuVScrollBar.ThumbStyles.Inset;
-            this.sbResumen.Value = 0;
+            this.pnContenedorGraficos.BackgroundColor = System.Drawing.Color.Transparent;
+            this.pnContenedorGraficos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnContenedorGraficos.BackgroundImage")));
+            this.pnContenedorGraficos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnContenedorGraficos.BorderColor = System.Drawing.Color.Transparent;
+            this.pnContenedorGraficos.BorderRadius = 3;
+            this.pnContenedorGraficos.BorderThickness = 1;
+            this.pnContenedorGraficos.Controls.Add(this.gbxGraficos);
+            this.pnContenedorGraficos.Controls.Add(this.pnGraficos);
+            this.pnContenedorGraficos.Location = new System.Drawing.Point(0, 713);
+            this.pnContenedorGraficos.Margin = new System.Windows.Forms.Padding(0);
+            this.pnContenedorGraficos.Name = "pnContenedorGraficos";
+            this.pnContenedorGraficos.ShowBorders = true;
+            this.pnContenedorGraficos.Size = new System.Drawing.Size(1062, 701);
+            this.pnContenedorGraficos.TabIndex = 2;
             // 
-            // pnContenedorCuadro
+            // gbxGraficos
             // 
-            this.pnContenedorCuadro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.gbxGraficos.AllowParentOverrides = false;
+            this.gbxGraficos.AutoEllipsis = false;
+            this.gbxGraficos.AutoSize = false;
+            this.gbxGraficos.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gbxGraficos.CursorType = System.Windows.Forms.Cursors.Default;
+            this.gbxGraficos.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxGraficos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gbxGraficos.Location = new System.Drawing.Point(16, 3);
+            this.gbxGraficos.Name = "gbxGraficos";
+            this.gbxGraficos.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.gbxGraficos.Size = new System.Drawing.Size(80, 23);
+            this.gbxGraficos.TabIndex = 100;
+            this.gbxGraficos.Text = "Gráficos";
+            this.gbxGraficos.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gbxGraficos.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // pnGraficos
+            // 
+            this.pnGraficos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnContenedorCuadro.BackgroundColor = System.Drawing.Color.Transparent;
-            this.pnContenedorCuadro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnContenedorCuadro.BackgroundImage")));
-            this.pnContenedorCuadro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnContenedorCuadro.BorderColor = System.Drawing.Color.Transparent;
-            this.pnContenedorCuadro.BorderRadius = 3;
-            this.pnContenedorCuadro.BorderThickness = 1;
-            this.pnContenedorCuadro.Controls.Add(this.gbxCuadroResumen);
-            this.pnContenedorCuadro.Controls.Add(this.pnCuadroResumen);
-            this.pnContenedorCuadro.Location = new System.Drawing.Point(0, 314);
-            this.pnContenedorCuadro.Margin = new System.Windows.Forms.Padding(0);
-            this.pnContenedorCuadro.Name = "pnContenedorCuadro";
-            this.pnContenedorCuadro.ShowBorders = true;
-            this.pnContenedorCuadro.Size = new System.Drawing.Size(1062, 399);
-            this.pnContenedorCuadro.TabIndex = 1;
+            this.pnGraficos.BackgroundColor = System.Drawing.Color.White;
+            this.pnGraficos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnGraficos.BackgroundImage")));
+            this.pnGraficos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnGraficos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pnGraficos.BorderRadius = 20;
+            this.pnGraficos.BorderThickness = 1;
+            this.pnGraficos.Controls.Add(this.Grafico1);
+            this.pnGraficos.Location = new System.Drawing.Point(3, 16);
+            this.pnGraficos.Margin = new System.Windows.Forms.Padding(0);
+            this.pnGraficos.Name = "pnGraficos";
+            this.pnGraficos.ShowBorders = true;
+            this.pnGraficos.Size = new System.Drawing.Size(1056, 685);
+            this.pnGraficos.TabIndex = 99;
             // 
-            // gbxCuadroResumen
+            // pnSuperior
             // 
-            this.gbxCuadroResumen.AllowParentOverrides = false;
-            this.gbxCuadroResumen.AutoEllipsis = false;
-            this.gbxCuadroResumen.AutoSize = false;
-            this.gbxCuadroResumen.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gbxCuadroResumen.CursorType = System.Windows.Forms.Cursors.Default;
-            this.gbxCuadroResumen.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxCuadroResumen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.gbxCuadroResumen.Location = new System.Drawing.Point(16, 3);
-            this.gbxCuadroResumen.Name = "gbxCuadroResumen";
-            this.gbxCuadroResumen.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gbxCuadroResumen.Size = new System.Drawing.Size(183, 23);
-            this.gbxCuadroResumen.TabIndex = 96;
-            this.gbxCuadroResumen.Text = "Cuadro de Resumen";
-            this.gbxCuadroResumen.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.gbxCuadroResumen.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.pnSuperior.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnSuperior.BackgroundColor = System.Drawing.Color.Transparent;
+            this.pnSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnSuperior.BackgroundImage")));
+            this.pnSuperior.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnSuperior.BorderColor = System.Drawing.Color.Transparent;
+            this.pnSuperior.BorderRadius = 3;
+            this.pnSuperior.BorderThickness = 1;
+            this.pnSuperior.Controls.Add(this.gbxDescripcion);
+            this.pnSuperior.Controls.Add(this.pnCampos);
+            this.pnSuperior.Location = new System.Drawing.Point(0, 0);
+            this.pnSuperior.Margin = new System.Windows.Forms.Padding(0);
+            this.pnSuperior.Name = "pnSuperior";
+            this.pnSuperior.ShowBorders = true;
+            this.pnSuperior.Size = new System.Drawing.Size(1062, 231);
+            this.pnSuperior.TabIndex = 0;
+            // 
+            // Grafico1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.Grafico1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.Grafico1.Legends.Add(legend1);
+            this.Grafico1.Location = new System.Drawing.Point(23, 38);
+            this.Grafico1.Name = "Grafico1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.Grafico1.Series.Add(series1);
+            this.Grafico1.Size = new System.Drawing.Size(1010, 624);
+            this.Grafico1.TabIndex = 0;
+            this.Grafico1.Text = "chart1";
             // 
             // C_ReporteA
             // 
@@ -762,16 +662,17 @@ namespace ControlesPerzonalizados
             this.pnTitulo.ResumeLayout(false);
             this.pnCampos.ResumeLayout(false);
             this.Cuadricula.ResumeLayout(false);
-            this.pnSuperior.ResumeLayout(false);
             this.pnInferior.ResumeLayout(false);
-            this.pnContenedorGraficos.ResumeLayout(false);
-            this.pnGraficos.ResumeLayout(false);
+            this.pnContenedorResultados.ResumeLayout(false);
             this.pnResultados.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).EndInit();
-            this.pnContenedorResultados.ResumeLayout(false);
+            this.pnContenedorCuadro.ResumeLayout(false);
             this.pnCuadroResumen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumen)).EndInit();
-            this.pnContenedorCuadro.ResumeLayout(false);
+            this.pnContenedorGraficos.ResumeLayout(false);
+            this.pnGraficos.ResumeLayout(false);
+            this.pnSuperior.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Grafico1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -788,8 +689,6 @@ namespace ControlesPerzonalizados
         private Bunifu.UI.WinForms.BunifuPanel pnContenedorGraficos;
         private Bunifu.UI.WinForms.BunifuLabel gbxGraficos;
         private Bunifu.UI.WinForms.BunifuPanel pnGraficos;
-        private Bunifu.Charts.WinForms.BunifuChartCanvas Grafico2;
-        private Bunifu.Charts.WinForms.BunifuChartCanvas Grafico1;
         private Bunifu.UI.WinForms.BunifuPanel pnContenedorResultados;
         private Bunifu.UI.WinForms.BunifuLabel gbxResultados;
         private Bunifu.UI.WinForms.BunifuPanel pnResultados;
@@ -801,5 +700,6 @@ namespace ControlesPerzonalizados
         private Bunifu.UI.WinForms.BunifuPanel pnCuadroResumen;
         private Bunifu.UI.WinForms.BunifuVScrollBar sbResumen;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvResumen;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Grafico1;
     }
 }
