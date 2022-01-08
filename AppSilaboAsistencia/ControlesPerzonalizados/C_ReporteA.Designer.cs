@@ -38,9 +38,6 @@ namespace ControlesPerzonalizados
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnTitulo = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnCampos = new Bunifu.UI.WinForms.BunifuPanel();
@@ -65,7 +62,6 @@ namespace ControlesPerzonalizados
             this.tcGraficos = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pnSuperior = new Bunifu.UI.WinForms.BunifuPanel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pnTitulo.SuspendLayout();
             this.pnCampos.SuspendLayout();
             this.Cuadricula.SuspendLayout();
@@ -79,9 +75,7 @@ namespace ControlesPerzonalizados
             this.pnContenedorGraficos.SuspendLayout();
             this.pnGraficos.SuspendLayout();
             this.tcGraficos.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.pnSuperior.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnTitulo
@@ -622,6 +616,7 @@ namespace ControlesPerzonalizados
             // tcGraficos
             // 
             this.tcGraficos.Controls.Add(this.tabPage1);
+            this.tcGraficos.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tcGraficos.Location = new System.Drawing.Point(13, 16);
             this.tcGraficos.Name = "tcGraficos";
             this.tcGraficos.SelectedIndex = 0;
@@ -630,11 +625,10 @@ namespace ControlesPerzonalizados
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.chart1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1032, 640);
+            this.tabPage1.Size = new System.Drawing.Size(1032, 631);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Gráfico 1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -657,23 +651,6 @@ namespace ControlesPerzonalizados
             this.pnSuperior.ShowBorders = true;
             this.pnSuperior.Size = new System.Drawing.Size(1062, 231);
             this.pnSuperior.TabIndex = 0;
-            // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.ForeColor = System.Drawing.Color.DarkGray;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(465, 133);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(300, 300);
-            this.chart1.TabIndex = 91;
-            this.chart1.Text = "chart1";
             // 
             // C_ReporteA
             // 
@@ -698,9 +675,7 @@ namespace ControlesPerzonalizados
             this.pnContenedorGraficos.ResumeLayout(false);
             this.pnGraficos.ResumeLayout(false);
             this.tcGraficos.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.pnSuperior.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -730,6 +705,5 @@ namespace ControlesPerzonalizados
         private Bunifu.UI.WinForms.BunifuDataGridView dgvResumen;
         private System.Windows.Forms.TabControl tcGraficos;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

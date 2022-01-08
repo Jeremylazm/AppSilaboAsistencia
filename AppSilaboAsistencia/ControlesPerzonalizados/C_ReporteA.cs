@@ -21,8 +21,8 @@ namespace ControlesPerzonalizados
             InitializeComponent();
 
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
-            dgvResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);
-            sbResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);
+            /*dgvResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);
+            sbResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);*/
         }
 
         void dataGridView1_MouseWheel(object sender, MouseEventArgs e)
@@ -55,8 +55,8 @@ namespace ControlesPerzonalizados
             InitializeComponent();
 
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
-            dgvResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);
-            sbResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);
+            /*dgvResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);
+            sbResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);*/
 
             this.CriterioAsistenciasEstudiantes = CriterioAsistenciasEstudiantes;
 
@@ -435,7 +435,6 @@ namespace ControlesPerzonalizados
             areaGrafico1.AxisY.Title = "Cantidad";
             areaGrafico1.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
             areaGrafico1.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
-            areaGrafico1.AxisX.MajorGrid.LineColor = Color.Red;
             areaGrafico1.AxisX.MajorGrid.Enabled = false;
             //areaGrafico2.AxisY.MajorGrid.Enabled = false;
 
@@ -518,7 +517,6 @@ namespace ControlesPerzonalizados
             areaGrafico2.AxisY.Title = "Porcentaje de Asistencia";
             areaGrafico2.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
             areaGrafico2.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
-            areaGrafico2.AxisX.MajorGrid.LineColor = Color.Red;
             areaGrafico2.AxisX.MajorGrid.Enabled = false;
             //areaGrafico2.AxisY.MajorGrid.Enabled = false;
 
@@ -585,43 +583,57 @@ namespace ControlesPerzonalizados
             dgvResultados.Columns[0].DisplayIndex = 7;
 
             // Gráficos
-
             // Gráfico 1
             tcGraficos.TabPages.Clear();
 
-            Chart Grafico1 = new Chart();
+            Chart Grafico1 = new Chart
+            {
+                Dock = DockStyle.Fill,
+                Palette = ChartColorPalette.Excel
+            };
 
             TabPage tpGrafico1 = new TabPage("Gráfico 1");
             tpGrafico1.Controls.Add(Grafico1);
-            Grafico1.Dock = DockStyle.Fill;
 
             Grafico1.Titles.Clear();
             Grafico1.Series.Clear();
             Grafico1.ChartAreas.Clear();
 
-            Grafico1.Palette = ChartColorPalette.Excel;
             Grafico1.Titles.Add("Asignatura");
 
-            ChartArea Area = new ChartArea();
-            Area.AxisX.Interval = 1;
-            Area.AxisX.Title = "Cód. Estudiante";
-            Area.AxisY.Title = "Cantidad";
+            ChartArea areaGrafico1 = new ChartArea();
 
-            Grafico1.ChartAreas.Add(Area);
+            // Propiedades de los ejes
+            areaGrafico1.AxisX.Interval = 1;
+            areaGrafico1.AxisX.Title = "Cód. Estudiante";
+            areaGrafico1.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+            areaGrafico1.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 14f);
+            areaGrafico1.AxisY.Title = "Cantidad";
+            areaGrafico1.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+            areaGrafico1.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+            areaGrafico1.AxisX.MajorGrid.LineColor = Color.Red;
+            areaGrafico1.AxisX.MajorGrid.Enabled = false;
+            //areaGrafico2.AxisY.MajorGrid.Enabled = false;
+
+            Grafico1.ChartAreas.Add(areaGrafico1);
 
             Series serie1 = new Series("TotalAsistencias")
             {
                 ChartType = SeriesChartType.StackedBar,
                 XValueMember = "CodEstudiante",
                 YValueMembers = "TotalAsistencias",
-                IsValueShownAsLabel = true
+                IsValueShownAsLabel = true,
+                MarkerSize = 14,
+                Font = new Font("Montserrat Alternates", 10f)
             };
 
             Series serie2 = new Series("TotalFaltas")
             {
                 ChartType = SeriesChartType.StackedBar,
                 XValueMember = "CodEstudiante",
-                YValueMembers = "TotalFaltas"
+                YValueMembers = "TotalFaltas",
+                MarkerSize = 14,
+                Font = new Font("Montserrat Alternates", 11f)
             };
 
             Grafico1.Series.Add(serie1);
