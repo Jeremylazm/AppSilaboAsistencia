@@ -14,6 +14,8 @@ namespace ControlesPerzonalizados
 {
     public partial class C_ReporteA : UserControl
     {
+        private string CriterioAsistenciasEstudiantes;
+
         public C_ReporteA()
         {
             InitializeComponent();
@@ -48,13 +50,15 @@ namespace ControlesPerzonalizados
             pnSubcampos.Controls.Clear();
         }
 
-        public C_ReporteA(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
+        public C_ReporteA(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes)
         {
             InitializeComponent();
 
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
             dgvResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);
             sbResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);
+
+            this.CriterioAsistenciasEstudiantes = CriterioAsistenciasEstudiantes;
 
             lblTitulo.Text = Titulo;
 
@@ -99,7 +103,6 @@ namespace ControlesPerzonalizados
             List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TotalAsistieron"))).ToList();
             List<double> Faltaron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TotalFaltaron"))).ToList();
 
-
             foreach (int i in Asistieron)
             {
                 Console.WriteLine(i);
@@ -144,7 +147,149 @@ namespace ControlesPerzonalizados
 
             dgvResumen.DataSource = cuadroResumen;
 
-            // Gráfico
+            // Gráficos
+            // Gráfico 1
+            tcGraficos.TabPages.Clear();
+
+            Chart Grafico1 = new Chart
+            {
+                Dock = DockStyle.Fill,
+                Palette = ChartColorPalette.Excel
+            };
+
+            Grafico1.Titles.Clear();
+            Grafico1.Series.Clear();
+            Grafico1.ChartAreas.Clear();
+            Grafico1.Titles.Add("Asignatura" + "Nombre Asignatura");
+
+            TabPage tpGrafico1 = new TabPage("Gráfico 1");
+            tpGrafico1.Controls.Add(Grafico1);
+
+            ChartArea areaGrafico1 = new ChartArea();
+
+            // Propiedades de los ejes
+            areaGrafico1.AxisX.Interval = 1;
+            areaGrafico1.AxisX.Title = "Fecha";
+            areaGrafico1.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+            areaGrafico1.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+            areaGrafico1.AxisY.Title = "Cantidad";
+            areaGrafico1.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+            areaGrafico1.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+            areaGrafico1.AxisX.MajorGrid.LineColor = Color.Red;
+            areaGrafico1.AxisX.MajorGrid.Enabled = false;
+            //areaGrafico2.AxisY.MajorGrid.Enabled = false;
+
+            double MaxYAxis = 0;
+            for (int i = 0; i < Asistieron.Count; i++)
+            {
+                double temp = Asistieron.ElementAt(i) + Faltaron.ElementAt(i);
+                if (temp > MaxYAxis) MaxYAxis = temp;
+            }
+            areaGrafico1.AxisY.Maximum = (float)MaxYAxis;
+
+            Grafico1.ChartAreas.Add(areaGrafico1);
+
+            Series serie1Grafico1 = new Series("TotalAsistieron")
+            {
+                ChartType = SeriesChartType.StackedBar,
+                XValueMember = "Fecha",
+                YValueMembers = "TotalAsistieron",
+                IsValueShownAsLabel = true,
+                MarkerSize = 14,
+                Font = new Font("Montserrat Alternates", 11f)
+            };
+
+            Series serie2Grafico1 = new Series("TotalFaltaron")
+            {
+                ChartType = SeriesChartType.StackedBar,
+                XValueMember = "Fecha",
+                YValueMembers = "TotalFaltaron",
+                MarkerSize = 14,
+                Font = new Font("Montserrat Alternates", 11f)
+            };
+
+            // Leyenda
+            Grafico1.Legends.Add(new Legend("Total Asistieron"));
+            Grafico1.Legends["Total Asistieron"].Alignment = StringAlignment.Center;
+            //Grafico1.Legends["Total Asistieron"].LegendStyle = LegendStyle.Column;
+            Grafico1.Legends["Total Asistieron"].Docking = Docking.Bottom;
+            Grafico1.Legends["Total Asistieron"].IsDockedInsideChartArea = false;
+            Grafico1.Legends["Total Asistieron"].Font = new Font("Montserrat Alternates", 11f);
+
+            Grafico1.Legends.Add(new Legend("Total Faltaron"));
+            Grafico1.Legends["Total Faltaron"].Alignment = StringAlignment.Center;
+            //Grafico1.Legends["Total Faltaron"].LegendStyle = LegendStyle.Column;
+            Grafico1.Legends["Total Faltaron"].Docking = Docking.Bottom;
+            Grafico1.Legends["Total Faltaron"].IsDockedInsideChartArea = false;
+            Grafico1.Legends["Total Faltaron"].Font = new Font("Montserrat Alternates", 11f);
+
+            serie1Grafico1.Legend = "Total Asistieron";
+            serie2Grafico1.Legend = "Total Faltaron";
+
+            Grafico1.Series.Add(serie1Grafico1);
+            Grafico1.Series.Add(serie2Grafico1);
+
+            Grafico1.DataSource = dtEstadisticos;
+
+            tcGraficos.TabPages.Add(tpGrafico1);
+
+            // Gráfico 2
+            Chart Grafico2 = new Chart
+            {
+                Dock = DockStyle.Fill,
+                Palette = ChartColorPalette.Excel,
+            };
+
+            TabPage tpGrafico2 = new TabPage("Gráfico 2");
+            tpGrafico2.Controls.Add(Grafico2);
+
+            Grafico2.Titles.Clear();
+            Grafico2.Series.Clear();
+            Grafico2.ChartAreas.Clear();
+            Grafico2.Titles.Add("Evolución de las Asistencias " + "Nombre Asignatura");
+
+            ChartArea areaGrafico2 = new ChartArea();
+
+            // Propiedades de los ejes
+            areaGrafico2.AxisX.Interval = 1;
+            areaGrafico2.AxisX.Title = "Fecha";
+            areaGrafico2.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+            areaGrafico2.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+            areaGrafico2.AxisY.Title = "Porcentaje de Asistencia";
+            areaGrafico2.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+            areaGrafico2.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+            areaGrafico2.AxisX.MajorGrid.LineColor = Color.Red;
+            areaGrafico2.AxisX.MajorGrid.Enabled = false;
+            //areaGrafico2.AxisY.MajorGrid.Enabled = false;
+
+            Grafico2.ChartAreas.Add(areaGrafico2);
+
+            // Hacer porcentajes
+            int n = (int)(Asistieron.ElementAt(0) + Faltaron.ElementAt(0));
+
+            DataTable dtGrafico2 = dtEstadisticos.Copy();
+
+            foreach (DataRow row in dtGrafico2.Rows)
+            {
+                row["TotalAsistieron"] = Convert.ToDouble(row["TotalAsistieron"]) / n * 100;
+            }
+
+            Series serie1Grafico2 = new Series("Porcentaje")
+            {
+                ChartType = SeriesChartType.Spline,
+                XValueMember = "Fecha",
+                YValueMembers = "TotalAsistieron",
+                IsValueShownAsLabel = true,
+                MarkerSize = 14,
+                Font = new Font("Montserrat Alternates", 11f),
+                BorderWidth = 3
+            };
+
+            Grafico2.Series.Add(serie1Grafico2);
+
+            Grafico2.DataSource = dtGrafico2;
+
+            tcGraficos.TabPages.Add(tpGrafico2);
 
         }
 
@@ -170,10 +315,12 @@ namespace ControlesPerzonalizados
             this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
         }
 
-        public void fnReporte1(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
+        public void fnReporte1(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes)
         {
+            this.CriterioAsistenciasEstudiantes = CriterioAsistenciasEstudiantes;
+
             LimpiarCampos();
-            MessageBox.Show("report1");
+
             lblTitulo.Text = Titulo;
 
             if (Titulos.Length.Equals(Valores.Length))
@@ -199,7 +346,6 @@ namespace ControlesPerzonalizados
             dgvResultados.DataSource = Datos;
             dgvResultados.Columns[0].DisplayIndex = 5;
 
-            //
             DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
             dtEstadisticos.Rows.Clear();
 
@@ -207,16 +353,15 @@ namespace ControlesPerzonalizados
             // Solo donde SesiónDictada es SI para los estadísticos
             foreach (DataRow row in Datos.Rows)
             {
-               if (row["SesiónDictada"].ToString() == "SI")
-               {
+                if (row["SesiónDictada"].ToString() == "SI")
+                {
                     dtEstadisticos.ImportRow(row);
-               }
+                }
             }
 
             // Listas de valores
             List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TotalAsistieron"))).ToList();
             List<double> Faltaron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TotalFaltaron"))).ToList();
-            
 
             foreach (int i in Asistieron)
             {
@@ -262,13 +407,157 @@ namespace ControlesPerzonalizados
 
             dgvResumen.DataSource = cuadroResumen;
 
-            // Gráfico
+            // Gráficos
+            // Gráfico 1
+            tcGraficos.TabPages.Clear();
+
+            Chart Grafico1 = new Chart
+            {
+                Dock = DockStyle.Fill,
+                Palette = ChartColorPalette.Excel
+            };
+
+            Grafico1.Titles.Clear();
+            Grafico1.Series.Clear();
+            Grafico1.ChartAreas.Clear();
+            Grafico1.Titles.Add("Asignatura" + "Nombre Asignatura");
+
+            TabPage tpGrafico1 = new TabPage("Gráfico 1");
+            tpGrafico1.Controls.Add(Grafico1);
+
+            ChartArea areaGrafico1 = new ChartArea();
+
+            // Propiedades de los ejes
+            areaGrafico1.AxisX.Interval = 1;
+            areaGrafico1.AxisX.Title = "Fecha";
+            areaGrafico1.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+            areaGrafico1.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+            areaGrafico1.AxisY.Title = "Cantidad";
+            areaGrafico1.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+            areaGrafico1.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+            areaGrafico1.AxisX.MajorGrid.LineColor = Color.Red;
+            areaGrafico1.AxisX.MajorGrid.Enabled = false;
+            //areaGrafico2.AxisY.MajorGrid.Enabled = false;
+
+            double MaxYAxis = 0;
+            for (int i = 0; i < Asistieron.Count; i++)
+            {
+                double temp = Asistieron.ElementAt(i) + Faltaron.ElementAt(i);
+                if (temp > MaxYAxis) MaxYAxis = temp;
+            }
+            areaGrafico1.AxisY.Maximum = (float)MaxYAxis;
+
+            Grafico1.ChartAreas.Add(areaGrafico1);
+
+            Series serie1Grafico1 = new Series("TotalAsistieron")
+            {
+                ChartType = SeriesChartType.StackedBar,
+                XValueMember = "Fecha",
+                YValueMembers = "TotalAsistieron",
+                IsValueShownAsLabel = true,
+                MarkerSize = 14,
+                Font = new Font("Montserrat Alternates", 11f)
+            };
+
+            Series serie2Grafico1 = new Series("TotalFaltaron")
+            {
+                ChartType = SeriesChartType.StackedBar,
+                XValueMember = "Fecha",
+                YValueMembers = "TotalFaltaron",
+                MarkerSize = 14,
+                Font = new Font("Montserrat Alternates", 11f)
+            };
+
+            // Leyenda
+            Grafico1.Legends.Add(new Legend("Total Asistieron"));
+            Grafico1.Legends["Total Asistieron"].Alignment = StringAlignment.Center;
+            //Grafico1.Legends["Total Asistieron"].LegendStyle = LegendStyle.Column;
+            Grafico1.Legends["Total Asistieron"].Docking = Docking.Bottom;
+            Grafico1.Legends["Total Asistieron"].IsDockedInsideChartArea = false;
+            Grafico1.Legends["Total Asistieron"].Font = new Font("Montserrat Alternates", 11f);
+
+            Grafico1.Legends.Add(new Legend("Total Faltaron"));
+            Grafico1.Legends["Total Faltaron"].Alignment = StringAlignment.Center;
+            //Grafico1.Legends["Total Faltaron"].LegendStyle = LegendStyle.Column;
+            Grafico1.Legends["Total Faltaron"].Docking = Docking.Bottom;
+            Grafico1.Legends["Total Faltaron"].IsDockedInsideChartArea = false;
+            Grafico1.Legends["Total Faltaron"].Font = new Font("Montserrat Alternates", 11f);
+
+            serie1Grafico1.Legend = "Total Asistieron";
+            serie2Grafico1.Legend = "Total Faltaron";
+
+            Grafico1.Series.Add(serie1Grafico1);
+            Grafico1.Series.Add(serie2Grafico1);
+
+            Grafico1.DataSource = dtEstadisticos;
+
+            tcGraficos.TabPages.Add(tpGrafico1);
+
+            // Gráfico 2
+            Chart Grafico2 = new Chart
+            {
+                Dock = DockStyle.Fill,
+                Palette = ChartColorPalette.Excel,
+            };
+
+            TabPage tpGrafico2 = new TabPage("Gráfico 2");
+            tpGrafico2.Controls.Add(Grafico2);
+
+            Grafico2.Titles.Clear();
+            Grafico2.Series.Clear();
+            Grafico2.ChartAreas.Clear();
+            Grafico2.Titles.Add("Evolución de las Asistencias " + "Nombre Asignatura");
+
+            ChartArea areaGrafico2 = new ChartArea();
+
+            // Propiedades de los ejes
+            areaGrafico2.AxisX.Interval = 1;
+            areaGrafico2.AxisX.Title = "Fecha";
+            areaGrafico2.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+            areaGrafico2.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+            areaGrafico2.AxisY.Title = "Porcentaje de Asistencia";
+            areaGrafico2.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+            areaGrafico2.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+            areaGrafico2.AxisX.MajorGrid.LineColor = Color.Red;
+            areaGrafico2.AxisX.MajorGrid.Enabled = false;
+            //areaGrafico2.AxisY.MajorGrid.Enabled = false;
+
+            Grafico2.ChartAreas.Add(areaGrafico2);
+
+            // Hacer porcentajes
+            int n = (int)(Asistieron.ElementAt(0) + Faltaron.ElementAt(0));
+
+            DataTable dtGrafico2 = dtEstadisticos.Copy();
+
+            foreach (DataRow row in dtGrafico2.Rows)
+            {
+                row["TotalAsistieron"] = Convert.ToDouble(row["TotalAsistieron"]) / n * 100;
+            }
+
+            Series serie1Grafico2 = new Series("Porcentaje")
+            {
+                ChartType = SeriesChartType.Spline,
+                XValueMember = "Fecha",
+                YValueMembers = "TotalAsistieron",
+                IsValueShownAsLabel = true,
+                MarkerSize = 14,
+                Font = new Font("Montserrat Alternates", 11f),
+                BorderWidth = 3
+            };
+
+            Grafico2.Series.Add(serie1Grafico2);
+
+            Grafico2.DataSource = dtGrafico2;
+
+            tcGraficos.TabPages.Add(tpGrafico2);
         }
 
-        public void fnReporte3(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
+        public void fnReporte3(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes)
         {
+            this.CriterioAsistenciasEstudiantes = CriterioAsistenciasEstudiantes;
+
             LimpiarCampos();
-            MessageBox.Show("report3");
+
             lblTitulo.Text = Titulo;
 
             if (Titulos.Length.Equals(Valores.Length))
@@ -296,6 +585,16 @@ namespace ControlesPerzonalizados
             dgvResultados.Columns[0].DisplayIndex = 7;
 
             // Gráficos
+
+            // Gráfico 1
+            tcGraficos.TabPages.Clear();
+
+            Chart Grafico1 = new Chart();
+
+            TabPage tpGrafico1 = new TabPage("Gráfico 1");
+            tpGrafico1.Controls.Add(Grafico1);
+            Grafico1.Dock = DockStyle.Fill;
+
             Grafico1.Titles.Clear();
             Grafico1.Series.Clear();
             Grafico1.ChartAreas.Clear();
@@ -305,22 +604,22 @@ namespace ControlesPerzonalizados
 
             ChartArea Area = new ChartArea();
             Area.AxisX.Interval = 1;
+            Area.AxisX.Title = "Cód. Estudiante";
+            Area.AxisY.Title = "Cantidad";
+
             Grafico1.ChartAreas.Add(Area);
 
             Series serie1 = new Series("TotalAsistencias")
             {
                 ChartType = SeriesChartType.StackedBar,
-
                 XValueMember = "CodEstudiante",
                 YValueMembers = "TotalAsistencias",
-                MarkerColor = Color.Blue,
                 IsValueShownAsLabel = true
             };
 
             Series serie2 = new Series("TotalFaltas")
             {
                 ChartType = SeriesChartType.StackedBar,
-
                 XValueMember = "CodEstudiante",
                 YValueMembers = "TotalFaltas"
             };
@@ -329,6 +628,23 @@ namespace ControlesPerzonalizados
             Grafico1.Series.Add(serie2);
 
             Grafico1.DataSource = dgvResultados.DataSource;
+
+            tcGraficos.TabPages.Add(tpGrafico1);
+        }
+
+        private void dgvResultados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
+            {
+                if (CriterioAsistenciasEstudiantes == "Por Fechas")
+                {
+                    MessageBox.Show("Por fechas");
+                }
+                if (CriterioAsistenciasEstudiantes == "Por Estudiantes")
+                {
+                    MessageBox.Show("Por Estudiantes");
+                }
+            }
         }
     }
 }
