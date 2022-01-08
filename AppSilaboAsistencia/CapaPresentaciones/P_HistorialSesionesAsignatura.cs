@@ -97,7 +97,7 @@ namespace CapaPresentaciones
             DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, LimtFechaSup, LimtFechaSup, "");
             foreach (DataRow fila in Resultado.Rows)
             {
-                DateTime horaRegistrada =Convert.ToDateTime(fila[1]);
+                DateTime horaRegistrada =Convert.ToDateTime(fila[1].ToString());
 
                 if ((horaRegistrada<=pHoraLimte)&&(horaRegistrada >= pHoraIni))
                 {
@@ -119,7 +119,7 @@ namespace CapaPresentaciones
 
             DataTable EstudiantesAsigantura = N_Matricula.BuscarEstudiantesAsignatura(CodSemestre, CodAsignatura.Substring(6), CodAsignatura);
             
-            if (validarHoraDeRegistro(HoraCompletaActual,DiaActual)!=true)
+            if (validarHoraDeRegistro(HoraCompletaActual,DiaActual))
 			{
                 //DateTime Horalimite = validarHoraDeRegistro(HoraCompletaActual, DiaActual);
                 

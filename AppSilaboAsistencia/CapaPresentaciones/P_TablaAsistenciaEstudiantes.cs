@@ -93,7 +93,7 @@ namespace CapaPresentaciones
         {
             foreach (DataGridViewRow fila in dgvDatos.Rows)
             {
-                DataGridViewTextBoxCell textBoxcell = (DataGridViewTextBoxCell)(fila.Cells["txtObservaciones"]);
+                DataGridViewComboBoxCell textBoxcell = (DataGridViewComboBoxCell)(fila.Cells["cbxObservaciones"]);
                 textBoxcell.Value = "";
                 fila.Cells[0].Value = ListaImagenes.Images[0];
                 fila.Cells[0].Tag = false;
@@ -104,7 +104,7 @@ namespace CapaPresentaciones
         {
             foreach (DataGridViewRow fila in dgvDatos.Rows)
             {
-                DataGridViewTextBoxCell textBoxcell = (DataGridViewTextBoxCell)(fila.Cells["txtObservaciones"]);
+                DataGridViewComboBoxCell textBoxcell = (DataGridViewComboBoxCell)(fila.Cells["cbxObservaciones"]);
                 textBoxcell.Value = fila.Cells[8].Value;
                 fila.Cells[0].Value = (fila.Cells[7].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
                 if(fila.Cells[7].Value.Equals("SI"))
