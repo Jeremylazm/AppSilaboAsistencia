@@ -281,6 +281,7 @@ namespace CapaPresentaciones
             this.dpFechaFinal.Name = "dpFechaFinal";
             this.dpFechaFinal.Size = new System.Drawing.Size(270, 32);
             this.dpFechaFinal.TabIndex = 62;
+            this.dpFechaFinal.ValueChanged += new System.EventHandler(this.cxtTipoReporte_SelectionChangeCommitted);
             // 
             // pnInicial
             // 
@@ -348,6 +349,7 @@ namespace CapaPresentaciones
             this.dpFechaInicial.Name = "dpFechaInicial";
             this.dpFechaInicial.Size = new System.Drawing.Size(270, 32);
             this.dpFechaInicial.TabIndex = 61;
+            this.dpFechaInicial.ValueChanged += new System.EventHandler(this.cxtTipoReporte_SelectionChangeCommitted);
             // 
             // pnCriterio
             // 
