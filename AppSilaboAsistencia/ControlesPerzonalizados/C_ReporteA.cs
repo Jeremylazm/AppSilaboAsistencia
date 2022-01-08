@@ -50,7 +50,7 @@ namespace ControlesPerzonalizados
             pnSubcampos.Controls.Clear();
         }
 
-        public C_ReporteA(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes)
+        public C_ReporteA(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura)
         {
             InitializeComponent();
 
@@ -160,7 +160,8 @@ namespace ControlesPerzonalizados
             Grafico1.Titles.Clear();
             Grafico1.Series.Clear();
             Grafico1.ChartAreas.Clear();
-            Grafico1.Titles.Add("Asignatura" + "Nombre Asignatura");
+            Grafico1.Titles.Add("Asignatura" + " - " +  CodAsignatura);
+            Grafico1.Titles[0].Font = new Font("Montserrat Alternates", 13f);
 
             TabPage tpGrafico1 = new TabPage("Gráfico 1");
             tpGrafico1.Controls.Add(Grafico1);
@@ -246,7 +247,8 @@ namespace ControlesPerzonalizados
             Grafico2.Titles.Clear();
             Grafico2.Series.Clear();
             Grafico2.ChartAreas.Clear();
-            Grafico2.Titles.Add("Evolución de las Asistencias " + "Nombre Asignatura");
+            Grafico2.Titles.Add("Evolución de las Asistencias" + " - " + CodAsignatura);
+            Grafico2.Titles[0].Font = new Font("Montserrat Alternates", 13f);
 
             ChartArea areaGrafico2 = new ChartArea();
 
@@ -315,7 +317,7 @@ namespace ControlesPerzonalizados
             this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
         }
 
-        public void fnReporte1(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes)
+        public void fnReporte1(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura)
         {
             this.CriterioAsistenciasEstudiantes = CriterioAsistenciasEstudiantes;
 
@@ -420,7 +422,8 @@ namespace ControlesPerzonalizados
             Grafico1.Titles.Clear();
             Grafico1.Series.Clear();
             Grafico1.ChartAreas.Clear();
-            Grafico1.Titles.Add("Asignatura" + "Nombre Asignatura");
+            Grafico1.Titles.Add("Asignatura" + " - " + CodAsignatura);
+            Grafico1.Titles[0].Font = new Font("Montserrat Alternates", 13f);
 
             TabPage tpGrafico1 = new TabPage("Gráfico 1");
             tpGrafico1.Controls.Add(Grafico1);
@@ -505,7 +508,7 @@ namespace ControlesPerzonalizados
             Grafico2.Titles.Clear();
             Grafico2.Series.Clear();
             Grafico2.ChartAreas.Clear();
-            Grafico2.Titles.Add("Evolución de las Asistencias " + "Nombre Asignatura");
+            Grafico2.Titles.Add("Evolución de las Asistencias" + " - " + CodAsignatura);
 
             ChartArea areaGrafico2 = new ChartArea();
 
@@ -550,7 +553,7 @@ namespace ControlesPerzonalizados
             tcGraficos.TabPages.Add(tpGrafico2);
         }
 
-        public void fnReporte3(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes)
+        public void fnReporte3(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura)
         {
             this.CriterioAsistenciasEstudiantes = CriterioAsistenciasEstudiantes;
 
@@ -599,7 +602,7 @@ namespace ControlesPerzonalizados
             Grafico1.Series.Clear();
             Grafico1.ChartAreas.Clear();
 
-            Grafico1.Titles.Add("Asignatura");
+            Grafico1.Titles.Add("Asignatura" + " - " + CodAsignatura);
 
             ChartArea areaGrafico1 = new ChartArea();
 
