@@ -127,10 +127,10 @@ namespace ControlesPerzonalizados
             cuadroResumen.Rows.Add("Mínimo", Statistics.Minimum(Asistieron), Statistics.Minimum(Faltaron));
 
             // Media
-            cuadroResumen.Rows.Add("Media", Statistics.Mean(Asistieron), Statistics.Mean(Faltaron));
+            cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)), String.Format("{0:0.00}", Statistics.Mean(Faltaron)));
 
             // Mediana
-            cuadroResumen.Rows.Add("Mediana", Statistics.Median(Asistieron), Statistics.Median(Faltaron));
+            cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Asistieron)), String.Format("{0:0.00}", Statistics.Median(Faltaron)));
 
             // Moda
             var modeAsistieron = Asistieron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
@@ -138,7 +138,7 @@ namespace ControlesPerzonalizados
             cuadroResumen.Rows.Add("Moda", modeAsistieron, modeFaltaron);
 
             // Varianza
-            cuadroResumen.Rows.Add("Varianza", Statistics.Variance(Asistieron), Statistics.Variance(Faltaron));
+            cuadroResumen.Rows.Add("Varianza", String.Format("{0:0.00}", Statistics.Variance(Asistieron)), String.Format("{0:0.00}", Statistics.Variance(Faltaron)));
 
             // Desviación Estándar
             var dvA = Statistics.StandardDeviation(Asistieron);
@@ -278,7 +278,7 @@ namespace ControlesPerzonalizados
 
             Series serie1Grafico2 = new Series("Porcentaje")
             {
-                ChartType = SeriesChartType.Spline,
+                ChartType = SeriesChartType.Line,
                 XValueMember = "Fecha",
                 YValueMembers = "TotalAsistieron",
                 IsValueShownAsLabel = true,
