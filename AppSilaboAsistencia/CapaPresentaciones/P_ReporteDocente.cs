@@ -126,8 +126,7 @@ namespace CapaPresentaciones
 
         private void btnGeneral_Click(object sender, EventArgs e)
         {
-            DataTable TablaGeneral = N_Catalogo.MostrarCatalogo(CodSemestre, CodDepartamentoA);
-            fnReporte6(TablaGeneral);
+            fnReporte6();
         }
 
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
@@ -219,7 +218,7 @@ namespace CapaPresentaciones
             Reportes.fnReporte5(Titulo, Titulos, Valores, resultados, txtCodigo.Text);
         }
 
-        private void fnReporte6(DataTable Tabla)
+        private void fnReporte6()
         {
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
@@ -227,9 +226,9 @@ namespace CapaPresentaciones
             string[] Titulos = { "Semestre", "Escuela Profesional", "Docente", "Cod. Docente" };
             string[] Valores = { CodSemestre, txtEscuelaP.Text, CodDocente, nombreDocente };
 
-            //DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+            DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignaturasDocente(CodSemestre, CodDocente, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
-            //Reportes.fnReporte6(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString());
+            Reportes.fnReporte6(Titulo, Titulos, Valores, resultados, txtCodigo.Text);
         }
 
         // Actualizar si cambia las fechas
