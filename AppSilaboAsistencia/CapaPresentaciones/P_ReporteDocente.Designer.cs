@@ -64,6 +64,7 @@ namespace CapaPresentaciones
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.btnActualizar = new DreamTeamControls.DreamTeamButton();
             this.pnContenedor.SuspendLayout();
             this.Cuadricula.SuspendLayout();
             this.pnFinal.SuspendLayout();
@@ -88,6 +89,7 @@ namespace CapaPresentaciones
             this.pnContenedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pnContenedor.BorderRadius = 20;
             this.pnContenedor.BorderThickness = 1;
+            this.pnContenedor.Controls.Add(this.btnActualizar);
             this.pnContenedor.Controls.Add(this.btnGeneral);
             this.pnContenedor.Controls.Add(this.Cuadricula);
             this.pnContenedor.Controls.Add(this.pnPadre);
@@ -282,7 +284,6 @@ namespace CapaPresentaciones
             this.dpFechaFinal.Name = "dpFechaFinal";
             this.dpFechaFinal.Size = new System.Drawing.Size(270, 32);
             this.dpFechaFinal.TabIndex = 62;
-            this.dpFechaFinal.ValueChanged += new System.EventHandler(this.cxtTipoReporte_SelectionChangeCommitted);
             // 
             // pnInicial
             // 
@@ -350,7 +351,6 @@ namespace CapaPresentaciones
             this.dpFechaInicial.Name = "dpFechaInicial";
             this.dpFechaInicial.Size = new System.Drawing.Size(270, 32);
             this.dpFechaInicial.TabIndex = 61;
-            this.dpFechaInicial.ValueChanged += new System.EventHandler(this.cxtTipoReporte_SelectionChangeCommitted);
             // 
             // pnCriterio
             // 
@@ -534,7 +534,7 @@ namespace CapaPresentaciones
             this.pnPadre.BorderRadius = 3;
             this.pnPadre.BorderThickness = 1;
             this.pnPadre.Controls.Add(this.pnReporte);
-            this.pnPadre.Location = new System.Drawing.Point(22, 224);
+            this.pnPadre.Location = new System.Drawing.Point(22, 242);
             this.pnPadre.Name = "pnPadre";
             this.pnPadre.ShowBorders = true;
             this.pnPadre.Size = new System.Drawing.Size(1057, 413);
@@ -894,6 +894,26 @@ namespace CapaPresentaciones
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this.pnContenedor;
             // 
+            // btnActualizar
+            // 
+            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnActualizar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnActualizar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnActualizar.BorderRadius = 20;
+            this.btnActualizar.BorderSize = 3;
+            this.btnActualizar.FlatAppearance.BorderSize = 0;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.btnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnActualizar.Location = new System.Drawing.Point(476, 208);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(106, 33);
+            this.btnActualizar.TabIndex = 82;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
             // P_ReporteDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -961,5 +981,6 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuPanel pnCriterio;
         private Bunifu.UI.WinForms.BunifuPanel pnTipo;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGeneral;
+        private DreamTeamControls.DreamTeamButton btnActualizar;
     }
 }
