@@ -194,6 +194,7 @@ namespace CapaPresentaciones
             this.btnGeneral.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnGeneral.UseDefaultRadiusAndThickness = true;
             this.btnGeneral.Visible = false;
+            this.btnGeneral.Click += new System.EventHandler(this.btnGeneral_Click);
             // 
             // Cuadricula
             // 
@@ -378,7 +379,7 @@ namespace CapaPresentaciones
             this.lblCriterioSeleccion.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblCriterioSeleccion.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCriterioSeleccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblCriterioSeleccion.Location = new System.Drawing.Point(16, 3);
+            this.lblCriterioSeleccion.Location = new System.Drawing.Point(10, 3);
             this.lblCriterioSeleccion.Name = "lblCriterioSeleccion";
             this.lblCriterioSeleccion.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblCriterioSeleccion.Size = new System.Drawing.Size(165, 23);
@@ -427,9 +428,9 @@ namespace CapaPresentaciones
             "Por Fechas",
             "Por Estudiantes"});
             this.cxtCriterioSeleccion.ItemTopMargin = 3;
-            this.cxtCriterioSeleccion.Location = new System.Drawing.Point(16, 34);
+            this.cxtCriterioSeleccion.Location = new System.Drawing.Point(10, 34);
             this.cxtCriterioSeleccion.Name = "cxtCriterioSeleccion";
-            this.cxtCriterioSeleccion.Size = new System.Drawing.Size(190, 32);
+            this.cxtCriterioSeleccion.Size = new System.Drawing.Size(200, 32);
             this.cxtCriterioSeleccion.TabIndex = 57;
             this.cxtCriterioSeleccion.Text = null;
             this.cxtCriterioSeleccion.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;

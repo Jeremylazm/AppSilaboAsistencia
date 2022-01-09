@@ -81,7 +81,7 @@ namespace CapaPresentaciones
             Reportes = Reporte;
 
             Responsivo();
-            pnReporte.Controls.Add(Reporte);
+            pnReporte.Controls.Add(Reporte); 
         }
 
         private void Responsivo()
@@ -111,6 +111,18 @@ namespace CapaPresentaciones
             P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text);
             AddOwnedForm(Asignaturas);
             Asignaturas.ShowDialog();
+        }
+
+        private void btnGeneral_Click(object sender, EventArgs e)
+        {
+            if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
@@ -186,5 +198,46 @@ namespace CapaPresentaciones
 
             Reportes.fnReporte3(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
         }
+
+        /*
+        private void fnReporte5()
+        {
+            // Tipo de reporte: Avance Asignatura
+            // Criterio de selección: Por Docente
+            string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            string[] Titulos = { "Semestre", "Escuela Profesional", "Asignatura", "Cód. Asignatura", "Docente", "Cod. Docente" };
+            string[] Valores = { CodSemestre, txtEscuelaP.Text, txtNombre.Text, txtCodigo.Text, CodDocente, nombreDocente };
+
+            DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+        
+            Reportes.fnReporte5(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString());
+        }
+
+        private void fnReporte6()
+        {
+            // Tipo de reporte: Avance Asignatura
+            // Criterio de selección: Por Docente
+            string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            string[] Titulos = { "Semestre", "Escuela Profesional", "Docente", "Cod. Docente" };
+            string[] Valores = { CodSemestre, txtEscuelaP.Text, CodDocente, nombreDocente };
+
+            DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+
+            Reportes.fnReporte6(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString());
+        }
+
+        private void fnReporte9()
+        {
+            // Tipo de reporte: Avance Asignatura
+            // Criterio de selección: Por Fechas
+            string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            string[] Titulos = { "Semestre" };
+            string[] Valores = { CodSemestre };
+
+            DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+
+            Reportes.fnReporte9(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString());
+        }
+        */
     }
 }
