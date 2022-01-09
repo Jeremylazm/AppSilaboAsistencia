@@ -50,7 +50,6 @@ namespace ControlesPerzonalizados
             this.pnResultados = new Bunifu.UI.WinForms.BunifuPanel();
             this.sbResultados = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.dgvResultados = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.btnVerReporte = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnContenedorCuadro = new Bunifu.UI.WinForms.BunifuPanel();
             this.gbxCuadroResumen = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnCuadroResumen = new Bunifu.UI.WinForms.BunifuPanel();
@@ -312,8 +311,6 @@ namespace ControlesPerzonalizados
             this.dgvResultados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvResultados.ColumnHeadersHeight = 28;
             this.dgvResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvResultados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.btnVerReporte});
             this.dgvResultados.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
             this.dgvResultados.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvResultados.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -368,13 +365,6 @@ namespace ControlesPerzonalizados
             this.dgvResultados.TabIndex = 89;
             this.dgvResultados.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             this.dgvResultados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResultados_CellClick);
-            // 
-            // btnVerReporte
-            // 
-            this.btnVerReporte.HeaderText = "Ver Reporte";
-            this.btnVerReporte.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.btnVerReporte.Name = "btnVerReporte";
-            this.btnVerReporte.ReadOnly = true;
             // 
             // pnContenedorCuadro
             // 
@@ -697,7 +687,6 @@ namespace ControlesPerzonalizados
         private Bunifu.UI.WinForms.BunifuPanel pnResultados;
         private Bunifu.UI.WinForms.BunifuVScrollBar sbResultados;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvResultados;
-        private System.Windows.Forms.DataGridViewImageColumn btnVerReporte;
         private Bunifu.UI.WinForms.BunifuPanel pnContenedorCuadro;
         private Bunifu.UI.WinForms.BunifuLabel gbxCuadroResumen;
         private Bunifu.UI.WinForms.BunifuPanel pnCuadroResumen;
