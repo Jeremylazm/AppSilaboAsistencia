@@ -904,6 +904,133 @@ namespace ControlesPerzonalizados
             }
         }
 
+        public void fnReporte6(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CodAsignatura)
+        {
+            // Limpiar los Antiguos Reportes
+            LimpiarCampos();
+
+            #region ===================== TÍTULO =====================
+            // Cambiar el Título
+            lblTitulo.Text = Titulo;
+            #endregion ===================== TÍTULO =====================
+
+            #region ===================== DESCRIPCIÓN =====================
+            // Verificar que los Títulos y los Valores dados Coincidan
+            if (Titulos.Length.Equals(Valores.Length))
+            {
+                if (Titulos.Length != 0)
+                {
+                    for (int K = 0; K < Titulos.Length; K++)
+                    {
+                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
+                        pnSubcampos.Controls.Add(Nuevo);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No existen parametros");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error de parametros");
+            }
+            #endregion ===================== DESCRIPCIÓN =====================
+
+            // Validar las Fechas dadas
+            if (Datos.Rows.Count == 0)
+            {
+                A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
+
+                lblTitulo.Text = "";
+                pnSubcampos.Controls.Clear();
+                dgvResumen.Columns.Clear();
+                dgvResultados.Columns.Clear();
+                dgvResultados.Refresh();
+
+                tcGraficos.Controls.Clear();
+            }
+            else
+            {
+                #region ===================== CUADRO DE RESULTADOS =====================
+                dgvResultados.Columns.Clear();
+                dgvResultados.DataSource = Datos;
+                dgvResultados.Columns[0].HeaderText = "Código Asignatura";
+                dgvResultados.Columns[1].HeaderText = "Nombre Asignatura";
+                dgvResultados.Columns[2].HeaderText = "Temas Avanzados";
+                #endregion ===================== CUADRO DE RESULTADOS =====================
+
+                #region ===================== CUADRO DE RESUMEN =====================
+                // Ocultar cuadro de resumen
+                pnInferior.Controls[1].Hide();
+                #endregion ===================== CUADRO DE RESUMEN =====================
+
+                /*
+                #region ===================== GRÁFICO =====================
+                // Gráfico 1
+                tcGraficos.TabPages.Clear();
+
+                Chart Grafico1 = new Chart
+                {
+                    Dock = DockStyle.Fill,
+                    Palette = ChartColorPalette.Excel
+                };
+
+                TabPage tpGrafico1 = new TabPage("Gráfico 1");
+                tpGrafico1.Controls.Add(Grafico1);
+
+                Grafico1.Titles.Clear();
+                Grafico1.Series.Clear();
+                Grafico1.ChartAreas.Clear();
+
+                Grafico1.Titles.Add("Avance de Asignatura");
+
+                ChartArea areaGrafico1 = new ChartArea();
+
+                // Propiedades de los ejes
+                areaGrafico1.AxisX.Interval = 1;
+                areaGrafico1.AxisX.Title = "Cód. Estudiante";
+                areaGrafico1.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+                areaGrafico1.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 14f);
+                areaGrafico1.AxisY.Title = "Cantidad";
+                areaGrafico1.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+                areaGrafico1.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+                areaGrafico1.AxisX.MajorGrid.LineColor = Color.Red;
+                areaGrafico1.AxisX.MajorGrid.Enabled = false;
+                //areaGrafico2.AxisY.MajorGrid.Enabled = false;
+
+                Grafico1.ChartAreas.Add(areaGrafico1);
+
+                Series serie1 = new Series("TotalAsistencias")
+                {
+                    ChartType = SeriesChartType.StackedBar,
+                    XValueMember = "CodEstudiante",
+                    YValueMembers = "TotalAsistencias",
+                    IsValueShownAsLabel = true,
+                    MarkerSize = 14,
+                    Font = new Font("Montserrat Alternates", 10f)
+                };
+
+                Series serie2 = new Series("TotalFaltas")
+                {
+                    ChartType = SeriesChartType.StackedBar,
+                    XValueMember = "CodEstudiante",
+                    YValueMembers = "TotalFaltas",
+                    MarkerSize = 14,
+                    Font = new Font("Montserrat Alternates", 11f)
+                };
+
+                Grafico1.Series.Add(serie1);
+                Grafico1.Series.Add(serie2);
+
+                Grafico1.DataSource = dgvResultados.DataSource;
+
+                tcGraficos.TabPages.Add(tpGrafico1);
+                #endregion ===================== GRÁFICO =====================
+                */
+            }
+        }
+
         private void dgvResultados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
