@@ -19,15 +19,13 @@ namespace CapaPresentaciones
         private readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodEscuelaP = "IF";
         private readonly string CodAsignatura;
-        private readonly int Tipo;
 
-        public P_SeleccionadoAsignaturaAsignada(string pCodAsignatura, int pTipo)
+        public P_SeleccionadoAsignaturaAsignada(string pCodAsignatura)
         {
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
             ObjCatalogo = new N_Catalogo();
             CodAsignatura = pCodAsignatura;
-            Tipo = pTipo;
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             MostrarAsignaturas();
@@ -46,24 +44,8 @@ namespace CapaPresentaciones
 
         private void MostrarAsignaturas()
         {
-            if (Tipo == 1) 
-            {
-                dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodEscuelaP, CodDocente);
-                AccionesTabla();
-            }
-            else
-            {
-                if (E_InicioSesion.Acceso == "Docente") 
-                {
-                    dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodEscuelaP, CodDocente);
-                    AccionesTabla();
-                }
-                else
-                {
-                    dgvDatos.DataSource = N_Catalogo.MostrarCatalogo(CodSemestre, CodEscuelaP);
-                    AccionesTabla();
-                }
-            }
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodEscuelaP, CodDocente);
+            AccionesTabla();
         }
 
         public void BuscarAsignaturas()
@@ -94,7 +76,7 @@ namespace CapaPresentaciones
 
             if (codTemp != DatosAsingatura.txtCodigo.Text && DatosAsingatura.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
             {
-                DatosAsingatura.CriterioSeleccionAsistenciaEstudiantes(); //OJO
+                DatosAsingatura.CriterioSeleccionAsistenciaEstudiantes();
             }
 
             Close();

@@ -36,7 +36,6 @@ namespace CapaPresentaciones
         {
             cxtTipoReporte.SelectedIndex = 0;
             cxtCriterioSeleccion.SelectedIndex = 0;
-            cxtCargoSeleccion.SelectedIndex = 0;
 
             DataTable Asignaturas = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodDepartamentoA, CodDocente);
             txtCodigo.Text = Asignaturas.Rows[0].ItemArray[0].ToString();
@@ -69,16 +68,12 @@ namespace CapaPresentaciones
 
             DataTable datosDocente = N_Docente.BuscarDocente(CodDepartamentoA, CodDocente);
             nombreDocente = datosDocente.Rows[0]["Nombre"].ToString() + " " + datosDocente.Rows[0]["APaterno"].ToString() + " " + datosDocente.Rows[0]["AMaterno"].ToString();
-            string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy" + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy"));
+            string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
             string[] Titulos = { "Semestre", "Escuela Profesional", "Asignatura", "Cód. Asignatura", "Docente", "Cod. Docente" };
             string[] Valores = { CodSemestre, txtEscuelaP.Text, txtNombre.Text, txtCodigo.Text,  nombreDocente, CodDocente};
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorFechas(CodSemestre, CodDocente, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
-            C_ReporteA Reporte = new C_ReporteA();
-            Responsivo();
-            pnReporte.Controls.Add(Reporte);
-
-            /*C_ReporteA Reporte = new C_ReporteA(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString())
+            C_ReporteA Reporte = new C_ReporteA(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString())
             {
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
             };
@@ -86,7 +81,7 @@ namespace CapaPresentaciones
             Reportes = Reporte;
 
             Responsivo();
-            pnReporte.Controls.Add(Reporte); */
+            pnReporte.Controls.Add(Reporte); 
         }
 
         private void Responsivo()
@@ -113,18 +108,9 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) 
-            {
-                P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, 1);
-                AddOwnedForm(Asignaturas);
-                Asignaturas.ShowDialog();
-            }
-            else
-            {
-                P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, 2);
-                AddOwnedForm(Asignaturas);
-                Asignaturas.ShowDialog();
-            }
+            P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text);
+            AddOwnedForm(Asignaturas);
+            Asignaturas.ShowDialog();
         }
 
         private void btnGeneral_Click(object sender, EventArgs e)
@@ -135,14 +121,7 @@ namespace CapaPresentaciones
             }
             else
             {
-                if (cxtCargoSeleccion.SelectedItem.Equals("Docente"))
-                {
 
-                }
-                else
-                {
-
-                }
             }
         }
 
@@ -150,10 +129,8 @@ namespace CapaPresentaciones
         {
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
             {
-                lblCriterioSeleccion.Text = "Criterio de Selección";
                 lblCriterioSeleccion.Visible = true;
                 cxtCriterioSeleccion.Visible = true;
-                cxtCargoSeleccion.Visible = false;
 
                 lblFechaInicial.Visible = true;
                 dpFechaInicial.Visible = true;
@@ -164,21 +141,12 @@ namespace CapaPresentaciones
                 btnGeneral.Visible = false;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
 
-                CriterioSeleccionAsistenciaEstudiantes(); //OJO
+                CriterioSeleccionAsistenciaEstudiantes();
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
-                if (E_InicioSesion.Acceso == "Docente")
-                {
-                    lblCriterioSeleccion.Visible = false;
-                    cxtCriterioSeleccion.Visible = false;
-                }
-                else
-                {
-                    lblCriterioSeleccion.Text = "Cargo de Selección";
-                    cxtCargoSeleccion.Visible = true;
-                    cxtCriterioSeleccion.Visible = false;
-                }
+                lblCriterioSeleccion.Visible = false;
+                cxtCriterioSeleccion.Visible = false;
 
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);

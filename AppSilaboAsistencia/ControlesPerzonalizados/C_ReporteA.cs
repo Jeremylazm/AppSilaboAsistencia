@@ -265,13 +265,13 @@ namespace ControlesPerzonalizados
             Grafico2.ChartAreas.Add(areaGrafico2);
 
             // Hacer porcentajes
-            //int n = (int)(Asistieron.ElementAt(0) + Faltaron.ElementAt(0));
+            int n = (int)(Asistieron.ElementAt(0) + Faltaron.ElementAt(0));
 
             DataTable dtGrafico2 = dtEstadisticos.Copy();
 
             foreach (DataRow row in dtGrafico2.Rows)
             {
-                row["TotalAsistieron"] = Convert.ToDouble(row["TotalAsistieron"]) / 0 * 100; //OJO
+                row["TotalAsistieron"] = Convert.ToDouble(row["TotalAsistieron"]) / n * 100;
             }
 
             Series serie1Grafico2 = new Series("Porcentaje")
