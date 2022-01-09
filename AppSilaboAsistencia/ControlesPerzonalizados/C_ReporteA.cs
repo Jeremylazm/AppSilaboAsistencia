@@ -10,15 +10,20 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using MathNet.Numerics.Statistics;
 using Ayudas;
+using System.IO;
+using ClosedXML.Excel;
+using CapaNegocios;
 
 namespace ControlesPerzonalizados
 {
     public partial class C_ReporteA : UserControl
     {
         private string CriterioAsistenciasEstudiantes;
+        readonly N_Catalogo ObjCatalogo;
 
         public C_ReporteA()
         {
+            ObjCatalogo = new N_Catalogo();
             InitializeComponent();
 
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
@@ -737,7 +742,7 @@ namespace ControlesPerzonalizados
             }
         }
 
-        public void fnReporte5(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CodAsignatura)
+        public void fnReporte5(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, DataTable Archivos, string CodAsignatura)
         {
             // Limpiar los Antiguos Reportes
             LimpiarCampos();
@@ -785,6 +790,42 @@ namespace ControlesPerzonalizados
             }
             else
             {
+                int Hechos = 0;
+                int Faltan = 0;
+
+                if (Archivos.Rows.Count >= 1)
+                {
+                    DataRow Fila = Archivos.Rows[0];
+                    byte[] archivo = Encoding.ASCII.GetBytes(Fila["PlanSesiones"].ToString());
+
+                    string path = AppDomain.CurrentDomain.BaseDirectory;
+                    string folder = path + "/temp/";
+                    string fullFilePath = folder + "temp.xlsx";
+                    if (!Directory.Exists(folder))
+                    {
+                        Directory.CreateDirectory(folder);
+                    }
+
+                    if (File.Exists(fullFilePath))
+                    {
+                        File.Delete(fullFilePath);
+                    }
+                    File.WriteAllBytes(fullFilePath, archivo);
+                    XLWorkbook wb = new XLWorkbook(fullFilePath);
+
+                    for (int i = 9; i <= 61; i++)
+                    {
+                        if (wb.Worksheet(1).Cell("H" + Convert.ToString(i)).Value.ToString().ToLower() == "hecho")
+                        {
+                            Hechos = Hechos + 1;
+                        }
+                    }
+                    Faltan = 51 - Hechos;
+                }
+                else
+                    MessageBox.Show("No hay Plan de Sesiones");
+
+
                 #region ===================== CUADRO DE RESULTADOS =====================
                 dgvResultados.Columns.Clear();
                 dgvResultados.DataSource = Datos;
@@ -793,41 +834,21 @@ namespace ControlesPerzonalizados
                 dgvResultados.Columns[2].HeaderText = "Fecha";
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 
-                /*
                 #region ===================== CUADRO DE RESUMEN =====================
                 DataTable cuadroResumen = new DataTable();
-                cuadroResumen.Columns.Add(" ");
-                cuadroResumen.Columns.Add("Asistieron");
-                cuadroResumen.Columns.Add("Faltaron");
 
-                // Máximo
-                cuadroResumen.Rows.Add("Máximo", Statistics.Maximum(Asistieron), Statistics.Maximum(Faltaron));
+                float Completado = 100 * Hechos / 51;
+                float Faltante = 100 * Faltan / 51;
+                float Total = Completado + Faltante;
 
-                // Mínimos
-                cuadroResumen.Rows.Add("Mínimo", Statistics.Minimum(Asistieron), Statistics.Minimum(Faltaron));
+                cuadroResumen.Rows.Add("Porcentaje de Avance Completado", Completado);
 
-                // Media
-                cuadroResumen.Rows.Add("Media", Statistics.Mean(Asistieron), Statistics.Mean(Faltaron));
+                cuadroResumen.Rows.Add("Porcentaje de Avance Faltante", Faltante);
 
-                // Mediana
-                cuadroResumen.Rows.Add("Mediana", Statistics.Median(Asistieron), Statistics.Median(Faltaron));
-
-                // Moda
-                var modeAsistieron = Asistieron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
-                var modeFaltaron = Faltaron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
-                cuadroResumen.Rows.Add("Moda", modeAsistieron, modeFaltaron);
-
-                // Varianza
-                cuadroResumen.Rows.Add("Varianza", Statistics.Variance(Asistieron), Statistics.Variance(Faltaron));
-
-                // Desviación Estándar
-                var dvA = Statistics.StandardDeviation(Asistieron);
-                var dvF = Statistics.StandardDeviation(Faltaron);
-                cuadroResumen.Rows.Add("Desv. Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
+                cuadroResumen.Rows.Add("TOTAL", Total);
 
                 dgvResumen.DataSource = cuadroResumen;
                 #endregion ===================== CUADRO DE RESUMEN =====================
-                */
 
                 /*
                 dgvResultados.Columns.Clear();
