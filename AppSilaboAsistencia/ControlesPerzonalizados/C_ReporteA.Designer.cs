@@ -38,9 +38,6 @@ namespace ControlesPerzonalizados
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnTitulo = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnCampos = new Bunifu.UI.WinForms.BunifuPanel();
@@ -53,7 +50,6 @@ namespace ControlesPerzonalizados
             this.pnResultados = new Bunifu.UI.WinForms.BunifuPanel();
             this.sbResultados = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.dgvResultados = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.btnVerReporte = new System.Windows.Forms.DataGridViewImageColumn();
             this.pnContenedorCuadro = new Bunifu.UI.WinForms.BunifuPanel();
             this.gbxCuadroResumen = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnCuadroResumen = new Bunifu.UI.WinForms.BunifuPanel();
@@ -62,8 +58,9 @@ namespace ControlesPerzonalizados
             this.pnContenedorGraficos = new Bunifu.UI.WinForms.BunifuPanel();
             this.gbxGraficos = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnGraficos = new Bunifu.UI.WinForms.BunifuPanel();
+            this.tcGraficos = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pnSuperior = new Bunifu.UI.WinForms.BunifuPanel();
-            this.Grafico1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pnTitulo.SuspendLayout();
             this.pnCampos.SuspendLayout();
             this.Cuadricula.SuspendLayout();
@@ -76,8 +73,8 @@ namespace ControlesPerzonalizados
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumen)).BeginInit();
             this.pnContenedorGraficos.SuspendLayout();
             this.pnGraficos.SuspendLayout();
+            this.tcGraficos.SuspendLayout();
             this.pnSuperior.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Grafico1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnTitulo
@@ -314,8 +311,6 @@ namespace ControlesPerzonalizados
             this.dgvResultados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvResultados.ColumnHeadersHeight = 28;
             this.dgvResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvResultados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.btnVerReporte});
             this.dgvResultados.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
             this.dgvResultados.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvResultados.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -369,13 +364,7 @@ namespace ControlesPerzonalizados
             this.dgvResultados.Size = new System.Drawing.Size(1032, 264);
             this.dgvResultados.TabIndex = 89;
             this.dgvResultados.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
-            // 
-            // btnVerReporte
-            // 
-            this.btnVerReporte.HeaderText = "Ver Reporte";
-            this.btnVerReporte.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.btnVerReporte.Name = "btnVerReporte";
-            this.btnVerReporte.ReadOnly = true;
+            this.dgvResultados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResultados_CellClick);
             // 
             // pnContenedorCuadro
             // 
@@ -606,13 +595,33 @@ namespace ControlesPerzonalizados
             this.pnGraficos.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pnGraficos.BorderRadius = 20;
             this.pnGraficos.BorderThickness = 1;
-            this.pnGraficos.Controls.Add(this.Grafico1);
+            this.pnGraficos.Controls.Add(this.tcGraficos);
             this.pnGraficos.Location = new System.Drawing.Point(3, 16);
             this.pnGraficos.Margin = new System.Windows.Forms.Padding(0);
             this.pnGraficos.Name = "pnGraficos";
             this.pnGraficos.ShowBorders = true;
             this.pnGraficos.Size = new System.Drawing.Size(1056, 685);
             this.pnGraficos.TabIndex = 99;
+            // 
+            // tcGraficos
+            // 
+            this.tcGraficos.Controls.Add(this.tabPage1);
+            this.tcGraficos.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tcGraficos.Location = new System.Drawing.Point(13, 16);
+            this.tcGraficos.Name = "tcGraficos";
+            this.tcGraficos.SelectedIndex = 0;
+            this.tcGraficos.Size = new System.Drawing.Size(1040, 666);
+            this.tcGraficos.TabIndex = 1;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 31);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1032, 631);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Gráfico 1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // pnSuperior
             // 
@@ -632,22 +641,6 @@ namespace ControlesPerzonalizados
             this.pnSuperior.ShowBorders = true;
             this.pnSuperior.Size = new System.Drawing.Size(1062, 231);
             this.pnSuperior.TabIndex = 0;
-            // 
-            // Grafico1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.Grafico1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.Grafico1.Legends.Add(legend1);
-            this.Grafico1.Location = new System.Drawing.Point(23, 38);
-            this.Grafico1.Name = "Grafico1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.Grafico1.Series.Add(series1);
-            this.Grafico1.Size = new System.Drawing.Size(1010, 624);
-            this.Grafico1.TabIndex = 0;
-            this.Grafico1.Text = "chart1";
             // 
             // C_ReporteA
             // 
@@ -671,8 +664,8 @@ namespace ControlesPerzonalizados
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumen)).EndInit();
             this.pnContenedorGraficos.ResumeLayout(false);
             this.pnGraficos.ResumeLayout(false);
+            this.tcGraficos.ResumeLayout(false);
             this.pnSuperior.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Grafico1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -694,12 +687,12 @@ namespace ControlesPerzonalizados
         private Bunifu.UI.WinForms.BunifuPanel pnResultados;
         private Bunifu.UI.WinForms.BunifuVScrollBar sbResultados;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvResultados;
-        private System.Windows.Forms.DataGridViewImageColumn btnVerReporte;
         private Bunifu.UI.WinForms.BunifuPanel pnContenedorCuadro;
         private Bunifu.UI.WinForms.BunifuLabel gbxCuadroResumen;
         private Bunifu.UI.WinForms.BunifuPanel pnCuadroResumen;
         private Bunifu.UI.WinForms.BunifuVScrollBar sbResumen;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvResumen;
-        private System.Windows.Forms.DataVisualization.Charting.Chart Grafico1;
+        private System.Windows.Forms.TabControl tcGraficos;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }

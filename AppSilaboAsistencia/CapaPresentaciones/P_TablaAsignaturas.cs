@@ -34,7 +34,6 @@ namespace CapaPresentaciones
 			dgvDatos.Columns[7].HeaderText = "Hrs. Práctica";
 			dgvDatos.Columns[8].HeaderText = "Prerrequisitos";
             dgvDatos.Columns[9].Visible = false;
-
         }
 
 		public void MostrarRegistros()
