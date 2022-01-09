@@ -214,8 +214,9 @@ namespace CapaPresentaciones
             string[] Valores = { CodSemestre, txtEscuelaP.Text, txtNombre.Text, txtCodigo.Text, CodDocente, nombreDocente };
 
             DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignatura(CodSemestre, CodDocente, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+            DataTable plansesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, txtCodigo.Text, CodDocente);
 
-            Reportes.fnReporte5(Titulo, Titulos, Valores, resultados, txtCodigo.Text);
+            Reportes.fnReporte5(Titulo, Titulos, Valores, resultados, plansesion, txtCodigo.Text);
         }
 
         private void fnReporte6()
