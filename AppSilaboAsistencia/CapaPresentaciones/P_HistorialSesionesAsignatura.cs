@@ -92,6 +92,7 @@ namespace CapaPresentaciones
             string dia = fechaActual.ToString("dddd");
             return dia.Substring(0,2).ToUpper();
 		}
+        //busacar un registro entre un intervalo de tiempo
         public bool buscarUnRegistro(DateTime pHoraIni,DateTime pHoraLimte)
 		{
             DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, LimtFechaSup, LimtFechaSup, "");
@@ -133,6 +134,7 @@ namespace CapaPresentaciones
                     P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
                     NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
                     NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
+                    NuevoRegistroAsistencia.txtTipoSesion.Text = "NORMAL";
                     NuevoRegistroAsistencia.hora = HoraCompletaActual;
                     NuevoRegistroAsistencia.Owner = Fondo;
                     NuevoRegistroAsistencia.ShowDialog();
@@ -154,6 +156,7 @@ namespace CapaPresentaciones
                     P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
                     NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
                     NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
+                    NuevoRegistroAsistencia.txtTipoSesion.Text = "RECUPERACIÓN";
                     NuevoRegistroAsistencia.hora = HoraCompletaActual;
                     NuevoRegistroAsistencia.Owner = Fondo;
                     NuevoRegistroAsistencia.ShowDialog();
@@ -227,6 +230,7 @@ namespace CapaPresentaciones
                 Program.Evento = 1;
                 EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
                 EditarRegistro.txtFecha.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
+                EditarRegistro.txtTipoSesion.Text = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
                 EditarRegistro.txtTema.Text = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
                 EditarRegistro.hora = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
                 EditarRegistro.Owner = Fondo;

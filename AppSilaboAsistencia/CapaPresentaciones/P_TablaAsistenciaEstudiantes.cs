@@ -189,9 +189,9 @@ namespace CapaPresentaciones
                     ObjEntidadDoc.Hora = hora;
                     ObjEntidadDoc.CodDocente = CodDocente;
                     ObjEntidadDoc.Asistio = "SI";
-                    ObjEntidadDoc.TipoSesion = "Seleccionar";
+                    ObjEntidadDoc.TipoSesion = txtTipoSesion.Text.ToString().ToUpper();
                     ObjEntidadDoc.NombreTema = txtTema.Text.ToString();
-                    ObjEntidadDoc.Observacion = "recuDelComboboX";
+                    ObjEntidadDoc.Observacion = "";
 
                     ObjNegocioDoc.RegistrarAsistenciaDocentePorAsignatura(ObjEntidadDoc);
                     //A_Dialogo.DialogoConfirmacion("El registro de Asistencia Docente se insertó éxitosamente");
@@ -211,43 +211,44 @@ namespace CapaPresentaciones
             else
             {
 
-
-                if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea editar el registro?") == DialogResult.Yes)
+                try
                 {
-                    DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString(), "");
-
-                    if (Resultado.Rows.Count != 0)
+                    if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea editar el registro?") == DialogResult.Yes)
                     {
+                        DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString(), "");
 
-                        ObjEntidadDoc.CodSemestre = CodSemestre;
-                        ObjEntidadDoc.CodAsignatura = CodAsignatura;
-                        ObjEntidadDoc.Fecha = txtFecha.Text.ToString();
-                        ObjEntidadDoc.Hora = hora;
+                        if (Resultado.Rows.Count != 0)
+                        {
 
-                        string TipoSesionActualizado = "SeleccionarActualizado";
-                        string NombreTemaActualizado = txtTema.Text.ToString();
-                        string fechaActualizado = txtFecha.Text.ToString();
-                        string ObsActulizado = "recuDelComboboX";
+                            ObjEntidadDoc.CodSemestre = CodSemestre;
+                            ObjEntidadDoc.CodAsignatura = CodAsignatura;
+                            ObjEntidadDoc.Fecha = txtFecha.Text.ToString();
+                            ObjEntidadDoc.Hora = hora;
+
+                            string TipoSesionActualizado = txtTipoSesion.Text.ToString().ToUpper();
+                            string NombreTemaActualizado = txtTema.Text.ToString();
+                            string fechaActualizado = txtFecha.Text.ToString();
+                            string ObsActulizado = "";
 
 
-                        ObjNegocioDoc.ActualizarAsistenciaDocentePorAsignatura(ObjEntidadDoc, TipoSesionActualizado, NombreTemaActualizado, ObsActulizado);
-                        A_Dialogo.DialogoConfirmacion("Se ha Editado  la Asistencia" + Environment.NewLine + " del Docente y los Estudiantes");
-                        EditarRegistroEstudiantes();
-                        Program.Evento = 0;
+                            ObjNegocioDoc.ActualizarAsistenciaDocentePorAsignatura(ObjEntidadDoc, TipoSesionActualizado, NombreTemaActualizado, ObsActulizado);
+                            A_Dialogo.DialogoConfirmacion("Se ha Editado  la Asistencia" + Environment.NewLine + " del Docente y los Estudiantes");
+                            EditarRegistroEstudiantes();
+                            Program.Evento = 0;
 
-                        Close();
+                            Close();
+                        }
+                        else
+                        {
+                            A_Dialogo.DialogoError("El registro de Docente no existe");
+                        }
                     }
-                    else
-                    {
-                        A_Dialogo.DialogoError("El registro de Docente no existe");
-                    }
+
                 }
-                    
-                
-                /*catch (Exception)
+                catch (Exception)
                 {
                     A_Dialogo.DialogoError("Error al editar el registro");
-                }*/
+                }
             }
         }
 
