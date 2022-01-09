@@ -8,6 +8,7 @@ namespace CapaDatos
     public class D_HorarioRegistroAsistencia
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
+        //readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
 
         // Método buscar el horario de registro de asistencia diaria de los docentes.
         public DataTable BuscarHorarioRegistroAsistencia(string CodSemestre, string CodDepartamentoA, string CodJefeDepartamentoA)

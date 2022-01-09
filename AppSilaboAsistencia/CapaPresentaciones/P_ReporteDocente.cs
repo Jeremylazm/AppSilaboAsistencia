@@ -36,6 +36,7 @@ namespace CapaPresentaciones
         {
             cxtTipoReporte.SelectedIndex = 0;
             cxtCriterioSeleccion.SelectedIndex = 0;
+            cxtCargoSeleccion.SelectedIndex = 0;
 
             DataTable Asignaturas = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodDepartamentoA, CodDocente);
             txtCodigo.Text = Asignaturas.Rows[0].ItemArray[0].ToString();
@@ -73,7 +74,11 @@ namespace CapaPresentaciones
             string[] Valores = { CodSemestre, txtEscuelaP.Text, txtNombre.Text, txtCodigo.Text,  nombreDocente, CodDocente};
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorFechas(CodSemestre, CodDocente, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
-            C_ReporteA Reporte = new C_ReporteA(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString())
+            C_ReporteA Reporte = new C_ReporteA();
+            Responsivo();
+            pnReporte.Controls.Add(Reporte);
+
+            /*C_ReporteA Reporte = new C_ReporteA(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString())
             {
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
             };
@@ -81,7 +86,7 @@ namespace CapaPresentaciones
             Reportes = Reporte;
 
             Responsivo();
-            pnReporte.Controls.Add(Reporte);
+            pnReporte.Controls.Add(Reporte); */
         }
 
         private void Responsivo()
@@ -108,17 +113,47 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text);
-            AddOwnedForm(Asignaturas);
-            Asignaturas.ShowDialog();
+            if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) 
+            {
+                P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, 1);
+                AddOwnedForm(Asignaturas);
+                Asignaturas.ShowDialog();
+            }
+            else
+            {
+                P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, 2);
+                AddOwnedForm(Asignaturas);
+                Asignaturas.ShowDialog();
+            }
+        }
+
+        private void btnGeneral_Click(object sender, EventArgs e)
+        {
+            if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+            {
+
+            }
+            else
+            {
+                if (cxtCargoSeleccion.SelectedItem.Equals("Docente"))
+                {
+
+                }
+                else
+                {
+
+                }
+            }
         }
 
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
             {
+                lblCriterioSeleccion.Text = "Criterio de Selección";
                 lblCriterioSeleccion.Visible = true;
                 cxtCriterioSeleccion.Visible = true;
+                cxtCargoSeleccion.Visible = false;
 
                 lblFechaInicial.Visible = true;
                 dpFechaInicial.Visible = true;
@@ -129,12 +164,21 @@ namespace CapaPresentaciones
                 btnGeneral.Visible = false;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
 
-                CriterioSeleccionAsistenciaEstudiantes();
+                CriterioSeleccionAsistenciaEstudiantes(); //OJO
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
-                lblCriterioSeleccion.Visible = false;
-                cxtCriterioSeleccion.Visible = false;
+                if (E_InicioSesion.Acceso == "Docente")
+                {
+                    lblCriterioSeleccion.Visible = false;
+                    cxtCriterioSeleccion.Visible = false;
+                }
+                else
+                {
+                    lblCriterioSeleccion.Text = "Cargo de Selección";
+                    cxtCargoSeleccion.Visible = true;
+                    cxtCriterioSeleccion.Visible = false;
+                }
 
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
@@ -186,5 +230,46 @@ namespace CapaPresentaciones
 
             Reportes.fnReporte3(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString());
         }
+
+        /*
+        private void fnReporte5()
+        {
+            // Tipo de reporte: Avance Asignatura
+            // Criterio de selección: Por Docente
+            string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            string[] Titulos = { "Semestre", "Escuela Profesional", "Asignatura", "Cód. Asignatura", "Docente", "Cod. Docente" };
+            string[] Valores = { CodSemestre, txtEscuelaP.Text, txtNombre.Text, txtCodigo.Text, CodDocente, nombreDocente };
+
+            DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+        
+            Reportes.fnReporte5(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString());
+        }
+
+        private void fnReporte6()
+        {
+            // Tipo de reporte: Avance Asignatura
+            // Criterio de selección: Por Docente
+            string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            string[] Titulos = { "Semestre", "Escuela Profesional", "Docente", "Cod. Docente" };
+            string[] Valores = { CodSemestre, txtEscuelaP.Text, CodDocente, nombreDocente };
+
+            DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+
+            Reportes.fnReporte6(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString());
+        }
+
+        private void fnReporte9()
+        {
+            // Tipo de reporte: Avance Asignatura
+            // Criterio de selección: Por Fechas
+            string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            string[] Titulos = { "Semestre" };
+            string[] Valores = { CodSemestre };
+
+            DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+
+            Reportes.fnReporte9(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString());
+        }
+        */
     }
 }

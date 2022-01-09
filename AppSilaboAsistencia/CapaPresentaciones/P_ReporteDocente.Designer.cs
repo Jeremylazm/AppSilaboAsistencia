@@ -64,6 +64,7 @@ namespace CapaPresentaciones
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.cxtCargoSeleccion = new Bunifu.UI.WinForms.BunifuDropdown();
             this.pnContenedor.SuspendLayout();
             this.Cuadricula.SuspendLayout();
             this.pnFinal.SuspendLayout();
@@ -194,6 +195,7 @@ namespace CapaPresentaciones
             this.btnGeneral.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnGeneral.UseDefaultRadiusAndThickness = true;
             this.btnGeneral.Visible = false;
+            this.btnGeneral.Click += new System.EventHandler(this.btnGeneral_Click);
             // 
             // Cuadricula
             // 
@@ -359,6 +361,7 @@ namespace CapaPresentaciones
             this.pnCriterio.BorderColor = System.Drawing.Color.Transparent;
             this.pnCriterio.BorderRadius = 3;
             this.pnCriterio.BorderThickness = 1;
+            this.pnCriterio.Controls.Add(this.cxtCargoSeleccion);
             this.pnCriterio.Controls.Add(this.lblCriterioSeleccion);
             this.pnCriterio.Controls.Add(this.cxtCriterioSeleccion);
             this.pnCriterio.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -378,7 +381,7 @@ namespace CapaPresentaciones
             this.lblCriterioSeleccion.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblCriterioSeleccion.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCriterioSeleccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblCriterioSeleccion.Location = new System.Drawing.Point(16, 3);
+            this.lblCriterioSeleccion.Location = new System.Drawing.Point(10, 3);
             this.lblCriterioSeleccion.Name = "lblCriterioSeleccion";
             this.lblCriterioSeleccion.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblCriterioSeleccion.Size = new System.Drawing.Size(165, 23);
@@ -427,9 +430,9 @@ namespace CapaPresentaciones
             "Por Fechas",
             "Por Estudiantes"});
             this.cxtCriterioSeleccion.ItemTopMargin = 3;
-            this.cxtCriterioSeleccion.Location = new System.Drawing.Point(16, 34);
+            this.cxtCriterioSeleccion.Location = new System.Drawing.Point(10, 34);
             this.cxtCriterioSeleccion.Name = "cxtCriterioSeleccion";
-            this.cxtCriterioSeleccion.Size = new System.Drawing.Size(190, 32);
+            this.cxtCriterioSeleccion.Size = new System.Drawing.Size(200, 32);
             this.cxtCriterioSeleccion.TabIndex = 57;
             this.cxtCriterioSeleccion.Text = null;
             this.cxtCriterioSeleccion.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
@@ -893,6 +896,56 @@ namespace CapaPresentaciones
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this.pnContenedor;
             // 
+            // cxtCargoSeleccion
+            // 
+            this.cxtCargoSeleccion.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cxtCargoSeleccion.BackColor = System.Drawing.Color.Transparent;
+            this.cxtCargoSeleccion.BackgroundColor = System.Drawing.Color.White;
+            this.cxtCargoSeleccion.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.cxtCargoSeleccion.BorderRadius = 1;
+            this.cxtCargoSeleccion.Color = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.cxtCargoSeleccion.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
+            this.cxtCargoSeleccion.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cxtCargoSeleccion.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.cxtCargoSeleccion.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cxtCargoSeleccion.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.cxtCargoSeleccion.DisabledIndicatorColor = System.Drawing.Color.DarkGray;
+            this.cxtCargoSeleccion.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cxtCargoSeleccion.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
+            this.cxtCargoSeleccion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cxtCargoSeleccion.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            this.cxtCargoSeleccion.FillDropDown = true;
+            this.cxtCargoSeleccion.FillIndicator = true;
+            this.cxtCargoSeleccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cxtCargoSeleccion.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cxtCargoSeleccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.cxtCargoSeleccion.FormattingEnabled = true;
+            this.cxtCargoSeleccion.Icon = null;
+            this.cxtCargoSeleccion.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            this.cxtCargoSeleccion.IndicatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.cxtCargoSeleccion.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            this.cxtCargoSeleccion.IndicatorThickness = 2;
+            this.cxtCargoSeleccion.IsDropdownOpened = false;
+            this.cxtCargoSeleccion.ItemBackColor = System.Drawing.Color.White;
+            this.cxtCargoSeleccion.ItemBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.cxtCargoSeleccion.ItemForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.cxtCargoSeleccion.ItemHeight = 26;
+            this.cxtCargoSeleccion.ItemHighLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.cxtCargoSeleccion.ItemHighLightForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.cxtCargoSeleccion.Items.AddRange(new object[] {
+            "Docente",
+            "Director Escuela",
+            "Jefe Departamento"});
+            this.cxtCargoSeleccion.ItemTopMargin = 3;
+            this.cxtCargoSeleccion.Location = new System.Drawing.Point(10, 34);
+            this.cxtCargoSeleccion.Name = "cxtCargoSeleccion";
+            this.cxtCargoSeleccion.Size = new System.Drawing.Size(200, 32);
+            this.cxtCargoSeleccion.TabIndex = 59;
+            this.cxtCargoSeleccion.Text = null;
+            this.cxtCargoSeleccion.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            this.cxtCargoSeleccion.TextLeftMargin = 5;
+            this.cxtCargoSeleccion.Visible = false;
+            // 
             // P_ReporteDocente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -960,5 +1013,6 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuPanel pnCriterio;
         private Bunifu.UI.WinForms.BunifuPanel pnTipo;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGeneral;
+        public Bunifu.UI.WinForms.BunifuDropdown cxtCargoSeleccion;
     }
 }
