@@ -101,11 +101,15 @@ namespace ControlesPerzonalizados
                     Width = 1032
                 };
 
+                dgvResultados.Columns.Clear();
                 dgvResultados.Columns.Add(btnVerReporte);
                 dgvResultados.Columns[0].HeaderText = "Ver Reporte";
 
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[0].DisplayIndex = 5;
+
+                // Mostrar cuadro de resumen
+                pnInferior.Controls[1].Show();
 
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
                 dtEstadisticos.Rows.Clear();
@@ -389,11 +393,15 @@ namespace ControlesPerzonalizados
                     Width = 1032
                 };
 
+                dgvResultados.Columns.Clear();
                 dgvResultados.Columns.Add(btnVerReporte);
                 dgvResultados.Columns[0].HeaderText = "Ver Reporte";
 
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[0].DisplayIndex = 5;
+
+                // Mostrar cuadro de resumen
+                pnInferior.Controls[1].Show();
 
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
                 dtEstadisticos.Rows.Clear();
@@ -655,12 +663,16 @@ namespace ControlesPerzonalizados
                     Width = 1032
                 };
 
+                dgvResultados.Columns.Clear();
                 dgvResultados.Columns.Add(btnVerReporte);
                 dgvResultados.Columns[0].HeaderText = "Ver Reporte";
 
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[1].Visible = false;
                 dgvResultados.Columns[0].DisplayIndex = 7;
+
+                // Ocultar cuadro de resumen
+                pnInferior.Controls[1].Hide();
 
                 // Gráficos
                 // Gráfico 1
