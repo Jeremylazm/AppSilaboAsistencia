@@ -203,6 +203,20 @@ namespace CapaPresentaciones
 
             Reportes.fnReporte3(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
         }
+
+        // Actualizar si cambia las fechas
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+            {
+                CriterioSeleccionAsistenciaEstudiantes();
+            }
+            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
+            {
+
+            }
+        }
+
         private void fnReporte5()
         {
             // Tipo de reporte: Avance Asignatura
