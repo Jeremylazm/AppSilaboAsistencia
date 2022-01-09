@@ -796,6 +796,7 @@ namespace ControlesPerzonalizados
                 if (Archivos.Rows.Count >= 1)
                 {
                     DataRow Fila = Archivos.Rows[0];
+
                     byte[] archivo = Fila["PlanSesiones"] as byte[];
 
                     string path = AppDomain.CurrentDomain.BaseDirectory;
@@ -840,6 +841,7 @@ namespace ControlesPerzonalizados
                 cuadroResumen.Columns.Add(" ");
                 cuadroResumen.Columns.Add("Porcentajes");
 
+
                 float Completado = 100 * Hechos / 51;
                 float Faltante = 100 * Faltan / 51;
                 float Total = Completado + Faltante;
@@ -853,6 +855,7 @@ namespace ControlesPerzonalizados
                 dgvResumen.DataSource = cuadroResumen;
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
+                /*
                 #region ===================== GRÁFICO =====================
                 tcGraficos.TabPages.Clear();
                 Chart Grafico1 = new Chart
@@ -911,6 +914,7 @@ namespace ControlesPerzonalizados
 
                 tcGraficos.TabPages.Add(tpGrafico1);
                 #endregion ===================== GRÁFICO =====================
+                */
             }
         }
 
