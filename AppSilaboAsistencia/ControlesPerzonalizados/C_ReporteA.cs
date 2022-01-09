@@ -737,14 +737,17 @@ namespace ControlesPerzonalizados
             }
         }
 
-        public void fnReporte5(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura)
+        public void fnReporte5(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CodAsignatura)
         {
             // Limpiar los Antiguos Reportes
             LimpiarCampos();
 
+            #region ===================== TÍTULO =====================
             // Cambiar el Título
             lblTitulo.Text = Titulo;
+            #endregion ===================== TÍTULO =====================
 
+            #region ===================== DESCRIPCIÓN =====================
             // Verificar que los Títulos y los Valores dados Coincidan
             if (Titulos.Length.Equals(Valores.Length))
             {
@@ -765,9 +768,9 @@ namespace ControlesPerzonalizados
             {
                 MessageBox.Show("Error de parametros");
             }
+            #endregion ===================== DESCRIPCIÓN =====================
 
             // Validar las Fechas dadas
-            /*
             if (Datos.Rows.Count == 0)
             {
                 A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
@@ -782,25 +785,56 @@ namespace ControlesPerzonalizados
             }
             else
             {
-                // Crear columna
-                DataGridViewImageColumn btnVerReporte = new DataGridViewImageColumn
-                {
-                    ImageLayout = DataGridViewImageCellLayout.Zoom,
-                    Frozen = false,
-                    AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet,
-                    DividerWidth = 0,
-                    FillWeight = 100,
-                    MinimumWidth = 5,
-                    Width = 1032
-                };
+                #region ===================== CUADRO DE RESULTADOS =====================
+                dgvResultados.Columns.Clear();
+                dgvResultados.DataSource = Datos;
+                dgvResultados.Columns[0].HeaderText = "Sesión";
+                dgvResultados.Columns[1].HeaderText = "Tema";
+                dgvResultados.Columns[2].HeaderText = "Fecha";
+                #endregion ===================== CUADRO DE RESULTADOS =====================
 
+                /*
+                #region ===================== CUADRO DE RESUMEN =====================
+                DataTable cuadroResumen = new DataTable();
+                cuadroResumen.Columns.Add(" ");
+                cuadroResumen.Columns.Add("Asistieron");
+                cuadroResumen.Columns.Add("Faltaron");
+
+                // Máximo
+                cuadroResumen.Rows.Add("Máximo", Statistics.Maximum(Asistieron), Statistics.Maximum(Faltaron));
+
+                // Mínimos
+                cuadroResumen.Rows.Add("Mínimo", Statistics.Minimum(Asistieron), Statistics.Minimum(Faltaron));
+
+                // Media
+                cuadroResumen.Rows.Add("Media", Statistics.Mean(Asistieron), Statistics.Mean(Faltaron));
+
+                // Mediana
+                cuadroResumen.Rows.Add("Mediana", Statistics.Median(Asistieron), Statistics.Median(Faltaron));
+
+                // Moda
+                var modeAsistieron = Asistieron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
+                var modeFaltaron = Faltaron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
+                cuadroResumen.Rows.Add("Moda", modeAsistieron, modeFaltaron);
+
+                // Varianza
+                cuadroResumen.Rows.Add("Varianza", Statistics.Variance(Asistieron), Statistics.Variance(Faltaron));
+
+                // Desviación Estándar
+                var dvA = Statistics.StandardDeviation(Asistieron);
+                var dvF = Statistics.StandardDeviation(Faltaron);
+                cuadroResumen.Rows.Add("Desv. Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
+
+                dgvResumen.DataSource = cuadroResumen;
+                #endregion ===================== CUADRO DE RESUMEN =====================
+                */
+
+                /*
                 dgvResultados.Columns.Clear();
                 dgvResultados.Columns.Add(btnVerReporte);
-                dgvResultados.Columns[0].HeaderText = "Ver Reporte";
 
                 dgvResultados.DataSource = Datos;
-                dgvResultados.Columns[1].Visible = false;
-                dgvResultados.Columns[0].DisplayIndex = 7;
+                
 
                 // Ocultar cuadro de resumen
                 pnInferior.Controls[1].Hide();
@@ -866,8 +900,8 @@ namespace ControlesPerzonalizados
                 Grafico1.DataSource = dgvResultados.DataSource;
 
                 tcGraficos.TabPages.Add(tpGrafico1);
+                */
             }
-            */
         }
 
         private void dgvResultados_CellClick(object sender, DataGridViewCellEventArgs e)
