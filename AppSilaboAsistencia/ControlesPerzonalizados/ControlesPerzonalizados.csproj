@@ -216,11 +216,11 @@
     <Compile Include="C_PlanSesionesSemana.Designer.cs">
       <DependentUpon>C_PlanSesionesSemana.cs</DependentUpon>
     </Compile>
-    <Compile Include="C_ReporteA.cs">
+    <Compile Include="C_Reporte.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="C_ReporteA.Designer.cs">
-      <DependentUpon>C_ReporteA.cs</DependentUpon>
+    <Compile Include="C_Reporte.Designer.cs">
+      <DependentUpon>C_Reporte.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -249,8 +249,8 @@
     <EmbeddedResource Include="C_PlanSesionesSemana.resx">
       <DependentUpon>C_PlanSesionesSemana.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="C_ReporteA.resx">
-      <DependentUpon>C_ReporteA.cs</DependentUpon>
+    <EmbeddedResource Include="C_Reporte.resx">
+      <DependentUpon>C_Reporte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

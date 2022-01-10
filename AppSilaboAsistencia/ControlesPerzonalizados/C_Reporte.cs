@@ -16,17 +16,18 @@ using CapaNegocios;
 
 namespace ControlesPerzonalizados
 {
-    public partial class C_ReporteA : UserControl
+    public partial class C_Reporte : UserControl
     {
         private string CriterioAsistenciasEstudiantes;
         readonly N_Catalogo ObjCatalogo;
 
-        public C_ReporteA()
+        public C_Reporte()
         {
             ObjCatalogo = new N_Catalogo();
             InitializeComponent();
 
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
+            Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResumen, sbResumen);
             /*dgvResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);
             sbResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);*/
         }
@@ -56,7 +57,7 @@ namespace ControlesPerzonalizados
             pnSubcampos.Controls.Clear();
         }
 
-        public C_ReporteA(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura)
+        public C_Reporte(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura)
         {
             InitializeComponent();
 
