@@ -796,7 +796,8 @@ namespace ControlesPerzonalizados
                 if (Archivos.Rows.Count >= 1)
                 {
                     DataRow Fila = Archivos.Rows[0];
-                    byte[] archivo = Encoding.ASCII.GetBytes(Fila["PlanSesiones"].ToString());
+
+                    byte[] archivo = Fila["PlanSesiones"] as byte[];
 
                     string path = AppDomain.CurrentDomain.BaseDirectory;
                     string folder = path + "/temp/";
@@ -810,6 +811,7 @@ namespace ControlesPerzonalizados
                     {
                         File.Delete(fullFilePath);
                     }
+
                     File.WriteAllBytes(fullFilePath, archivo);
                     XLWorkbook wb = new XLWorkbook(fullFilePath);
 
@@ -836,41 +838,31 @@ namespace ControlesPerzonalizados
 
                 #region ===================== CUADRO DE RESUMEN =====================
                 DataTable cuadroResumen = new DataTable();
+                cuadroResumen.Columns.Add(" ");
+                cuadroResumen.Columns.Add("Porcentajes");
+
 
                 float Completado = 100 * Hechos / 51;
                 float Faltante = 100 * Faltan / 51;
                 float Total = Completado + Faltante;
 
-                cuadroResumen.Rows.Add("Porcentaje de Avance Completado", Completado);
+                cuadroResumen.Rows.Add("Porcentaje de Avance Completado", Completado + "%");
 
-                cuadroResumen.Rows.Add("Porcentaje de Avance Faltante", Faltante);
+                cuadroResumen.Rows.Add("Porcentaje de Avance Faltante", Faltante + "%");
 
-                cuadroResumen.Rows.Add("TOTAL", Total);
+                cuadroResumen.Rows.Add("TOTAL", Total + "%");
 
                 dgvResumen.DataSource = cuadroResumen;
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 /*
-                dgvResultados.Columns.Clear();
-                dgvResultados.Columns.Add(btnVerReporte);
-
-                dgvResultados.DataSource = Datos;
-                
-
-                // Ocultar cuadro de resumen
-                pnInferior.Controls[1].Hide();
-
-                // GRÁFICOS
-
-                // Gráfico 1
+                #region ===================== GRÁFICO =====================
                 tcGraficos.TabPages.Clear();
-
                 Chart Grafico1 = new Chart
                 {
                     Dock = DockStyle.Fill,
                     Palette = ChartColorPalette.Excel
                 };
-
                 TabPage tpGrafico1 = new TabPage("Gráfico 1");
                 tpGrafico1.Controls.Add(Grafico1);
 
@@ -921,6 +913,7 @@ namespace ControlesPerzonalizados
                 Grafico1.DataSource = dgvResultados.DataSource;
 
                 tcGraficos.TabPages.Add(tpGrafico1);
+                #endregion ===================== GRÁFICO =====================
                 */
             }
         }
