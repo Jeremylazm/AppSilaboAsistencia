@@ -4,12 +4,14 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
+using ClosedXML.Excel;
 using ControlesPerzonalizados;
 
 namespace CapaPresentaciones
@@ -216,7 +218,48 @@ namespace CapaPresentaciones
             DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignatura(CodSemestre, CodDocente, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
             DataTable plansesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, txtCodigo.Text, CodDocente);
 
-            Reportes.fnReporte5(Titulo, Titulos, Valores, resultados, plansesion);
+            int Total = 0;
+
+            if (plansesion.Rows.Count >= 1)
+            {
+                DataRow Fila = plansesion.Rows[0];
+
+                byte[] archivo = Fila["PlanSesiones"] as byte[];
+
+                string path = AppDomain.CurrentDomain.BaseDirectory;
+                string folder = path + "/temp/";
+                string fullFilePath = folder + "temp.xlsx";
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+
+                if (File.Exists(fullFilePath))
+                {
+                    File.Delete(fullFilePath);
+                }
+
+                File.WriteAllBytes(fullFilePath, archivo);
+                XLWorkbook wb = new XLWorkbook(fullFilePath);
+
+                for (int i = 9; i <= 61; i++)
+                {
+                    if (wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString() != "")
+                    {
+                        DateTime FechaActual = DateTime.Parse(wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString());
+                        if (FechaActual >= dpFechaInicial.Value && FechaActual <= dpFechaFinal.Value)
+                        {
+                            Total = Total + 1;
+                        }
+                    }
+                }
+
+                int Hechos = resultados.Rows.Count;
+                int Faltan = Total - Hechos;
+                Reportes.fnReporte5(Titulo, Titulos, Valores, resultados, txtCodigo.Text, Hechos, Faltan);
+            }
+            else
+                MessageBox.Show("No hay Plan de Sesiones");
         }
 
         private void fnReporte6()
