@@ -742,7 +742,7 @@ namespace ControlesPerzonalizados
             }
         }
 
-        public void fnReporte5(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, DataTable Archivos, string CodAsignatura)
+        public void fnReporte5(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, DataTable Archivos)
         {
             // Limpiar los Antiguos Reportes
             LimpiarCampos();

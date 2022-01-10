@@ -216,7 +216,7 @@ namespace CapaPresentaciones
             DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignatura(CodSemestre, CodDocente, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
             DataTable plansesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, txtCodigo.Text, CodDocente);
 
-            Reportes.fnReporte5(Titulo, Titulos, Valores, resultados, plansesion, txtCodigo.Text);
+            Reportes.fnReporte5(Titulo, Titulos, Valores, resultados, plansesion);
         }
 
         private void fnReporte6()
