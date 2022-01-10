@@ -32,6 +32,7 @@ namespace CapaPresentaciones
             InitializeComponent();
             Control[] Controles = { this, lblTitulo, pbLogo };
             Docker.SubscribeControlsToDragEvents(Controles);
+            lblTitulo.Text += CodAsignatura;
             PlanSesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, CodAsignatura, CodDocente);
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvSesiones, sbDatos);
         }
@@ -66,16 +67,20 @@ namespace CapaPresentaciones
             SLDocument sl = new SLDocument(fullFilePath);
             int IRow = 9;
             List<sesionesViewModel> lst = new List<sesionesViewModel>();
+            DateTime A = DateTime.Now;
+            //
 
-            //while (!string.IsNullOrEmpty(sl.GetCellValueAsString(IRow, 3)) && !string.IsNullOrEmpty(sl.GetCellValueAsString(IRow+1, 3)))
-
-            while (sl.GetCellValueAsString(IRow, 8) == "Hecho")
+            while (sl.GetCellValueAsDateTime(IRow, 5) < A)
             {
-                sesionesViewModel oSesion = new sesionesViewModel();
-                oSesion.Sesion = sl.GetCellValueAsString(IRow, 3);
-                oSesion.Fecha = sl.GetCellValueAsDateTime(IRow, 5);
+                if (sl.GetCellValueAsString(IRow, 8) != "Hecho" && sl.GetCellValueAsString(IRow,3)!="")
+                {
+                    sesionesViewModel oSesion = new sesionesViewModel();
+                    oSesion.Sesion = sl.GetCellValueAsString(IRow, 3);
+                    oSesion.Fecha = sl.GetCellValueAsDateTime(IRow, 5);
+                    lst.Add(oSesion);
+                }
                 IRow++;
-                lst.Add(oSesion);
+                
             }
             dgvSesiones.DataSource = lst;
         }
@@ -83,6 +88,11 @@ namespace CapaPresentaciones
         private void pnPeriodosParciales_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
