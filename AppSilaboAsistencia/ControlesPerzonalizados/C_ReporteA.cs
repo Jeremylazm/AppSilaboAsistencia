@@ -742,7 +742,7 @@ namespace ControlesPerzonalizados
             }
         }
 
-        public void fnReporte5(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, DataTable Archivos, string CodAsignatura)
+        public void fnReporte5(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CodAsignatura, int Completados, int Faltantes)
         {
             // Limpiar los Antiguos Reportes
             LimpiarCampos();
@@ -790,44 +790,6 @@ namespace ControlesPerzonalizados
             }
             else
             {
-                int Hechos = 0;
-                int Faltan = 0;
-
-                if (Archivos.Rows.Count >= 1)
-                {
-                    DataRow Fila = Archivos.Rows[0];
-
-                    byte[] archivo = Fila["PlanSesiones"] as byte[];
-
-                    string path = AppDomain.CurrentDomain.BaseDirectory;
-                    string folder = path + "/temp/";
-                    string fullFilePath = folder + "temp.xlsx";
-                    if (!Directory.Exists(folder))
-                    {
-                        Directory.CreateDirectory(folder);
-                    }
-
-                    if (File.Exists(fullFilePath))
-                    {
-                        File.Delete(fullFilePath);
-                    }
-
-                    File.WriteAllBytes(fullFilePath, archivo);
-                    XLWorkbook wb = new XLWorkbook(fullFilePath);
-
-                    for (int i = 9; i <= 61; i++)
-                    {
-                        if (wb.Worksheet(1).Cell("H" + Convert.ToString(i)).Value.ToString().ToLower() == "hecho")
-                        {
-                            Hechos = Hechos + 1;
-                        }
-                    }
-                    Faltan = 51 - Hechos;
-                }
-                else
-                    MessageBox.Show("No hay Plan de Sesiones");
-
-
                 #region ===================== CUADRO DE RESULTADOS =====================
                 dgvResultados.Columns.Clear();
                 dgvResultados.DataSource = Datos;
@@ -837,27 +799,28 @@ namespace ControlesPerzonalizados
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 
                 #region ===================== CUADRO DE RESUMEN =====================
+                pnInferior.Controls[1].Show();
                 DataTable cuadroResumen = new DataTable();
                 cuadroResumen.Columns.Add(" ");
                 cuadroResumen.Columns.Add("Porcentajes");
 
-
-                float Completado = 100 * Hechos / 51;
-                float Faltante = 100 * Faltan / 51;
-                float Total = Completado + Faltante;
+                int Total = Completados + Faltantes;
+                float Completado = 100 * Completados / Total;
+                float Faltante = 100 - Completado;
+                float Totales = Completado + Faltante;
 
                 cuadroResumen.Rows.Add("Porcentaje de Avance Completado", Completado + "%");
 
                 cuadroResumen.Rows.Add("Porcentaje de Avance Faltante", Faltante + "%");
 
-                cuadroResumen.Rows.Add("TOTAL", Total + "%");
+                cuadroResumen.Rows.Add("TOTAL", Totales + "%");
 
                 dgvResumen.DataSource = cuadroResumen;
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
-                /*
                 #region ===================== GRÁFICO =====================
                 tcGraficos.TabPages.Clear();
+                /*
                 Chart Grafico1 = new Chart
                 {
                     Dock = DockStyle.Fill,
@@ -865,6 +828,7 @@ namespace ControlesPerzonalizados
                 };
                 TabPage tpGrafico1 = new TabPage("Gráfico 1");
                 tpGrafico1.Controls.Add(Grafico1);
+
 
                 Grafico1.Titles.Clear();
                 Grafico1.Series.Clear();
@@ -874,47 +838,19 @@ namespace ControlesPerzonalizados
 
                 ChartArea areaGrafico1 = new ChartArea();
 
-                // Propiedades de los ejes
-                areaGrafico1.AxisX.Interval = 1;
-                areaGrafico1.AxisX.Title = "Cód. Estudiante";
-                areaGrafico1.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
-                areaGrafico1.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 14f);
-                areaGrafico1.AxisY.Title = "Cantidad";
-                areaGrafico1.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
-                areaGrafico1.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
-                areaGrafico1.AxisX.MajorGrid.LineColor = Color.Red;
-                areaGrafico1.AxisX.MajorGrid.Enabled = false;
-                //areaGrafico2.AxisY.MajorGrid.Enabled = false;
 
                 Grafico1.ChartAreas.Add(areaGrafico1);
 
                 Series serie1 = new Series("TotalAsistencias")
                 {
-                    ChartType = SeriesChartType.StackedBar,
-                    XValueMember = "CodEstudiante",
-                    YValueMembers = "TotalAsistencias",
-                    IsValueShownAsLabel = true,
-                    MarkerSize = 14,
-                    Font = new Font("Montserrat Alternates", 10f)
+                    ChartType = SeriesChartType.Pie,
                 };
-
-                Series serie2 = new Series("TotalFaltas")
-                {
-                    ChartType = SeriesChartType.StackedBar,
-                    XValueMember = "CodEstudiante",
-                    YValueMembers = "TotalFaltas",
-                    MarkerSize = 14,
-                    Font = new Font("Montserrat Alternates", 11f)
-                };
-
-                Grafico1.Series.Add(serie1);
-                Grafico1.Series.Add(serie2);
 
                 Grafico1.DataSource = dgvResultados.DataSource;
 
                 tcGraficos.TabPages.Add(tpGrafico1);
-                #endregion ===================== GRÁFICO =====================
                 */
+                #endregion ===================== GRÁFICO =====================
             }
         }
 
@@ -979,11 +915,9 @@ namespace ControlesPerzonalizados
                 pnInferior.Controls[1].Hide();
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
-                /*
                 #region ===================== GRÁFICO =====================
-                // Gráfico 1
                 tcGraficos.TabPages.Clear();
-
+                /*
                 Chart Grafico1 = new Chart
                 {
                     Dock = DockStyle.Fill,
@@ -1040,8 +974,8 @@ namespace ControlesPerzonalizados
                 Grafico1.DataSource = dgvResultados.DataSource;
 
                 tcGraficos.TabPages.Add(tpGrafico1);
-                #endregion ===================== GRÁFICO =====================
                 */
+                #endregion ===================== GRÁFICO =====================
             }
         }
 
