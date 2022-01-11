@@ -60,8 +60,6 @@ namespace CapaPresentaciones
 			this.txtBuscar = new Bunifu.UI.WinForms.BunifuTextBox();
 			this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
 			this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
-			this.ckbAsistencia = new System.Windows.Forms.DataGridViewImageColumn();
-			this.cbxObservaciones = new System.Windows.Forms.DataGridViewComboBoxColumn();
 			this.lblFecha = new Bunifu.UI.WinForms.BunifuLabel();
 			this.ckbMarcarTodos = new Bunifu.UI.WinForms.BunifuCheckBox();
 			this.txtTema = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -73,6 +71,8 @@ namespace CapaPresentaciones
 			this.txtFecha = new Bunifu.UI.WinForms.BunifuTextBox();
 			this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
 			this.txtTipoSesion = new Bunifu.UI.WinForms.BunifuTextBox();
+			this.ckbAsistencia = new System.Windows.Forms.DataGridViewImageColumn();
+			this.cbxObservaciones = new System.Windows.Forms.DataGridViewComboBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -422,26 +422,6 @@ namespace CapaPresentaciones
 			this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
 			this.dgvDatos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellEnter);
 			// 
-			// ckbAsistencia
-			// 
-			this.ckbAsistencia.HeaderText = "Asistencia";
-			this.ckbAsistencia.Image = global::CapaPresentaciones.Properties.Resources.Unchecked_18x18;
-			this.ckbAsistencia.MinimumWidth = 6;
-			this.ckbAsistencia.Name = "ckbAsistencia";
-			this.ckbAsistencia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-			// 
-			// cbxObservaciones
-			// 
-			this.cbxObservaciones.HeaderText = "Observaciones";
-			this.cbxObservaciones.Items.AddRange(new object[] {
-            "PERMISO",
-            "TARDE",
-            "FALTO SIN JUSTIFICAR",
-            "SUSPENSIÓN",
-            "FERIADO",
-            "FALTO EL DOCENTE"});
-			this.cbxObservaciones.Name = "cbxObservaciones";
-			// 
 			// lblFecha
 			// 
 			this.lblFecha.AllowParentOverrides = false;
@@ -574,7 +554,7 @@ namespace CapaPresentaciones
 			this.txtTema.PasswordChar = '\0';
 			this.txtTema.PlaceholderForeColor = System.Drawing.Color.DimGray;
 			this.txtTema.PlaceholderText = "Escriba el tema a dictar";
-			this.txtTema.ReadOnly = false;
+			this.txtTema.ReadOnly = true;
 			this.txtTema.ScrollBars = System.Windows.Forms.ScrollBars.None;
 			this.txtTema.SelectedText = "";
 			this.txtTema.SelectionLength = 0;
@@ -780,7 +760,6 @@ namespace CapaPresentaciones
 			this.txtFecha.Cursor = System.Windows.Forms.Cursors.IBeam;
 			this.txtFecha.DefaultFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtFecha.DefaultText = "";
-			this.txtFecha.Enabled = false;
 			this.txtFecha.FillColor = System.Drawing.Color.White;
 			this.txtFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
 			this.txtFecha.HideSelection = true;
@@ -822,7 +801,7 @@ namespace CapaPresentaciones
 			this.txtFecha.PasswordChar = '\0';
 			this.txtFecha.PlaceholderForeColor = System.Drawing.Color.DimGray;
 			this.txtFecha.PlaceholderText = "fecha";
-			this.txtFecha.ReadOnly = false;
+			this.txtFecha.ReadOnly = true;
 			this.txtFecha.ScrollBars = System.Windows.Forms.ScrollBars.None;
 			this.txtFecha.SelectedText = "";
 			this.txtFecha.SelectionLength = 0;
@@ -876,7 +855,6 @@ namespace CapaPresentaciones
 			this.txtTipoSesion.Cursor = System.Windows.Forms.Cursors.IBeam;
 			this.txtTipoSesion.DefaultFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtTipoSesion.DefaultText = "";
-			this.txtTipoSesion.Enabled = false;
 			this.txtTipoSesion.FillColor = System.Drawing.Color.White;
 			this.txtTipoSesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
 			this.txtTipoSesion.HideSelection = true;
@@ -887,7 +865,7 @@ namespace CapaPresentaciones
 			this.txtTipoSesion.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
 			this.txtTipoSesion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.txtTipoSesion.Lines = new string[0];
-			this.txtTipoSesion.Location = new System.Drawing.Point(130, 49);
+			this.txtTipoSesion.Location = new System.Drawing.Point(146, 49);
 			this.txtTipoSesion.Margin = new System.Windows.Forms.Padding(0);
 			this.txtTipoSesion.MaxLength = 32767;
 			this.txtTipoSesion.MinimumSize = new System.Drawing.Size(1, 1);
@@ -918,7 +896,7 @@ namespace CapaPresentaciones
 			this.txtTipoSesion.PasswordChar = '\0';
 			this.txtTipoSesion.PlaceholderForeColor = System.Drawing.Color.DimGray;
 			this.txtTipoSesion.PlaceholderText = "  -- Sesion --";
-			this.txtTipoSesion.ReadOnly = false;
+			this.txtTipoSesion.ReadOnly = true;
 			this.txtTipoSesion.ScrollBars = System.Windows.Forms.ScrollBars.None;
 			this.txtTipoSesion.SelectedText = "";
 			this.txtTipoSesion.SelectionLength = 0;
@@ -934,6 +912,25 @@ namespace CapaPresentaciones
 			this.txtTipoSesion.TextPlaceholder = "  -- Sesion --";
 			this.txtTipoSesion.UseSystemPasswordChar = false;
 			this.txtTipoSesion.WordWrap = true;
+			// 
+			// ckbAsistencia
+			// 
+			this.ckbAsistencia.HeaderText = "Asistencia";
+			this.ckbAsistencia.Image = global::CapaPresentaciones.Properties.Resources.Unchecked_18x18;
+			this.ckbAsistencia.MinimumWidth = 6;
+			this.ckbAsistencia.Name = "ckbAsistencia";
+			this.ckbAsistencia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			// 
+			// cbxObservaciones
+			// 
+			this.cbxObservaciones.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.cbxObservaciones.HeaderText = "Observaciones";
+			this.cbxObservaciones.Items.AddRange(new object[] {
+            "",
+            "PERMISO",
+            "TARDE",
+            "FALTO SIN JUSTIFICAR"});
+			this.cbxObservaciones.Name = "cbxObservaciones";
 			// 
 			// P_TablaAsistenciaEstudiantes
 			// 
@@ -988,9 +985,9 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuLabel lblMarcarTodos;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGuardar;
 		public Bunifu.UI.WinForms.BunifuTextBox txtFecha;
-		private System.Windows.Forms.DataGridViewImageColumn ckbAsistencia;
-		private System.Windows.Forms.DataGridViewComboBoxColumn cbxObservaciones;
 		private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
 		public Bunifu.UI.WinForms.BunifuTextBox txtTipoSesion;
+		private System.Windows.Forms.DataGridViewImageColumn ckbAsistencia;
+		private System.Windows.Forms.DataGridViewComboBoxColumn cbxObservaciones;
 	}
 }

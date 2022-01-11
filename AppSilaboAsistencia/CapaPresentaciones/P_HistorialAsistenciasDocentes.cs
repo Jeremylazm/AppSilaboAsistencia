@@ -14,6 +14,7 @@ namespace CapaPresentaciones
 {
     public partial class P_HistorialAsistenciasDocentes : Form
     {
+        private readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodSemestre;
         private readonly string CodDepartamentoA;
         public string LimtFechaInf;
@@ -46,35 +47,25 @@ namespace CapaPresentaciones
         {
             MostrarRegistros();
         }
+        public string NombreCompletoJD()
+		{
+            DataTable DocentesDepartamentoA = N_Docente.MostrarTodosDocentesDepartamento(CodDepartamentoA);
+            foreach (DataRow fila in DocentesDepartamentoA.Rows)
+            {
+                
+                if (fila[0].Equals(CodDocente))
+                {
 
+                    return fila[1].ToString();
+                }
+            }
+            return "N";
+        }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
-        /*private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            // Por discutir
-
-            DataTable Resultados = N_AsistenciaDiariaDocente.AsistenciaDiariaDocentes(CodSemestre,CodDepartamentoA,LimtFechaSup);
-			if (Resultados.Rows.Count == 0)
-			{
-                DataTable DocentesDepartamentoA = N_Docente.MostrarTodosDocentesDepartamento(CodDepartamentoA);
-                Form Fondo = new Form();
-                P_TablaAsistenciaDiariaDocente NuevoRegistroAsistencia = new P_TablaAsistenciaDiariaDocente(DocentesDepartamentoA);
-                NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
-                NuevoRegistroAsistencia.hora = DateTime.Now.ToString("HH:mm:ss");
-
-                NuevoRegistroAsistencia.Owner = Fondo;
-                NuevoRegistroAsistencia.ShowDialog();
-                NuevoRegistroAsistencia.Dispose();
-            }
-			else
-			{
-                A_Dialogo.DialogoInformacion("El registro de Hoy, ¡Ya existe!");
-            }
-        }*/
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
@@ -100,7 +91,7 @@ namespace CapaPresentaciones
                 NuevoRegistroAsistenciaDocente.FormClosed += new FormClosedEventHandler(ActualizarDatos);
                 NuevoRegistroAsistenciaDocente.txtFecha.Text = LimtFechaSup;
                 NuevoRegistroAsistenciaDocente.hora = DateTime.Now.ToString("HH:mm:ss");
-
+                NuevoRegistroAsistenciaDocente.txtJD.Text = NombreCompletoJD();
                 NuevoRegistroAsistenciaDocente.Owner = Fondo;
                 NuevoRegistroAsistenciaDocente.ShowDialog();
                 NuevoRegistroAsistenciaDocente.Dispose();

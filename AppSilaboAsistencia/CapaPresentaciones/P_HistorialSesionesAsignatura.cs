@@ -200,42 +200,50 @@ namespace CapaPresentaciones
 		{
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
-                DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, CodAsignatura, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
+                if(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString()=="SI")
+				{
+                    DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, CodAsignatura, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
 
-                Form Fondo = new Form();
-                /*using (P_TablaAsistenciaEstudiantes EditarRegistro = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, AsistenciaEstudiantesAsignatura))
-                {
-                    Fondo.StartPosition = FormStartPosition.Manual;
-                    Fondo.FormBorderStyle = FormBorderStyle.None;
-                    Fondo.Opacity = .70d;
-                    Fondo.BackColor = Color.Black;
-                    Fondo.WindowState = FormWindowState.Maximized;
-                    Fondo.TopMost = true;
-                    Fondo.Location = this.Location;
-                    Fondo.ShowInTaskbar = false;
-                    Fondo.Show();
+                    Form Fondo = new Form();
+                    /*using (P_TablaAsistenciaEstudiantes EditarRegistro = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, AsistenciaEstudiantesAsignatura))
+                    {
+                        Fondo.StartPosition = FormStartPosition.Manual;
+                        Fondo.FormBorderStyle = FormBorderStyle.None;
+                        Fondo.Opacity = .70d;
+                        Fondo.BackColor = Color.Black;
+                        Fondo.WindowState = FormWindowState.Maximized;
+                        Fondo.TopMost = true;
+                        Fondo.Location = this.Location;
+                        Fondo.ShowInTaskbar = false;
+                        Fondo.Show();
 
+                        Program.Evento = 1;
+                        EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                        EditarRegistro.txtFecha.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        EditarRegistro.txtTema.Text = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        EditarRegistro.hora = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        EditarRegistro.Owner = Fondo;
+                        EditarRegistro.ShowDialog();
+                        EditarRegistro.Dispose();
+
+                        Fondo.Dispose();
+                    }*/
+                    P_TablaAsistenciaEstudiantes EditarRegistro = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, AsistenciaEstudiantesAsignatura);
                     Program.Evento = 1;
                     EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
                     EditarRegistro.txtFecha.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
-                    EditarRegistro.txtTema.Text = dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    EditarRegistro.txtTipoSesion.Text = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    EditarRegistro.txtTema.Text = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
                     EditarRegistro.hora = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
                     EditarRegistro.Owner = Fondo;
                     EditarRegistro.ShowDialog();
                     EditarRegistro.Dispose();
-
-                    Fondo.Dispose();
-                }*/
-                P_TablaAsistenciaEstudiantes EditarRegistro = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, AsistenciaEstudiantesAsignatura);
-                Program.Evento = 1;
-                EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                EditarRegistro.txtFecha.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
-                EditarRegistro.txtTipoSesion.Text = dgvDatos.Rows[e.RowIndex].Cells[4].Value.ToString();
-                EditarRegistro.txtTema.Text = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
-                EditarRegistro.hora = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
-                EditarRegistro.Owner = Fondo;
-                EditarRegistro.ShowDialog();
-                EditarRegistro.Dispose();
+                }
+				else
+				{
+                    A_Dialogo.DialogoInformacion("Ud. No Tiene Permiso para Editar este tipo de Registros");
+                }
+                
             }
         }
 

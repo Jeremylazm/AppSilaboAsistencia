@@ -38,7 +38,7 @@ namespace CapaPresentaciones
 			//Control[] Controles = { this, lblTitulo, pbLogo, lblFecha, lblMarcarTodos, txtFecha };
 			//Docker.SubscribeControlsToDragEvents(Controles);
 			Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
-			//lblTitulo.Text += CodAsignatura;
+            txtSemestreA.Text = CodSemestre;
 			lblFecha.Text += "    ";
 			
 		}
