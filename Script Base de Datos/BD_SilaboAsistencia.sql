@@ -1644,9 +1644,7 @@ GO
 -- Procedimiento para mostrar el avance de los temas en una asignatura.
 CREATE PROCEDURE spuAvanceAsignatura @CodSemestre VARCHAR(7),
 								     @CodDocente VARCHAR(5),
-									 @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)									
-									 @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
-									 @LimFechaSup DATE  -- Formato: dd/mm/yyyy o dd-mm-yyyy
+									 @CodAsignatura VARCHAR(9) -- código (ej. IF085AIN)
 AS
 BEGIN
 	-- Mostrar el registro de avance de una asignatura
@@ -1655,7 +1653,6 @@ BEGIN
 	    WHERE AD.CodSemestre = @CodSemestre AND
 			  AD.CodDocente = @CodDocente AND
 			  AD.CodAsignatura = @CodAsignatura AND
-			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
 			  AD.Observación = ''
 		ORDER BY AD.Fecha ASC
 END;
@@ -1663,9 +1660,7 @@ GO
 
 -- Procedimiento para mostrar el avance de los temas en todas las asignaturas de un docente.
 CREATE PROCEDURE spuAvanceAsignaturasDocente @CodSemestre VARCHAR(7),
-											 @CodDocente VARCHAR(5),							
-										     @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
-											 @LimFechaSup DATE  -- Formato: dd/mm/yyyy o dd-mm-yyyy
+											 @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar el registro avance de las asignaturas
@@ -1674,7 +1669,6 @@ BEGIN
 			 SUBSTRING(AD.CodAsignatura,1,LEN(A.CodAsignatura)) = A.CodAsignatura
 	    WHERE AD.CodSemestre = @CodSemestre AND
 			  AD.CodDocente = @CodDocente AND
-			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
 			  AD.Observación = '' -- No se considera Feriado, Suspensión, Permiso y Falta in Justificar
 		GROUP BY AD.CodAsignatura, A.NombreAsignatura
 		ORDER BY A.NombreAsignatura

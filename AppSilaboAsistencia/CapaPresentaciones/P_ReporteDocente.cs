@@ -25,6 +25,8 @@ namespace CapaPresentaciones
         C_Reporte Reportes = new C_Reporte();
         string nombreDocente;
 
+        //readonly string FechaInicial = E_Semestre.
+
         public P_ReporteDocente()
         {
             DataTable Semestre = N_Semestre.SemestreActual();
@@ -223,7 +225,7 @@ namespace CapaPresentaciones
             string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
             string[] Valores = { CodSemestre, CodDocente, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
 
-            DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignatura(CodSemestre, CodDocente, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+            DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignatura(CodSemestre, CodDocente, txtCodigo.Text);
             DataTable plansesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, txtCodigo.Text, CodDocente);
 
             int Total = 0;
@@ -255,15 +257,16 @@ namespace CapaPresentaciones
                     if (wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString() != "")
                     {
                         DateTime FechaActual = DateTime.Parse(wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString());
-                        if (FechaActual >= dpFechaInicial.Value && FechaActual <= dpFechaFinal.Value)
+                        Total = Total + 1;
+                        /*if (FechaActual >= dpFechaInicial.Value && FechaActual <= dpFechaFinal.Value)
                         {
-                            Total = Total + 1;
-                        }
+                            
+                        }*/
                     }
                 }
 
                 int Hechos = resultados.Rows.Count;
-                int Faltan = 51 - Hechos;
+                int Faltan = Total - Hechos;
                 Reportes.fnReporte5(Titulo, Titulos, Valores, resultados, txtCodigo.Text, Hechos, Faltan);
             }
             else
@@ -278,7 +281,7 @@ namespace CapaPresentaciones
             string[] Titulos = { "Semestre", "Escuela Profesional", "Docente", "Cod. Docente" };
             string[] Valores = { CodSemestre, txtEscuelaP.Text, CodDocente, nombreDocente };
 
-            DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignaturasDocente(CodSemestre, CodDocente, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+            DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignaturasDocente(CodSemestre, CodDocente);
             DataTable plansesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, txtCodigo.Text, CodDocente);
 
             int Total = 0;
@@ -304,18 +307,6 @@ namespace CapaPresentaciones
 
                 File.WriteAllBytes(fullFilePath, archivo);
                 XLWorkbook wb = new XLWorkbook(fullFilePath);
-
-                for (int i = 9; i <= 61; i++)
-                {
-                    if (wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString() != "")
-                    {
-                        DateTime FechaActual = DateTime.Parse(wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString());
-                        if (FechaActual >= dpFechaInicial.Value && FechaActual <= dpFechaFinal.Value)
-                        {
-                            Total = Total + 1;
-                        }
-                    }
-                }
 
                 Reportes.fnReporte6(Titulo, Titulos, Valores, resultados, txtCodigo.Text, Total);
             }
