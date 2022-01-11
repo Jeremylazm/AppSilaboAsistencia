@@ -158,10 +158,10 @@ namespace ControlesPerzonalizados
                 cuadroResumen.Rows.Add("Mínimo", Statistics.Minimum(Asistieron), Statistics.Minimum(Faltaron));
 
                 // Media
-                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)), String.Format("{0:0.00}", Statistics.Mean(Faltaron)));
+                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Asistieron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)", String.Format("{0:0.00}", Statistics.Mean(Faltaron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Faltaron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)");
 
                 // Mediana
-                cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Asistieron)) + " (" + String.Format("{0:0.00}", Statistics.Median(Asistieron) / (Statistics.Median(Asistieron) + Statistics.Median(Faltaron)) * 100) + "%)", String.Format("{0:0.00}", Statistics.Median(Faltaron)) + " (" + String.Format("{0:0.00}", Statistics.Median(Faltaron) / (Statistics.Median(Asistieron) + Statistics.Median(Faltaron)) * 100) + "%)");
+                cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Asistieron)), String.Format("{0:0.00}", Statistics.Median(Faltaron)));
 
                 // Moda
                 var modeAsistieron = Asistieron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
@@ -278,6 +278,7 @@ namespace ControlesPerzonalizados
                 Grafico2.Series.Clear();
                 Grafico2.ChartAreas.Clear();
                 Grafico2.Titles.Add("Evolución de las Asistencias" + " - " + CodAsignatura);
+                Grafico2.Titles[0].Font = new Font("Montserrat Alternates", 13f);
 
                 ChartArea areaGrafico2 = new ChartArea();
 
@@ -443,17 +444,17 @@ namespace ControlesPerzonalizados
                 cuadroResumen.Columns.Add("Asistieron");
                 cuadroResumen.Columns.Add("Faltaron");
 
-                // Máximo
+                // Máximos
                 cuadroResumen.Rows.Add("Máximo", Statistics.Maximum(Asistieron), Statistics.Maximum(Faltaron));
 
                 // Mínimos
                 cuadroResumen.Rows.Add("Mínimo", Statistics.Minimum(Asistieron), Statistics.Minimum(Faltaron));
 
                 // Media
-                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)), String.Format("{0:0.00}", Statistics.Mean(Faltaron)));
+                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Asistieron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)", String.Format("{0:0.00}", Statistics.Mean(Faltaron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Faltaron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)");
 
                 // Mediana
-                cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Asistieron)) + " (" + String.Format("{0:0.00}", Statistics.Median(Asistieron) / (Statistics.Median(Asistieron) + Statistics.Median(Faltaron)) * 100) + "%)", String.Format("{0:0.00}", Statistics.Median(Faltaron)) + " (" + String.Format("{0:0.00}", Statistics.Median(Faltaron) / (Statistics.Median(Asistieron) + Statistics.Median(Faltaron)) * 100) + "%)");
+                cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Asistieron)), String.Format("{0:0.00}", Statistics.Median(Faltaron)));
 
                 // Moda
                 var modeAsistieron = Asistieron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
@@ -570,6 +571,7 @@ namespace ControlesPerzonalizados
                 Grafico2.Series.Clear();
                 Grafico2.ChartAreas.Clear();
                 Grafico2.Titles.Add("Evolución de las Asistencias" + " - " + CodAsignatura);
+                Grafico2.Titles[0].Font = new Font("Montserrat Alternates", 13f);
 
                 ChartArea areaGrafico2 = new ChartArea();
 
@@ -810,7 +812,7 @@ namespace ControlesPerzonalizados
                 cuadroResumen.Columns.Add(" ");
                 cuadroResumen.Columns.Add("Porcentajes");
 
-                int Total = Completados + Faltantes;
+                int Total = Completados + Math.Abs(Faltantes);
                 float Completado = 100 * Completados / Total;
                 float Faltante = 100 - Completado;
                 float Totales = Completado + Faltante;
