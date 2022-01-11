@@ -193,7 +193,7 @@ namespace ControlesPerzonalizados
             this.pnContenedorResultados.Margin = new System.Windows.Forms.Padding(0);
             this.pnContenedorResultados.Name = "pnContenedorResultados";
             this.pnContenedorResultados.ShowBorders = true;
-            this.pnContenedorResultados.Size = new System.Drawing.Size(1062, 354);
+            this.pnContenedorResultados.Size = new System.Drawing.Size(1062, 341);
             this.pnContenedorResultados.TabIndex = 0;
             // 
             // gbxResultados
@@ -230,7 +230,7 @@ namespace ControlesPerzonalizados
             this.pnResultados.Location = new System.Drawing.Point(3, 16);
             this.pnResultados.Name = "pnResultados";
             this.pnResultados.ShowBorders = true;
-            this.pnResultados.Size = new System.Drawing.Size(1056, 335);
+            this.pnResultados.Size = new System.Drawing.Size(1056, 322);
             this.pnResultados.TabIndex = 92;
             // 
             // sbResultados
@@ -265,11 +265,11 @@ namespace ControlesPerzonalizados
             this.sbResultados.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbResultados.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbResultados.ShrinkSizeLimit = 3;
-            this.sbResultados.Size = new System.Drawing.Size(10, 275);
+            this.sbResultados.Size = new System.Drawing.Size(10, 262);
             this.sbResultados.SmallChange = 1;
             this.sbResultados.TabIndex = 90;
             this.sbResultados.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.sbResultados.ThumbLength = 27;
+            this.sbResultados.ThumbLength = 25;
             this.sbResultados.ThumbMargin = 1;
             this.sbResultados.ThumbStyle = Bunifu.UI.WinForms.BunifuVScrollBar.ThumbStyles.Inset;
             this.sbResultados.Value = 0;
@@ -353,7 +353,7 @@ namespace ControlesPerzonalizados
             this.dgvResultados.RowTemplate.Height = 26;
             this.dgvResultados.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvResultados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvResultados.Size = new System.Drawing.Size(1032, 301);
+            this.dgvResultados.Size = new System.Drawing.Size(1032, 288);
             this.dgvResultados.TabIndex = 89;
             this.dgvResultados.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             this.dgvResultados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResultados_CellClick);
@@ -370,11 +370,11 @@ namespace ControlesPerzonalizados
             this.pnContenedorCuadro.BorderThickness = 1;
             this.pnContenedorCuadro.Controls.Add(this.gbxCuadroResumen);
             this.pnContenedorCuadro.Controls.Add(this.pnCuadroResumen);
-            this.pnContenedorCuadro.Location = new System.Drawing.Point(0, 354);
+            this.pnContenedorCuadro.Location = new System.Drawing.Point(0, 341);
             this.pnContenedorCuadro.Margin = new System.Windows.Forms.Padding(0);
             this.pnContenedorCuadro.Name = "pnContenedorCuadro";
             this.pnContenedorCuadro.ShowBorders = true;
-            this.pnContenedorCuadro.Size = new System.Drawing.Size(1062, 362);
+            this.pnContenedorCuadro.Size = new System.Drawing.Size(1062, 375);
             this.pnContenedorCuadro.TabIndex = 1;
             // 
             // gbxCuadroResumen
@@ -411,7 +411,7 @@ namespace ControlesPerzonalizados
             this.pnCuadroResumen.Margin = new System.Windows.Forms.Padding(0);
             this.pnCuadroResumen.Name = "pnCuadroResumen";
             this.pnCuadroResumen.ShowBorders = true;
-            this.pnCuadroResumen.Size = new System.Drawing.Size(1056, 343);
+            this.pnCuadroResumen.Size = new System.Drawing.Size(1056, 356);
             this.pnCuadroResumen.TabIndex = 95;
             // 
             // dgvResumen
@@ -493,7 +493,7 @@ namespace ControlesPerzonalizados
             this.dgvResumen.RowTemplate.Height = 26;
             this.dgvResumen.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvResumen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvResumen.Size = new System.Drawing.Size(1032, 309);
+            this.dgvResumen.Size = new System.Drawing.Size(1032, 322);
             this.dgvResumen.TabIndex = 89;
             this.dgvResumen.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             // 
