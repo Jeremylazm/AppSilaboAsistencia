@@ -254,7 +254,7 @@ namespace ControlesPerzonalizados
             this.sbResultados.BorderThickness = 1;
             this.sbResultados.DurationBeforeShrink = 2000;
             this.sbResultados.LargeChange = 10;
-            this.sbResultados.Location = new System.Drawing.Point(1035, 48);
+            this.sbResultados.Location = new System.Drawing.Point(1035, 45);
             this.sbResultados.Maximum = 100;
             this.sbResultados.Minimum = 0;
             this.sbResultados.MinimumThumbLength = 18;
@@ -334,7 +334,7 @@ namespace ControlesPerzonalizados
             this.dgvResultados.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.dgvResultados.HeaderBgColor = System.Drawing.Color.Empty;
             this.dgvResultados.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.dgvResultados.Location = new System.Drawing.Point(13, 22);
+            this.dgvResultados.Location = new System.Drawing.Point(13, 19);
             this.dgvResultados.MultiSelect = false;
             this.dgvResultados.Name = "dgvResultados";
             this.dgvResultados.ReadOnly = true;
@@ -474,7 +474,7 @@ namespace ControlesPerzonalizados
             this.dgvResumen.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.dgvResumen.HeaderBgColor = System.Drawing.Color.Empty;
             this.dgvResumen.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.dgvResumen.Location = new System.Drawing.Point(13, 22);
+            this.dgvResumen.Location = new System.Drawing.Point(13, 19);
             this.dgvResumen.MultiSelect = false;
             this.dgvResumen.Name = "dgvResumen";
             this.dgvResumen.ReadOnly = true;
