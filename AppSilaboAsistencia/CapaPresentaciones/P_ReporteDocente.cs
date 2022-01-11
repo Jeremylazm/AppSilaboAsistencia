@@ -183,7 +183,7 @@ namespace CapaPresentaciones
             // Tipo de reporte: Asistencia estudiantes
             // Criterio de selección: Por Fechas
 
-            string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy" + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy"));
+            string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
             string[] Titulos = { "Semestre", "Escuela Profesional", "Asignatura", "Cód. Asignatura", "Docente", "Cod. Docente" };
             string[] Valores = { CodSemestre, txtEscuelaP.Text, txtNombre.Text, txtCodigo.Text, nombreDocente, CodDocente };
 
