@@ -827,8 +827,8 @@ namespace ControlesPerzonalizados
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICO =====================
-                tcGraficos.TabPages.Clear();
-                /*
+                /*tcGraficos.TabPages.Clear();
+                
                 Chart Grafico1 = new Chart
                 {
                     Dock = DockStyle.Fill,
@@ -852,12 +852,16 @@ namespace ControlesPerzonalizados
                 Series serie1 = new Series("TotalAsistencias")
                 {
                     ChartType = SeriesChartType.Pie,
+                    XValueMember = "Porcentaje de Avance Completado",
+                    YValueMembers = "Porcentaje de Avance Faltante"
                 };
 
-                Grafico1.DataSource = dgvResultados.DataSource;
+                Grafico1.Series.Add(serie1);
 
-                tcGraficos.TabPages.Add(tpGrafico1);
-                */
+                Grafico1.DataSource = cuadroResumen;
+
+                tcGraficos.TabPages.Add(tpGrafico1);*/
+                
                 #endregion ===================== GRÁFICO =====================
             }
         }
