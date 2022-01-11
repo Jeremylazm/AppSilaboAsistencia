@@ -22,7 +22,7 @@ namespace CapaPresentaciones
         private readonly string CodSemestre;
         readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodDepartamentoA = "IF";
-        C_ReporteA Reportes = new C_ReporteA();
+        C_Reporte Reportes = new C_Reporte();
         string nombreDocente;
 
         public P_ReporteDocente()
@@ -75,7 +75,7 @@ namespace CapaPresentaciones
             string[] Valores = { CodSemestre, txtEscuelaP.Text, txtNombre.Text, txtCodigo.Text,  nombreDocente, CodDocente};
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorFechas(CodSemestre, CodDocente, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
-            C_ReporteA Reporte = new C_ReporteA(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text)
+            C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text)
             {
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
             };

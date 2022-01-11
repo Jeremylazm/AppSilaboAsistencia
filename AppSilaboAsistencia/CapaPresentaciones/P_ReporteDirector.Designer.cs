@@ -1,7 +1,7 @@
 ﻿
 namespace CapaPresentaciones
 {
-    partial class P_ReporteDocente
+    partial class P_ReporteDirector
     {
         /// <summary>
         /// Required designer variable.
@@ -80,8 +80,8 @@ namespace CapaPresentaciones
             // 
             // pnContenedor
             // 
-            this.pnContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnContenedor.BackgroundColor = System.Drawing.Color.White;
             this.pnContenedor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnContenedor.BackgroundImage")));
@@ -124,7 +124,7 @@ namespace CapaPresentaciones
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnActualizar.UseVisualStyleBackColor = false;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            //this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnGeneral
             // 
@@ -216,11 +216,11 @@ namespace CapaPresentaciones
             this.btnGeneral.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnGeneral.UseDefaultRadiusAndThickness = true;
             this.btnGeneral.Visible = false;
-            this.btnGeneral.Click += new System.EventHandler(this.btnGeneral_Click);
+            //this.btnGeneral.Click += new System.EventHandler(this.btnGeneral_Click);
             // 
             // Cuadricula
             // 
-            this.Cuadricula.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Cuadricula.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Cuadricula.ColumnCount = 4;
             this.Cuadricula.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.27093F));
@@ -455,7 +455,7 @@ namespace CapaPresentaciones
             this.cxtCriterioSeleccion.Text = null;
             this.cxtCriterioSeleccion.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             this.cxtCriterioSeleccion.TextLeftMargin = 5;
-            this.cxtCriterioSeleccion.SelectionChangeCommitted += new System.EventHandler(this.cxtCriterioSeleccion_SelectionChangeCommitted);
+            //this.cxtCriterioSeleccion.SelectionChangeCommitted += new System.EventHandler(this.cxtCriterioSeleccion_SelectionChangeCommitted);
             // 
             // pnTipo
             // 
@@ -540,12 +540,12 @@ namespace CapaPresentaciones
             this.cxtTipoReporte.Text = null;
             this.cxtTipoReporte.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             this.cxtTipoReporte.TextLeftMargin = 5;
-            this.cxtTipoReporte.SelectionChangeCommitted += new System.EventHandler(this.cxtTipoReporte_SelectionChangeCommitted);
+            //this.cxtTipoReporte.SelectionChangeCommitted += new System.EventHandler(this.cxtTipoReporte_SelectionChangeCommitted);
             // 
             // pnPadre
             // 
-            this.pnPadre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnPadre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnPadre.BackgroundColor = System.Drawing.Color.Transparent;
             this.pnPadre.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnPadre.BackgroundImage")));
@@ -562,8 +562,8 @@ namespace CapaPresentaciones
             // 
             // pnReporte
             // 
-            this.pnReporte.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnReporte.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnReporte.AutoScroll = true;
             this.pnReporte.BackgroundColor = System.Drawing.Color.Transparent;
@@ -580,7 +580,7 @@ namespace CapaPresentaciones
             // 
             // pnCajas
             // 
-            this.pnCajas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnCajas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnCajas.Location = new System.Drawing.Point(177, 138);
             this.pnCajas.Name = "pnCajas";
@@ -603,7 +603,7 @@ namespace CapaPresentaciones
             // lblNombre
             // 
             this.lblNombre.AllowParentOverrides = false;
-            this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNombre.AutoEllipsis = false;
             this.lblNombre.Cursor = System.Windows.Forms.Cursors.Default;
@@ -621,7 +621,7 @@ namespace CapaPresentaciones
             // 
             // lnNombre
             // 
-            this.lnNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lnNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lnNombre.BackColor = System.Drawing.Color.Transparent;
             this.lnNombre.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lnNombre.BackgroundImage")));
@@ -639,7 +639,7 @@ namespace CapaPresentaciones
             // txtNombre
             // 
             this.txtNombre.AllowParentOverrides = false;
-            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombre.AutoEllipsis = false;
             this.txtNombre.AutoSize = false;
@@ -659,7 +659,7 @@ namespace CapaPresentaciones
             // lblEscuelaP
             // 
             this.lblEscuelaP.AllowParentOverrides = false;
-            this.lblEscuelaP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblEscuelaP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEscuelaP.AutoEllipsis = false;
             this.lblEscuelaP.Cursor = System.Windows.Forms.Cursors.Default;
@@ -677,7 +677,7 @@ namespace CapaPresentaciones
             // 
             // lnEscuelaP
             // 
-            this.lnEscuelaP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lnEscuelaP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lnEscuelaP.BackColor = System.Drawing.Color.Transparent;
             this.lnEscuelaP.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lnEscuelaP.BackgroundImage")));
@@ -695,7 +695,7 @@ namespace CapaPresentaciones
             // txtEscuelaP
             // 
             this.txtEscuelaP.AllowParentOverrides = false;
-            this.txtEscuelaP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtEscuelaP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEscuelaP.AutoEllipsis = false;
             this.txtEscuelaP.AutoSize = false;
@@ -801,7 +801,7 @@ namespace CapaPresentaciones
             this.btnSeleccionar.TextMarginLeft = 0;
             this.btnSeleccionar.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnSeleccionar.UseDefaultRadiusAndThickness = true;
-            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
+            //this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // txtCodigo
             // 
@@ -887,7 +887,7 @@ namespace CapaPresentaciones
             this.btnCerrar.WaitOnLoad = false;
             this.btnCerrar.Zoom = 10;
             this.btnCerrar.ZoomSpeed = 10;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            //this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lblTitulo
             // 
@@ -925,7 +925,7 @@ namespace CapaPresentaciones
             this.Name = "P_ReporteDocente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P_ReporteDocente";
-            this.Load += new System.EventHandler(this.P_ReporteDocente_Load);
+            //this.Load += new System.EventHandler(this.P_ReporteDocente_Load);
             this.pnContenedor.ResumeLayout(false);
             this.pnContenedor.PerformLayout();
             this.Cuadricula.ResumeLayout(false);
