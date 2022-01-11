@@ -34,7 +34,6 @@ namespace CapaPresentaciones
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
-            this.btnActualizar = new DreamTeamControls.DreamTeamButton();
             this.btnGeneral = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.Cuadricula = new System.Windows.Forms.TableLayoutPanel();
             this.pnFinal = new Bunifu.UI.WinForms.BunifuPanel();
@@ -89,7 +88,6 @@ namespace CapaPresentaciones
             this.pnContenedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pnContenedor.BorderRadius = 20;
             this.pnContenedor.BorderThickness = 1;
-            this.pnContenedor.Controls.Add(this.btnActualizar);
             this.pnContenedor.Controls.Add(this.btnGeneral);
             this.pnContenedor.Controls.Add(this.Cuadricula);
             this.pnContenedor.Controls.Add(this.pnPadre);
@@ -105,26 +103,6 @@ namespace CapaPresentaciones
             this.pnContenedor.ShowBorders = true;
             this.pnContenedor.Size = new System.Drawing.Size(1090, 660);
             this.pnContenedor.TabIndex = 19;
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnActualizar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnActualizar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnActualizar.BorderRadius = 20;
-            this.btnActualizar.BorderSize = 3;
-            this.btnActualizar.FlatAppearance.BorderSize = 0;
-            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizar.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
-            this.btnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnActualizar.Location = new System.Drawing.Point(476, 208);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(106, 33);
-            this.btnActualizar.TabIndex = 82;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnActualizar.UseVisualStyleBackColor = false;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnGeneral
             // 
@@ -304,6 +282,7 @@ namespace CapaPresentaciones
             this.dpFechaFinal.Name = "dpFechaFinal";
             this.dpFechaFinal.Size = new System.Drawing.Size(270, 32);
             this.dpFechaFinal.TabIndex = 62;
+            this.dpFechaFinal.CloseUp += new System.EventHandler(this.dpFechaInicial_CloseUp);
             // 
             // pnInicial
             // 
@@ -371,6 +350,7 @@ namespace CapaPresentaciones
             this.dpFechaInicial.Name = "dpFechaInicial";
             this.dpFechaInicial.Size = new System.Drawing.Size(270, 32);
             this.dpFechaInicial.TabIndex = 61;
+            this.dpFechaInicial.CloseUp += new System.EventHandler(this.dpFechaInicial_CloseUp);
             // 
             // pnCriterio
             // 
@@ -981,6 +961,5 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuPanel pnCriterio;
         private Bunifu.UI.WinForms.BunifuPanel pnTipo;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGeneral;
-        private DreamTeamControls.DreamTeamButton btnActualizar;
     }
 }
