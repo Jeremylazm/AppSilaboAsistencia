@@ -1,7 +1,7 @@
 ﻿
 namespace CapaPresentaciones
 {
-    partial class P_ReporteDocente
+    partial class P_ReporteJefe
     {
         /// <summary>
         /// Required designer variable.
@@ -30,11 +30,10 @@ namespace CapaPresentaciones
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_ReporteDocente));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_ReporteJefe));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
-            this.btnActualizar = new DreamTeamControls.DreamTeamButton();
             this.btnGeneral = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.Cuadricula = new System.Windows.Forms.TableLayoutPanel();
             this.pnFinal = new Bunifu.UI.WinForms.BunifuPanel();
@@ -65,6 +64,13 @@ namespace CapaPresentaciones
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.txtDocente = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lnDocente = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.lblDocente = new Bunifu.UI.WinForms.BunifuLabel();
+            this.txtCodDocente = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lnCodDocente = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.lblCodDocente = new Bunifu.UI.WinForms.BunifuLabel();
+            this.btnActualizar = new DreamTeamControls.DreamTeamButton();
             this.pnContenedor.SuspendLayout();
             this.Cuadricula.SuspendLayout();
             this.pnFinal.SuspendLayout();
@@ -89,6 +95,12 @@ namespace CapaPresentaciones
             this.pnContenedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pnContenedor.BorderRadius = 20;
             this.pnContenedor.BorderThickness = 1;
+            this.pnContenedor.Controls.Add(this.txtDocente);
+            this.pnContenedor.Controls.Add(this.lnDocente);
+            this.pnContenedor.Controls.Add(this.lblDocente);
+            this.pnContenedor.Controls.Add(this.txtCodDocente);
+            this.pnContenedor.Controls.Add(this.lnCodDocente);
+            this.pnContenedor.Controls.Add(this.lblCodDocente);
             this.pnContenedor.Controls.Add(this.btnActualizar);
             this.pnContenedor.Controls.Add(this.btnGeneral);
             this.pnContenedor.Controls.Add(this.Cuadricula);
@@ -105,26 +117,6 @@ namespace CapaPresentaciones
             this.pnContenedor.ShowBorders = true;
             this.pnContenedor.Size = new System.Drawing.Size(1090, 660);
             this.pnContenedor.TabIndex = 19;
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnActualizar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnActualizar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnActualizar.BorderRadius = 20;
-            this.btnActualizar.BorderSize = 3;
-            this.btnActualizar.FlatAppearance.BorderSize = 0;
-            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizar.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
-            this.btnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnActualizar.Location = new System.Drawing.Point(476, 208);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(106, 33);
-            this.btnActualizar.TabIndex = 82;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnActualizar.UseVisualStyleBackColor = false;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnGeneral
             // 
@@ -216,7 +208,6 @@ namespace CapaPresentaciones
             this.btnGeneral.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnGeneral.UseDefaultRadiusAndThickness = true;
             this.btnGeneral.Visible = false;
-            this.btnGeneral.Click += new System.EventHandler(this.btnGeneral_Click);
             // 
             // Cuadricula
             // 
@@ -446,7 +437,7 @@ namespace CapaPresentaciones
             this.cxtCriterioSeleccion.ItemHighLightForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.cxtCriterioSeleccion.Items.AddRange(new object[] {
             "Por Fechas",
-            "Por Estudiantes"});
+            "Por Asignaturas"});
             this.cxtCriterioSeleccion.ItemTopMargin = 3;
             this.cxtCriterioSeleccion.Location = new System.Drawing.Point(10, 34);
             this.cxtCriterioSeleccion.Name = "cxtCriterioSeleccion";
@@ -455,7 +446,6 @@ namespace CapaPresentaciones
             this.cxtCriterioSeleccion.Text = null;
             this.cxtCriterioSeleccion.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             this.cxtCriterioSeleccion.TextLeftMargin = 5;
-            this.cxtCriterioSeleccion.SelectionChangeCommitted += new System.EventHandler(this.cxtCriterioSeleccion_SelectionChangeCommitted);
             // 
             // pnTipo
             // 
@@ -530,7 +520,7 @@ namespace CapaPresentaciones
             this.cxtTipoReporte.ItemHighLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.cxtTipoReporte.ItemHighLightForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.cxtTipoReporte.Items.AddRange(new object[] {
-            "Asistencia Estudiantes",
+            "Asistencia Docentes",
             "Avance Asignaturas"});
             this.cxtTipoReporte.ItemTopMargin = 3;
             this.cxtTipoReporte.Location = new System.Drawing.Point(7, 34);
@@ -540,7 +530,6 @@ namespace CapaPresentaciones
             this.cxtTipoReporte.Text = null;
             this.cxtTipoReporte.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             this.cxtTipoReporte.TextLeftMargin = 5;
-            this.cxtTipoReporte.SelectionChangeCommitted += new System.EventHandler(this.cxtTipoReporte_SelectionChangeCommitted);
             // 
             // pnPadre
             // 
@@ -599,6 +588,7 @@ namespace CapaPresentaciones
             this.pnCajas.Size = new System.Drawing.Size(713, 69);
             this.pnCajas.SplitterDistance = 351;
             this.pnCajas.TabIndex = 75;
+            this.pnCajas.Visible = false;
             // 
             // lblNombre
             // 
@@ -820,6 +810,7 @@ namespace CapaPresentaciones
             this.txtCodigo.Text = "Valor de Cód.";
             this.txtCodigo.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.txtCodigo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.txtCodigo.Visible = false;
             // 
             // lnCodigo
             // 
@@ -835,6 +826,7 @@ namespace CapaPresentaciones
             this.lnCodigo.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnCodigo.Size = new System.Drawing.Size(132, 10);
             this.lnCodigo.TabIndex = 65;
+            this.lnCodigo.Visible = false;
             // 
             // lblCodigo
             // 
@@ -852,6 +844,7 @@ namespace CapaPresentaciones
             this.lblCodigo.Text = "Cód. Asignatura";
             this.lblCodigo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblCodigo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblCodigo.Visible = false;
             // 
             // btnCerrar
             // 
@@ -887,7 +880,6 @@ namespace CapaPresentaciones
             this.btnCerrar.WaitOnLoad = false;
             this.btnCerrar.Zoom = 10;
             this.btnCerrar.ZoomSpeed = 10;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lblTitulo
             // 
@@ -914,7 +906,132 @@ namespace CapaPresentaciones
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this.pnContenedor;
             // 
-            // P_ReporteDocente
+            // txtDocente
+            // 
+            this.txtDocente.AllowParentOverrides = false;
+            this.txtDocente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDocente.AutoEllipsis = false;
+            this.txtDocente.AutoSize = false;
+            this.txtDocente.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtDocente.CursorType = System.Windows.Forms.Cursors.Default;
+            this.txtDocente.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDocente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtDocente.Location = new System.Drawing.Point(175, 173);
+            this.txtDocente.Name = "txtDocente";
+            this.txtDocente.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtDocente.Size = new System.Drawing.Size(698, 23);
+            this.txtDocente.TabIndex = 94;
+            this.txtDocente.Text = "Valor de Estudiante";
+            this.txtDocente.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.txtDocente.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // lnDocente
+            // 
+            this.lnDocente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lnDocente.BackColor = System.Drawing.Color.Transparent;
+            this.lnDocente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lnDocente.BackgroundImage")));
+            this.lnDocente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.lnDocente.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
+            this.lnDocente.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lnDocente.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
+            this.lnDocente.LineThickness = 1;
+            this.lnDocente.Location = new System.Drawing.Point(175, 197);
+            this.lnDocente.Name = "lnDocente";
+            this.lnDocente.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
+            this.lnDocente.Size = new System.Drawing.Size(698, 10);
+            this.lnDocente.TabIndex = 93;
+            // 
+            // lblDocente
+            // 
+            this.lblDocente.AllowParentOverrides = false;
+            this.lblDocente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDocente.AutoEllipsis = false;
+            this.lblDocente.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblDocente.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblDocente.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDocente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblDocente.Location = new System.Drawing.Point(175, 141);
+            this.lblDocente.Name = "lblDocente";
+            this.lblDocente.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblDocente.Size = new System.Drawing.Size(69, 23);
+            this.lblDocente.TabIndex = 92;
+            this.lblDocente.Text = "Docente";
+            this.lblDocente.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDocente.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // txtCodDocente
+            // 
+            this.txtCodDocente.AllowParentOverrides = false;
+            this.txtCodDocente.AutoEllipsis = false;
+            this.txtCodDocente.AutoSize = false;
+            this.txtCodDocente.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtCodDocente.CursorType = System.Windows.Forms.Cursors.Default;
+            this.txtCodDocente.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodDocente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtCodDocente.Location = new System.Drawing.Point(24, 173);
+            this.txtCodDocente.Name = "txtCodDocente";
+            this.txtCodDocente.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtCodDocente.Size = new System.Drawing.Size(109, 23);
+            this.txtCodDocente.TabIndex = 91;
+            this.txtCodDocente.Text = "Valor de Cód. Docente";
+            this.txtCodDocente.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.txtCodDocente.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // lnCodDocente
+            // 
+            this.lnCodDocente.BackColor = System.Drawing.Color.Transparent;
+            this.lnCodDocente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lnCodDocente.BackgroundImage")));
+            this.lnCodDocente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.lnCodDocente.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
+            this.lnCodDocente.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lnCodDocente.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
+            this.lnCodDocente.LineThickness = 1;
+            this.lnCodDocente.Location = new System.Drawing.Point(24, 197);
+            this.lnCodDocente.Name = "lnCodDocente";
+            this.lnCodDocente.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
+            this.lnCodDocente.Size = new System.Drawing.Size(109, 10);
+            this.lnCodDocente.TabIndex = 90;
+            // 
+            // lblCodDocente
+            // 
+            this.lblCodDocente.AllowParentOverrides = false;
+            this.lblCodDocente.AutoEllipsis = false;
+            this.lblCodDocente.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblCodDocente.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblCodDocente.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodDocente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblCodDocente.Location = new System.Drawing.Point(24, 141);
+            this.lblCodDocente.Name = "lblCodDocente";
+            this.lblCodDocente.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblCodDocente.Size = new System.Drawing.Size(109, 23);
+            this.lblCodDocente.TabIndex = 89;
+            this.lblCodDocente.Text = "Cód. Docente";
+            this.lblCodDocente.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCodDocente.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnActualizar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnActualizar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnActualizar.BorderRadius = 20;
+            this.btnActualizar.BorderSize = 3;
+            this.btnActualizar.FlatAppearance.BorderSize = 0;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.btnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnActualizar.Location = new System.Drawing.Point(476, 208);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(106, 33);
+            this.btnActualizar.TabIndex = 82;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            // 
+            // P_ReporteJefe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -922,10 +1039,9 @@ namespace CapaPresentaciones
             this.ClientSize = new System.Drawing.Size(1100, 670);
             this.Controls.Add(this.pnContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "P_ReporteDocente";
+            this.Name = "P_ReporteJefe";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P_ReporteDocente";
-            this.Load += new System.EventHandler(this.P_ReporteDocente_Load);
             this.pnContenedor.ResumeLayout(false);
             this.pnContenedor.PerformLayout();
             this.Cuadricula.ResumeLayout(false);
@@ -981,6 +1097,12 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuPanel pnCriterio;
         private Bunifu.UI.WinForms.BunifuPanel pnTipo;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGeneral;
+        public Bunifu.UI.WinForms.BunifuLabel txtDocente;
+        private Bunifu.UI.WinForms.BunifuSeparator lnDocente;
+        private Bunifu.UI.WinForms.BunifuLabel lblDocente;
+        public Bunifu.UI.WinForms.BunifuLabel txtCodDocente;
+        private Bunifu.UI.WinForms.BunifuSeparator lnCodDocente;
+        private Bunifu.UI.WinForms.BunifuLabel lblCodDocente;
         private DreamTeamControls.DreamTeamButton btnActualizar;
     }
 }

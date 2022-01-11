@@ -22,7 +22,7 @@ namespace CapaPresentaciones
         private readonly string CodSemestre;
         readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodDepartamentoA = "IF";
-        C_ReporteA Reportes = new C_ReporteA();
+        C_Reporte Reportes = new C_Reporte();
         string nombreDocente;
 
         public P_ReporteDocente()
@@ -75,7 +75,7 @@ namespace CapaPresentaciones
             string[] Valores = { CodSemestre, txtEscuelaP.Text, txtNombre.Text, txtCodigo.Text,  nombreDocente, CodDocente};
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorFechas(CodSemestre, CodDocente, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
-            C_ReporteA Reporte = new C_ReporteA(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text)
+            C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text)
             {
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
             };
@@ -183,7 +183,7 @@ namespace CapaPresentaciones
             // Tipo de reporte: Asistencia estudiantes
             // Criterio de selección: Por Fechas
 
-            string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy" + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy"));
+            string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
             string[] Titulos = { "Semestre", "Escuela Profesional", "Asignatura", "Cód. Asignatura", "Docente", "Cod. Docente" };
             string[] Valores = { CodSemestre, txtEscuelaP.Text, txtNombre.Text, txtCodigo.Text, nombreDocente, CodDocente };
 
@@ -271,8 +271,48 @@ namespace CapaPresentaciones
             string[] Valores = { CodSemestre, txtEscuelaP.Text, CodDocente, nombreDocente };
 
             DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignaturasDocente(CodSemestre, CodDocente, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+            DataTable plansesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, txtCodigo.Text, CodDocente);
 
-            Reportes.fnReporte6(Titulo, Titulos, Valores, resultados, txtCodigo.Text);
+            int Total = 0;
+
+            if (plansesion.Rows.Count >= 1)
+            {
+                DataRow Fila = plansesion.Rows[0];
+
+                byte[] archivo = Fila["PlanSesiones"] as byte[];
+
+                string path = AppDomain.CurrentDomain.BaseDirectory;
+                string folder = path + "/temp/";
+                string fullFilePath = folder + "temp.xlsx";
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+
+                if (File.Exists(fullFilePath))
+                {
+                    File.Delete(fullFilePath);
+                }
+
+                File.WriteAllBytes(fullFilePath, archivo);
+                XLWorkbook wb = new XLWorkbook(fullFilePath);
+
+                for (int i = 9; i <= 61; i++)
+                {
+                    if (wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString() != "")
+                    {
+                        DateTime FechaActual = DateTime.Parse(wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString());
+                        if (FechaActual >= dpFechaInicial.Value && FechaActual <= dpFechaFinal.Value)
+                        {
+                            Total = Total + 1;
+                        }
+                    }
+                }
+
+                Reportes.fnReporte6(Titulo, Titulos, Valores, resultados, txtCodigo.Text, Total);
+            }
+            else
+                MessageBox.Show("No hay Plan de Sesiones");
         }
 
         // Actualizar si cambia las fechas

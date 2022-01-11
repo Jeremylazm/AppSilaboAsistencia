@@ -16,17 +16,18 @@ using CapaNegocios;
 
 namespace ControlesPerzonalizados
 {
-    public partial class C_ReporteA : UserControl
+    public partial class C_Reporte : UserControl
     {
         private string CriterioAsistenciasEstudiantes;
         readonly N_Catalogo ObjCatalogo;
 
-        public C_ReporteA()
+        public C_Reporte()
         {
             ObjCatalogo = new N_Catalogo();
             InitializeComponent();
 
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
+            Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResumen, sbResumen);
             /*dgvResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);
             sbResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);*/
         }
@@ -56,7 +57,7 @@ namespace ControlesPerzonalizados
             pnSubcampos.Controls.Clear();
         }
 
-        public C_ReporteA(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura)
+        public C_Reporte(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura)
         {
             InitializeComponent();
 
@@ -157,10 +158,10 @@ namespace ControlesPerzonalizados
                 cuadroResumen.Rows.Add("Mínimo", Statistics.Minimum(Asistieron), Statistics.Minimum(Faltaron));
 
                 // Media
-                cuadroResumen.Rows.Add("Media", Statistics.Mean(Asistieron), Statistics.Mean(Faltaron));
+                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)), String.Format("{0:0.00}", Statistics.Mean(Faltaron)));
 
                 // Mediana
-                cuadroResumen.Rows.Add("Mediana", Statistics.Median(Asistieron), Statistics.Median(Faltaron));
+                cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Asistieron)) + " (" + String.Format("{0:0.00}", Statistics.Median(Asistieron) / (Statistics.Median(Asistieron) + Statistics.Median(Faltaron)) * 100) + "%)", String.Format("{0:0.00}", Statistics.Median(Faltaron)) + " (" + String.Format("{0:0.00}", Statistics.Median(Faltaron) / (Statistics.Median(Asistieron) + Statistics.Median(Faltaron)) * 100) + "%)");
 
                 // Moda
                 var modeAsistieron = Asistieron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
@@ -168,7 +169,7 @@ namespace ControlesPerzonalizados
                 cuadroResumen.Rows.Add("Moda", modeAsistieron, modeFaltaron);
 
                 // Varianza
-                cuadroResumen.Rows.Add("Varianza", Statistics.Variance(Asistieron), Statistics.Variance(Faltaron));
+                cuadroResumen.Rows.Add("Varianza", String.Format("{0:0.00}", Statistics.Variance(Asistieron)), String.Format("{0:0.00}", Statistics.Variance(Faltaron)));
 
                 // Desviación Estándar
                 var dvA = Statistics.StandardDeviation(Asistieron);
@@ -406,7 +407,7 @@ namespace ControlesPerzonalizados
                 dgvResultados.Columns[0].DisplayIndex = 5;
 
                 // Mostrar cuadro de resumen
-                pnInferior.Controls[1].Show();
+                pnInferior.Controls[2].Show();
 
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
                 dtEstadisticos.Rows.Clear();
@@ -449,10 +450,10 @@ namespace ControlesPerzonalizados
                 cuadroResumen.Rows.Add("Mínimo", Statistics.Minimum(Asistieron), Statistics.Minimum(Faltaron));
 
                 // Media
-                cuadroResumen.Rows.Add("Media", Statistics.Mean(Asistieron), Statistics.Mean(Faltaron));
+                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)), String.Format("{0:0.00}", Statistics.Mean(Faltaron)));
 
                 // Mediana
-                cuadroResumen.Rows.Add("Mediana", Statistics.Median(Asistieron), Statistics.Median(Faltaron));
+                cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Asistieron)) + " (" + String.Format("{0:0.00}", Statistics.Median(Asistieron) / (Statistics.Median(Asistieron) + Statistics.Median(Faltaron)) * 100) + "%)", String.Format("{0:0.00}", Statistics.Median(Faltaron)) + " (" + String.Format("{0:0.00}", Statistics.Median(Faltaron) / (Statistics.Median(Asistieron) + Statistics.Median(Faltaron)) * 100) + "%)");
 
                 // Moda
                 var modeAsistieron = Asistieron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
@@ -460,7 +461,7 @@ namespace ControlesPerzonalizados
                 cuadroResumen.Rows.Add("Moda", modeAsistieron, modeFaltaron);
 
                 // Varianza
-                cuadroResumen.Rows.Add("Varianza", Statistics.Variance(Asistieron), Statistics.Variance(Faltaron));
+                cuadroResumen.Rows.Add("Varianza", String.Format("{0:0.00}", Statistics.Variance(Asistieron)), String.Format("{0:0.00}", Statistics.Variance(Faltaron)));
 
                 // Desviación Estándar
                 var dvA = Statistics.StandardDeviation(Asistieron);
@@ -676,8 +677,13 @@ namespace ControlesPerzonalizados
                 dgvResultados.Columns[1].Visible = false;
                 dgvResultados.Columns[0].DisplayIndex = 7;
 
-                // Ocultar cuadro de resumen
-                pnInferior.Controls[1].Hide();
+                pnInferior.Controls[2].Hide();
+                //pnInferior.Controls[1].Dock = DockStyle.Top;
+
+                /*for (int i = 0; i < pnInferior.Controls.Count; i++)
+                {
+                    Console.WriteLine(pnInferior.Controls[i].Name);
+                }*/
 
                 // Gráficos
                 // Gráfico 1
@@ -799,7 +805,7 @@ namespace ControlesPerzonalizados
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 
                 #region ===================== CUADRO DE RESUMEN =====================
-                pnInferior.Controls[1].Show();
+                pnInferior.Controls[2].Show();
                 DataTable cuadroResumen = new DataTable();
                 cuadroResumen.Columns.Add(" ");
                 cuadroResumen.Columns.Add("Porcentajes");
@@ -854,7 +860,7 @@ namespace ControlesPerzonalizados
             }
         }
 
-        public void fnReporte6(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CodAsignatura)
+        public void fnReporte6(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CodAsignatura, int Total)
         {
             // Limpiar los Antiguos Reportes
             LimpiarCampos();
@@ -912,7 +918,7 @@ namespace ControlesPerzonalizados
 
                 #region ===================== CUADRO DE RESUMEN =====================
                 // Ocultar cuadro de resumen
-                pnInferior.Controls[1].Hide();
+                pnInferior.Controls[2].Hide();
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICO =====================

@@ -299,11 +299,23 @@
     <Compile Include="P_RecuperacionContraseña.Designer.cs">
       <DependentUpon>P_RecuperacionContraseña.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_ReporteDirector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_ReporteDirector.Designer.cs">
+      <DependentUpon>P_ReporteDirector.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_ReporteDocente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="P_ReporteDocente.Designer.cs">
       <DependentUpon>P_ReporteDocente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_ReporteJefe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_ReporteJefe.Designer.cs">
+      <DependentUpon>P_ReporteJefe.cs</DependentUpon>
     </Compile>
     <Compile Include="P_SeleccionadoAsignaturaAsignada.cs">
       <SubType>Form</SubType>

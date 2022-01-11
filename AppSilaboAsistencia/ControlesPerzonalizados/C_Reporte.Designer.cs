@@ -1,7 +1,7 @@
 ﻿
 namespace ControlesPerzonalizados
 {
-    partial class C_ReporteA
+    partial class C_Reporte
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,22 +29,21 @@ namespace ControlesPerzonalizados
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(C_ReporteA));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(C_Reporte));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnTitulo = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
+            this.pnSuperior = new Bunifu.UI.WinForms.BunifuPanel();
+            this.gbxDescripcion = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnCampos = new Bunifu.UI.WinForms.BunifuPanel();
             this.pnSubcampos = new System.Windows.Forms.FlowLayoutPanel();
-            this.gbxDescripcion = new Bunifu.UI.WinForms.BunifuLabel();
-            this.Cuadricula = new System.Windows.Forms.TableLayoutPanel();
-            this.pnInferior = new System.Windows.Forms.FlowLayoutPanel();
             this.pnContenedorResultados = new Bunifu.UI.WinForms.BunifuPanel();
             this.gbxResultados = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnResultados = new Bunifu.UI.WinForms.BunifuPanel();
@@ -60,11 +59,11 @@ namespace ControlesPerzonalizados
             this.pnGraficos = new Bunifu.UI.WinForms.BunifuPanel();
             this.tcGraficos = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.pnSuperior = new Bunifu.UI.WinForms.BunifuPanel();
+            this.Cuadricula = new System.Windows.Forms.TableLayoutPanel();
+            this.pnInferior = new Bunifu.UI.WinForms.BunifuPanel();
             this.pnTitulo.SuspendLayout();
+            this.pnSuperior.SuspendLayout();
             this.pnCampos.SuspendLayout();
-            this.Cuadricula.SuspendLayout();
-            this.pnInferior.SuspendLayout();
             this.pnContenedorResultados.SuspendLayout();
             this.pnResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).BeginInit();
@@ -74,7 +73,8 @@ namespace ControlesPerzonalizados
             this.pnContenedorGraficos.SuspendLayout();
             this.pnGraficos.SuspendLayout();
             this.tcGraficos.SuspendLayout();
-            this.pnSuperior.SuspendLayout();
+            this.Cuadricula.SuspendLayout();
+            this.pnInferior.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnTitulo
@@ -113,6 +113,43 @@ namespace ControlesPerzonalizados
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
+            // pnSuperior
+            // 
+            this.pnSuperior.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnSuperior.BackgroundColor = System.Drawing.Color.Transparent;
+            this.pnSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnSuperior.BackgroundImage")));
+            this.pnSuperior.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnSuperior.BorderColor = System.Drawing.Color.Transparent;
+            this.pnSuperior.BorderRadius = 3;
+            this.pnSuperior.BorderThickness = 1;
+            this.pnSuperior.Controls.Add(this.gbxDescripcion);
+            this.pnSuperior.Controls.Add(this.pnCampos);
+            this.pnSuperior.Location = new System.Drawing.Point(0, 0);
+            this.pnSuperior.Margin = new System.Windows.Forms.Padding(0);
+            this.pnSuperior.Name = "pnSuperior";
+            this.pnSuperior.ShowBorders = true;
+            this.pnSuperior.Size = new System.Drawing.Size(1062, 231);
+            this.pnSuperior.TabIndex = 0;
+            // 
+            // gbxDescripcion
+            // 
+            this.gbxDescripcion.AllowParentOverrides = false;
+            this.gbxDescripcion.AutoEllipsis = false;
+            this.gbxDescripcion.AutoSize = false;
+            this.gbxDescripcion.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gbxDescripcion.CursorType = System.Windows.Forms.Cursors.Default;
+            this.gbxDescripcion.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gbxDescripcion.Location = new System.Drawing.Point(16, 3);
+            this.gbxDescripcion.Name = "gbxDescripcion";
+            this.gbxDescripcion.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.gbxDescripcion.Size = new System.Drawing.Size(106, 23);
+            this.gbxDescripcion.TabIndex = 85;
+            this.gbxDescripcion.Text = "Descripción";
+            this.gbxDescripcion.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gbxDescripcion.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
             // pnCampos
             // 
             this.pnCampos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -141,55 +178,10 @@ namespace ControlesPerzonalizados
             this.pnSubcampos.Size = new System.Drawing.Size(1031, 180);
             this.pnSubcampos.TabIndex = 0;
             // 
-            // gbxDescripcion
-            // 
-            this.gbxDescripcion.AllowParentOverrides = false;
-            this.gbxDescripcion.AutoEllipsis = false;
-            this.gbxDescripcion.AutoSize = false;
-            this.gbxDescripcion.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gbxDescripcion.CursorType = System.Windows.Forms.Cursors.Default;
-            this.gbxDescripcion.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.gbxDescripcion.Location = new System.Drawing.Point(16, 3);
-            this.gbxDescripcion.Name = "gbxDescripcion";
-            this.gbxDescripcion.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gbxDescripcion.Size = new System.Drawing.Size(106, 23);
-            this.gbxDescripcion.TabIndex = 85;
-            this.gbxDescripcion.Text = "Descripción";
-            this.gbxDescripcion.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.gbxDescripcion.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // Cuadricula
-            // 
-            this.Cuadricula.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Cuadricula.ColumnCount = 1;
-            this.Cuadricula.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Cuadricula.Controls.Add(this.pnInferior, 0, 1);
-            this.Cuadricula.Controls.Add(this.pnSuperior, 0, 0);
-            this.Cuadricula.Location = new System.Drawing.Point(0, 70);
-            this.Cuadricula.Name = "Cuadricula";
-            this.Cuadricula.RowCount = 2;
-            this.Cuadricula.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 231F));
-            this.Cuadricula.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1431F));
-            this.Cuadricula.Size = new System.Drawing.Size(1062, 1648);
-            this.Cuadricula.TabIndex = 95;
-            // 
-            // pnInferior
-            // 
-            this.pnInferior.Controls.Add(this.pnContenedorResultados);
-            this.pnInferior.Controls.Add(this.pnContenedorCuadro);
-            this.pnInferior.Controls.Add(this.pnContenedorGraficos);
-            this.pnInferior.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.pnInferior.Location = new System.Drawing.Point(0, 231);
-            this.pnInferior.Margin = new System.Windows.Forms.Padding(0);
-            this.pnInferior.Name = "pnInferior";
-            this.pnInferior.Size = new System.Drawing.Size(1062, 1431);
-            this.pnInferior.TabIndex = 98;
-            // 
             // pnContenedorResultados
             // 
+            this.pnContenedorResultados.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnContenedorResultados.BackgroundColor = System.Drawing.Color.Transparent;
             this.pnContenedorResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnContenedorResultados.BackgroundImage")));
             this.pnContenedorResultados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -225,7 +217,8 @@ namespace ControlesPerzonalizados
             // 
             // pnResultados
             // 
-            this.pnResultados.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnResultados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnResultados.BackgroundColor = System.Drawing.Color.White;
             this.pnResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnResultados.BackgroundImage")));
@@ -289,10 +282,10 @@ namespace ControlesPerzonalizados
             this.dgvResultados.AllowUserToDeleteRows = false;
             this.dgvResultados.AllowUserToOrderColumns = true;
             this.dgvResultados.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.dgvResultados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.dgvResultados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
             this.dgvResultados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -301,14 +294,14 @@ namespace ControlesPerzonalizados
             this.dgvResultados.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvResultados.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvResultados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvResultados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvResultados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.dgvResultados.ColumnHeadersHeight = 28;
             this.dgvResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvResultados.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
@@ -329,14 +322,14 @@ namespace ControlesPerzonalizados
             this.dgvResultados.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.dgvResultados.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.dgvResultados.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvResultados.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
+            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvResultados.DefaultCellStyle = dataGridViewCellStyle27;
             this.dgvResultados.EnableHeadersVisualStyles = false;
             this.dgvResultados.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.dgvResultados.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -346,14 +339,14 @@ namespace ControlesPerzonalizados
             this.dgvResultados.MultiSelect = false;
             this.dgvResultados.Name = "dgvResultados";
             this.dgvResultados.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvResultados.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvResultados.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.dgvResultados.RowHeadersVisible = false;
             this.dgvResultados.RowHeadersWidth = 28;
             this.dgvResultados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -378,7 +371,7 @@ namespace ControlesPerzonalizados
             this.pnContenedorCuadro.BorderThickness = 1;
             this.pnContenedorCuadro.Controls.Add(this.gbxCuadroResumen);
             this.pnContenedorCuadro.Controls.Add(this.pnCuadroResumen);
-            this.pnContenedorCuadro.Location = new System.Drawing.Point(0, 314);
+            this.pnContenedorCuadro.Location = new System.Drawing.Point(0, 317);
             this.pnContenedorCuadro.Margin = new System.Windows.Forms.Padding(0);
             this.pnContenedorCuadro.Name = "pnContenedorCuadro";
             this.pnContenedorCuadro.ShowBorders = true;
@@ -471,10 +464,10 @@ namespace ControlesPerzonalizados
             this.dgvResumen.AllowUserToDeleteRows = false;
             this.dgvResumen.AllowUserToOrderColumns = true;
             this.dgvResumen.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.dgvResumen.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.dgvResumen.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle29;
             this.dgvResumen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -483,14 +476,14 @@ namespace ControlesPerzonalizados
             this.dgvResumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvResumen.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvResumen.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
             this.dgvResumen.ColumnHeadersHeight = 28;
             this.dgvResumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvResumen.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
@@ -511,14 +504,14 @@ namespace ControlesPerzonalizados
             this.dgvResumen.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.dgvResumen.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.dgvResumen.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvResumen.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
+            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvResumen.DefaultCellStyle = dataGridViewCellStyle31;
             this.dgvResumen.EnableHeadersVisualStyles = false;
             this.dgvResumen.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.dgvResumen.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -528,14 +521,14 @@ namespace ControlesPerzonalizados
             this.dgvResumen.MultiSelect = false;
             this.dgvResumen.Name = "dgvResumen";
             this.dgvResumen.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvResumen.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvResumen.RowHeadersDefaultCellStyle = dataGridViewCellStyle32;
             this.dgvResumen.RowHeadersVisible = false;
             this.dgvResumen.RowHeadersWidth = 28;
             this.dgvResumen.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -549,7 +542,8 @@ namespace ControlesPerzonalizados
             // 
             // pnContenedorGraficos
             // 
-            this.pnContenedorGraficos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnContenedorGraficos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnContenedorGraficos.BackgroundColor = System.Drawing.Color.Transparent;
             this.pnContenedorGraficos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnContenedorGraficos.BackgroundImage")));
@@ -559,11 +553,11 @@ namespace ControlesPerzonalizados
             this.pnContenedorGraficos.BorderThickness = 1;
             this.pnContenedorGraficos.Controls.Add(this.gbxGraficos);
             this.pnContenedorGraficos.Controls.Add(this.pnGraficos);
-            this.pnContenedorGraficos.Location = new System.Drawing.Point(0, 713);
+            this.pnContenedorGraficos.Location = new System.Drawing.Point(0, 716);
             this.pnContenedorGraficos.Margin = new System.Windows.Forms.Padding(0);
             this.pnContenedorGraficos.Name = "pnContenedorGraficos";
             this.pnContenedorGraficos.ShowBorders = true;
-            this.pnContenedorGraficos.Size = new System.Drawing.Size(1062, 701);
+            this.pnContenedorGraficos.Size = new System.Drawing.Size(1062, 715);
             this.pnContenedorGraficos.TabIndex = 2;
             // 
             // gbxGraficos
@@ -605,57 +599,78 @@ namespace ControlesPerzonalizados
             // 
             // tcGraficos
             // 
+            this.tcGraficos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tcGraficos.Controls.Add(this.tabPage1);
             this.tcGraficos.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tcGraficos.Location = new System.Drawing.Point(13, 16);
             this.tcGraficos.Name = "tcGraficos";
             this.tcGraficos.SelectedIndex = 0;
-            this.tcGraficos.Size = new System.Drawing.Size(1040, 666);
+            this.tcGraficos.Size = new System.Drawing.Size(1032, 656);
             this.tcGraficos.TabIndex = 1;
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1032, 631);
+            this.tabPage1.Size = new System.Drawing.Size(1024, 621);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Gráfico 1";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // pnSuperior
+            // Cuadricula
             // 
-            this.pnSuperior.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Cuadricula.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnSuperior.BackgroundColor = System.Drawing.Color.Transparent;
-            this.pnSuperior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnSuperior.BackgroundImage")));
-            this.pnSuperior.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnSuperior.BorderColor = System.Drawing.Color.Transparent;
-            this.pnSuperior.BorderRadius = 3;
-            this.pnSuperior.BorderThickness = 1;
-            this.pnSuperior.Controls.Add(this.gbxDescripcion);
-            this.pnSuperior.Controls.Add(this.pnCampos);
-            this.pnSuperior.Location = new System.Drawing.Point(0, 0);
-            this.pnSuperior.Margin = new System.Windows.Forms.Padding(0);
-            this.pnSuperior.Name = "pnSuperior";
-            this.pnSuperior.ShowBorders = true;
-            this.pnSuperior.Size = new System.Drawing.Size(1062, 231);
-            this.pnSuperior.TabIndex = 0;
+            this.Cuadricula.ColumnCount = 1;
+            this.Cuadricula.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.Cuadricula.Controls.Add(this.pnSuperior, 0, 0);
+            this.Cuadricula.Controls.Add(this.pnInferior, 0, 1);
+            this.Cuadricula.Location = new System.Drawing.Point(0, 70);
+            this.Cuadricula.Name = "Cuadricula";
+            this.Cuadricula.RowCount = 2;
+            this.Cuadricula.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 231F));
+            this.Cuadricula.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1431F));
+            this.Cuadricula.Size = new System.Drawing.Size(1062, 1648);
+            this.Cuadricula.TabIndex = 95;
             // 
-            // C_ReporteA
+            // pnInferior
+            // 
+            this.pnInferior.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnInferior.BackgroundColor = System.Drawing.Color.Transparent;
+            this.pnInferior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnInferior.BackgroundImage")));
+            this.pnInferior.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnInferior.BorderColor = System.Drawing.Color.Transparent;
+            this.pnInferior.BorderRadius = 3;
+            this.pnInferior.BorderThickness = 1;
+            this.pnInferior.Controls.Add(this.pnContenedorResultados);
+            this.pnInferior.Controls.Add(this.pnContenedorGraficos);
+            this.pnInferior.Controls.Add(this.pnContenedorCuadro);
+            this.pnInferior.Location = new System.Drawing.Point(0, 231);
+            this.pnInferior.Margin = new System.Windows.Forms.Padding(0);
+            this.pnInferior.Name = "pnInferior";
+            this.pnInferior.ShowBorders = true;
+            this.pnInferior.Size = new System.Drawing.Size(1062, 1431);
+            this.pnInferior.TabIndex = 91;
+            // 
+            // C_Reporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.Cuadricula);
             this.Controls.Add(this.pnTitulo);
-            this.Name = "C_ReporteA";
+            this.Name = "C_Reporte";
             this.Size = new System.Drawing.Size(1062, 1735);
             this.Resize += new System.EventHandler(this.C_ReporteA_Resize);
             this.pnTitulo.ResumeLayout(false);
+            this.pnSuperior.ResumeLayout(false);
             this.pnCampos.ResumeLayout(false);
-            this.Cuadricula.ResumeLayout(false);
-            this.pnInferior.ResumeLayout(false);
             this.pnContenedorResultados.ResumeLayout(false);
             this.pnResultados.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).EndInit();
@@ -665,7 +680,8 @@ namespace ControlesPerzonalizados
             this.pnContenedorGraficos.ResumeLayout(false);
             this.pnGraficos.ResumeLayout(false);
             this.tcGraficos.ResumeLayout(false);
-            this.pnSuperior.ResumeLayout(false);
+            this.Cuadricula.ResumeLayout(false);
+            this.pnInferior.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -673,26 +689,26 @@ namespace ControlesPerzonalizados
         #endregion
         private Bunifu.UI.WinForms.BunifuPanel pnTitulo;
         private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
-        private Bunifu.UI.WinForms.BunifuPanel pnCampos;
-        private Bunifu.UI.WinForms.BunifuLabel gbxDescripcion;
         private Bunifu.UI.WinForms.BunifuPanel pnSuperior;
+        private Bunifu.UI.WinForms.BunifuLabel gbxDescripcion;
+        private Bunifu.UI.WinForms.BunifuPanel pnCampos;
         public System.Windows.Forms.FlowLayoutPanel pnSubcampos;
-        public System.Windows.Forms.TableLayoutPanel Cuadricula;
-        private System.Windows.Forms.FlowLayoutPanel pnInferior;
-        private Bunifu.UI.WinForms.BunifuPanel pnContenedorGraficos;
-        private Bunifu.UI.WinForms.BunifuLabel gbxGraficos;
-        private Bunifu.UI.WinForms.BunifuPanel pnGraficos;
         private Bunifu.UI.WinForms.BunifuPanel pnContenedorResultados;
         private Bunifu.UI.WinForms.BunifuLabel gbxResultados;
         private Bunifu.UI.WinForms.BunifuPanel pnResultados;
         private Bunifu.UI.WinForms.BunifuVScrollBar sbResultados;
-        private Bunifu.UI.WinForms.BunifuDataGridView dgvResultados;
         private Bunifu.UI.WinForms.BunifuPanel pnContenedorCuadro;
         private Bunifu.UI.WinForms.BunifuLabel gbxCuadroResumen;
         private Bunifu.UI.WinForms.BunifuPanel pnCuadroResumen;
         private Bunifu.UI.WinForms.BunifuVScrollBar sbResumen;
-        private Bunifu.UI.WinForms.BunifuDataGridView dgvResumen;
+        private Bunifu.UI.WinForms.BunifuPanel pnContenedorGraficos;
+        private Bunifu.UI.WinForms.BunifuLabel gbxGraficos;
+        private Bunifu.UI.WinForms.BunifuPanel pnGraficos;
         private System.Windows.Forms.TabControl tcGraficos;
         private System.Windows.Forms.TabPage tabPage1;
+        private Bunifu.UI.WinForms.BunifuDataGridView dgvResumen;
+        private Bunifu.UI.WinForms.BunifuDataGridView dgvResultados;
+        public System.Windows.Forms.TableLayoutPanel Cuadricula;
+        private Bunifu.UI.WinForms.BunifuPanel pnInferior;
     }
 }
