@@ -44,7 +44,7 @@ namespace CapaPresentaciones
                 lblCriterioSeleccion.Visible = true;
                 cxtCriterioSeleccion.Visible = true;
 
-                btnGeneral.Visible = false;
+                btnGeneral.Visible = false; 
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
 
                 //CriterioSeleccionAsistenciaEstudiantes();

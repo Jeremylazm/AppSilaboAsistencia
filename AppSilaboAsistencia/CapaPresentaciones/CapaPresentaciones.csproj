@@ -329,6 +329,12 @@
     <Compile Include="P_SubirArchivo.Designer.cs">
       <DependentUpon>P_SubirArchivo.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_TablaAsistenciaDiariaDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_TablaAsistenciaDiariaDocente.Designer.cs">
+      <DependentUpon>P_TablaAsistenciaDiariaDocente.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_TablaSesiones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -443,14 +449,23 @@
     <EmbeddedResource Include="P_RecuperacionContraseña.resx">
       <DependentUpon>P_RecuperacionContraseña.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="P_ReporteDirector.resx">
+      <DependentUpon>P_ReporteDirector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="P_ReporteDocente.resx">
       <DependentUpon>P_ReporteDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_ReporteJefe.resx">
+      <DependentUpon>P_ReporteJefe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_SeleccionadoAsignaturaAsignada.resx">
       <DependentUpon>P_SeleccionadoAsignaturaAsignada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_SubirArchivo.resx">
       <DependentUpon>P_SubirArchivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_TablaAsistenciaDiariaDocente.resx">
+      <DependentUpon>P_TablaAsistenciaDiariaDocente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaSesiones.resx">
       <DependentUpon>P_TablaSesiones.cs</DependentUpon>
