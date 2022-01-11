@@ -588,6 +588,7 @@ namespace CapaPresentaciones
             this.pnCajas.Size = new System.Drawing.Size(713, 69);
             this.pnCajas.SplitterDistance = 351;
             this.pnCajas.TabIndex = 75;
+            this.pnCajas.Visible = false;
             // 
             // lblNombre
             // 
@@ -790,6 +791,7 @@ namespace CapaPresentaciones
             this.btnSeleccionar.TextMarginLeft = 0;
             this.btnSeleccionar.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnSeleccionar.UseDefaultRadiusAndThickness = true;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // txtCodigo
             // 
@@ -808,6 +810,7 @@ namespace CapaPresentaciones
             this.txtCodigo.Text = "Valor de Cód.";
             this.txtCodigo.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.txtCodigo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.txtCodigo.Visible = false;
             // 
             // lnCodigo
             // 
@@ -823,6 +826,7 @@ namespace CapaPresentaciones
             this.lnCodigo.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnCodigo.Size = new System.Drawing.Size(132, 10);
             this.lnCodigo.TabIndex = 65;
+            this.lnCodigo.Visible = false;
             // 
             // lblCodigo
             // 
@@ -840,6 +844,7 @@ namespace CapaPresentaciones
             this.lblCodigo.Text = "Cód. Asignatura";
             this.lblCodigo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblCodigo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblCodigo.Visible = false;
             // 
             // btnCerrar
             // 

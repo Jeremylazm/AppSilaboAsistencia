@@ -258,6 +258,7 @@ namespace CapaPresentaciones
             this.btnGeneral.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnGeneral.UseDefaultRadiusAndThickness = true;
             this.btnGeneral.Visible = false;
+            this.btnGeneral.Click += new System.EventHandler(this.btnGeneral_Click);
             // 
             // Cuadricula
             // 
@@ -486,8 +487,8 @@ namespace CapaPresentaciones
             this.cxtCriterioSeleccion.ItemHighLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.cxtCriterioSeleccion.ItemHighLightForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.cxtCriterioSeleccion.Items.AddRange(new object[] {
-            "Por Asignaturas",
-            "Por Estudiantes"});
+            "Por Estudiantes",
+            "Por Asignaturas"});
             this.cxtCriterioSeleccion.ItemTopMargin = 3;
             this.cxtCriterioSeleccion.Location = new System.Drawing.Point(10, 34);
             this.cxtCriterioSeleccion.Name = "cxtCriterioSeleccion";
@@ -496,6 +497,7 @@ namespace CapaPresentaciones
             this.cxtCriterioSeleccion.Text = null;
             this.cxtCriterioSeleccion.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             this.cxtCriterioSeleccion.TextLeftMargin = 5;
+            this.cxtCriterioSeleccion.SelectionChangeCommitted += new System.EventHandler(this.cxtCriterioSeleccion_SelectionChangeCommitted);
             // 
             // pnTipo
             // 
@@ -580,6 +582,7 @@ namespace CapaPresentaciones
             this.cxtTipoReporte.Text = null;
             this.cxtTipoReporte.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             this.cxtTipoReporte.TextLeftMargin = 5;
+            this.cxtTipoReporte.SelectionChangeCommitted += new System.EventHandler(this.cxtTipoReporte_SelectionChangeCommitted);
             // 
             // pnPadre
             // 
@@ -841,6 +844,7 @@ namespace CapaPresentaciones
             this.btnSeleccionar.TextMarginLeft = 0;
             this.btnSeleccionar.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnSeleccionar.UseDefaultRadiusAndThickness = true;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // txtCodigo
             // 
@@ -929,6 +933,7 @@ namespace CapaPresentaciones
             this.btnCerrar.WaitOnLoad = false;
             this.btnCerrar.Zoom = 10;
             this.btnCerrar.ZoomSpeed = 10;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lblTitulo
             // 
@@ -1041,6 +1046,7 @@ namespace CapaPresentaciones
             this.Name = "P_ReporteDirector";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P_ReporteDocente";
+            this.Load += new System.EventHandler(this.P_ReporteDirector_Load);
             this.pnContenedor.ResumeLayout(false);
             this.pnContenedor.PerformLayout();
             this.Cuadricula.ResumeLayout(false);
