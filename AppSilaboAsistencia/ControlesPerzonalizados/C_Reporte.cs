@@ -174,6 +174,18 @@ namespace ControlesPerzonalizados
 
                 dgvResumen.DataSource = cuadroResumen;
 
+                //pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                //pnContenedorCuadro.Height = (dgvResumen.Rows.Count + 1) * 28 + 53;
+                //this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                
+                //this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                //pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                //pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //pnContenedorCuadro.Visible = true;
+
                 // Gráficos
                 // Gráfico 1
                 tcGraficos.TabPages.Clear();
