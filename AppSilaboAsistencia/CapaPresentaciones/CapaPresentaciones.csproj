@@ -443,8 +443,14 @@
     <EmbeddedResource Include="P_RecuperacionContraseña.resx">
       <DependentUpon>P_RecuperacionContraseña.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="P_ReporteDirector.resx">
+      <DependentUpon>P_ReporteDirector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="P_ReporteDocente.resx">
       <DependentUpon>P_ReporteDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_ReporteJefe.resx">
+      <DependentUpon>P_ReporteJefe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_SeleccionadoAsignaturaAsignada.resx">
       <DependentUpon>P_SeleccionadoAsignaturaAsignada.cs</DependentUpon>
