@@ -156,6 +156,12 @@ namespace CapaPresentaciones
                 lblCriterioSeleccion.Visible = false;
                 cxtCriterioSeleccion.Visible = false;
 
+                lblFechaInicial.Visible = false;
+                dpFechaInicial.Visible = false;
+
+                lblFechaFinal.Visible = false;
+                dpFechaFinal.Visible = false;
+
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
 
@@ -257,7 +263,7 @@ namespace CapaPresentaciones
                 }
 
                 int Hechos = resultados.Rows.Count;
-                int Faltan = Total - Hechos;
+                int Faltan = 51 - Hechos;
                 Reportes.fnReporte5(Titulo, Titulos, Valores, resultados, txtCodigo.Text, Hechos, Faltan);
             }
             else
