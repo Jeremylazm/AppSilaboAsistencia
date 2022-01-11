@@ -27,7 +27,6 @@ namespace ControlesPerzonalizados
             InitializeComponent();
 
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
-            Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResumen, sbResumen);
             /*dgvResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);
             sbResultados.MouseWheel += new MouseEventHandler(dataGridView1_MouseWheel);*/
         }

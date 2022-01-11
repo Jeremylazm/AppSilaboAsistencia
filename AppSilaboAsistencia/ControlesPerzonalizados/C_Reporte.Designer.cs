@@ -30,14 +30,14 @@ namespace ControlesPerzonalizados
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(C_Reporte));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnTitulo = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnSuperior = new Bunifu.UI.WinForms.BunifuPanel();
@@ -52,7 +52,6 @@ namespace ControlesPerzonalizados
             this.pnContenedorCuadro = new Bunifu.UI.WinForms.BunifuPanel();
             this.gbxCuadroResumen = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnCuadroResumen = new Bunifu.UI.WinForms.BunifuPanel();
-            this.sbResumen = new Bunifu.UI.WinForms.BunifuVScrollBar();
             this.dgvResumen = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.pnContenedorGraficos = new Bunifu.UI.WinForms.BunifuPanel();
             this.gbxGraficos = new Bunifu.UI.WinForms.BunifuLabel();
@@ -194,7 +193,7 @@ namespace ControlesPerzonalizados
             this.pnContenedorResultados.Margin = new System.Windows.Forms.Padding(0);
             this.pnContenedorResultados.Name = "pnContenedorResultados";
             this.pnContenedorResultados.ShowBorders = true;
-            this.pnContenedorResultados.Size = new System.Drawing.Size(1062, 314);
+            this.pnContenedorResultados.Size = new System.Drawing.Size(1062, 354);
             this.pnContenedorResultados.TabIndex = 0;
             // 
             // gbxResultados
@@ -231,7 +230,7 @@ namespace ControlesPerzonalizados
             this.pnResultados.Location = new System.Drawing.Point(3, 16);
             this.pnResultados.Name = "pnResultados";
             this.pnResultados.ShowBorders = true;
-            this.pnResultados.Size = new System.Drawing.Size(1056, 298);
+            this.pnResultados.Size = new System.Drawing.Size(1056, 335);
             this.pnResultados.TabIndex = 92;
             // 
             // sbResultados
@@ -266,11 +265,11 @@ namespace ControlesPerzonalizados
             this.sbResultados.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbResultados.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbResultados.ShrinkSizeLimit = 3;
-            this.sbResultados.Size = new System.Drawing.Size(10, 238);
+            this.sbResultados.Size = new System.Drawing.Size(10, 275);
             this.sbResultados.SmallChange = 1;
             this.sbResultados.TabIndex = 90;
             this.sbResultados.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.sbResultados.ThumbLength = 23;
+            this.sbResultados.ThumbLength = 27;
             this.sbResultados.ThumbMargin = 1;
             this.sbResultados.ThumbStyle = Bunifu.UI.WinForms.BunifuVScrollBar.ThumbStyles.Inset;
             this.sbResultados.Value = 0;
@@ -282,10 +281,10 @@ namespace ControlesPerzonalizados
             this.dgvResultados.AllowUserToDeleteRows = false;
             this.dgvResultados.AllowUserToOrderColumns = true;
             this.dgvResultados.AllowUserToResizeRows = false;
-            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.dgvResultados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.dgvResultados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvResultados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -294,14 +293,14 @@ namespace ControlesPerzonalizados
             this.dgvResultados.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvResultados.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvResultados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvResultados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvResultados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvResultados.ColumnHeadersHeight = 28;
             this.dgvResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvResultados.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
@@ -322,14 +321,14 @@ namespace ControlesPerzonalizados
             this.dgvResultados.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.dgvResultados.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.dgvResultados.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
-            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvResultados.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvResultados.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvResultados.EnableHeadersVisualStyles = false;
             this.dgvResultados.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.dgvResultados.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -339,14 +338,14 @@ namespace ControlesPerzonalizados
             this.dgvResultados.MultiSelect = false;
             this.dgvResultados.Name = "dgvResultados";
             this.dgvResultados.ReadOnly = true;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvResultados.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvResultados.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvResultados.RowHeadersVisible = false;
             this.dgvResultados.RowHeadersWidth = 28;
             this.dgvResultados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -354,7 +353,7 @@ namespace ControlesPerzonalizados
             this.dgvResultados.RowTemplate.Height = 26;
             this.dgvResultados.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvResultados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvResultados.Size = new System.Drawing.Size(1032, 264);
+            this.dgvResultados.Size = new System.Drawing.Size(1032, 301);
             this.dgvResultados.TabIndex = 89;
             this.dgvResultados.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             this.dgvResultados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResultados_CellClick);
@@ -371,11 +370,11 @@ namespace ControlesPerzonalizados
             this.pnContenedorCuadro.BorderThickness = 1;
             this.pnContenedorCuadro.Controls.Add(this.gbxCuadroResumen);
             this.pnContenedorCuadro.Controls.Add(this.pnCuadroResumen);
-            this.pnContenedorCuadro.Location = new System.Drawing.Point(0, 317);
+            this.pnContenedorCuadro.Location = new System.Drawing.Point(0, 354);
             this.pnContenedorCuadro.Margin = new System.Windows.Forms.Padding(0);
             this.pnContenedorCuadro.Name = "pnContenedorCuadro";
             this.pnContenedorCuadro.ShowBorders = true;
-            this.pnContenedorCuadro.Size = new System.Drawing.Size(1062, 399);
+            this.pnContenedorCuadro.Size = new System.Drawing.Size(1062, 362);
             this.pnContenedorCuadro.TabIndex = 1;
             // 
             // gbxCuadroResumen
@@ -407,55 +406,13 @@ namespace ControlesPerzonalizados
             this.pnCuadroResumen.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pnCuadroResumen.BorderRadius = 20;
             this.pnCuadroResumen.BorderThickness = 1;
-            this.pnCuadroResumen.Controls.Add(this.sbResumen);
             this.pnCuadroResumen.Controls.Add(this.dgvResumen);
             this.pnCuadroResumen.Location = new System.Drawing.Point(3, 16);
             this.pnCuadroResumen.Margin = new System.Windows.Forms.Padding(0);
             this.pnCuadroResumen.Name = "pnCuadroResumen";
             this.pnCuadroResumen.ShowBorders = true;
-            this.pnCuadroResumen.Size = new System.Drawing.Size(1056, 380);
+            this.pnCuadroResumen.Size = new System.Drawing.Size(1056, 343);
             this.pnCuadroResumen.TabIndex = 95;
-            // 
-            // sbResumen
-            // 
-            this.sbResumen.AllowCursorChanges = true;
-            this.sbResumen.AllowHomeEndKeysDetection = false;
-            this.sbResumen.AllowIncrementalClickMoves = true;
-            this.sbResumen.AllowMouseDownEffects = true;
-            this.sbResumen.AllowMouseHoverEffects = true;
-            this.sbResumen.AllowScrollingAnimations = true;
-            this.sbResumen.AllowScrollKeysDetection = true;
-            this.sbResumen.AllowScrollOptionsMenu = true;
-            this.sbResumen.AllowShrinkingOnFocusLost = false;
-            this.sbResumen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sbResumen.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.sbResumen.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sbResumen.BackgroundImage")));
-            this.sbResumen.BindingContainer = null;
-            this.sbResumen.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.sbResumen.BorderRadius = 0;
-            this.sbResumen.BorderThickness = 1;
-            this.sbResumen.DurationBeforeShrink = 2000;
-            this.sbResumen.LargeChange = 10;
-            this.sbResumen.Location = new System.Drawing.Point(1035, 48);
-            this.sbResumen.Maximum = 100;
-            this.sbResumen.Minimum = 0;
-            this.sbResumen.MinimumThumbLength = 18;
-            this.sbResumen.Name = "sbResumen";
-            this.sbResumen.OnDisable.ScrollBarBorderColor = System.Drawing.Color.Silver;
-            this.sbResumen.OnDisable.ScrollBarColor = System.Drawing.Color.Transparent;
-            this.sbResumen.OnDisable.ThumbColor = System.Drawing.Color.Silver;
-            this.sbResumen.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.sbResumen.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.sbResumen.ShrinkSizeLimit = 3;
-            this.sbResumen.Size = new System.Drawing.Size(10, 320);
-            this.sbResumen.SmallChange = 1;
-            this.sbResumen.TabIndex = 90;
-            this.sbResumen.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.sbResumen.ThumbLength = 31;
-            this.sbResumen.ThumbMargin = 1;
-            this.sbResumen.ThumbStyle = Bunifu.UI.WinForms.BunifuVScrollBar.ThumbStyles.Inset;
-            this.sbResumen.Value = 0;
             // 
             // dgvResumen
             // 
@@ -464,10 +421,10 @@ namespace ControlesPerzonalizados
             this.dgvResumen.AllowUserToDeleteRows = false;
             this.dgvResumen.AllowUserToOrderColumns = true;
             this.dgvResumen.AllowUserToResizeRows = false;
-            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.dgvResumen.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.dgvResumen.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvResumen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -476,14 +433,14 @@ namespace ControlesPerzonalizados
             this.dgvResumen.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvResumen.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvResumen.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvResumen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvResumen.ColumnHeadersHeight = 28;
             this.dgvResumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvResumen.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
@@ -504,14 +461,14 @@ namespace ControlesPerzonalizados
             this.dgvResumen.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.dgvResumen.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.dgvResumen.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
-            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvResumen.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvResumen.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvResumen.EnableHeadersVisualStyles = false;
             this.dgvResumen.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.dgvResumen.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -521,14 +478,14 @@ namespace ControlesPerzonalizados
             this.dgvResumen.MultiSelect = false;
             this.dgvResumen.Name = "dgvResumen";
             this.dgvResumen.ReadOnly = true;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvResumen.RowHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvResumen.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvResumen.RowHeadersVisible = false;
             this.dgvResumen.RowHeadersWidth = 28;
             this.dgvResumen.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -536,7 +493,7 @@ namespace ControlesPerzonalizados
             this.dgvResumen.RowTemplate.Height = 26;
             this.dgvResumen.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvResumen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvResumen.Size = new System.Drawing.Size(1032, 346);
+            this.dgvResumen.Size = new System.Drawing.Size(1032, 309);
             this.dgvResumen.TabIndex = 89;
             this.dgvResumen.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             // 
@@ -700,7 +657,6 @@ namespace ControlesPerzonalizados
         private Bunifu.UI.WinForms.BunifuPanel pnContenedorCuadro;
         private Bunifu.UI.WinForms.BunifuLabel gbxCuadroResumen;
         private Bunifu.UI.WinForms.BunifuPanel pnCuadroResumen;
-        private Bunifu.UI.WinForms.BunifuVScrollBar sbResumen;
         private Bunifu.UI.WinForms.BunifuPanel pnContenedorGraficos;
         private Bunifu.UI.WinForms.BunifuLabel gbxGraficos;
         private Bunifu.UI.WinForms.BunifuPanel pnGraficos;

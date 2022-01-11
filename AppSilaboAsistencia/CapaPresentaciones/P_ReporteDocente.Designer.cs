@@ -534,10 +534,10 @@ namespace CapaPresentaciones
             this.pnPadre.BorderRadius = 3;
             this.pnPadre.BorderThickness = 1;
             this.pnPadre.Controls.Add(this.pnReporte);
-            this.pnPadre.Location = new System.Drawing.Point(22, 242);
+            this.pnPadre.Location = new System.Drawing.Point(22, 228);
             this.pnPadre.Name = "pnPadre";
             this.pnPadre.ShowBorders = true;
-            this.pnPadre.Size = new System.Drawing.Size(1057, 392);
+            this.pnPadre.Size = new System.Drawing.Size(1057, 406);
             this.pnPadre.TabIndex = 77;
             // 
             // pnReporte
@@ -555,7 +555,7 @@ namespace CapaPresentaciones
             this.pnReporte.Location = new System.Drawing.Point(3, 3);
             this.pnReporte.Name = "pnReporte";
             this.pnReporte.ShowBorders = true;
-            this.pnReporte.Size = new System.Drawing.Size(1051, 386);
+            this.pnReporte.Size = new System.Drawing.Size(1051, 400);
             this.pnReporte.TabIndex = 0;
             // 
             // pnCajas
