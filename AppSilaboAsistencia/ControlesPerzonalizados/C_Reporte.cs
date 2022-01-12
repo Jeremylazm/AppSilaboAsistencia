@@ -927,6 +927,7 @@ namespace ControlesPerzonalizados
                 dgvResultados.Columns[0].HeaderText = "Sesión";
                 dgvResultados.Columns[1].HeaderText = "Tema";
                 dgvResultados.Columns[2].HeaderText = "Fecha";
+                dgvResultados.Columns[3].HeaderText = "Estado";
 
                 if (dgvResultados.Rows.Count <= 10)
                 {

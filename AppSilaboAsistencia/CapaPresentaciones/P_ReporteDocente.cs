@@ -252,13 +252,31 @@ namespace CapaPresentaciones
                 File.WriteAllBytes(fullFilePath, archivo);
                 XLWorkbook wb = new XLWorkbook(fullFilePath);
 
+                DataTable ResultadosFinales = new DataTable();
+                ResultadosFinales.Columns.Add("Sesión", typeof(int));
+                ResultadosFinales.Columns.Add("NombreTema", typeof(string));
+                ResultadosFinales.Columns.Add("Fecha", typeof(string));
+                ResultadosFinales.Columns.Add("Estado", typeof(string));
+
+                int[] TemasAvanzados = new int[resultados.Rows.Count];
+
+                for (int i = 0; i <= resultados.Rows.Count - 1; i++)
+                {
+                    TemasAvanzados[i] = Convert.ToInt32(resultados.Rows[i]["Sesión"].ToString());
+                    ResultadosFinales.Rows.Add(Convert.ToInt32(resultados.Rows[i]["Sesión"].ToString()), resultados.Rows[i]["NombreTema"].ToString(), resultados.Rows[i]["Fecha"].ToString(), "HECHO");
+                }
+
                 int Contador = 9;
                 for (int i = 9; i <= 61; i++)
                 {
                     if (wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString() != "")
                     {
-                        if (wb.Worksheet(1).Cell("H" + Convert.ToString(i)).Value.ToString().ToLower() != "hecho")
-                            resultados.Rows.Add(Contador-8,"Tema"+Convert.ToString(Contador - 8), wb.Worksheet(1).Cell("H" + Convert.ToString(i)).Value.ToString());
+                        if (Array.Exists(TemasAvanzados, x => x == Convert.ToInt32(wb.Worksheet(1).Cell("B" + Convert.ToString(i)).Value.ToString())))
+                        {
+
+                        }
+                        else
+                            ResultadosFinales.Rows.Add(Contador-8,"Tema"+Convert.ToString(Contador - 8), "", "FALTA");
                         Total = Total + 1;
                         Contador = Contador + 1;
                     }
@@ -266,7 +284,7 @@ namespace CapaPresentaciones
 
                 int Hechos = resultados.Rows.Count;
                 int Faltan = Total - Hechos;
-                Reportes.fnReporte5(Titulo, Titulos, Valores, resultados, txtCodigo.Text, Hechos, Faltan);
+                Reportes.fnReporte5(Titulo, Titulos, Valores, ResultadosFinales, txtCodigo.Text, Hechos, Faltan);
             }
             else
                 MessageBox.Show("No hay Plan de Sesiones");
