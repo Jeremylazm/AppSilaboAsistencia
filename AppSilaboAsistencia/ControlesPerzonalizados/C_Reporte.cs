@@ -213,7 +213,7 @@ namespace ControlesPerzonalizados
 
                 // Gráficos
                 // Gráfico 1
-                tcGraficos.TabPages.Clear();
+                //tcGraficos.TabPages.Clear();
 
                 Chart Grafico1 = new Chart
                 {
@@ -295,7 +295,7 @@ namespace ControlesPerzonalizados
 
                 Grafico1.DataSource = dtEstadisticos;
 
-                tcGraficos.TabPages.Add(tpGrafico1);
+                //tcGraficos.TabPages.Add(tpGrafico1);
 
                 // Gráfico 2
                 Chart Grafico2 = new Chart
@@ -353,7 +353,7 @@ namespace ControlesPerzonalizados
 
                 Grafico2.DataSource = dtGrafico2;
 
-                tcGraficos.TabPages.Add(tpGrafico2);
+                //tcGraficos.TabPages.Add(tpGrafico2);
             }
         }
 
@@ -417,7 +417,7 @@ namespace ControlesPerzonalizados
                 dgvResultados.Columns.Clear();
                 dgvResultados.Refresh();
 
-                tcGraficos.Controls.Clear();
+                //tcGraficos.Controls.Clear();
             }
             else
             {
@@ -556,7 +556,7 @@ namespace ControlesPerzonalizados
 
                 // Gráficos
                 // Gráfico 1
-                tcGraficos.TabPages.Clear();
+                //tcGraficos.TabPages.Clear();
 
                 Chart Grafico1 = new Chart
                 {
@@ -638,7 +638,7 @@ namespace ControlesPerzonalizados
 
                 Grafico1.DataSource = dtEstadisticos;
 
-                tcGraficos.TabPages.Add(tpGrafico1);
+                //tcGraficos.TabPages.Add(tpGrafico1);
 
                 // Gráfico 2
                 Chart Grafico2 = new Chart
@@ -696,7 +696,7 @@ namespace ControlesPerzonalizados
 
                 Grafico2.DataSource = dtGrafico2;
 
-                tcGraficos.TabPages.Add(tpGrafico2);
+                //tcGraficos.TabPages.Add(tpGrafico2);
             }
         }
 
@@ -738,7 +738,7 @@ namespace ControlesPerzonalizados
                 dgvResultados.Columns.Clear();
                 dgvResultados.Refresh();
 
-                tcGraficos.Controls.Clear();
+                //tcGraficos.Controls.Clear();
             }
             else
             {
@@ -812,7 +812,7 @@ namespace ControlesPerzonalizados
 
                 // Gráficos
                 // Gráfico 1
-                tcGraficos.TabPages.Clear();
+                //tcGraficos.TabPages.Clear();
 
                 Chart Grafico1 = new Chart
                 {
@@ -869,7 +869,7 @@ namespace ControlesPerzonalizados
 
                 Grafico1.DataSource = dgvResultados.DataSource;
 
-                tcGraficos.TabPages.Add(tpGrafico1);
+                //tcGraficos.TabPages.Add(tpGrafico1);
             }
         }
 
@@ -917,7 +917,7 @@ namespace ControlesPerzonalizados
                 dgvResultados.Columns.Clear();
                 dgvResultados.Refresh();
 
-                tcGraficos.Controls.Clear();
+                //tcGraficos.Controls.Clear();
             }
             else
             {
@@ -1004,7 +1004,7 @@ namespace ControlesPerzonalizados
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICO =====================
-                tcGraficos.TabPages.Clear();
+                //tcGraficos.TabPages.Clear();
                 /*
                 Chart Grafico1 = new Chart
                 {
@@ -1087,7 +1087,7 @@ namespace ControlesPerzonalizados
                 dgvResultados.Columns.Clear();
                 dgvResultados.Refresh();
 
-                tcGraficos.Controls.Clear();
+                //tcGraficos.Controls.Clear();
             }
             else
             {
@@ -1147,7 +1147,7 @@ namespace ControlesPerzonalizados
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICO =====================
-                tcGraficos.TabPages.Clear();
+                //tcGraficos.TabPages.Clear();
                 /*
                 Chart Grafico1 = new Chart
                 {
