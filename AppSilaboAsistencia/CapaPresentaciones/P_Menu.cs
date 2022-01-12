@@ -6,6 +6,7 @@ using CapaEntidades;
 using System.IO;
 using System.Drawing.Drawing2D;
 using Ayudas;
+using System.Collections.Generic;
 
 namespace CapaPresentaciones
 {
