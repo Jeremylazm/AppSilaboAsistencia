@@ -1860,6 +1860,7 @@ namespace CapaPresentaciones
             this.btnReportesDirector.TextMarginLeft = 0;
             this.btnReportesDirector.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnReportesDirector.UseDefaultRadiusAndThickness = true;
+            this.btnReportesDirector.Click += new System.EventHandler(this.btnReportesDirector_Click);
             // 
             // btnMarcarAsistencia
             // 
