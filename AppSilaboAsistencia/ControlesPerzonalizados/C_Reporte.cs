@@ -159,7 +159,7 @@ namespace ControlesPerzonalizados
                 List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TotalAsistieron"))).ToList();
                 List<double> Faltaron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TotalFaltaron"))).ToList();
 
-                foreach (int i in Asistieron)
+                /*foreach (int i in Asistieron)
                 {
                     Console.WriteLine(i);
                 }
@@ -168,7 +168,7 @@ namespace ControlesPerzonalizados
                 foreach (int i in Faltaron)
                 {
                     Console.WriteLine(i);
-                }
+                }*/
 
                 // Cuadro de resumen
                 DataTable cuadroResumen = new DataTable();

@@ -435,6 +435,12 @@ namespace CapaPresentaciones
             AbrirFormularios<P_HistorialAsistenciasDocentes>();
         }
 
+        private void btnReportesDirector_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_ReporteDirector>();
+        }
+
         // Abrir Formularios
         public void AbrirFormularios<FormularioAbrir>() where FormularioAbrir : Form, new()
         {
