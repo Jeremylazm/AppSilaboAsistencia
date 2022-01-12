@@ -115,7 +115,20 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-
+            P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Director de Escuela");
+            AddOwnedForm(Asignaturas);
+            Asignaturas.ShowDialog();
+            if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+            {   
+                //if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
+                    //fnReporte3(); // es fnReporte(8)
+                //else
+                    //fnReporte1();
+            }
+            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
+            {
+                //fnReporte5();
+            }
         }
 
         private void btnGeneral_Click(object sender, EventArgs e)
@@ -223,6 +236,11 @@ namespace CapaPresentaciones
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
             }
+        }
+
+        public void CriterioSeleccionAsistenciaEstudiantes()
+        {
+
         }
     }
 }

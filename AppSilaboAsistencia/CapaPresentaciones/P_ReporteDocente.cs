@@ -114,7 +114,7 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text);
+            P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Docente");
             AddOwnedForm(Asignaturas);
             Asignaturas.ShowDialog();
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
