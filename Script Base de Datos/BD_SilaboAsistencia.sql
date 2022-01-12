@@ -1407,10 +1407,10 @@ CREATE PROCEDURE spuMostrarEstudiantesMatriculados @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar la tabla de TMatricula
-	SELECT M.IdMatricula, M.CodAsignatura, A.NombreAsignatura, M.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
-		FROM TMatricula M INNER JOIN TAsignatura A ON
-			 M.CodAsignatura = A.CodAsignatura
-	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP
+	SELECT DISTINCT CodEstudiante, APaterno, AMaterno, Nombre
+		FROM TMatricula
+	    WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP
+		ORDER BY APaterno ASC
 END;
 GO
 
