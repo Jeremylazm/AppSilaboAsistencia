@@ -1407,12 +1407,14 @@ CREATE PROCEDURE spuMostrarEstudiantesMatriculados @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar la tabla de TMatricula
-	SELECT M.IdMatricula, M.CodAsignatura, A.NombreAsignatura, M.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
-		FROM TMatricula M INNER JOIN TAsignatura A ON
-			 M.CodAsignatura = A.CodAsignatura
-	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP
+	SELECT CodEstudiante, APaterno, AMaterno, Nombre
+		FROM TMatricula
+	    WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP
+		ORDER BY APaterno ASC
 END;
 GO
+
+exec spuMostrarEstudiantesMatriculados '2021-II','IN'
 
 -- Procedimiento para buscar las asignaturas a los que esta matriculado un estudiante de una escuela profesional.
 CREATE PROCEDURE spuBuscarAsignaturasEstudiante @CodSemestre VARCHAR(7),
@@ -1478,6 +1480,10 @@ BEGIN
 		VALUES (@CodSemestre, @CodEscuelaP, @CodAsignatura, @CodEstudiante, @APaterno, @AMaterno, @Nombre)
 END;
 GO
+
+EXEC spuInsertarMatricula '2021-II','IN','IF650AIN','204797','HANCCO','CHAMPI','FRAN ANTHONY'
+EXEC spuInsertarMatricula '2021-II','IN','IF467AIN','204797','HANCCO','CHAMPI','FRAN ANTHONY'
+
 
 -- Procedimiento para actualizar la matricula de un estudiante.
 CREATE PROCEDURE spuActualizarMatricula @CodSemestre VARCHAR(7),
