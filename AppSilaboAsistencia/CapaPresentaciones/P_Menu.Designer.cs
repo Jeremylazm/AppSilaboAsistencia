@@ -1479,6 +1479,7 @@ namespace CapaPresentaciones
             this.btnReportesJefe.TextMarginLeft = 0;
             this.btnReportesJefe.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnReportesJefe.UseDefaultRadiusAndThickness = true;
+            this.btnReportesJefe.Click += new System.EventHandler(this.btnReportesJefe_Click);
             // 
             // btnAsistenciasDocentes
             // 

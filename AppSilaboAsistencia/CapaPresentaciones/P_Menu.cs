@@ -435,7 +435,11 @@ namespace CapaPresentaciones
             ActualizarColor();
             AbrirFormularios<P_HistorialAsistenciasDocentes>();
         }
-
+        private void btnReportesJefe_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_ReporteJefe>();
+        }
         private void btnReportesDirector_Click(object sender, EventArgs e)
         {
             ActualizarColor();
