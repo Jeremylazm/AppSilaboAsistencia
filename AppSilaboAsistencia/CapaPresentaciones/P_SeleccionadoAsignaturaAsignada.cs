@@ -21,9 +21,11 @@ namespace CapaPresentaciones
         private readonly string CodAsignatura;
 
         private readonly string AccesoReporte = "";
+        private readonly string CriterioSeleccion = "";
 
-        public P_SeleccionadoAsignaturaAsignada(string pCodAsignatura, string AccesoReporte)
+        public P_SeleccionadoAsignaturaAsignada(string pCodAsignatura, string AccesoReporte, string CriterioSeleccion)
         {
+            this.CriterioSeleccion = CriterioSeleccion;
             this.AccesoReporte = AccesoReporte;
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
@@ -33,7 +35,11 @@ namespace CapaPresentaciones
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
 
             if (AccesoReporte == "Docente") MostrarAsignaturas();
-            else if (AccesoReporte == "Director de Escuela") MostrarEstudiantes();
+            else if (AccesoReporte == "Director de Escuela")
+            {
+                if (CriterioSeleccion == "Por Estudiantes") MostrarEstudiantes();
+                if (CriterioSeleccion == "Por Asignaturas") MostrarTodasAsignaturas();
+            }
         }
 
         private void AccionesTabla()
@@ -51,6 +57,11 @@ namespace CapaPresentaciones
         {
             dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodEscuelaP, CodDocente);
             AccionesTabla();
+        }
+
+        private void MostrarTodasAsignaturas()
+        {
+
         }
 
         private void MostrarEstudiantes()
@@ -76,7 +87,6 @@ namespace CapaPresentaciones
 
         private void dgvDatos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
 
             if (AccesoReporte == "Docente")
             {
@@ -95,15 +105,23 @@ namespace CapaPresentaciones
             else if (AccesoReporte == "Director de Escuela")
             {
                 P_ReporteDirector DatosEstudiante = Owner as P_ReporteDirector;
-                string codTemp = DatosEstudiante.txtCodEstudiante.Text;
 
-                DatosEstudiante.txtCodEstudiante.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
-                DatosEstudiante.txtEstudiante.Text = dgvDatos.CurrentRow.Cells[3].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[2].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[1].Value.ToString();
-
-                if (codTemp != DatosEstudiante.txtCodEstudiante.Text && DatosEstudiante.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+                if (CriterioSeleccion == "Por Estudiantes")
                 {
-                    DatosEstudiante.CriterioSeleccionAsistenciaEstudiantes();
+                    string codTemp = DatosEstudiante.txtCodEstudiante.Text;
+
+                    DatosEstudiante.txtCodEstudiante.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
+                    DatosEstudiante.txtEstudiante.Text = dgvDatos.CurrentRow.Cells[3].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[2].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[1].Value.ToString();
+
+                    if (codTemp != DatosEstudiante.txtCodEstudiante.Text && DatosEstudiante.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+                    {
+                        DatosEstudiante.CriterioSeleccionAsistenciaEstudiantes();
+                    }
                 }
+                else if (CriterioSeleccion == "Por Asignaturas")
+                {
+                    // Criterio de selección por asignaturas
+                }    
             }
 
             Close();
