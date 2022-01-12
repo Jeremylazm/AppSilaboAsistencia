@@ -1096,7 +1096,8 @@ namespace ControlesPerzonalizados
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[0].HeaderText = "Código Asignatura";
                 dgvResultados.Columns[1].HeaderText = "Nombre Asignatura";
-                dgvResultados.Columns[2].HeaderText = "Temas Avanzados";
+                dgvResultados.Columns[2].HeaderText = "Porcentaje Temas Avanzados";
+                dgvResultados.Columns[3].HeaderText = "Porcentaje Temas Faltantes";
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
