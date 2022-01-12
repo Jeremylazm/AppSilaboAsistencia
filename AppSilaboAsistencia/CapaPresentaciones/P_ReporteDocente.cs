@@ -252,16 +252,15 @@ namespace CapaPresentaciones
                 File.WriteAllBytes(fullFilePath, archivo);
                 XLWorkbook wb = new XLWorkbook(fullFilePath);
 
+                int Contador = 9;
                 for (int i = 9; i <= 61; i++)
                 {
                     if (wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString() != "")
                     {
-                        DateTime FechaActual = DateTime.Parse(wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString());
+                        if (wb.Worksheet(1).Cell("H" + Convert.ToString(i)).Value.ToString().ToLower() != "hecho")
+                            resultados.Rows.Add(Contador-8,"Tema"+Convert.ToString(Contador - 8), wb.Worksheet(1).Cell("H" + Convert.ToString(i)).Value.ToString());
                         Total = Total + 1;
-                        /*if (FechaActual >= dpFechaInicial.Value && FechaActual <= dpFechaFinal.Value)
-                        {
-                            
-                        }*/
+                        Contador = Contador + 1;
                     }
                 }
 
@@ -284,34 +283,7 @@ namespace CapaPresentaciones
             DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignaturasDocente(CodSemestre, CodDocente);
             DataTable plansesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, txtCodigo.Text, CodDocente);
 
-            int Total = 0;
-
-            if (plansesion.Rows.Count >= 1)
-            {
-                DataRow Fila = plansesion.Rows[0];
-
-                byte[] archivo = Fila["PlanSesiones"] as byte[];
-
-                string path = AppDomain.CurrentDomain.BaseDirectory;
-                string folder = path + "/temp/";
-                string fullFilePath = folder + "temp.xlsx";
-                if (!Directory.Exists(folder))
-                {
-                    Directory.CreateDirectory(folder);
-                }
-
-                if (File.Exists(fullFilePath))
-                {
-                    File.Delete(fullFilePath);
-                }
-
-                File.WriteAllBytes(fullFilePath, archivo);
-                XLWorkbook wb = new XLWorkbook(fullFilePath);
-
-                Reportes.fnReporte6(Titulo, Titulos, Valores, resultados, txtCodigo.Text, Total);
-            }
-            else
-                MessageBox.Show("No hay Plan de Sesiones");
+            Reportes.fnReporte6(Titulo, Titulos, Valores, resultados, txtCodigo.Text);
         }
 
         private void dpFechaInicial_CloseUp(object sender, EventArgs e)
