@@ -56,7 +56,7 @@ namespace ControlesPerzonalizados
             pnSubcampos.Controls.Clear();
         }
 
-        public C_Reporte(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura, string Acceso)
+        public C_Reporte(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura, string AccesoReporte)
         {
             InitializeComponent();
 
@@ -88,7 +88,7 @@ namespace ControlesPerzonalizados
                 MessageBox.Show("Error de parametros");
             }
 
-            if (Acceso == "Docente")
+            if (AccesoReporte == "Docente")
             {
                 if (Datos.Rows.Count == 0)
                 {
@@ -358,7 +358,7 @@ namespace ControlesPerzonalizados
                     //tcGraficos.TabPages.Add(tpGrafico2);
                 }
             }
-            else if (Acceso == "Director de Escuela")
+            else if (AccesoReporte == "Director de Escuela")
             {
                 if (Datos.Rows.Count == 0)
                 {

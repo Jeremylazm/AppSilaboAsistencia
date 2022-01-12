@@ -20,15 +20,20 @@ namespace CapaPresentaciones
         private readonly string CodEscuelaP = "IF";
         private readonly string CodAsignatura;
 
-        public P_SeleccionadoAsignaturaAsignada(string pCodAsignatura)
+        private readonly string AccesoReporte = "";
+
+        public P_SeleccionadoAsignaturaAsignada(string pCodAsignatura, string AccesoReporte)
         {
+            this.AccesoReporte = AccesoReporte;
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
             ObjCatalogo = new N_Catalogo();
             CodAsignatura = pCodAsignatura;
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
-            MostrarAsignaturas();
+
+            if (AccesoReporte == "Docente") MostrarAsignaturas();
+            else if (AccesoReporte == "Director de Escuela") MostrarEstudiantes();
         }
 
         private void AccionesTabla()
@@ -46,6 +51,11 @@ namespace CapaPresentaciones
         {
             dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodEscuelaP, CodDocente);
             AccionesTabla();
+        }
+
+        private void MostrarEstudiantes()
+        {
+            dgvDatos.DataSource = N_Matricula.MostrarEstudiantesMatriculados(CodSemestre, "IN");
         }
 
         public void BuscarAsignaturas()
@@ -66,17 +76,34 @@ namespace CapaPresentaciones
 
         private void dgvDatos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            P_ReporteDocente DatosAsingatura = Owner as P_ReporteDocente;
+            
 
-            string codTemp = DatosAsingatura.txtCodigo.Text;
-
-            DatosAsingatura.txtCodigo.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
-            DatosAsingatura.txtNombre.Text = dgvDatos.CurrentRow.Cells[1].Value.ToString();
-            DatosAsingatura.txtEscuelaP.Text = dgvDatos.CurrentRow.Cells[2].Value.ToString();
-
-            if (codTemp != DatosAsingatura.txtCodigo.Text && DatosAsingatura.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+            if (AccesoReporte == "Docente")
             {
-                DatosAsingatura.CriterioSeleccionAsistenciaEstudiantes();
+                P_ReporteDocente DatosAsingatura = Owner as P_ReporteDocente;
+                string codTemp = DatosAsingatura.txtCodigo.Text;
+
+                DatosAsingatura.txtCodigo.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
+                DatosAsingatura.txtNombre.Text = dgvDatos.CurrentRow.Cells[1].Value.ToString();
+                DatosAsingatura.txtEscuelaP.Text = dgvDatos.CurrentRow.Cells[2].Value.ToString();
+
+                if (codTemp != DatosAsingatura.txtCodigo.Text && DatosAsingatura.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+                {
+                    DatosAsingatura.CriterioSeleccionAsistenciaEstudiantes();
+                }
+            }
+            else if (AccesoReporte == "Director de Escuela")
+            {
+                P_ReporteDirector DatosEstudiante = Owner as P_ReporteDirector;
+                string codTemp = DatosEstudiante.txtCodEstudiante.Text;
+
+                DatosEstudiante.txtCodEstudiante.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
+                DatosEstudiante.txtEstudiante.Text = dgvDatos.CurrentRow.Cells[3].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[2].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[1].Value.ToString();
+
+                if (codTemp != DatosEstudiante.txtCodEstudiante.Text && DatosEstudiante.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+                {
+                    DatosEstudiante.CriterioSeleccionAsistenciaEstudiantes();
+                }
             }
 
             Close();
