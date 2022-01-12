@@ -44,26 +44,99 @@ namespace CapaPresentaciones
                 lblCriterioSeleccion.Visible = true;
                 cxtCriterioSeleccion.Visible = true;
 
-                btnGeneral.Visible = false;
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
+                lblFechaInicial.Visible = true;
+                dpFechaInicial.Visible = true;
 
-                //CriterioSeleccionAsistenciaEstudiantes();
+                lblFechaFinal.Visible = true;
+                dpFechaFinal.Visible = true;
+
+                if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
+                {
+                    lblCodEstudiante.Visible = true;
+                    txtCodEstudiante.Visible = true;
+                    lnCodEstudiante.Visible = true;
+                    lblEstudiante.Visible = true;
+                    txtEstudiante.Visible = true;
+                    lnEstudiante.Visible = true;
+
+                    lblCodigo.Visible = false;
+                    txtCodigo.Visible = false;
+                    lnCodigo.Visible = false;
+                    pnCajas.Visible = false;
+
+                    btnGeneral.Visible = false;
+                    btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
+                }
+                else if (cxtCriterioSeleccion.SelectedItem.Equals("Por Asignaturas"))
+                {
+                    lblCodEstudiante.Visible = false;
+                    txtCodEstudiante.Visible = false;
+                    lnCodEstudiante.Visible = false;
+                    lblEstudiante.Visible = false;
+                    txtEstudiante.Visible = false;
+                    lnEstudiante.Visible = false;
+
+                    lblCodigo.Visible = true;
+                    txtCodigo.Visible = true;
+                    lnCodigo.Visible = true;
+                    pnCajas.Visible = true;
+
+                    btnGeneral.Visible = true;
+                    btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+                }
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
                 lblCriterioSeleccion.Visible = false;
                 cxtCriterioSeleccion.Visible = false;
 
+                lblFechaInicial.Visible = false;
+                dpFechaInicial.Visible = false;
+
+                lblFechaFinal.Visible = false;
+                dpFechaFinal.Visible = false;
+
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
-
-                //fnReporte5();
             }
         }
 
         private void cxtCriterioSeleccion_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
+            {
+                lblCodEstudiante.Visible = true;
+                txtCodEstudiante.Visible = true;
+                lnCodEstudiante.Visible = true;
+                lblEstudiante.Visible = true;
+                txtEstudiante.Visible = true;
+                lnEstudiante.Visible = true;
 
+                lblCodigo.Visible = false;
+                txtCodigo.Visible = false;
+                lnCodigo.Visible = false;
+                pnCajas.Visible = false;
+
+                btnGeneral.Visible = false;
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
+            }
+            else if (cxtCriterioSeleccion.SelectedItem.Equals("Por Asignaturas"))
+            {
+                lblCodEstudiante.Visible = false;
+                txtCodEstudiante.Visible = false;
+                lnCodEstudiante.Visible = false;
+                lblEstudiante.Visible = false;
+                txtEstudiante.Visible = false;
+                lnEstudiante.Visible = false;
+
+                lblCodigo.Visible = true;
+                txtCodigo.Visible = true;
+                lnCodigo.Visible = true;
+                pnCajas.Visible = true;
+
+                btnGeneral.Visible = true;
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+            }
         }
     }
 }
