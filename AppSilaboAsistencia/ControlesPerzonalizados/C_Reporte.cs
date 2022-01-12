@@ -1003,8 +1003,8 @@ namespace ControlesPerzonalizados
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICO =====================
-                /*tcGraficos.TabPages.Clear();
-                
+                tcGraficos.TabPages.Clear();
+                /*
                 Chart Grafico1 = new Chart
                 {
                     Dock = DockStyle.Fill,
@@ -1036,13 +1036,13 @@ namespace ControlesPerzonalizados
 
                 Grafico1.DataSource = cuadroResumen;
 
-                tcGraficos.TabPages.Add(tpGrafico1);*/
-
+                tcGraficos.TabPages.Add(tpGrafico1);
+                */
                 #endregion ===================== GRÁFICO =====================
             }
         }
 
-        public void fnReporte6(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CodAsignatura, int Total)
+        public void fnReporte6(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CodAsignatura)
         {
             // Limpiar los Antiguos Reportes
             LimpiarCampos();
