@@ -1821,15 +1821,24 @@ CREATE PROCEDURE spuAsistenciaDocentesPorFechas @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar el registro de asistencia en el rango de fechas
-	SELECT Fecha = AD.Fecha_Formatted,
-	       TotalAsistieron = SUM(CASE WHEN AD.Asistió = 'SI' THEN 1 ELSE 0 END),
-		   TotalFaltaron = SUM(CASE WHEN AD.Asistió = 'NO' AND AD.Observación NOT IN ('FERIADO','SUSPENSION') THEN 1 ELSE 0 END),
-		   Observación = CASE WHEN AD.Observación IN ('FERIADO','SUSPENSION') THEN AD.Observación ELSE '' END
-		FROM TAsistenciaDiariaDocente AD
-	    WHERE AD.CodSemestre = @CodSemestre AND
-			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
-	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Asistió, AD.Observación
-	   ORDER BY AD.Fecha DESC
+	WITH Resumen  AS (
+		SELECT Fecha, AD.Fecha_Formatted,
+	        TotalAsistieron = SUM(CASE WHEN AD.Asistió = 'SI' THEN 1 ELSE 0 END),
+		    TotalFaltaron = SUM(CASE WHEN AD.Asistió = 'NO' THEN 1 ELSE 0 END)
+			FROM TAsistenciaDiariaDocente AD
+			WHERE AD.CodSemestre = @CodSemestre AND
+				(AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
+			GROUP BY AD.Fecha, AD.Fecha_Formatted),
+	Aux AS (
+		SELECT DISTINCT R.Fecha, R.Fecha_Formatted, TotalAsistieron, 
+			TotalFaltaron = CASE WHEN AD.Observación IN ('FERIADO','SUSPENSION') THEN 0 ELSE TotalFaltaron END, 
+			Observación = CASE WHEN AD.Observación IN ('FERIADO','SUSPENSION') THEN AD.Observación ELSE '' END
+		FROM Resumen R INNER JOIN TAsistenciaDiariaDocente AD ON
+			R.Fecha = AD.Fecha)
+	
+	SELECT Fecha = A.Fecha_Formatted, TotalAsistieron, TotalFaltaron, Observación
+	FROM Aux A
+	ORDER BY A.Fecha DESC
 END;
 GO
 
