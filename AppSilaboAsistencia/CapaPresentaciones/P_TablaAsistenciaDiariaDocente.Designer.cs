@@ -58,8 +58,6 @@ namespace CapaPresentaciones
 			this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
 			this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
 			this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
-			this.ckbAsistencia = new System.Windows.Forms.DataGridViewImageColumn();
-			this.cbxObservaciones = new System.Windows.Forms.DataGridViewComboBoxColumn();
 			this.btnGuardar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
 			this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
 			this.txtFecha = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -72,6 +70,8 @@ namespace CapaPresentaciones
 			this.pbLogo = new Bunifu.UI.WinForms.BunifuImageButton();
 			this.txtSemestreA = new Bunifu.UI.WinForms.BunifuTextBox();
 			this.txtJD = new Bunifu.UI.WinForms.BunifuTextBox();
+			this.ckbAsistencia = new System.Windows.Forms.DataGridViewImageColumn();
+			this.cbxObservaciones = new System.Windows.Forms.DataGridViewComboBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -269,25 +269,6 @@ namespace CapaPresentaciones
 			this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
 			this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
 			this.dgvDatos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellEnter);
-			// 
-			// ckbAsistencia
-			// 
-			this.ckbAsistencia.HeaderText = "Asistencia";
-			this.ckbAsistencia.Image = global::CapaPresentaciones.Properties.Resources.Unchecked_18x18;
-			this.ckbAsistencia.MinimumWidth = 6;
-			this.ckbAsistencia.Name = "ckbAsistencia";
-			this.ckbAsistencia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-			// 
-			// cbxObservaciones
-			// 
-			this.cbxObservaciones.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.cbxObservaciones.HeaderText = "Observaciones";
-			this.cbxObservaciones.Items.AddRange(new object[] {
-            "PERMISO",
-            "FALTO SIN JUSTIFICAR",
-            "SUSPENSIÓN",
-            "FERIADO"});
-			this.cbxObservaciones.Name = "cbxObservaciones";
 			// 
 			// btnGuardar
 			// 
@@ -893,6 +874,26 @@ namespace CapaPresentaciones
 			this.txtJD.UseSystemPasswordChar = false;
 			this.txtJD.WordWrap = true;
 			// 
+			// ckbAsistencia
+			// 
+			this.ckbAsistencia.HeaderText = "Asistencia";
+			this.ckbAsistencia.Image = global::CapaPresentaciones.Properties.Resources.Unchecked_18x18;
+			this.ckbAsistencia.MinimumWidth = 6;
+			this.ckbAsistencia.Name = "ckbAsistencia";
+			this.ckbAsistencia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			// 
+			// cbxObservaciones
+			// 
+			this.cbxObservaciones.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+			this.cbxObservaciones.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.cbxObservaciones.HeaderText = "Observaciones";
+			this.cbxObservaciones.Items.AddRange(new object[] {
+            "PERMISO",
+            "FALTO SIN JUSTIFICAR",
+            "SUSPENSIÓN",
+            "FERIADO"});
+			this.cbxObservaciones.Name = "cbxObservaciones";
+			// 
 			// P_TablaAsistenciaDiariaDocente
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -944,9 +945,9 @@ namespace CapaPresentaciones
 		private Bunifu.UI.WinForms.BunifuLabel lblMarcarTodos;
 		private Bunifu.UI.WinForms.BunifuCheckBox ckbMarcarTodos;
 		private Bunifu.UI.WinForms.BunifuImageButton pbLogo;
-		private System.Windows.Forms.DataGridViewImageColumn ckbAsistencia;
-		private System.Windows.Forms.DataGridViewComboBoxColumn cbxObservaciones;
 		public Bunifu.UI.WinForms.BunifuTextBox txtJD;
 		public Bunifu.UI.WinForms.BunifuTextBox txtSemestreA;
+		private System.Windows.Forms.DataGridViewImageColumn ckbAsistencia;
+		private System.Windows.Forms.DataGridViewComboBoxColumn cbxObservaciones;
 	}
 }
