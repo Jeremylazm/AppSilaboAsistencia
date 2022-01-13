@@ -11,7 +11,7 @@ namespace CapaDatos
         //readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
 
         // Método buscar el horario de registro de asistencia diaria de los docentes.
-        public DataTable BuscarHorarioRegistroAsistencia(string CodSemestre, string CodDepartamentoA, string CodJefeDepartamentoA)
+        public DataTable BuscarHorarioRegistroAsistencia(string CodSemestre, string CodDepartamentoA)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarHorarioRegistroAsistencia", Conectar)
@@ -21,7 +21,6 @@ namespace CapaDatos
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA); 
-            Comando.Parameters.AddWithValue("@CodJefeDepartamentoA", CodJefeDepartamentoA);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
@@ -38,7 +37,6 @@ namespace CapaDatos
             Conectar.Open();
             Comando.Parameters.AddWithValue("@CodSemestre", HorarioRegistroAsistencia.CodSemestre);
             Comando.Parameters.AddWithValue("@CodDepartamentoA", HorarioRegistroAsistencia.CodDepartamentoA);
-            Comando.Parameters.AddWithValue("@CodJefeDepartamentoA", HorarioRegistroAsistencia.CodJefeDepartamentoA);
             Comando.Parameters.AddWithValue("@HoraInicio", HorarioRegistroAsistencia.HoraInicio); // Formato: dd/mm/yyyy o dd-mm-yyyy
             Comando.Parameters.AddWithValue("@HoraFin", HorarioRegistroAsistencia.HoraFin); // Formato: hh: mm: ss (Hora del control de asistencia)
             Comando.ExecuteNonQuery();
@@ -56,7 +54,6 @@ namespace CapaDatos
             Conectar.Open();
             Comando.Parameters.AddWithValue("@CodSemestre", HorarioRegistroAsistencia.CodSemestre);
             Comando.Parameters.AddWithValue("@CodDepartamentoA", HorarioRegistroAsistencia.CodDepartamentoA);
-            Comando.Parameters.AddWithValue("@CodJefeDepartamentoA", HorarioRegistroAsistencia.CodJefeDepartamentoA);
             Comando.Parameters.AddWithValue("@NHoraInicio", NHoraInicio); // Formato: dd/mm/yyyy o dd-mm-yyyy
             Comando.Parameters.AddWithValue("@NHoraFin", NHoraFin); // Formato: hh: mm: ss (Hora del control de asistencia)
             Comando.ExecuteNonQuery();
@@ -74,7 +71,6 @@ namespace CapaDatos
             Conectar.Open();
             Comando.Parameters.AddWithValue("@CodSemestre", HorarioRegistroAsistencia.CodSemestre);
             Comando.Parameters.AddWithValue("@CodDepartamentoA", HorarioRegistroAsistencia.CodDepartamentoA);
-            Comando.Parameters.AddWithValue("@CodJefeDepartamentoA", HorarioRegistroAsistencia.CodJefeDepartamentoA);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }

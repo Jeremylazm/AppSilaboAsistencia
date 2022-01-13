@@ -254,6 +254,12 @@
     <Compile Include="P_DatosDocente.Designer.cs">
       <DependentUpon>P_DatosDocente.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_DialogoAgregarAsistenciaDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_DialogoAgregarAsistenciaDocente.Designer.cs">
+      <DependentUpon>P_DialogoAgregarAsistenciaDocente.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_DialogoAsistenciaDocenteAsignatura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -448,6 +454,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_DatosDocente.resx">
       <DependentUpon>P_DatosDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_DialogoAgregarAsistenciaDocente.resx">
+      <DependentUpon>P_DialogoAgregarAsistenciaDocente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_DialogoAsistenciaDocenteAsignatura.resx">
       <DependentUpon>P_DialogoAsistenciaDocenteAsignatura.cs</DependentUpon>

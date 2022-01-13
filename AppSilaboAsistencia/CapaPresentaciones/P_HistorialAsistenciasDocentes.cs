@@ -102,5 +102,10 @@ namespace CapaPresentaciones
                 A_Dialogo.DialogoInformacion("El registro de Hoy, ¡Ya existe!");
             }
         }
-	}
+
+        private void btnCambiar_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

@@ -108,23 +108,42 @@ namespace CapaPresentaciones
             }
             else if (AccesoReporte == "Director de Escuela")
             {
-                P_ReporteDirector DatosEstudiante = Owner as P_ReporteDirector;
+                P_ReporteDirector Datos = Owner as P_ReporteDirector;
 
                 if (CriterioSeleccion == "Por Estudiantes")
                 {
-                    string codTemp = DatosEstudiante.txtCodEstudiante.Text;
+                    string codTemp = Datos.txtCodEstudiante.Text;
 
-                    DatosEstudiante.txtCodEstudiante.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
-                    DatosEstudiante.txtEstudiante.Text = dgvDatos.CurrentRow.Cells[3].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[1].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[2].Value.ToString();
+                    Datos.txtCodEstudiante.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
+                    Datos.txtEstudiante.Text = dgvDatos.CurrentRow.Cells[3].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[1].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[2].Value.ToString();
 
-                    if (codTemp != DatosEstudiante.txtCodEstudiante.Text && DatosEstudiante.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+                    if (codTemp != Datos.txtCodEstudiante.Text && Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
                     {
-                        DatosEstudiante.CriterioSeleccionAsistenciaEstudiantes();
+                        Datos.CriterioSeleccionAsistenciaEstudiantes();
                     }
                 }
                 else if (CriterioSeleccion == "Por Asignaturas")
                 {
                     // Criterio de selección por asignaturas
+                    /*if (DatosEstudiante.radiobtnCriterioFechas.Checked)
+                    {
+
+                    }
+                    else if (DatosEstudiante.radiobtnCriterioEstudiantes.Checked)
+                    {
+                        
+                    }*/
+                    string codTemp = Datos.txtCodigo.Text;
+
+                    Datos.txtCodigo.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
+                    Datos.txtNombre.Text = dgvDatos.CurrentRow.Cells[1].Value.ToString();
+                    Datos.txtEscuelaP.Text = dgvDatos.CurrentRow.Cells[2].Value.ToString();
+                    Datos.CodDocenteReporte = dgvDatos.CurrentRow.Cells[4].Value.ToString();
+
+                    if (codTemp != Datos.txtCodigo.Text && Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+                    {
+                        Datos.CriterioSeleccionAsistenciaEstudiantes();
+                    }
                 }    
             }
 

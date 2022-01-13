@@ -36,13 +36,20 @@ namespace CapaPresentaciones
 
         private void LLenarCampos()
         {
-            // Data table de todos los alumnos
             cxtTipoReporte.SelectedIndex = 0;
             cxtCriterioSeleccion.SelectedIndex = 0;
 
             DataTable Estudiantes = N_Matricula.MostrarEstudiantesMatriculados(CodSemestre, "IN");
             txtCodEstudiante.Text = Estudiantes.Rows[0].ItemArray[0].ToString();
             txtEstudiante.Text = Estudiantes.Rows[0].ItemArray[3].ToString() + " " + Estudiantes.Rows[0].ItemArray[1].ToString() + " " + Estudiantes.Rows[0].ItemArray[2].ToString();
+
+            // Campos Docente
+            DataTable Campos = N_Catalogo.MostrarCatalogo(CodSemestre, CodDepartamentoA);
+
+            txtCodigo.Text = Campos.Rows[0].ItemArray[0].ToString();
+            txtNombre.Text = Campos.Rows[0].ItemArray[1].ToString();
+            txtEscuelaP.Text = Campos.Rows[0].ItemArray[2].ToString();
+            this.CodDocenteReporte = Campos.Rows[0].ItemArray[4].ToString();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -113,7 +120,7 @@ namespace CapaPresentaciones
             AddOwnedForm(Asignaturas);
             Asignaturas.ShowDialog();
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
-            {   
+            {
                 //if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
                     //fnReporte3(); // es fnReporte(8)
                 //else
@@ -127,7 +134,11 @@ namespace CapaPresentaciones
 
         private void btnGeneral_Click(object sender, EventArgs e)
         {
-            fnReporte9();
+            if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))  fnReporte9();
+            else if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+            {
+                fnReporte7();
+            }
         }
 
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
@@ -242,9 +253,24 @@ namespace CapaPresentaciones
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
 
-                //fnReporte1();
+                //fnReporte1234(); // Criterio por fechas o por estudiantes
+                radiobtnCriterioFechas.CheckedChanged += radioButtons_CheckedChanged;
+                radiobtnCriterioEstudiantes.CheckedChanged += radioButtons_CheckedChanged;
+
+                /*// Campos
+                DataTable Campos = N_Catalogo.MostrarCatalogo(CodSemestre, CodDepartamentoA);
+
+                txtCodigo.Text = Campos.Rows[0].ItemArray[0].ToString();
+                txtNombre.Text = Campos.Rows[0].ItemArray[1].ToString();
+                txtEscuelaP.Text = Campos.Rows[0].ItemArray[2].ToString();
+                this.CodDocenteReporte = Campos.Rows[0].ItemArray[4].ToString();*/
+
+                if (radiobtnCriterioFechas.Checked) fnReporte1(this.CodDocenteReporte);
+                else if (radiobtnCriterioEstudiantes.Checked) fnReporte3(this.CodDocenteReporte);
             }
         }
+
+        public string CodDocenteReporte = "";
 
         private void fnReporte5()
         {
@@ -317,6 +343,89 @@ namespace CapaPresentaciones
             }
             else
                 Ayudas.A_Dialogo.DialogoError("No hay Plan de Sesiones");
+        }
+
+        public void fnReporte7()
+        {
+            // Reporte 7
+            string Titulo = "REPORTE DE GENERAL ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            string[] Titulos = { "Semestre", "Escuela Profesional" };
+            string[] Valores = { CodSemestre, "INGENIERÍA INFORMÁTICA Y DE SISTEMAS" };
+
+            DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorAsignaturas(CodSemestre, CodDepartamentoA, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+
+            Reportes.fnReporte7(Titulo, Titulos, Valores, resultados);
+        }
+
+        private void fnReporte1234()
+        {
+            radiobtnCriterioFechas.CheckedChanged += radioButtons_CheckedChanged;
+            radiobtnCriterioEstudiantes.CheckedChanged += radioButtons_CheckedChanged;
+
+            // Al inicio, Criterio fechas es checked
+            // -> Reporte 1
+            //fnReporte1();
+        }
+
+
+        private void radioButtons_CheckedChanged(object sender, EventArgs e)
+        {
+            /*RadioButton radioButton = sender as RadioButton;
+
+            if (radiobtnCriterioFechas.Checked)
+            {
+                Console.WriteLine(radiobtnCriterioFechas.Text);
+                fnReporte1();
+            }
+            else if (radiobtnCriterioEstudiantes.Checked)
+            {
+                 Console.WriteLine(radiobtnCriterioEstudiantes.Text);
+                fnReporte3();
+            }*/
+
+            RadioButton radioButton = sender as RadioButton;
+            if (radioButton.Checked == true)
+            { //limited only checked button do function
+                switch (radioButton.Text)
+                {
+                    case "Por Fechas":
+                        Console.WriteLine(radiobtnCriterioFechas.Text);
+                        fnReporte1(this.CodDocenteReporte);
+                        break;
+                    case "Por Estudiantes":
+                        Console.WriteLine(radiobtnCriterioEstudiantes.Text);
+                        fnReporte3(this.CodDocenteReporte);
+                        break;
+                }
+            }
+        }
+
+        private void fnReporte1(string CodDocenteReporte)
+        {
+            // Tipo de reporte: Asistencia estudiantes
+            // Criterio de selección: Por Fechas
+
+            string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
+            string[] Valores = { CodSemestre, CodDocenteReporte, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
+
+            DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorFechas(CodSemestre, CodDocenteReporte, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+
+            Reportes.fnReporte1(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+        }
+
+        private void fnReporte3(string CodDocenteReporte)
+        {
+            // Tipo de reporte: Asistencia estudiantes
+            // Criterio de selección: Por Estudiantes
+
+            string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
+            string[] Valores = { CodSemestre, CodDocenteReporte, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
+
+            DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+
+            Reportes.fnReporte3(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
         }
 
         private void fnReporte8()

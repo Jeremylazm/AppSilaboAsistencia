@@ -333,7 +333,6 @@ CREATE TABLE THorarioRegistroAsistencia
 	IdHorarioRegistroAsistencia INT IDENTITY(1,1),
 	CodSemestre tyCodSemestre,
 	CodDepartamentoA tyCodDepartamentoA,
-	CodJefeDepartamentoA tyCodDocente NOT NULL, 
 	HoraInicio TIME(0) NOT NULL, -- Formato: hh:mm:ss (Hora de inicio del control de asistencia)
 	HoraFin TIME(0) NOT NULL, -- Formato: hh:mm:ss (Hora de fin del control de asistencia)
 
@@ -495,7 +494,7 @@ CREATE PROCEDURE spuIniciarSesion @Usuario VARCHAR(6),
 AS
 BEGIN
 	-- Seleccionar los datos del usuario valido
-	SELECT Perfil, Usuario, DBO.fnDesencriptarContraseña(Contraseña), Acceso, NombreUsuario
+	SELECT Perfil, Usuario, DBO.fnDesencriptarContraseña(Contraseña), Acceso, NombreUsuario, CodDepartamentoA, CodEscuelaP
 		FROM TUsuario
 		WHERE Usuario = @Usuario AND DBO.fnDesencriptarContraseña(Contraseña) = @Contraseña
 END;
@@ -736,7 +735,7 @@ BEGIN
 	DECLARE @Contraseña VARCHAR(8);
 	SET @NombreUsuario = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre);
 	SET @Contraseña = @CodDocente;
-	EXEC DBO.spuInsertarUsuario @Perfil, @CodDocente, @Contraseña, 'Docente', @NombreUsuario, CodDepartamentoA, @CodEscuelaP
+	EXEC DBO.spuInsertarUsuario @Perfil, @CodDocente, @Contraseña, 'Docente', @NombreUsuario, @CodDepartamentoA, @CodEscuelaP
 END;
 GO
 
@@ -1779,6 +1778,22 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ASISTENCIA-DIARIA-DOCENTE  ****************** */
 
+-- Procedimiento para mostrar la asistencia de un docente en un dia especifico.
+CREATE PROCEDURE spuBuscarAsistenciaDocente @CodSemestre VARCHAR(7),
+									        @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
+									        @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+											@CodDocente VARCHAR(6)
+AS
+BEGIN
+	-- Mostrar el registro de asistencia
+	SELECT AD.Hora, AD.CodDocente, D.APaterno, D.AMaterno, D.Nombre, AD.Asistió, AD.Observación
+		FROM TAsistenciaDiariaDocente AD INNER JOIN TDocente D ON
+			 AD.CodDocente = D.CodDocente
+	    WHERE AD.CodSemestre = @CodSemestre AND AD.CodDepartamentoA = @CodDepartamentoA AND
+		      AD.Fecha = @Fecha AND AD.CodDocente = @CodDocente
+END;
+GO
+
 -- Procedimiento para mostrar el registro de asistencia diaria de los docentes en una fecha especifica.
 CREATE PROCEDURE spuAsistenciaDiariaDocentes @CodSemestre VARCHAR(7),
 									         @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
@@ -1967,7 +1982,7 @@ BEGIN
 	    WHERE AE.CodSemestre = @CodSemestre AND
 			  AE.CodAsignatura = @CodAsignatura AND
 			  (AE.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
-	   GROUP BY AE.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
+	    GROUP BY AE.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
 END;
 GO
 
@@ -2089,14 +2104,13 @@ GO
 
 -- Buscar el horario de registro de asistencia diaria de los docentes.
 CREATE PROCEDURE spuBuscarHorarioRegistroAsistencia @CodSemestre VARCHAR(7),
-											        @CodDepartamentoA VARCHAR(3),
-											        @CodJefeDepartamentoA VARCHAR(5)
+											        @CodDepartamentoA VARCHAR(3)
 AS
 BEGIN
 	-- Mostrar el horario de registro de asistencia
 	SELECT TOP 1 HoraInicio, HoraFin
 		FROM THorarioRegistroAsistencia
-	    WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA AND CodJefeDepartamentoA = @CodJefeDepartamentoA
+	    WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA
 		ORDER BY IdHorarioRegistroAsistencia DESC
 END;
 GO
@@ -2104,21 +2118,19 @@ GO
 -- Procedimiento para registrar el horario de registro de asistencia diaria de los docentes.
 CREATE PROCEDURE spuInsertarHorarioRegistroAsistencia @CodSemestre VARCHAR(7),
 											          @CodDepartamentoA VARCHAR(3),
-											          @CodJefeDepartamentoA VARCHAR(5),
 											          @HoraInicio TIME(0), -- Formato: hh:mm:ss (Hora de inicio del control de asistencia)
 											          @HoraFin TIME(0) -- Formato: hh:mm:ss (Hora de finalización del control de asistencia)
 AS
 BEGIN
 	-- Registrar el horario en la tabla THorarioRegistroAsistencia
 	INSERT INTO THorarioRegistroAsistencia
-		VALUES (@CodSemestre, @CodDepartamentoA, @CodJefeDepartamentoA, @HoraInicio, @HoraFin)
+		VALUES (@CodSemestre, @CodDepartamentoA, @HoraInicio, @HoraFin)
 END;
 GO
 
 -- Procedimiento para actualizar el horario de registro de asistencia diaria de los docentes .
 CREATE PROCEDURE spuActualizarHorarioRegistroAsistencia @CodSemestre VARCHAR(7),
 											            @CodDepartamentoA VARCHAR(3),
-											            @CodJefeDepartamentoA VARCHAR(5),
 											            @NHoraInicio TIME(0), -- Nueva Hora de inicio
 											            @NHoraFin TIME(0) -- Nueva Hora de finalización
 AS
@@ -2129,20 +2141,19 @@ BEGIN
 			HoraFin = @NHoraFin
 		FROM (SELECT TOP 1 HoraInicio, HoraFin
 				FROM THorarioRegistroAsistencia
-				WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA AND CodJefeDepartamentoA = @CodJefeDepartamentoA
+				WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA
 				ORDER BY IdHorarioRegistroAsistencia DESC) THorarioRegistroAsistencia	
 END;
 GO
 
 -- Procedimiento para eliminar el horario de registro de asistencia diaria de los docentes .
 CREATE PROCEDURE spuEliminarHorarioRegistroAsistencia @CodSemestre VARCHAR(7),
-											          @CodDepartamentoA VARCHAR(3),
-											          @CodJefeDepartamentoA VARCHAR(5)
+											          @CodDepartamentoA VARCHAR(3)
 AS
 BEGIN
 	-- Eliminar una asistencia en la tabla de THorarioRegistroAsistencia
 	DELETE FROM THorarioRegistroAsistencia
-		WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA AND CodJefeDepartamentoA = @CodJefeDepartamentoA
+		WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA
 END;
 GO
 
