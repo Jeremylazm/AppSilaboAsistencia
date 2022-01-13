@@ -1410,8 +1410,8 @@ namespace ControlesPerzonalizados
                 dgvResultados.Columns[0].HeaderText = "Código Asignatura";
                 dgvResultados.Columns[1].HeaderText = "Nombre Asignatura";
                 dgvResultados.Columns[2].HeaderText = "Docente";
-                dgvResultados.Columns[3].HeaderText = "Porcentaje Temas Avanzados";
-                dgvResultados.Columns[4].HeaderText = "Porcentaje Temas Faltantes";
+                dgvResultados.Columns[3].HeaderText = "Avance Completado";
+                dgvResultados.Columns[4].HeaderText = "Avance que Falta";
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
@@ -1463,8 +1463,8 @@ namespace ControlesPerzonalizados
                 // Cuadro de resumen
                 DataTable cuadroResumen = new DataTable();
                 cuadroResumen.Columns.Add(" ");
-                cuadroResumen.Columns.Add("Avanzó");
-                cuadroResumen.Columns.Add("Falta");
+                cuadroResumen.Columns.Add("Avance Completado");
+                cuadroResumen.Columns.Add("Avance Faltante");
 
                 // Máximos
                 cuadroResumen.Rows.Add("Máximo", Statistics.Maximum(Avanzó), Statistics.Maximum(Falta));
