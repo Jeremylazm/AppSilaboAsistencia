@@ -1305,24 +1305,8 @@ namespace ControlesPerzonalizados
             }
             else
             {
-                /*// Crear columna
-                DataGridViewImageColumn btnVerReporte = new DataGridViewImageColumn
-                {
-                    ImageLayout = DataGridViewImageCellLayout.Zoom,
-                    Frozen = false,
-                    AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet,
-                    DividerWidth = 0,
-                    FillWeight = 100,
-                    MinimumWidth = 5,
-                    Width = 1032
-                };
-
-                dgvResultados.Columns.Clear();
-                dgvResultados.Columns.Add(btnVerReporte);
-                dgvResultados.Columns[0].HeaderText = "Reporte General";*/
                 dgvResultados.Columns.Clear();
                 dgvResultados.DataSource = Datos;
-                //dgvResultados.Columns[0].DisplayIndex = 4;
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
@@ -1366,21 +1350,16 @@ namespace ControlesPerzonalizados
 
                 // Cuadro de resumen
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
-                //dtEstadisticos.Rows.Clear();
 
-                /*// Asistencias
-                // Solo donde SesiónDictada es SI para los estadísticos
-                foreach (DataRow row in Datos.Rows)
-                {
-                    if (row["SesiónDictada"].ToString() == "SI")
-                    {
-                        dtEstadisticos.ImportRow(row);
-                    }
-                }*/
+                Console.WriteLine(dtEstadisticos.Rows[0][3].ToString());
+                Console.WriteLine(dtEstadisticos.Rows[0][3].GetType());
+                Console.WriteLine(dtEstadisticos.Rows[0][4].ToString());
+                Console.WriteLine(dtEstadisticos.Rows[0][4].GetType());
+                var aaaa = dtEstadisticos.Rows[0][3].ToString();
 
-                // Listas de valores // int -> double
-                List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("PorcentajeAsistencias"))).ToList();
-                List<double> Faltaron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("PorcentajesFaltas"))).ToList();
+                // Listas de valores
+                List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(Convert.ToDecimal(x.Field<decimal>("PorcentajeAsistencias")))).ToList();
+                List<double> Faltaron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(Convert.ToDecimal(x.Field<decimal>("PorcentajeFaltas")))).ToList();
 
                 foreach (int i in Asistieron)
                 {
