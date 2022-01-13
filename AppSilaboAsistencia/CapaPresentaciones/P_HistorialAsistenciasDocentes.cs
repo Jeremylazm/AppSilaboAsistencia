@@ -47,6 +47,7 @@ namespace CapaPresentaciones
         {
             MostrarRegistros();
         }
+        //NombreCompleto del jefe de departamento
         public string NombreCompletoJD()
 		{
             DataTable DocentesDepartamentoA = N_Docente.MostrarTodosDocentesDepartamento(CodDepartamentoA);

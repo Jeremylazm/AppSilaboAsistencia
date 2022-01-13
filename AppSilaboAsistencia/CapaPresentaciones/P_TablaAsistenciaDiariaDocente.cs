@@ -35,8 +35,8 @@ namespace CapaPresentaciones
 			ObjEntidadDoc = new E_AsistenciaDiariaDocente();
 			ObjNegocioDoc = new N_AsistenciaDiariaDocente();
 			InitializeComponent();
-			//Control[] Controles = { this, lblTitulo, pbLogo, lblFecha, lblMarcarTodos, txtFecha };
-			//Docker.SubscribeControlsToDragEvents(Controles);
+			Control[] Controles = { this, lblTitulo, pbLogo, lblFecha, lblMarcarTodos, txtFecha };
+			Docker.SubscribeControlsToDragEvents(Controles);
 			Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             txtSemestreA.Text = CodSemestre;
 			lblFecha.Text += "    ";
@@ -76,34 +76,34 @@ namespace CapaPresentaciones
                 // buscar el registro de asistencia de Docente de la fecha actual
                 //DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString(),"");
 
-
-
-                foreach (DataGridViewRow dr in dgvDatos.Rows)
+                try
                 {
-                    if(dr.Cells[2].Value.ToString()!="00000")
-					{
-                        ObjEntidadDoc.CodSemestre = CodSemestre;
-                        ObjEntidadDoc.CodDepartamentoA = "IF";
-                        ObjEntidadDoc.Fecha = txtFecha.Text.ToString();
-                        ObjEntidadDoc.Hora = hora;
-                        ObjEntidadDoc.CodDocente = dr.Cells[2].Value.ToString();
-                        ObjEntidadDoc.Asistio = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
-                        ObjEntidadDoc.Observacion = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
+                    foreach (DataGridViewRow dr in dgvDatos.Rows)
+                    {
+                        if (dr.Cells[2].Value.ToString() != "00000")
+                        {
+                            ObjEntidadDoc.CodSemestre = CodSemestre;
+                            ObjEntidadDoc.CodDepartamentoA = "IF";
+                            ObjEntidadDoc.Fecha = txtFecha.Text.ToString();
+                            ObjEntidadDoc.Hora = hora;
+                            ObjEntidadDoc.CodDocente = dr.Cells[2].Value.ToString();
+                            ObjEntidadDoc.Asistio = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
+                            ObjEntidadDoc.Observacion = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
 
-                        ObjNegocioDoc.RegistrarAsistenciaDiariaDocente(ObjEntidadDoc);
+                            ObjNegocioDoc.RegistrarAsistenciaDiariaDocente(ObjEntidadDoc);
+                        }
+
                     }
-                    
-                }
-                A_Dialogo.DialogoConfirmacion("Se ha registrado correctamente la asistencia" + Environment.NewLine + " del los Docentes");
-                Program.Evento = 0;
-                Close();
+                    A_Dialogo.DialogoConfirmacion("Se ha registrado correctamente la asistencia" + Environment.NewLine + " del los Docentes");
+                    Program.Evento = 0;
+                    Close();
 
 
-
-                /*catch (Exception)
+                }    
+                catch (Exception)
                 {
                     A_Dialogo.DialogoError("Error al insertar el registro...");
-                }*/
+                }
             }
             // Editar
             else
