@@ -969,12 +969,12 @@ namespace ControlesPerzonalizados
                 }
                 else
                 {
-                    MessageBox.Show("No existen parametros");
+                    Ayudas.A_Dialogo.DialogoError("No existen parametros");
                 }
             }
             else
             {
-                MessageBox.Show("Error de parametros");
+                Ayudas.A_Dialogo.DialogoError("Error de parametros");
             }
             #endregion ===================== DESCRIPCIÓN =====================
 
@@ -1139,12 +1139,12 @@ namespace ControlesPerzonalizados
                 }
                 else
                 {
-                    MessageBox.Show("No existen parametros");
+                    Ayudas.A_Dialogo.DialogoError("No existen parametros");
                 }
             }
             else
             {
-                MessageBox.Show("Error de parametros");
+                Ayudas.A_Dialogo.DialogoError("Error de parametros");
             }
             #endregion ===================== DESCRIPCIÓN =====================
 

@@ -259,7 +259,7 @@ namespace CapaPresentaciones
 
                 int[] TemasAvanzados = new int[resultados.Rows.Count];
 
-                for (int i = 0; i < resultados.Rows.Count; i++) 
+                for (int i = 0; i < resultados.Rows.Count; i++)
                 {
                     TemasAvanzados[i] = Convert.ToInt32(resultados.Rows[i]["Sesión"].ToString());
                     ResultadosFinales.Rows.Add(Convert.ToInt32(resultados.Rows[i]["Sesión"].ToString()), resultados.Rows[i]["NombreTema"].ToString(), resultados.Rows[i]["Fecha"].ToString(), "HECHO");
@@ -275,7 +275,7 @@ namespace CapaPresentaciones
 
                         }
                         else
-                            ResultadosFinales.Rows.Add(Contador-8,"Tema"+Convert.ToString(Contador - 8), "", "FALTA");
+                            ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "FALTA");
                         Total = Total + 1;
                         Contador = Contador + 1;
                     }
@@ -286,7 +286,7 @@ namespace CapaPresentaciones
                 Reportes.fnReporte5(Titulo, Titulos, Valores, ResultadosFinales, txtCodigo.Text, Hechos, Faltan);
             }
             else
-                MessageBox.Show("No hay Plan de Sesiones");
+                Ayudas.A_Dialogo.DialogoError("No hay Plan de Sesiones");
         }
 
         private void fnReporte6()
