@@ -257,6 +257,45 @@ namespace CapaDatos
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }
+        // Método para actualizar la plantilla de silabo (Director de escuela)
+        public void ActualizarPlantillaSilabo(byte[] PlantillaSilabo)
+        {
+            SqlCommand Comando = new SqlCommand("spuActualizarPlantillaSilabo", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Conectar.Open();
+            Comando.Parameters.AddWithValue("@PlantillaSilabo", PlantillaSilabo);
+            Comando.ExecuteNonQuery();
+            Conectar.Close();
+        }
+        // Método para actualizar la plantilla de plan de sesiones de 2 y 3 creditos (Director de escuela)
+        public void ActualizarPlantillaSesiones2y3(byte[] PlantillaSesiones)
+        {
+            SqlCommand Comando = new SqlCommand("spuActualizarPlantillaPlanSesiones2y3", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Conectar.Open();
+            Comando.Parameters.AddWithValue("@PlantillaPlanSesiones2y3", PlantillaSesiones);
+            Comando.ExecuteNonQuery();
+            Conectar.Close();
+        }
+        // Método para actualizar la plantilla de plan de sesiones de 4 creditos (Director de escuela)
+        public void ActualizarPlantillaSesiones4(byte[] PlantillaSesiones)
+        {
+            SqlCommand Comando = new SqlCommand("spuActualizarPlantillaPlanSesiones4", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Conectar.Open();
+            Comando.Parameters.AddWithValue("@PlantillaPlanSesiones4", PlantillaSesiones);
+            Comando.ExecuteNonQuery();
+            Conectar.Close();
+        }
 
         // Método para eliminar una asignatura de un catálogo
         public void EliminarAsignaturaCatalogo(E_Catalogo Catalogo)
