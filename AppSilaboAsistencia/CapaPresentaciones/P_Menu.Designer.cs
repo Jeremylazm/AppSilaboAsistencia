@@ -1953,6 +1953,7 @@ namespace CapaPresentaciones
             this.btnMarcarAsistencia.TextMarginLeft = 0;
             this.btnMarcarAsistencia.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnMarcarAsistencia.UseDefaultRadiusAndThickness = true;
+            this.btnMarcarAsistencia.Click += new System.EventHandler(this.btnMarcarAsistencia_Click);
             // 
             // pbMarcarAsistencia
             // 
@@ -2228,7 +2229,7 @@ namespace CapaPresentaciones
             this.Controls.Add(this.pnPrincipal);
             this.Transicion.SetDecoration(this, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimumSize = new System.Drawing.Size(1330, 768);
+            this.MinimumSize = new System.Drawing.Size(1330, 726);
             this.Name = "P_Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Principal";

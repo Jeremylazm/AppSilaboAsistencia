@@ -1,18 +1,22 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
 using CapaEntidades;
+using CapaNegocios;
 using System.IO;
 using System.Drawing.Drawing2D;
 using Ayudas;
-using System.Collections.Generic;
+using System.Net.Sockets;
+using System.Text;
 
 namespace CapaPresentaciones
 {
     public partial class P_Menu : Form
     {
-
+        readonly E_AsistenciaDiariaDocente ObjEntidadDocente;
+        readonly N_AsistenciaDiariaDocente ObjNegocioDocente;
         public string Acceso = "";
         private Image JefeActualizarPerfil = null;
         bool DocenteColapsado = false;
@@ -24,6 +28,9 @@ namespace CapaPresentaciones
             InitializeComponent();
             Control[] Controles = { pnOpciones, pnContenedor, lblSuperior, lblInferior, pbLogo, btnEditarPerfil, lblDatos, lblAcceso, lblUsuario };
             Docker.SubscribeControlsToDragEvents(Controles);
+
+            ObjEntidadDocente = new E_AsistenciaDiariaDocente();
+            ObjNegocioDocente = new N_AsistenciaDiariaDocente();
         }
 
         bool DrawerOpen = true;
@@ -474,6 +481,105 @@ namespace CapaPresentaciones
         {
             btnEditarPerfil.Image = perfil;
             JefeActualizarPerfil = perfil;
+        }
+
+        // Registrar asistencia diaria
+        private void btnMarcarAsistencia_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            
+            // Obtener horario de la base de datos
+            DataTable Semestre = N_Semestre.SemestreActual();
+            string CodSemestre = Semestre.Rows[0][0].ToString();
+            string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
+            DataTable Horario = N_HorarioRegistroAsistencia.BuscarHorarioRegistroAsistencia(CodSemestre, CodDepartamentoA);
+            var hora_inicio = TimeSpan.Parse(Horario.Rows[0][0].ToString());
+            var hora_fin = TimeSpan.Parse(Horario.Rows[0][1].ToString());
+
+            // Obtener horario servidor
+            const string server = "time.nist.gov"; // URL del servidor
+            const Int32 port = 13;                 // puerto para obtener la data del servidor 
+            string date_NIST = GetNISTDateTime(server, port);
+
+            if (date_NIST != null)
+            {
+                DateTime date = DateTime.ParseExact(date_NIST, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                var hora_servidor = TimeSpan.Parse(date.ToString("HH:mm:ss"));
+
+                // Registrar asistencia
+                if (hora_servidor >= hora_inicio && hora_servidor <= hora_fin)
+                {
+                    ObjEntidadDocente.CodSemestre = CodSemestre;
+                    ObjEntidadDocente.CodDepartamentoA = CodDepartamentoA;
+                    ObjEntidadDocente.Fecha = date.Date.ToString();
+                    ObjEntidadDocente.Hora = date.ToString("HH:mm:ss");
+                    ObjEntidadDocente.CodDocente = E_InicioSesion.Usuario;
+                    ObjEntidadDocente.Asistio = "SI";
+                    ObjEntidadDocente.Observacion = "";
+                    ObjNegocioDocente.RegistrarAsistenciaDiariaDocente(ObjEntidadDocente);
+
+                    A_Dialogo.DialogoInformacion("Se registro su asistencia.");
+                }
+                else
+                {
+                    string dialogo = String.Format("La hora para registrar la asistencia es de {0} a {1}", hora_inicio, hora_fin);
+                    A_Dialogo.DialogoError(dialogo);
+                }
+            }
+        }
+
+        // Obtener hora local del servidor NIST
+        public string GetNISTDateTime(string server, Int32 port)
+        {
+            bool bGoodConnection = false;
+            TcpClient tcpClientConnection = new TcpClient();
+            try
+            {
+                tcpClientConnection.Connect(server, port);
+                bGoodConnection = true;
+            }
+            catch
+            {
+                A_Dialogo.DialogoError("No se encuentra conectado a Internet. Revise su conexión");
+            }
+
+            if (bGoodConnection == true)
+            {
+                try
+                {
+                    NetworkStream netStream = tcpClientConnection.GetStream();
+
+                    if (netStream.CanRead)
+                    {
+                        byte[] bytes = new byte[tcpClientConnection.ReceiveBufferSize];
+                        netStream.Read(bytes, 0, tcpClientConnection.ReceiveBufferSize);
+                        var sNISTDateTimeFull = Encoding.ASCII.GetString(bytes).Substring(0, 50);
+                        var subStringNISTDateTimeShort = sNISTDateTimeFull.Substring(7, 17);
+                        DateTime dtNISTDateTime = DateTime.Parse("20" + subStringNISTDateTimeShort).ToLocalTime();
+                        tcpClientConnection.Close();
+                        return dtNISTDateTime.ToString();
+                    }
+                    else 
+                    {
+                        A_Dialogo.DialogoError("Parece que ha ocurrido un problema. Por favor, vuelva a intentarlo");
+                        tcpClientConnection.Close();
+                        tcpClientConnection.Close();
+                        netStream.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (ex is ArgumentNullException)
+                    {
+                        A_Dialogo.DialogoError("El servidor se encuentra ocupado. Intentelo más tarde");
+                    }
+                    else if (ex is SocketException)
+                    {
+                        A_Dialogo.DialogoError("Parece que ha ocurrido un problema. Por favor, vuelva a intentarlo");
+                    }
+                }
+            }
+            return null;
         }
     }
 }
