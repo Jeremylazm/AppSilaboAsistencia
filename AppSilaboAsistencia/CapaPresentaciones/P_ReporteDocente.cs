@@ -21,7 +21,7 @@ namespace CapaPresentaciones
         readonly N_Catalogo ObjCatalogo;
         private readonly string CodSemestre;
         readonly string CodDocente = E_InicioSesion.Usuario;
-        private readonly string CodDepartamentoA = "IF";
+        private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
         C_Reporte Reportes = new C_Reporte();
         string nombreDocente;
 
