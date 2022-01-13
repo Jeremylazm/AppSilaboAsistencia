@@ -8,5 +8,7 @@
         public static string Contraseña { get; set; }
         public static string Acceso { get; set; }
         public static string Datos { get; set; }
+        public static string CodDepartamentoA { get; set; }
+        public static string CodEscuelaP { get; set; }
     }
 }

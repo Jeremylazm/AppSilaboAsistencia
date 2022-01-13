@@ -41,6 +41,8 @@ namespace CapaDatos
                     E_InicioSesion.Contraseña = LeerFilas.GetString(2);
                     E_InicioSesion.Acceso = LeerFilas.GetString(3);
                     E_InicioSesion.Datos = LeerFilas.GetString(4);
+                    E_InicioSesion.CodDepartamentoA = LeerFilas.GetString(5);
+                    E_InicioSesion.CodEscuelaP = LeerFilas.GetString(6);
                 }
                 Conectar.Close();
                 return true;
