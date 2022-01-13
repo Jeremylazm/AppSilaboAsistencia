@@ -984,12 +984,12 @@ namespace ControlesPerzonalizados
                 }
                 else
                 {
-                    MessageBox.Show("No existen parametros");
+                    Ayudas.A_Dialogo.DialogoError("No existen parametros");
                 }
             }
             else
             {
-                MessageBox.Show("Error de parametros");
+                Ayudas.A_Dialogo.DialogoError("Error de parametros");
             }
             #endregion ===================== DESCRIPCIÓN =====================
 
@@ -1154,12 +1154,12 @@ namespace ControlesPerzonalizados
                 }
                 else
                 {
-                    MessageBox.Show("No existen parametros");
+                    Ayudas.A_Dialogo.DialogoError("No existen parametros");
                 }
             }
             else
             {
-                MessageBox.Show("Error de parametros");
+                Ayudas.A_Dialogo.DialogoError("Error de parametros");
             }
             #endregion ===================== DESCRIPCIÓN =====================
 
@@ -1501,6 +1501,208 @@ namespace ControlesPerzonalizados
                 //}
 
                 // Gráficos
+            }
+        }
+
+        public void fnReporte9(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, DataTable Resumen)
+        {
+            // Limpiar los Antiguos Reportes
+            LimpiarCampos();
+
+            #region ===================== TÍTULO =====================
+            // Cambiar el Título
+            lblTitulo.Text = Titulo;
+            #endregion ===================== TÍTULO =====================
+
+            #region ===================== DESCRIPCIÓN =====================
+            // Verificar que los Títulos y los Valores dados Coincidan
+            if (Titulos.Length.Equals(Valores.Length))
+            {
+                if (Titulos.Length != 0)
+                {
+                    for (int K = 0; K < Titulos.Length; K++)
+                    {
+                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
+                        pnSubcampos.Controls.Add(Nuevo);
+                    }
+                }
+                else
+                {
+                    Ayudas.A_Dialogo.DialogoError("No existen parametros");
+                }
+            }
+            else
+            {
+                Ayudas.A_Dialogo.DialogoError("Error de parametros");
+            }
+            #endregion ===================== DESCRIPCIÓN =====================
+
+            // Validar las Fechas dadas
+            if (Datos.Rows.Count == 0)
+            {
+                A_Dialogo.DialogoInformacion("No hay registros disponibles");
+
+                lblTitulo.Text = "";
+                pnSubcampos.Controls.Clear();
+                dgvResumen.Columns.Clear();
+                dgvResultados.Columns.Clear();
+                dgvResultados.Refresh();
+
+                //tcGraficos.Controls.Clear();
+            }
+            else
+            {
+                #region ===================== CUADRO DE RESULTADOS =====================
+                dgvResultados.Columns.Clear();
+                dgvResultados.DataSource = Datos;
+                dgvResultados.Columns[0].HeaderText = "Código Asignatura";
+                dgvResultados.Columns[1].HeaderText = "Nombre Asignatura";
+                dgvResultados.Columns[2].HeaderText = "Docente";
+                dgvResultados.Columns[3].HeaderText = "Porcentaje Temas Avanzados";
+                dgvResultados.Columns[4].HeaderText = "Porcentaje Temas Faltantes";
+
+                if (dgvResultados.Rows.Count <= 10)
+                {
+                    sbResultados.Visible = false;
+                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
+                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                }
+                else
+                {
+                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                    pnContenedorResultados.Height = 341;
+                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                    sbResultados.Visible = true;
+                }
+
+                #endregion ===================== CUADRO DE RESULTADOS =====================
+
+                #region ===================== CUADRO DE RESUMEN =====================
+                if (!pnContenedorCuadro.Visible)
+                {
+                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                    this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
+                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                    pnContenedorCuadro.Visible = true;
+                }
+
+                // Listas de valores
+                List<double> Avanzó = Resumen.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TemasAvanzados"))).ToList();
+                List<double> Falta = Resumen.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TemasFaltantes"))).ToList();
+
+                // Cuadro de resumen
+                DataTable cuadroResumen = new DataTable();
+                cuadroResumen.Columns.Add(" ");
+                cuadroResumen.Columns.Add("Avanzó");
+                cuadroResumen.Columns.Add("Falta");
+
+                // Máximos
+                cuadroResumen.Rows.Add("Máximo", Statistics.Maximum(Avanzó), Statistics.Maximum(Falta));
+
+                // Mínimos
+                cuadroResumen.Rows.Add("Mínimo", Statistics.Minimum(Avanzó), Statistics.Minimum(Falta));
+
+                // Media
+                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Avanzó)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Avanzó) / (Statistics.Mean(Avanzó) + Statistics.Mean(Falta)) * 100) + "%)", String.Format("{0:0.00}", Statistics.Mean(Falta)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Falta) / (Statistics.Mean(Avanzó) + Statistics.Mean(Falta)) * 100) + "%)");
+
+                // Mediana
+                cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Avanzó)), String.Format("{0:0.00}", Statistics.Median(Falta)));
+
+                // Moda
+                var modeAsistieron = Avanzó.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
+                var modeFaltaron = Falta.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
+                cuadroResumen.Rows.Add("Moda", modeAsistieron, modeFaltaron);
+
+                // Varianza
+                cuadroResumen.Rows.Add("Varianza", String.Format("{0:0.00}", Statistics.Variance(Avanzó)), String.Format("{0:0.00}", Statistics.Variance(Falta)));
+
+                // Desviación Estándar
+                var dvA = Statistics.StandardDeviation(Avanzó);
+                var dvF = Statistics.StandardDeviation(Falta);
+                cuadroResumen.Rows.Add("Desv. Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
+
+                dgvResumen.DataSource = cuadroResumen;
+                #endregion ===================== CUADRO DE RESUMEN =====================
+
+                #region ===================== GRÁFICO =====================
+                //tcGraficos.TabPages.Clear();
+                /*
+                Chart Grafico1 = new Chart
+                {
+                    Dock = DockStyle.Fill,
+                    Palette = ChartColorPalette.Excel
+                };
+
+                TabPage tpGrafico1 = new TabPage("Gráfico 1");
+                tpGrafico1.Controls.Add(Grafico1);
+
+                Grafico1.Titles.Clear();
+                Grafico1.Series.Clear();
+                Grafico1.ChartAreas.Clear();
+
+                Grafico1.Titles.Add("Avance de Asignatura");
+
+                ChartArea areaGrafico1 = new ChartArea();
+
+                // Propiedades de los ejes
+                areaGrafico1.AxisX.Interval = 1;
+                areaGrafico1.AxisX.Title = "Cód. Estudiante";
+                areaGrafico1.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+                areaGrafico1.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 14f);
+                areaGrafico1.AxisY.Title = "Cantidad";
+                areaGrafico1.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+                areaGrafico1.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+                areaGrafico1.AxisX.MajorGrid.LineColor = Color.Red;
+                areaGrafico1.AxisX.MajorGrid.Enabled = false;
+                //areaGrafico2.AxisY.MajorGrid.Enabled = false;
+
+                Grafico1.ChartAreas.Add(areaGrafico1);
+
+                Series serie1 = new Series("TotalAsistencias")
+                {
+                    ChartType = SeriesChartType.StackedBar,
+                    XValueMember = "CodEstudiante",
+                    YValueMembers = "TotalAsistencias",
+                    IsValueShownAsLabel = true,
+                    MarkerSize = 14,
+                    Font = new Font("Montserrat Alternates", 10f)
+                };
+
+                Series serie2 = new Series("TotalFaltas")
+                {
+                    ChartType = SeriesChartType.StackedBar,
+                    XValueMember = "CodEstudiante",
+                    YValueMembers = "TotalFaltas",
+                    MarkerSize = 14,
+                    Font = new Font("Montserrat Alternates", 11f)
+                };
+
+                Grafico1.Series.Add(serie1);
+                Grafico1.Series.Add(serie2);
+
+                Grafico1.DataSource = dgvResultados.DataSource;
+
+                tcGraficos.TabPages.Add(tpGrafico1);
+                */
+                #endregion ===================== GRÁFICO =====================
             }
         }
 

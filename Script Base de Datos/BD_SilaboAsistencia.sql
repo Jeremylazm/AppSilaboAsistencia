@@ -1677,9 +1677,7 @@ GO
 
 -- Procedimiento para mostrar el avance de los temas en todas las asignaturas de un departamento académico
 CREATE PROCEDURE spuAvanceAsignaturasDpto @CodSemestre VARCHAR(7),
-									      @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
-									      @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
-										  @LimFechaSup DATE  -- Formato: dd/mm/yyyy o dd-mm-yyyy
+									      @CodDepartamentoA VARCHAR(3) -- Atrib. Docente (Jefe de Dep.)
 AS
 BEGIN
 	-- Mostrar el registro de avance de las asignaturas
@@ -1690,7 +1688,6 @@ BEGIN
 			 AD.CodDocente = D.CodDocente
 	    WHERE AD.CodSemestre = @CodSemestre AND
 			  AD.CodDepartamentoA = @CodDepartamentoA AND
-			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
 			  AD.Observación = '' -- No se considera Feriado, Suspensión, Permiso y Falta in Justificar
 		GROUP BY AD.CodAsignatura, A.NombreAsignatura, D.APaterno, D.AMaterno, D.Nombre
 		ORDER BY A.NombreAsignatura
