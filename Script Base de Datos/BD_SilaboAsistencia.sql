@@ -1778,6 +1778,22 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ASISTENCIA-DIARIA-DOCENTE  ****************** */
 
+-- Procedimiento para mostrar la asistencia de un docente en un dia especifico.
+CREATE PROCEDURE spuBuscarAsistenciaDocente @CodSemestre VARCHAR(7),
+									        @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
+									        @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+											@CodDocente VARCHAR(6)
+AS
+BEGIN
+	-- Mostrar el registro de asistencia
+	SELECT AD.Hora, AD.CodDocente, D.APaterno, D.AMaterno, D.Nombre, AD.Asistió, AD.Observación
+		FROM TAsistenciaDiariaDocente AD INNER JOIN TDocente D ON
+			 AD.CodDocente = D.CodDocente
+	    WHERE AD.CodSemestre = @CodSemestre AND AD.CodDepartamentoA = @CodDepartamentoA AND
+		      AD.Fecha = @Fecha AND AD.CodDocente = @CodDocente
+END;
+GO
+
 -- Procedimiento para mostrar el registro de asistencia diaria de los docentes en una fecha especifica.
 CREATE PROCEDURE spuAsistenciaDiariaDocentes @CodSemestre VARCHAR(7),
 									         @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
@@ -1966,7 +1982,7 @@ BEGIN
 	    WHERE AE.CodSemestre = @CodSemestre AND
 			  AE.CodAsignatura = @CodAsignatura AND
 			  (AE.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
-	   GROUP BY AE.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
+	    GROUP BY AE.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
 END;
 GO
 

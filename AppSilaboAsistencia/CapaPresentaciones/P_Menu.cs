@@ -491,7 +491,9 @@ namespace CapaPresentaciones
             // Obtener horario de la base de datos
             DataTable Semestre = N_Semestre.SemestreActual();
             string CodSemestre = Semestre.Rows[0][0].ToString();
+            string Usuario = E_InicioSesion.Usuario;
             string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
+
             DataTable Horario = N_HorarioRegistroAsistencia.BuscarHorarioRegistroAsistencia(CodSemestre, CodDepartamentoA);
             var hora_inicio = TimeSpan.Parse(Horario.Rows[0][0].ToString());
             var hora_fin = TimeSpan.Parse(Horario.Rows[0][1].ToString());
@@ -504,26 +506,37 @@ namespace CapaPresentaciones
             if (date_NIST != null)
             {
                 DateTime date = DateTime.ParseExact(date_NIST, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-                var hora_servidor = TimeSpan.Parse(date.ToString("HH:mm:ss"));
+                string Fecha = date.Date.ToString();
+                string Hora = date.ToString("HH:mm:ss");
 
                 // Registrar asistencia
-                if (hora_servidor >= hora_inicio && hora_servidor <= hora_fin)
+                DataTable AsistenciaDocente = N_AsistenciaDiariaDocente.BuscarAsistenciaDocente(CodSemestre, CodDepartamentoA, Fecha, Usuario);
+                
+                if (AsistenciaDocente.Rows.Count == 0) // El docente todavia no registro su asistencia
                 {
-                    ObjEntidadDocente.CodSemestre = CodSemestre;
-                    ObjEntidadDocente.CodDepartamentoA = CodDepartamentoA;
-                    ObjEntidadDocente.Fecha = date.Date.ToString();
-                    ObjEntidadDocente.Hora = date.ToString("HH:mm:ss");
-                    ObjEntidadDocente.CodDocente = E_InicioSesion.Usuario;
-                    ObjEntidadDocente.Asistio = "SI";
-                    ObjEntidadDocente.Observacion = "";
-                    ObjNegocioDocente.RegistrarAsistenciaDiariaDocente(ObjEntidadDocente);
+                    var hora_servidor = TimeSpan.Parse(Hora);
+                    if (hora_servidor >= hora_inicio && hora_servidor <= hora_fin)
+                    {
+                        ObjEntidadDocente.CodSemestre = CodSemestre;
+                        ObjEntidadDocente.CodDepartamentoA = CodDepartamentoA;
+                        ObjEntidadDocente.Fecha = Fecha;
+                        ObjEntidadDocente.Hora = Hora;
+                        ObjEntidadDocente.CodDocente = Usuario;
+                        ObjEntidadDocente.Asistio = "SI";
+                        ObjEntidadDocente.Observacion = "";
+                        ObjNegocioDocente.RegistrarAsistenciaDiariaDocente(ObjEntidadDocente);
 
-                    A_Dialogo.DialogoInformacion("Se registro su asistencia.");
+                        A_Dialogo.DialogoInformacion("Se registro su asistencia.");
+                    }
+                    else
+                    {
+                        string dialogo = String.Format("La hora para registrar la asistencia es de {0} a {1}", hora_inicio, hora_fin);
+                        A_Dialogo.DialogoError(dialogo);
+                    }
                 }
-                else
+                else // El docente ya registro su asistencia
                 {
-                    string dialogo = String.Format("La hora para registrar la asistencia es de {0} a {1}", hora_inicio, hora_fin);
-                    A_Dialogo.DialogoError(dialogo);
+                    A_Dialogo.DialogoError("Ya registró su asistencia de hoy.");
                 }
             }
         }
@@ -540,7 +553,7 @@ namespace CapaPresentaciones
             }
             catch
             {
-                A_Dialogo.DialogoError("No se encuentra conectado a Internet. Revise su conexión");
+                A_Dialogo.DialogoError("No se encuentra conectado a Internet. Revise su conexión.");
             }
 
             if (bGoodConnection == true)
@@ -561,7 +574,7 @@ namespace CapaPresentaciones
                     }
                     else 
                     {
-                        A_Dialogo.DialogoError("Parece que ha ocurrido un problema. Por favor, vuelva a intentarlo");
+                        A_Dialogo.DialogoError("Parece que ha ocurrido un problema. Por favor, vuelva a intentarlo.");
                         tcpClientConnection.Close();
                         tcpClientConnection.Close();
                         netStream.Close();
@@ -571,11 +584,11 @@ namespace CapaPresentaciones
                 {
                     if (ex is ArgumentNullException)
                     {
-                        A_Dialogo.DialogoError("El servidor se encuentra ocupado. Intentelo más tarde");
+                        A_Dialogo.DialogoError("El servidor se encuentra ocupado. Intentelo más tarde.");
                     }
                     else if (ex is SocketException)
                     {
-                        A_Dialogo.DialogoError("Parece que ha ocurrido un problema. Por favor, vuelva a intentarlo");
+                        A_Dialogo.DialogoError("Parece que ha ocurrido un problema. Por favor, vuelva a intentarlo.");
                     }
                 }
             }
