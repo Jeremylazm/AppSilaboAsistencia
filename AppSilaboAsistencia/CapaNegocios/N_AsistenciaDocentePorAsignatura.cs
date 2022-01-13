@@ -43,9 +43,9 @@ namespace CapaNegocios
             return new D_AsistenciaDocentePorAsignatura().AvanceAsignaturasDocente(CodSemestre, CodDocente);
         }
 
-        public static DataTable AvanceAsignaturasDpto(string CodSemestre, string CodDepartamentoA, string LimFechaInf, string LimFechaSup)
+        public static DataTable AvanceAsignaturasDpto(string CodSemestre, string CodDepartamentoA)
         {
-            return new D_AsistenciaDocentePorAsignatura().AvanceAsignaturasDpto(CodSemestre, CodDepartamentoA, LimFechaInf, LimFechaSup);
+            return new D_AsistenciaDocentePorAsignatura().AvanceAsignaturasDpto(CodSemestre, CodDepartamentoA);
         }
 
         public static DataTable AsistenciaAsignaturasDocente(string CodSemestre, string CodDocente, string LimFechaInf, string LimFechaSup)

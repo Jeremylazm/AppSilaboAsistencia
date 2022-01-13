@@ -1479,6 +1479,7 @@ namespace CapaPresentaciones
             this.btnReportesJefe.TextMarginLeft = 0;
             this.btnReportesJefe.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnReportesJefe.UseDefaultRadiusAndThickness = true;
+            this.btnReportesJefe.Click += new System.EventHandler(this.btnReportesJefe_Click);
             // 
             // btnAsistenciasDocentes
             // 
@@ -1860,6 +1861,7 @@ namespace CapaPresentaciones
             this.btnReportesDirector.TextMarginLeft = 0;
             this.btnReportesDirector.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnReportesDirector.UseDefaultRadiusAndThickness = true;
+            this.btnReportesDirector.Click += new System.EventHandler(this.btnReportesDirector_Click);
             // 
             // btnMarcarAsistencia
             // 
@@ -1951,6 +1953,7 @@ namespace CapaPresentaciones
             this.btnMarcarAsistencia.TextMarginLeft = 0;
             this.btnMarcarAsistencia.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnMarcarAsistencia.UseDefaultRadiusAndThickness = true;
+            this.btnMarcarAsistencia.Click += new System.EventHandler(this.btnMarcarAsistencia_Click);
             // 
             // pbMarcarAsistencia
             // 
@@ -2226,7 +2229,7 @@ namespace CapaPresentaciones
             this.Controls.Add(this.pnPrincipal);
             this.Transicion.SetDecoration(this, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimumSize = new System.Drawing.Size(1330, 768);
+            this.MinimumSize = new System.Drawing.Size(1330, 726);
             this.Name = "P_Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Principal";

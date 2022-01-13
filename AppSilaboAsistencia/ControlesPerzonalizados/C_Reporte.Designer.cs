@@ -29,6 +29,7 @@ namespace ControlesPerzonalizados
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(C_Reporte));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,6 +39,9 @@ namespace ControlesPerzonalizados
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
             this.pnTitulo = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnSuperior = new Bunifu.UI.WinForms.BunifuPanel();
@@ -56,10 +60,27 @@ namespace ControlesPerzonalizados
             this.pnContenedorGraficos = new Bunifu.UI.WinForms.BunifuPanel();
             this.gbxGraficos = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnGraficos = new Bunifu.UI.WinForms.BunifuPanel();
-            this.tcGraficos = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pnBotonesGraficos = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnGrafico1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            this.btnGrafico2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.Cuadricula = new System.Windows.Forms.TableLayoutPanel();
             this.pnInferior = new Bunifu.UI.WinForms.BunifuPanel();
+            this.tcGraficos = new Bunifu.UI.WinForms.BunifuPages();
+            this.GraficoBarrasHorizontales = new Bunifu.Charts.WinForms.ChartTypes.BunifuHorizontalBarChart(this.components);
+            this.tbPagina1 = new System.Windows.Forms.TabPage();
+            this.gxGrafico1 = new Bunifu.Charts.WinForms.BunifuChartCanvas();
+            this.tbPagina2 = new System.Windows.Forms.TabPage();
+            this.gxGrafico2 = new Bunifu.Charts.WinForms.BunifuChartCanvas();
+            this.tbPagina3 = new System.Windows.Forms.TabPage();
+            this.gxGrafico3 = new Bunifu.Charts.WinForms.BunifuChartCanvas();
+            this.tbPagina4 = new System.Windows.Forms.TabPage();
+            this.gxGrafico4 = new Bunifu.Charts.WinForms.BunifuChartCanvas();
+            this.tbPagina5 = new System.Windows.Forms.TabPage();
+            this.gxGrafico5 = new Bunifu.Charts.WinForms.BunifuChartCanvas();
+            this.GraficoLineas = new Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart(this.components);
+            this.GraficoBarrasVerticales = new Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart(this.components);
+            this.GraficoCircular = new Bunifu.Charts.WinForms.ChartTypes.BunifuPieChart(this.components);
+            this.GraficoBarrasCompletas = new Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart(this.components);
             this.pnTitulo.SuspendLayout();
             this.pnSuperior.SuspendLayout();
             this.pnCampos.SuspendLayout();
@@ -71,9 +92,15 @@ namespace ControlesPerzonalizados
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumen)).BeginInit();
             this.pnContenedorGraficos.SuspendLayout();
             this.pnGraficos.SuspendLayout();
-            this.tcGraficos.SuspendLayout();
+            this.pnBotonesGraficos.SuspendLayout();
             this.Cuadricula.SuspendLayout();
             this.pnInferior.SuspendLayout();
+            this.tcGraficos.SuspendLayout();
+            this.tbPagina1.SuspendLayout();
+            this.tbPagina2.SuspendLayout();
+            this.tbPagina3.SuspendLayout();
+            this.tbPagina4.SuspendLayout();
+            this.tbPagina5.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnTitulo
@@ -547,6 +574,7 @@ namespace ControlesPerzonalizados
             this.pnGraficos.BorderRadius = 20;
             this.pnGraficos.BorderThickness = 1;
             this.pnGraficos.Controls.Add(this.tcGraficos);
+            this.pnGraficos.Controls.Add(this.pnBotonesGraficos);
             this.pnGraficos.Location = new System.Drawing.Point(3, 16);
             this.pnGraficos.Margin = new System.Windows.Forms.Padding(0);
             this.pnGraficos.Name = "pnGraficos";
@@ -554,28 +582,198 @@ namespace ControlesPerzonalizados
             this.pnGraficos.Size = new System.Drawing.Size(1056, 685);
             this.pnGraficos.TabIndex = 99;
             // 
-            // tcGraficos
+            // pnBotonesGraficos
             // 
-            this.tcGraficos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnBotonesGraficos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tcGraficos.Controls.Add(this.tabPage1);
-            this.tcGraficos.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tcGraficos.Location = new System.Drawing.Point(13, 16);
-            this.tcGraficos.Name = "tcGraficos";
-            this.tcGraficos.SelectedIndex = 0;
-            this.tcGraficos.Size = new System.Drawing.Size(1032, 656);
-            this.tcGraficos.TabIndex = 1;
+            this.pnBotonesGraficos.Controls.Add(this.btnGrafico1);
+            this.pnBotonesGraficos.Controls.Add(this.btnGrafico2);
+            this.pnBotonesGraficos.Location = new System.Drawing.Point(17, 16);
+            this.pnBotonesGraficos.Name = "pnBotonesGraficos";
+            this.pnBotonesGraficos.Size = new System.Drawing.Size(1027, 46);
+            this.pnBotonesGraficos.TabIndex = 1;
             // 
-            // tabPage1
+            // btnGrafico1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.White;
-            this.tabPage1.Location = new System.Drawing.Point(4, 31);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1024, 621);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Gráfico 1";
+            this.btnGrafico1.AllowAnimations = true;
+            this.btnGrafico1.AllowMouseEffects = true;
+            this.btnGrafico1.AllowToggling = true;
+            this.btnGrafico1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnGrafico1.AnimationSpeed = 200;
+            this.btnGrafico1.AutoGenerateColors = false;
+            this.btnGrafico1.AutoRoundBorders = false;
+            this.btnGrafico1.AutoSizeLeftIcon = true;
+            this.btnGrafico1.AutoSizeRightIcon = true;
+            this.btnGrafico1.BackColor = System.Drawing.Color.Transparent;
+            this.btnGrafico1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGrafico1.BackgroundImage")));
+            this.btnGrafico1.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico1.ButtonText = "Gráfico 1";
+            this.btnGrafico1.ButtonTextMarginLeft = 0;
+            this.btnGrafico1.ColorContrastOnClick = 45;
+            this.btnGrafico1.ColorContrastOnHover = 45;
+            this.btnGrafico1.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnGrafico1.CustomizableEdges = borderEdges1;
+            this.btnGrafico1.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGrafico1.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnGrafico1.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnGrafico1.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnGrafico1.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            this.btnGrafico1.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrafico1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico1.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGrafico1.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnGrafico1.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnGrafico1.IconMarginLeft = 11;
+            this.btnGrafico1.IconPadding = 10;
+            this.btnGrafico1.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGrafico1.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnGrafico1.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnGrafico1.IconSize = 25;
+            this.btnGrafico1.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico1.IdleBorderRadius = 15;
+            this.btnGrafico1.IdleBorderThickness = 1;
+            this.btnGrafico1.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico1.IdleIconLeftImage = null;
+            this.btnGrafico1.IdleIconRightImage = null;
+            this.btnGrafico1.IndicateFocus = true;
+            this.btnGrafico1.Location = new System.Drawing.Point(3, 3);
+            this.btnGrafico1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.btnGrafico1.Name = "btnGrafico1";
+            this.btnGrafico1.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnGrafico1.OnDisabledState.BorderRadius = 15;
+            this.btnGrafico1.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico1.OnDisabledState.BorderThickness = 1;
+            this.btnGrafico1.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnGrafico1.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnGrafico1.OnDisabledState.IconLeftImage = null;
+            this.btnGrafico1.OnDisabledState.IconRightImage = null;
+            this.btnGrafico1.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico1.onHoverState.BorderRadius = 15;
+            this.btnGrafico1.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico1.onHoverState.BorderThickness = 1;
+            this.btnGrafico1.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico1.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico1.onHoverState.IconLeftImage = null;
+            this.btnGrafico1.onHoverState.IconRightImage = null;
+            this.btnGrafico1.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico1.OnIdleState.BorderRadius = 15;
+            this.btnGrafico1.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico1.OnIdleState.BorderThickness = 1;
+            this.btnGrafico1.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico1.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico1.OnIdleState.IconLeftImage = null;
+            this.btnGrafico1.OnIdleState.IconRightImage = null;
+            this.btnGrafico1.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico1.OnPressedState.BorderRadius = 15;
+            this.btnGrafico1.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico1.OnPressedState.BorderThickness = 1;
+            this.btnGrafico1.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico1.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico1.OnPressedState.IconLeftImage = null;
+            this.btnGrafico1.OnPressedState.IconRightImage = null;
+            this.btnGrafico1.Size = new System.Drawing.Size(101, 39);
+            this.btnGrafico1.TabIndex = 64;
+            this.btnGrafico1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGrafico1.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnGrafico1.TextMarginLeft = 0;
+            this.btnGrafico1.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnGrafico1.UseDefaultRadiusAndThickness = true;
+            // 
+            // btnGrafico2
+            // 
+            this.btnGrafico2.AllowAnimations = true;
+            this.btnGrafico2.AllowMouseEffects = true;
+            this.btnGrafico2.AllowToggling = true;
+            this.btnGrafico2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnGrafico2.AnimationSpeed = 200;
+            this.btnGrafico2.AutoGenerateColors = false;
+            this.btnGrafico2.AutoRoundBorders = false;
+            this.btnGrafico2.AutoSizeLeftIcon = true;
+            this.btnGrafico2.AutoSizeRightIcon = true;
+            this.btnGrafico2.BackColor = System.Drawing.Color.Transparent;
+            this.btnGrafico2.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGrafico2.BackgroundImage")));
+            this.btnGrafico2.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico2.ButtonText = "Gráfico 2";
+            this.btnGrafico2.ButtonTextMarginLeft = 0;
+            this.btnGrafico2.ColorContrastOnClick = 45;
+            this.btnGrafico2.ColorContrastOnHover = 45;
+            this.btnGrafico2.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnGrafico2.CustomizableEdges = borderEdges2;
+            this.btnGrafico2.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGrafico2.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnGrafico2.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnGrafico2.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnGrafico2.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            this.btnGrafico2.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrafico2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico2.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGrafico2.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnGrafico2.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnGrafico2.IconMarginLeft = 11;
+            this.btnGrafico2.IconPadding = 10;
+            this.btnGrafico2.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGrafico2.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnGrafico2.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnGrafico2.IconSize = 25;
+            this.btnGrafico2.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico2.IdleBorderRadius = 15;
+            this.btnGrafico2.IdleBorderThickness = 1;
+            this.btnGrafico2.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico2.IdleIconLeftImage = null;
+            this.btnGrafico2.IdleIconRightImage = null;
+            this.btnGrafico2.IndicateFocus = true;
+            this.btnGrafico2.Location = new System.Drawing.Point(104, 3);
+            this.btnGrafico2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.btnGrafico2.Name = "btnGrafico2";
+            this.btnGrafico2.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnGrafico2.OnDisabledState.BorderRadius = 15;
+            this.btnGrafico2.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico2.OnDisabledState.BorderThickness = 1;
+            this.btnGrafico2.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnGrafico2.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnGrafico2.OnDisabledState.IconLeftImage = null;
+            this.btnGrafico2.OnDisabledState.IconRightImage = null;
+            this.btnGrafico2.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico2.onHoverState.BorderRadius = 15;
+            this.btnGrafico2.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico2.onHoverState.BorderThickness = 1;
+            this.btnGrafico2.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico2.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico2.onHoverState.IconLeftImage = null;
+            this.btnGrafico2.onHoverState.IconRightImage = null;
+            this.btnGrafico2.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico2.OnIdleState.BorderRadius = 15;
+            this.btnGrafico2.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico2.OnIdleState.BorderThickness = 1;
+            this.btnGrafico2.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico2.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico2.OnIdleState.IconLeftImage = null;
+            this.btnGrafico2.OnIdleState.IconRightImage = null;
+            this.btnGrafico2.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico2.OnPressedState.BorderRadius = 15;
+            this.btnGrafico2.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico2.OnPressedState.BorderThickness = 1;
+            this.btnGrafico2.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico2.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico2.OnPressedState.IconLeftImage = null;
+            this.btnGrafico2.OnPressedState.IconRightImage = null;
+            this.btnGrafico2.Size = new System.Drawing.Size(101, 39);
+            this.btnGrafico2.TabIndex = 65;
+            this.btnGrafico2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGrafico2.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnGrafico2.TextMarginLeft = 0;
+            this.btnGrafico2.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnGrafico2.UseDefaultRadiusAndThickness = true;
             // 
             // Cuadricula
             // 
@@ -615,6 +813,493 @@ namespace ControlesPerzonalizados
             this.pnInferior.Size = new System.Drawing.Size(1062, 1431);
             this.pnInferior.TabIndex = 91;
             // 
+            // tcGraficos
+            // 
+            this.tcGraficos.Alignment = System.Windows.Forms.TabAlignment.Bottom;
+            this.tcGraficos.AllowTransitions = false;
+            this.tcGraficos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tcGraficos.Controls.Add(this.tbPagina1);
+            this.tcGraficos.Controls.Add(this.tbPagina2);
+            this.tcGraficos.Controls.Add(this.tbPagina3);
+            this.tcGraficos.Controls.Add(this.tbPagina4);
+            this.tcGraficos.Controls.Add(this.tbPagina5);
+            this.tcGraficos.Location = new System.Drawing.Point(13, 68);
+            this.tcGraficos.Multiline = true;
+            this.tcGraficos.Name = "tcGraficos";
+            this.tcGraficos.Page = this.tbPagina5;
+            this.tcGraficos.PageIndex = 4;
+            this.tcGraficos.PageName = "tbPagina5";
+            this.tcGraficos.PageTitle = "5";
+            this.tcGraficos.SelectedIndex = 0;
+            this.tcGraficos.Size = new System.Drawing.Size(1036, 613);
+            this.tcGraficos.TabIndex = 2;
+            animation1.AnimateOnlyDifferences = false;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.tcGraficos.Transition = animation1;
+            this.tcGraficos.TransitionType = Utilities.BunifuPages.BunifuAnimatorNS.AnimationType.Custom;
+            // 
+            // GraficoBarrasHorizontales
+            // 
+            this.GraficoBarrasHorizontales.BackgroundColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasHorizontales.BackgroundColor")));
+            this.GraficoBarrasHorizontales.BorderColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasHorizontales.BorderColor")));
+            this.GraficoBarrasHorizontales.BorderSkipped = null;
+            this.GraficoBarrasHorizontales.BorderWidth = 0;
+            this.GraficoBarrasHorizontales.Data = ((System.Collections.Generic.List<double>)(resources.GetObject("GraficoBarrasHorizontales.Data")));
+            this.GraficoBarrasHorizontales.HoverBackgroundColor = System.Drawing.Color.Empty;
+            this.GraficoBarrasHorizontales.HoverBorderColor = System.Drawing.Color.Empty;
+            this.GraficoBarrasHorizontales.HoverBorderWidth = 0;
+            this.GraficoBarrasHorizontales.Label = "Leyenda";
+            this.GraficoBarrasHorizontales.TargetCanvas = this.gxGrafico1;
+            // 
+            // tbPagina1
+            // 
+            this.tbPagina1.BackColor = System.Drawing.Color.White;
+            this.tbPagina1.Controls.Add(this.gxGrafico1);
+            this.tbPagina1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.tbPagina1.Location = new System.Drawing.Point(4, 4);
+            this.tbPagina1.Name = "tbPagina1";
+            this.tbPagina1.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPagina1.Size = new System.Drawing.Size(1028, 587);
+            this.tbPagina1.TabIndex = 1;
+            this.tbPagina1.Text = "1";
+            // 
+            // gxGrafico1
+            // 
+            this.gxGrafico1.AnimationDuration = 1000;
+            this.gxGrafico1.AnimationType = Bunifu.Charts.WinForms.BunifuChartCanvas.AnimationOptions.easeOutQuart;
+            this.gxGrafico1.BackColor = System.Drawing.Color.White;
+            this.gxGrafico1.CanvasPadding = new System.Windows.Forms.Padding(0, 0, 25, 5);
+            this.gxGrafico1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gxGrafico1.Font = new System.Drawing.Font("Montserrat Alternates", 7F);
+            this.gxGrafico1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico1.Labels = null;
+            this.gxGrafico1.LegendAlignment = Bunifu.Charts.WinForms.BunifuChartCanvas.LegendAlignmentOptions.center;
+            this.gxGrafico1.LegendDisplay = true;
+            this.gxGrafico1.LegendFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico1.LegendForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico1.LegendFullWidth = true;
+            this.gxGrafico1.LegendPosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
+            this.gxGrafico1.LegendRevese = false;
+            this.gxGrafico1.LegendRTL = false;
+            this.gxGrafico1.Location = new System.Drawing.Point(3, 3);
+            this.gxGrafico1.Margin = new System.Windows.Forms.Padding(0);
+            this.gxGrafico1.Name = "gxGrafico1";
+            this.gxGrafico1.ShowXAxis = true;
+            this.gxGrafico1.ShowYAxis = true;
+            this.gxGrafico1.Size = new System.Drawing.Size(1022, 581);
+            this.gxGrafico1.TabIndex = 0;
+            this.gxGrafico1.Title = "";
+            this.gxGrafico1.TitleLineHeight = 1.2D;
+            this.gxGrafico1.TitlePadding = 10;
+            this.gxGrafico1.TitlePosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
+            this.gxGrafico1.TooltipBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gxGrafico1.TooltipFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico1.TooltipForeColor = System.Drawing.Color.White;
+            this.gxGrafico1.TooltipMode = Bunifu.Charts.WinForms.BunifuChartCanvas.TooltipModeOptions.nearest;
+            this.gxGrafico1.TooltipsEnabled = true;
+            this.gxGrafico1.XAxesBeginAtZero = true;
+            this.gxGrafico1.XAxesDrawTicks = true;
+            this.gxGrafico1.XAxesFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico1.XAxesForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico1.XAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico1.XAxesGridLines = true;
+            this.gxGrafico1.XAxesLabel = "Label X";
+            this.gxGrafico1.XAxesLabelFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
+            this.gxGrafico1.XAxesLabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico1.XAxesLineWidth = 1;
+            this.gxGrafico1.XAxesStacked = false;
+            this.gxGrafico1.XAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico1.XAxesZeroLineWidth = 1;
+            this.gxGrafico1.YAxesBeginAtZero = true;
+            this.gxGrafico1.YAxesDrawTicks = true;
+            this.gxGrafico1.YAxesFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico1.YAxesForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico1.YAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico1.YAxesGridLines = true;
+            this.gxGrafico1.YAxesLabel = "Label Y";
+            this.gxGrafico1.YAxesLabelFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
+            this.gxGrafico1.YAxesLabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico1.YAxesLineWidth = 1;
+            this.gxGrafico1.YAxesStacked = false;
+            this.gxGrafico1.YAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico1.YAxesZeroLineWidth = 1;
+            // 
+            // tbPagina2
+            // 
+            this.tbPagina2.BackColor = System.Drawing.Color.White;
+            this.tbPagina2.Controls.Add(this.gxGrafico2);
+            this.tbPagina2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.tbPagina2.Location = new System.Drawing.Point(4, 4);
+            this.tbPagina2.Name = "tbPagina2";
+            this.tbPagina2.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPagina2.Size = new System.Drawing.Size(1028, 587);
+            this.tbPagina2.TabIndex = 2;
+            this.tbPagina2.Text = "2";
+            // 
+            // gxGrafico2
+            // 
+            this.gxGrafico2.AnimationDuration = 1000;
+            this.gxGrafico2.AnimationType = Bunifu.Charts.WinForms.BunifuChartCanvas.AnimationOptions.easeOutQuart;
+            this.gxGrafico2.BackColor = System.Drawing.Color.White;
+            this.gxGrafico2.CanvasPadding = new System.Windows.Forms.Padding(0, 0, 25, 5);
+            this.gxGrafico2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gxGrafico2.Font = new System.Drawing.Font("Montserrat Alternates", 7F);
+            this.gxGrafico2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico2.Labels = null;
+            this.gxGrafico2.LegendAlignment = Bunifu.Charts.WinForms.BunifuChartCanvas.LegendAlignmentOptions.center;
+            this.gxGrafico2.LegendDisplay = true;
+            this.gxGrafico2.LegendFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico2.LegendForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico2.LegendFullWidth = true;
+            this.gxGrafico2.LegendPosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
+            this.gxGrafico2.LegendRevese = false;
+            this.gxGrafico2.LegendRTL = false;
+            this.gxGrafico2.Location = new System.Drawing.Point(3, 3);
+            this.gxGrafico2.Margin = new System.Windows.Forms.Padding(0);
+            this.gxGrafico2.Name = "gxGrafico2";
+            this.gxGrafico2.ShowXAxis = true;
+            this.gxGrafico2.ShowYAxis = true;
+            this.gxGrafico2.Size = new System.Drawing.Size(1022, 581);
+            this.gxGrafico2.TabIndex = 0;
+            this.gxGrafico2.Title = "";
+            this.gxGrafico2.TitleLineHeight = 1.2D;
+            this.gxGrafico2.TitlePadding = 10;
+            this.gxGrafico2.TitlePosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
+            this.gxGrafico2.TooltipBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gxGrafico2.TooltipFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico2.TooltipForeColor = System.Drawing.Color.White;
+            this.gxGrafico2.TooltipMode = Bunifu.Charts.WinForms.BunifuChartCanvas.TooltipModeOptions.nearest;
+            this.gxGrafico2.TooltipsEnabled = true;
+            this.gxGrafico2.XAxesBeginAtZero = true;
+            this.gxGrafico2.XAxesDrawTicks = true;
+            this.gxGrafico2.XAxesFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico2.XAxesForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico2.XAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico2.XAxesGridLines = true;
+            this.gxGrafico2.XAxesLabel = "Label X";
+            this.gxGrafico2.XAxesLabelFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
+            this.gxGrafico2.XAxesLabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico2.XAxesLineWidth = 1;
+            this.gxGrafico2.XAxesStacked = false;
+            this.gxGrafico2.XAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico2.XAxesZeroLineWidth = 1;
+            this.gxGrafico2.YAxesBeginAtZero = true;
+            this.gxGrafico2.YAxesDrawTicks = true;
+            this.gxGrafico2.YAxesFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico2.YAxesForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico2.YAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico2.YAxesGridLines = true;
+            this.gxGrafico2.YAxesLabel = "Label Y";
+            this.gxGrafico2.YAxesLabelFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
+            this.gxGrafico2.YAxesLabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico2.YAxesLineWidth = 1;
+            this.gxGrafico2.YAxesStacked = false;
+            this.gxGrafico2.YAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico2.YAxesZeroLineWidth = 1;
+            // 
+            // tbPagina3
+            // 
+            this.tbPagina3.BackColor = System.Drawing.Color.White;
+            this.tbPagina3.Controls.Add(this.gxGrafico3);
+            this.tbPagina3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.tbPagina3.Location = new System.Drawing.Point(4, 4);
+            this.tbPagina3.Name = "tbPagina3";
+            this.tbPagina3.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPagina3.Size = new System.Drawing.Size(1028, 587);
+            this.tbPagina3.TabIndex = 3;
+            this.tbPagina3.Text = "3";
+            // 
+            // gxGrafico3
+            // 
+            this.gxGrafico3.AnimationDuration = 1000;
+            this.gxGrafico3.AnimationType = Bunifu.Charts.WinForms.BunifuChartCanvas.AnimationOptions.easeOutQuart;
+            this.gxGrafico3.BackColor = System.Drawing.Color.White;
+            this.gxGrafico3.CanvasPadding = new System.Windows.Forms.Padding(0, 0, 25, 5);
+            this.gxGrafico3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gxGrafico3.Font = new System.Drawing.Font("Montserrat Alternates", 7F);
+            this.gxGrafico3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico3.Labels = null;
+            this.gxGrafico3.LegendAlignment = Bunifu.Charts.WinForms.BunifuChartCanvas.LegendAlignmentOptions.center;
+            this.gxGrafico3.LegendDisplay = true;
+            this.gxGrafico3.LegendFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico3.LegendForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico3.LegendFullWidth = true;
+            this.gxGrafico3.LegendPosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
+            this.gxGrafico3.LegendRevese = false;
+            this.gxGrafico3.LegendRTL = false;
+            this.gxGrafico3.Location = new System.Drawing.Point(3, 3);
+            this.gxGrafico3.Margin = new System.Windows.Forms.Padding(0);
+            this.gxGrafico3.Name = "gxGrafico3";
+            this.gxGrafico3.ShowXAxis = true;
+            this.gxGrafico3.ShowYAxis = true;
+            this.gxGrafico3.Size = new System.Drawing.Size(1022, 581);
+            this.gxGrafico3.TabIndex = 0;
+            this.gxGrafico3.Title = "";
+            this.gxGrafico3.TitleLineHeight = 1.2D;
+            this.gxGrafico3.TitlePadding = 10;
+            this.gxGrafico3.TitlePosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
+            this.gxGrafico3.TooltipBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gxGrafico3.TooltipFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico3.TooltipForeColor = System.Drawing.Color.White;
+            this.gxGrafico3.TooltipMode = Bunifu.Charts.WinForms.BunifuChartCanvas.TooltipModeOptions.nearest;
+            this.gxGrafico3.TooltipsEnabled = true;
+            this.gxGrafico3.XAxesBeginAtZero = true;
+            this.gxGrafico3.XAxesDrawTicks = true;
+            this.gxGrafico3.XAxesFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico3.XAxesForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico3.XAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico3.XAxesGridLines = true;
+            this.gxGrafico3.XAxesLabel = "Label X";
+            this.gxGrafico3.XAxesLabelFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
+            this.gxGrafico3.XAxesLabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico3.XAxesLineWidth = 1;
+            this.gxGrafico3.XAxesStacked = false;
+            this.gxGrafico3.XAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico3.XAxesZeroLineWidth = 1;
+            this.gxGrafico3.YAxesBeginAtZero = true;
+            this.gxGrafico3.YAxesDrawTicks = true;
+            this.gxGrafico3.YAxesFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico3.YAxesForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico3.YAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico3.YAxesGridLines = true;
+            this.gxGrafico3.YAxesLabel = "Label Y";
+            this.gxGrafico3.YAxesLabelFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
+            this.gxGrafico3.YAxesLabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico3.YAxesLineWidth = 1;
+            this.gxGrafico3.YAxesStacked = false;
+            this.gxGrafico3.YAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico3.YAxesZeroLineWidth = 1;
+            // 
+            // tbPagina4
+            // 
+            this.tbPagina4.BackColor = System.Drawing.Color.White;
+            this.tbPagina4.Controls.Add(this.gxGrafico4);
+            this.tbPagina4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.tbPagina4.Location = new System.Drawing.Point(4, 4);
+            this.tbPagina4.Name = "tbPagina4";
+            this.tbPagina4.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPagina4.Size = new System.Drawing.Size(1028, 587);
+            this.tbPagina4.TabIndex = 4;
+            this.tbPagina4.Text = "4";
+            // 
+            // gxGrafico4
+            // 
+            this.gxGrafico4.AnimationDuration = 1000;
+            this.gxGrafico4.AnimationType = Bunifu.Charts.WinForms.BunifuChartCanvas.AnimationOptions.easeOutQuart;
+            this.gxGrafico4.BackColor = System.Drawing.Color.White;
+            this.gxGrafico4.CanvasPadding = new System.Windows.Forms.Padding(0, 0, 25, 5);
+            this.gxGrafico4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gxGrafico4.Font = new System.Drawing.Font("Montserrat Alternates", 7F);
+            this.gxGrafico4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico4.Labels = null;
+            this.gxGrafico4.LegendAlignment = Bunifu.Charts.WinForms.BunifuChartCanvas.LegendAlignmentOptions.center;
+            this.gxGrafico4.LegendDisplay = true;
+            this.gxGrafico4.LegendFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico4.LegendForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico4.LegendFullWidth = true;
+            this.gxGrafico4.LegendPosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
+            this.gxGrafico4.LegendRevese = false;
+            this.gxGrafico4.LegendRTL = false;
+            this.gxGrafico4.Location = new System.Drawing.Point(3, 3);
+            this.gxGrafico4.Margin = new System.Windows.Forms.Padding(0);
+            this.gxGrafico4.Name = "gxGrafico4";
+            this.gxGrafico4.ShowXAxis = true;
+            this.gxGrafico4.ShowYAxis = true;
+            this.gxGrafico4.Size = new System.Drawing.Size(1022, 581);
+            this.gxGrafico4.TabIndex = 0;
+            this.gxGrafico4.Title = "";
+            this.gxGrafico4.TitleLineHeight = 1.2D;
+            this.gxGrafico4.TitlePadding = 10;
+            this.gxGrafico4.TitlePosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
+            this.gxGrafico4.TooltipBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gxGrafico4.TooltipFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico4.TooltipForeColor = System.Drawing.Color.White;
+            this.gxGrafico4.TooltipMode = Bunifu.Charts.WinForms.BunifuChartCanvas.TooltipModeOptions.nearest;
+            this.gxGrafico4.TooltipsEnabled = true;
+            this.gxGrafico4.XAxesBeginAtZero = true;
+            this.gxGrafico4.XAxesDrawTicks = true;
+            this.gxGrafico4.XAxesFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico4.XAxesForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico4.XAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico4.XAxesGridLines = true;
+            this.gxGrafico4.XAxesLabel = "Label X";
+            this.gxGrafico4.XAxesLabelFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
+            this.gxGrafico4.XAxesLabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico4.XAxesLineWidth = 1;
+            this.gxGrafico4.XAxesStacked = false;
+            this.gxGrafico4.XAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico4.XAxesZeroLineWidth = 1;
+            this.gxGrafico4.YAxesBeginAtZero = true;
+            this.gxGrafico4.YAxesDrawTicks = true;
+            this.gxGrafico4.YAxesFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico4.YAxesForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico4.YAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico4.YAxesGridLines = true;
+            this.gxGrafico4.YAxesLabel = "Label Y";
+            this.gxGrafico4.YAxesLabelFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
+            this.gxGrafico4.YAxesLabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico4.YAxesLineWidth = 1;
+            this.gxGrafico4.YAxesStacked = false;
+            this.gxGrafico4.YAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico4.YAxesZeroLineWidth = 1;
+            // 
+            // tbPagina5
+            // 
+            this.tbPagina5.BackColor = System.Drawing.Color.White;
+            this.tbPagina5.Controls.Add(this.gxGrafico5);
+            this.tbPagina5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.tbPagina5.Location = new System.Drawing.Point(4, 4);
+            this.tbPagina5.Name = "tbPagina5";
+            this.tbPagina5.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPagina5.Size = new System.Drawing.Size(1028, 587);
+            this.tbPagina5.TabIndex = 5;
+            this.tbPagina5.Text = "5";
+            // 
+            // gxGrafico5
+            // 
+            this.gxGrafico5.AnimationDuration = 1000;
+            this.gxGrafico5.AnimationType = Bunifu.Charts.WinForms.BunifuChartCanvas.AnimationOptions.easeOutQuart;
+            this.gxGrafico5.BackColor = System.Drawing.Color.White;
+            this.gxGrafico5.CanvasPadding = new System.Windows.Forms.Padding(0, 0, 25, 5);
+            this.gxGrafico5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gxGrafico5.Font = new System.Drawing.Font("Montserrat Alternates", 7F);
+            this.gxGrafico5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico5.Labels = null;
+            this.gxGrafico5.LegendAlignment = Bunifu.Charts.WinForms.BunifuChartCanvas.LegendAlignmentOptions.center;
+            this.gxGrafico5.LegendDisplay = true;
+            this.gxGrafico5.LegendFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico5.LegendForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico5.LegendFullWidth = true;
+            this.gxGrafico5.LegendPosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
+            this.gxGrafico5.LegendRevese = false;
+            this.gxGrafico5.LegendRTL = false;
+            this.gxGrafico5.Location = new System.Drawing.Point(3, 3);
+            this.gxGrafico5.Margin = new System.Windows.Forms.Padding(0);
+            this.gxGrafico5.Name = "gxGrafico5";
+            this.gxGrafico5.ShowXAxis = true;
+            this.gxGrafico5.ShowYAxis = true;
+            this.gxGrafico5.Size = new System.Drawing.Size(1022, 581);
+            this.gxGrafico5.TabIndex = 0;
+            this.gxGrafico5.Title = "";
+            this.gxGrafico5.TitleLineHeight = 1.2D;
+            this.gxGrafico5.TitlePadding = 10;
+            this.gxGrafico5.TitlePosition = Bunifu.Charts.WinForms.BunifuChartCanvas.PositionOptions.top;
+            this.gxGrafico5.TooltipBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gxGrafico5.TooltipFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico5.TooltipForeColor = System.Drawing.Color.White;
+            this.gxGrafico5.TooltipMode = Bunifu.Charts.WinForms.BunifuChartCanvas.TooltipModeOptions.nearest;
+            this.gxGrafico5.TooltipsEnabled = true;
+            this.gxGrafico5.XAxesBeginAtZero = true;
+            this.gxGrafico5.XAxesDrawTicks = true;
+            this.gxGrafico5.XAxesFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico5.XAxesForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico5.XAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico5.XAxesGridLines = true;
+            this.gxGrafico5.XAxesLabel = "Label X";
+            this.gxGrafico5.XAxesLabelFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
+            this.gxGrafico5.XAxesLabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico5.XAxesLineWidth = 1;
+            this.gxGrafico5.XAxesStacked = false;
+            this.gxGrafico5.XAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico5.XAxesZeroLineWidth = 1;
+            this.gxGrafico5.YAxesBeginAtZero = true;
+            this.gxGrafico5.YAxesDrawTicks = true;
+            this.gxGrafico5.YAxesFont = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.gxGrafico5.YAxesForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico5.YAxesGridColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico5.YAxesGridLines = true;
+            this.gxGrafico5.YAxesLabel = "Label Y";
+            this.gxGrafico5.YAxesLabelFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
+            this.gxGrafico5.YAxesLabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.gxGrafico5.YAxesLineWidth = 1;
+            this.gxGrafico5.YAxesStacked = false;
+            this.gxGrafico5.YAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
+            this.gxGrafico5.YAxesZeroLineWidth = 1;
+            // 
+            // GraficoLineas
+            // 
+            this.GraficoLineas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.GraficoLineas.BorderCapStyle = Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart.LineCaps.Butt;
+            this.GraficoLineas.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.GraficoLineas.BorderDash = null;
+            this.GraficoLineas.BorderDashOffset = 0D;
+            this.GraficoLineas.BorderJoin = Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart.BorderJoinStyles.Miter;
+            this.GraficoLineas.BorderWidth = 3;
+            this.GraficoLineas.CubicInterpolationMode = Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart.CubicInterpolationModes.Default;
+            this.GraficoLineas.Data = ((System.Collections.Generic.List<double>)(resources.GetObject("GraficoLineas.Data")));
+            this.GraficoLineas.Fill = Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart.FillOptions.Blank;
+            this.GraficoLineas.Label = "Leyenda";
+            this.GraficoLineas.LineTension = 0.4D;
+            this.GraficoLineas.Order = 0;
+            this.GraficoLineas.PointBackgroundColor = System.Drawing.Color.Empty;
+            this.GraficoLineas.PointBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.GraficoLineas.PointBorderWidth = 1;
+            this.GraficoLineas.PointHitRadius = 1;
+            this.GraficoLineas.PointHoverBackgroundColor = System.Drawing.Color.Empty;
+            this.GraficoLineas.PointHoverBorderColor = System.Drawing.Color.Empty;
+            this.GraficoLineas.PointHoverBorderWidth = 4;
+            this.GraficoLineas.PointHoverRadius = 1;
+            this.GraficoLineas.PointRadius = 3;
+            this.GraficoLineas.PointRotation = 0;
+            this.GraficoLineas.PointStyle = Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart.PointStyles.Circle;
+            this.GraficoLineas.ShowLine = true;
+            this.GraficoLineas.SpanGaps = false;
+            this.GraficoLineas.SteppedLine = Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart.SteppedLineStyles.False;
+            this.GraficoLineas.TargetCanvas = this.gxGrafico2;
+            // 
+            // GraficoBarrasVerticales
+            // 
+            this.GraficoBarrasVerticales.BackgroundColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasVerticales.BackgroundColor")));
+            this.GraficoBarrasVerticales.BorderColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasVerticales.BorderColor")));
+            this.GraficoBarrasVerticales.BorderSkipped = null;
+            this.GraficoBarrasVerticales.BorderWidth = 0;
+            this.GraficoBarrasVerticales.Data = ((System.Collections.Generic.List<double>)(resources.GetObject("GraficoBarrasVerticales.Data")));
+            this.GraficoBarrasVerticales.HoverBackgroundColor = System.Drawing.Color.Empty;
+            this.GraficoBarrasVerticales.HoverBorderColor = System.Drawing.Color.Empty;
+            this.GraficoBarrasVerticales.HoverBorderWidth = 0;
+            this.GraficoBarrasVerticales.Label = "Leyenda";
+            this.GraficoBarrasVerticales.TargetCanvas = this.gxGrafico3;
+            // 
+            // GraficoCircular
+            // 
+            this.GraficoCircular.BackgroundColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoCircular.BackgroundColor")));
+            this.GraficoCircular.BorderColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoCircular.BorderColor")));
+            this.GraficoCircular.BorderWidth = 0;
+            this.GraficoCircular.Data = ((System.Collections.Generic.List<double>)(resources.GetObject("GraficoCircular.Data")));
+            this.GraficoCircular.HoverBackgroundColor = System.Drawing.Color.Empty;
+            this.GraficoCircular.HoverBorderColor = System.Drawing.Color.Empty;
+            this.GraficoCircular.HoverBorderWidth = 0;
+            this.GraficoCircular.Label = "Leyenda";
+            this.GraficoCircular.TargetCanvas = this.gxGrafico4;
+            // 
+            // GraficoBarrasCompletas
+            // 
+            this.GraficoBarrasCompletas.BackgroundColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasCompletas.BackgroundColor")));
+            this.GraficoBarrasCompletas.BorderColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasCompletas.BorderColor")));
+            this.GraficoBarrasCompletas.BorderSkipped = null;
+            this.GraficoBarrasCompletas.BorderWidth = 0;
+            this.GraficoBarrasCompletas.Data = ((System.Collections.Generic.List<double>)(resources.GetObject("GraficoBarrasCompletas.Data")));
+            this.GraficoBarrasCompletas.HoverBackgroundColor = System.Drawing.Color.Empty;
+            this.GraficoBarrasCompletas.HoverBorderColor = System.Drawing.Color.Empty;
+            this.GraficoBarrasCompletas.HoverBorderWidth = 0;
+            this.GraficoBarrasCompletas.Label = "Leyenda";
+            this.GraficoBarrasCompletas.TargetCanvas = this.gxGrafico5;
+            // 
             // C_Reporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -636,9 +1321,15 @@ namespace ControlesPerzonalizados
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumen)).EndInit();
             this.pnContenedorGraficos.ResumeLayout(false);
             this.pnGraficos.ResumeLayout(false);
-            this.tcGraficos.ResumeLayout(false);
+            this.pnBotonesGraficos.ResumeLayout(false);
             this.Cuadricula.ResumeLayout(false);
             this.pnInferior.ResumeLayout(false);
+            this.tcGraficos.ResumeLayout(false);
+            this.tbPagina1.ResumeLayout(false);
+            this.tbPagina2.ResumeLayout(false);
+            this.tbPagina3.ResumeLayout(false);
+            this.tbPagina4.ResumeLayout(false);
+            this.tbPagina5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -660,11 +1351,28 @@ namespace ControlesPerzonalizados
         private Bunifu.UI.WinForms.BunifuPanel pnContenedorGraficos;
         private Bunifu.UI.WinForms.BunifuLabel gbxGraficos;
         private Bunifu.UI.WinForms.BunifuPanel pnGraficos;
-        private System.Windows.Forms.TabControl tcGraficos;
-        private System.Windows.Forms.TabPage tabPage1;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvResumen;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvResultados;
         public System.Windows.Forms.TableLayoutPanel Cuadricula;
         private Bunifu.UI.WinForms.BunifuPanel pnInferior;
+        private System.Windows.Forms.FlowLayoutPanel pnBotonesGraficos;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGrafico1;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGrafico2;
+        private Bunifu.UI.WinForms.BunifuPages tcGraficos;
+        private Bunifu.Charts.WinForms.ChartTypes.BunifuHorizontalBarChart GraficoBarrasHorizontales;
+        private System.Windows.Forms.TabPage tbPagina1;
+        private Bunifu.Charts.WinForms.BunifuChartCanvas gxGrafico1;
+        private System.Windows.Forms.TabPage tbPagina2;
+        private Bunifu.Charts.WinForms.BunifuChartCanvas gxGrafico2;
+        private System.Windows.Forms.TabPage tbPagina3;
+        private Bunifu.Charts.WinForms.BunifuChartCanvas gxGrafico3;
+        private System.Windows.Forms.TabPage tbPagina4;
+        private Bunifu.Charts.WinForms.BunifuChartCanvas gxGrafico4;
+        private System.Windows.Forms.TabPage tbPagina5;
+        private Bunifu.Charts.WinForms.BunifuChartCanvas gxGrafico5;
+        private Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart GraficoLineas;
+        private Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart GraficoBarrasVerticales;
+        private Bunifu.Charts.WinForms.ChartTypes.BunifuPieChart GraficoCircular;
+        private Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart GraficoBarrasCompletas;
     }
 }

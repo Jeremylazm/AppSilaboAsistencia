@@ -137,7 +137,7 @@ namespace CapaDatos
         }
 
         // Método para mostrar el avance de los temas en todas las asignaturas de un departamento académico.
-        public DataTable AvanceAsignaturasDpto(string CodSemestre, string CodDepartamentoA, string LimFechaInf, string LimFechaSup)
+        public DataTable AvanceAsignaturasDpto(string CodSemestre, string CodDepartamentoA)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuAvanceAsignaturasDpto", Conectar)
@@ -147,8 +147,6 @@ namespace CapaDatos
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA); // Atrib. Docente (Jefe de Dep.)
-            Comando.Parameters.AddWithValue("@LimFechaInf", LimFechaInf); // Formato: yyyy-mm-dd
-            Comando.Parameters.AddWithValue("@LimFechaSup", LimFechaSup); // Formato: yyyy-mm-dd
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;
