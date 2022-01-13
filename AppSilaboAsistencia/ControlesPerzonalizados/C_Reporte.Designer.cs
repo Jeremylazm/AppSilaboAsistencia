@@ -1089,6 +1089,7 @@ namespace ControlesPerzonalizados
             this.btnGrafico1.TextMarginLeft = 0;
             this.btnGrafico1.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnGrafico1.UseDefaultRadiusAndThickness = true;
+            this.btnGrafico1.Click += new System.EventHandler(this.btnGrafico1_Click);
             // 
             // btnGrafico2
             // 
@@ -1180,6 +1181,7 @@ namespace ControlesPerzonalizados
             this.btnGrafico2.TextMarginLeft = 0;
             this.btnGrafico2.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnGrafico2.UseDefaultRadiusAndThickness = true;
+            this.btnGrafico2.Click += new System.EventHandler(this.btnGrafico2_Click);
             // 
             // Cuadricula
             // 
