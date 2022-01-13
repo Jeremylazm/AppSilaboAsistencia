@@ -113,7 +113,7 @@ namespace CapaPresentaciones
             AddOwnedForm(Asignaturas);
             Asignaturas.ShowDialog();
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
-            {   
+            {
                 //if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
                     //fnReporte3(); // es fnReporte(8)
                 //else
@@ -127,7 +127,18 @@ namespace CapaPresentaciones
 
         private void btnGeneral_Click(object sender, EventArgs e)
         {
-            fnReporte9();
+            if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))  fnReporte9();
+            else if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+            {
+                // Reporte 7
+                string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+                string[] Titulos = { "Semestre", "Escuela Profesional" };
+                string[] Valores = { CodSemestre, "INGENIERÍA INFORMÁTICA Y DE SISTEMAS" };
+
+                DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorAsignaturas(CodSemestre, CodDepartamentoA, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+
+                Reportes.fnReporte7(Titulo, Titulos, Valores, resultados);
+            }
         }
 
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
