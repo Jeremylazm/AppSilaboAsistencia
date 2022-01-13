@@ -1392,7 +1392,7 @@ namespace ControlesPerzonalizados
             // Validar las Fechas dadas
             if (Datos.Rows.Count == 0)
             {
-                A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
+                A_Dialogo.DialogoInformacion("No hay registros disponibles");
 
                 lblTitulo.Text = "";
                 pnSubcampos.Controls.Clear();

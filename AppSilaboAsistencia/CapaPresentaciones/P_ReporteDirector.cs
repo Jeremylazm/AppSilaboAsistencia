@@ -261,7 +261,7 @@ namespace CapaPresentaciones
             string[] Titulos = { "Semestre" };
             string[] Valores = { CodSemestre };
 
-            DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignaturasDpto(CodSemestre, txtCodEstudiante.Text);
+            DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignaturasDpto(CodSemestre, CodDepartamentoA);
 
             DataTable ResultadosFinales = new DataTable();
             ResultadosFinales.Columns.Add("CodAsignatura", typeof(string));
