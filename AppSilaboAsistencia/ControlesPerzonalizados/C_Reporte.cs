@@ -115,7 +115,6 @@ namespace ControlesPerzonalizados
                     dgvResultados.DataSource = Datos;
                     dgvResultados.Columns[0].DisplayIndex = 5;
 
-
                     if (dgvResultados.Rows.Count <= 10)
                     {
                         sbResultados.Visible = false;
@@ -142,7 +141,6 @@ namespace ControlesPerzonalizados
                         pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
                         sbResultados.Visible = true;
                     }
-
 
                     DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
                     dtEstadisticos.Rows.Clear();
@@ -1281,6 +1279,80 @@ namespace ControlesPerzonalizados
                 tcGraficos.TabPages.Add(tpGrafico1);
                 */
                 #endregion ===================== GRÁFICO =====================
+            }
+        }
+
+        public void fnReporte8(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodEstudiante)
+        {
+            this.CriterioAsistenciasEstudiantes = CriterioAsistenciasEstudiantes;
+
+            if (Datos.Rows.Count == 0)
+            {
+                A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
+            }
+            else
+            {
+                // Crear columna
+                DataGridViewImageColumn btnVerReporte = new DataGridViewImageColumn
+                {
+                    ImageLayout = DataGridViewImageCellLayout.Zoom,
+                    Frozen = false,
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet,
+                    DividerWidth = 0,
+                    FillWeight = 100,
+                    MinimumWidth = 5,
+                    Width = 1032
+                };
+
+                dgvResultados.Columns.Clear();
+                dgvResultados.Columns.Add(btnVerReporte);
+                dgvResultados.Columns[0].HeaderText = "Reporte Por Fechas";
+
+                dgvResultados.DataSource = Datos;
+                dgvResultados.Columns[0].DisplayIndex = 4;
+
+
+                if (dgvResultados.Rows.Count <= 10)
+                {
+                    sbResultados.Visible = false;
+                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
+                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                }
+                else
+                {
+                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                    pnContenedorResultados.Height = 341;
+                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                    sbResultados.Visible = true;
+                }
+
+                //if (pnContenedorCuadro.Visible)
+                //{
+                    pnContenedorCuadro.Visible = false;
+                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                    this.Cuadricula.RowStyles[1].Height -= pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
+                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //}
+
+                // Gráficos
             }
         }
 

@@ -61,7 +61,11 @@ namespace CapaPresentaciones
 
         private void MostrarTodasAsignaturas()
         {
+            dgvDatos.DataSource = N_Catalogo.MostrarCatalogo(CodSemestre, CodEscuelaP);
 
+            dgvDatos.Columns[3].Visible = false;
+            dgvDatos.Columns[6].Visible = false;
+            dgvDatos.Columns[7].Visible = false;
         }
 
         private void MostrarEstudiantes()
@@ -111,7 +115,7 @@ namespace CapaPresentaciones
                     string codTemp = DatosEstudiante.txtCodEstudiante.Text;
 
                     DatosEstudiante.txtCodEstudiante.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
-                    DatosEstudiante.txtEstudiante.Text = dgvDatos.CurrentRow.Cells[3].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[2].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[1].Value.ToString();
+                    DatosEstudiante.txtEstudiante.Text = dgvDatos.CurrentRow.Cells[3].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[1].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[2].Value.ToString();
 
                     if (codTemp != DatosEstudiante.txtCodEstudiante.Text && DatosEstudiante.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
                     {
