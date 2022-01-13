@@ -1407,10 +1407,10 @@ CREATE PROCEDURE spuMostrarEstudiantesMatriculados @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar la tabla de TMatricula
-	SELECT M.IdMatricula, M.CodAsignatura, A.NombreAsignatura, M.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
-		FROM TMatricula M INNER JOIN TAsignatura A ON
-			 M.CodAsignatura = A.CodAsignatura
-	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP
+	SELECT DISTINCT CodEstudiante, APaterno, AMaterno, Nombre
+		FROM TMatricula
+	    WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP
+		ORDER BY APaterno ASC
 END;
 GO
 
@@ -1423,7 +1423,7 @@ BEGIN
 	-- Mostrar la tabla de TMatricula
 	SELECT M.CodAsignatura, A.NombreAsignatura, A.Categoria, A.Creditos
 		FROM TMatricula M INNER JOIN TAsignatura A ON
-			 M.CodAsignatura = A.CodAsignatura
+			 SUBSTRING(M.CodAsignatura, 1, 5) = A.CodAsignatura
 	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP AND M.CodEstudiante = @CodEstudiante
 END;
 GO
@@ -1437,7 +1437,7 @@ BEGIN
 	-- Mostrar la tabla de TMatricula
 	SELECT ROW_NUMBER() OVER (ORDER BY M.APaterno ASC) AS Id, M.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
 		FROM TMatricula M INNER JOIN TAsignatura A ON
-			 SUBSTRING(M.CodAsignatura,1,5) = A.CodAsignatura
+			 SUBSTRING(M.CodAsignatura, 1, 5) = A.CodAsignatura
 	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP AND
 		      (M.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%'))
 END;
