@@ -333,7 +333,6 @@ CREATE TABLE THorarioRegistroAsistencia
 	IdHorarioRegistroAsistencia INT IDENTITY(1,1),
 	CodSemestre tyCodSemestre,
 	CodDepartamentoA tyCodDepartamentoA,
-	CodJefeDepartamentoA tyCodDocente NOT NULL, 
 	HoraInicio TIME(0) NOT NULL, -- Formato: hh:mm:ss (Hora de inicio del control de asistencia)
 	HoraFin TIME(0) NOT NULL, -- Formato: hh:mm:ss (Hora de fin del control de asistencia)
 
@@ -495,7 +494,7 @@ CREATE PROCEDURE spuIniciarSesion @Usuario VARCHAR(6),
 AS
 BEGIN
 	-- Seleccionar los datos del usuario valido
-	SELECT Perfil, Usuario, DBO.fnDesencriptarContraseña(Contraseña), Acceso, NombreUsuario
+	SELECT Perfil, Usuario, DBO.fnDesencriptarContraseña(Contraseña), Acceso, NombreUsuario, CodDepartamentoA, CodEscuelaP
 		FROM TUsuario
 		WHERE Usuario = @Usuario AND DBO.fnDesencriptarContraseña(Contraseña) = @Contraseña
 END;
@@ -736,7 +735,7 @@ BEGIN
 	DECLARE @Contraseña VARCHAR(8);
 	SET @NombreUsuario = CONCAT(@APaterno, ' ', @AMaterno, ', ', @Nombre);
 	SET @Contraseña = @CodDocente;
-	EXEC DBO.spuInsertarUsuario @Perfil, @CodDocente, @Contraseña, 'Docente', @NombreUsuario, CodDepartamentoA, @CodEscuelaP
+	EXEC DBO.spuInsertarUsuario @Perfil, @CodDocente, @Contraseña, 'Docente', @NombreUsuario, @CodDepartamentoA, @CodEscuelaP
 END;
 GO
 
@@ -1407,10 +1406,10 @@ CREATE PROCEDURE spuMostrarEstudiantesMatriculados @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar la tabla de TMatricula
-	SELECT M.IdMatricula, M.CodAsignatura, A.NombreAsignatura, M.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
-		FROM TMatricula M INNER JOIN TAsignatura A ON
-			 M.CodAsignatura = A.CodAsignatura
-	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP
+	SELECT DISTINCT CodEstudiante, APaterno, AMaterno, Nombre
+		FROM TMatricula
+	    WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP
+		ORDER BY APaterno ASC
 END;
 GO
 
@@ -1423,7 +1422,7 @@ BEGIN
 	-- Mostrar la tabla de TMatricula
 	SELECT M.CodAsignatura, A.NombreAsignatura, A.Categoria, A.Creditos
 		FROM TMatricula M INNER JOIN TAsignatura A ON
-			 M.CodAsignatura = A.CodAsignatura
+			 SUBSTRING(M.CodAsignatura, 1, 5) = A.CodAsignatura
 	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP AND M.CodEstudiante = @CodEstudiante
 END;
 GO
@@ -1437,7 +1436,7 @@ BEGIN
 	-- Mostrar la tabla de TMatricula
 	SELECT ROW_NUMBER() OVER (ORDER BY M.APaterno ASC) AS Id, M.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
 		FROM TMatricula M INNER JOIN TAsignatura A ON
-			 SUBSTRING(M.CodAsignatura,1,5) = A.CodAsignatura
+			 SUBSTRING(M.CodAsignatura, 1, 5) = A.CodAsignatura
 	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP AND
 		      (M.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%'))
 END;
@@ -1677,9 +1676,7 @@ GO
 
 -- Procedimiento para mostrar el avance de los temas en todas las asignaturas de un departamento académico
 CREATE PROCEDURE spuAvanceAsignaturasDpto @CodSemestre VARCHAR(7),
-									      @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
-									      @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
-										  @LimFechaSup DATE  -- Formato: dd/mm/yyyy o dd-mm-yyyy
+									      @CodDepartamentoA VARCHAR(3) -- Atrib. Docente (Jefe de Dep.)
 AS
 BEGIN
 	-- Mostrar el registro de avance de las asignaturas
@@ -1690,7 +1687,6 @@ BEGIN
 			 AD.CodDocente = D.CodDocente
 	    WHERE AD.CodSemestre = @CodSemestre AND
 			  AD.CodDepartamentoA = @CodDepartamentoA AND
-			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
 			  AD.Observación = '' -- No se considera Feriado, Suspensión, Permiso y Falta in Justificar
 		GROUP BY AD.CodAsignatura, A.NombreAsignatura, D.APaterno, D.AMaterno, D.Nombre
 		ORDER BY A.NombreAsignatura
@@ -1782,6 +1778,22 @@ GO
 
 /* ****************** PROCEDIMIENTOS ALMACENADOS PARA LA TABLA ASISTENCIA-DIARIA-DOCENTE  ****************** */
 
+-- Procedimiento para mostrar la asistencia de un docente en un dia especifico.
+CREATE PROCEDURE spuBuscarAsistenciaDocente @CodSemestre VARCHAR(7),
+									        @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
+									        @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+											@CodDocente VARCHAR(6)
+AS
+BEGIN
+	-- Mostrar el registro de asistencia
+	SELECT AD.Hora, AD.CodDocente, D.APaterno, D.AMaterno, D.Nombre, AD.Asistió, AD.Observación
+		FROM TAsistenciaDiariaDocente AD INNER JOIN TDocente D ON
+			 AD.CodDocente = D.CodDocente
+	    WHERE AD.CodSemestre = @CodSemestre AND AD.CodDepartamentoA = @CodDepartamentoA AND
+		      AD.Fecha = @Fecha AND AD.CodDocente = @CodDocente
+END;
+GO
+
 -- Procedimiento para mostrar el registro de asistencia diaria de los docentes en una fecha especifica.
 CREATE PROCEDURE spuAsistenciaDiariaDocentes @CodSemestre VARCHAR(7),
 									         @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
@@ -1821,15 +1833,24 @@ CREATE PROCEDURE spuAsistenciaDocentesPorFechas @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar el registro de asistencia en el rango de fechas
-	SELECT Fecha = AD.Fecha_Formatted,
-	       TotalAsistieron = SUM(CASE WHEN AD.Asistió = 'SI' THEN 1 ELSE 0 END),
-		   TotalFaltaron = SUM(CASE WHEN AD.Asistió = 'NO' AND AD.Observación NOT IN ('FERIADO','SUSPENSION') THEN 1 ELSE 0 END),
-		   Observación = CASE WHEN AD.Observación IN ('FERIADO','SUSPENSION') THEN AD.Observación ELSE '' END
-		FROM TAsistenciaDiariaDocente AD
-	    WHERE AD.CodSemestre = @CodSemestre AND
-			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
-	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Asistió, AD.Observación
-	   ORDER BY AD.Fecha DESC
+	WITH Resumen  AS (
+		SELECT Fecha, AD.Fecha_Formatted,
+	        TotalAsistieron = SUM(CASE WHEN AD.Asistió = 'SI' THEN 1 ELSE 0 END),
+		    TotalFaltaron = SUM(CASE WHEN AD.Asistió = 'NO' THEN 1 ELSE 0 END)
+			FROM TAsistenciaDiariaDocente AD
+			WHERE AD.CodSemestre = @CodSemestre AND
+				(AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
+			GROUP BY AD.Fecha, AD.Fecha_Formatted),
+	Aux AS (
+		SELECT DISTINCT R.Fecha, R.Fecha_Formatted, TotalAsistieron, 
+			TotalFaltaron = CASE WHEN AD.Observación IN ('FERIADO','SUSPENSION') THEN 0 ELSE TotalFaltaron END, 
+			Observación = CASE WHEN AD.Observación IN ('FERIADO','SUSPENSION') THEN AD.Observación ELSE '' END
+		FROM Resumen R INNER JOIN TAsistenciaDiariaDocente AD ON
+			R.Fecha = AD.Fecha)
+	
+	SELECT Fecha = A.Fecha_Formatted, TotalAsistieron, TotalFaltaron, Observación
+	FROM Aux A
+	ORDER BY A.Fecha DESC
 END;
 GO
 
@@ -1961,7 +1982,7 @@ BEGIN
 	    WHERE AE.CodSemestre = @CodSemestre AND
 			  AE.CodAsignatura = @CodAsignatura AND
 			  (AE.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
-	   GROUP BY AE.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
+	    GROUP BY AE.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
 END;
 GO
 
@@ -2083,14 +2104,13 @@ GO
 
 -- Buscar el horario de registro de asistencia diaria de los docentes.
 CREATE PROCEDURE spuBuscarHorarioRegistroAsistencia @CodSemestre VARCHAR(7),
-											        @CodDepartamentoA VARCHAR(3),
-											        @CodJefeDepartamentoA VARCHAR(5)
+											        @CodDepartamentoA VARCHAR(3)
 AS
 BEGIN
 	-- Mostrar el horario de registro de asistencia
 	SELECT TOP 1 HoraInicio, HoraFin
 		FROM THorarioRegistroAsistencia
-	    WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA AND CodJefeDepartamentoA = @CodJefeDepartamentoA
+	    WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA
 		ORDER BY IdHorarioRegistroAsistencia DESC
 END;
 GO
@@ -2098,21 +2118,19 @@ GO
 -- Procedimiento para registrar el horario de registro de asistencia diaria de los docentes.
 CREATE PROCEDURE spuInsertarHorarioRegistroAsistencia @CodSemestre VARCHAR(7),
 											          @CodDepartamentoA VARCHAR(3),
-											          @CodJefeDepartamentoA VARCHAR(5),
 											          @HoraInicio TIME(0), -- Formato: hh:mm:ss (Hora de inicio del control de asistencia)
 											          @HoraFin TIME(0) -- Formato: hh:mm:ss (Hora de finalización del control de asistencia)
 AS
 BEGIN
 	-- Registrar el horario en la tabla THorarioRegistroAsistencia
 	INSERT INTO THorarioRegistroAsistencia
-		VALUES (@CodSemestre, @CodDepartamentoA, @CodJefeDepartamentoA, @HoraInicio, @HoraFin)
+		VALUES (@CodSemestre, @CodDepartamentoA, @HoraInicio, @HoraFin)
 END;
 GO
 
 -- Procedimiento para actualizar el horario de registro de asistencia diaria de los docentes .
 CREATE PROCEDURE spuActualizarHorarioRegistroAsistencia @CodSemestre VARCHAR(7),
 											            @CodDepartamentoA VARCHAR(3),
-											            @CodJefeDepartamentoA VARCHAR(5),
 											            @NHoraInicio TIME(0), -- Nueva Hora de inicio
 											            @NHoraFin TIME(0) -- Nueva Hora de finalización
 AS
@@ -2123,20 +2141,19 @@ BEGIN
 			HoraFin = @NHoraFin
 		FROM (SELECT TOP 1 HoraInicio, HoraFin
 				FROM THorarioRegistroAsistencia
-				WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA AND CodJefeDepartamentoA = @CodJefeDepartamentoA
+				WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA
 				ORDER BY IdHorarioRegistroAsistencia DESC) THorarioRegistroAsistencia	
 END;
 GO
 
 -- Procedimiento para eliminar el horario de registro de asistencia diaria de los docentes .
 CREATE PROCEDURE spuEliminarHorarioRegistroAsistencia @CodSemestre VARCHAR(7),
-											          @CodDepartamentoA VARCHAR(3),
-											          @CodJefeDepartamentoA VARCHAR(5)
+											          @CodDepartamentoA VARCHAR(3)
 AS
 BEGIN
 	-- Eliminar una asistencia en la tabla de THorarioRegistroAsistencia
 	DELETE FROM THorarioRegistroAsistencia
-		WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA AND CodJefeDepartamentoA = @CodJefeDepartamentoA
+		WHERE CodSemestre = @CodSemestre AND CodDepartamentoA = @CodDepartamentoA
 END;
 GO
 

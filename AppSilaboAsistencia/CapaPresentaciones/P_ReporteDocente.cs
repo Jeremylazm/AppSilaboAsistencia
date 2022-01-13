@@ -21,7 +21,7 @@ namespace CapaPresentaciones
         readonly N_Catalogo ObjCatalogo;
         private readonly string CodSemestre;
         readonly string CodDocente = E_InicioSesion.Usuario;
-        private readonly string CodDepartamentoA = "IF";
+        private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
         C_Reporte Reportes = new C_Reporte();
         string nombreDocente;
 
@@ -79,7 +79,7 @@ namespace CapaPresentaciones
 
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorFechas(CodSemestre, CodDocente, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
-            C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text)
+            C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text, "Docente")
             {
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
             };
@@ -114,7 +114,7 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text);
+            P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Docente", cxtCriterioSeleccion.SelectedItem.ToString());
             AddOwnedForm(Asignaturas);
             Asignaturas.ShowDialog();
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
@@ -211,7 +211,6 @@ namespace CapaPresentaciones
             string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
             string[] Valores = { CodSemestre, CodDocente, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
 
-
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
             Reportes.fnReporte3(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
@@ -221,7 +220,7 @@ namespace CapaPresentaciones
         {
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
-            string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "DEL SEMESTRE " + CodSemestre;
             string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
             string[] Valores = { CodSemestre, CodDocente, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
 
@@ -260,7 +259,7 @@ namespace CapaPresentaciones
 
                 int[] TemasAvanzados = new int[resultados.Rows.Count];
 
-                for (int i = 0; i <= resultados.Rows.Count - 1; i++)
+                for (int i = 0; i < resultados.Rows.Count; i++)
                 {
                     TemasAvanzados[i] = Convert.ToInt32(resultados.Rows[i]["Sesión"].ToString());
                     ResultadosFinales.Rows.Add(Convert.ToInt32(resultados.Rows[i]["Sesión"].ToString()), resultados.Rows[i]["NombreTema"].ToString(), resultados.Rows[i]["Fecha"].ToString(), "HECHO");
@@ -276,7 +275,7 @@ namespace CapaPresentaciones
 
                         }
                         else
-                            ResultadosFinales.Rows.Add(Contador-8,"Tema"+Convert.ToString(Contador - 8), "", "FALTA");
+                            ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "FALTA");
                         Total = Total + 1;
                         Contador = Contador + 1;
                     }
@@ -287,21 +286,51 @@ namespace CapaPresentaciones
                 Reportes.fnReporte5(Titulo, Titulos, Valores, ResultadosFinales, txtCodigo.Text, Hechos, Faltan);
             }
             else
-                MessageBox.Show("No hay Plan de Sesiones");
+                Ayudas.A_Dialogo.DialogoError("No hay Plan de Sesiones");
         }
 
         private void fnReporte6()
         {
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
-            string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
-            string[] Titulos = { "Semestre", "Escuela Profesional", "Docente", "Cod. Docente" };
-            string[] Valores = { CodSemestre, txtEscuelaP.Text, CodDocente, nombreDocente };
+            string Titulo = "REPORTE DE AVANCE GENERAL" + Environment.NewLine + "DEL SEMESTRE " + CodSemestre;
+            string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Escuela Profesional" };
+            string[] Valores = { CodSemestre, CodDocente, nombreDocente, txtEscuelaP.Text };
 
             DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignaturasDocente(CodSemestre, CodDocente);
-            DataTable plansesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, txtCodigo.Text, CodDocente);
 
-            Reportes.fnReporte6(Titulo, Titulos, Valores, resultados, txtCodigo.Text);
+            DataTable ResultadosFinales = new DataTable();
+            ResultadosFinales.Columns.Add("CodAsignatura", typeof(string));
+            ResultadosFinales.Columns.Add("NombreAsignatura", typeof(string));
+            ResultadosFinales.Columns.Add("TemasAvanzados", typeof(string));
+            ResultadosFinales.Columns.Add("TemasFaltantes", typeof(string));
+
+            int Créditos = 0;
+            int TemasTotales = 0;
+            float PorcentajeAvanzados = 0;
+
+            for (int i = 0; i < resultados.Rows.Count; i++)
+            {
+                DataTable TablaCreditos = N_Asignatura.BuscarAsignatura(CodDepartamentoA, resultados.Rows[i]["CodAsignatura"].ToString().Substring(0,5));
+                if (TablaCreditos.Rows.Count != 0)
+                {
+                    Créditos = Convert.ToInt32(TablaCreditos.Rows[0]["Creditos"].ToString());
+                }
+                if (Créditos == 4)
+                {
+                    TemasTotales = 51;
+                    PorcentajeAvanzados = 100 * Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()) / TemasTotales;
+                    ResultadosFinales.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), Convert.ToString(PorcentajeAvanzados) + "%", Convert.ToString(100 - PorcentajeAvanzados) + "%");
+                }
+                else
+                {
+                    TemasTotales = 34;
+                    PorcentajeAvanzados = 100 * Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()) / TemasTotales;
+                    ResultadosFinales.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), Convert.ToString(PorcentajeAvanzados) + "%", Convert.ToString(100 - PorcentajeAvanzados) + "%");
+                }
+            }
+
+            Reportes.fnReporte6(Titulo, Titulos, Valores, ResultadosFinales, txtCodigo.Text);
         }
 
         private void dpFechaInicial_CloseUp(object sender, EventArgs e)

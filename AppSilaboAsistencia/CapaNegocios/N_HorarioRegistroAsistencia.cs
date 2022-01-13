@@ -8,9 +8,9 @@ namespace CapaNegocios
     {
         readonly D_HorarioRegistroAsistencia ObjHorarioRegistroAsistencia = new D_HorarioRegistroAsistencia();
 
-        public static DataTable BuscarHorarioRegistroAsistencia(string CodSemestre, string CodDepartamentoA, string CodJefeDepartamentoA)
+        public static DataTable BuscarHorarioRegistroAsistencia(string CodSemestre, string CodDepartamentoA)
         {
-            return new D_HorarioRegistroAsistencia().BuscarHorarioRegistroAsistencia(CodSemestre, CodDepartamentoA, CodJefeDepartamentoA);
+            return new D_HorarioRegistroAsistencia().BuscarHorarioRegistroAsistencia(CodSemestre, CodDepartamentoA);
         }
 
         public void InsertarHorarioRegistroAsistencia(E_HorarioRegistroAsistencia HorarioRegistroAsistencia)

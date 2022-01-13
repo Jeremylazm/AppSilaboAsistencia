@@ -8,7 +8,24 @@ namespace CapaDatos
     public class D_AsistenciaDiariaDocente
     {
         readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
-        //readonly SqlConnection Conectar = new SqlConnection("Data Source=.;Initial Catalog=BDSistemaGestion;Integrated Security=True");
+
+        // Método para mostrar la asistencia de un docente en un dia especifico
+        public DataTable BuscarAsistenciaDocente(string CodSemestre, string CodDepartamentoA, string Fecha, string CodDocente)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuBuscarAsistenciaDocente", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA); // Atrib. Docente (Jefe de Dep.)
+            Comando.Parameters.AddWithValue("@Fecha", Fecha); // Formato: dd/mm/yyyy o dd-mm-yyyy
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
 
         // Método para mostrar el registro de asistencia diaria de los docentes en una fecha especifica.
         public DataTable AsistenciaDiariaDocentes(string CodSemestre, string CodDepartamentoA, string Fecha)

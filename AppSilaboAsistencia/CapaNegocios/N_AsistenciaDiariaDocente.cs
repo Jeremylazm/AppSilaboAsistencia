@@ -8,6 +8,11 @@ namespace CapaNegocios
     {
         readonly D_AsistenciaDiariaDocente ObjAsistenciaDiariaDocente = new D_AsistenciaDiariaDocente();
 
+        public static DataTable BuscarAsistenciaDocente(string CodSemestre, string CodDepartamentoA, string Fecha, string CodDocente)
+        {
+            return new D_AsistenciaDiariaDocente().BuscarAsistenciaDocente(CodSemestre, CodDepartamentoA, Fecha, CodDocente);
+        }
+
         public static DataTable AsistenciaDiariaDocentes(string CodSemestre, string CodDepartamentoA, string Fecha)
         {
             return new D_AsistenciaDiariaDocente().AsistenciaDiariaDocentes(CodSemestre, CodDepartamentoA, Fecha);
