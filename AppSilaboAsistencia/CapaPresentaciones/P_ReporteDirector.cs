@@ -121,7 +121,7 @@ namespace CapaPresentaciones
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
-                //fnReporte5();
+                fnReporte5();
             }
         }
 
@@ -192,6 +192,8 @@ namespace CapaPresentaciones
 
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+
+                fnReporte5();
             }
         }
 
@@ -242,6 +244,79 @@ namespace CapaPresentaciones
 
                 //fnReporte1();
             }
+        }
+
+        private void fnReporte5()
+        {
+            // Tipo de reporte: Avance Asignatura
+            // Criterio de selección: Por Docente
+            string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "DEL SEMESTRE " + CodSemestre;
+            string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
+            string[] Valores = { CodSemestre, CodDocente, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
+
+            DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignatura(CodSemestre, CodDocente, txtCodigo.Text);
+            DataTable plansesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, txtCodigo.Text, CodDocente);
+
+            int Total = 0;
+
+            if (plansesion.Rows.Count >= 1)
+            {
+                DataRow Fila = plansesion.Rows[0];
+
+                byte[] archivo = Fila["PlanSesiones"] as byte[];
+
+                string path = AppDomain.CurrentDomain.BaseDirectory;
+                string folder = path + "/temp/";
+                string fullFilePath = folder + "temp.xlsx";
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+
+                if (File.Exists(fullFilePath))
+                {
+                    File.Delete(fullFilePath);
+                }
+
+                File.WriteAllBytes(fullFilePath, archivo);
+                XLWorkbook wb = new XLWorkbook(fullFilePath);
+
+                DataTable ResultadosFinales = new DataTable();
+                ResultadosFinales.Columns.Add("Sesión", typeof(int));
+                ResultadosFinales.Columns.Add("NombreTema", typeof(string));
+                ResultadosFinales.Columns.Add("Fecha", typeof(string));
+                ResultadosFinales.Columns.Add("Estado", typeof(string));
+
+                int[] TemasAvanzados = new int[resultados.Rows.Count];
+
+                for (int i = 0; i < resultados.Rows.Count; i++)
+                {
+                    TemasAvanzados[i] = Convert.ToInt32(resultados.Rows[i]["Sesión"].ToString());
+                    ResultadosFinales.Rows.Add(Convert.ToInt32(resultados.Rows[i]["Sesión"].ToString()), resultados.Rows[i]["NombreTema"].ToString(), resultados.Rows[i]["Fecha"].ToString(), "HECHO");
+                }
+
+                int Contador = 9;
+                for (int i = 9; i <= 61; i++)
+                {
+                    if (wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString() != "")
+                    {
+                        if (Array.Exists(TemasAvanzados, x => x == Convert.ToInt32(wb.Worksheet(1).Cell("B" + Convert.ToString(i)).Value.ToString())))
+                        {
+
+                        }
+                        else
+                            ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "FALTA");
+                        Total = Total + 1;
+                        Contador = Contador + 1;
+                    }
+                }
+
+                int Hechos = resultados.Rows.Count;
+                int Faltan = Total - Hechos;
+                Reportes.fnReporte5(Titulo, Titulos, Valores, ResultadosFinales, txtCodigo.Text, Hechos, Faltan);
+            }
+            else
+                Ayudas.A_Dialogo.DialogoError("No hay Plan de Sesiones");
         }
 
         private void fnReporte8()
