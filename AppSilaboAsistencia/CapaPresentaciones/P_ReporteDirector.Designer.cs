@@ -70,6 +70,9 @@ namespace CapaPresentaciones
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.pnCriterioPorAsignaturas = new Bunifu.UI.WinForms.BunifuPanel();
+            this.radiobtnCriterioFechas = new System.Windows.Forms.RadioButton();
+            this.radiobtnCriterioEstudiantes = new System.Windows.Forms.RadioButton();
             this.pnContenedor.SuspendLayout();
             this.Cuadricula.SuspendLayout();
             this.pnFinal.SuspendLayout();
@@ -81,6 +84,7 @@ namespace CapaPresentaciones
             this.pnCajas.Panel1.SuspendLayout();
             this.pnCajas.Panel2.SuspendLayout();
             this.pnCajas.SuspendLayout();
+            this.pnCriterioPorAsignaturas.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnContenedor
@@ -94,6 +98,7 @@ namespace CapaPresentaciones
             this.pnContenedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pnContenedor.BorderRadius = 20;
             this.pnContenedor.BorderThickness = 1;
+            this.pnContenedor.Controls.Add(this.pnCriterioPorAsignaturas);
             this.pnContenedor.Controls.Add(this.btnSeleccionar);
             this.pnContenedor.Controls.Add(this.txtEstudiante);
             this.pnContenedor.Controls.Add(this.lnEstudiante);
@@ -741,7 +746,7 @@ namespace CapaPresentaciones
             this.pnPadre.BorderRadius = 3;
             this.pnPadre.BorderThickness = 1;
             this.pnPadre.Controls.Add(this.pnReporte);
-            this.pnPadre.Location = new System.Drawing.Point(22, 228);
+            this.pnPadre.Location = new System.Drawing.Point(22, 243);
             this.pnPadre.Name = "pnPadre";
             this.pnPadre.ShowBorders = true;
             this.pnPadre.Size = new System.Drawing.Size(1057, 406);
@@ -1014,6 +1019,47 @@ namespace CapaPresentaciones
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this.pnContenedor;
             // 
+            // pnCriterioPorAsignaturas
+            // 
+            this.pnCriterioPorAsignaturas.BackgroundColor = System.Drawing.Color.Transparent;
+            this.pnCriterioPorAsignaturas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnCriterioPorAsignaturas.BackgroundImage")));
+            this.pnCriterioPorAsignaturas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnCriterioPorAsignaturas.BorderColor = System.Drawing.Color.Transparent;
+            this.pnCriterioPorAsignaturas.BorderRadius = 3;
+            this.pnCriterioPorAsignaturas.BorderThickness = 1;
+            this.pnCriterioPorAsignaturas.Controls.Add(this.radiobtnCriterioEstudiantes);
+            this.pnCriterioPorAsignaturas.Controls.Add(this.radiobtnCriterioFechas);
+            this.pnCriterioPorAsignaturas.Location = new System.Drawing.Point(24, 204);
+            this.pnCriterioPorAsignaturas.Name = "pnCriterioPorAsignaturas";
+            this.pnCriterioPorAsignaturas.ShowBorders = true;
+            this.pnCriterioPorAsignaturas.Size = new System.Drawing.Size(318, 38);
+            this.pnCriterioPorAsignaturas.TabIndex = 0;
+            // 
+            // radiobtnCriterioFechas
+            // 
+            this.radiobtnCriterioFechas.AutoSize = true;
+            this.radiobtnCriterioFechas.Checked = true;
+            this.radiobtnCriterioFechas.Cursor = System.Windows.Forms.Cursors.Default;
+            this.radiobtnCriterioFechas.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.radiobtnCriterioFechas.Location = new System.Drawing.Point(14, 7);
+            this.radiobtnCriterioFechas.Name = "radiobtnCriterioFechas";
+            this.radiobtnCriterioFechas.Size = new System.Drawing.Size(118, 26);
+            this.radiobtnCriterioFechas.TabIndex = 0;
+            this.radiobtnCriterioFechas.TabStop = true;
+            this.radiobtnCriterioFechas.Text = "Por Fechas";
+            this.radiobtnCriterioFechas.UseVisualStyleBackColor = true;
+            // 
+            // radiobtnCriterioEstudiantes
+            // 
+            this.radiobtnCriterioEstudiantes.AutoSize = true;
+            this.radiobtnCriterioEstudiantes.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
+            this.radiobtnCriterioEstudiantes.Location = new System.Drawing.Point(155, 7);
+            this.radiobtnCriterioEstudiantes.Name = "radiobtnCriterioEstudiantes";
+            this.radiobtnCriterioEstudiantes.Size = new System.Drawing.Size(155, 26);
+            this.radiobtnCriterioEstudiantes.TabIndex = 1;
+            this.radiobtnCriterioEstudiantes.Text = "Por Estudiantes";
+            this.radiobtnCriterioEstudiantes.UseVisualStyleBackColor = true;
+            // 
             // P_ReporteDirector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1044,6 +1090,8 @@ namespace CapaPresentaciones
             this.pnCajas.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnCajas)).EndInit();
             this.pnCajas.ResumeLayout(false);
+            this.pnCriterioPorAsignaturas.ResumeLayout(false);
+            this.pnCriterioPorAsignaturas.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1087,5 +1135,8 @@ namespace CapaPresentaciones
         public Bunifu.UI.WinForms.BunifuLabel txtEstudiante;
         private Bunifu.UI.WinForms.BunifuSeparator lnEstudiante;
         private Bunifu.UI.WinForms.BunifuLabel lblEstudiante;
+        private Bunifu.UI.WinForms.BunifuPanel pnCriterioPorAsignaturas;
+        public System.Windows.Forms.RadioButton radiobtnCriterioFechas;
+        public System.Windows.Forms.RadioButton radiobtnCriterioEstudiantes;
     }
 }
