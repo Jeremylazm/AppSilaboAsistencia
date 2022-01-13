@@ -6,6 +6,7 @@ using CapaEntidades;
 using System.IO;
 using System.Drawing.Drawing2D;
 using Ayudas;
+using System.Collections.Generic;
 
 namespace CapaPresentaciones
 {
@@ -433,6 +434,16 @@ namespace CapaPresentaciones
         {
             ActualizarColor();
             AbrirFormularios<P_HistorialAsistenciasDocentes>();
+        }
+        private void btnReportesJefe_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_ReporteJefe>();
+        }
+        private void btnReportesDirector_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_ReporteDirector>();
         }
 
         // Abrir Formularios

@@ -1407,10 +1407,10 @@ CREATE PROCEDURE spuMostrarEstudiantesMatriculados @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar la tabla de TMatricula
-	SELECT M.IdMatricula, M.CodAsignatura, A.NombreAsignatura, M.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
-		FROM TMatricula M INNER JOIN TAsignatura A ON
-			 M.CodAsignatura = A.CodAsignatura
-	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP
+	SELECT DISTINCT CodEstudiante, APaterno, AMaterno, Nombre
+		FROM TMatricula
+	    WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP
+		ORDER BY APaterno ASC
 END;
 GO
 
@@ -1423,7 +1423,7 @@ BEGIN
 	-- Mostrar la tabla de TMatricula
 	SELECT M.CodAsignatura, A.NombreAsignatura, A.Categoria, A.Creditos
 		FROM TMatricula M INNER JOIN TAsignatura A ON
-			 M.CodAsignatura = A.CodAsignatura
+			 SUBSTRING(M.CodAsignatura, 1, 5) = A.CodAsignatura
 	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP AND M.CodEstudiante = @CodEstudiante
 END;
 GO
@@ -1437,7 +1437,7 @@ BEGIN
 	-- Mostrar la tabla de TMatricula
 	SELECT ROW_NUMBER() OVER (ORDER BY M.APaterno ASC) AS Id, M.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
 		FROM TMatricula M INNER JOIN TAsignatura A ON
-			 SUBSTRING(M.CodAsignatura,1,5) = A.CodAsignatura
+			 SUBSTRING(M.CodAsignatura, 1, 5) = A.CodAsignatura
 	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP AND
 		      (M.CodAsignatura LIKE (@Texto + '%') OR A.NombreAsignatura LIKE (@Texto + '%'))
 END;
@@ -1644,9 +1644,7 @@ GO
 -- Procedimiento para mostrar el avance de los temas en una asignatura.
 CREATE PROCEDURE spuAvanceAsignatura @CodSemestre VARCHAR(7),
 								     @CodDocente VARCHAR(5),
-									 @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)									
-									 @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
-									 @LimFechaSup DATE  -- Formato: dd/mm/yyyy o dd-mm-yyyy
+									 @CodAsignatura VARCHAR(9) -- código (ej. IF085AIN)
 AS
 BEGIN
 	-- Mostrar el registro de avance de una asignatura
@@ -1655,7 +1653,6 @@ BEGIN
 	    WHERE AD.CodSemestre = @CodSemestre AND
 			  AD.CodDocente = @CodDocente AND
 			  AD.CodAsignatura = @CodAsignatura AND
-			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
 			  AD.Observación = ''
 		ORDER BY AD.Fecha ASC
 END;
@@ -1663,9 +1660,7 @@ GO
 
 -- Procedimiento para mostrar el avance de los temas en todas las asignaturas de un docente.
 CREATE PROCEDURE spuAvanceAsignaturasDocente @CodSemestre VARCHAR(7),
-											 @CodDocente VARCHAR(5),							
-										     @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
-											 @LimFechaSup DATE  -- Formato: dd/mm/yyyy o dd-mm-yyyy
+											 @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar el registro avance de las asignaturas
@@ -1674,7 +1669,6 @@ BEGIN
 			 SUBSTRING(AD.CodAsignatura,1,LEN(A.CodAsignatura)) = A.CodAsignatura
 	    WHERE AD.CodSemestre = @CodSemestre AND
 			  AD.CodDocente = @CodDocente AND
-			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
 			  AD.Observación = '' -- No se considera Feriado, Suspensión, Permiso y Falta in Justificar
 		GROUP BY AD.CodAsignatura, A.NombreAsignatura
 		ORDER BY A.NombreAsignatura
@@ -1683,9 +1677,7 @@ GO
 
 -- Procedimiento para mostrar el avance de los temas en todas las asignaturas de un departamento académico
 CREATE PROCEDURE spuAvanceAsignaturasDpto @CodSemestre VARCHAR(7),
-									      @CodDepartamentoA VARCHAR(3), -- Atrib. Docente (Jefe de Dep.)
-									      @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
-										  @LimFechaSup DATE  -- Formato: dd/mm/yyyy o dd-mm-yyyy
+									      @CodDepartamentoA VARCHAR(3) -- Atrib. Docente (Jefe de Dep.)
 AS
 BEGIN
 	-- Mostrar el registro de avance de las asignaturas
@@ -1696,7 +1688,6 @@ BEGIN
 			 AD.CodDocente = D.CodDocente
 	    WHERE AD.CodSemestre = @CodSemestre AND
 			  AD.CodDepartamentoA = @CodDepartamentoA AND
-			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
 			  AD.Observación = '' -- No se considera Feriado, Suspensión, Permiso y Falta in Justificar
 		GROUP BY AD.CodAsignatura, A.NombreAsignatura, D.APaterno, D.AMaterno, D.Nombre
 		ORDER BY A.NombreAsignatura
@@ -1827,15 +1818,24 @@ CREATE PROCEDURE spuAsistenciaDocentesPorFechas @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar el registro de asistencia en el rango de fechas
-	SELECT Fecha = AD.Fecha_Formatted,
-	       TotalAsistieron = SUM(CASE WHEN AD.Asistió = 'SI' THEN 1 ELSE 0 END),
-		   TotalFaltaron = SUM(CASE WHEN AD.Asistió = 'NO' AND AD.Observación NOT IN ('FERIADO','SUSPENSION') THEN 1 ELSE 0 END),
-		   Observación = CASE WHEN AD.Observación IN ('FERIADO','SUSPENSION') THEN AD.Observación ELSE '' END
-		FROM TAsistenciaDiariaDocente AD
-	    WHERE AD.CodSemestre = @CodSemestre AND
-			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
-	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Asistió, AD.Observación
-	   ORDER BY AD.Fecha DESC
+	WITH Resumen  AS (
+		SELECT Fecha, AD.Fecha_Formatted,
+	        TotalAsistieron = SUM(CASE WHEN AD.Asistió = 'SI' THEN 1 ELSE 0 END),
+		    TotalFaltaron = SUM(CASE WHEN AD.Asistió = 'NO' THEN 1 ELSE 0 END)
+			FROM TAsistenciaDiariaDocente AD
+			WHERE AD.CodSemestre = @CodSemestre AND
+				(AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
+			GROUP BY AD.Fecha, AD.Fecha_Formatted),
+	Aux AS (
+		SELECT DISTINCT R.Fecha, R.Fecha_Formatted, TotalAsistieron, 
+			TotalFaltaron = CASE WHEN AD.Observación IN ('FERIADO','SUSPENSION') THEN 0 ELSE TotalFaltaron END, 
+			Observación = CASE WHEN AD.Observación IN ('FERIADO','SUSPENSION') THEN AD.Observación ELSE '' END
+		FROM Resumen R INNER JOIN TAsistenciaDiariaDocente AD ON
+			R.Fecha = AD.Fecha)
+	
+	SELECT Fecha = A.Fecha_Formatted, TotalAsistieron, TotalFaltaron, Observación
+	FROM Aux A
+	ORDER BY A.Fecha DESC
 END;
 GO
 

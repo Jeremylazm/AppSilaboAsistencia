@@ -57,9 +57,6 @@
     <Reference Include="Bunifu.Dataviz.WinForms, Version=2.2.0.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.Dataviz.WinForms.2.2.0\lib\Bunifu.Dataviz.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
-      <HintPath>..\packages\Bunifu.UI.WinForms.5.3.0\lib\net40\Bunifu.Licensing.dll</HintPath>
-    </Reference>
     <Reference Include="Bunifu.UI.WinForms.1.5.3, Version=1.5.3.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.UI.WinForms.5.3.0\lib\net40\Bunifu.UI.WinForms.1.5.3.dll</HintPath>
     </Reference>
@@ -263,6 +260,12 @@
     <Compile Include="P_DialogoAsistenciaDocenteAsignatura.Designer.cs">
       <DependentUpon>P_DialogoAsistenciaDocenteAsignatura.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_DialogoReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_DialogoReporte.Designer.cs">
+      <DependentUpon>P_DialogoReporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_EditarPerfilDocente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -317,11 +320,29 @@
     <Compile Include="P_ReporteJefe.Designer.cs">
       <DependentUpon>P_ReporteJefe.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_SeleccionadoAsignatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_SeleccionadoAsignatura.Designer.cs">
+      <DependentUpon>P_SeleccionadoAsignatura.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_SeleccionadoAsignaturaAsignada.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="P_SeleccionadoAsignaturaAsignada.Designer.cs">
       <DependentUpon>P_SeleccionadoAsignaturaAsignada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_SeleccionadoDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_SeleccionadoDocente.Designer.cs">
+      <DependentUpon>P_SeleccionadoDocente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_SeleccionadoEstudiante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_SeleccionadoEstudiante.Designer.cs">
+      <DependentUpon>P_SeleccionadoEstudiante.cs</DependentUpon>
     </Compile>
     <Compile Include="P_SubirArchivo.cs">
       <SubType>Form</SubType>
@@ -431,6 +452,9 @@
     <EmbeddedResource Include="P_DialogoAsistenciaDocenteAsignatura.resx">
       <DependentUpon>P_DialogoAsistenciaDocenteAsignatura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="P_DialogoReporte.resx">
+      <DependentUpon>P_DialogoReporte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="P_EditarPerfilDocente.resx">
       <DependentUpon>P_EditarPerfilDocente.cs</DependentUpon>
     </EmbeddedResource>
@@ -458,8 +482,17 @@
     <EmbeddedResource Include="P_ReporteJefe.resx">
       <DependentUpon>P_ReporteJefe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="P_SeleccionadoAsignatura.resx">
+      <DependentUpon>P_SeleccionadoAsignatura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="P_SeleccionadoAsignaturaAsignada.resx">
       <DependentUpon>P_SeleccionadoAsignaturaAsignada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_SeleccionadoDocente.resx">
+      <DependentUpon>P_SeleccionadoDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_SeleccionadoEstudiante.resx">
+      <DependentUpon>P_SeleccionadoEstudiante.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_SubirArchivo.resx">
       <DependentUpon>P_SubirArchivo.cs</DependentUpon>

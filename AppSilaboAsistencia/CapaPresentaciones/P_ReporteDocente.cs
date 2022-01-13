@@ -25,6 +25,8 @@ namespace CapaPresentaciones
         C_Reporte Reportes = new C_Reporte();
         string nombreDocente;
 
+        //readonly string FechaInicial = E_Semestre.
+
         public P_ReporteDocente()
         {
             DataTable Semestre = N_Semestre.SemestreActual();
@@ -77,7 +79,7 @@ namespace CapaPresentaciones
 
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorFechas(CodSemestre, CodDocente, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
-            C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text)
+            C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text, "Docente")
             {
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
             };
@@ -112,7 +114,7 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text);
+            P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Docente", cxtCriterioSeleccion.SelectedItem.ToString());
             AddOwnedForm(Asignaturas);
             Asignaturas.ShowDialog();
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
@@ -155,6 +157,12 @@ namespace CapaPresentaciones
             {
                 lblCriterioSeleccion.Visible = false;
                 cxtCriterioSeleccion.Visible = false;
+
+                lblFechaInicial.Visible = false;
+                dpFechaInicial.Visible = false;
+
+                lblFechaFinal.Visible = false;
+                dpFechaFinal.Visible = false;
 
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
@@ -203,7 +211,6 @@ namespace CapaPresentaciones
             string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
             string[] Valores = { CodSemestre, CodDocente, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
 
-
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
             Reportes.fnReporte3(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
@@ -213,11 +220,11 @@ namespace CapaPresentaciones
         {
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
-            string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "DEL SEMESTRE " + CodSemestre;
             string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
             string[] Valores = { CodSemestre, CodDocente, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
 
-            DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignatura(CodSemestre, CodDocente, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+            DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignatura(CodSemestre, CodDocente, txtCodigo.Text);
             DataTable plansesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, txtCodigo.Text, CodDocente);
 
             int Total = 0;
@@ -244,77 +251,86 @@ namespace CapaPresentaciones
                 File.WriteAllBytes(fullFilePath, archivo);
                 XLWorkbook wb = new XLWorkbook(fullFilePath);
 
+                DataTable ResultadosFinales = new DataTable();
+                ResultadosFinales.Columns.Add("Sesión", typeof(int));
+                ResultadosFinales.Columns.Add("NombreTema", typeof(string));
+                ResultadosFinales.Columns.Add("Fecha", typeof(string));
+                ResultadosFinales.Columns.Add("Estado", typeof(string));
+
+                int[] TemasAvanzados = new int[resultados.Rows.Count];
+
+                for (int i = 0; i < resultados.Rows.Count; i++)
+                {
+                    TemasAvanzados[i] = Convert.ToInt32(resultados.Rows[i]["Sesión"].ToString());
+                    ResultadosFinales.Rows.Add(Convert.ToInt32(resultados.Rows[i]["Sesión"].ToString()), resultados.Rows[i]["NombreTema"].ToString(), resultados.Rows[i]["Fecha"].ToString(), "HECHO");
+                }
+
+                int Contador = 9;
                 for (int i = 9; i <= 61; i++)
                 {
                     if (wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString() != "")
                     {
-                        DateTime FechaActual = DateTime.Parse(wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString());
-                        if (FechaActual >= dpFechaInicial.Value && FechaActual <= dpFechaFinal.Value)
+                        if (Array.Exists(TemasAvanzados, x => x == Convert.ToInt32(wb.Worksheet(1).Cell("B" + Convert.ToString(i)).Value.ToString())))
                         {
-                            Total = Total + 1;
+
                         }
+                        else
+                            ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "FALTA");
+                        Total = Total + 1;
+                        Contador = Contador + 1;
                     }
                 }
 
                 int Hechos = resultados.Rows.Count;
                 int Faltan = Total - Hechos;
-                Reportes.fnReporte5(Titulo, Titulos, Valores, resultados, txtCodigo.Text, Hechos, Faltan);
+                Reportes.fnReporte5(Titulo, Titulos, Valores, ResultadosFinales, txtCodigo.Text, Hechos, Faltan);
             }
             else
-                MessageBox.Show("No hay Plan de Sesiones");
+                Ayudas.A_Dialogo.DialogoError("No hay Plan de Sesiones");
         }
 
         private void fnReporte6()
         {
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
-            string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
-            string[] Titulos = { "Semestre", "Escuela Profesional", "Docente", "Cod. Docente" };
-            string[] Valores = { CodSemestre, txtEscuelaP.Text, CodDocente, nombreDocente };
+            string Titulo = "REPORTE DE AVANCE GENERAL" + Environment.NewLine + "DEL SEMESTRE " + CodSemestre;
+            string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Escuela Profesional" };
+            string[] Valores = { CodSemestre, CodDocente, nombreDocente, txtEscuelaP.Text };
 
-            DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignaturasDocente(CodSemestre, CodDocente, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
-            DataTable plansesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, txtCodigo.Text, CodDocente);
+            DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignaturasDocente(CodSemestre, CodDocente);
 
-            int Total = 0;
+            DataTable ResultadosFinales = new DataTable();
+            ResultadosFinales.Columns.Add("CodAsignatura", typeof(string));
+            ResultadosFinales.Columns.Add("NombreAsignatura", typeof(string));
+            ResultadosFinales.Columns.Add("TemasAvanzados", typeof(string));
+            ResultadosFinales.Columns.Add("TemasFaltantes", typeof(string));
 
-            if (plansesion.Rows.Count >= 1)
+            int Créditos = 0;
+            int TemasTotales = 0;
+            float PorcentajeAvanzados = 0;
+
+            for (int i = 0; i < resultados.Rows.Count; i++)
             {
-                DataRow Fila = plansesion.Rows[0];
-
-                byte[] archivo = Fila["PlanSesiones"] as byte[];
-
-                string path = AppDomain.CurrentDomain.BaseDirectory;
-                string folder = path + "/temp/";
-                string fullFilePath = folder + "temp.xlsx";
-                if (!Directory.Exists(folder))
+                DataTable TablaCreditos = N_Asignatura.BuscarAsignatura(CodDepartamentoA, resultados.Rows[i]["CodAsignatura"].ToString().Substring(0,5));
+                if (TablaCreditos.Rows.Count != 0)
                 {
-                    Directory.CreateDirectory(folder);
+                    Créditos = Convert.ToInt32(TablaCreditos.Rows[0]["Creditos"].ToString());
                 }
-
-                if (File.Exists(fullFilePath))
+                if (Créditos == 4)
                 {
-                    File.Delete(fullFilePath);
+                    TemasTotales = 51;
+                    PorcentajeAvanzados = 100 * Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()) / TemasTotales;
+                    ResultadosFinales.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), Convert.ToString(PorcentajeAvanzados) + "%", Convert.ToString(100 - PorcentajeAvanzados) + "%");
                 }
-
-                File.WriteAllBytes(fullFilePath, archivo);
-                XLWorkbook wb = new XLWorkbook(fullFilePath);
-
-                for (int i = 9; i <= 61; i++)
+                else
                 {
-                    if (wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString() != "")
-                    {
-                        DateTime FechaActual = DateTime.Parse(wb.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString());
-                        if (FechaActual >= dpFechaInicial.Value && FechaActual <= dpFechaFinal.Value)
-                        {
-                            Total = Total + 1;
-                        }
-                    }
+                    TemasTotales = 34;
+                    PorcentajeAvanzados = 100 * Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()) / TemasTotales;
+                    ResultadosFinales.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), Convert.ToString(PorcentajeAvanzados) + "%", Convert.ToString(100 - PorcentajeAvanzados) + "%");
                 }
-
-                Reportes.fnReporte6(Titulo, Titulos, Valores, resultados, txtCodigo.Text, Total);
             }
-            else
-                MessageBox.Show("No hay Plan de Sesiones");
+
+            Reportes.fnReporte6(Titulo, Titulos, Valores, ResultadosFinales, txtCodigo.Text);
         }
 
         private void dpFechaInicial_CloseUp(object sender, EventArgs e)
