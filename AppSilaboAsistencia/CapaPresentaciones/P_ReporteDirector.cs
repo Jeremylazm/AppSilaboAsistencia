@@ -125,6 +125,11 @@ namespace CapaPresentaciones
             }
         }
 
+        private void btnGeneral_Click(object sender, EventArgs e)
+        {
+            fnReporte9();
+        }
+
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
@@ -188,10 +193,6 @@ namespace CapaPresentaciones
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
 
-
-
-
-                
                 fnReporte5();
             }
         }
