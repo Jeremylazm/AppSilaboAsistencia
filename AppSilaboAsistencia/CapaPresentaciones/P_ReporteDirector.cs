@@ -125,10 +125,6 @@ namespace CapaPresentaciones
             }
         }
 
-        private void btnGeneral_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -242,6 +238,18 @@ namespace CapaPresentaciones
 
                 //fnReporte1();
             }
+        }
+
+        private void btnGeneral_Click(object sender, EventArgs e)
+        {
+            // Reporte 7
+            string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            string[] Titulos = { "Semestre", "Escuela Profesional"};
+            string[] Valores = { CodSemestre, "INGENIERÍA INFORMÁTICA Y DE SISTEMAS"};
+
+            DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorAsignaturas(CodSemestre, CodDepartamentoA, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+
+            Reportes.fnReporte7(Titulo, Titulos, Valores, resultados);
         }
 
         private void fnReporte8()
