@@ -227,90 +227,125 @@ namespace ControlesPerzonalizados
                     pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
                     // Gráficos
-                    // Gráfico 1
-                    tcGraficos.TabPages.Clear();
+                    btnGrafico2.Visible = true;
 
-                    Chart Grafico1 = new Chart
+                    gxGrafico1.XAxesLabel = "Fecha";
+                    gxGrafico1.YAxesLabel = "Cantidad";
+
+                    List<string> Etiquetas = new List<string>();
+                    
+                    List<double> Datos1 = new List<double>();
+                    List<Color> Colores1 = new List<Color>();
+
+                    List<double> Datos2 = new List<double>();
+                    List<Color> Colores2 = new List<Color>();
+
+                    foreach (DataRow Fila in Datos.Rows)
                     {
-                        Dock = DockStyle.Fill,
-                        Palette = ChartColorPalette.Excel
-                    };
-
-                    Grafico1.Titles.Clear();
-                    Grafico1.Series.Clear();
-                    Grafico1.ChartAreas.Clear();
-                    Grafico1.Titles.Add("Asignatura" + " - " + CodAsignatura);
-                    Grafico1.Titles[0].Font = new Font("Montserrat Alternates", 13f);
-
-                    TabPage tpGrafico1 = new TabPage("Gráfico 1");
-                    tpGrafico1.Controls.Add(Grafico1);
-
-                    ChartArea areaGrafico1 = new ChartArea();
-
-                    // Propiedades de los ejes
-                    areaGrafico1.AxisX.Interval = 1;
-                    areaGrafico1.AxisX.Title = "Fecha";
-                    areaGrafico1.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
-                    areaGrafico1.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
-                    areaGrafico1.AxisY.Title = "Cantidad";
-                    areaGrafico1.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
-                    areaGrafico1.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
-                    areaGrafico1.AxisX.MajorGrid.Enabled = false;
-                    //areaGrafico2.AxisY.MajorGrid.Enabled = false;
-
-                    double MaxYAxis = 0;
-                    for (int i = 0; i < Asistieron.Count; i++)
-                    {
-                        double temp = Asistieron.ElementAt(i) + Faltaron.ElementAt(i);
-                        if (temp > MaxYAxis) MaxYAxis = temp;
+                        Etiquetas.Add(Fila["Fecha"].ToString());
+                        Datos1.Add(double.Parse(Fila["TotalAsistieron"].ToString()));
+                        Colores1.Add(Color.FromArgb(104, 13, 15));
+                        Datos2.Add(double.Parse(Fila["TotalFaltaron"].ToString()));
+                        Colores2.Add(Color.FromArgb(232, 158, 31));
                     }
-                    areaGrafico1.AxisY.Maximum = (float)MaxYAxis;
 
-                    Grafico1.ChartAreas.Add(areaGrafico1);
+                    gxGrafico1.Labels = Etiquetas.ToArray();
 
-                    Series serie1Grafico1 = new Series("TotalAsistieron")
-                    {
-                        ChartType = SeriesChartType.StackedBar,
-                        XValueMember = "Fecha",
-                        YValueMembers = "TotalAsistieron",
-                        IsValueShownAsLabel = true,
-                        MarkerSize = 14,
-                        Font = new Font("Montserrat Alternates", 11f)
-                    };
+                    GraficoBarrasHorizontales1.Label = "Total Asistieron";
+                    GraficoBarrasHorizontales1.Data = Datos1;
+                    GraficoBarrasHorizontales1.BackgroundColor = Colores1;
 
-                    Series serie2Grafico1 = new Series("TotalFaltaron")
-                    {
-                        ChartType = SeriesChartType.StackedBar,
-                        XValueMember = "Fecha",
-                        YValueMembers = "TotalFaltaron",
-                        MarkerSize = 14,
-                        Font = new Font("Montserrat Alternates", 11f)
-                    };
+                    GraficoBarrasHorizontales2.Label = "Total Faltaron";
+                    GraficoBarrasHorizontales2.Data = Datos2;
+                    GraficoBarrasHorizontales2.BackgroundColor = Colores2;
 
-                    // Leyenda
-                    Grafico1.Legends.Add(new Legend("Total Asistieron"));
-                    Grafico1.Legends["Total Asistieron"].Alignment = StringAlignment.Center;
-                    //Grafico1.Legends["Total Asistieron"].LegendStyle = LegendStyle.Column;
-                    Grafico1.Legends["Total Asistieron"].Docking = Docking.Bottom;
-                    Grafico1.Legends["Total Asistieron"].IsDockedInsideChartArea = false;
-                    Grafico1.Legends["Total Asistieron"].Font = new Font("Montserrat Alternates", 11f);
+                    // Gráfico 1
 
-                    Grafico1.Legends.Add(new Legend("Total Faltaron"));
-                    Grafico1.Legends["Total Faltaron"].Alignment = StringAlignment.Center;
-                    //Grafico1.Legends["Total Faltaron"].LegendStyle = LegendStyle.Column;
-                    Grafico1.Legends["Total Faltaron"].Docking = Docking.Bottom;
-                    Grafico1.Legends["Total Faltaron"].IsDockedInsideChartArea = false;
-                    Grafico1.Legends["Total Faltaron"].Font = new Font("Montserrat Alternates", 11f);
 
-                    serie1Grafico1.Legend = "Total Asistieron";
-                    serie2Grafico1.Legend = "Total Faltaron";
 
-                    Grafico1.Series.Add(serie1Grafico1);
-                    Grafico1.Series.Add(serie2Grafico1);
+                    //tcGraficos.TabPages.Clear();
 
-                    Grafico1.DataSource = dtEstadisticos;
+                    //Chart Grafico1 = new Chart
+                    //{
+                    //    Dock = DockStyle.Fill,
+                    //    Palette = ChartColorPalette.Excel
+                    //};
 
-                    tcGraficos.TabPages.Add(tpGrafico1);
+                    //Grafico1.Titles.Clear();
+                    //Grafico1.Series.Clear();
+                    //Grafico1.ChartAreas.Clear();
+                    //Grafico1.Titles.Add("Asignatura" + " - " + CodAsignatura);
+                    //Grafico1.Titles[0].Font = new Font("Montserrat Alternates", 13f);
+
+                    //TabPage tpGrafico1 = new TabPage("Gráfico 1");
+                    //tpGrafico1.Controls.Add(Grafico1);
+
+                    //ChartArea areaGrafico1 = new ChartArea();
+
+                    //// Propiedades de los ejes
+                    //areaGrafico1.AxisX.Interval = 1;
+                    //areaGrafico1.AxisX.Title = "Fecha";
+                    //areaGrafico1.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+                    //areaGrafico1.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+                    //areaGrafico1.AxisY.Title = "Cantidad";
+                    //areaGrafico1.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+                    //areaGrafico1.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+                    //areaGrafico1.AxisX.MajorGrid.Enabled = false;
+                    ////areaGrafico2.AxisY.MajorGrid.Enabled = false;
+
+                    //double MaxYAxis = 0;
+                    //for (int i = 0; i < Asistieron.Count; i++)
+                    //{
+                    //    double temp = Asistieron.ElementAt(i) + Faltaron.ElementAt(i);
+                    //    if (temp > MaxYAxis) MaxYAxis = temp;
+                    //}
+                    //areaGrafico1.AxisY.Maximum = (float)MaxYAxis;
+
+                    //Grafico1.ChartAreas.Add(areaGrafico1);
+
+                    //Series serie1Grafico1 = new Series("TotalAsistieron")
+                    //{
+                    //    ChartType = SeriesChartType.StackedBar,
+                    //    XValueMember = "Fecha",
+                    //    YValueMembers = "TotalAsistieron",
+                    //    IsValueShownAsLabel = true,
+                    //    MarkerSize = 14,
+                    //    Font = new Font("Montserrat Alternates", 11f)
+                    //};
+
+                    //Series serie2Grafico1 = new Series("TotalFaltaron")
+                    //{
+                    //    ChartType = SeriesChartType.StackedBar,
+                    //    XValueMember = "Fecha",
+                    //    YValueMembers = "TotalFaltaron",
+                    //    MarkerSize = 14,
+                    //    Font = new Font("Montserrat Alternates", 11f)
+                    //};
+
+                    //// Leyenda
+                    //Grafico1.Legends.Add(new Legend("Total Asistieron"));
+                    //Grafico1.Legends["Total Asistieron"].Alignment = StringAlignment.Center;
+                    ////Grafico1.Legends["Total Asistieron"].LegendStyle = LegendStyle.Column;
+                    //Grafico1.Legends["Total Asistieron"].Docking = Docking.Bottom;
+                    //Grafico1.Legends["Total Asistieron"].IsDockedInsideChartArea = false;
+                    //Grafico1.Legends["Total Asistieron"].Font = new Font("Montserrat Alternates", 11f);
+
+                    //Grafico1.Legends.Add(new Legend("Total Faltaron"));
+                    //Grafico1.Legends["Total Faltaron"].Alignment = StringAlignment.Center;
+                    ////Grafico1.Legends["Total Faltaron"].LegendStyle = LegendStyle.Column;
+                    //Grafico1.Legends["Total Faltaron"].Docking = Docking.Bottom;
+                    //Grafico1.Legends["Total Faltaron"].IsDockedInsideChartArea = false;
+                    //Grafico1.Legends["Total Faltaron"].Font = new Font("Montserrat Alternates", 11f);
+
+                    //serie1Grafico1.Legend = "Total Asistieron";
+                    //serie2Grafico1.Legend = "Total Faltaron";
+
+                    //Grafico1.Series.Add(serie1Grafico1);
+                    //Grafico1.Series.Add(serie2Grafico1);
+
+                    //Grafico1.DataSource = dtEstadisticos;
+
+                    //tcGraficos.TabPages.Add(tpGrafico1);
 
                     // Gráfico 2
                     Chart Grafico2 = new Chart
@@ -645,85 +680,117 @@ namespace ControlesPerzonalizados
                 // Gráfico 1
                 //tcGraficos.TabPages.Clear();
 
-                Chart Grafico1 = new Chart
+                btnGrafico2.Visible = true;
+
+                gxGrafico1.XAxesLabel = "Fecha";
+                gxGrafico1.YAxesLabel = "Cantidad";
+
+                List<string> Etiquetas = new List<string>();
+
+                List<double> Datos1 = new List<double>();
+                List<Color> Colores1 = new List<Color>();
+
+                List<double> Datos2 = new List<double>();
+                List<Color> Colores2 = new List<Color>();
+
+                foreach (DataRow Fila in Datos.Rows)
                 {
-                    Dock = DockStyle.Fill,
-                    Palette = ChartColorPalette.Excel
-                };
-
-                Grafico1.Titles.Clear();
-                Grafico1.Series.Clear();
-                Grafico1.ChartAreas.Clear();
-                Grafico1.Titles.Add("Asignatura" + " - " + CodAsignatura);
-                Grafico1.Titles[0].Font = new Font("Montserrat Alternates", 13f);
-
-                TabPage tpGrafico1 = new TabPage("Gráfico 1");
-                tpGrafico1.Controls.Add(Grafico1);
-
-                ChartArea areaGrafico1 = new ChartArea();
-
-                // Propiedades de los ejes
-                areaGrafico1.AxisX.Interval = 1;
-                areaGrafico1.AxisX.Title = "Fecha";
-                areaGrafico1.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
-                areaGrafico1.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
-                areaGrafico1.AxisY.Title = "Cantidad";
-                areaGrafico1.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
-                areaGrafico1.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
-                areaGrafico1.AxisX.MajorGrid.Enabled = false;
-                //areaGrafico2.AxisY.MajorGrid.Enabled = false;
-
-                double MaxYAxis = 0;
-                for (int i = 0; i < Asistieron.Count; i++)
-                {
-                    double temp = Asistieron.ElementAt(i) + Faltaron.ElementAt(i);
-                    if (temp > MaxYAxis) MaxYAxis = temp;
+                    Etiquetas.Add(Fila["Fecha"].ToString());
+                    Datos1.Add(double.Parse(Fila["TotalAsistieron"].ToString()));
+                    Colores1.Add(Color.FromArgb(104, 13, 15));
+                    Datos2.Add(double.Parse(Fila["TotalFaltaron"].ToString()));
+                    Colores2.Add(Color.FromArgb(232, 158, 31));
                 }
-                areaGrafico1.AxisY.Maximum = (float)MaxYAxis;
 
-                Grafico1.ChartAreas.Add(areaGrafico1);
+                gxGrafico1.Labels = Etiquetas.ToArray();
 
-                Series serie1Grafico1 = new Series("TotalAsistieron")
-                {
-                    ChartType = SeriesChartType.StackedBar,
-                    XValueMember = "Fecha",
-                    YValueMembers = "TotalAsistieron",
-                    IsValueShownAsLabel = true,
-                    MarkerSize = 14,
-                    Font = new Font("Montserrat Alternates", 11f)
-                };
+                GraficoBarrasHorizontales1.Label = "Total Asistieron";
+                GraficoBarrasHorizontales1.Data = Datos1;
+                GraficoBarrasHorizontales1.BackgroundColor = Colores1;
 
-                Series serie2Grafico1 = new Series("TotalFaltaron")
-                {
-                    ChartType = SeriesChartType.StackedBar,
-                    XValueMember = "Fecha",
-                    YValueMembers = "TotalFaltaron",
-                    MarkerSize = 14,
-                    Font = new Font("Montserrat Alternates", 11f)
-                };
+                GraficoBarrasHorizontales2.Label = "Total Faltaron";
+                GraficoBarrasHorizontales2.Data = Datos2;
+                GraficoBarrasHorizontales2.BackgroundColor = Colores2;
 
-                // Leyenda
-                Grafico1.Legends.Add(new Legend("Total Asistieron"));
-                Grafico1.Legends["Total Asistieron"].Alignment = StringAlignment.Center;
-                //Grafico1.Legends["Total Asistieron"].LegendStyle = LegendStyle.Column;
-                Grafico1.Legends["Total Asistieron"].Docking = Docking.Bottom;
-                Grafico1.Legends["Total Asistieron"].IsDockedInsideChartArea = false;
-                Grafico1.Legends["Total Asistieron"].Font = new Font("Montserrat Alternates", 11f);
+                //Chart Grafico1 = new Chart
+                //{
+                //    Dock = DockStyle.Fill,
+                //    Palette = ChartColorPalette.Excel
+                //};
 
-                Grafico1.Legends.Add(new Legend("Total Faltaron"));
-                Grafico1.Legends["Total Faltaron"].Alignment = StringAlignment.Center;
-                //Grafico1.Legends["Total Faltaron"].LegendStyle = LegendStyle.Column;
-                Grafico1.Legends["Total Faltaron"].Docking = Docking.Bottom;
-                Grafico1.Legends["Total Faltaron"].IsDockedInsideChartArea = false;
-                Grafico1.Legends["Total Faltaron"].Font = new Font("Montserrat Alternates", 11f);
+                //Grafico1.Titles.Clear();
+                //Grafico1.Series.Clear();
+                //Grafico1.ChartAreas.Clear();
+                //Grafico1.Titles.Add("Asignatura" + " - " + CodAsignatura);
+                //Grafico1.Titles[0].Font = new Font("Montserrat Alternates", 13f);
 
-                serie1Grafico1.Legend = "Total Asistieron";
-                serie2Grafico1.Legend = "Total Faltaron";
+                //TabPage tpGrafico1 = new TabPage("Gráfico 1");
+                //tpGrafico1.Controls.Add(Grafico1);
 
-                Grafico1.Series.Add(serie1Grafico1);
-                Grafico1.Series.Add(serie2Grafico1);
+                //ChartArea areaGrafico1 = new ChartArea();
 
-                Grafico1.DataSource = dtEstadisticos;
+                //// Propiedades de los ejes
+                //areaGrafico1.AxisX.Interval = 1;
+                //areaGrafico1.AxisX.Title = "Fecha";
+                //areaGrafico1.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+                //areaGrafico1.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+                //areaGrafico1.AxisY.Title = "Cantidad";
+                //areaGrafico1.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+                //areaGrafico1.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+                //areaGrafico1.AxisX.MajorGrid.Enabled = false;
+                ////areaGrafico2.AxisY.MajorGrid.Enabled = false;
+
+                //double MaxYAxis = 0;
+                //for (int i = 0; i < Asistieron.Count; i++)
+                //{
+                //    double temp = Asistieron.ElementAt(i) + Faltaron.ElementAt(i);
+                //    if (temp > MaxYAxis) MaxYAxis = temp;
+                //}
+                //areaGrafico1.AxisY.Maximum = (float)MaxYAxis;
+
+                //Grafico1.ChartAreas.Add(areaGrafico1);
+
+                //Series serie1Grafico1 = new Series("TotalAsistieron")
+                //{
+                //    ChartType = SeriesChartType.StackedBar,
+                //    XValueMember = "Fecha",
+                //    YValueMembers = "TotalAsistieron",
+                //    IsValueShownAsLabel = true,
+                //    MarkerSize = 14,
+                //    Font = new Font("Montserrat Alternates", 11f)
+                //};
+
+                //Series serie2Grafico1 = new Series("TotalFaltaron")
+                //{
+                //    ChartType = SeriesChartType.StackedBar,
+                //    XValueMember = "Fecha",
+                //    YValueMembers = "TotalFaltaron",
+                //    MarkerSize = 14,
+                //    Font = new Font("Montserrat Alternates", 11f)
+                //};
+
+                //// Leyenda
+                //Grafico1.Legends.Add(new Legend("Total Asistieron"));
+                //Grafico1.Legends["Total Asistieron"].Alignment = StringAlignment.Center;
+                ////Grafico1.Legends["Total Asistieron"].LegendStyle = LegendStyle.Column;
+                //Grafico1.Legends["Total Asistieron"].Docking = Docking.Bottom;
+                //Grafico1.Legends["Total Asistieron"].IsDockedInsideChartArea = false;
+                //Grafico1.Legends["Total Asistieron"].Font = new Font("Montserrat Alternates", 11f);
+
+                //Grafico1.Legends.Add(new Legend("Total Faltaron"));
+                //Grafico1.Legends["Total Faltaron"].Alignment = StringAlignment.Center;
+                ////Grafico1.Legends["Total Faltaron"].LegendStyle = LegendStyle.Column;
+                //Grafico1.Legends["Total Faltaron"].Docking = Docking.Bottom;
+                //Grafico1.Legends["Total Faltaron"].IsDockedInsideChartArea = false;
+                //Grafico1.Legends["Total Faltaron"].Font = new Font("Montserrat Alternates", 11f);
+
+                //serie1Grafico1.Legend = "Total Asistieron";
+                //serie2Grafico1.Legend = "Total Faltaron";
+
+                //Grafico1.Series.Add(serie1Grafico1);
+                //Grafico1.Series.Add(serie2Grafico1);
+
+                //Grafico1.DataSource = dtEstadisticos;
 
                 //tcGraficos.TabPages.Add(tpGrafico1);
 
@@ -898,63 +965,97 @@ namespace ControlesPerzonalizados
                 }*/
 
                 // Gráficos
-                // Gráfico 1
-                //tcGraficos.TabPages.Clear();
 
-                Chart Grafico1 = new Chart
+                btnGrafico2.Visible = true;
+
+                gxGrafico1.XAxesLabel = "Código Estudiante";
+                gxGrafico1.YAxesLabel = "Cantidad";
+
+                List<string> Etiquetas = new List<string>();
+
+                List<double> Datos1 = new List<double>();
+                List<Color> Colores1 = new List<Color>();
+
+                List<double> Datos2 = new List<double>();
+                List<Color> Colores2 = new List<Color>();
+
+                foreach (DataRow Fila in Datos.Rows)
                 {
-                    Dock = DockStyle.Fill,
-                    Palette = ChartColorPalette.Excel
-                };
+                    Etiquetas.Add(Fila["Fecha"].ToString());
+                    Datos1.Add(double.Parse(Fila["TotalAsistencias"].ToString()));
+                    Colores1.Add(Color.FromArgb(104, 13, 15));
+                    Datos2.Add(double.Parse(Fila["TotalFaltas"].ToString()));
+                    Colores2.Add(Color.FromArgb(232, 158, 31));
+                }
 
-                TabPage tpGrafico1 = new TabPage("Gráfico 1");
-                tpGrafico1.Controls.Add(Grafico1);
+                gxGrafico1.Labels = Etiquetas.ToArray();
 
-                Grafico1.Titles.Clear();
-                Grafico1.Series.Clear();
-                Grafico1.ChartAreas.Clear();
+                GraficoBarrasHorizontales1.Label = "Total Asistencias";
+                GraficoBarrasHorizontales1.Data = Datos1;
+                GraficoBarrasHorizontales1.BackgroundColor = Colores1;
 
-                Grafico1.Titles.Add("Asignatura" + " - " + CodAsignatura);
+                GraficoBarrasHorizontales2.Label = "Total Faltas";
+                GraficoBarrasHorizontales2.Data = Datos2;
+                GraficoBarrasHorizontales2.BackgroundColor = Colores2;
 
-                ChartArea areaGrafico1 = new ChartArea();
 
-                // Propiedades de los ejes
-                areaGrafico1.AxisX.Interval = 1;
-                areaGrafico1.AxisX.Title = "Cód. Estudiante";
-                areaGrafico1.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
-                areaGrafico1.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 14f);
-                areaGrafico1.AxisY.Title = "Cantidad";
-                areaGrafico1.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
-                areaGrafico1.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
-                areaGrafico1.AxisX.MajorGrid.LineColor = Color.Red;
-                areaGrafico1.AxisX.MajorGrid.Enabled = false;
-                //areaGrafico2.AxisY.MajorGrid.Enabled = false;
+                //// Gráfico 1
+                ////tcGraficos.TabPages.Clear();
 
-                Grafico1.ChartAreas.Add(areaGrafico1);
+                //Chart Grafico1 = new Chart
+                //{
+                //    Dock = DockStyle.Fill,
+                //    Palette = ChartColorPalette.Excel
+                //};
 
-                Series serie1 = new Series("TotalAsistencias")
-                {
-                    ChartType = SeriesChartType.StackedBar,
-                    XValueMember = "CodEstudiante",
-                    YValueMembers = "TotalAsistencias",
-                    IsValueShownAsLabel = true,
-                    MarkerSize = 14,
-                    Font = new Font("Montserrat Alternates", 10f)
-                };
+                //TabPage tpGrafico1 = new TabPage("Gráfico 1");
+                //tpGrafico1.Controls.Add(Grafico1);
 
-                Series serie2 = new Series("TotalFaltas")
-                {
-                    ChartType = SeriesChartType.StackedBar,
-                    XValueMember = "CodEstudiante",
-                    YValueMembers = "TotalFaltas",
-                    MarkerSize = 14,
-                    Font = new Font("Montserrat Alternates", 11f)
-                };
+                //Grafico1.Titles.Clear();
+                //Grafico1.Series.Clear();
+                //Grafico1.ChartAreas.Clear();
 
-                Grafico1.Series.Add(serie1);
-                Grafico1.Series.Add(serie2);
+                //Grafico1.Titles.Add("Asignatura" + " - " + CodAsignatura);
 
-                Grafico1.DataSource = dgvResultados.DataSource;
+                //ChartArea areaGrafico1 = new ChartArea();
+
+                //// Propiedades de los ejes
+                //areaGrafico1.AxisX.Interval = 1;
+                //areaGrafico1.AxisX.Title = "Cód. Estudiante";
+                //areaGrafico1.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+                //areaGrafico1.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 14f);
+                //areaGrafico1.AxisY.Title = "Cantidad";
+                //areaGrafico1.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+                //areaGrafico1.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+                //areaGrafico1.AxisX.MajorGrid.LineColor = Color.Red;
+                //areaGrafico1.AxisX.MajorGrid.Enabled = false;
+                ////areaGrafico2.AxisY.MajorGrid.Enabled = false;
+
+                //Grafico1.ChartAreas.Add(areaGrafico1);
+
+                //Series serie1 = new Series("TotalAsistencias")
+                //{
+                //    ChartType = SeriesChartType.StackedBar,
+                //    XValueMember = "CodEstudiante",
+                //    YValueMembers = "TotalAsistencias",
+                //    IsValueShownAsLabel = true,
+                //    MarkerSize = 14,
+                //    Font = new Font("Montserrat Alternates", 10f)
+                //};
+
+                //Series serie2 = new Series("TotalFaltas")
+                //{
+                //    ChartType = SeriesChartType.StackedBar,
+                //    XValueMember = "CodEstudiante",
+                //    YValueMembers = "TotalFaltas",
+                //    MarkerSize = 14,
+                //    Font = new Font("Montserrat Alternates", 11f)
+                //};
+
+                //Grafico1.Series.Add(serie1);
+                //Grafico1.Series.Add(serie2);
+
+                //Grafico1.DataSource = dgvResultados.DataSource;
 
                 //tcGraficos.TabPages.Add(tpGrafico1);
             }

@@ -39,9 +39,9 @@ namespace ControlesPerzonalizados
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
             this.pnTitulo = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnSuperior = new Bunifu.UI.WinForms.BunifuPanel();
@@ -60,13 +60,7 @@ namespace ControlesPerzonalizados
             this.pnContenedorGraficos = new Bunifu.UI.WinForms.BunifuPanel();
             this.gbxGraficos = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnGraficos = new Bunifu.UI.WinForms.BunifuPanel();
-            this.pnBotonesGraficos = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnGrafico1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            this.btnGrafico2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            this.Cuadricula = new System.Windows.Forms.TableLayoutPanel();
-            this.pnInferior = new Bunifu.UI.WinForms.BunifuPanel();
             this.tcGraficos = new Bunifu.UI.WinForms.BunifuPages();
-            this.GraficoBarrasHorizontales = new Bunifu.Charts.WinForms.ChartTypes.BunifuHorizontalBarChart(this.components);
             this.tbPagina1 = new System.Windows.Forms.TabPage();
             this.gxGrafico1 = new Bunifu.Charts.WinForms.BunifuChartCanvas();
             this.tbPagina2 = new System.Windows.Forms.TabPage();
@@ -77,10 +71,17 @@ namespace ControlesPerzonalizados
             this.gxGrafico4 = new Bunifu.Charts.WinForms.BunifuChartCanvas();
             this.tbPagina5 = new System.Windows.Forms.TabPage();
             this.gxGrafico5 = new Bunifu.Charts.WinForms.BunifuChartCanvas();
+            this.pnBotonesGraficos = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnGrafico1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            this.btnGrafico2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            this.Cuadricula = new System.Windows.Forms.TableLayoutPanel();
+            this.pnInferior = new Bunifu.UI.WinForms.BunifuPanel();
+            this.GraficoBarrasHorizontales1 = new Bunifu.Charts.WinForms.ChartTypes.BunifuHorizontalBarChart(this.components);
             this.GraficoLineas = new Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart(this.components);
             this.GraficoBarrasVerticales = new Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart(this.components);
             this.GraficoCircular = new Bunifu.Charts.WinForms.ChartTypes.BunifuPieChart(this.components);
             this.GraficoBarrasCompletas = new Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart(this.components);
+            this.GraficoBarrasHorizontales2 = new Bunifu.Charts.WinForms.ChartTypes.BunifuHorizontalBarChart(this.components);
             this.pnTitulo.SuspendLayout();
             this.pnSuperior.SuspendLayout();
             this.pnCampos.SuspendLayout();
@@ -92,15 +93,15 @@ namespace ControlesPerzonalizados
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumen)).BeginInit();
             this.pnContenedorGraficos.SuspendLayout();
             this.pnGraficos.SuspendLayout();
-            this.pnBotonesGraficos.SuspendLayout();
-            this.Cuadricula.SuspendLayout();
-            this.pnInferior.SuspendLayout();
             this.tcGraficos.SuspendLayout();
             this.tbPagina1.SuspendLayout();
             this.tbPagina2.SuspendLayout();
             this.tbPagina3.SuspendLayout();
             this.tbPagina4.SuspendLayout();
             this.tbPagina5.SuspendLayout();
+            this.pnBotonesGraficos.SuspendLayout();
+            this.Cuadricula.SuspendLayout();
+            this.pnInferior.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnTitulo
@@ -582,237 +583,6 @@ namespace ControlesPerzonalizados
             this.pnGraficos.Size = new System.Drawing.Size(1056, 685);
             this.pnGraficos.TabIndex = 99;
             // 
-            // pnBotonesGraficos
-            // 
-            this.pnBotonesGraficos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnBotonesGraficos.Controls.Add(this.btnGrafico1);
-            this.pnBotonesGraficos.Controls.Add(this.btnGrafico2);
-            this.pnBotonesGraficos.Location = new System.Drawing.Point(17, 16);
-            this.pnBotonesGraficos.Name = "pnBotonesGraficos";
-            this.pnBotonesGraficos.Size = new System.Drawing.Size(1027, 46);
-            this.pnBotonesGraficos.TabIndex = 1;
-            // 
-            // btnGrafico1
-            // 
-            this.btnGrafico1.AllowAnimations = true;
-            this.btnGrafico1.AllowMouseEffects = true;
-            this.btnGrafico1.AllowToggling = true;
-            this.btnGrafico1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnGrafico1.AnimationSpeed = 200;
-            this.btnGrafico1.AutoGenerateColors = false;
-            this.btnGrafico1.AutoRoundBorders = false;
-            this.btnGrafico1.AutoSizeLeftIcon = true;
-            this.btnGrafico1.AutoSizeRightIcon = true;
-            this.btnGrafico1.BackColor = System.Drawing.Color.Transparent;
-            this.btnGrafico1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnGrafico1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGrafico1.BackgroundImage")));
-            this.btnGrafico1.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnGrafico1.ButtonText = "Gráfico 1";
-            this.btnGrafico1.ButtonTextMarginLeft = 0;
-            this.btnGrafico1.ColorContrastOnClick = 45;
-            this.btnGrafico1.ColorContrastOnHover = 45;
-            this.btnGrafico1.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnGrafico1.CustomizableEdges = borderEdges1;
-            this.btnGrafico1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnGrafico1.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnGrafico1.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnGrafico1.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnGrafico1.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            this.btnGrafico1.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrafico1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnGrafico1.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGrafico1.IconLeftCursor = System.Windows.Forms.Cursors.Default;
-            this.btnGrafico1.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.btnGrafico1.IconMarginLeft = 11;
-            this.btnGrafico1.IconPadding = 10;
-            this.btnGrafico1.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGrafico1.IconRightCursor = System.Windows.Forms.Cursors.Default;
-            this.btnGrafico1.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
-            this.btnGrafico1.IconSize = 25;
-            this.btnGrafico1.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnGrafico1.IdleBorderRadius = 15;
-            this.btnGrafico1.IdleBorderThickness = 1;
-            this.btnGrafico1.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnGrafico1.IdleIconLeftImage = null;
-            this.btnGrafico1.IdleIconRightImage = null;
-            this.btnGrafico1.IndicateFocus = true;
-            this.btnGrafico1.Location = new System.Drawing.Point(3, 3);
-            this.btnGrafico1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.btnGrafico1.Name = "btnGrafico1";
-            this.btnGrafico1.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnGrafico1.OnDisabledState.BorderRadius = 15;
-            this.btnGrafico1.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnGrafico1.OnDisabledState.BorderThickness = 1;
-            this.btnGrafico1.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnGrafico1.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnGrafico1.OnDisabledState.IconLeftImage = null;
-            this.btnGrafico1.OnDisabledState.IconRightImage = null;
-            this.btnGrafico1.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnGrafico1.onHoverState.BorderRadius = 15;
-            this.btnGrafico1.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnGrafico1.onHoverState.BorderThickness = 1;
-            this.btnGrafico1.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnGrafico1.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnGrafico1.onHoverState.IconLeftImage = null;
-            this.btnGrafico1.onHoverState.IconRightImage = null;
-            this.btnGrafico1.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnGrafico1.OnIdleState.BorderRadius = 15;
-            this.btnGrafico1.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnGrafico1.OnIdleState.BorderThickness = 1;
-            this.btnGrafico1.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnGrafico1.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnGrafico1.OnIdleState.IconLeftImage = null;
-            this.btnGrafico1.OnIdleState.IconRightImage = null;
-            this.btnGrafico1.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnGrafico1.OnPressedState.BorderRadius = 15;
-            this.btnGrafico1.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnGrafico1.OnPressedState.BorderThickness = 1;
-            this.btnGrafico1.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnGrafico1.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnGrafico1.OnPressedState.IconLeftImage = null;
-            this.btnGrafico1.OnPressedState.IconRightImage = null;
-            this.btnGrafico1.Size = new System.Drawing.Size(101, 39);
-            this.btnGrafico1.TabIndex = 64;
-            this.btnGrafico1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnGrafico1.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnGrafico1.TextMarginLeft = 0;
-            this.btnGrafico1.TextPadding = new System.Windows.Forms.Padding(0);
-            this.btnGrafico1.UseDefaultRadiusAndThickness = true;
-            // 
-            // btnGrafico2
-            // 
-            this.btnGrafico2.AllowAnimations = true;
-            this.btnGrafico2.AllowMouseEffects = true;
-            this.btnGrafico2.AllowToggling = true;
-            this.btnGrafico2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnGrafico2.AnimationSpeed = 200;
-            this.btnGrafico2.AutoGenerateColors = false;
-            this.btnGrafico2.AutoRoundBorders = false;
-            this.btnGrafico2.AutoSizeLeftIcon = true;
-            this.btnGrafico2.AutoSizeRightIcon = true;
-            this.btnGrafico2.BackColor = System.Drawing.Color.Transparent;
-            this.btnGrafico2.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnGrafico2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGrafico2.BackgroundImage")));
-            this.btnGrafico2.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnGrafico2.ButtonText = "Gráfico 2";
-            this.btnGrafico2.ButtonTextMarginLeft = 0;
-            this.btnGrafico2.ColorContrastOnClick = 45;
-            this.btnGrafico2.ColorContrastOnHover = 45;
-            this.btnGrafico2.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnGrafico2.CustomizableEdges = borderEdges2;
-            this.btnGrafico2.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnGrafico2.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnGrafico2.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnGrafico2.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnGrafico2.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            this.btnGrafico2.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrafico2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnGrafico2.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGrafico2.IconLeftCursor = System.Windows.Forms.Cursors.Default;
-            this.btnGrafico2.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.btnGrafico2.IconMarginLeft = 11;
-            this.btnGrafico2.IconPadding = 10;
-            this.btnGrafico2.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGrafico2.IconRightCursor = System.Windows.Forms.Cursors.Default;
-            this.btnGrafico2.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
-            this.btnGrafico2.IconSize = 25;
-            this.btnGrafico2.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnGrafico2.IdleBorderRadius = 15;
-            this.btnGrafico2.IdleBorderThickness = 1;
-            this.btnGrafico2.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnGrafico2.IdleIconLeftImage = null;
-            this.btnGrafico2.IdleIconRightImage = null;
-            this.btnGrafico2.IndicateFocus = true;
-            this.btnGrafico2.Location = new System.Drawing.Point(104, 3);
-            this.btnGrafico2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.btnGrafico2.Name = "btnGrafico2";
-            this.btnGrafico2.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnGrafico2.OnDisabledState.BorderRadius = 15;
-            this.btnGrafico2.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnGrafico2.OnDisabledState.BorderThickness = 1;
-            this.btnGrafico2.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnGrafico2.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnGrafico2.OnDisabledState.IconLeftImage = null;
-            this.btnGrafico2.OnDisabledState.IconRightImage = null;
-            this.btnGrafico2.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnGrafico2.onHoverState.BorderRadius = 15;
-            this.btnGrafico2.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnGrafico2.onHoverState.BorderThickness = 1;
-            this.btnGrafico2.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnGrafico2.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnGrafico2.onHoverState.IconLeftImage = null;
-            this.btnGrafico2.onHoverState.IconRightImage = null;
-            this.btnGrafico2.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnGrafico2.OnIdleState.BorderRadius = 15;
-            this.btnGrafico2.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnGrafico2.OnIdleState.BorderThickness = 1;
-            this.btnGrafico2.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnGrafico2.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnGrafico2.OnIdleState.IconLeftImage = null;
-            this.btnGrafico2.OnIdleState.IconRightImage = null;
-            this.btnGrafico2.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnGrafico2.OnPressedState.BorderRadius = 15;
-            this.btnGrafico2.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnGrafico2.OnPressedState.BorderThickness = 1;
-            this.btnGrafico2.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnGrafico2.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnGrafico2.OnPressedState.IconLeftImage = null;
-            this.btnGrafico2.OnPressedState.IconRightImage = null;
-            this.btnGrafico2.Size = new System.Drawing.Size(101, 39);
-            this.btnGrafico2.TabIndex = 65;
-            this.btnGrafico2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnGrafico2.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnGrafico2.TextMarginLeft = 0;
-            this.btnGrafico2.TextPadding = new System.Windows.Forms.Padding(0);
-            this.btnGrafico2.UseDefaultRadiusAndThickness = true;
-            // 
-            // Cuadricula
-            // 
-            this.Cuadricula.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Cuadricula.ColumnCount = 1;
-            this.Cuadricula.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Cuadricula.Controls.Add(this.pnSuperior, 0, 0);
-            this.Cuadricula.Controls.Add(this.pnInferior, 0, 1);
-            this.Cuadricula.Location = new System.Drawing.Point(0, 70);
-            this.Cuadricula.Name = "Cuadricula";
-            this.Cuadricula.RowCount = 2;
-            this.Cuadricula.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 231F));
-            this.Cuadricula.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1431F));
-            this.Cuadricula.Size = new System.Drawing.Size(1062, 1648);
-            this.Cuadricula.TabIndex = 95;
-            // 
-            // pnInferior
-            // 
-            this.pnInferior.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnInferior.BackgroundColor = System.Drawing.Color.Transparent;
-            this.pnInferior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnInferior.BackgroundImage")));
-            this.pnInferior.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnInferior.BorderColor = System.Drawing.Color.Transparent;
-            this.pnInferior.BorderRadius = 3;
-            this.pnInferior.BorderThickness = 1;
-            this.pnInferior.Controls.Add(this.pnContenedorResultados);
-            this.pnInferior.Controls.Add(this.pnContenedorGraficos);
-            this.pnInferior.Controls.Add(this.pnContenedorCuadro);
-            this.pnInferior.Location = new System.Drawing.Point(0, 231);
-            this.pnInferior.Margin = new System.Windows.Forms.Padding(0);
-            this.pnInferior.Name = "pnInferior";
-            this.pnInferior.ShowBorders = true;
-            this.pnInferior.Size = new System.Drawing.Size(1062, 1431);
-            this.pnInferior.TabIndex = 91;
-            // 
             // tcGraficos
             // 
             this.tcGraficos.Alignment = System.Windows.Forms.TabAlignment.Bottom;
@@ -828,10 +598,10 @@ namespace ControlesPerzonalizados
             this.tcGraficos.Location = new System.Drawing.Point(13, 68);
             this.tcGraficos.Multiline = true;
             this.tcGraficos.Name = "tcGraficos";
-            this.tcGraficos.Page = this.tbPagina5;
-            this.tcGraficos.PageIndex = 4;
-            this.tcGraficos.PageName = "tbPagina5";
-            this.tcGraficos.PageTitle = "5";
+            this.tcGraficos.Page = this.tbPagina1;
+            this.tcGraficos.PageIndex = 0;
+            this.tcGraficos.PageName = "tbPagina1";
+            this.tcGraficos.PageTitle = "1";
             this.tcGraficos.SelectedIndex = 0;
             this.tcGraficos.Size = new System.Drawing.Size(1036, 613);
             this.tcGraficos.TabIndex = 2;
@@ -852,19 +622,6 @@ namespace ControlesPerzonalizados
             animation1.TransparencyCoeff = 0F;
             this.tcGraficos.Transition = animation1;
             this.tcGraficos.TransitionType = Utilities.BunifuPages.BunifuAnimatorNS.AnimationType.Custom;
-            // 
-            // GraficoBarrasHorizontales
-            // 
-            this.GraficoBarrasHorizontales.BackgroundColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasHorizontales.BackgroundColor")));
-            this.GraficoBarrasHorizontales.BorderColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasHorizontales.BorderColor")));
-            this.GraficoBarrasHorizontales.BorderSkipped = null;
-            this.GraficoBarrasHorizontales.BorderWidth = 0;
-            this.GraficoBarrasHorizontales.Data = ((System.Collections.Generic.List<double>)(resources.GetObject("GraficoBarrasHorizontales.Data")));
-            this.GraficoBarrasHorizontales.HoverBackgroundColor = System.Drawing.Color.Empty;
-            this.GraficoBarrasHorizontales.HoverBorderColor = System.Drawing.Color.Empty;
-            this.GraficoBarrasHorizontales.HoverBorderWidth = 0;
-            this.GraficoBarrasHorizontales.Label = "Leyenda";
-            this.GraficoBarrasHorizontales.TargetCanvas = this.gxGrafico1;
             // 
             // tbPagina1
             // 
@@ -922,7 +679,7 @@ namespace ControlesPerzonalizados
             this.gxGrafico1.XAxesLabelFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
             this.gxGrafico1.XAxesLabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.gxGrafico1.XAxesLineWidth = 1;
-            this.gxGrafico1.XAxesStacked = false;
+            this.gxGrafico1.XAxesStacked = true;
             this.gxGrafico1.XAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
             this.gxGrafico1.XAxesZeroLineWidth = 1;
             this.gxGrafico1.YAxesBeginAtZero = true;
@@ -1231,6 +988,250 @@ namespace ControlesPerzonalizados
             this.gxGrafico5.YAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
             this.gxGrafico5.YAxesZeroLineWidth = 1;
             // 
+            // pnBotonesGraficos
+            // 
+            this.pnBotonesGraficos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnBotonesGraficos.Controls.Add(this.btnGrafico1);
+            this.pnBotonesGraficos.Controls.Add(this.btnGrafico2);
+            this.pnBotonesGraficos.Location = new System.Drawing.Point(17, 16);
+            this.pnBotonesGraficos.Name = "pnBotonesGraficos";
+            this.pnBotonesGraficos.Size = new System.Drawing.Size(1027, 46);
+            this.pnBotonesGraficos.TabIndex = 1;
+            // 
+            // btnGrafico1
+            // 
+            this.btnGrafico1.AllowAnimations = true;
+            this.btnGrafico1.AllowMouseEffects = true;
+            this.btnGrafico1.AllowToggling = true;
+            this.btnGrafico1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnGrafico1.AnimationSpeed = 200;
+            this.btnGrafico1.AutoGenerateColors = false;
+            this.btnGrafico1.AutoRoundBorders = false;
+            this.btnGrafico1.AutoSizeLeftIcon = true;
+            this.btnGrafico1.AutoSizeRightIcon = true;
+            this.btnGrafico1.BackColor = System.Drawing.Color.Transparent;
+            this.btnGrafico1.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGrafico1.BackgroundImage")));
+            this.btnGrafico1.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico1.ButtonText = "Gráfico 1";
+            this.btnGrafico1.ButtonTextMarginLeft = 0;
+            this.btnGrafico1.ColorContrastOnClick = 45;
+            this.btnGrafico1.ColorContrastOnHover = 45;
+            this.btnGrafico1.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnGrafico1.CustomizableEdges = borderEdges1;
+            this.btnGrafico1.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGrafico1.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnGrafico1.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnGrafico1.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnGrafico1.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            this.btnGrafico1.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrafico1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico1.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGrafico1.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnGrafico1.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnGrafico1.IconMarginLeft = 11;
+            this.btnGrafico1.IconPadding = 10;
+            this.btnGrafico1.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGrafico1.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnGrafico1.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnGrafico1.IconSize = 25;
+            this.btnGrafico1.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico1.IdleBorderRadius = 15;
+            this.btnGrafico1.IdleBorderThickness = 1;
+            this.btnGrafico1.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico1.IdleIconLeftImage = null;
+            this.btnGrafico1.IdleIconRightImage = null;
+            this.btnGrafico1.IndicateFocus = true;
+            this.btnGrafico1.Location = new System.Drawing.Point(3, 3);
+            this.btnGrafico1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.btnGrafico1.Name = "btnGrafico1";
+            this.btnGrafico1.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnGrafico1.OnDisabledState.BorderRadius = 15;
+            this.btnGrafico1.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico1.OnDisabledState.BorderThickness = 1;
+            this.btnGrafico1.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnGrafico1.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnGrafico1.OnDisabledState.IconLeftImage = null;
+            this.btnGrafico1.OnDisabledState.IconRightImage = null;
+            this.btnGrafico1.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico1.onHoverState.BorderRadius = 15;
+            this.btnGrafico1.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico1.onHoverState.BorderThickness = 1;
+            this.btnGrafico1.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico1.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico1.onHoverState.IconLeftImage = null;
+            this.btnGrafico1.onHoverState.IconRightImage = null;
+            this.btnGrafico1.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico1.OnIdleState.BorderRadius = 15;
+            this.btnGrafico1.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico1.OnIdleState.BorderThickness = 1;
+            this.btnGrafico1.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico1.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico1.OnIdleState.IconLeftImage = null;
+            this.btnGrafico1.OnIdleState.IconRightImage = null;
+            this.btnGrafico1.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico1.OnPressedState.BorderRadius = 15;
+            this.btnGrafico1.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico1.OnPressedState.BorderThickness = 1;
+            this.btnGrafico1.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico1.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico1.OnPressedState.IconLeftImage = null;
+            this.btnGrafico1.OnPressedState.IconRightImage = null;
+            this.btnGrafico1.Size = new System.Drawing.Size(101, 39);
+            this.btnGrafico1.TabIndex = 64;
+            this.btnGrafico1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGrafico1.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnGrafico1.TextMarginLeft = 0;
+            this.btnGrafico1.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnGrafico1.UseDefaultRadiusAndThickness = true;
+            // 
+            // btnGrafico2
+            // 
+            this.btnGrafico2.AllowAnimations = true;
+            this.btnGrafico2.AllowMouseEffects = true;
+            this.btnGrafico2.AllowToggling = true;
+            this.btnGrafico2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnGrafico2.AnimationSpeed = 200;
+            this.btnGrafico2.AutoGenerateColors = false;
+            this.btnGrafico2.AutoRoundBorders = false;
+            this.btnGrafico2.AutoSizeLeftIcon = true;
+            this.btnGrafico2.AutoSizeRightIcon = true;
+            this.btnGrafico2.BackColor = System.Drawing.Color.Transparent;
+            this.btnGrafico2.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGrafico2.BackgroundImage")));
+            this.btnGrafico2.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico2.ButtonText = "Gráfico 2";
+            this.btnGrafico2.ButtonTextMarginLeft = 0;
+            this.btnGrafico2.ColorContrastOnClick = 45;
+            this.btnGrafico2.ColorContrastOnHover = 45;
+            this.btnGrafico2.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnGrafico2.CustomizableEdges = borderEdges2;
+            this.btnGrafico2.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGrafico2.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnGrafico2.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnGrafico2.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnGrafico2.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            this.btnGrafico2.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrafico2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico2.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGrafico2.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnGrafico2.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnGrafico2.IconMarginLeft = 11;
+            this.btnGrafico2.IconPadding = 10;
+            this.btnGrafico2.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGrafico2.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnGrafico2.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnGrafico2.IconSize = 25;
+            this.btnGrafico2.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico2.IdleBorderRadius = 15;
+            this.btnGrafico2.IdleBorderThickness = 1;
+            this.btnGrafico2.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico2.IdleIconLeftImage = null;
+            this.btnGrafico2.IdleIconRightImage = null;
+            this.btnGrafico2.IndicateFocus = true;
+            this.btnGrafico2.Location = new System.Drawing.Point(104, 3);
+            this.btnGrafico2.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.btnGrafico2.Name = "btnGrafico2";
+            this.btnGrafico2.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnGrafico2.OnDisabledState.BorderRadius = 15;
+            this.btnGrafico2.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico2.OnDisabledState.BorderThickness = 1;
+            this.btnGrafico2.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnGrafico2.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnGrafico2.OnDisabledState.IconLeftImage = null;
+            this.btnGrafico2.OnDisabledState.IconRightImage = null;
+            this.btnGrafico2.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico2.onHoverState.BorderRadius = 15;
+            this.btnGrafico2.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico2.onHoverState.BorderThickness = 1;
+            this.btnGrafico2.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico2.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico2.onHoverState.IconLeftImage = null;
+            this.btnGrafico2.onHoverState.IconRightImage = null;
+            this.btnGrafico2.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico2.OnIdleState.BorderRadius = 15;
+            this.btnGrafico2.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico2.OnIdleState.BorderThickness = 1;
+            this.btnGrafico2.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico2.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico2.OnIdleState.IconLeftImage = null;
+            this.btnGrafico2.OnIdleState.IconRightImage = null;
+            this.btnGrafico2.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico2.OnPressedState.BorderRadius = 15;
+            this.btnGrafico2.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnGrafico2.OnPressedState.BorderThickness = 1;
+            this.btnGrafico2.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnGrafico2.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnGrafico2.OnPressedState.IconLeftImage = null;
+            this.btnGrafico2.OnPressedState.IconRightImage = null;
+            this.btnGrafico2.Size = new System.Drawing.Size(101, 39);
+            this.btnGrafico2.TabIndex = 65;
+            this.btnGrafico2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGrafico2.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnGrafico2.TextMarginLeft = 0;
+            this.btnGrafico2.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnGrafico2.UseDefaultRadiusAndThickness = true;
+            // 
+            // Cuadricula
+            // 
+            this.Cuadricula.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Cuadricula.ColumnCount = 1;
+            this.Cuadricula.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.Cuadricula.Controls.Add(this.pnSuperior, 0, 0);
+            this.Cuadricula.Controls.Add(this.pnInferior, 0, 1);
+            this.Cuadricula.Location = new System.Drawing.Point(0, 70);
+            this.Cuadricula.Name = "Cuadricula";
+            this.Cuadricula.RowCount = 2;
+            this.Cuadricula.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 231F));
+            this.Cuadricula.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1431F));
+            this.Cuadricula.Size = new System.Drawing.Size(1062, 1648);
+            this.Cuadricula.TabIndex = 95;
+            // 
+            // pnInferior
+            // 
+            this.pnInferior.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnInferior.BackgroundColor = System.Drawing.Color.Transparent;
+            this.pnInferior.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnInferior.BackgroundImage")));
+            this.pnInferior.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnInferior.BorderColor = System.Drawing.Color.Transparent;
+            this.pnInferior.BorderRadius = 3;
+            this.pnInferior.BorderThickness = 1;
+            this.pnInferior.Controls.Add(this.pnContenedorResultados);
+            this.pnInferior.Controls.Add(this.pnContenedorGraficos);
+            this.pnInferior.Controls.Add(this.pnContenedorCuadro);
+            this.pnInferior.Location = new System.Drawing.Point(0, 231);
+            this.pnInferior.Margin = new System.Windows.Forms.Padding(0);
+            this.pnInferior.Name = "pnInferior";
+            this.pnInferior.ShowBorders = true;
+            this.pnInferior.Size = new System.Drawing.Size(1062, 1431);
+            this.pnInferior.TabIndex = 91;
+            // 
+            // GraficoBarrasHorizontales1
+            // 
+            this.GraficoBarrasHorizontales1.BackgroundColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasHorizontales1.BackgroundColor")));
+            this.GraficoBarrasHorizontales1.BorderColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasHorizontales1.BorderColor")));
+            this.GraficoBarrasHorizontales1.BorderSkipped = null;
+            this.GraficoBarrasHorizontales1.BorderWidth = 0;
+            this.GraficoBarrasHorizontales1.Data = ((System.Collections.Generic.List<double>)(resources.GetObject("GraficoBarrasHorizontales1.Data")));
+            this.GraficoBarrasHorizontales1.HoverBackgroundColor = System.Drawing.Color.Empty;
+            this.GraficoBarrasHorizontales1.HoverBorderColor = System.Drawing.Color.Empty;
+            this.GraficoBarrasHorizontales1.HoverBorderWidth = 0;
+            this.GraficoBarrasHorizontales1.Label = "Leyenda";
+            this.GraficoBarrasHorizontales1.TargetCanvas = this.gxGrafico1;
+            // 
             // GraficoLineas
             // 
             this.GraficoLineas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
@@ -1300,6 +1301,19 @@ namespace ControlesPerzonalizados
             this.GraficoBarrasCompletas.Label = "Leyenda";
             this.GraficoBarrasCompletas.TargetCanvas = this.gxGrafico5;
             // 
+            // GraficoBarrasHorizontales2
+            // 
+            this.GraficoBarrasHorizontales2.BackgroundColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasHorizontales2.BackgroundColor")));
+            this.GraficoBarrasHorizontales2.BorderColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasHorizontales2.BorderColor")));
+            this.GraficoBarrasHorizontales2.BorderSkipped = null;
+            this.GraficoBarrasHorizontales2.BorderWidth = 0;
+            this.GraficoBarrasHorizontales2.Data = ((System.Collections.Generic.List<double>)(resources.GetObject("GraficoBarrasHorizontales2.Data")));
+            this.GraficoBarrasHorizontales2.HoverBackgroundColor = System.Drawing.Color.Empty;
+            this.GraficoBarrasHorizontales2.HoverBorderColor = System.Drawing.Color.Empty;
+            this.GraficoBarrasHorizontales2.HoverBorderWidth = 0;
+            this.GraficoBarrasHorizontales2.Label = "Leyenda";
+            this.GraficoBarrasHorizontales2.TargetCanvas = this.gxGrafico1;
+            // 
             // C_Reporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1321,15 +1335,15 @@ namespace ControlesPerzonalizados
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumen)).EndInit();
             this.pnContenedorGraficos.ResumeLayout(false);
             this.pnGraficos.ResumeLayout(false);
-            this.pnBotonesGraficos.ResumeLayout(false);
-            this.Cuadricula.ResumeLayout(false);
-            this.pnInferior.ResumeLayout(false);
             this.tcGraficos.ResumeLayout(false);
             this.tbPagina1.ResumeLayout(false);
             this.tbPagina2.ResumeLayout(false);
             this.tbPagina3.ResumeLayout(false);
             this.tbPagina4.ResumeLayout(false);
             this.tbPagina5.ResumeLayout(false);
+            this.pnBotonesGraficos.ResumeLayout(false);
+            this.Cuadricula.ResumeLayout(false);
+            this.pnInferior.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1359,7 +1373,7 @@ namespace ControlesPerzonalizados
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGrafico1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGrafico2;
         private Bunifu.UI.WinForms.BunifuPages tcGraficos;
-        private Bunifu.Charts.WinForms.ChartTypes.BunifuHorizontalBarChart GraficoBarrasHorizontales;
+        private Bunifu.Charts.WinForms.ChartTypes.BunifuHorizontalBarChart GraficoBarrasHorizontales1;
         private System.Windows.Forms.TabPage tbPagina1;
         private Bunifu.Charts.WinForms.BunifuChartCanvas gxGrafico1;
         private System.Windows.Forms.TabPage tbPagina2;
@@ -1374,5 +1388,6 @@ namespace ControlesPerzonalizados
         private Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart GraficoBarrasVerticales;
         private Bunifu.Charts.WinForms.ChartTypes.BunifuPieChart GraficoCircular;
         private Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart GraficoBarrasCompletas;
+        private Bunifu.Charts.WinForms.ChartTypes.BunifuHorizontalBarChart GraficoBarrasHorizontales2;
     }
 }
