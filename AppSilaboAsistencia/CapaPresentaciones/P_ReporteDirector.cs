@@ -127,7 +127,7 @@ namespace CapaPresentaciones
 
         private void btnGeneral_Click(object sender, EventArgs e)
         {
-
+            fnReporte9();
         }
 
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
@@ -253,6 +253,58 @@ namespace CapaPresentaciones
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaAsignaturasEstudiante(CodSemestre, txtCodEstudiante.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
             Reportes.fnReporte8(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodEstudiante.Text);
+        }
+
+        private void fnReporte9()
+        {
+            string Titulo = "REPORTE DE AVANCE DE ASIGNATURA" + Environment.NewLine + "DEL SEMESTRE " + CodSemestre;
+            string[] Titulos = { "Semestre" };
+            string[] Valores = { CodSemestre };
+
+            DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignaturasDpto(CodSemestre, txtCodEstudiante.Text);
+
+            DataTable ResultadosFinales = new DataTable();
+            ResultadosFinales.Columns.Add("CodAsignatura", typeof(string));
+            ResultadosFinales.Columns.Add("NombreAsignatura", typeof(string));
+            ResultadosFinales.Columns.Add("Docente", typeof(string));
+            ResultadosFinales.Columns.Add("TemasAvanzados", typeof(string));
+            ResultadosFinales.Columns.Add("TemasFaltantes", typeof(string));
+
+            DataTable ResultadosResumen = new DataTable();
+            ResultadosResumen.Columns.Add("CodAsignatura", typeof(string));
+            ResultadosResumen.Columns.Add("NombreAsignatura", typeof(string));
+            ResultadosResumen.Columns.Add("Docente", typeof(string));
+            ResultadosResumen.Columns.Add("TemasAvanzados", typeof(int));
+            ResultadosResumen.Columns.Add("TemasFaltantes", typeof(int));
+
+            int Créditos = 0;
+            int TemasTotales = 0;
+            float PorcentajeAvanzados = 0;
+
+            for (int i = 0; i < resultados.Rows.Count; i++)
+            {
+                DataTable TablaCreditos = N_Asignatura.BuscarAsignatura(CodDepartamentoA, resultados.Rows[i]["CodAsignatura"].ToString().Substring(0, 5));
+                if (TablaCreditos.Rows.Count != 0)
+                {
+                    Créditos = Convert.ToInt32(TablaCreditos.Rows[0]["Creditos"].ToString());
+                }
+                if (Créditos == 4)
+                {
+                    TemasTotales = 51;
+                    PorcentajeAvanzados = 100 * Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()) / TemasTotales;
+                    ResultadosFinales.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), resultados.Rows[i]["Docente"].ToString(), Convert.ToString(PorcentajeAvanzados) + "%", Convert.ToString(100 - PorcentajeAvanzados) + "%");
+                    ResultadosResumen.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), resultados.Rows[i]["Docente"].ToString(), Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()), TemasTotales - Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()));
+                }
+                else
+                {
+                    TemasTotales = 34;
+                    PorcentajeAvanzados = 100 * Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()) / TemasTotales;
+                    ResultadosFinales.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), resultados.Rows[i]["Docente"].ToString(), Convert.ToString(PorcentajeAvanzados) + "%", Convert.ToString(100 - PorcentajeAvanzados) + "%");
+                    ResultadosResumen.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), resultados.Rows[i]["Docente"].ToString(), Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()), TemasTotales - Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()));
+                }
+            }
+
+            Reportes.fnReporte9(Titulo, Titulos, Valores, ResultadosFinales, ResultadosResumen);
         }
     }
 }
