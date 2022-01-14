@@ -7,14 +7,103 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidades;
+using CapaNegocios;
+using ControlesPerzonalizados;
 
 namespace CapaPresentaciones
 {
     public partial class P_DialogoReporte : Form
     {
+        readonly N_Catalogo ObjCatalogo;
+        private readonly string CodSemestre;
+        readonly string CodDocente = E_InicioSesion.Usuario;
+        private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
+        C_Reporte Reportes = new C_Reporte();
+        string nombreDocente;
+
         public P_DialogoReporte()
         {
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
+            ObjCatalogo = new N_Catalogo();
             InitializeComponent();
+        }
+
+        public P_DialogoReporte(string[] ValoresNecesarios, string Criterio)
+        {
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
+            ObjCatalogo = new N_Catalogo();
+            InitializeComponent();
+
+            if (Criterio == "Por Fechas")
+            {
+                string Titulo = "Reporte de Asistencia Estudiantes" + Environment.NewLine + ValoresNecesarios[5];
+                string[] Titulos = { "Semestre", "Escuela Profesional", "Cod. Asignatura", "Asignatura", "Cod. Docente", "Docente" };
+                string[] Valores = { CodSemestre, ValoresNecesarios[4], ValoresNecesarios[2], ValoresNecesarios[3], ValoresNecesarios[0], ValoresNecesarios[1] };
+
+                DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, ValoresNecesarios[2], ValoresNecesarios[5], "09:15:29");
+
+                C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, "Por Fechas")
+                {
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
+
+                };
+
+                Reportes = Reporte;
+                Responsivo();
+                pnReporte.Controls.Add(Reporte);
+                ActiveControl = Reporte.btnGrafico1;
+            }
+            else if (Criterio == "Por Estudiantes")
+            {
+                /*C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, txtCodigo.Text, "Por Fechas")
+                {
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
+
+                };
+
+                Reportes = Reporte;
+                Responsivo();
+                pnReporte.Controls.Add(Reporte);
+                ActiveControl = Reporte.btnGrafico1;*/
+            }
+            else if (Criterio == "Por Asignaturas")
+            {
+                /*C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, txtCodigo.Text, "Por Fechas")
+                {
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
+
+                };
+
+                Reportes = Reporte;
+                Responsivo();
+                pnReporte.Controls.Add(Reporte);
+                ActiveControl = Reporte.btnGrafico1;*/
+            }
+        }
+
+        private void Responsivo()
+        {
+            int AnchoTotal = 0;
+            int Filas = 1;
+
+            foreach (C_Campo cpControl in Reportes.pnSubcampos.Controls)
+            {
+                if ((AnchoTotal + cpControl.Width + 6) > Reportes.pnSubcampos.Width)
+                {
+                    Filas++;
+                    AnchoTotal = cpControl.Width + 6;
+                }
+                else
+                {
+                    AnchoTotal += cpControl.Width + 6;
+                }
+            }
+
+            Reportes.Cuadricula.RowStyles[0].Height = Filas * 92 + 51;
+            Reportes.Height = (int)Reportes.Cuadricula.RowStyles[0].Height + (int)Reportes.Cuadricula.RowStyles[1].Height + 73;
         }
 
         private void P_DialogoReporte_Load(object sender, EventArgs e)

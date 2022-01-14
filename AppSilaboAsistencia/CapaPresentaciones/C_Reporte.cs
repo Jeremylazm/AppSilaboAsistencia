@@ -14,7 +14,6 @@ using ClosedXML.Excel;
 using CapaNegocios;
 using ControlesPerzonalizados;
 
-
 namespace CapaPresentaciones
 {
     public partial class C_Reporte : UserControl
@@ -62,6 +61,25 @@ namespace CapaPresentaciones
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
 
             fnReporte1(Titulo, Titulos, Valores, Datos, CriterioAsistenciasEstudiantes, CodAsignatura);
+        }
+
+        public C_Reporte(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string Criterio)
+        {
+            InitializeComponent();
+            Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
+
+            if (Criterio == "Por Fechas")
+            {
+                fnReporte2(Titulo, Titulos, Valores, Datos);
+            }
+            else if (Criterio == "Por Estudiantes")
+            {
+
+            }
+            else if (Criterio == "Por Asignaturas")
+            {
+
+            }
         }
 
         private void C_ReporteA_Resize(object sender, EventArgs e)
@@ -338,6 +356,83 @@ namespace CapaPresentaciones
 
                 gxGrafico2.Update();
             }
+        }
+
+        public void fnReporte2(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
+        {
+            LimpiarCampos();
+
+            lblTitulo.Text = Titulo;
+
+            if (Titulos.Length.Equals(Valores.Length))
+            {
+                if (Titulos.Length != 0)
+                {
+                    for (int K = 0; K < Titulos.Length; K++)
+                    {
+                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
+                        pnSubcampos.Controls.Add(Nuevo);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No existen parametros");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error de parametros");
+            }
+
+            dgvResultados.Columns.Clear();
+
+            dgvResultados.DataSource = Datos;
+            dgvResultados.Columns[0].Visible = false;
+            //dgvResultados.Columns[0].DisplayIndex = 7;
+
+            if (dgvResultados.Rows.Count <= 10)
+            {
+                sbResultados.Visible = false;
+                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
+                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+            }
+            else
+            {
+                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                pnContenedorResultados.Height = 341;
+                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                sbResultados.Visible = true;
+            }
+
+            if (!pnContenedorCuadro.Visible)
+            {
+                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
+                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                pnContenedorCuadro.Visible = true;
+            }
+
+            // Cuadro de resumen
+
+            // Gráficos
         }
 
         public void fnReporte3(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura)
@@ -1273,15 +1368,44 @@ namespace CapaPresentaciones
             {
                 if (CriterioAsistenciasEstudiantes == "Por Fechas")
                 {
-                    MessageBox.Show("Por Fechas");
+                    MessageBox.Show(pnSubcampos.Controls.Count.ToString());
+
+                    foreach (C_Campo campo in pnSubcampos.Controls)
+                    {
+                        Console.WriteLine(campo.Titulo);
+                        Console.WriteLine(campo.Valor);
+                    }
+
+                    //MessageBox.Show("Por Fechas");
+
+                    string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, (pnSubcampos.Controls[4] as C_Campo).Valor, (pnSubcampos.Controls[5] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString() };
+                    //string[] ValoresNecesarios = { pnSubcampos.Controls["Cod. Docente"].Text, dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString() };
+
+                    P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, "Por Fechas");
+                    DR.ShowDialog();
+                    DR.Dispose();
                 }
                 if (CriterioAsistenciasEstudiantes == "Por Estudiantes")
                 {
-                    MessageBox.Show("Por Estudiantes");
+                    MessageBox.Show(pnSubcampos.Controls.Count.ToString());
+
+                    foreach (C_Campo campo in pnSubcampos.Controls)
+                    {
+                        Console.WriteLine(campo.Titulo);
+                        Console.WriteLine(campo.Valor);
+                    }
+
+                    /*MessageBox.Show("Por Estudiantes");
+                    P_DialogoReporte DR = new P_DialogoReporte("Por Estudiantes");
+                    DR.ShowDialog();
+                    DR.Dispose();*/
                 }
                 else if (CriterioAsistenciasEstudiantes == "Por Asignaturas")
                 {
-                    MessageBox.Show("Por Asignaturas");
+                    /*MessageBox.Show("Por Asignaturas");
+                    P_DialogoReporte DR = new P_DialogoReporte("Por Asignaturas");
+                    DR.ShowDialog();
+                    DR.Dispose();*/
                 }
             }
         }
