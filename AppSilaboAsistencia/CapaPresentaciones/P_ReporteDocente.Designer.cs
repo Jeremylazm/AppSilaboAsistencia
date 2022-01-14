@@ -934,14 +934,12 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuImageButton btnCerrar;
         private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
-        private Bunifu.UI.WinForms.BunifuDatePicker dpFechaInicial;
         private Bunifu.UI.WinForms.BunifuLabel lblFechaFinal;
         private Bunifu.UI.WinForms.BunifuLabel lblFechaInicial;
         public Bunifu.UI.WinForms.BunifuDropdown cxtCriterioSeleccion;
         private Bunifu.UI.WinForms.BunifuLabel lblCriterioSeleccion;
         public Bunifu.UI.WinForms.BunifuDropdown cxtTipoReporte;
         private Bunifu.UI.WinForms.BunifuLabel lblTipoReporte;
-        private Bunifu.UI.WinForms.BunifuDatePicker dpFechaFinal;
         private Bunifu.UI.WinForms.BunifuLabel lblCodigo;
         private Bunifu.UI.WinForms.BunifuSeparator lnEscuelaP;
         private Bunifu.UI.WinForms.BunifuLabel lblEscuelaP;
@@ -961,5 +959,7 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuPanel pnCriterio;
         private Bunifu.UI.WinForms.BunifuPanel pnTipo;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGeneral;
+        private Bunifu.UI.WinForms.BunifuDatePicker dpFechaInicial;
+        private Bunifu.UI.WinForms.BunifuDatePicker dpFechaFinal;
     }
 }
