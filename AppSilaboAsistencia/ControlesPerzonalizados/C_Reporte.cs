@@ -826,6 +826,30 @@ namespace ControlesPerzonalizados
 
         public void fnReporte7(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
         {
+            LimpiarCampos();
+
+            lblTitulo.Text = Titulo;
+
+            if (Titulos.Length.Equals(Valores.Length))
+            {
+                if (Titulos.Length != 0)
+                {
+                    for (int K = 0; K < Titulos.Length; K++)
+                    {
+                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
+                        pnSubcampos.Controls.Add(Nuevo);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No existen parametros");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error de parametros");
+            }
+
             if (Datos.Rows.Count == 0)
             {
                 A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
@@ -939,6 +963,30 @@ namespace ControlesPerzonalizados
         public void fnReporte8(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodEstudiante)
         {
             this.CriterioAsistenciasEstudiantes = CriterioAsistenciasEstudiantes;
+
+            LimpiarCampos();
+
+            lblTitulo.Text = Titulo;
+
+            if (Titulos.Length.Equals(Valores.Length))
+            {
+                if (Titulos.Length != 0)
+                {
+                    for (int K = 0; K < Titulos.Length; K++)
+                    {
+                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
+                        pnSubcampos.Controls.Add(Nuevo);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No existen parametros");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error de parametros");
+            }
 
             if (Datos.Rows.Count == 0)
             {

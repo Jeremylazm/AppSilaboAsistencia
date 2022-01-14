@@ -33,7 +33,21 @@ namespace CapaPresentaciones
             ObjCatalogo = new N_Catalogo();
             InitializeComponent();
             LLenarCampos();
-            pnCriterioPorAsignaturas.Visible = false;
+
+            lblCodEstudiante.Visible = false;
+            txtCodEstudiante.Visible = false;
+            lnCodEstudiante.Visible = false;
+            lblEstudiante.Visible = false;
+            txtEstudiante.Visible = false;
+            lnEstudiante.Visible = false;
+
+            lblCodigo.Visible = true;
+            txtCodigo.Visible = true;
+            lnCodigo.Visible = true;
+            pnCajas.Visible = true;
+
+            btnGeneral.Visible = false;
+            btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
         }
 
         private void LLenarCampos()
@@ -79,10 +93,10 @@ namespace CapaPresentaciones
             pnReporte.Height = pnPadre.ClientSize.Height + SystemInformation.HorizontalScrollBarHeight;
 
             string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
-            string[] Titulos = { "Semestre", "Escuela Profesional", "CodEstudiante", "Estudiante" };
-            string[] Valores = { CodSemestre, "INGENIERÍA INFORMÁTICA Y DE SISTEMAS", txtCodEstudiante.Text, txtEstudiante.Text };
+            string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
+            string[] Valores = { CodSemestre, CodDocenteReporte, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
 
-            DataTable resultados = N_AsistenciaEstudiante.AsistenciaAsignaturasEstudiante(CodSemestre, txtCodEstudiante.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+            DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorFechas(CodSemestre, CodDocenteReporte, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
             C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text, "Director de Escuela")
             {
@@ -122,6 +136,7 @@ namespace CapaPresentaciones
             P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Director de Escuela", cxtCriterioSeleccion.SelectedItem.ToString());
             AddOwnedForm(Asignaturas);
             Asignaturas.ShowDialog();
+
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
             {
                 //if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
@@ -138,10 +153,7 @@ namespace CapaPresentaciones
         private void btnGeneral_Click(object sender, EventArgs e)
         {
             if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))  fnReporte9();
-            else if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
-            {
-                fnReporte7();
-            }
+            else if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) fnReporte7();
         }
 
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
@@ -157,7 +169,24 @@ namespace CapaPresentaciones
                 lblFechaFinal.Visible = true;
                 dpFechaFinal.Visible = true;
 
-                if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
+                if (cxtCriterioSeleccion.SelectedItem.Equals("Por Fechas"))
+                {
+                    lblCodEstudiante.Visible = false;
+                    txtCodEstudiante.Visible = false;
+                    lnCodEstudiante.Visible = false;
+                    lblEstudiante.Visible = false;
+                    txtEstudiante.Visible = false;
+                    lnEstudiante.Visible = false;
+
+                    lblCodigo.Visible = true;
+                    txtCodigo.Visible = true;
+                    lnCodigo.Visible = true;
+                    pnCajas.Visible = true;
+
+                    btnGeneral.Visible = true;
+                    btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+                }
+                else if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
                 {
                     lblCodEstudiante.Visible = true;
                     txtCodEstudiante.Visible = true;
@@ -192,8 +221,6 @@ namespace CapaPresentaciones
                     btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
                 }
 
-                pnCriterioPorAsignaturas.Visible = true;
-
                 CriterioSeleccionAsistenciaEstudiantes();
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
@@ -210,8 +237,6 @@ namespace CapaPresentaciones
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
 
-                pnCriterioPorAsignaturas.Visible = false;
-
                 fnReporte5();
             }
         }
@@ -221,9 +246,47 @@ namespace CapaPresentaciones
             CriterioSeleccionAsistenciaEstudiantes();
         }
 
-        public void CriterioSeleccionAsistenciaEstudiantes()
+        public void CriterioSeleccionAsistenciaEstudiantes() // por fechas // por estudiantes // por asignaturas
         {
-            if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
+            if (cxtCriterioSeleccion.SelectedItem.Equals("Por Fechas"))
+            {
+                lblCodEstudiante.Visible = false;
+                txtCodEstudiante.Visible = false;
+                lnCodEstudiante.Visible = false;
+                lblEstudiante.Visible = false;
+                txtEstudiante.Visible = false;
+                lnEstudiante.Visible = false;
+
+                lblCodigo.Visible = true;
+                txtCodigo.Visible = true;
+                lnCodigo.Visible = true;
+                pnCajas.Visible = true;
+
+                btnGeneral.Visible = false;
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+
+                fnReporte1(this.CodDocenteReporte);
+            }
+            else if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
+            {
+                lblCodEstudiante.Visible = false;
+                txtCodEstudiante.Visible = false;
+                lnCodEstudiante.Visible = false;
+                lblEstudiante.Visible = false;
+                txtEstudiante.Visible = false;
+                lnEstudiante.Visible = false;
+
+                lblCodigo.Visible = true;
+                txtCodigo.Visible = true;
+                lnCodigo.Visible = true;
+                pnCajas.Visible = true;
+
+                btnGeneral.Visible = false;
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+
+                fnReporte3(this.CodDocenteReporte);
+            }
+            else if (cxtCriterioSeleccion.SelectedItem.Equals("Por Asignaturas"))
             {
                 lblCodEstudiante.Visible = true;
                 txtCodEstudiante.Visible = true;
@@ -240,45 +303,7 @@ namespace CapaPresentaciones
                 btnGeneral.Visible = false;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
 
-                // También cambia la descripción
                 fnReporte8();
-
-                pnCriterioPorAsignaturas.Visible = false;
-
-            }
-            else if (cxtCriterioSeleccion.SelectedItem.Equals("Por Asignaturas"))
-            {
-                lblCodEstudiante.Visible = false;
-                txtCodEstudiante.Visible = false;
-                lnCodEstudiante.Visible = false;
-                lblEstudiante.Visible = false;
-                txtEstudiante.Visible = false;
-                lnEstudiante.Visible = false;
-
-                lblCodigo.Visible = true;
-                txtCodigo.Visible = true;
-                lnCodigo.Visible = true;
-                pnCajas.Visible = true;
-
-                btnGeneral.Visible = true;
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
-
-                //fnReporte1234(); // Criterio por fechas o por estudiantes
-                radiobtnCriterioFechas.CheckedChanged += radioButtons_CheckedChanged;
-                radiobtnCriterioEstudiantes.CheckedChanged += radioButtons_CheckedChanged;
-
-                /*// Campos
-                DataTable Campos = N_Catalogo.MostrarCatalogo(CodSemestre, CodDepartamentoA);
-
-                txtCodigo.Text = Campos.Rows[0].ItemArray[0].ToString();
-                txtNombre.Text = Campos.Rows[0].ItemArray[1].ToString();
-                txtEscuelaP.Text = Campos.Rows[0].ItemArray[2].ToString();
-                this.CodDocenteReporte = Campos.Rows[0].ItemArray[4].ToString();*/
-
-                if (radiobtnCriterioFechas.Checked) fnReporte1(this.CodDocenteReporte);
-                else if (radiobtnCriterioEstudiantes.Checked) fnReporte3(this.CodDocenteReporte);
-
-                pnCriterioPorAsignaturas.Visible = true;
             }
         }
 
@@ -369,7 +394,7 @@ namespace CapaPresentaciones
             Reportes.fnReporte7(Titulo, Titulos, Valores, resultados);
         }
 
-        private void fnReporte1234()
+        /*private void fnReporte1234()
         {
             radiobtnCriterioFechas.CheckedChanged += radioButtons_CheckedChanged;
             radiobtnCriterioEstudiantes.CheckedChanged += radioButtons_CheckedChanged;
@@ -377,27 +402,7 @@ namespace CapaPresentaciones
             // Al inicio, Criterio fechas es checked
             // -> Reporte 1
             //fnReporte1();
-        }
-
-
-        private void radioButtons_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton radioButton = sender as RadioButton;
-            if (radioButton.Checked == true)
-            { //limited only checked button do function
-                switch (radioButton.Text)
-                {
-                    case "Por Fechas":
-                        Console.WriteLine(radiobtnCriterioFechas.Text);
-                        fnReporte1(this.CodDocenteReporte);
-                        break;
-                    case "Por Estudiantes":
-                        Console.WriteLine(radiobtnCriterioEstudiantes.Text);
-                        fnReporte3(this.CodDocenteReporte);
-                        break;
-                }
-            }
-        }
+        }*/
 
         private void fnReporte1(string CodDocenteReporte)
         {
