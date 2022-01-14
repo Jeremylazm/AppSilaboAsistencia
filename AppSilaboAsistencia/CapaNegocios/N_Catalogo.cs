@@ -76,6 +76,18 @@ namespace CapaNegocios
         {
             ObjCatalogo.ActualizarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodDocente, PlanSesiones);
         }
+        public void ActualizarPlantillaSilabo(byte[] PlantillaSilabo)
+        {
+            ObjCatalogo.ActualizarPlantillaSilabo(PlantillaSilabo);
+        }
+        public void ActualizarPlantillaSesiones2y3(byte[] PlantillaSesiones)
+        {
+            ObjCatalogo.ActualizarPlantillaSesiones2y3(PlantillaSesiones);
+        }
+        public void ActualizarPlantillaSesiones4(byte[] PlantillaSesiones)
+        {
+            ObjCatalogo.ActualizarPlantillaSesiones4(PlantillaSesiones);
+        }
 
         public void EliminarAsignaturaCatalogo(E_Catalogo Catalogo)
         {
