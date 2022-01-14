@@ -441,5 +441,19 @@ namespace CapaPresentaciones
             GuardarRegistroDocente();
             Close();
         }
-    }
+
+		private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+            if(Program.Evento == 0)
+			{
+   
+                InicializarValores();
+            }
+            else
+			{
+
+                InicializarValoresEditar();
+            }
+		}
+	}
 }

@@ -60,7 +60,7 @@ namespace CapaPresentaciones
                     return fila[1].ToString();
                 }
             }
-            return "N";
+            return "--";
         }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -70,40 +70,47 @@ namespace CapaPresentaciones
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //Editar
+            if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
+			{
+                DataTable RegistroAsistenciaDocentesDA = N_AsistenciaDiariaDocente.AsistenciaDiariaDocentes(CodSemestre, CodDepartamentoA, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString());
+                if (RegistroAsistenciaDocentesDA.Rows.Count != 0)
+                {
+                    Form Fondo = new Form();
+                    P_TablaAsistenciaDiariaDocente EddRegistroAsistenciaDocente = new P_TablaAsistenciaDiariaDocente(RegistroAsistenciaDocentesDA);
 
-
+                    EddRegistroAsistenciaDocente.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                    EddRegistroAsistenciaDocente.txtFecha.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    EddRegistroAsistenciaDocente.txtSemestreA.Text = CodSemestre;
+                    //EddRegistroAsistenciaDocente.hora = DateTime.Now.ToString("HH:mm:ss");
+                    EddRegistroAsistenciaDocente.txtJD.Text = NombreCompletoJD();
+                    EddRegistroAsistenciaDocente.Owner = Fondo;
+                    EddRegistroAsistenciaDocente.ShowDialog();
+                    EddRegistroAsistenciaDocente.Dispose();
+                }
+                else
+                {
+                    A_Dialogo.DialogoInformacion("El registro ¡No Existe!");
+                }
+            }
         }
 
 		private void btnAgregarD_Click(object sender, EventArgs e)
 		{
             // Por discutir
-
-            DataTable Resultados = N_AsistenciaDiariaDocente.AsistenciaDiariaDocentes(CodSemestre, CodDepartamentoA, LimtFechaSup);
-            if (Resultados.Rows.Count == 0)
-            {
-                DataTable DocentesDepartamentoA = N_Docente.MostrarTodosDocentesDepartamento(CodDepartamentoA);
-                Form Fondo = new Form();
-                P_TablaAsistenciaDiariaDocente NuevoRegistroAsistenciaDocente = new P_TablaAsistenciaDiariaDocente(DocentesDepartamentoA);
-                NuevoRegistroAsistenciaDocente.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                NuevoRegistroAsistenciaDocente.txtFecha.Text = LimtFechaSup;
-                NuevoRegistroAsistenciaDocente.hora = DateTime.Now.ToString("HH:mm:ss");
-                NuevoRegistroAsistenciaDocente.txtJD.Text = NombreCompletoJD();
-                NuevoRegistroAsistenciaDocente.Owner = Fondo;
-                NuevoRegistroAsistenciaDocente.ShowDialog();
-                NuevoRegistroAsistenciaDocente.Dispose();
-            }
-            else
-            {
-                A_Dialogo.DialogoInformacion("El registro de Hoy, ¡Ya existe!");
-            }
+            Form Fondo = new Form();
+            P_DialogoAgregarAsistenciaDocente AddFechaNoLavorable = new P_DialogoAgregarAsistenciaDocente();
+            AddFechaNoLavorable.Owner = Fondo;
+            AddFechaNoLavorable.ShowDialog();
+            AddFechaNoLavorable.Dispose();
         }
 
-        private void btnCambiar_Click(object sender, EventArgs e)
+		private void btnCambiar_Click(object sender, EventArgs e)
         {
 
         }

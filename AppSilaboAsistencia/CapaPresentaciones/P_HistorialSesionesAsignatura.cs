@@ -150,7 +150,7 @@ namespace CapaPresentaciones
 			else
 			{
                 // registrar la asistencia como recuperacion
-                if (A_Dialogo.DialogoPreguntaAceptarCancelar(" Seee encuentra fuera del Horario de la Asignatura" + Environment.NewLine + "¿Desea Recuperar una Sesion?") == DialogResult.Yes)
+                if (A_Dialogo.DialogoPreguntaAceptarCancelar(" Se encuentra fuera del Horario de la Asignatura" + Environment.NewLine + "¿Desea Recuperar una Sesion?") == DialogResult.Yes)
                 {
                     Form Fondo = new Form();
                     P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);

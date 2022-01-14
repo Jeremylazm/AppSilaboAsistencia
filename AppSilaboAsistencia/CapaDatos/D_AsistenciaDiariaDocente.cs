@@ -111,7 +111,8 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodSemestre", AsistenciaDiariaDocente.CodSemestre);
             Comando.Parameters.AddWithValue("@Fecha", AsistenciaDiariaDocente.Fecha);
             Comando.Parameters.AddWithValue("@Hora", AsistenciaDiariaDocente.Hora);
-            Comando.Parameters.AddWithValue("@NObservación", NObservacion);
+            Comando.Parameters.AddWithValue("@CodDocente", AsistenciaDiariaDocente.CodDocente);
+            Comando.Parameters.AddWithValue("@NObservacion", NObservacion);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }
