@@ -1222,7 +1222,7 @@ CREATE PROCEDURE spuHorarioSemanalDocente @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar las asignaturas y los horarios:
-	SELECT CodAsignatura = (HA.CodAsignatura + HA.Grupo + HA.CodEscuelaP), HA.Dia, HA.Tipo, HA.HorasTeoria, HA.HorasPractica,
+	SELECT CodAsignatura = (HA.CodAsignatura + HA.Grupo + HA.CodEscuelaP), A.NombreAsignatura, HA.Dia, HA.Tipo, HA.HorasTeoria, HA.HorasPractica,
 	       HA.HoraInicio, HA.HoraFin, HA.Aula, HA.Modalidad
 		FROM (THorarioAsignatura HA INNER JOIN TAsignatura A ON
 			 HA.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
