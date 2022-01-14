@@ -84,6 +84,7 @@ namespace CapaPresentaciones
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
                 
             };
+
             Reportes = Reporte;
             Responsivo();
             pnReporte.Controls.Add(Reporte);
