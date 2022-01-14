@@ -678,6 +678,7 @@ namespace CapaPresentaciones
             this.cxtCriterioSeleccion.ItemHighLightColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.cxtCriterioSeleccion.ItemHighLightForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.cxtCriterioSeleccion.Items.AddRange(new object[] {
+            "Por Fechas",
             "Por Estudiantes",
             "Por Asignaturas"});
             this.cxtCriterioSeleccion.ItemTopMargin = 3;
