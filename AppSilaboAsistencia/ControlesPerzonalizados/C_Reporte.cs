@@ -1061,7 +1061,7 @@ namespace ControlesPerzonalizados
 
                 foreach (DataRow Fila in Datos.Rows)
                 {
-                    EtiquetasA.Add(Fila["Fecha"].ToString());
+                    EtiquetasA.Add(Fila["CodEstudiante"].ToString());
                     Datos1A.Add(double.Parse(Fila["TotalAsistencias"].ToString()));
                     Colores1A.Add(Color.FromArgb(104, 13, 15));
                     Datos2A.Add(double.Parse(Fila["TotalFaltas"].ToString()));
