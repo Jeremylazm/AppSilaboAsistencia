@@ -238,7 +238,7 @@ namespace CapaPresentaciones
             this.lnEstudiante.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lnEstudiante.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.lnEstudiante.LineThickness = 1;
-            this.lnEstudiante.Location = new System.Drawing.Point(175, 231);
+            this.lnEstudiante.Location = new System.Drawing.Point(176, 207);
             this.lnEstudiante.Name = "lnEstudiante";
             this.lnEstudiante.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnEstudiante.Size = new System.Drawing.Size(698, 10);
@@ -290,7 +290,7 @@ namespace CapaPresentaciones
             this.lnCodEstudiante.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lnCodEstudiante.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.lnCodEstudiante.LineThickness = 1;
-            this.lnCodEstudiante.Location = new System.Drawing.Point(24, 231);
+            this.lnCodEstudiante.Location = new System.Drawing.Point(24, 204);
             this.lnCodEstudiante.Name = "lnCodEstudiante";
             this.lnCodEstudiante.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnCodEstudiante.Size = new System.Drawing.Size(128, 10);
@@ -929,7 +929,7 @@ namespace CapaPresentaciones
             this.lnCodigo.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lnCodigo.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.lnCodigo.LineThickness = 1;
-            this.lnCodigo.Location = new System.Drawing.Point(24, 231);
+            this.lnCodigo.Location = new System.Drawing.Point(24, 204);
             this.lnCodigo.Name = "lnCodigo";
             this.lnCodigo.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnCodigo.Size = new System.Drawing.Size(132, 10);
