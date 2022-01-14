@@ -198,6 +198,18 @@
     <Compile Include="C_Campo.Designer.cs">
       <DependentUpon>C_Campo.cs</DependentUpon>
     </Compile>
+    <Compile Include="C_Encabezado.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="C_Encabezado.Designer.cs">
+      <DependentUpon>C_Encabezado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C_Evento.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="C_Evento.Designer.cs">
+      <DependentUpon>C_Evento.cs</DependentUpon>
+    </Compile>
     <Compile Include="C_PlanSemanasPeriodoParcial.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -230,6 +242,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="C_Campo.resx">
       <DependentUpon>C_Campo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C_Encabezado.resx">
+      <DependentUpon>C_Encabezado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C_Evento.resx">
+      <DependentUpon>C_Evento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="C_PlanSemanasPeriodoParcial.resx">
       <DependentUpon>C_PlanSemanasPeriodoParcial.cs</DependentUpon>

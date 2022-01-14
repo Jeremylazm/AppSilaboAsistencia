@@ -527,6 +527,7 @@ namespace CapaPresentaciones
             this.btnPrincipal.TextMarginLeft = 0;
             this.btnPrincipal.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnPrincipal.UseDefaultRadiusAndThickness = true;
+            this.btnPrincipal.Click += new System.EventHandler(this.btnPrincipal_Click);
             // 
             // pnContenedorDocente
             // 

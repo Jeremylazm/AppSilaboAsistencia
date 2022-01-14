@@ -314,6 +314,12 @@
     <Compile Include="P_Menu.Designer.cs">
       <DependentUpon>P_Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_PrincipalDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_PrincipalDocente.Designer.cs">
+      <DependentUpon>P_PrincipalDocente.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_RecuperacionContraseña.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -505,6 +511,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_Menu.resx">
       <DependentUpon>P_Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_PrincipalDocente.resx">
+      <DependentUpon>P_PrincipalDocente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_RecuperacionContraseña.resx">
       <DependentUpon>P_RecuperacionContraseña.cs</DependentUpon>
