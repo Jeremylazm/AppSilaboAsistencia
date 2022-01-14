@@ -60,8 +60,10 @@ namespace CapaPresentaciones
             foreach (DataRow FilaHorario in HorarioDocente.Rows)
             {
                 string Asignatura = FilaHorario["CodAsignatura"].ToString();
-                //string Nombre = FilaHorario["Nombre"].ToString();
+                string Nombre = FilaHorario["NombreAsignatura"].ToString();
                 string Tipo = FilaHorario["Tipo"].ToString();
+                string Aula = FilaHorario["Aula"].ToString();
+                string Modalidad = FilaHorario["Modalidad"].ToString();
                 string Dia = FilaHorario["Dia"].ToString(); 
                 int Inicio = Convert.ToInt32(FilaHorario["HoraInicio"].ToString());
                 int Fin = Convert.ToInt32(FilaHorario["HoraFin"].ToString());
@@ -89,7 +91,11 @@ namespace CapaPresentaciones
                                 EventoPersonalizado.btnEvento.OnPressedState.FillColor = Color.FromArgb(232, 158, 31);
 
                                 EventoPersonalizado.btnEvento.Text = Asignatura;
-                                EventoPersonalizado.ttEvento.SetToolTip(EventoPersonalizado.btnEvento, "<b>ASIGNATURA:</b><br/> Valor<br/><br/> <b>TIPO:</b><br/> Valor<br/><br/> <b>AULA:</b><br/> Valor<br/><br/> <b>MODALIDAD:</b><br/> Valor");
+                                if (Tipo.Equals("T"))
+                                    Tipo = "TEORÍA";
+                                else
+                                    Tipo = "PRÁCTICA";
+                                EventoPersonalizado.ttEvento.SetToolTip(EventoPersonalizado.btnEvento, "<b>ASIGNATURA:</b> " + Nombre + "<br/><b>TIPO:</b> " + Tipo + "<br/><b>AULA:</b> " + Aula + "<br/><b>MODALIDAD:</b> " + Modalidad);
                                 HorasAsignatura.RemoveAt(0);
                             }
                         }
