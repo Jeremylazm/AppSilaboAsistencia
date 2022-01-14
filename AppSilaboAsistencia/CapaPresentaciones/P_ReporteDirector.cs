@@ -23,7 +23,8 @@ namespace CapaPresentaciones
         readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
         C_Reporte Reportes = new C_Reporte();
-        string nombreDocente;
+
+        public string nombreDocente;
 
         public P_ReporteDirector()
         {
@@ -32,6 +33,7 @@ namespace CapaPresentaciones
             ObjCatalogo = new N_Catalogo();
             InitializeComponent();
             LLenarCampos();
+            pnCriterioPorAsignaturas.Visible = false;
         }
 
         private void LLenarCampos()
@@ -50,6 +52,7 @@ namespace CapaPresentaciones
             txtNombre.Text = Campos.Rows[0].ItemArray[1].ToString();
             txtEscuelaP.Text = Campos.Rows[0].ItemArray[2].ToString();
             this.CodDocenteReporte = Campos.Rows[0].ItemArray[4].ToString();
+            this.nombreDocente = Campos.Rows[0].ItemArray[5].ToString();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -188,6 +191,9 @@ namespace CapaPresentaciones
                     btnGeneral.Visible = true;
                     btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
                 }
+
+                pnCriterioPorAsignaturas.Visible = true;
+
                 CriterioSeleccionAsistenciaEstudiantes();
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
@@ -203,6 +209,8 @@ namespace CapaPresentaciones
 
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+
+                pnCriterioPorAsignaturas.Visible = false;
 
                 fnReporte5();
             }
@@ -234,6 +242,8 @@ namespace CapaPresentaciones
 
                 // También cambia la descripción
                 fnReporte8();
+
+                pnCriterioPorAsignaturas.Visible = false;
 
             }
             else if (cxtCriterioSeleccion.SelectedItem.Equals("Por Asignaturas"))
@@ -267,6 +277,8 @@ namespace CapaPresentaciones
 
                 if (radiobtnCriterioFechas.Checked) fnReporte1(this.CodDocenteReporte);
                 else if (radiobtnCriterioEstudiantes.Checked) fnReporte3(this.CodDocenteReporte);
+
+                pnCriterioPorAsignaturas.Visible = true;
             }
         }
 
@@ -370,19 +382,6 @@ namespace CapaPresentaciones
 
         private void radioButtons_CheckedChanged(object sender, EventArgs e)
         {
-            /*RadioButton radioButton = sender as RadioButton;
-
-            if (radiobtnCriterioFechas.Checked)
-            {
-                Console.WriteLine(radiobtnCriterioFechas.Text);
-                fnReporte1();
-            }
-            else if (radiobtnCriterioEstudiantes.Checked)
-            {
-                 Console.WriteLine(radiobtnCriterioEstudiantes.Text);
-                fnReporte3();
-            }*/
-
             RadioButton radioButton = sender as RadioButton;
             if (radioButton.Checked == true)
             { //limited only checked button do function
