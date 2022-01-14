@@ -245,7 +245,9 @@ namespace ControlesPerzonalizados
                     List<double> Datos2A = new List<double>();
                     List<Color> Colores2A = new List<Color>();
 
-                    foreach (DataRow Fila in Datos.Rows)
+                    DataTable DatosA = dtEstadisticos;
+
+                    foreach (DataRow Fila in DatosA.Rows)
                     {
                         EtiquetasA.Add(Fila["Fecha"].ToString());
                         Datos1A.Add(double.Parse(Fila["TotalAsistieron"].ToString()));
@@ -273,23 +275,27 @@ namespace ControlesPerzonalizados
                     double Valor1 = 0;
                     double Valor2 = 0;
 
-                    DataTable Datos2 = Datos.Copy();
+                    DataTable DatosB = dtEstadisticos.Copy();
 
-                    foreach (DataRow Fila in Datos2.Rows)
+                    foreach (DataRow Fila in DatosB.Rows)
                     {
                         EtiquetasB.Add(Fila["Fecha"].ToString());
                         Valor1 = double.Parse(Fila["TotalAsistieron"].ToString());
-                        Valor1 = double.Parse(Fila["TotalFaltaron"].ToString());
+                        Valor2 = double.Parse(Fila["TotalFaltaron"].ToString());
 
                         if ((Valor1 == 0) && (Valor2 == 0))
-                            Datos1B.Add(0);
+                        {
+                            Datos1B.Add(0.00);
+                        }
                         else
-                            Datos1B.Add((Valor1 * 100) / (Valor1 + Valor2));
+                        {
+                            Datos1B.Add(Math.Round((Valor1 * 100) / (Valor1 + Valor2), 2));
+                        }
                     }
 
                     gxGrafico2.Labels = EtiquetasB.ToArray();
 
-                    GraficoLineas.Label = "Evolución de Asistencias";
+                    GraficoLineas.Label = "Total Asistieron";
                     GraficoLineas.Data = Datos1B;
 
                     // Gráfico 1
@@ -726,7 +732,9 @@ namespace ControlesPerzonalizados
                 List<double> Datos2A = new List<double>();
                 List<Color> Colores2A = new List<Color>();
 
-                foreach (DataRow Fila in Datos.Rows)
+                DataTable DatosA = dtEstadisticos;
+
+                foreach (DataRow Fila in DatosA.Rows)
                 {
                     EtiquetasA.Add(Fila["Fecha"].ToString());
                     Datos1A.Add(double.Parse(Fila["TotalAsistieron"].ToString()));
@@ -754,24 +762,32 @@ namespace ControlesPerzonalizados
                 double Valor1 = 0;
                 double Valor2 = 0;
 
-                DataTable Datos2 = Datos.Copy();
+                DataTable DatosB = dtEstadisticos.Copy();
 
-                foreach (DataRow Fila in Datos2.Rows)
+                MessageBox.Show(dgvResultados.Rows.Count.ToString());
+                MessageBox.Show(DatosB.Rows.Count.ToString());
+                foreach (DataRow Fila in DatosB.Rows)
                 {
                     EtiquetasB.Add(Fila["Fecha"].ToString());
                     Valor1 = double.Parse(Fila["TotalAsistieron"].ToString());
-                    Valor1 = double.Parse(Fila["TotalFaltaron"].ToString());
+                    Valor2 = double.Parse(Fila["TotalFaltaron"].ToString());
 
                     if ((Valor1 == 0) && (Valor2 == 0))
-                        Datos1B.Add(0);
+                    {
+                        Datos1B.Add(0.00);
+                    }
                     else
-                        Datos1B.Add((Valor1 * 100) / (Valor1 + Valor2));
+                    {
+                        Datos1B.Add(Math.Round((Valor1 * 100) / (Valor1 + Valor2), 2));
+                    }
                 }
 
                 gxGrafico2.Labels = EtiquetasB.ToArray();
 
-                GraficoLineas.Label = "Evolución de Asistencias";
+                GraficoLineas.Label = "Total Asistieron";
+                GraficoLineas.Data = null;
                 GraficoLineas.Data = Datos1B;
+                gxGrafico2.Update();
 
                 //Grafico 1
 
