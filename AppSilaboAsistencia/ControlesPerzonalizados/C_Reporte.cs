@@ -489,6 +489,8 @@ namespace ControlesPerzonalizados
 
         public void fnReporte5(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CodAsignatura, int Completados, int Faltantes)
         {
+            this.CriterioAsistenciasEstudiantes = "";
+
             // Limpiar los Antiguos Reportes
             LimpiarCampos();
 
@@ -659,6 +661,8 @@ namespace ControlesPerzonalizados
 
         public void fnReporte6(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CodAsignatura)
         {
+            this.CriterioAsistenciasEstudiantes = "";
+
             // Limpiar los Antiguos Reportes
             LimpiarCampos();
 
@@ -1060,6 +1064,8 @@ namespace ControlesPerzonalizados
 
         public void fnReporte9(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, DataTable Resumen)
         {
+            this.CriterioAsistenciasEstudiantes = "";
+
             // Limpiar los Antiguos Reportes
             LimpiarCampos();
 
@@ -1262,7 +1268,7 @@ namespace ControlesPerzonalizados
 
         private void dgvResultados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
+            if ((e.RowIndex >= 0) && (e.ColumnIndex == 0) && this.CriterioAsistenciasEstudiantes != "")
             {
                 if (CriterioAsistenciasEstudiantes == "Por Fechas")
                 {
@@ -1271,6 +1277,10 @@ namespace ControlesPerzonalizados
                 if (CriterioAsistenciasEstudiantes == "Por Estudiantes")
                 {
                     MessageBox.Show("Por Estudiantes");
+                }
+                else if (CriterioAsistenciasEstudiantes == "Por Asignaturas")
+                {
+                    MessageBox.Show("Por Asignaturas");
                 }
             }
         }
