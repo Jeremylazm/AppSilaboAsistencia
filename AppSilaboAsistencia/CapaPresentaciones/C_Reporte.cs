@@ -13,6 +13,7 @@ using System.IO;
 using ClosedXML.Excel;
 using CapaNegocios;
 using ControlesPerzonalizados;
+using System.Globalization;
 
 namespace CapaPresentaciones
 {
@@ -38,14 +39,12 @@ namespace CapaPresentaciones
 
             if (e.Delta > 0)
             {
-                this.dgvResultados.FirstDisplayedScrollingRowIndex
-                    = Math.Max(0, currentIndex - scrollLines);
+                this.dgvResultados.FirstDisplayedScrollingRowIndex = Math.Max(0, currentIndex - scrollLines);
                 this.sbResultados.Value = Math.Max(0, currentIndex - scrollLines);
             }
             else if (e.Delta < 0)
             {
-                this.dgvResultados.FirstDisplayedScrollingRowIndex
-                    = currentIndex + scrollLines;
+                this.dgvResultados.FirstDisplayedScrollingRowIndex = currentIndex + scrollLines;
                 this.sbResultados.Value = currentIndex + scrollLines;
             }
         }
@@ -74,7 +73,7 @@ namespace CapaPresentaciones
             }
             else if (Criterio == "Por Estudiantes")
             {
-
+                fnReporte4(Titulo, Titulos, Valores, Datos);
             }
             else if (Criterio == "Por Asignaturas")
             {
@@ -581,6 +580,82 @@ namespace CapaPresentaciones
 
                 gxGrafico1.Update();
             }
+        }
+
+        public void fnReporte4(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
+        {
+            LimpiarCampos();
+
+            lblTitulo.Text = Titulo;
+
+            if (Titulos.Length.Equals(Valores.Length))
+            {
+                if (Titulos.Length != 0)
+                {
+                    for (int K = 0; K < Titulos.Length; K++)
+                    {
+                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
+                        pnSubcampos.Controls.Add(Nuevo);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No existen parametros");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error de parametros");
+            }
+
+            dgvResultados.Columns.Clear();
+
+            dgvResultados.DataSource = Datos;
+            //dgvResultados.Columns[0].DisplayIndex = 7;
+
+            if (dgvResultados.Rows.Count <= 10)
+            {
+                sbResultados.Visible = false;
+                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
+                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+            }
+            else
+            {
+                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                pnContenedorResultados.Height = 341;
+                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                sbResultados.Visible = true;
+            }
+
+            if (!pnContenedorCuadro.Visible)
+            {
+                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
+                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                pnContenedorCuadro.Visible = true;
+            }
+
+            // Cuadro de resumen
+
+            // Gráficos
         }
 
         public void fnReporte5(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CodAsignatura, int Completados, int Faltantes)
@@ -1368,18 +1443,7 @@ namespace CapaPresentaciones
             {
                 if (CriterioAsistenciasEstudiantes == "Por Fechas")
                 {
-                    MessageBox.Show(pnSubcampos.Controls.Count.ToString());
-
-                    foreach (C_Campo campo in pnSubcampos.Controls)
-                    {
-                        Console.WriteLine(campo.Titulo);
-                        Console.WriteLine(campo.Valor);
-                    }
-
-                    //MessageBox.Show("Por Fechas");
-
                     string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, (pnSubcampos.Controls[4] as C_Campo).Valor, (pnSubcampos.Controls[5] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString() };
-                    //string[] ValoresNecesarios = { pnSubcampos.Controls["Cod. Docente"].Text, dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString() };
 
                     P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, "Por Fechas");
                     DR.ShowDialog();
@@ -1387,18 +1451,17 @@ namespace CapaPresentaciones
                 }
                 if (CriterioAsistenciasEstudiantes == "Por Estudiantes")
                 {
-                    MessageBox.Show(pnSubcampos.Controls.Count.ToString());
+                    string[] Titulo_1 = ((pnTitulo.Controls[0] as Bunifu.UI.WinForms.BunifuLabel).Text.Split('\n'));
+                    string[] Fechas = Titulo_1[1].Split(' ');
 
-                    foreach (C_Campo campo in pnSubcampos.Controls)
-                    {
-                        Console.WriteLine(campo.Titulo);
-                        Console.WriteLine(campo.Valor);
-                    }
+                    string FechaInicial = DateTime.ParseExact(Fechas[1], "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
+                    string FechaFinal = DateTime.ParseExact(Fechas[4], "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
 
-                    /*MessageBox.Show("Por Estudiantes");
-                    P_DialogoReporte DR = new P_DialogoReporte("Por Estudiantes");
+                    string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, (pnSubcampos.Controls[4] as C_Campo).Valor, (pnSubcampos.Controls[5] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["CodEstudiante"].Value.ToString(), dgvResultados.CurrentRow.Cells["Nombre"].Value.ToString() + " " + dgvResultados.CurrentRow.Cells["APaterno"].Value.ToString() + " " + dgvResultados.CurrentRow.Cells["AMaterno"].Value.ToString(), FechaInicial, FechaFinal };
+
+                    P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, "Por Estudiantes");
                     DR.ShowDialog();
-                    DR.Dispose();*/
+                    DR.Dispose();
                 }
                 else if (CriterioAsistenciasEstudiantes == "Por Asignaturas")
                 {

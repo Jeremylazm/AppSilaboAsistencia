@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,7 +49,6 @@ namespace CapaPresentaciones
                 C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, "Por Fechas")
                 {
                     Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
-
                 };
 
                 Reportes = Reporte;
@@ -58,16 +58,21 @@ namespace CapaPresentaciones
             }
             else if (Criterio == "Por Estudiantes")
             {
-                /*C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, txtCodigo.Text, "Por Fechas")
+                string Titulo = "Reporte de Asistencia Estudiantes" + Environment.NewLine + "Desde: " + DateTime.ParseExact(ValoresNecesarios[7], "yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")) + " - " + "Hasta: " + DateTime.ParseExact(ValoresNecesarios[8], "yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES"));
+                string[] Titulos = { "Semestre", "Escuela Profesional", "Cod. Asignatura", "Asignatura", "Cod. Docente", "Docente", "Cod. Estudiante", "Estudiante" };
+                string[] Valores = { CodSemestre, ValoresNecesarios[4], ValoresNecesarios[2], ValoresNecesarios[3], ValoresNecesarios[0], ValoresNecesarios[1], ValoresNecesarios[5], ValoresNecesarios[6] };
+
+                DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudianteAsignatura(CodSemestre, ValoresNecesarios[5], ValoresNecesarios[2], ValoresNecesarios[7], ValoresNecesarios[8]);
+
+                C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, "Por Estudiantes")
                 {
                     Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
-
                 };
 
                 Reportes = Reporte;
                 Responsivo();
                 pnReporte.Controls.Add(Reporte);
-                ActiveControl = Reporte.btnGrafico1;*/
+                ActiveControl = Reporte.btnGrafico1;
             }
             else if (Criterio == "Por Asignaturas")
             {
