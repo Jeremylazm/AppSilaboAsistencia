@@ -710,40 +710,70 @@ namespace ControlesPerzonalizados
                 pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
                 // Gráficos
-                // Gráfico 1
-                //tcGraficos.TabPages.Clear();
-
                 btnGrafico2.Visible = true;
+                IndiceGrafico1 = 0;
+                IndiceGrafico2 = 1;
 
+                // Grafico 1
                 gxGrafico1.XAxesLabel = "Fecha";
                 gxGrafico1.YAxesLabel = "Cantidad";
 
-                List<string> Etiquetas = new List<string>();
+                List<string> EtiquetasA = new List<string>();
 
-                List<double> Datos1 = new List<double>();
-                List<Color> Colores1 = new List<Color>();
+                List<double> Datos1A = new List<double>();
+                List<Color> Colores1A = new List<Color>();
 
-                List<double> Datos2 = new List<double>();
-                List<Color> Colores2 = new List<Color>();
+                List<double> Datos2A = new List<double>();
+                List<Color> Colores2A = new List<Color>();
 
                 foreach (DataRow Fila in Datos.Rows)
                 {
-                    Etiquetas.Add(Fila["Fecha"].ToString());
-                    Datos1.Add(double.Parse(Fila["TotalAsistieron"].ToString()));
-                    Colores1.Add(Color.FromArgb(104, 13, 15));
-                    Datos2.Add(double.Parse(Fila["TotalFaltaron"].ToString()));
-                    Colores2.Add(Color.FromArgb(232, 158, 31));
+                    EtiquetasA.Add(Fila["Fecha"].ToString());
+                    Datos1A.Add(double.Parse(Fila["TotalAsistieron"].ToString()));
+                    Colores1A.Add(Color.FromArgb(104, 13, 15));
+                    Datos2A.Add(double.Parse(Fila["TotalFaltaron"].ToString()));
+                    Colores2A.Add(Color.FromArgb(232, 158, 31));
                 }
 
-                gxGrafico1.Labels = Etiquetas.ToArray();
+                gxGrafico1.Labels = EtiquetasA.ToArray();
 
                 GraficoBarrasHorizontales1.Label = "Total Asistieron";
-                GraficoBarrasHorizontales1.Data = Datos1;
-                GraficoBarrasHorizontales1.BackgroundColor = Colores1;
+                GraficoBarrasHorizontales1.Data = Datos1A;
+                GraficoBarrasHorizontales1.BackgroundColor = Colores1A;
 
                 GraficoBarrasHorizontales2.Label = "Total Faltaron";
-                GraficoBarrasHorizontales2.Data = Datos2;
-                GraficoBarrasHorizontales2.BackgroundColor = Colores2;
+                GraficoBarrasHorizontales2.Data = Datos2A;
+                GraficoBarrasHorizontales2.BackgroundColor = Colores2A;
+
+                // Grafico 2
+                gxGrafico2.XAxesLabel = "Fecha";
+                gxGrafico2.YAxesLabel = "Porcentaje de Asistencia";
+
+                List<string> EtiquetasB = new List<string>();
+                List<double> Datos1B = new List<double>();
+                double Valor1 = 0;
+                double Valor2 = 0;
+
+                DataTable Datos2 = Datos.Copy();
+
+                foreach (DataRow Fila in Datos2.Rows)
+                {
+                    EtiquetasB.Add(Fila["Fecha"].ToString());
+                    Valor1 = double.Parse(Fila["TotalAsistieron"].ToString());
+                    Valor1 = double.Parse(Fila["TotalFaltaron"].ToString());
+
+                    if ((Valor1 == 0) && (Valor2 == 0))
+                        Datos1B.Add(0);
+                    else
+                        Datos1B.Add((Valor1 * 100) / (Valor1 + Valor2));
+                }
+
+                gxGrafico2.Labels = EtiquetasB.ToArray();
+
+                GraficoLineas.Label = "Evolución de Asistencias";
+                GraficoLineas.Data = Datos1B;
+
+                //Grafico 1
 
                 //Chart Grafico1 = new Chart
                 //{
@@ -827,61 +857,61 @@ namespace ControlesPerzonalizados
 
                 //tcGraficos.TabPages.Add(tpGrafico1);
 
-                // Gráfico 2
-                Chart Grafico2 = new Chart
-                {
-                    Dock = DockStyle.Fill,
-                    Palette = ChartColorPalette.Excel,
-                };
+                //// Gráfico 2
+                //Chart Grafico2 = new Chart
+                //{
+                //    Dock = DockStyle.Fill,
+                //    Palette = ChartColorPalette.Excel,
+                //};
 
-                TabPage tpGrafico2 = new TabPage("Gráfico 2");
-                tpGrafico2.Controls.Add(Grafico2);
+                //TabPage tpGrafico2 = new TabPage("Gráfico 2");
+                //tpGrafico2.Controls.Add(Grafico2);
 
-                Grafico2.Titles.Clear();
-                Grafico2.Series.Clear();
-                Grafico2.ChartAreas.Clear();
-                Grafico2.Titles.Add("Evolución de las Asistencias" + " - " + CodAsignatura);
-                Grafico2.Titles[0].Font = new Font("Montserrat Alternates", 13f);
+                //Grafico2.Titles.Clear();
+                //Grafico2.Series.Clear();
+                //Grafico2.ChartAreas.Clear();
+                //Grafico2.Titles.Add("Evolución de las Asistencias" + " - " + CodAsignatura);
+                //Grafico2.Titles[0].Font = new Font("Montserrat Alternates", 13f);
 
-                ChartArea areaGrafico2 = new ChartArea();
+                //ChartArea areaGrafico2 = new ChartArea();
 
-                // Propiedades de los ejes
-                areaGrafico2.AxisX.Interval = 1;
-                areaGrafico2.AxisX.Title = "Fecha";
-                areaGrafico2.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
-                areaGrafico2.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
-                areaGrafico2.AxisY.Title = "Porcentaje de Asistencia";
-                areaGrafico2.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
-                areaGrafico2.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
-                areaGrafico2.AxisX.MajorGrid.Enabled = false;
-                //areaGrafico2.AxisY.MajorGrid.Enabled = false;
+                //// Propiedades de los ejes
+                //areaGrafico2.AxisX.Interval = 1;
+                //areaGrafico2.AxisX.Title = "Fecha";
+                //areaGrafico2.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+                //areaGrafico2.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+                //areaGrafico2.AxisY.Title = "Porcentaje de Asistencia";
+                //areaGrafico2.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
+                //areaGrafico2.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
+                //areaGrafico2.AxisX.MajorGrid.Enabled = false;
+                ////areaGrafico2.AxisY.MajorGrid.Enabled = false;
 
-                Grafico2.ChartAreas.Add(areaGrafico2);
+                //Grafico2.ChartAreas.Add(areaGrafico2);
 
-                // Hacer porcentajes
-                int n = (int)(Asistieron.ElementAt(0) + Faltaron.ElementAt(0));
+                //// Hacer porcentajes
+                //int n = (int)(Asistieron.ElementAt(0) + Faltaron.ElementAt(0));
 
-                DataTable dtGrafico2 = dtEstadisticos.Copy();
+                //DataTable dtGrafico2 = dtEstadisticos.Copy();
 
-                foreach (DataRow row in dtGrafico2.Rows)
-                {
-                    row["TotalAsistieron"] = Convert.ToDouble(row["TotalAsistieron"]) / n * 100;
-                }
+                //foreach (DataRow row in dtGrafico2.Rows)
+                //{
+                //    row["TotalAsistieron"] = Convert.ToDouble(row["TotalAsistieron"]) / n * 100;
+                //}
 
-                Series serie1Grafico2 = new Series("Porcentaje")
-                {
-                    ChartType = SeriesChartType.Line,
-                    XValueMember = "Fecha",
-                    YValueMembers = "TotalAsistieron",
-                    IsValueShownAsLabel = true,
-                    MarkerSize = 14,
-                    Font = new Font("Montserrat Alternates", 11f),
-                    BorderWidth = 3
-                };
+                //Series serie1Grafico2 = new Series("Porcentaje")
+                //{
+                //    ChartType = SeriesChartType.Line,
+                //    XValueMember = "Fecha",
+                //    YValueMembers = "TotalAsistieron",
+                //    IsValueShownAsLabel = true,
+                //    MarkerSize = 14,
+                //    Font = new Font("Montserrat Alternates", 11f),
+                //    BorderWidth = 3
+                //};
 
-                Grafico2.Series.Add(serie1Grafico2);
+                //Grafico2.Series.Add(serie1Grafico2);
 
-                Grafico2.DataSource = dtGrafico2;
+                //Grafico2.DataSource = dtGrafico2;
 
                 //tcGraficos.TabPages.Add(tpGrafico2);
             }
@@ -998,38 +1028,39 @@ namespace ControlesPerzonalizados
                 }*/
 
                 // Gráficos
+                btnGrafico2.Visible = false;
+                IndiceGrafico1 = 0;
 
-                btnGrafico2.Visible = true;
-
+                // Grafico 1
                 gxGrafico1.XAxesLabel = "Código Estudiante";
                 gxGrafico1.YAxesLabel = "Cantidad";
 
-                List<string> Etiquetas = new List<string>();
+                List<string> EtiquetasA = new List<string>();
 
-                List<double> Datos1 = new List<double>();
-                List<Color> Colores1 = new List<Color>();
+                List<double> Datos1A = new List<double>();
+                List<Color> Colores1A = new List<Color>();
 
-                List<double> Datos2 = new List<double>();
-                List<Color> Colores2 = new List<Color>();
+                List<double> Datos2A = new List<double>();
+                List<Color> Colores2A = new List<Color>();
 
                 foreach (DataRow Fila in Datos.Rows)
                 {
-                    Etiquetas.Add(Fila["Fecha"].ToString());
-                    Datos1.Add(double.Parse(Fila["TotalAsistencias"].ToString()));
-                    Colores1.Add(Color.FromArgb(104, 13, 15));
-                    Datos2.Add(double.Parse(Fila["TotalFaltas"].ToString()));
-                    Colores2.Add(Color.FromArgb(232, 158, 31));
+                    EtiquetasA.Add(Fila["Fecha"].ToString());
+                    Datos1A.Add(double.Parse(Fila["TotalAsistencias"].ToString()));
+                    Colores1A.Add(Color.FromArgb(104, 13, 15));
+                    Datos2A.Add(double.Parse(Fila["TotalFaltas"].ToString()));
+                    Colores2A.Add(Color.FromArgb(232, 158, 31));
                 }
 
-                gxGrafico1.Labels = Etiquetas.ToArray();
+                gxGrafico1.Labels = EtiquetasA.ToArray();
 
                 GraficoBarrasHorizontales1.Label = "Total Asistencias";
-                GraficoBarrasHorizontales1.Data = Datos1;
-                GraficoBarrasHorizontales1.BackgroundColor = Colores1;
+                GraficoBarrasHorizontales1.Data = Datos1A;
+                GraficoBarrasHorizontales1.BackgroundColor = Colores1A;
 
                 GraficoBarrasHorizontales2.Label = "Total Faltas";
-                GraficoBarrasHorizontales2.Data = Datos2;
-                GraficoBarrasHorizontales2.BackgroundColor = Colores2;
+                GraficoBarrasHorizontales2.Data = Datos2A;
+                GraficoBarrasHorizontales2.BackgroundColor = Colores2A;
 
 
                 //// Gráfico 1
@@ -1825,7 +1856,7 @@ namespace ControlesPerzonalizados
             {
                 if (CriterioAsistenciasEstudiantes == "Por Fechas")
                 {
-                    MessageBox.Show("Por fechas");
+                    MessageBox.Show("Por Fechas");
                 }
                 if (CriterioAsistenciasEstudiantes == "Por Estudiantes")
                 {
