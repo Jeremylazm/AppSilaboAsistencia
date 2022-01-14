@@ -273,12 +273,18 @@ namespace ControlesPerzonalizados
                     double Valor1 = 0;
                     double Valor2 = 0;
 
-                    foreach (DataRow Fila in Datos.Rows)
+                    DataTable Datos2 = Datos.Copy();
+
+                    foreach (DataRow Fila in Datos2.Rows)
                     {
                         EtiquetasB.Add(Fila["Fecha"].ToString());
                         Valor1 = double.Parse(Fila["TotalAsistieron"].ToString());
                         Valor1 = double.Parse(Fila["TotalFaltaron"].ToString());
-                        Datos1B.Add((Valor1 * 100) / (Valor1 + Valor2));
+
+                        if ((Valor1 == 0) && (Valor2 == 0))
+                            Datos1B.Add(0);
+                        else
+                            Datos1B.Add((Valor1 * 100) / (Valor1 + Valor2));
                     }
 
                     gxGrafico2.Labels = EtiquetasB.ToArray();
