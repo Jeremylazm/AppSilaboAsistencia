@@ -139,6 +139,7 @@ namespace CapaPresentaciones
                     Datos.txtNombre.Text = dgvDatos.CurrentRow.Cells[1].Value.ToString();
                     Datos.txtEscuelaP.Text = dgvDatos.CurrentRow.Cells[2].Value.ToString();
                     Datos.CodDocenteReporte = dgvDatos.CurrentRow.Cells[4].Value.ToString();
+                    Datos.nombreDocente = dgvDatos.CurrentRow.Cells[5].Value.ToString();
 
                     if (codTemp != Datos.txtCodigo.Text && Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
                     {
