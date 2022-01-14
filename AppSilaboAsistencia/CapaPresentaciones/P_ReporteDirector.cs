@@ -221,7 +221,9 @@ namespace CapaPresentaciones
             CriterioSeleccionAsistenciaEstudiantes();
         }
 
-        public void CriterioSeleccionAsistenciaEstudiantes()
+       
+
+        public void CriterioSeleccionAsistenciaEstudiantes() // por fechas // por estudiantes // por asignaturas
         {
             if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
             {
@@ -243,7 +245,7 @@ namespace CapaPresentaciones
                 // También cambia la descripción
                 fnReporte8();
 
-                pnCriterioPorAsignaturas.Visible = false;
+                //pnCriterioPorAsignaturas.Visible = false;
 
             }
             else if (cxtCriterioSeleccion.SelectedItem.Equals("Por Asignaturas"))
@@ -263,9 +265,6 @@ namespace CapaPresentaciones
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
 
-                //fnReporte1234(); // Criterio por fechas o por estudiantes
-                radiobtnCriterioFechas.CheckedChanged += radioButtons_CheckedChanged;
-                radiobtnCriterioEstudiantes.CheckedChanged += radioButtons_CheckedChanged;
 
                 /*// Campos
                 DataTable Campos = N_Catalogo.MostrarCatalogo(CodSemestre, CodDepartamentoA);
@@ -275,10 +274,10 @@ namespace CapaPresentaciones
                 txtEscuelaP.Text = Campos.Rows[0].ItemArray[2].ToString();
                 this.CodDocenteReporte = Campos.Rows[0].ItemArray[4].ToString();*/
 
-                if (radiobtnCriterioFechas.Checked) fnReporte1(this.CodDocenteReporte);
+                /*if (radiobtnCriterioFechas.Checked) fnReporte1(this.CodDocenteReporte);
                 else if (radiobtnCriterioEstudiantes.Checked) fnReporte3(this.CodDocenteReporte);
 
-                pnCriterioPorAsignaturas.Visible = true;
+                pnCriterioPorAsignaturas.Visible = true;*/
             }
         }
 
@@ -369,7 +368,7 @@ namespace CapaPresentaciones
             Reportes.fnReporte7(Titulo, Titulos, Valores, resultados);
         }
 
-        private void fnReporte1234()
+        /*private void fnReporte1234()
         {
             radiobtnCriterioFechas.CheckedChanged += radioButtons_CheckedChanged;
             radiobtnCriterioEstudiantes.CheckedChanged += radioButtons_CheckedChanged;
@@ -377,27 +376,7 @@ namespace CapaPresentaciones
             // Al inicio, Criterio fechas es checked
             // -> Reporte 1
             //fnReporte1();
-        }
-
-
-        private void radioButtons_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton radioButton = sender as RadioButton;
-            if (radioButton.Checked == true)
-            { //limited only checked button do function
-                switch (radioButton.Text)
-                {
-                    case "Por Fechas":
-                        Console.WriteLine(radiobtnCriterioFechas.Text);
-                        fnReporte1(this.CodDocenteReporte);
-                        break;
-                    case "Por Estudiantes":
-                        Console.WriteLine(radiobtnCriterioEstudiantes.Text);
-                        fnReporte3(this.CodDocenteReporte);
-                        break;
-                }
-            }
-        }
+        }*/
 
         private void fnReporte1(string CodDocenteReporte)
         {
