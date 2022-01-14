@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using System.IO;
 using CapaNegocios;
 using Ayudas;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace CapaPresentaciones
 {
@@ -17,7 +19,7 @@ namespace CapaPresentaciones
         public string NombreAsignatura;
         public string EscuelaProfesional;
         public string Grupo;
-
+        //readonly SqlConnection Conectar = new SqlConnection(ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString);
         private readonly string Tipo;
 
         public P_SubirArchivo(string Tipo)
@@ -39,6 +41,19 @@ namespace CapaPresentaciones
             else if (Tipo == "Plan de Sesiones")
             {
                 lblTitulo.Text += " Plan de Sesiones";
+            }
+            //Plantillas 
+            else if (Tipo == "Plantilla Silabo")
+            {
+                lblTitulo.Text += " Plantilla Silabo";
+            }
+            else if (Tipo == "Plantilla Sesiones 2 y 3 créditos")
+            {
+                lblTitulo.Text += " Plantilla Sesiones 2 y 3 créditos";
+            }
+            else if (Tipo == "Plantilla Sesiones 4 créditos")
+            {
+                lblTitulo.Text += " Plantilla Sesiones 4 créditos";
             }
         }
 
@@ -96,6 +111,21 @@ namespace CapaPresentaciones
                 else if (Tipo == "Plan de Sesiones")
                 {
                     ObjNegocio.ActualizarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodDocente, archivo);
+                    //MensajeConfirmacion("Archivo subido exitosamente");
+                }
+                else if (Tipo == "Plantilla Silabo")
+                {
+                    ObjNegocio.ActualizarPlantillaSilabo(archivo);
+                    //MensajeConfirmacion("Archivo subido exitosamente");
+                }
+                else if (Tipo == "Plantilla Sesiones 2 y 3 créditos")
+                {
+                    ObjNegocio.ActualizarPlantillaSesiones2y3(archivo);
+                    //MensajeConfirmacion("Archivo subido exitosamente");
+                }
+                else if (Tipo == "Plantilla Sesiones 4 créditos")
+                {
+                    ObjNegocio.ActualizarPlantillaSesiones4(archivo);
                     //MensajeConfirmacion("Archivo subido exitosamente");
                 }
                 A_Dialogo.DialogoConfirmacion("Archivo subido exitosamente");
