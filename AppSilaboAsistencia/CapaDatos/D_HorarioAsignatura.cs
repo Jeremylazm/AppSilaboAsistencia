@@ -96,6 +96,25 @@ namespace CapaDatos
             return Resultado;
         }
 
+        // Método para para buscar las asignaturas que se dictan en un dia y un intervalo de tiempo. 
+        public DataTable BuscarAsignaturasDiaHora(string CodSemestre, string CodDepartamentoA, string Dia, string HoraInicio, string HoraFin)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuBuscarAsignaturasDiaHora", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
+            Comando.Parameters.AddWithValue("@Dia", Dia); // LU, MA, MI, JU, VI
+            Comando.Parameters.AddWithValue("@HoraInicio", HoraInicio);
+            Comando.Parameters.AddWithValue("@HoraFin", HoraFin);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
         // Método para insertar el horario de una asignatura en un catálogo.
         public void InsertarHorarioAsignatura(E_HorarioAsignatura HorarioAsignatura)
         {
