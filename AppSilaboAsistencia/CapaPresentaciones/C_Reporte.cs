@@ -387,8 +387,7 @@ namespace CapaPresentaciones
             dgvResultados.Columns.Clear();
 
             dgvResultados.DataSource = Datos;
-            dgvResultados.Columns[0].Visible = false;
-            //dgvResultados.Columns[0].DisplayIndex = 7;
+            dgvResultados.Columns[0].Visible = false;           
 
             if (dgvResultados.Rows.Count <= 10)
             {
@@ -430,7 +429,63 @@ namespace CapaPresentaciones
                 pnContenedorCuadro.Visible = true;
             }
 
+            DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
+
             // Cuadro de resumen
+            DataTable cuadroResumen = new DataTable();
+            cuadroResumen.Columns.Add(" ");
+            cuadroResumen.Columns.Add("Cantidad");
+
+            double Total = dtResumen.Rows.Count;
+            double AsistieronPuntual = 0;
+            double AsistieronTarde = 0;
+            double FaltaronJustificado = 0;
+            double FaltaronSinJustificar = 0;
+
+            foreach (DataRow row in dtResumen.Rows)
+            {
+                if (row["Asistió"].ToString() == "SI" && row["Observación"].ToString() == "")
+                {
+                    AsistieronPuntual += 1;
+                }
+                else if (row["Asistió"].ToString() == "SI" && row["Observación"].ToString() != "")
+                {
+                    AsistieronTarde += 1;
+                }
+                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() != "FALTO SIN JUSTIFICAR")
+                {
+                    FaltaronJustificado += 1;
+                }
+                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() == "FALTO SIN JUSTIFICAR")
+                {
+                    FaltaronSinJustificar += 1;
+                }
+            }
+
+            // Asistieron puntual
+            cuadroResumen.Rows.Add("Asistieron Puntual", AsistieronPuntual.ToString() + " (" + String.Format("{0:0.00}", AsistieronPuntual / Total * 100) + "%)");
+
+            // Asistieron tarde
+            cuadroResumen.Rows.Add("Asistieron Tarde", AsistieronTarde.ToString() + " (" + String.Format("{0:0.00}", AsistieronTarde / Total * 100) + "%)");
+
+            // Faltaron (Justificado)
+            cuadroResumen.Rows.Add("Faltaron (Justificado)", FaltaronJustificado.ToString() + " (" + String.Format("{0:0.00}", FaltaronJustificado / Total * 100) + "%)");
+
+            // Faltaron (Sin justificar)
+            cuadroResumen.Rows.Add("Faltaron (Sin Justificar)", FaltaronSinJustificar.ToString() + " (" + String.Format("{0:0.00}", FaltaronSinJustificar / Total * 100) + "%)");
+
+            cuadroResumen.Rows.Add("", "");
+
+            // Asistencias
+            cuadroResumen.Rows.Add("Asistencias", (AsistieronPuntual + AsistieronTarde).ToString() + " (" + String.Format("{0:0.00}", (AsistieronPuntual + AsistieronTarde) / Total * 100) + "%)");
+
+            // Faltas
+            cuadroResumen.Rows.Add("Faltas", (FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + String.Format("{0:0.00}", (FaltaronJustificado + FaltaronSinJustificar) / Total * 100) + "%)");
+
+            // Total
+            cuadroResumen.Rows.Add("Total", Total.ToString() + " (" + "100" + "%)");
+
+            dgvResumen.DataSource = cuadroResumen;
 
             // Gráficos
         }
