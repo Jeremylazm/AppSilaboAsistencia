@@ -1996,8 +1996,6 @@ BEGIN
 END;
 GO
 
-EXEC spuAsistenciaEstudiantesPorFechas '2021-II','95234','IF450AIN','18/10/2021','15/01/2022'
-
 -- Procedimiento para mostrar las asistencia de los estudiantes de una asignatura en un rango de fechas
 CREATE PROCEDURE spuAsistenciaEstudiantesPorEstudiante  @CodSemestre VARCHAR(7),
 												        @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
