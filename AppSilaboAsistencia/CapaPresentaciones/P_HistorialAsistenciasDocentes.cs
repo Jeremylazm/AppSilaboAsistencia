@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
 using Ayudas;
+using Guna.UI2.WinForms;
+
 namespace CapaPresentaciones
 {
     public partial class P_HistorialAsistenciasDocentes : Form
@@ -105,6 +107,40 @@ namespace CapaPresentaciones
         private void btnCambiar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ValidarTiempo(Guna2NumericUpDown Numero, int Minimo, int Maximo)
+        {
+            if (Numero.Value < 10)
+                Numero.TextOffset = new Point(5, -1);
+            else
+                Numero.TextOffset = new Point(2, -1);
+
+            if (Numero.Value == (Maximo + 1))
+                Numero.Value = Minimo;
+
+            if (Numero.Value == (Minimo - 1))
+                Numero.Value = Maximo;
+        }
+
+        private void txtInicioHoras_ValueChanged(object sender, EventArgs e)
+        {
+            ValidarTiempo(txtInicioHoras, 0, 23);
+        }
+
+        private void txtInicioMinutos_ValueChanged(object sender, EventArgs e)
+        {
+            ValidarTiempo(txtInicioMinutos, 0, 59);
+        }
+
+        private void txtFinHoras_ValueChanged(object sender, EventArgs e)
+        {
+            ValidarTiempo(txtFinHoras, 0, 23);
+        }
+
+        private void txtFinMinutos_ValueChanged(object sender, EventArgs e)
+        {
+            ValidarTiempo(txtFinMinutos, 0, 59);
         }
     }
 }
