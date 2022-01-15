@@ -1318,6 +1318,27 @@ BEGIN
 END;
 GO
 
+-- Procedimiento para buscar las asignaturas que se dictan en un dia y un intervalo de tiempo.
+CREATE PROCEDURE spuBuscarAsignaturasDiaHora @CodSemestre VARCHAR(7),
+											 @CodDepartamentoA VARCHAR(3), -- Atrib. Jefe Dpto
+											 @Dia VARCHAR(2),
+											 @HoraInicio VARCHAR(2),
+											 @HoraFin VARCHAR(2)
+AS
+BEGIN
+	-- Mostrar las asignaturas
+	SELECT CodAsignatura = (HA.CodAsignatura + HA.Grupo + HA.CodEscuelaP), CodDocente
+		FROM THorarioAsignatura HA
+		WHERE HA.CodSemestre = @CodSemestre AND 
+		      SUBSTRING(HA.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
+			  CAST(HA.HoraInicio AS INT) >= CAST(@HoraInicio AS INT) AND
+			  CAST(HA.HoraFin AS INT) <= CAST(@HoraFin AS INT) AND
+			  HA.Dia = @Dia
+END;
+GO
+
+EXEC spuBuscarAsignaturasDiaHora '2021-II','IF','MA','00','23'
+
 -- Procedimiento para insertar el horario de una asignatura.
 CREATE PROCEDURE spuInsertarHorarioAsignatura @CodSemestre VARCHAR(7),
 											  @CodAsignatura VARCHAR(6),
@@ -1964,6 +1985,8 @@ BEGIN
 	   ORDER BY AD.Fecha DESC
 END;
 GO
+
+EXEC spuAsistenciaEstudiantesPorFechas '2021-II','95234','IF450AIN','18/10/2021','15/01/2022'
 
 -- Procedimiento para mostrar las asistencia de los estudiantes de una asignatura en un rango de fechas
 CREATE PROCEDURE spuAsistenciaEstudiantesPorEstudiante  @CodSemestre VARCHAR(7),
