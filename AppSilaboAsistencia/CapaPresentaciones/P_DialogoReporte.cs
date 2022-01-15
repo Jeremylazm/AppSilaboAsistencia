@@ -46,7 +46,7 @@ namespace CapaPresentaciones
 
                 Console.WriteLine(FechasNecesarias[0].ToString("yyyy/MM/dd"));
 
-                DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, ValoresNecesarios[2], FechasNecesarias[0].ToString("yyyyMMdd", CultureInfo.GetCultureInfo("es-ES")), ValoresNecesarios[6]);
+                DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, ValoresNecesarios[2], FechasNecesarias[0].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), ValoresNecesarios[6]);
 
                 C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, "Por Fechas")
                 {
