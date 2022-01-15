@@ -88,7 +88,7 @@ namespace CapaPresentaciones
                 DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudianteAsignatura(CodSemestre, ValoresNecesarios[1], ValoresNecesarios[3], FechasNecesarias[0].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), FechasNecesarias[1].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
 
-                C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, "Por Estudiantes")
+                C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, "Por Asignaturas")
                 {
                     Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
                 };
