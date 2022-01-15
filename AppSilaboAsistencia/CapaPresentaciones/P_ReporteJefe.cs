@@ -28,7 +28,64 @@ namespace CapaPresentaciones
             InitializeComponent();
         }
 
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void P_ReporteJefe_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Responsivo()
+        {
+            int AnchoTotal = 0;
+            int Filas = 1;
+
+            foreach (C_Campo cpControl in Reportes.pnSubcampos.Controls)
+            {
+                if ((AnchoTotal + cpControl.Width + 6) > Reportes.pnSubcampos.Width)
+                {
+                    Filas++;
+                    AnchoTotal = cpControl.Width + 6;
+                }
+                else
+                {
+                    AnchoTotal += cpControl.Width + 6;
+                }
+            }
+
+            Reportes.Cuadricula.RowStyles[0].Height = Filas * 92 + 51;
+            Reportes.Height = (int)Reportes.Cuadricula.RowStyles[0].Height + (int)Reportes.Cuadricula.RowStyles[1].Height + 73;
+        }
+
         private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGeneral_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cxtCriterioSeleccion_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dpFechaInicial_CloseUp(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dpFechaFinal_CloseUp(object sender, EventArgs e)
         {
 
         }
