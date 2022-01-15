@@ -77,7 +77,7 @@ namespace CapaPresentaciones
             }
             else if (Criterio == "Por Asignaturas")
             {
-
+                fnReporte4(Titulo, Titulos, Valores, Datos);
             }
         }
 
@@ -1455,7 +1455,7 @@ namespace CapaPresentaciones
                     DR.ShowDialog();
                     DR.Dispose();
                 }
-                if (CriterioAsistenciasEstudiantes == "Por Estudiantes")
+                else if (CriterioAsistenciasEstudiantes == "Por Estudiantes")
                 {
                     string[] Titulo_1 = ((pnTitulo.Controls[0] as Bunifu.UI.WinForms.BunifuLabel).Text.Split('\n'));
                     string[] Fechas = Titulo_1[1].Split(' ');
@@ -1473,10 +1473,24 @@ namespace CapaPresentaciones
                 }
                 else if (CriterioAsistenciasEstudiantes == "Por Asignaturas")
                 {
-                    /*MessageBox.Show("Por Asignaturas");
-                    P_DialogoReporte DR = new P_DialogoReporte("Por Asignaturas");
+                    string[] Titulo_1 = ((pnTitulo.Controls[0] as Bunifu.UI.WinForms.BunifuLabel).Text.Split('\n'));
+                    string[] Fechas = Titulo_1[1].Split(' ');
+
+                    string FechaInicial = DateTime.ParseExact(Fechas[1], "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
+                    string FechaFinal = DateTime.ParseExact(Fechas[4], "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
+
+                    string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["CodAsignatura"].Value.ToString(), dgvResultados.CurrentRow.Cells["NombreAsignatura"].Value.ToString(), FechaInicial, FechaFinal };
+
+                    foreach (var i in ValoresNecesarios)
+                    {
+                        Console.WriteLine(i);
+                    }
+
+                    DateTime[] FechasNecesarias = { Convert.ToDateTime(Fechas[1]), Convert.ToDateTime(Fechas[4]) };
+
+                    P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, FechasNecesarias, "Por Asignaturas");
                     DR.ShowDialog();
-                    DR.Dispose();*/
+                    DR.Dispose();
                 }
             }
         }
