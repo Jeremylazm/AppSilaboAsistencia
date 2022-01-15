@@ -792,41 +792,45 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICO =====================
-                //tcGraficos.TabPages.Clear();
-                /*
-                Chart Grafico1 = new Chart
+                // Gráficos
+                btnGrafico2.Visible = false;
+                IndiceGrafico1 = 3;
+
+                // Grafico 1
+                gxGrafico1.XAxesLabel = "Estado";
+
+                List<string> EtiquetasA = new List<string>();
+
+                List<double> Datos1A = new List<double>();
+                List<Color> Colores1A = new List<Color>();
+
+                List<double> Datos2A = new List<double>();
+                List<Color> Colores2A = new List<Color>();
+
+                foreach (DataRow Fila in dtEstadisticos.Rows)
                 {
-                    Dock = DockStyle.Fill,
-                    Palette = ChartColorPalette.Excel
-                };
-                TabPage tpGrafico1 = new TabPage("Gráfico 1");
-                tpGrafico1.Controls.Add(Grafico1);
+                    EtiquetasA.Add(Fila["Fecha"].ToString());
+                    Datos1A.Add(double.Parse(Fila["TotalAsistieron"].ToString()));
+                    Colores1A.Add(Color.FromArgb(104, 13, 15));
+                    Datos2A.Add(double.Parse(Fila["TotalFaltaron"].ToString()));
+                    Colores2A.Add(Color.FromArgb(232, 158, 31));
+                }
 
+                gxGrafico1.Labels = EtiquetasA.ToArray();
+                gxGrafico1.Clear();
 
-                Grafico1.Titles.Clear();
-                Grafico1.Series.Clear();
-                Grafico1.ChartAreas.Clear();
+                GraficoBarrasHorizontales1.Label = "Total Asistieron";
+                GraficoBarrasHorizontales1.Data = Datos1A;
+                GraficoBarrasHorizontales1.BackgroundColor = Colores1A;
 
-                Grafico1.Titles.Add("Asignatura" + " - " + CodAsignatura);
+                GraficoBarrasHorizontales2.Label = "Total Faltaron";
+                GraficoBarrasHorizontales2.Data = Datos2A;
+                GraficoBarrasHorizontales2.BackgroundColor = Colores2A;
 
-                ChartArea areaGrafico1 = new ChartArea();
+                GraficoBarrasHorizontales1.TargetCanvas = gxGrafico1;
+                GraficoBarrasHorizontales2.TargetCanvas = gxGrafico1;
 
-
-                Grafico1.ChartAreas.Add(areaGrafico1);
-
-                Series serie1 = new Series("TotalAsistencias")
-                {
-                    ChartType = SeriesChartType.Pie,
-                    XValueMember = "Porcentaje de Avance Completado",
-                    YValueMembers = "Porcentaje de Avance Faltante"
-                };
-
-                Grafico1.Series.Add(serie1);
-
-                Grafico1.DataSource = cuadroResumen;
-
-                tcGraficos.TabPages.Add(tpGrafico1);
-                */
+                gxGrafico1.Update();
                 #endregion ===================== GRÁFICO =====================
             }
         }
