@@ -317,7 +317,7 @@ namespace CapaPresentaciones
         {
             CargarDatosUsuario();
             GestionarAcceso();
-            AbrirFormularios<P_PrincipalDocente>();
+            //AbrirFormularios<P_PrincipalDocente>();
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
