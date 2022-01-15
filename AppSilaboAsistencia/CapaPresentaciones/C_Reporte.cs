@@ -489,12 +489,12 @@ namespace CapaPresentaciones
 
             // Gráficos
             btnGrafico2.Visible = true;
-            IndiceGrafico1 = 0;
-            IndiceGrafico2 = 1;
+            MessageBox.Show(IndiceGrafico1.ToString());
+            IndiceGrafico1 = 2;
 
             // Grafico 1
             //gxGrafico1.XAxesLabel = "Código Estudiante";
-            gxGrafico1.YAxesLabel = "Cantidad";
+            gxGrafico3.YAxesLabel = "Cantidad";
 
             List<string> EtiquetasA = new List<string>();
 
@@ -522,8 +522,8 @@ namespace CapaPresentaciones
                 Colores2A.Add(Color.FromArgb(232, 158, 31));
             }*/
 
-            gxGrafico1.Labels = EtiquetasA.ToArray();
-            gxGrafico1.Clear();
+            gxGrafico3.Labels = EtiquetasA.ToArray();
+            gxGrafico3.Clear();
 
             
             GraficoBarrasVerticales.Label = "Total Asistencias";
@@ -534,12 +534,12 @@ namespace CapaPresentaciones
             GraficoBarrasCompletas.Data = Datos2A;
             GraficoBarrasCompletas.BackgroundColor = Colores2A;*/
 
-            GraficoBarrasVerticales.TargetCanvas = gxGrafico1;
+            GraficoBarrasVerticales.TargetCanvas = gxGrafico3;
             //GraficoBarrasCompletas.TargetCanvas = gxGrafico1;
 
             //GraficoBarrasCompletas
 
-            gxGrafico1.Update();
+            gxGrafico3.Update();
         }
 
         public void fnReporte3(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura)
@@ -1401,6 +1401,7 @@ namespace CapaPresentaciones
                 //}
 
                 // Gráficos
+                gxGrafico1.Clear();
             }
         }
 
@@ -1652,7 +1653,7 @@ namespace CapaPresentaciones
                         Console.WriteLine(i);
                     }
 
-                    DateTime[] FechasNecesarias = { Convert.ToDateTime(Fechas[1]), Convert.ToDateTime(Fechas[4]) };
+                    DateTime[] FechasNecesarias = { Convert.ToDateTime(Fechas[1], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4]) };
 
                     P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, FechasNecesarias, "Por Asignaturas");
                     DR.ShowDialog();
