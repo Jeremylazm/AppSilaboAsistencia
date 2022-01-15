@@ -31,7 +31,7 @@ namespace CapaPresentaciones
             InitializeComponent();
         }
 
-        public P_DialogoReporte(string[] ValoresNecesarios, string Criterio)
+        public P_DialogoReporte(string[] ValoresNecesarios, DateTime[] FechasNecesarias, string Criterio)
         {
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
@@ -44,7 +44,9 @@ namespace CapaPresentaciones
                 string[] Titulos = { "Semestre", "Escuela Profesional", "Cod. Asignatura", "Asignatura", "Cod. Docente", "Docente" };
                 string[] Valores = { CodSemestre, ValoresNecesarios[4], ValoresNecesarios[2], ValoresNecesarios[3], ValoresNecesarios[0], ValoresNecesarios[1] };
 
-                DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, ValoresNecesarios[2], ValoresNecesarios[5], "09:15:29");
+                Console.WriteLine(FechasNecesarias[0].ToString("yyyy/MM/dd"));
+
+                DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, ValoresNecesarios[2], FechasNecesarias[0].ToString("yyyyMMdd", CultureInfo.GetCultureInfo("es-ES")), ValoresNecesarios[6]);
 
                 C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, "Por Fechas")
                 {
@@ -62,7 +64,7 @@ namespace CapaPresentaciones
                 string[] Titulos = { "Semestre", "Escuela Profesional", "Cod. Asignatura", "Asignatura", "Cod. Docente", "Docente", "Cod. Estudiante", "Estudiante" };
                 string[] Valores = { CodSemestre, ValoresNecesarios[4], ValoresNecesarios[2], ValoresNecesarios[3], ValoresNecesarios[0], ValoresNecesarios[1], ValoresNecesarios[5], ValoresNecesarios[6] };
 
-                DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudianteAsignatura(CodSemestre, ValoresNecesarios[5], ValoresNecesarios[2], ValoresNecesarios[7], ValoresNecesarios[8]);
+                DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudianteAsignatura(CodSemestre, ValoresNecesarios[5], ValoresNecesarios[2], FechasNecesarias[0].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), FechasNecesarias[1].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
                 C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, "Por Estudiantes")
                 {

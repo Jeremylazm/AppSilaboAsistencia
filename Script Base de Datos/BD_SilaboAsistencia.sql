@@ -1916,7 +1916,7 @@ BEGIN
 			 AE.CodEstudiante = M.CodEstudiante) 
 	    WHERE AE.CodSemestre = @CodSemestre AND
 			  AE.CodAsignatura = @CodAsignatura AND
-			  AE.Fecha_Formatted = @Fecha AND
+			  AE.Fecha = @Fecha AND
 			  AE.Hora = @Hora
 END;
 GO
@@ -1953,14 +1953,14 @@ BEGIN
 	SELECT Fecha = AD.Fecha_Formatted, SesiónDictada = AD.Asistió,
 	       TotalAsistieron = SUM(CASE WHEN AE.Asistió = 'SI' THEN 1 ELSE 0 END),
 		   TotalFaltaron = CASE WHEN AD.Observación = '' THEN SUM(CASE WHEN AE.Asistió = 'NO' THEN 1 ELSE 0 END) ELSE 0 END,
-		   AD.Observación
+		   AD.Observación, AD.Hora
 		FROM TAsistenciaDocentePorAsignatura AD INNER JOIN TAsistenciaEstudiante AE ON
 			 (AD.CodSemestre = AE.CodSemestre AND AD.CodAsignatura = AE.CodAsignatura AND AD.Fecha = AE.Fecha)
 	    WHERE AD.CodSemestre = @CodSemestre AND
 			  AD.CodDocente = @CodDocente AND
 			  AD.CodAsignatura = @CodAsignatura AND
 			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
-	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Asistió, AD.Observación
+	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Asistió, AD.Observación, AD.Hora
 	   ORDER BY AD.Fecha DESC
 END;
 GO

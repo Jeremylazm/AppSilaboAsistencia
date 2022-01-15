@@ -162,7 +162,8 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[0].HeaderText = "Ver Reporte";
 
                 dgvResultados.DataSource = Datos;
-                dgvResultados.Columns[0].DisplayIndex = 5;
+                dgvResultados.Columns[6].Visible = false;
+                dgvResultados.Columns[0].DisplayIndex = 6;
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
@@ -1443,9 +1444,10 @@ namespace CapaPresentaciones
             {
                 if (CriterioAsistenciasEstudiantes == "Por Fechas")
                 {
-                    string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, (pnSubcampos.Controls[4] as C_Campo).Valor, (pnSubcampos.Controls[5] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString() };
+                    string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, (pnSubcampos.Controls[4] as C_Campo).Valor, (pnSubcampos.Controls[5] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString(), dgvResultados.CurrentRow.Cells["Hora"].Value.ToString() };
+                    DateTime[] FechasNecesarias = { Convert.ToDateTime(dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString()) };
 
-                    P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, "Por Fechas");
+                    P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, FechasNecesarias, "Por Fechas");
                     DR.ShowDialog();
                     DR.Dispose();
                 }
@@ -1459,7 +1461,9 @@ namespace CapaPresentaciones
 
                     string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, (pnSubcampos.Controls[4] as C_Campo).Valor, (pnSubcampos.Controls[5] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["CodEstudiante"].Value.ToString(), dgvResultados.CurrentRow.Cells["Nombre"].Value.ToString() + " " + dgvResultados.CurrentRow.Cells["APaterno"].Value.ToString() + " " + dgvResultados.CurrentRow.Cells["AMaterno"].Value.ToString(), FechaInicial, FechaFinal };
 
-                    P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, "Por Estudiantes");
+                    DateTime[] FechasNecesarias = { Convert.ToDateTime(Fechas[1]), Convert.ToDateTime(Fechas[4]) };
+
+                    P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, FechasNecesarias, "Por Estudiantes");
                     DR.ShowDialog();
                     DR.Dispose();
                 }
