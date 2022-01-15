@@ -77,7 +77,7 @@ namespace CapaPresentaciones
             }
             else if (Criterio == "Por Asignaturas")
             {
-
+                fnReporte4(Titulo, Titulos, Valores, Datos);
             }
         }
 
@@ -162,7 +162,8 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[0].HeaderText = "Ver Reporte";
 
                 dgvResultados.DataSource = Datos;
-                dgvResultados.Columns[0].DisplayIndex = 5;
+                dgvResultados.Columns[6].Visible = false;
+                dgvResultados.Columns[0].DisplayIndex = 6;
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
@@ -386,8 +387,7 @@ namespace CapaPresentaciones
             dgvResultados.Columns.Clear();
 
             dgvResultados.DataSource = Datos;
-            dgvResultados.Columns[0].Visible = false;
-            //dgvResultados.Columns[0].DisplayIndex = 7;
+            dgvResultados.Columns[0].Visible = false;           
 
             if (dgvResultados.Rows.Count <= 10)
             {
@@ -429,9 +429,117 @@ namespace CapaPresentaciones
                 pnContenedorCuadro.Visible = true;
             }
 
+            DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
+
             // Cuadro de resumen
+            DataTable cuadroResumen = new DataTable();
+            cuadroResumen.Columns.Add(" ");
+            cuadroResumen.Columns.Add("Cantidad");
+
+            double Total = dtResumen.Rows.Count;
+            double AsistieronPuntual = 0;
+            double AsistieronTarde = 0;
+            double FaltaronJustificado = 0;
+            double FaltaronSinJustificar = 0;
+
+            foreach (DataRow row in dtResumen.Rows)
+            {
+                if (row["Asistió"].ToString() == "SI" && row["Observación"].ToString() == "")
+                {
+                    AsistieronPuntual += 1;
+                }
+                else if (row["Asistió"].ToString() == "SI" && row["Observación"].ToString() != "")
+                {
+                    AsistieronTarde += 1;
+                }
+                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() != "FALTO SIN JUSTIFICAR")
+                {
+                    FaltaronJustificado += 1;
+                }
+                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() == "FALTO SIN JUSTIFICAR")
+                {
+                    FaltaronSinJustificar += 1;
+                }
+            }
+
+            // Asistieron puntual
+            cuadroResumen.Rows.Add("Asistieron Puntual", AsistieronPuntual.ToString() + " (" + String.Format("{0:0.00}", AsistieronPuntual / Total * 100) + "%)");
+
+            // Asistieron tarde
+            cuadroResumen.Rows.Add("Asistieron Tarde", AsistieronTarde.ToString() + " (" + String.Format("{0:0.00}", AsistieronTarde / Total * 100) + "%)");
+
+            // Faltaron (Justificado)
+            cuadroResumen.Rows.Add("Faltaron (Justificado)", FaltaronJustificado.ToString() + " (" + String.Format("{0:0.00}", FaltaronJustificado / Total * 100) + "%)");
+
+            // Faltaron (Sin justificar)
+            cuadroResumen.Rows.Add("Faltaron (Sin Justificar)", FaltaronSinJustificar.ToString() + " (" + String.Format("{0:0.00}", FaltaronSinJustificar / Total * 100) + "%)");
+
+            cuadroResumen.Rows.Add("", "");
+
+            // Asistencias
+            cuadroResumen.Rows.Add("Asistencias", (AsistieronPuntual + AsistieronTarde).ToString() + " (" + String.Format("{0:0.00}", (AsistieronPuntual + AsistieronTarde) / Total * 100) + "%)");
+
+            // Faltas
+            cuadroResumen.Rows.Add("Faltas", (FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + String.Format("{0:0.00}", (FaltaronJustificado + FaltaronSinJustificar) / Total * 100) + "%)");
+
+            // Total
+            cuadroResumen.Rows.Add("Total", Total.ToString() + " (" + "100" + "%)");
+
+            dgvResumen.DataSource = cuadroResumen;
 
             // Gráficos
+            btnGrafico2.Visible = true;
+            IndiceGrafico1 = 0;
+            IndiceGrafico2 = 1;
+
+            // Grafico 1
+            //gxGrafico1.XAxesLabel = "Código Estudiante";
+            gxGrafico1.YAxesLabel = "Cantidad";
+
+            List<string> EtiquetasA = new List<string>();
+
+            List<double> Datos1A = new List<double>();
+            List<Color> Colores1A = new List<Color>();
+
+            List<double> Datos2A = new List<double>();
+            List<Color> Colores2A = new List<Color>();
+
+            Console.WriteLine(AsistieronPuntual + AsistieronTarde);
+            Datos1A.Add(AsistieronPuntual + AsistieronTarde);
+            Colores1A.Add(Color.FromArgb(104, 13, 15));
+            EtiquetasA.Add("Total Asistieron");
+
+            Datos2A.Add(FaltaronJustificado + FaltaronSinJustificar);
+            Colores2A.Add(Color.FromArgb(232, 158, 31));
+            EtiquetasA.Add("Total Faltaron");
+
+            /*foreach (DataRow Fila in Datos.Rows)
+            {
+                EtiquetasA.Add(Fila["CodEstudiante"].ToString());
+                Datos1A.Add(double.Parse(Fila["TotalAsistencias"].ToString()));
+                Colores1A.Add(Color.FromArgb(104, 13, 15));
+                Datos2A.Add(double.Parse(Fila["TotalFaltas"].ToString()));
+                Colores2A.Add(Color.FromArgb(232, 158, 31));
+            }*/
+
+            gxGrafico1.Labels = EtiquetasA.ToArray();
+            gxGrafico1.Clear();
+
+            
+            GraficoBarrasVerticales.Label = "Total Asistencias";
+            GraficoBarrasVerticales.Data = Datos1A;
+            GraficoBarrasVerticales.BackgroundColor = Colores1A;
+
+            /*GraficoBarrasCompletas.Label = "Total Faltas";
+            GraficoBarrasCompletas.Data = Datos2A;
+            GraficoBarrasCompletas.BackgroundColor = Colores2A;*/
+
+            GraficoBarrasVerticales.TargetCanvas = gxGrafico1;
+            //GraficoBarrasCompletas.TargetCanvas = gxGrafico1;
+
+            //GraficoBarrasCompletas
+
+            gxGrafico1.Update();
         }
 
         public void fnReporte3(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura)
@@ -536,8 +644,6 @@ namespace CapaPresentaciones
                     pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
                     pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
                 }
-
-                
 
                 // Gráficos
                 btnGrafico2.Visible = false;
@@ -653,7 +759,68 @@ namespace CapaPresentaciones
                 pnContenedorCuadro.Visible = true;
             }
 
+            DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
+
             // Cuadro de resumen
+            DataTable cuadroResumen = new DataTable();
+            cuadroResumen.Columns.Add(" ");
+            cuadroResumen.Columns.Add("Cantidad");
+
+            double AsistieronPuntual = 0;
+            double AsistieronTarde = 0;
+            double FaltaronJustificado = 0;
+            double FaltaronSinJustificar = 0;
+
+            foreach (DataRow row in dtResumen.Rows)
+            {
+                Console.WriteLine(row["Asistió"].ToString());
+                Console.WriteLine(row["Observación"].ToString());
+                Console.WriteLine("QUE?: " + row["Observación"].ToString() == "FERIADO");
+
+                if (row["Asistió"].ToString() == "SI" && row["Observación"].ToString() == "")
+                {
+                    AsistieronPuntual += 1;
+                }
+                else if (row["Asistió"].ToString() == "SI" && row["Observación"].ToString() != "")
+                {
+                    AsistieronTarde += 1;
+                }
+                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() != "FALTO SIN JUSTIFICAR" && row["Observación"].ToString() != "FERIADO" && row["Observación"].ToString() != "SUSPENSION" && row["Observación"].ToString() != "FALTO EL DOCENTE")
+                {
+                    FaltaronJustificado += 1;
+                }
+                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() == "FALTO SIN JUSTIFICAR")
+                {
+                    FaltaronSinJustificar += 1;
+                }
+            }
+
+            double Total = AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar;
+
+            // Asistieron puntual
+            cuadroResumen.Rows.Add("Asistencia Puntual", AsistieronPuntual.ToString() + " (" + String.Format("{0:0.00}", AsistieronPuntual / Total * 100) + "%)");
+
+            // Asistieron tarde
+            cuadroResumen.Rows.Add("Asistencia Tarde", AsistieronTarde.ToString() + " (" + String.Format("{0:0.00}", AsistieronTarde / Total * 100) + "%)");
+
+            // Faltaron (Justificado)
+            cuadroResumen.Rows.Add("Falta (Justificada)", FaltaronJustificado.ToString() + " (" + String.Format("{0:0.00}", FaltaronJustificado / Total * 100) + "%)");
+
+            // Faltaron (Sin justificar)
+            cuadroResumen.Rows.Add("Falta (Sin Justificar)", FaltaronSinJustificar.ToString() + " (" + String.Format("{0:0.00}", FaltaronSinJustificar / Total * 100) + "%)");
+
+            cuadroResumen.Rows.Add("", "");
+
+            // Asistencias
+            cuadroResumen.Rows.Add("Asistencias", (AsistieronPuntual + AsistieronTarde).ToString() + " (" + String.Format("{0:0.00}", (AsistieronPuntual + AsistieronTarde) / Total * 100) + "%)");
+
+            // Faltas
+            cuadroResumen.Rows.Add("Faltas", (FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + String.Format("{0:0.00}", (FaltaronJustificado + FaltaronSinJustificar) / Total * 100) + "%)");
+
+            // Total
+            cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + "100" + "%)");
+
+            dgvResumen.DataSource = cuadroResumen;
 
             // Gráficos
         }
@@ -791,41 +958,45 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICO =====================
-                //tcGraficos.TabPages.Clear();
-                /*
-                Chart Grafico1 = new Chart
+                // Gráficos
+                btnGrafico2.Visible = false;
+                IndiceGrafico1 = 3;
+
+                // Grafico 1
+                gxGrafico1.XAxesLabel = "Estado";
+
+                List<string> EtiquetasA = new List<string>();
+
+                List<double> Datos1A = new List<double>();
+                List<Color> Colores1A = new List<Color>();
+
+                List<double> Datos2A = new List<double>();
+                List<Color> Colores2A = new List<Color>();
+
+                foreach (DataRow Fila in dtEstadisticos.Rows)
                 {
-                    Dock = DockStyle.Fill,
-                    Palette = ChartColorPalette.Excel
-                };
-                TabPage tpGrafico1 = new TabPage("Gráfico 1");
-                tpGrafico1.Controls.Add(Grafico1);
+                    EtiquetasA.Add(Fila["Fecha"].ToString());
+                    Datos1A.Add(double.Parse(Fila["TotalAsistieron"].ToString()));
+                    Colores1A.Add(Color.FromArgb(104, 13, 15));
+                    Datos2A.Add(double.Parse(Fila["TotalFaltaron"].ToString()));
+                    Colores2A.Add(Color.FromArgb(232, 158, 31));
+                }
 
+                gxGrafico1.Labels = EtiquetasA.ToArray();
+                gxGrafico1.Clear();
 
-                Grafico1.Titles.Clear();
-                Grafico1.Series.Clear();
-                Grafico1.ChartAreas.Clear();
+                GraficoBarrasHorizontales1.Label = "Total Asistieron";
+                GraficoBarrasHorizontales1.Data = Datos1A;
+                GraficoBarrasHorizontales1.BackgroundColor = Colores1A;
 
-                Grafico1.Titles.Add("Asignatura" + " - " + CodAsignatura);
+                GraficoBarrasHorizontales2.Label = "Total Faltaron";
+                GraficoBarrasHorizontales2.Data = Datos2A;
+                GraficoBarrasHorizontales2.BackgroundColor = Colores2A;
 
-                ChartArea areaGrafico1 = new ChartArea();
+                GraficoBarrasHorizontales1.TargetCanvas = gxGrafico1;
+                GraficoBarrasHorizontales2.TargetCanvas = gxGrafico1;
 
-
-                Grafico1.ChartAreas.Add(areaGrafico1);
-
-                Series serie1 = new Series("TotalAsistencias")
-                {
-                    ChartType = SeriesChartType.Pie,
-                    XValueMember = "Porcentaje de Avance Completado",
-                    YValueMembers = "Porcentaje de Avance Faltante"
-                };
-
-                Grafico1.Series.Add(serie1);
-
-                Grafico1.DataSource = cuadroResumen;
-
-                tcGraficos.TabPages.Add(tpGrafico1);
-                */
+                gxGrafico1.Update();
                 #endregion ===================== GRÁFICO =====================
             }
         }
@@ -1443,13 +1614,14 @@ namespace CapaPresentaciones
             {
                 if (CriterioAsistenciasEstudiantes == "Por Fechas")
                 {
-                    string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, (pnSubcampos.Controls[4] as C_Campo).Valor, (pnSubcampos.Controls[5] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString() };
+                    string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, (pnSubcampos.Controls[4] as C_Campo).Valor, (pnSubcampos.Controls[5] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString(), dgvResultados.CurrentRow.Cells["Hora"].Value.ToString() };
+                    DateTime[] FechasNecesarias = { Convert.ToDateTime(dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString(), CultureInfo.GetCultureInfo("es-ES")) };
 
-                    P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, "Por Fechas");
+                    P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, FechasNecesarias, "Por Fechas");
                     DR.ShowDialog();
                     DR.Dispose();
                 }
-                if (CriterioAsistenciasEstudiantes == "Por Estudiantes")
+                else if (CriterioAsistenciasEstudiantes == "Por Estudiantes")
                 {
                     string[] Titulo_1 = ((pnTitulo.Controls[0] as Bunifu.UI.WinForms.BunifuLabel).Text.Split('\n'));
                     string[] Fechas = Titulo_1[1].Split(' ');
@@ -1459,16 +1631,32 @@ namespace CapaPresentaciones
 
                     string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, (pnSubcampos.Controls[4] as C_Campo).Valor, (pnSubcampos.Controls[5] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["CodEstudiante"].Value.ToString(), dgvResultados.CurrentRow.Cells["Nombre"].Value.ToString() + " " + dgvResultados.CurrentRow.Cells["APaterno"].Value.ToString() + " " + dgvResultados.CurrentRow.Cells["AMaterno"].Value.ToString(), FechaInicial, FechaFinal };
 
-                    P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, "Por Estudiantes");
+                    DateTime[] FechasNecesarias = { Convert.ToDateTime(Fechas[1], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4], CultureInfo.GetCultureInfo("es-ES")) };
+
+                    P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, FechasNecesarias, "Por Estudiantes");
                     DR.ShowDialog();
                     DR.Dispose();
                 }
                 else if (CriterioAsistenciasEstudiantes == "Por Asignaturas")
                 {
-                    /*MessageBox.Show("Por Asignaturas");
-                    P_DialogoReporte DR = new P_DialogoReporte("Por Asignaturas");
+                    string[] Titulo_1 = ((pnTitulo.Controls[0] as Bunifu.UI.WinForms.BunifuLabel).Text.Split('\n'));
+                    string[] Fechas = Titulo_1[1].Split(' ');
+
+                    string FechaInicial = DateTime.ParseExact(Fechas[1], "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
+                    string FechaFinal = DateTime.ParseExact(Fechas[4], "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
+
+                    string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["CodAsignatura"].Value.ToString(), dgvResultados.CurrentRow.Cells["NombreAsignatura"].Value.ToString(), FechaInicial, FechaFinal };
+
+                    foreach (var i in ValoresNecesarios)
+                    {
+                        Console.WriteLine(i);
+                    }
+
+                    DateTime[] FechasNecesarias = { Convert.ToDateTime(Fechas[1]), Convert.ToDateTime(Fechas[4]) };
+
+                    P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, FechasNecesarias, "Por Asignaturas");
                     DR.ShowDialog();
-                    DR.Dispose();*/
+                    DR.Dispose();
                 }
             }
         }
