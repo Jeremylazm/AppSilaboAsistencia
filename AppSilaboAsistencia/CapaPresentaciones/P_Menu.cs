@@ -317,6 +317,7 @@ namespace CapaPresentaciones
         {
             CargarDatosUsuario();
             GestionarAcceso();
+            AbrirFormularios<P_PrincipalDocente>();
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -481,6 +482,12 @@ namespace CapaPresentaciones
         {
             btnEditarPerfil.Image = perfil;
             JefeActualizarPerfil = perfil;
+        }
+
+        private void btnPrincipal_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_PrincipalDocente>();
         }
 
         // Registrar asistencia diaria

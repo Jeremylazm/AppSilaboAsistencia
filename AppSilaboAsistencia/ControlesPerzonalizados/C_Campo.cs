@@ -12,12 +12,18 @@ namespace ControlesPerzonalizados
 {
     public partial class C_Campo : UserControl
     {
+        public string Titulo { get; }
+        public string Valor { get; }
+
         public C_Campo(string Titulo, string Valor)
         {
+            this.Titulo = Titulo;
+            this.Valor = Valor;
+
             InitializeComponent();
 
-            lblTitulo.Text = Titulo;
-            txtValor.Text = Valor;
+            lblTitulo.Text = this.Titulo;
+            txtValor.Text = this.Valor;
 
             if (txtValor.Width > lblTitulo.Width)
             {

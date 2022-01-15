@@ -104,9 +104,9 @@ namespace CapaPresentaciones
             };
 
             Reportes = Reporte;
-
             Responsivo();
             pnReporte.Controls.Add(Reporte);
+            ActiveControl = Reporte.btnGrafico1;
         }
 
         private void Responsivo()

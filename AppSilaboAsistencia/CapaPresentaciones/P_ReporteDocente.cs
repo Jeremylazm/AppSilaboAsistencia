@@ -82,12 +82,13 @@ namespace CapaPresentaciones
             C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text, "Docente")
             {
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
+                
             };
 
             Reportes = Reporte;
-
             Responsivo();
-            pnReporte.Controls.Add(Reporte); 
+            pnReporte.Controls.Add(Reporte);
+            ActiveControl = Reporte.btnGrafico1;
         }
 
         private void Responsivo()
