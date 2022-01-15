@@ -1098,6 +1098,18 @@ BEGIN
 END;
 GO
 
+-- Procedimiento para mostrar la escuela profesional donde se dicta una asignatura.
+CREATE PROCEDURE spuVerEscuelaAsignatura @CodSemestre VARCHAR(7),
+										 @CodAsignatura VARCHAR(9) -- código (ej. IF065AIN)
+AS
+BEGIN
+	-- Mostrar la relación de estudiantes matriculados
+	SELECT CodEscuelaP
+		FROM TCatalogo
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura + Grupo + CodEscuelaP = @CodAsignatura
+END;
+GO
+
 -- Procedimiento para insertar una asignatura en un catálogo.
 CREATE PROCEDURE spuInsertarAsignaturaCatalogo @CodSemestre VARCHAR(7),
 											   @CodAsignatura VARCHAR(6),
@@ -1336,8 +1348,6 @@ BEGIN
 			  HA.Dia = @Dia
 END;
 GO
-
-EXEC spuBuscarAsignaturasDiaHora '2021-II','IF','MA','00','23'
 
 -- Procedimiento para insertar el horario de una asignatura.
 CREATE PROCEDURE spuInsertarHorarioAsignatura @CodSemestre VARCHAR(7),
@@ -1985,8 +1995,6 @@ BEGIN
 	   ORDER BY AD.Fecha DESC
 END;
 GO
-
-EXEC spuAsistenciaEstudiantesPorFechas '2021-II','95234','IF450AIN','18/10/2021','15/01/2022'
 
 -- Procedimiento para mostrar las asistencia de los estudiantes de una asignatura en un rango de fechas
 CREATE PROCEDURE spuAsistenciaEstudiantesPorEstudiante  @CodSemestre VARCHAR(7),
