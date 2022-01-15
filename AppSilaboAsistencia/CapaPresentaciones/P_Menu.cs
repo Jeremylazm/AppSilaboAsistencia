@@ -93,19 +93,26 @@ namespace CapaPresentaciones
         {
             if (Acceso == "Administrador")
             {
-                
+                pnBotonesMenu.Controls.SetChildIndex(btnPlantillas, 0);
+                pnContenedorDocente.Visible = false;
+                pnContenedorDirector.Visible = false;
+                pnContenedorJefe.Visible = false;
+                btnPlantillas.Visible = true;
             }
             else if (Acceso == "Jefe de Departamento")
             {
+                btnPlantillas.Visible = false;
                 pnContenedorDirector.Visible = false;
             }
             else if (Acceso == "Director de Escuela")
             {
+                btnPlantillas.Visible = false;
                 pnBotonesMenu.Controls.SetChildIndex(pnContenedorDirector, 2);
                 pnContenedorJefe.Visible = false;
             }
             else if (Acceso == "Docente")
             {
+                btnPlantillas.Visible = false;
                 pnContenedorDocente.Controls.SetChildIndex(btnContenedorDocente, 5);
                 btnContenedorDocente.Visible = false;
                 pnContenedorJefe.Visible = false;
@@ -488,6 +495,11 @@ namespace CapaPresentaciones
         {
             ActualizarColor();
             AbrirFormularios<P_PrincipalDocente>();
+        }
+
+        private void btnPlantillas_Click(object sender, EventArgs e)
+        {
+
         }
 
         // Registrar asistencia diaria
