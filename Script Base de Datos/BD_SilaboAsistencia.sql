@@ -1098,6 +1098,18 @@ BEGIN
 END;
 GO
 
+-- Procedimiento para mostrar la escuela profesional donde se dicta una asignatura.
+CREATE PROCEDURE spuVerEscuelaAsignatura @CodSemestre VARCHAR(7),
+										 @CodAsignatura VARCHAR(9) -- código (ej. IF065AIN)
+AS
+BEGIN
+	-- Mostrar la relación de estudiantes matriculados
+	SELECT CodEscuelaP
+		FROM TCatalogo
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura + Grupo + CodEscuelaP = @CodAsignatura
+END;
+GO
+
 -- Procedimiento para insertar una asignatura en un catálogo.
 CREATE PROCEDURE spuInsertarAsignaturaCatalogo @CodSemestre VARCHAR(7),
 											   @CodAsignatura VARCHAR(6),
@@ -1336,8 +1348,6 @@ BEGIN
 			  HA.Dia = @Dia
 END;
 GO
-
-EXEC spuBuscarAsignaturasDiaHora '2021-II','IF','MA','00','23'
 
 -- Procedimiento para insertar el horario de una asignatura.
 CREATE PROCEDURE spuInsertarHorarioAsignatura @CodSemestre VARCHAR(7),
@@ -1937,7 +1947,7 @@ BEGIN
 			 AE.CodEstudiante = M.CodEstudiante) 
 	    WHERE AE.CodSemestre = @CodSemestre AND
 			  AE.CodAsignatura = @CodAsignatura AND
-			  AE.Fecha_Formatted = @Fecha AND
+			  AE.Fecha = @Fecha AND
 			  AE.Hora = @Hora
 END;
 GO
@@ -1974,14 +1984,14 @@ BEGIN
 	SELECT Fecha = AD.Fecha_Formatted, SesiónDictada = AD.Asistió,
 	       TotalAsistieron = SUM(CASE WHEN AE.Asistió = 'SI' THEN 1 ELSE 0 END),
 		   TotalFaltaron = CASE WHEN AD.Observación = '' THEN SUM(CASE WHEN AE.Asistió = 'NO' THEN 1 ELSE 0 END) ELSE 0 END,
-		   AD.Observación
+		   AD.Observación, AD.Hora
 		FROM TAsistenciaDocentePorAsignatura AD INNER JOIN TAsistenciaEstudiante AE ON
 			 (AD.CodSemestre = AE.CodSemestre AND AD.CodAsignatura = AE.CodAsignatura AND AD.Fecha = AE.Fecha)
 	    WHERE AD.CodSemestre = @CodSemestre AND
 			  AD.CodDocente = @CodDocente AND
 			  AD.CodAsignatura = @CodAsignatura AND
 			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
-	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Asistió, AD.Observación
+	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Asistió, AD.Observación, AD.Hora
 	   ORDER BY AD.Fecha DESC
 END;
 GO
