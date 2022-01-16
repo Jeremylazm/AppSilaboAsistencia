@@ -1,5 +1,5 @@
 ﻿
-namespace ControlesPerzonalizados
+namespace CapaPresentaciones
 {
     partial class C_Reporte
     {
@@ -8,7 +8,7 @@ namespace ControlesPerzonalizados
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -598,10 +598,10 @@ namespace ControlesPerzonalizados
             this.tcGraficos.Location = new System.Drawing.Point(13, 68);
             this.tcGraficos.Multiline = true;
             this.tcGraficos.Name = "tcGraficos";
-            this.tcGraficos.Page = this.tbPagina1;
-            this.tcGraficos.PageIndex = 0;
-            this.tcGraficos.PageName = "tbPagina1";
-            this.tcGraficos.PageTitle = "1";
+            this.tcGraficos.Page = this.tbPagina2;
+            this.tcGraficos.PageIndex = 1;
+            this.tcGraficos.PageName = "tbPagina2";
+            this.tcGraficos.PageTitle = "2";
             this.tcGraficos.SelectedIndex = 0;
             this.tcGraficos.Size = new System.Drawing.Size(1036, 613);
             this.tcGraficos.TabIndex = 2;
@@ -755,7 +755,7 @@ namespace ControlesPerzonalizados
             this.gxGrafico2.XAxesStacked = false;
             this.gxGrafico2.XAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
             this.gxGrafico2.XAxesZeroLineWidth = 1;
-            this.gxGrafico2.YAxesBeginAtZero = true;
+            this.gxGrafico2.YAxesBeginAtZero = false;
             this.gxGrafico2.YAxesDrawTicks = true;
             this.gxGrafico2.YAxesFont = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.gxGrafico2.YAxesForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -1372,7 +1372,6 @@ namespace ControlesPerzonalizados
         public System.Windows.Forms.TableLayoutPanel Cuadricula;
         private Bunifu.UI.WinForms.BunifuPanel pnInferior;
         private System.Windows.Forms.FlowLayoutPanel pnBotonesGraficos;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGrafico1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGrafico2;
         private Bunifu.UI.WinForms.BunifuPages tcGraficos;
         private Bunifu.Charts.WinForms.ChartTypes.BunifuHorizontalBarChart GraficoBarrasHorizontales1;
@@ -1391,5 +1390,6 @@ namespace ControlesPerzonalizados
         private Bunifu.Charts.WinForms.ChartTypes.BunifuPieChart GraficoCircular;
         private Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart GraficoBarrasCompletas;
         private Bunifu.Charts.WinForms.ChartTypes.BunifuHorizontalBarChart GraficoBarrasHorizontales2;
+        public Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGrafico1;
     }
 }

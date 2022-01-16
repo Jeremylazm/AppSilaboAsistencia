@@ -54,11 +54,14 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu.Charts.WinForms, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.Charts.WinForms.1.1.5\lib\net40\Bunifu.Charts.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.Dataviz.WinForms, Version=2.2.0.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.Dataviz.WinForms.2.2.0\lib\Bunifu.Dataviz.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
-      <HintPath>..\packages\Bunifu.UI.WinForms.5.3.0\lib\net40\Bunifu.Licensing.dll</HintPath>
+      <HintPath>..\packages\Bunifu.Charts.WinForms.1.1.5\lib\net40\Bunifu.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu.UI.WinForms.1.5.3, Version=1.5.3.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.UI.WinForms.5.3.0\lib\net40\Bunifu.UI.WinForms.1.5.3.dll</HintPath>
@@ -174,6 +177,9 @@
     <Reference Include="ExcelNumberFormat, Version=1.0.10.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelNumberFormat.1.0.10\lib\net20\ExcelNumberFormat.dll</HintPath>
     </Reference>
+    <Reference Include="Guna.UI2">
+      <HintPath>..\packages\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="MathNet.Numerics, Version=4.15.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MathNet.Numerics.4.15.0\lib\net461\MathNet.Numerics.dll</HintPath>
     </Reference>
@@ -220,6 +226,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BDSistemaGestionDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="C_Reporte.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="C_Reporte.Designer.cs">
+      <DependentUpon>C_Reporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_CambioContraseña.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,12 +268,6 @@
     </Compile>
     <Compile Include="P_DatosDocente.Designer.cs">
       <DependentUpon>P_DatosDocente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="P_DatosSemestre.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="P_DatosSemestre.Designer.cs">
-      <DependentUpon>P_DatosSemestre.cs</DependentUpon>
     </Compile>
     <Compile Include="P_DialogoAgregarAsistenciaDocente.cs">
       <SubType>Form</SubType>
@@ -310,6 +316,12 @@
     </Compile>
     <Compile Include="P_Menu.Designer.cs">
       <DependentUpon>P_Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_PrincipalDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_PrincipalDocente.Designer.cs">
+      <DependentUpon>P_PrincipalDocente.cs</DependentUpon>
     </Compile>
     <Compile Include="P_RecuperacionContraseña.cs">
       <SubType>Form</SubType>
@@ -455,6 +467,9 @@
     <Compile Include="P_TablaSilabosAsignatura.Designer.cs">
       <DependentUpon>P_TablaSilabosAsignatura.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="C_Reporte.resx">
+      <DependentUpon>C_Reporte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -475,9 +490,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_DatosDocente.resx">
       <DependentUpon>P_DatosDocente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="P_DatosSemestre.resx">
-      <DependentUpon>P_DatosSemestre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_DialogoAgregarAsistenciaDocente.resx">
       <DependentUpon>P_DialogoAgregarAsistenciaDocente.cs</DependentUpon>
@@ -502,6 +514,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_Menu.resx">
       <DependentUpon>P_Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_PrincipalDocente.resx">
+      <DependentUpon>P_PrincipalDocente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_RecuperacionContraseña.resx">
       <DependentUpon>P_RecuperacionContraseña.cs</DependentUpon>

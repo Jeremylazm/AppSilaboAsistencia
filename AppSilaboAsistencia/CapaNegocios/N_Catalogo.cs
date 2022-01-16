@@ -52,6 +52,11 @@ namespace CapaNegocios
             return new D_Catalogo().ListaEstudiantesMatriculados(CodSemestre, CodAsignatura, CodDocente);
         }
 
+        public static DataTable VerEscuelaAsignatura(string CodSemestre, string CodAsignatura)
+        {
+            return new D_Catalogo().VerEscuelaAsignatura(CodSemestre, CodAsignatura);
+        }
+
         public void InsertarAsignaturaCatalogo(E_Catalogo Catalogo)
         {
             ObjCatalogo.InsertarAsignaturaCatalogo(Catalogo);

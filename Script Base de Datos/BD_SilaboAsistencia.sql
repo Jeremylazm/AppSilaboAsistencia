@@ -1098,6 +1098,18 @@ BEGIN
 END;
 GO
 
+-- Procedimiento para mostrar la escuela profesional donde se dicta una asignatura.
+CREATE PROCEDURE spuVerEscuelaAsignatura @CodSemestre VARCHAR(7),
+										 @CodAsignatura VARCHAR(9) -- código (ej. IF065AIN)
+AS
+BEGIN
+	-- Mostrar la relación de estudiantes matriculados
+	SELECT CodEscuelaP
+		FROM TCatalogo
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura + Grupo + CodEscuelaP = @CodAsignatura
+END;
+GO
+
 -- Procedimiento para insertar una asignatura en un catálogo.
 CREATE PROCEDURE spuInsertarAsignaturaCatalogo @CodSemestre VARCHAR(7),
 											   @CodAsignatura VARCHAR(6),
@@ -1222,7 +1234,7 @@ CREATE PROCEDURE spuHorarioSemanalDocente @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar las asignaturas y los horarios:
-	SELECT CodAsignatura = (HA.CodAsignatura + HA.Grupo + HA.CodEscuelaP), HA.Dia, HA.Tipo, HA.HorasTeoria, HA.HorasPractica,
+	SELECT CodAsignatura = (HA.CodAsignatura + HA.Grupo + HA.CodEscuelaP), A.NombreAsignatura, HA.Dia, HA.Tipo, HA.HorasTeoria, HA.HorasPractica,
 	       HA.HoraInicio, HA.HoraFin, HA.Aula, HA.Modalidad
 		FROM (THorarioAsignatura HA INNER JOIN TAsignatura A ON
 			 HA.CodAsignatura = A.CodAsignatura) INNER JOIN TDocente D ON
@@ -1315,6 +1327,25 @@ BEGIN
 		FROM THorarioAsignatura
 		WHERE CodDocente = @CodDocente AND CodSemestre = @CodSemestre AND CodAsignatura = @CodAsignatura AND
 			  Grupo = @Grupo
+END;
+GO
+
+-- Procedimiento para buscar las asignaturas que se dictan en un dia y un intervalo de tiempo.
+CREATE PROCEDURE spuBuscarAsignaturasDiaHora @CodSemestre VARCHAR(7),
+											 @CodDepartamentoA VARCHAR(3), -- Atrib. Jefe Dpto
+											 @Dia VARCHAR(2),
+											 @HoraInicio VARCHAR(2),
+											 @HoraFin VARCHAR(2)
+AS
+BEGIN
+	-- Mostrar las asignaturas
+	SELECT CodAsignatura = (HA.CodAsignatura + HA.Grupo + HA.CodEscuelaP), CodDocente
+		FROM THorarioAsignatura HA
+		WHERE HA.CodSemestre = @CodSemestre AND 
+		      SUBSTRING(HA.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
+			  CAST(HA.HoraInicio AS INT) >= CAST(@HoraInicio AS INT) AND
+			  CAST(HA.HoraFin AS INT) <= CAST(@HoraFin AS INT) AND
+			  HA.Dia = @Dia
 END;
 GO
 
@@ -1916,7 +1947,7 @@ BEGIN
 			 AE.CodEstudiante = M.CodEstudiante) 
 	    WHERE AE.CodSemestre = @CodSemestre AND
 			  AE.CodAsignatura = @CodAsignatura AND
-			  AE.Fecha_Formatted = @Fecha AND
+			  AE.Fecha = @Fecha AND
 			  AE.Hora = @Hora
 END;
 GO
@@ -1953,14 +1984,14 @@ BEGIN
 	SELECT Fecha = AD.Fecha_Formatted, SesiónDictada = AD.Asistió,
 	       TotalAsistieron = SUM(CASE WHEN AE.Asistió = 'SI' THEN 1 ELSE 0 END),
 		   TotalFaltaron = CASE WHEN AD.Observación = '' THEN SUM(CASE WHEN AE.Asistió = 'NO' THEN 1 ELSE 0 END) ELSE 0 END,
-		   AD.Observación
+		   AD.Observación, AD.Hora
 		FROM TAsistenciaDocentePorAsignatura AD INNER JOIN TAsistenciaEstudiante AE ON
 			 (AD.CodSemestre = AE.CodSemestre AND AD.CodAsignatura = AE.CodAsignatura AND AD.Fecha = AE.Fecha)
 	    WHERE AD.CodSemestre = @CodSemestre AND
 			  AD.CodDocente = @CodDocente AND
 			  AD.CodAsignatura = @CodAsignatura AND
 			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
-	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Asistió, AD.Observación
+	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Asistió, AD.Observación, AD.Hora
 	   ORDER BY AD.Fecha DESC
 END;
 GO

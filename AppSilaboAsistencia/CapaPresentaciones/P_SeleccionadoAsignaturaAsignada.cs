@@ -37,8 +37,9 @@ namespace CapaPresentaciones
             if (AccesoReporte == "Docente") MostrarAsignaturas();
             else if (AccesoReporte == "Director de Escuela")
             {
-                if (CriterioSeleccion == "Por Estudiantes") MostrarEstudiantes();
-                if (CriterioSeleccion == "Por Asignaturas") MostrarTodasAsignaturas();
+                if (CriterioSeleccion == "Por Fechas") MostrarTodasAsignaturas();
+                if (CriterioSeleccion == "Por Estudiantes") MostrarTodasAsignaturas();
+                if (CriterioSeleccion == "Por Asignaturas") MostrarEstudiantes();
             }
         }
 
@@ -110,29 +111,12 @@ namespace CapaPresentaciones
             {
                 P_ReporteDirector Datos = Owner as P_ReporteDirector;
 
-                if (CriterioSeleccion == "Por Estudiantes")
+                // Por Fechas -> Todas las asignaturas
+                // Por Estudiantes -> Todos las asignaturas
+                // Por Asignaturas -> Todos los estudiantes
+
+                if (CriterioSeleccion == "Por Fechas")
                 {
-                    string codTemp = Datos.txtCodEstudiante.Text;
-
-                    Datos.txtCodEstudiante.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
-                    Datos.txtEstudiante.Text = dgvDatos.CurrentRow.Cells[3].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[1].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[2].Value.ToString();
-
-                    if (codTemp != Datos.txtCodEstudiante.Text && Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
-                    {
-                        Datos.CriterioSeleccionAsistenciaEstudiantes();
-                    }
-                }
-                else if (CriterioSeleccion == "Por Asignaturas")
-                {
-                    // Criterio de selección por asignaturas
-                    /*if (DatosEstudiante.radiobtnCriterioFechas.Checked)
-                    {
-
-                    }
-                    else if (DatosEstudiante.radiobtnCriterioEstudiantes.Checked)
-                    {
-                        
-                    }*/
                     string codTemp = Datos.txtCodigo.Text;
 
                     Datos.txtCodigo.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
@@ -142,6 +126,34 @@ namespace CapaPresentaciones
                     Datos.nombreDocente = dgvDatos.CurrentRow.Cells[5].Value.ToString();
 
                     if (codTemp != Datos.txtCodigo.Text && Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+                    {
+                        Datos.CriterioSeleccionAsistenciaEstudiantes();
+                    }
+                }
+
+                if (CriterioSeleccion == "Por Estudiantes")
+                {
+                    string codTemp = Datos.txtCodigo.Text;
+
+                    Datos.txtCodigo.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
+                    Datos.txtNombre.Text = dgvDatos.CurrentRow.Cells[1].Value.ToString();
+                    Datos.txtEscuelaP.Text = dgvDatos.CurrentRow.Cells[2].Value.ToString();
+                    Datos.CodDocenteReporte = dgvDatos.CurrentRow.Cells[4].Value.ToString();
+                    Datos.nombreDocente = dgvDatos.CurrentRow.Cells[5].Value.ToString();
+
+                    if (codTemp != Datos.txtCodigo.Text && Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+                    {
+                        Datos.CriterioSeleccionAsistenciaEstudiantes();
+                    }
+                }
+                else if (CriterioSeleccion == "Por Asignaturas")
+                {
+                    string codTemp = Datos.txtCodEstudiante.Text;
+
+                    Datos.txtCodEstudiante.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
+                    Datos.txtEstudiante.Text = dgvDatos.CurrentRow.Cells[3].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[1].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[2].Value.ToString();
+
+                    if (codTemp != Datos.txtCodEstudiante.Text && Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
                     {
                         Datos.CriterioSeleccionAsistenciaEstudiantes();
                     }
