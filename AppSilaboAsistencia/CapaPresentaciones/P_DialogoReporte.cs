@@ -54,7 +54,6 @@ namespace CapaPresentaciones
                 };
 
                 Reportes = Reporte;
-                Responsivo();
                 pnReporte.Controls.Add(Reporte);
                 ActiveControl = Reporte.btnGrafico1;
             }
@@ -72,7 +71,6 @@ namespace CapaPresentaciones
                 };
 
                 Reportes = Reporte;
-                Responsivo();
                 pnReporte.Controls.Add(Reporte);
                 ActiveControl = Reporte.btnGrafico1;
             }
@@ -90,14 +88,15 @@ namespace CapaPresentaciones
 
                 C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, "Por Asignaturas")
                 {
-                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
+                    Width = pnReporte.Width
                 };
 
                 Reportes = Reporte;
-                Responsivo();
                 pnReporte.Controls.Add(Reporte);
                 ActiveControl = Reporte.btnGrafico1;
             }
+            Responsivo();
         }
 
         private void Responsivo()
