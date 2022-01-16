@@ -64,11 +64,12 @@ namespace CapaPresentaciones
             this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTitulo.Size = new System.Drawing.Size(791, 46);
+            this.lblTitulo.Size = new System.Drawing.Size(903, 57);
             this.lblTitulo.TabIndex = 20;
-            this.lblTitulo.Text = "Tabla de Sesiones - ";
+            this.lblTitulo.Text = "Tabla de Sesiones Atrasadas- ";
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -90,17 +91,18 @@ namespace CapaPresentaciones
             this.btnCerrar.ImageActive = null;
             this.btnCerrar.ImageLocation = null;
             this.btnCerrar.ImageMargin = 10;
-            this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnCerrar.ImageZoomSize = new System.Drawing.Size(30, 30);
+            this.btnCerrar.ImageSize = new System.Drawing.Size(30, 27);
+            this.btnCerrar.ImageZoomSize = new System.Drawing.Size(40, 37);
             this.btnCerrar.InitialImage = null;
-            this.btnCerrar.Location = new System.Drawing.Point(751, 7);
+            this.btnCerrar.Location = new System.Drawing.Point(849, 9);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Rotation = 0;
             this.btnCerrar.ShowActiveImage = true;
             this.btnCerrar.ShowCursorChanges = true;
             this.btnCerrar.ShowImageBorders = true;
             this.btnCerrar.ShowSizeMarkers = false;
-            this.btnCerrar.Size = new System.Drawing.Size(30, 30);
+            this.btnCerrar.Size = new System.Drawing.Size(40, 37);
             this.btnCerrar.TabIndex = 12;
             this.btnCerrar.ToolTipText = "";
             this.btnCerrar.WaitOnLoad = false;
@@ -126,17 +128,18 @@ namespace CapaPresentaciones
             this.pbLogo.ImageActive = null;
             this.pbLogo.ImageLocation = null;
             this.pbLogo.ImageMargin = 0;
-            this.pbLogo.ImageSize = new System.Drawing.Size(24, 30);
-            this.pbLogo.ImageZoomSize = new System.Drawing.Size(24, 30);
+            this.pbLogo.ImageSize = new System.Drawing.Size(32, 37);
+            this.pbLogo.ImageZoomSize = new System.Drawing.Size(32, 37);
             this.pbLogo.InitialImage = null;
-            this.pbLogo.Location = new System.Drawing.Point(8, 7);
+            this.pbLogo.Location = new System.Drawing.Point(11, 9);
+            this.pbLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Rotation = 0;
             this.pbLogo.ShowActiveImage = false;
             this.pbLogo.ShowCursorChanges = false;
             this.pbLogo.ShowImageBorders = true;
             this.pbLogo.ShowSizeMarkers = false;
-            this.pbLogo.Size = new System.Drawing.Size(24, 30);
+            this.pbLogo.Size = new System.Drawing.Size(32, 37);
             this.pbLogo.TabIndex = 13;
             this.pbLogo.ToolTipText = "";
             this.pbLogo.WaitOnLoad = false;
@@ -220,7 +223,7 @@ namespace CapaPresentaciones
             this.txtBuscar.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtBuscar.Lines = new string[0];
-            this.txtBuscar.Location = new System.Drawing.Point(9, 46);
+            this.txtBuscar.Location = new System.Drawing.Point(12, 57);
             this.txtBuscar.Margin = new System.Windows.Forms.Padding(0);
             this.txtBuscar.MaxLength = 32767;
             this.txtBuscar.MinimumSize = new System.Drawing.Size(1, 1);
@@ -247,7 +250,7 @@ namespace CapaPresentaciones
             stateProperties4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
             this.txtBuscar.OnIdleState = stateProperties4;
-            this.txtBuscar.Padding = new System.Windows.Forms.Padding(3);
+            this.txtBuscar.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtBuscar.PlaceholderText = "Buscar";
@@ -257,7 +260,7 @@ namespace CapaPresentaciones
             this.txtBuscar.SelectionLength = 0;
             this.txtBuscar.SelectionStart = 0;
             this.txtBuscar.ShortcutsEnabled = true;
-            this.txtBuscar.Size = new System.Drawing.Size(773, 40);
+            this.txtBuscar.Size = new System.Drawing.Size(879, 49);
             this.txtBuscar.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
             this.txtBuscar.TabIndex = 30;
             this.txtBuscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -289,8 +292,8 @@ namespace CapaPresentaciones
             this.sbDatos.BorderThickness = 1;
             this.sbDatos.DurationBeforeShrink = 2000;
             this.sbDatos.LargeChange = 10;
-            this.sbDatos.Location = new System.Drawing.Point(772, 93);
-            this.sbDatos.Margin = new System.Windows.Forms.Padding(4);
+            this.sbDatos.Location = new System.Drawing.Point(877, 114);
+            this.sbDatos.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.sbDatos.Maximum = 100;
             this.sbDatos.Minimum = 0;
             this.sbDatos.MinimumThumbLength = 18;
@@ -301,11 +304,11 @@ namespace CapaPresentaciones
             this.sbDatos.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbDatos.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbDatos.ShrinkSizeLimit = 3;
-            this.sbDatos.Size = new System.Drawing.Size(10, 491);
+            this.sbDatos.Size = new System.Drawing.Size(13, 311);
             this.sbDatos.SmallChange = 1;
             this.sbDatos.TabIndex = 33;
             this.sbDatos.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.sbDatos.ThumbLength = 48;
+            this.sbDatos.ThumbLength = 30;
             this.sbDatos.ThumbMargin = 1;
             this.sbDatos.ThumbStyle = Bunifu.UI.WinForms.BunifuVScrollBar.ThumbStyles.Inset;
             this.sbDatos.Value = 1;
@@ -358,7 +361,8 @@ namespace CapaPresentaciones
             this.btnAceptar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Agregar;
             this.btnAceptar.IdleIconRightImage = null;
             this.btnAceptar.IndicateFocus = false;
-            this.btnAceptar.Location = new System.Drawing.Point(611, 591);
+            this.btnAceptar.Location = new System.Drawing.Point(663, 434);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAceptar.OnDisabledState.BorderRadius = 15;
@@ -392,13 +396,14 @@ namespace CapaPresentaciones
             this.btnAceptar.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnAceptar.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Agregar;
             this.btnAceptar.OnPressedState.IconRightImage = null;
-            this.btnAceptar.Size = new System.Drawing.Size(170, 39);
+            this.btnAceptar.Size = new System.Drawing.Size(227, 48);
             this.btnAceptar.TabIndex = 35;
             this.btnAceptar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnAceptar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnAceptar.TextMarginLeft = 0;
             this.btnAceptar.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnAceptar.UseDefaultRadiusAndThickness = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // dgvSesiones
             // 
@@ -460,7 +465,8 @@ namespace CapaPresentaciones
             this.dgvSesiones.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.dgvSesiones.HeaderBgColor = System.Drawing.Color.Empty;
             this.dgvSesiones.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.dgvSesiones.Location = new System.Drawing.Point(23, 102);
+            this.dgvSesiones.Location = new System.Drawing.Point(31, 126);
+            this.dgvSesiones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvSesiones.MultiSelect = false;
             this.dgvSesiones.Name = "dgvSesiones";
             this.dgvSesiones.ReadOnly = true;
@@ -479,17 +485,17 @@ namespace CapaPresentaciones
             this.dgvSesiones.RowTemplate.Height = 26;
             this.dgvSesiones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvSesiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSesiones.Size = new System.Drawing.Size(758, 482);
+            this.dgvSesiones.Size = new System.Drawing.Size(859, 300);
             this.dgvSesiones.TabIndex = 37;
             this.dgvSesiones.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             // 
             // P_TablaSesiones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(791, 640);
+            this.ClientSize = new System.Drawing.Size(903, 495);
             this.Controls.Add(this.sbDatos);
             this.Controls.Add(this.dgvSesiones);
             this.Controls.Add(this.btnAceptar);
@@ -498,6 +504,7 @@ namespace CapaPresentaciones
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "P_TablaSesiones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabla de Sesiones - ASIGNATURA";

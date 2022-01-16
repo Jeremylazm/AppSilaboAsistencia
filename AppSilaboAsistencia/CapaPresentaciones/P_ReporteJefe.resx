@@ -207,6 +207,32 @@
         ms3NzMzMzMzMzG7FHdt519VTK6tn17btODhlDQAAAICyYfgnDpLcqf8vToQAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="txtDocente.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: left; }</value>
+  </data>
+  <data name="lnDocente.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAroAAAAKCAYAAABbqP1FAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABFSURBVHhe7daxDQAgDASxXyBiTfZfABr6NKmQLd0OFwAA
+        AAAAAAAAAAAAAABo7VpHkiRJ+q23uwAAAAAAAAAAAADAiOQCprAfa2kO7JYAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="lblDocente.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
+  </data>
+  <data name="txtCodDocente.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: left; }</value>
+  </data>
+  <data name="lnCodDocente.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAG0AAAAKCAYAAAC+CdC0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAArSURBVFhH7dFBCQAwDATBMxBqs/4NNJ96CIEZWAUbAIAx
+        t87Trv46AFguabz5pMiRrAgrAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="lblCodDocente.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
+  </data>
   <data name="btnGeneral.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAKgAAAAnCAYAAACbrQO5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -461,8 +487,5 @@
   </data>
   <metadata name="Bordeado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>43</value>
   </metadata>
 </root>

@@ -1554,7 +1554,7 @@ BEGIN
 		   TotalFaltaron = CASE WHEN AD.Observación = '' THEN SUM(CASE WHEN AE.Asistió = 'NO' THEN 1 ELSE 0 END) ELSE 0 END,
 		   AD.Observación
 		FROM TAsistenciaDocentePorAsignatura AD INNER JOIN TAsistenciaEstudiante AE ON
-			 (AD.CodSemestre = AE.CodSemestre AND AD.CodAsignatura = AE.CodAsignatura AND AD.Fecha = AE.Fecha)
+			 (AD.CodSemestre = AE.CodSemestre AND AD.CodAsignatura = AE.CodAsignatura AND AD.Fecha = AE.Fecha AND AD.Hora = AE.Hora)
 	    WHERE AD.CodSemestre = @CodSemestre AND
 			  AD.CodDocente = @CodDocente AND
 			  AD.CodAsignatura = @CodAsignatura AND

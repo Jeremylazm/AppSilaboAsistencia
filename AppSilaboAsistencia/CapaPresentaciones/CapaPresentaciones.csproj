@@ -58,7 +58,7 @@
       <HintPath>..\packages\Bunifu.Dataviz.WinForms.2.2.0\lib\Bunifu.Dataviz.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
-      <HintPath>..\packages\Bunifu.Dataviz.WinForms.2.2.0\lib\Bunifu.Licensing.dll</HintPath>
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.3.0\lib\net40\Bunifu.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu.UI.WinForms.1.5.3, Version=1.5.3.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.UI.WinForms.5.3.0\lib\net40\Bunifu.UI.WinForms.1.5.3.dll</HintPath>
@@ -174,6 +174,9 @@
     <Reference Include="ExcelNumberFormat, Version=1.0.10.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelNumberFormat.1.0.10\lib\net20\ExcelNumberFormat.dll</HintPath>
     </Reference>
+    <Reference Include="MathNet.Numerics, Version=4.15.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.4.15.0\lib\net461\MathNet.Numerics.dll</HintPath>
+    </Reference>
     <Reference Include="SpreadsheetLight, Version=3.5.0.0, Culture=neutral, PublicKeyToken=32fbb46dc1730c57, processorArchitecture=MSIL">
       <HintPath>..\packages\SpreadsheetLight.3.5.0\lib\netstandard2.0\SpreadsheetLight.dll</HintPath>
     </Reference>
@@ -192,6 +195,8 @@
     <Reference Include="System.IO.Packaging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Packaging.6.0.0\lib\net461\System.IO.Packaging.dll</HintPath>
     </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -294,11 +299,23 @@
     <Compile Include="P_RecuperacionContraseña.Designer.cs">
       <DependentUpon>P_RecuperacionContraseña.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_ReporteDirector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_ReporteDirector.Designer.cs">
+      <DependentUpon>P_ReporteDirector.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_ReporteDocente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="P_ReporteDocente.Designer.cs">
       <DependentUpon>P_ReporteDocente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_ReporteJefe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_ReporteJefe.Designer.cs">
+      <DependentUpon>P_ReporteJefe.cs</DependentUpon>
     </Compile>
     <Compile Include="P_SeleccionadoAsignaturaAsignada.cs">
       <SubType>Form</SubType>
@@ -432,8 +449,14 @@
     <EmbeddedResource Include="P_RecuperacionContraseña.resx">
       <DependentUpon>P_RecuperacionContraseña.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="P_ReporteDirector.resx">
+      <DependentUpon>P_ReporteDirector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="P_ReporteDocente.resx">
       <DependentUpon>P_ReporteDocente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_ReporteJefe.resx">
+      <DependentUpon>P_ReporteJefe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_SeleccionadoAsignaturaAsignada.resx">
       <DependentUpon>P_SeleccionadoAsignaturaAsignada.cs</DependentUpon>
