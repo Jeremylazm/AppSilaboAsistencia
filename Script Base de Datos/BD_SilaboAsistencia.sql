@@ -1618,7 +1618,7 @@ BEGIN
 			  (AD.Fecha LIKE (@Texto + '%') OR 
 			   AD.Asistió LIKE (@Texto + '%') OR 
 			   AD.TipoSesión LIKE (@Texto + '%') OR 
-			   AD.NombreTema LIKE (@Texto + '%') OR )
+			   AD.NombreTema LIKE (@Texto + '%'))
 	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Hora, AD.Asistió, AD.TipoSesión, AD.NombreTema, AD.Observación
 	   ORDER BY AD.Fecha DESC
 END;
@@ -1692,7 +1692,7 @@ END;
 GO
 
 -- Procedimiento para mostrar el avance de los temas en todas las asignaturas de un docente.
-ALTER PROCEDURE spuAvanceAsignaturasDocente @CodSemestre VARCHAR(7),
+CREATE PROCEDURE spuAvanceAsignaturasDocente @CodSemestre VARCHAR(7),
 											 @CodDocente VARCHAR(5)
 AS
 BEGIN
