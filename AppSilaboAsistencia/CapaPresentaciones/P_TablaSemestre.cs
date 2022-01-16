@@ -61,7 +61,7 @@ namespace CapaPresentaciones
             ActualizarColor();
 
             //Form Fondo = new Form();
-            using (P_DatosSemestre NuevoRegistro = new P_DatosSemestre())
+            //using (P_DatosSemestre NuevoRegistro = new P_DatosSemestre())
             {
                 //Fondo.StartPosition = FormStartPosition.Manual;
                 //Fondo.FormBorderStyle = FormBorderStyle.None;
@@ -73,10 +73,10 @@ namespace CapaPresentaciones
                 //Fondo.ShowInTaskbar = false;
                 //Fondo.Show();
 
-                NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                //NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
                 //NuevoRegistro.Owner = Fondo;
-                NuevoRegistro.ShowDialog();
-                NuevoRegistro.Dispose();
+                //NuevoRegistro.ShowDialog();
+                //NuevoRegistro.Dispose();
 
                 //Fondo.Dispose();
             }
@@ -92,6 +92,7 @@ namespace CapaPresentaciones
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
                 //Form Fondo = new Form();
+                /*
                 using (P_DatosSemestre EditarRegistro = new P_DatosSemestre())
                 {
                     //Fondo.StartPosition = FormStartPosition.Manual;
@@ -115,7 +116,7 @@ namespace CapaPresentaciones
                     EditarRegistro.Dispose();
 
                     //Fondo.Dispose();
-                }
+                }*/
             }
 
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
