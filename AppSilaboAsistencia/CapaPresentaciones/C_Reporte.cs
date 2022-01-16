@@ -1724,7 +1724,6 @@ namespace CapaPresentaciones
 
         private void dgvResultados_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine(dgvResultados.Columns[e.ColumnIndex].GetType().ToString());
             if (Equals("System.Windows.Forms.DataGridViewImageColumn", dgvResultados.Columns[e.ColumnIndex].GetType().ToString()))
             {
                 dgvResultados.Cursor = Cursors.Hand;
