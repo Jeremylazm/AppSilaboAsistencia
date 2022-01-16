@@ -2070,11 +2070,13 @@ BEGIN
 			  (AE.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
 		GROUP BY AE.CodAsignatura, A.NombreAsignatura)
 
-	SELECT CodAsignatura, NombreAsignatura,
+	SELECT R.CodAsignatura, NombreAsignatura, C.CodDocente, Docente = (D.Nombre + ' ' + D.APaterno + ' ' + D.AMaterno),
 	       PorcentajeAsistencias = ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2),
 	       PorcentajeFaltas = ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2)
-	FROM Resumen
-	GROUP BY CodAsignatura, NombreAsignatura, TotalAsistencias, TotalFaltas
+	FROM (Resumen R INNER JOIN TCatalogo C ON
+	     R.CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP) INNER JOIN TDocente D ON
+		 C.CodDocente = D.CodDocente
+	GROUP BY R.CodAsignatura, NombreAsignatura, C.CodDocente, D.APaterno, D.AMaterno, D.Nombre, TotalAsistencias, TotalFaltas
 	ORDER BY NombreAsignatura
 END;
 GO
