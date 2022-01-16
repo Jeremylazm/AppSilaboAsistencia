@@ -306,6 +306,12 @@ namespace CapaPresentaciones
             ResultadosFinales.Columns.Add("TemasAvanzados", typeof(string));
             ResultadosFinales.Columns.Add("TemasFaltantes", typeof(string));
 
+            DataTable ResultadosGrafico = new DataTable();
+            ResultadosGrafico.Columns.Add("CodAsignatura", typeof(string));
+            ResultadosGrafico.Columns.Add("NombreAsignatura", typeof(string));
+            ResultadosGrafico.Columns.Add("TemasAvanzados", typeof(int));
+            ResultadosGrafico.Columns.Add("TemasFaltantes", typeof(int));
+
             int Créditos = 0;
             int TemasTotales = 0;
             float PorcentajeAvanzados = 0;
@@ -322,16 +328,18 @@ namespace CapaPresentaciones
                     TemasTotales = 51;
                     PorcentajeAvanzados = 100 * Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()) / TemasTotales;
                     ResultadosFinales.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), Convert.ToString(PorcentajeAvanzados) + "%", Convert.ToString(100 - PorcentajeAvanzados) + "%");
+                    ResultadosGrafico.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()), TemasTotales - Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()));
                 }
                 else
                 {
                     TemasTotales = 34;
                     PorcentajeAvanzados = 100 * Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()) / TemasTotales;
                     ResultadosFinales.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), Convert.ToString(PorcentajeAvanzados) + "%", Convert.ToString(100 - PorcentajeAvanzados) + "%");
+                    ResultadosGrafico.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()), TemasTotales - Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()));
                 }
             }
 
-            Reportes.fnReporte6(Titulo, Titulos, Valores, ResultadosFinales, txtCodigo.Text);
+            Reportes.fnReporte6(Titulo, Titulos, Valores, ResultadosFinales, ResultadosGrafico, txtCodigo.Text);
         }
 
         private void dpFechaInicial_CloseUp(object sender, EventArgs e)

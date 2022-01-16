@@ -80,8 +80,9 @@ namespace CapaPresentaciones
             this.GraficoLineas = new Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart(this.components);
             this.GraficoBarrasVerticales = new Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart(this.components);
             this.GraficoCircular = new Bunifu.Charts.WinForms.ChartTypes.BunifuPieChart(this.components);
-            this.GraficoBarrasCompletas = new Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart(this.components);
+            this.GraficoBarrasCompletas1 = new Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart(this.components);
             this.GraficoBarrasHorizontales2 = new Bunifu.Charts.WinForms.ChartTypes.BunifuHorizontalBarChart(this.components);
+            this.GraficoBarrasCompletas2 = new Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart(this.components);
             this.pnTitulo.SuspendLayout();
             this.pnSuperior.SuspendLayout();
             this.pnCampos.SuspendLayout();
@@ -598,10 +599,10 @@ namespace CapaPresentaciones
             this.tcGraficos.Location = new System.Drawing.Point(13, 68);
             this.tcGraficos.Multiline = true;
             this.tcGraficos.Name = "tcGraficos";
-            this.tcGraficos.Page = this.tbPagina2;
-            this.tcGraficos.PageIndex = 1;
-            this.tcGraficos.PageName = "tbPagina2";
-            this.tcGraficos.PageTitle = "2";
+            this.tcGraficos.Page = this.tbPagina4;
+            this.tcGraficos.PageIndex = 3;
+            this.tcGraficos.PageName = "tbPagina4";
+            this.tcGraficos.PageTitle = "4";
             this.tcGraficos.SelectedIndex = 0;
             this.tcGraficos.Size = new System.Drawing.Size(1036, 613);
             this.tcGraficos.TabIndex = 2;
@@ -859,7 +860,7 @@ namespace CapaPresentaciones
             this.gxGrafico4.AnimationDuration = 1000;
             this.gxGrafico4.AnimationType = Bunifu.Charts.WinForms.BunifuChartCanvas.AnimationOptions.easeOutQuart;
             this.gxGrafico4.BackColor = System.Drawing.Color.White;
-            this.gxGrafico4.CanvasPadding = new System.Windows.Forms.Padding(0, 0, 25, 5);
+            this.gxGrafico4.CanvasPadding = new System.Windows.Forms.Padding(0, 0, 25, 10);
             this.gxGrafico4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gxGrafico4.Font = new System.Drawing.Font("Montserrat Alternates", 7F);
             this.gxGrafico4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -875,8 +876,8 @@ namespace CapaPresentaciones
             this.gxGrafico4.Location = new System.Drawing.Point(3, 3);
             this.gxGrafico4.Margin = new System.Windows.Forms.Padding(0);
             this.gxGrafico4.Name = "gxGrafico4";
-            this.gxGrafico4.ShowXAxis = true;
-            this.gxGrafico4.ShowYAxis = true;
+            this.gxGrafico4.ShowXAxis = false;
+            this.gxGrafico4.ShowYAxis = false;
             this.gxGrafico4.Size = new System.Drawing.Size(1022, 581);
             this.gxGrafico4.TabIndex = 0;
             this.gxGrafico4.Title = "";
@@ -971,7 +972,7 @@ namespace CapaPresentaciones
             this.gxGrafico5.XAxesLabelFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
             this.gxGrafico5.XAxesLabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.gxGrafico5.XAxesLineWidth = 1;
-            this.gxGrafico5.XAxesStacked = false;
+            this.gxGrafico5.XAxesStacked = true;
             this.gxGrafico5.XAxesZeroLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(207)))), ((int)(((byte)(143)))));
             this.gxGrafico5.XAxesZeroLineWidth = 1;
             this.gxGrafico5.YAxesBeginAtZero = true;
@@ -1290,18 +1291,18 @@ namespace CapaPresentaciones
             this.GraficoCircular.Label = "Leyenda";
             this.GraficoCircular.TargetCanvas = this.gxGrafico4;
             // 
-            // GraficoBarrasCompletas
+            // GraficoBarrasCompletas1
             // 
-            this.GraficoBarrasCompletas.BackgroundColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasCompletas.BackgroundColor")));
-            this.GraficoBarrasCompletas.BorderColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasCompletas.BorderColor")));
-            this.GraficoBarrasCompletas.BorderSkipped = null;
-            this.GraficoBarrasCompletas.BorderWidth = 0;
-            this.GraficoBarrasCompletas.Data = ((System.Collections.Generic.List<double>)(resources.GetObject("GraficoBarrasCompletas.Data")));
-            this.GraficoBarrasCompletas.HoverBackgroundColor = System.Drawing.Color.Empty;
-            this.GraficoBarrasCompletas.HoverBorderColor = System.Drawing.Color.Empty;
-            this.GraficoBarrasCompletas.HoverBorderWidth = 0;
-            this.GraficoBarrasCompletas.Label = "Leyenda";
-            this.GraficoBarrasCompletas.TargetCanvas = this.gxGrafico5;
+            this.GraficoBarrasCompletas1.BackgroundColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasCompletas1.BackgroundColor")));
+            this.GraficoBarrasCompletas1.BorderColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasCompletas1.BorderColor")));
+            this.GraficoBarrasCompletas1.BorderSkipped = null;
+            this.GraficoBarrasCompletas1.BorderWidth = 0;
+            this.GraficoBarrasCompletas1.Data = ((System.Collections.Generic.List<double>)(resources.GetObject("GraficoBarrasCompletas1.Data")));
+            this.GraficoBarrasCompletas1.HoverBackgroundColor = System.Drawing.Color.Empty;
+            this.GraficoBarrasCompletas1.HoverBorderColor = System.Drawing.Color.Empty;
+            this.GraficoBarrasCompletas1.HoverBorderWidth = 0;
+            this.GraficoBarrasCompletas1.Label = "Leyenda";
+            this.GraficoBarrasCompletas1.TargetCanvas = this.gxGrafico5;
             // 
             // GraficoBarrasHorizontales2
             // 
@@ -1315,6 +1316,19 @@ namespace CapaPresentaciones
             this.GraficoBarrasHorizontales2.HoverBorderWidth = 0;
             this.GraficoBarrasHorizontales2.Label = "Leyenda";
             this.GraficoBarrasHorizontales2.TargetCanvas = this.gxGrafico1;
+            // 
+            // GraficoBarrasCompletas2
+            // 
+            this.GraficoBarrasCompletas2.BackgroundColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasCompletas2.BackgroundColor")));
+            this.GraficoBarrasCompletas2.BorderColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("GraficoBarrasCompletas2.BorderColor")));
+            this.GraficoBarrasCompletas2.BorderSkipped = null;
+            this.GraficoBarrasCompletas2.BorderWidth = 0;
+            this.GraficoBarrasCompletas2.Data = ((System.Collections.Generic.List<double>)(resources.GetObject("GraficoBarrasCompletas2.Data")));
+            this.GraficoBarrasCompletas2.HoverBackgroundColor = System.Drawing.Color.Empty;
+            this.GraficoBarrasCompletas2.HoverBorderColor = System.Drawing.Color.Empty;
+            this.GraficoBarrasCompletas2.HoverBorderWidth = 0;
+            this.GraficoBarrasCompletas2.Label = "Leyenda";
+            this.GraficoBarrasCompletas2.TargetCanvas = this.gxGrafico5;
             // 
             // C_Reporte
             // 
@@ -1388,8 +1402,9 @@ namespace CapaPresentaciones
         private Bunifu.Charts.WinForms.ChartTypes.BunifuLineChart GraficoLineas;
         private Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart GraficoBarrasVerticales;
         private Bunifu.Charts.WinForms.ChartTypes.BunifuPieChart GraficoCircular;
-        private Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart GraficoBarrasCompletas;
+        private Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart GraficoBarrasCompletas1;
         private Bunifu.Charts.WinForms.ChartTypes.BunifuHorizontalBarChart GraficoBarrasHorizontales2;
         public Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGrafico1;
+        private Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart GraficoBarrasCompletas2;
     }
 }
