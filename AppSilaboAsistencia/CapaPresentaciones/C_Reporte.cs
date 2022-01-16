@@ -1193,9 +1193,7 @@ namespace CapaPresentaciones
                 }
 
                 gxGrafico5.Labels = EtiquetasA.ToArray();
-
                 gxGrafico5.Clear();
-
 
                 GraficoBarrasCompletas1.Label = "Temas Avanzados";
                 GraficoBarrasCompletas1.Data = Datos1A;
@@ -1205,15 +1203,8 @@ namespace CapaPresentaciones
                 GraficoBarrasCompletas2.Data = Datos2A;
                 GraficoBarrasCompletas2.BackgroundColor = Colores2A;
 
-                /*GraficoBarrasCompletas.Label = "Total Faltas";
-                GraficoBarrasCompletas.Data = Datos2A;
-                GraficoBarrasCompletas.BackgroundColor = Colores2A;*/
-
                 GraficoBarrasCompletas1.TargetCanvas = gxGrafico5;
                 GraficoBarrasCompletas2.TargetCanvas = gxGrafico5;
-                //GraficoBarrasCompletas.TargetCanvas = gxGrafico1;
-
-                //GraficoBarrasCompletas
 
                 gxGrafico5.Update();
                 tcGraficos.SetPage(IndiceGrafico1);
@@ -1430,8 +1421,8 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[0].HeaderText = "Reporte Por Fechas";
 
                 dgvResultados.DataSource = Datos;
+                dgvResultados.Columns[3].Visible = false;
                 dgvResultados.Columns[4].Visible = false;
-                dgvResultados.Columns[5].Visible = false;
                 dgvResultados.Columns[0].DisplayIndex = 6;
 
 
@@ -1462,8 +1453,8 @@ namespace CapaPresentaciones
                     sbResultados.Visible = true;
                 }
 
-                //if (pnContenedorCuadro.Visible)
-                //{
+                if (pnContenedorCuadro.Visible)
+                {
                     pnContenedorCuadro.Visible = false;
                     pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
                     pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
@@ -1473,10 +1464,49 @@ namespace CapaPresentaciones
 
                     pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
                     pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                //}
+                }
 
                 // Gráficos
-                gxGrafico1.Clear();
+                btnGrafico2.Visible = false;
+                IndiceGrafico1 = 4;
+
+                // Gráfico 1
+                gxGrafico5.XAxesLabel = "";
+                gxGrafico5.YAxesLabel = "Porcentaje";
+
+                List<string> EtiquetasA = new List<string>();
+
+                List<double> Datos1A = new List<double>();
+                List<Color> Colores1A = new List<Color>();
+
+                List<double> Datos2A = new List<double>();
+                List<Color> Colores2A = new List<Color>();
+
+                foreach (DataRow Fila in Datos.Rows)
+                {
+                    EtiquetasA.Add(Fila["CodAsignatura"].ToString());
+                    Datos1A.Add(double.Parse(Fila["PorcentajeAsistencias"].ToString()));
+                    Colores1A.Add(Color.FromArgb(104, 13, 15));
+                    Datos2A.Add(double.Parse(Fila["PorcentajeFaltas"].ToString()));
+                    Colores2A.Add(Color.FromArgb(232, 158, 31));
+                }
+
+                gxGrafico5.Labels = EtiquetasA.ToArray();
+                gxGrafico5.Clear();
+
+                GraficoBarrasCompletas1.Label = "Asistencias (%)";
+                GraficoBarrasCompletas1.Data = Datos1A;
+                GraficoBarrasCompletas1.BackgroundColor = Colores1A;
+
+                GraficoBarrasCompletas2.Label = "Faltas (%)";
+                GraficoBarrasCompletas2.Data = Datos2A;
+                GraficoBarrasCompletas2.BackgroundColor = Colores2A;
+
+                GraficoBarrasCompletas1.TargetCanvas = gxGrafico5;
+                GraficoBarrasCompletas2.TargetCanvas = gxGrafico5;
+
+                gxGrafico5.Update();
+                tcGraficos.SetPage(IndiceGrafico1);
             }
         }
 
