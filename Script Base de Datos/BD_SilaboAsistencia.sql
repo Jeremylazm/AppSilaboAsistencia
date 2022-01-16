@@ -1339,7 +1339,7 @@ CREATE PROCEDURE spuBuscarAsignaturasDiaHora @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar las asignaturas
-	SELECT CodAsignatura = (HA.CodAsignatura + HA.Grupo + HA.CodEscuelaP), CodDocente
+	SELECT CodAsignatura = (HA.CodAsignatura + HA.Grupo + HA.CodEscuelaP), CodDocente, HoraInicio, HoraFin
 		FROM THorarioAsignatura HA
 		WHERE HA.CodSemestre = @CodSemestre AND 
 		      SUBSTRING(HA.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
@@ -1615,7 +1615,10 @@ BEGIN
 			  AD.CodDocente = @CodDocente AND
 			  AD.CodAsignatura = @CodAsignatura AND
 			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
-			  (AD.NombreTema LIKE (@Texto + '%') OR AD.Fecha LIKE (@Texto + '%'))
+			  (AD.Fecha LIKE (@Texto + '%') OR 
+			   AD.Asistió LIKE (@Texto + '%') OR 
+			   AD.TipoSesión LIKE (@Texto + '%') OR 
+			   AD.NombreTema LIKE (@Texto + '%') OR )
 	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Hora, AD.Asistió, AD.TipoSesión, AD.NombreTema, AD.Observación
 	   ORDER BY AD.Fecha DESC
 END;
@@ -2080,8 +2083,6 @@ BEGIN
 	ORDER BY NombreAsignatura
 END;
 GO
-
-EXEC spuAsistenciaAsignaturasEstudiante '2021-II','204792','18/10/2021','15/01/2022'
 
 -- Procedimiento para registrar la asistencia de un estudiante.
 CREATE PROCEDURE spuRegistrarAsistenciaEstudiante @CodSemestre VARCHAR(7),
