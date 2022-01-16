@@ -1275,7 +1275,9 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[0].HeaderText = "Reporte Por Fechas";
 
                 dgvResultados.DataSource = Datos;
-                dgvResultados.Columns[0].DisplayIndex = 4;
+                dgvResultados.Columns[4].Visible = false;
+                dgvResultados.Columns[5].Visible = false;
+                dgvResultados.Columns[0].DisplayIndex = 6;
 
 
                 if (dgvResultados.Rows.Count <= 10)
@@ -1564,12 +1566,7 @@ namespace CapaPresentaciones
                     string FechaInicial = DateTime.ParseExact(Fechas[1], "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
                     string FechaFinal = DateTime.ParseExact(Fechas[4], "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
 
-                    string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["CodAsignatura"].Value.ToString(), dgvResultados.CurrentRow.Cells["NombreAsignatura"].Value.ToString(), FechaInicial, FechaFinal };
-
-                    foreach (var i in ValoresNecesarios)
-                    {
-                        Console.WriteLine(i);
-                    }
+                    string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["CodAsignatura"].Value.ToString(), dgvResultados.CurrentRow.Cells["NombreAsignatura"].Value.ToString(), dgvResultados.CurrentRow.Cells["CodDocente"].Value.ToString(), dgvResultados.CurrentRow.Cells["Docente"].Value.ToString(), FechaInicial, FechaFinal };
 
                     DateTime[] FechasNecesarias = { Convert.ToDateTime(Fechas[1], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4]) };
 
