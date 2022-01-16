@@ -962,31 +962,32 @@ namespace CapaPresentaciones
                 btnGrafico2.Visible = false;
                 IndiceGrafico1 = 3;
 
-                // Grafico 1
-                gxGrafico4.XAxesLabel = "Estado";
-
-                List<string> EtiquetasA = new List<string>();
-
-                List<double> Datos1A = new List<double>();
-                List<Color> Colores1A = new List<Color>();
-
-                List<double> Datos2A = new List<double>();
-                List<Color> Colores2A = new List<Color>();
-
-                Colores1A.Add(Color.FromArgb(104, 13, 15));
-                Datos1A.Add(Completados);
-                Colores2A.Add(Color.FromArgb(232, 158, 31));
-                Datos2A.Add(Faltantes);
                 
-                EtiquetasA.Add("Total Hechos");
-                EtiquetasA.Add("Total Faltantes");
 
-                gxGrafico4.Labels = EtiquetasA.ToArray();
+                // Grafico 1
+                gxGrafico4.XAxesLabel = "";
+                gxGrafico4.YAxesLabel = "";
+
+                List<string> EtiquetasB = new List<string>();
+                List<double> Datos1B = new List<double>();
+                List<Color> Color1B = new List<Color>();
+
+                EtiquetasB.Add("Avance Completado (%)");
+                EtiquetasB.Add("Avance Faltante (%)");
+
+                Datos1B.Add(Completado);
+                Datos1B.Add(Faltante);
+
+                Color1B.Add(Color.FromArgb(104, 13, 15));
+                Color1B.Add(Color.FromArgb(232, 158, 31));
+
+                gxGrafico4.Labels = EtiquetasB.ToArray();
                 gxGrafico4.Clear();
 
-                GraficoCircular.Label = "Total Hechos";
-                GraficoCircular.Data = Datos1A;
-                GraficoCircular.Data = Datos2A;
+                GraficoCircular.Label = "";
+                GraficoCircular.Data = Datos1B;
+                GraficoCircular.BackgroundColor = Color1B;
+
                 GraficoCircular.TargetCanvas = gxGrafico4;
 
                 gxGrafico4.Update();
@@ -995,7 +996,7 @@ namespace CapaPresentaciones
             }
         }
 
-        public void fnReporte6(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CodAsignatura)
+        public void fnReporte6(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, DataTable DatosGrafico, string CodAsignatura)
         {
             this.CriterioAsistenciasEstudiantes = "";
 
@@ -1097,11 +1098,61 @@ namespace CapaPresentaciones
                     pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
                     pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
                 }
-                
+
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICO =====================
+                // Gráficos
+                btnGrafico2.Visible = false;
+                IndiceGrafico1 = 4;
 
+                // Grafico 1
+                gxGrafico5.XAxesLabel = "";
+                gxGrafico5.YAxesLabel = "Cantidad";
+
+                List<string> EtiquetasA = new List<string>();
+
+                List<double> Datos1A = new List<double>();
+                List<Color> Colores1A = new List<Color>();
+
+                List<double> Datos2A = new List<double>();
+                List<Color> Colores2A = new List<Color>();
+
+                for (int i = 0; i < DatosGrafico.Rows.Count; i++)
+                {
+                    EtiquetasA.Add(DatosGrafico.Rows[i]["CodAsignatura"].ToString());
+                    Datos1A.Add(Convert.ToInt32(DatosGrafico.Rows[i]["TemasAvanzados"].ToString()));
+                    Colores1A.Add(Color.FromArgb(104, 13, 15));                    
+
+                    Datos2A.Add(Convert.ToInt32(DatosGrafico.Rows[i]["TemasFaltantes"].ToString()));
+                    Colores2A.Add(Color.FromArgb(232, 158, 31));
+                }
+
+                gxGrafico5.Labels = EtiquetasA.ToArray();
+
+                gxGrafico5.Clear();
+
+
+                GraficoBarrasCompletas1.Label = "Temas Avanzados";
+                GraficoBarrasCompletas1.Data = Datos1A;
+                GraficoBarrasCompletas1.BackgroundColor = Colores1A;
+
+                GraficoBarrasCompletas2.Label = "Temas Faltantes";
+                GraficoBarrasCompletas2.Data = Datos2A;
+                GraficoBarrasCompletas2.BackgroundColor = Colores2A;
+
+                /*GraficoBarrasCompletas.Label = "Total Faltas";
+                GraficoBarrasCompletas.Data = Datos2A;
+                GraficoBarrasCompletas.BackgroundColor = Colores2A;*/
+
+                GraficoBarrasCompletas1.TargetCanvas = gxGrafico5;
+                GraficoBarrasCompletas2.TargetCanvas = gxGrafico5;
+                //GraficoBarrasCompletas.TargetCanvas = gxGrafico1;
+
+                //GraficoBarrasCompletas
+
+                gxGrafico5.Update();
+                tcGraficos.SetPage(IndiceGrafico1);
                 #endregion ===================== GRÁFICO =====================
             }
         }

@@ -1689,7 +1689,7 @@ END;
 GO
 
 -- Procedimiento para mostrar el avance de los temas en todas las asignaturas de un docente.
-CREATE PROCEDURE spuAvanceAsignaturasDocente @CodSemestre VARCHAR(7),
+ALTER PROCEDURE spuAvanceAsignaturasDocente @CodSemestre VARCHAR(7),
 											 @CodDocente VARCHAR(5)
 AS
 BEGIN
@@ -1701,7 +1701,7 @@ BEGIN
 			  AD.CodDocente = @CodDocente AND
 			  AD.Observación = '' -- No se considera Feriado, Suspensión, Permiso y Falta in Justificar
 		GROUP BY AD.CodAsignatura, A.NombreAsignatura
-		ORDER BY A.NombreAsignatura
+		ORDER BY AD.CodAsignatura
 END;
 GO
 
