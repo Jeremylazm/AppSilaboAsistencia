@@ -1339,7 +1339,7 @@ CREATE PROCEDURE spuBuscarAsignaturasDiaHora @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar las asignaturas
-	SELECT CodAsignatura = (HA.CodAsignatura + HA.Grupo + HA.CodEscuelaP), CodDocente
+	SELECT CodAsignatura = (HA.CodAsignatura + HA.Grupo + HA.CodEscuelaP), CodDocente, HoraInicio, HoraFin
 		FROM THorarioAsignatura HA
 		WHERE HA.CodSemestre = @CodSemestre AND 
 		      SUBSTRING(HA.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
@@ -1615,7 +1615,10 @@ BEGIN
 			  AD.CodDocente = @CodDocente AND
 			  AD.CodAsignatura = @CodAsignatura AND
 			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
-			  (AD.NombreTema LIKE (@Texto + '%') OR AD.Fecha LIKE (@Texto + '%'))
+			  (AD.Fecha LIKE (@Texto + '%') OR 
+			   AD.Asistió LIKE (@Texto + '%') OR 
+			   AD.TipoSesión LIKE (@Texto + '%') OR 
+			   AD.NombreTema LIKE (@Texto + '%'))
 	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Hora, AD.Asistió, AD.TipoSesión, AD.NombreTema, AD.Observación
 	   ORDER BY AD.Fecha DESC
 END;
@@ -1663,8 +1666,8 @@ BEGIN
 		GROUP BY AD.CodAsignatura, A.NombreAsignatura, D.APaterno, D.AMaterno, D.Nombre)
 
 	SELECT CodAsignatura, NombreAsignatura, Docente,
-	       PorcentajeAsistencias = ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2),
-	       PorcentajeFaltas = ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2)
+	       PorcentajeAsistencias = CAST(ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT),
+	       PorcentajeFaltas = CAST(ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT)
 	FROM Resumen
 	GROUP BY CodAsignatura, NombreAsignatura, Docente, TotalAsistencias, TotalFaltas
 	ORDER BY NombreAsignatura
@@ -1701,7 +1704,7 @@ BEGIN
 			  AD.CodDocente = @CodDocente AND
 			  AD.Observación = '' -- No se considera Feriado, Suspensión, Permiso y Falta in Justificar
 		GROUP BY AD.CodAsignatura, A.NombreAsignatura
-		ORDER BY A.NombreAsignatura
+		ORDER BY AD.CodAsignatura
 END;
 GO
 
@@ -1745,8 +1748,8 @@ BEGIN
 		GROUP BY AD.CodAsignatura, A.NombreAsignatura)
 
 	SELECT CodAsignatura, NombreAsignatura,
-	       PorcentajeAsistencias = ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2),
-	       PorcentajeFaltas = ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2)
+	       PorcentajeAsistencias = CAST(ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT),
+	       PorcentajeFaltas = CAST(ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT)
 	FROM Resumen
 	GROUP BY CodAsignatura, NombreAsignatura, TotalAsistencias, TotalFaltas
 	ORDER BY NombreAsignatura
@@ -2040,8 +2043,8 @@ BEGIN
 		GROUP BY AE.CodAsignatura, A.NombreAsignatura, D.APaterno, D.AMaterno, D.Nombre)
 
 	SELECT CodAsignatura, NombreAsignatura, Docente,
-	       PorcentajeAsistencias = ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2),
-	       PorcentajeFaltas = ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2)
+	       PorcentajeAsistencias = CAST(ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT),
+	       PorcentajeFaltas = CAST(ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT)
 	FROM Resumen
 	GROUP BY CodAsignatura, NombreAsignatura, Docente, TotalAsistencias, TotalFaltas
 	ORDER BY NombreAsignatura
@@ -2068,11 +2071,13 @@ BEGIN
 			  (AE.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
 		GROUP BY AE.CodAsignatura, A.NombreAsignatura)
 
-	SELECT CodAsignatura, NombreAsignatura,
-	       PorcentajeAsistencias = ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2),
-	       PorcentajeFaltas = ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2)
-	FROM Resumen
-	GROUP BY CodAsignatura, NombreAsignatura, TotalAsistencias, TotalFaltas
+	SELECT R.CodAsignatura, NombreAsignatura, C.CodDocente, Docente = (D.Nombre + ' ' + D.APaterno + ' ' + D.AMaterno),
+	       PorcentajeAsistencias = CAST(ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT),
+	       PorcentajeFaltas = CAST(ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT)
+	FROM (Resumen R INNER JOIN TCatalogo C ON
+	     R.CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP) INNER JOIN TDocente D ON
+		 C.CodDocente = D.CodDocente
+	GROUP BY R.CodAsignatura, NombreAsignatura, C.CodDocente, D.APaterno, D.AMaterno, D.Nombre, TotalAsistencias, TotalFaltas
 	ORDER BY NombreAsignatura
 END;
 GO

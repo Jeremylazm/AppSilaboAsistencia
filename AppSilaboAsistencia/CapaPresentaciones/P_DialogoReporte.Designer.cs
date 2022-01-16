@@ -36,7 +36,6 @@ namespace CapaPresentaciones
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnPadre = new Bunifu.UI.WinForms.BunifuPanel();
             this.pnReporte = new Bunifu.UI.WinForms.BunifuPanel();
-            this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.Movimiento = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.pnPadre.SuspendLayout();
             this.SuspendLayout();
@@ -135,48 +134,8 @@ namespace CapaPresentaciones
             this.pnReporte.Location = new System.Drawing.Point(3, 3);
             this.pnReporte.Name = "pnReporte";
             this.pnReporte.ShowBorders = true;
-            this.pnReporte.Size = new System.Drawing.Size(1104, 589);
+            this.pnReporte.Size = new System.Drawing.Size(1181, 665);
             this.pnReporte.TabIndex = 0;
-            // 
-            // Docker
-            // 
-            this.Docker.AllowFormDragging = true;
-            this.Docker.AllowFormDropShadow = true;
-            this.Docker.AllowFormResizing = true;
-            this.Docker.AllowHidingBottomRegion = true;
-            this.Docker.AllowOpacityChangesWhileDragging = false;
-            this.Docker.BorderOptions.BottomBorder.BorderColor = System.Drawing.Color.Silver;
-            this.Docker.BorderOptions.BottomBorder.BorderThickness = 1;
-            this.Docker.BorderOptions.BottomBorder.ShowBorder = true;
-            this.Docker.BorderOptions.LeftBorder.BorderColor = System.Drawing.Color.Silver;
-            this.Docker.BorderOptions.LeftBorder.BorderThickness = 1;
-            this.Docker.BorderOptions.LeftBorder.ShowBorder = true;
-            this.Docker.BorderOptions.RightBorder.BorderColor = System.Drawing.Color.Silver;
-            this.Docker.BorderOptions.RightBorder.BorderThickness = 1;
-            this.Docker.BorderOptions.RightBorder.ShowBorder = true;
-            this.Docker.BorderOptions.TopBorder.BorderColor = System.Drawing.Color.Silver;
-            this.Docker.BorderOptions.TopBorder.BorderThickness = 1;
-            this.Docker.BorderOptions.TopBorder.ShowBorder = true;
-            this.Docker.ContainerControl = this;
-            this.Docker.DockingIndicatorsColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(215)))), ((int)(((byte)(233)))));
-            this.Docker.DockingIndicatorsOpacity = 0.5D;
-            this.Docker.DockingOptions.DockAll = false;
-            this.Docker.DockingOptions.DockBottomLeft = false;
-            this.Docker.DockingOptions.DockBottomRight = false;
-            this.Docker.DockingOptions.DockFullScreen = false;
-            this.Docker.DockingOptions.DockLeft = false;
-            this.Docker.DockingOptions.DockRight = false;
-            this.Docker.DockingOptions.DockTopLeft = false;
-            this.Docker.DockingOptions.DockTopRight = false;
-            this.Docker.FormDraggingOpacity = 0.9D;
-            this.Docker.ParentForm = this;
-            this.Docker.ShowCursorChanges = true;
-            this.Docker.ShowDockingIndicators = false;
-            this.Docker.TitleBarOptions.AllowFormDragging = true;
-            this.Docker.TitleBarOptions.BunifuFormDock = this.Docker;
-            this.Docker.TitleBarOptions.DoubleClickToExpandWindow = true;
-            this.Docker.TitleBarOptions.TitleBarControl = null;
-            this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
             // Movimiento
             // 
@@ -211,7 +170,6 @@ namespace CapaPresentaciones
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private Bunifu.UI.WinForms.BunifuPanel pnPadre;
         private Bunifu.UI.WinForms.BunifuPanel pnReporte;
-        private Bunifu.UI.WinForms.BunifuFormDock Docker;
         private Bunifu.Framework.UI.BunifuDragControl Movimiento;
     }
 }
