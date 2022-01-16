@@ -78,9 +78,6 @@ namespace CapaPresentaciones
             }
             else if (Criterio == "Por Asignaturas")
             {
-                //DataTable datosAsignatura = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodSemestre, CodDepartamentoA, );
-                //N_Catalogo.BuscarCatálogo()
-
                 string Titulo = "Reporte de Asistencia Estudiantes" + Environment.NewLine + "Desde: " + DateTime.ParseExact(ValoresNecesarios[7], "yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")) + " - " + "Hasta: " + DateTime.ParseExact(ValoresNecesarios[8], "yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES"));
                 string[] Titulos = { "Semestre", "Escuela Profesional", "Cod. Asignatura", "Asignatura", "Cod. Docente", "Docente", "Cod. Estudiante", "Estudiante" };
                 string[] Valores = { CodSemestre, ValoresNecesarios[0], ValoresNecesarios[3], ValoresNecesarios[4], ValoresNecesarios[5], ValoresNecesarios[6], ValoresNecesarios[1], ValoresNecesarios[2] };

@@ -93,6 +93,8 @@ namespace CapaDatos
                 CommandType = CommandType.StoredProcedure
             };
 
+            Comando.CommandTimeout = 60;
+
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA); // Atrib. Docente (Director Escuela)
             Comando.Parameters.AddWithValue("@LimFechaInf", LimFechaInf); // Formato: dd/mm/yyyy o dd-mm-yyyy
