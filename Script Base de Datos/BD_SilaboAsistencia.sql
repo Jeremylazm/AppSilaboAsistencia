@@ -2079,7 +2079,7 @@ BEGIN
 END;
 GO
 
-EXEC spuAsistenciaAsignaturasEstudiante '2021-II','204792','18/10/2021','15/01/2022'
+
 
 -- Procedimiento para registrar la asistencia de un estudiante.
 CREATE PROCEDURE spuRegistrarAsistenciaEstudiante @CodSemestre VARCHAR(7),
