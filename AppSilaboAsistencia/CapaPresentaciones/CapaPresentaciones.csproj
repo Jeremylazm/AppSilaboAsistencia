@@ -312,6 +312,12 @@
     <Compile Include="P_SubirArchivo.Designer.cs">
       <DependentUpon>P_SubirArchivo.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_TablaAsistenciaDiariaDocente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_TablaAsistenciaDiariaDocente.Designer.cs">
+      <DependentUpon>P_TablaAsistenciaDiariaDocente.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_TablaSesiones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -434,6 +440,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_SubirArchivo.resx">
       <DependentUpon>P_SubirArchivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_TablaAsistenciaDiariaDocente.resx">
+      <DependentUpon>P_TablaAsistenciaDiariaDocente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaSesiones.resx">
       <DependentUpon>P_TablaSesiones.cs</DependentUpon>

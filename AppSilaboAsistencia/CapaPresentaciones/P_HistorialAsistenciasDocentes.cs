@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
-
+using Ayudas;
 namespace CapaPresentaciones
 {
     public partial class P_HistorialAsistenciasDocentes : Form
     {
         private readonly string CodSemestre;
+        private readonly string CodDepartamentoA;
         public string LimtFechaInf;
         public string LimtFechaSup = DateTime.Now.ToString("dd/MM/yyyy").ToString();
         public P_HistorialAsistenciasDocentes()
@@ -22,6 +23,7 @@ namespace CapaPresentaciones
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
             LimtFechaInf = Semestre.Rows[0][1].ToString();
+            CodDepartamentoA = "IF";
             InitializeComponent();
             MostrarRegistros();
         }
@@ -50,10 +52,29 @@ namespace CapaPresentaciones
 
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        /*private void btnAgregar_Click(object sender, EventArgs e)
         {
             // Por discutir
-        }
+
+            DataTable Resultados = N_AsistenciaDiariaDocente.AsistenciaDiariaDocentes(CodSemestre,CodDepartamentoA,LimtFechaSup);
+			if (Resultados.Rows.Count == 0)
+			{
+                DataTable DocentesDepartamentoA = N_Docente.MostrarTodosDocentesDepartamento(CodDepartamentoA);
+                Form Fondo = new Form();
+                P_TablaAsistenciaDiariaDocente NuevoRegistroAsistencia = new P_TablaAsistenciaDiariaDocente(DocentesDepartamentoA);
+                NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
+                NuevoRegistroAsistencia.hora = DateTime.Now.ToString("HH:mm:ss");
+
+                NuevoRegistroAsistencia.Owner = Fondo;
+                NuevoRegistroAsistencia.ShowDialog();
+                NuevoRegistroAsistencia.Dispose();
+            }
+			else
+			{
+                A_Dialogo.DialogoInformacion("El registro de Hoy, ¡Ya existe!");
+            }
+        }*/
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
@@ -63,6 +84,31 @@ namespace CapaPresentaciones
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
+
         }
-    }
+
+		private void btnAgregarD_Click(object sender, EventArgs e)
+		{
+            // Por discutir
+
+            DataTable Resultados = N_AsistenciaDiariaDocente.AsistenciaDiariaDocentes(CodSemestre, CodDepartamentoA, LimtFechaSup);
+            if (Resultados.Rows.Count == 0)
+            {
+                DataTable DocentesDepartamentoA = N_Docente.MostrarTodosDocentesDepartamento(CodDepartamentoA);
+                Form Fondo = new Form();
+                P_TablaAsistenciaDiariaDocente NuevoRegistroAsistenciaDocente = new P_TablaAsistenciaDiariaDocente(DocentesDepartamentoA);
+                NuevoRegistroAsistenciaDocente.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                NuevoRegistroAsistenciaDocente.txtFecha.Text = LimtFechaSup;
+                NuevoRegistroAsistenciaDocente.hora = DateTime.Now.ToString("HH:mm:ss");
+
+                NuevoRegistroAsistenciaDocente.Owner = Fondo;
+                NuevoRegistroAsistenciaDocente.ShowDialog();
+                NuevoRegistroAsistenciaDocente.Dispose();
+            }
+            else
+            {
+                A_Dialogo.DialogoInformacion("El registro de Hoy, ¡Ya existe!");
+            }
+        }
+	}
 }
