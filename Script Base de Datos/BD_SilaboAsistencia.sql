@@ -1663,8 +1663,8 @@ BEGIN
 		GROUP BY AD.CodAsignatura, A.NombreAsignatura, D.APaterno, D.AMaterno, D.Nombre)
 
 	SELECT CodAsignatura, NombreAsignatura, Docente,
-	       PorcentajeAsistencias = ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2),
-	       PorcentajeFaltas = ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2)
+	       PorcentajeAsistencias = CAST(ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT),
+	       PorcentajeFaltas = CAST(ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT)
 	FROM Resumen
 	GROUP BY CodAsignatura, NombreAsignatura, Docente, TotalAsistencias, TotalFaltas
 	ORDER BY NombreAsignatura
@@ -1745,8 +1745,8 @@ BEGIN
 		GROUP BY AD.CodAsignatura, A.NombreAsignatura)
 
 	SELECT CodAsignatura, NombreAsignatura,
-	       PorcentajeAsistencias = ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2),
-	       PorcentajeFaltas = ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2)
+	       PorcentajeAsistencias = CAST(ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT),
+	       PorcentajeFaltas = CAST(ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT)
 	FROM Resumen
 	GROUP BY CodAsignatura, NombreAsignatura, TotalAsistencias, TotalFaltas
 	ORDER BY NombreAsignatura
@@ -2042,8 +2042,8 @@ BEGIN
 		GROUP BY AE.CodAsignatura, A.NombreAsignatura, D.APaterno, D.AMaterno, D.Nombre)
 
 	SELECT CodAsignatura, NombreAsignatura, Docente,
-	       PorcentajeAsistencias = ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2),
-	       PorcentajeFaltas = ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2)
+	       PorcentajeAsistencias = CAST(ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT),
+	       PorcentajeFaltas = CAST(ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT)
 	FROM Resumen
 	GROUP BY CodAsignatura, NombreAsignatura, Docente, TotalAsistencias, TotalFaltas
 	ORDER BY NombreAsignatura
@@ -2071,8 +2071,8 @@ BEGIN
 		GROUP BY AE.CodAsignatura, A.NombreAsignatura)
 
 	SELECT R.CodAsignatura, NombreAsignatura, C.CodDocente, Docente = (D.Nombre + ' ' + D.APaterno + ' ' + D.AMaterno),
-	       PorcentajeAsistencias = ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2),
-	       PorcentajeFaltas = ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2)
+	       PorcentajeAsistencias = CAST(ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT),
+	       PorcentajeFaltas = CAST(ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT)
 	FROM (Resumen R INNER JOIN TCatalogo C ON
 	     R.CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP) INNER JOIN TDocente D ON
 		 C.CodDocente = D.CodDocente
@@ -2080,6 +2080,8 @@ BEGIN
 	ORDER BY NombreAsignatura
 END;
 GO
+
+EXEC spuAsistenciaAsignaturasEstudiante '2021-II','204792','18/10/2021','15/01/2022'
 
 -- Procedimiento para registrar la asistencia de un estudiante.
 CREATE PROCEDURE spuRegistrarAsistenciaEstudiante @CodSemestre VARCHAR(7),
