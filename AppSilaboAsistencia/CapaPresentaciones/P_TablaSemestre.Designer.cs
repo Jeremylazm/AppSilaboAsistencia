@@ -75,7 +75,7 @@ namespace CapaPresentaciones
             this.btnCerrar.ImageSize = new System.Drawing.Size(30, 27);
             this.btnCerrar.ImageZoomSize = new System.Drawing.Size(40, 37);
             this.btnCerrar.InitialImage = null;
-            this.btnCerrar.Location = new System.Drawing.Point(1004, 9);
+            this.btnCerrar.Location = new System.Drawing.Point(1001, 14);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Rotation = 0;
@@ -89,6 +89,7 @@ namespace CapaPresentaciones
             this.btnCerrar.WaitOnLoad = false;
             this.btnCerrar.Zoom = 10;
             this.btnCerrar.ZoomSpeed = 10;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // dgvDatos
             // 
@@ -153,7 +154,7 @@ namespace CapaPresentaciones
             this.dgvDatos.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.dgvDatos.HeaderBgColor = System.Drawing.Color.Empty;
             this.dgvDatos.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.dgvDatos.Location = new System.Drawing.Point(13, 119);
+            this.dgvDatos.Location = new System.Drawing.Point(10, 136);
             this.dgvDatos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDatos.MultiSelect = false;
             this.dgvDatos.Name = "dgvDatos";
@@ -176,6 +177,8 @@ namespace CapaPresentaciones
             this.dgvDatos.Size = new System.Drawing.Size(1031, 426);
             this.dgvDatos.TabIndex = 14;
             this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
+            this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
             // 
             // btnEditar
             // 
@@ -227,7 +230,7 @@ namespace CapaPresentaciones
             this.txtBuscar.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtBuscar.Lines = new string[0];
-            this.txtBuscar.Location = new System.Drawing.Point(13, 57);
+            this.txtBuscar.Location = new System.Drawing.Point(10, 74);
             this.txtBuscar.Margin = new System.Windows.Forms.Padding(0);
             this.txtBuscar.MaxLength = 32767;
             this.txtBuscar.MinimumSize = new System.Drawing.Size(1, 1);
@@ -317,7 +320,7 @@ namespace CapaPresentaciones
             this.sbDatos.BorderThickness = 1;
             this.sbDatos.DurationBeforeShrink = 2000;
             this.sbDatos.LargeChange = 10;
-            this.sbDatos.Location = new System.Drawing.Point(1031, 151);
+            this.sbDatos.Location = new System.Drawing.Point(1028, 168);
             this.sbDatos.Margin = new System.Windows.Forms.Padding(5);
             this.sbDatos.Maximum = 100;
             this.sbDatos.Minimum = 0;
@@ -355,7 +358,7 @@ namespace CapaPresentaciones
             this.pnContenedor.Controls.Add(this.dgvDatos);
             this.pnContenedor.Controls.Add(this.txtBuscar);
             this.pnContenedor.Controls.Add(this.lblTitulo);
-            this.pnContenedor.Location = new System.Drawing.Point(-1, -18);
+            this.pnContenedor.Location = new System.Drawing.Point(3, -1);
             this.pnContenedor.Margin = new System.Windows.Forms.Padding(4);
             this.pnContenedor.Name = "pnContenedor";
             this.pnContenedor.ShowBorders = true;
@@ -410,7 +413,7 @@ namespace CapaPresentaciones
             this.btnAgregar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Agregar;
             this.btnAgregar.IdleIconRightImage = null;
             this.btnAgregar.IndicateFocus = false;
-            this.btnAgregar.Location = new System.Drawing.Point(817, 64);
+            this.btnAgregar.Location = new System.Drawing.Point(814, 81);
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
@@ -452,6 +455,7 @@ namespace CapaPresentaciones
             this.btnAgregar.TextMarginLeft = 0;
             this.btnAgregar.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnAgregar.UseDefaultRadiusAndThickness = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // Bordeado
             // 
@@ -462,7 +466,7 @@ namespace CapaPresentaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1053, 523);
+            this.ClientSize = new System.Drawing.Size(1071, 570);
             this.Controls.Add(this.pnContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_TablaSemestre";
