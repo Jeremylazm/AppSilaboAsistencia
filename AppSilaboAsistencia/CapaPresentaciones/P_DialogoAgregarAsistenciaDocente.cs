@@ -40,7 +40,7 @@ namespace CapaPresentaciones
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //agregar una fecha actual
+            /*//agregar una fecha actual
             DataTable DocentesDA = N_Docente.MostrarDocentesDepartamento(CodDepartamentoA);
             try
             {
@@ -69,7 +69,7 @@ namespace CapaPresentaciones
             catch (Exception)
             {
                 A_Dialogo.DialogoError("Error al insertar el registro...");
-            }
+            }*/
         }
     }
 }

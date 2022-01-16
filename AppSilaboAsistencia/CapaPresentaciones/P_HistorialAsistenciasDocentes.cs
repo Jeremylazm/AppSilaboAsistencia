@@ -94,13 +94,27 @@ namespace CapaPresentaciones
         {
             //Editar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
-			{
+            {
                 DataTable RegistroAsistenciaDocentesDA = N_AsistenciaDiariaDocente.AsistenciaDiariaDocentes(CodSemestre, CodDepartamentoA, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString());
                 if (RegistroAsistenciaDocentesDA.Rows.Count != 0)
                 {
                     Form Fondo = new Form();
                     P_TablaAsistenciaDiariaDocente EddRegistroAsistenciaDocente = new P_TablaAsistenciaDiariaDocente(RegistroAsistenciaDocentesDA);
 
+                    EddRegistroAsistenciaDocente.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                    EddRegistroAsistenciaDocente.txtFecha.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    EddRegistroAsistenciaDocente.txtSemestreA.Text = CodSemestre;
+                    //EddRegistroAsistenciaDocente.hora = DateTime.Now.ToString("HH:mm:ss");
+                    EddRegistroAsistenciaDocente.txtJD.Text = NombreCompletoJD();
+                    EddRegistroAsistenciaDocente.Owner = Fondo;
+                    EddRegistroAsistenciaDocente.ShowDialog();
+                    EddRegistroAsistenciaDocente.Dispose();
+                }
+                else
+                {
+                    A_Dialogo.DialogoInformacion("El registro ¡No Existe!");
+                }
+            }
 
         }
 
