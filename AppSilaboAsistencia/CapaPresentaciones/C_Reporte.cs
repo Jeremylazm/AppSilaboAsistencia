@@ -482,7 +482,7 @@ namespace CapaPresentaciones
             btnGrafico2.Visible = true;
             IndiceGrafico1 = 2;
 
-            // Grafico 1
+            // Gráfico 1
             gxGrafico3.XAxesLabel = "";
             gxGrafico3.LegendDisplay = false;
             gxGrafico3.YAxesLabel = "Cantidad";
@@ -496,8 +496,8 @@ namespace CapaPresentaciones
             Datos1A.Add(FaltaronJustificado + FaltaronSinJustificar);
             Colores1A.Add(Color.FromArgb(104, 13, 15));
             Colores1A.Add(Color.FromArgb(232, 158, 31));
-            EtiquetasA.Add("Total Asistieron");
 
+            EtiquetasA.Add("Total Asistieron");
             EtiquetasA.Add("Total Faltaron");
 
             gxGrafico3.Labels = EtiquetasA.ToArray();
@@ -510,6 +510,41 @@ namespace CapaPresentaciones
             GraficoBarrasVerticales.TargetCanvas = gxGrafico3;
 
             gxGrafico3.Update();
+
+            // Gráfico 2
+            IndiceGrafico2 = 3;
+
+            gxGrafico4.XAxesLabel = "";
+            gxGrafico4.YAxesLabel = "";
+
+            List<string> EtiquetasB = new List<string>();
+            List<double> Datos1B = new List<double>();
+            List<Color> Color1B = new List<Color>();
+
+            EtiquetasB.Add("Asistieron Puntual");
+            EtiquetasB.Add("Asistieron Tarde");
+            EtiquetasB.Add("Faltaron (Justificado)");
+            EtiquetasB.Add("Faltaron (Sin Justificar)");
+
+            Datos1B.Add(AsistieronPuntual);
+            Datos1B.Add(AsistieronTarde);
+            Datos1B.Add(FaltaronJustificado);
+            Datos1B.Add(FaltaronSinJustificar);
+
+            Color1B.Add(Color.FromArgb(104, 13, 15));
+            Color1B.Add(Color.FromArgb(232, 128, 31));
+            Color1B.Add(Color.FromArgb(117, 163, 229));
+
+            gxGrafico4.Labels = EtiquetasB.ToArray();
+            gxGrafico4.Clear();
+
+            GraficoCircular.Label = "";
+            GraficoCircular.Data = Datos1B;
+            GraficoCircular.BackgroundColor = Color1B;
+
+            GraficoCircular.TargetCanvas = gxGrafico4;
+
+            gxGrafico4.Update();
         }
 
         public void fnReporte3(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura)
@@ -932,8 +967,6 @@ namespace CapaPresentaciones
                 btnGrafico2.Visible = false;
                 IndiceGrafico1 = 3;
 
-                
-
                 // Grafico 1
                 gxGrafico4.XAxesLabel = "";
                 gxGrafico4.YAxesLabel = "";
@@ -961,7 +994,6 @@ namespace CapaPresentaciones
                 GraficoCircular.TargetCanvas = gxGrafico4;
 
                 gxGrafico4.Update();
-                tcGraficos.SetPage(IndiceGrafico1);
                 #endregion ===================== GRÁFICO =====================
             }
         }
