@@ -70,14 +70,17 @@ namespace CapaPresentaciones
             if (Criterio == "Por Fechas")
             {
                 fnReporte2(Titulo, Titulos, Valores, Datos);
+                tcGraficos.SetPage(IndiceGrafico1);
             }
             else if (Criterio == "Por Estudiantes")
             {
                 fnReporte4(Titulo, Titulos, Valores, Datos);
+                tcGraficos.SetPage(IndiceGrafico1);
             }
             else if (Criterio == "Por Asignaturas")
             {
                 fnReporte4(Titulo, Titulos, Valores, Datos);
+                tcGraficos.SetPage(IndiceGrafico1);
             }
         }
 
@@ -452,7 +455,7 @@ namespace CapaPresentaciones
                 {
                     AsistieronTarde += 1;
                 }
-                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() != "FALTO SIN JUSTIFICAR")
+                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() != "FALTO SIN JUSTIFICAR" && row["Observación"].ToString() != "FERIADO" && row["Observación"].ToString() != "SUSPENSION" && row["Observación"].ToString() != "FALTO EL DOCENTE")
                 {
                     FaltaronJustificado += 1;
                 }
@@ -483,17 +486,17 @@ namespace CapaPresentaciones
             cuadroResumen.Rows.Add("Faltas", (FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + String.Format("{0:0.00}", (FaltaronJustificado + FaltaronSinJustificar) / Total * 100) + "%)");
 
             // Total
-            cuadroResumen.Rows.Add("Total", Total.ToString() + " (" + "100" + "%)");
+            cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar) + " (" + "100" + "%)");
 
             dgvResumen.DataSource = cuadroResumen;
 
             // Gráficos
             btnGrafico2.Visible = true;
-            MessageBox.Show(IndiceGrafico1.ToString());
             IndiceGrafico1 = 2;
 
             // Grafico 1
-            //gxGrafico1.XAxesLabel = "Código Estudiante";
+            gxGrafico3.XAxesLabel = "";
+            gxGrafico3.LegendDisplay = false;
             gxGrafico3.YAxesLabel = "Cantidad";
 
             List<string> EtiquetasA = new List<string>();
@@ -501,43 +504,22 @@ namespace CapaPresentaciones
             List<double> Datos1A = new List<double>();
             List<Color> Colores1A = new List<Color>();
 
-            List<double> Datos2A = new List<double>();
-            List<Color> Colores2A = new List<Color>();
-
-            Console.WriteLine(AsistieronPuntual + AsistieronTarde);
             Datos1A.Add(AsistieronPuntual + AsistieronTarde);
+            Datos1A.Add(FaltaronJustificado + FaltaronSinJustificar);
             Colores1A.Add(Color.FromArgb(104, 13, 15));
+            Colores1A.Add(Color.FromArgb(232, 158, 31));
             EtiquetasA.Add("Total Asistieron");
 
-            Datos2A.Add(FaltaronJustificado + FaltaronSinJustificar);
-            Colores2A.Add(Color.FromArgb(232, 158, 31));
             EtiquetasA.Add("Total Faltaron");
-
-            /*foreach (DataRow Fila in Datos.Rows)
-            {
-                EtiquetasA.Add(Fila["CodEstudiante"].ToString());
-                Datos1A.Add(double.Parse(Fila["TotalAsistencias"].ToString()));
-                Colores1A.Add(Color.FromArgb(104, 13, 15));
-                Datos2A.Add(double.Parse(Fila["TotalFaltas"].ToString()));
-                Colores2A.Add(Color.FromArgb(232, 158, 31));
-            }*/
 
             gxGrafico3.Labels = EtiquetasA.ToArray();
             gxGrafico3.Clear();
-
             
-            GraficoBarrasVerticales.Label = "Total Asistencias";
+            GraficoBarrasVerticales.Label = "";
             GraficoBarrasVerticales.Data = Datos1A;
             GraficoBarrasVerticales.BackgroundColor = Colores1A;
 
-            /*GraficoBarrasCompletas.Label = "Total Faltas";
-            GraficoBarrasCompletas.Data = Datos2A;
-            GraficoBarrasCompletas.BackgroundColor = Colores2A;*/
-
             GraficoBarrasVerticales.TargetCanvas = gxGrafico3;
-            //GraficoBarrasCompletas.TargetCanvas = gxGrafico1;
-
-            //GraficoBarrasCompletas
 
             gxGrafico3.Update();
         }
@@ -562,12 +544,12 @@ namespace CapaPresentaciones
                 }
                 else
                 {
-                    MessageBox.Show("No existen parametros");
+                    MessageBox.Show("No existen parámetros");
                 }
             }
             else
             {
-                MessageBox.Show("Error de parametros");
+                MessageBox.Show("Error de parámetros");
             }
 
             if (Datos.Rows.Count == 0)
@@ -1344,7 +1326,9 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[0].HeaderText = "Reporte Por Fechas";
 
                 dgvResultados.DataSource = Datos;
-                dgvResultados.Columns[0].DisplayIndex = 4;
+                dgvResultados.Columns[4].Visible = false;
+                dgvResultados.Columns[5].Visible = false;
+                dgvResultados.Columns[0].DisplayIndex = 6;
 
 
                 if (dgvResultados.Rows.Count <= 10)
@@ -1633,12 +1617,7 @@ namespace CapaPresentaciones
                     string FechaInicial = DateTime.ParseExact(Fechas[1], "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
                     string FechaFinal = DateTime.ParseExact(Fechas[4], "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
 
-                    string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["CodAsignatura"].Value.ToString(), dgvResultados.CurrentRow.Cells["NombreAsignatura"].Value.ToString(), FechaInicial, FechaFinal };
-
-                    foreach (var i in ValoresNecesarios)
-                    {
-                        Console.WriteLine(i);
-                    }
+                    string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["CodAsignatura"].Value.ToString(), dgvResultados.CurrentRow.Cells["NombreAsignatura"].Value.ToString(), dgvResultados.CurrentRow.Cells["CodDocente"].Value.ToString(), dgvResultados.CurrentRow.Cells["Docente"].Value.ToString(), FechaInicial, FechaFinal };
 
                     DateTime[] FechasNecesarias = { Convert.ToDateTime(Fechas[1], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4]) };
 
