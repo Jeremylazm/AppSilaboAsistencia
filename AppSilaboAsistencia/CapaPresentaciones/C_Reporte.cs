@@ -29,6 +29,8 @@ namespace CapaPresentaciones
             ObjCatalogo = new N_Catalogo();
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
+
+            dgvResultados.CellMouseEnter += new DataGridViewCellEventHandler(dgvResultados_CellMouseEnter);
         }
 
         void dataGridView1_MouseWheel(object sender, MouseEventArgs e)
@@ -59,6 +61,8 @@ namespace CapaPresentaciones
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
 
+            dgvResultados.CellMouseEnter += new DataGridViewCellEventHandler(dgvResultados_CellMouseEnter);
+
             fnReporte1(Titulo, Titulos, Valores, Datos, CriterioAsistenciasEstudiantes, CodAsignatura);
         }
 
@@ -66,6 +70,8 @@ namespace CapaPresentaciones
         {
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
+
+            dgvResultados.CellMouseEnter += new DataGridViewCellEventHandler(dgvResultados_CellMouseEnter);
 
             if (Criterio == "Por Fechas")
             {
@@ -157,7 +163,8 @@ namespace CapaPresentaciones
                     DividerWidth = 0,
                     FillWeight = 100,
                     MinimumWidth = 5,
-                    Width = 1032
+                    Width = 1032,
+                    Image = Properties.Resources.Mostrar
                 };
 
                 dgvResultados.Columns.Clear();
@@ -196,7 +203,6 @@ namespace CapaPresentaciones
                 }
 
                 // Mostrar cuadro de resumen
-                //pnInferior.Controls[2].Show();
                 if (!pnContenedorCuadro.Visible)
                 {
                     pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
@@ -598,7 +604,8 @@ namespace CapaPresentaciones
                     DividerWidth = 0,
                     FillWeight = 100,
                     MinimumWidth = 5,
-                    Width = 1032
+                    Width = 1032,
+                    Image = Properties.Resources.Mostrar
                 };
 
                 dgvResultados.Columns.Clear();
@@ -1413,7 +1420,8 @@ namespace CapaPresentaciones
                     DividerWidth = 0,
                     FillWeight = 100,
                     MinimumWidth = 5,
-                    Width = 1032
+                    Width = 1032,
+                    Image = Properties.Resources.Mostrar
                 };
 
                 dgvResultados.Columns.Clear();
@@ -1711,6 +1719,19 @@ namespace CapaPresentaciones
                 tcGraficos.TabPages.Add(tpGrafico1);
                 */
                 #endregion ===================== GRÁFICO =====================
+            }
+        }
+
+        private void dgvResultados_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            Console.WriteLine(dgvResultados.Columns[e.ColumnIndex].GetType().ToString());
+            if (Equals("System.Windows.Forms.DataGridViewImageColumn", dgvResultados.Columns[e.ColumnIndex].GetType().ToString()))
+            {
+                dgvResultados.Cursor = Cursors.Hand;
+            }
+            else
+            {
+                dgvResultados.Cursor = Cursors.Default;
             }
         }
 
