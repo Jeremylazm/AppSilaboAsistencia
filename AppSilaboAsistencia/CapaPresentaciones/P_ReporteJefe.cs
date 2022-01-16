@@ -90,16 +90,18 @@ namespace CapaPresentaciones
 
         }
 
+        public string CodDocenteReporte = "";
+
         private void fnReporte5()
         {
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
             string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "DEL SEMESTRE " + CodSemestre;
             string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
-            string[] Valores = { CodSemestre, CodDocente, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
+            string[] Valores = { CodSemestre, CodDocenteReporte, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
 
-            DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignatura(CodSemestre, CodDocente, txtCodigo.Text);
-            DataTable plansesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, txtCodigo.Text, CodDocente);
+            DataTable resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignatura(CodSemestre, CodDocenteReporte, txtCodigo.Text);
+            DataTable plansesion = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, txtCodigo.Text, CodDocenteReporte);
 
             int Total = 0;
 
