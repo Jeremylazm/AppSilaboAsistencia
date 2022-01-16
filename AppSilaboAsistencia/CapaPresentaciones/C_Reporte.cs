@@ -1244,8 +1244,8 @@ namespace CapaPresentaciones
                 var aaaa = dtEstadisticos.Rows[0][3].ToString();
 
                 // Listas de valores
-                List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(Convert.ToDecimal(x.Field<decimal>("PorcentajeAsistencias")))).ToList();
-                List<double> Faltaron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(Convert.ToDecimal(x.Field<decimal>("PorcentajeFaltas")))).ToList();
+                List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<double>("PorcentajeAsistencias"))).ToList();
+                List<double> Faltaron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<double>("PorcentajeFaltas"))).ToList();
 
                 foreach (int i in Asistieron)
                 {

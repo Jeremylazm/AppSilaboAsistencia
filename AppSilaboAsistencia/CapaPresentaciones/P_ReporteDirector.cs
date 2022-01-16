@@ -300,8 +300,8 @@ namespace CapaPresentaciones
                 lnCodigo.Visible = false;
                 pnCajas.Visible = false;
 
-                btnGeneral.Visible = false;
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
+                btnGeneral.Visible = true;
+                //btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
 
                 fnReporte8();
             }
