@@ -213,9 +213,6 @@ namespace CapaPresentaciones
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
                 dtEstadisticos.Rows.Clear();
 
-                //DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
-                //dtEstadisticos.Rows.Clear();
-
                 // Asistencias
                 // Solo donde SesiónDictada es SI para los estadísticos
                 foreach (DataRow row in Datos.Rows)
@@ -229,17 +226,6 @@ namespace CapaPresentaciones
                 // Listas de valores
                 List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TotalAsistieron"))).ToList();
                 List<double> Faltaron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TotalFaltaron"))).ToList();
-
-                foreach (int i in Asistieron)
-                {
-                    Console.WriteLine(i);
-                }
-                Console.WriteLine("-------------");
-
-                foreach (int i in Faltaron)
-                {
-                    Console.WriteLine(i);
-                }
 
                 // Cuadro de resumen
                 DataTable cuadroResumen = new DataTable();
@@ -288,8 +274,8 @@ namespace CapaPresentaciones
                 IndiceGrafico2 = 1;
 
                 // Grafico 1
-                gxGrafico1.XAxesLabel = "Fecha";
-                gxGrafico1.YAxesLabel = "Cantidad";
+                gxGrafico1.XAxesLabel = "Cantidad";
+                gxGrafico1.YAxesLabel = "Fecha";
 
                 List<string> EtiquetasA = new List<string>();
 
@@ -333,7 +319,9 @@ namespace CapaPresentaciones
                 double Valor1 = 0;
                 double Valor2 = 0;
 
-                foreach (DataRow Fila in dtEstadisticos.Rows)
+                DataTable dtEstadisticos2 = dtEstadisticos.AsEnumerable().Reverse().CopyToDataTable();
+
+                foreach (DataRow Fila in dtEstadisticos2.Rows)
                 {
                     EtiquetasB.Add(Fila["Fecha"].ToString());
                     Valor1 = double.Parse(Fila["TotalAsistieron"].ToString());
@@ -352,7 +340,7 @@ namespace CapaPresentaciones
                 gxGrafico2.Labels = EtiquetasB.ToArray();
                 gxGrafico2.Clear();
 
-                GraficoLineas.Label = "Total Asistieron";
+                GraficoLineas.Label = "Total Asistieron (%)";
                 GraficoLineas.Data = Datos1B;
 
                 GraficoLineas.TargetCanvas = gxGrafico2;
@@ -632,8 +620,8 @@ namespace CapaPresentaciones
                 IndiceGrafico1 = 0;
 
                 // Grafico 1
-                gxGrafico1.XAxesLabel = "Código Estudiante";
-                gxGrafico1.YAxesLabel = "Cantidad";
+                gxGrafico1.XAxesLabel = "Cantidad";
+                gxGrafico1.YAxesLabel = "Código Estudiante";
 
                 List<string> EtiquetasA = new List<string>();
 
