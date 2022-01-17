@@ -9,5 +9,9 @@ namespace CapaNegocios
         {
             return new D_DepartamentoAcademico().MostrarDepartamentos();
         }
+        public static DataTable BuscarNombreDepartamento(string CodDepartamentoA)
+        {
+            return new D_DepartamentoAcademico().BuscarNombreDepartamento(CodDepartamentoA);
+        }
     }
 }
