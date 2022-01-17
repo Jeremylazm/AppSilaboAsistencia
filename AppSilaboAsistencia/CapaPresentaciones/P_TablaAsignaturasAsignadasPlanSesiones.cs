@@ -15,12 +15,12 @@ using Ayudas;
 
 namespace CapaPresentaciones
 {
-    public partial class P_TablaAsignaturasAsignadasSesiones : Form
+    public partial class P_TablaAsignaturasAsignadasPlanSesiones : Form
     {
         private readonly string CodSemestre;
         private readonly string CodDocente = E_InicioSesion.Usuario;
 
-        public P_TablaAsignaturasAsignadasSesiones()
+        public P_TablaAsignaturasAsignadasPlanSesiones()
         {
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
@@ -147,7 +147,7 @@ namespace CapaPresentaciones
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
                 //Form Fondo = new Form();
-                using (P_TablaSesionesAsignatura sesionesAsignatura = new P_TablaSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString()))
+                using (P_TablaPlanSesionesAsignatura sesionesAsignatura = new P_TablaPlanSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString()))
                 {
                     //Fondo.StartPosition = FormStartPosition.Manual;
                     //Fondo.FormBorderStyle = FormBorderStyle.None;
