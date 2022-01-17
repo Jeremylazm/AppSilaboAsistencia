@@ -654,7 +654,7 @@ BEGIN
 	-- Mostrar la tabla TDocente
 	SELECT CodDocente, NombreCompleto = (APaterno + ' ' + AMaterno + ', ' + Nombre)
 		FROM TDocente
-	    WHERE CodDepartamentoA = @CodDepartamentoA
+	    WHERE CodDepartamentoA = @CodDepartamentoA AND CodDocente != '00000'
 		ORDER BY APaterno
 END;
 GO
@@ -1444,6 +1444,25 @@ BEGIN
 END;
 GO
 
+-- Procedimiento para buscar los estudiantes matriculados de una escuela profesional utilizando un filtro
+CREATE PROCEDURE spuBuscarEstudiantesMatriculados @CodSemestre VARCHAR(7),
+												  @CodEscuelaP VARCHAR(3),
+												  @Texto VARCHAR(100)
+
+AS
+BEGIN
+	-- Mostrar la tabla de TMatricula
+	SELECT DISTINCT CodEstudiante, APaterno, AMaterno, Nombre
+		FROM TMatricula
+	    WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP OR
+			  (CodEstudiante LIKE (@Texto + '%') OR
+			   APaterno LIKE (@Texto + '%') OR
+			   AMaterno LIKE (@Texto + '%') OR
+			   Nombre LIKE (@Texto + '%'))
+		ORDER BY APaterno ASC
+END;
+GO
+
 -- Procedimiento para buscar las asignaturas a los que esta matriculado un estudiante de una escuela profesional.
 CREATE PROCEDURE spuBuscarAsignaturasEstudiante @CodSemestre VARCHAR(7),
 										        @CodEscuelaP VARCHAR(3),
@@ -1998,8 +2017,6 @@ BEGIN
 	   ORDER BY AD.Fecha DESC
 END;
 GO
-
-EXEC spuAsistenciaEstudiantesPorFechas '2021-II','95234','IF450AIN','18/10/2021','15/01/2022'
 
 -- Procedimiento para mostrar las asistencia de los estudiantes de una asignatura en un rango de fechas
 CREATE PROCEDURE spuAsistenciaEstudiantesPorEstudiante  @CodSemestre VARCHAR(7),
