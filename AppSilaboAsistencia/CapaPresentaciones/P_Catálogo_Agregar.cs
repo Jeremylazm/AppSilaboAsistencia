@@ -19,6 +19,8 @@ namespace CapaPresentaciones
         readonly N_Catalogo ObjNegocioC;
         readonly E_HorarioAsignatura ObjEntidadHA;
         readonly N_HorarioAsignatura ObjNegocioHA;
+        private readonly string CodSemestre;
+        private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
         int HoraTeoríaA = 0;
         int HoraPrácticaA = 0;
         int HTD1, HTD2 = 0;
@@ -31,6 +33,8 @@ namespace CapaPresentaciones
             ObjNegocioC = new N_Catalogo();
             ObjEntidadHA = new E_HorarioAsignatura();
             ObjNegocioHA = new N_HorarioAsignatura();
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
             InitializeComponent();
             Control[] Controles = { panel1, panel2, label1 };
             Docker.SubscribeControlsToDragEvents(Controles);
@@ -42,12 +46,12 @@ namespace CapaPresentaciones
 
         private void LlenarDatosDocente()
         {
-            Seleccionar_Docente_Cod_Nom.DataSource = N_Docente.MostrarTodosDocentesDepartamento("IF");
+            Seleccionar_Docente_Cod_Nom.DataSource = N_Docente.MostrarTodosDocentesDepartamento(CodDepartamentoA);
 
             Seleccionar_Docente_Cod_Nom.ValueMember = "CodDocente";
             Seleccionar_Docente_Cod_Nom.DisplayMember = "NombreCompleto";
 
-            Seleccionar_Docente_Cod_Nom2.DataSource = N_Docente.MostrarTodosDocentesDepartamento("IF");
+            Seleccionar_Docente_Cod_Nom2.DataSource = N_Docente.MostrarTodosDocentesDepartamento(CodDepartamentoA);
 
             Seleccionar_Docente_Cod_Nom2.ValueMember = "CodDocente";
             Seleccionar_Docente_Cod_Nom2.DisplayMember = "NombreCompleto";
@@ -55,7 +59,7 @@ namespace CapaPresentaciones
 
         private void LlenarDatosAsignatura()
         {
-            Seleccionar_Asignatura_Cod_Nom.DataSource = N_Asignatura.MostrarAsignaturas("IF");
+            Seleccionar_Asignatura_Cod_Nom.DataSource = N_Asignatura.MostrarAsignaturas(CodDepartamentoA);
 
             Seleccionar_Asignatura_Cod_Nom.ValueMember = "CodAsignatura";
             Seleccionar_Asignatura_Cod_Nom.DisplayMember = "NombreAsignatura";
@@ -156,7 +160,7 @@ namespace CapaPresentaciones
             else
                 Grupo = "C";
 
-            CódigoS = Seleccionar_Semestre.Text;
+            CódigoS = CodSemestre;
             Aula = Seleccionar_Aula.Text;
             Modalidad = Seleccionar_Modalidad.Text;
 
@@ -2077,14 +2081,7 @@ namespace CapaPresentaciones
             Panel_Info.Height = 0;
             Panel_Info.Width = 0;
 
-            string Semestre = "";
-            var AñoActual = DateTime.Now.ToString("yyyy");
-            var MesActual = DateTime.Now.ToString("MM");
-            if (Convert.ToInt32(MesActual) >= 1 && Convert.ToInt32(MesActual) <= 6)
-                Semestre = AñoActual + "-I";
-            if (Convert.ToInt32(MesActual) >= 7 && Convert.ToInt32(MesActual) <= 12)
-                Semestre = AñoActual + "-II";
-            Seleccionar_Semestre.Text = Semestre;
+            Seleccionar_Semestre.Text = CodSemestre;
         }
 
         private void Salir_Click(object sender, EventArgs e)
@@ -3098,8 +3095,8 @@ namespace CapaPresentaciones
         {
             Limpiar_Colores();
 
-            DataTable T1 = N_HorarioAsignatura.HorarioSemanalDocente(Seleccionar_Semestre.Text, CódigoDocente1);
-            DataTable T2 = N_HorarioAsignatura.HorarioSemanalDocente(Seleccionar_Semestre.Text, CódigoDocente2);
+            DataTable T1 = N_HorarioAsignatura.HorarioSemanalDocente(CodSemestre, CódigoDocente1);
+            DataTable T2 = N_HorarioAsignatura.HorarioSemanalDocente(CodSemestre, CódigoDocente2);
             
             if (T1.Rows.Count >= 1 || T2.Rows.Count >= 1)
             {

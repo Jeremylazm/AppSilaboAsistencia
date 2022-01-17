@@ -130,6 +130,6 @@ namespace CapaPresentaciones
                     MostrarRegistros();
                 }
             }//Eliminar Listo
-        }
+        }//Listo
     }
 }
