@@ -394,16 +394,6 @@ namespace CapaPresentaciones
             Reportes.fnReporte7(Titulo, Titulos, Valores, resultados);
         }
 
-        /*private void fnReporte1234()
-        {
-            radiobtnCriterioFechas.CheckedChanged += radioButtons_CheckedChanged;
-            radiobtnCriterioEstudiantes.CheckedChanged += radioButtons_CheckedChanged;
-
-            // Al inicio, Criterio fechas es checked
-            // -> Reporte 1
-            //fnReporte1();
-        }*/
-
         private void fnReporte1(string CodDocenteReporte)
         {
             // Tipo de reporte: Asistencia estudiantes
@@ -435,7 +425,7 @@ namespace CapaPresentaciones
         private void fnReporte8()
         {
             string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
-            string[] Titulos = { "Semestre", "Escuela Profesional", "CodEstudiante", "Estudiante" };
+            string[] Titulos = { "Semestre", "Escuela Profesional", "Código", "Estudiante" };
             string[] Valores = { CodSemestre, "INGENIERÍA INFORMÁTICA Y DE SISTEMAS", txtCodEstudiante.Text, txtEstudiante.Text };
 
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaAsignaturasEstudiante(CodSemestre, txtCodEstudiante.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));

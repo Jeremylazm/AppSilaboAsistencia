@@ -26,6 +26,23 @@ namespace CapaDatos
             return Resultado;
         }
 
+        // Método para buscar estudiantes matriculados de una escuela profesional utilizando un filtro
+        public DataTable BuscarEstudiantesMatriculados(string CodSemestre, string CodEscuelaP, string Texto)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuBuscarEstudiantesMatriculados", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@Texto", Texto);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
         // Método para buscar las asignaturas a los que esta matriculado un estudiante.
         public DataTable BuscarAsignaturasEstudiante(string CodSemestre, string CodEscuelaP, string CodEstudiante)
         {
@@ -99,14 +116,7 @@ namespace CapaDatos
         }
 
         // Método para actualizar el registro de una matricula de la base de datos.
-        public void ActualizarMatricula(E_Matricula Matricula,
-                                        string NCodSemestre,
-                                        string NCodEscuelaP,
-                                        string NCodAsignatura,
-                                        string NCodEstudiante,
-                                        string APaterno,
-                                        string AMaterno,
-                                        string Nombre)
+        public void ActualizarMatricula(E_Matricula Matricula)
         {
             SqlCommand Comando = new SqlCommand("spuActualizarMatricula", Conectar)
             {
@@ -118,13 +128,9 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodEscuelaP", Matricula.CodEscuelaP);
             Comando.Parameters.AddWithValue("@CodAsignatura", Matricula.CodAsignatura);
             Comando.Parameters.AddWithValue("@CodEstudiante", Matricula.CodEstudiante);
-            Comando.Parameters.AddWithValue("@NCodSemestre", NCodSemestre);
-            Comando.Parameters.AddWithValue("@NCodEscuelaP", NCodEscuelaP);
-            Comando.Parameters.AddWithValue("@NCodAsignatura", NCodAsignatura);
-            Comando.Parameters.AddWithValue("@NCodEstudiante", NCodEstudiante);
-            Comando.Parameters.AddWithValue("@APaterno", APaterno);
-            Comando.Parameters.AddWithValue("@AMaterno", AMaterno);
-            Comando.Parameters.AddWithValue("@Nombre", Nombre);
+            Comando.Parameters.AddWithValue("@APaterno", Matricula.APaterno);
+            Comando.Parameters.AddWithValue("@AMaterno", Matricula.AMaterno);
+            Comando.Parameters.AddWithValue("@Nombre", Matricula.Nombre);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }

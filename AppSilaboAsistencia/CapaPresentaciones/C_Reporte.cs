@@ -102,10 +102,8 @@ namespace CapaPresentaciones
                     Filas++;
                     AnchoTotal = cpControl.Width + 6;
                 }
-                else
-                {
-                    AnchoTotal += cpControl.Width + 6;
-                }
+                else AnchoTotal += cpControl.Width + 6;
+
             }
 
             this.Cuadricula.RowStyles[0].Height = Filas * 92 + 51;
@@ -130,15 +128,9 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
+                else A_Dialogo.DialogoError("No existen parametros");
             }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            else A_Dialogo.DialogoError("Error de parametros");
 
             if (Datos.Rows.Count == 0)
             {
@@ -149,8 +141,6 @@ namespace CapaPresentaciones
                 dgvResumen.Columns.Clear();
                 dgvResultados.Columns.Clear();
                 dgvResultados.Refresh();
-
-                //tcGraficos.Controls.Clear();
             }
             else
             {
@@ -175,32 +165,43 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[6].Visible = false;
                 dgvResultados.Columns[0].DisplayIndex = 6;
 
-                if (dgvResultados.Rows.Count <= 10)
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
-                    sbResultados.Visible = false;
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
-                else
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
-                    pnContenedorResultados.Height = 341;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+                dgvResultados.Columns["SesiónDictada"].HeaderText = "Sesión Dictada";
+                dgvResultados.Columns["TotalAsistieron"].HeaderText = "Total Asistieron";
+                dgvResultados.Columns["TotalFaltaron"].HeaderText = "Total Faltaron";
 
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    sbResultados.Visible = true;
-                }
+                //if (dgvResultados.Rows.Count <= 10)
+                //{
+                //    sbResultados.Visible = false;
+                //    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                //    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
+                //    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                //    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                //    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                //    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //}
+                //else
+                //{
+                //    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                //    pnContenedorResultados.Height = 341;
+                //    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                //    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                //    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                //    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //    sbResultados.Visible = true;
+                //}
 
                 // Mostrar cuadro de resumen
                 if (!pnContenedorCuadro.Visible)
@@ -223,10 +224,7 @@ namespace CapaPresentaciones
                 // Solo donde SesiónDictada es SI para los estadísticos
                 foreach (DataRow row in Datos.Rows)
                 {
-                    if (row["SesiónDictada"].ToString() == "SI")
-                    {
-                        dtEstadisticos.ImportRow(row);
-                    }
+                    if (row["SesiónDictada"].ToString() == "SI") dtEstadisticos.ImportRow(row);
                 }
 
                 // Listas de valores
@@ -246,7 +244,7 @@ namespace CapaPresentaciones
                 cuadroResumen.Rows.Add("Mínimo", Statistics.Minimum(Asistieron), Statistics.Minimum(Faltaron));
 
                 // Media
-                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Asistieron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)", String.Format("{0:0.00}", Statistics.Mean(Faltaron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Faltaron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)");
+                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Asistieron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + " %)", String.Format("{0:0.00}", Statistics.Mean(Faltaron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Faltaron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + " %)");
 
                 // Mediana
                 cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Asistieron)), String.Format("{0:0.00}", Statistics.Median(Faltaron)));
@@ -262,17 +260,25 @@ namespace CapaPresentaciones
                 // Desviación Estándar
                 var dvA = Statistics.StandardDeviation(Asistieron);
                 var dvF = Statistics.StandardDeviation(Faltaron);
-                cuadroResumen.Rows.Add("Desv. Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
+                cuadroResumen.Rows.Add("Desviación Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
 
                 dgvResumen.DataSource = cuadroResumen;
 
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                dgvResumen.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-                pnContenedorCuadro.Height = dgvResumen.Rows.Count * 26 + 81;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+                foreach (DataGridViewColumn Columna in dgvResumen.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
 
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                //pnContenedorCuadro.Height = dgvResumen.Rows.Count * 26 + 81;
+                //this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                //this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                //pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
                 // Gráficos
                 btnGrafico2.Visible = true;
@@ -352,6 +358,8 @@ namespace CapaPresentaciones
                 GraficoLineas.TargetCanvas = gxGrafico2;
 
                 gxGrafico2.Update();
+
+                tcGraficos.SetPage(tcGraficos.PageIndex);
             }
         }
 
@@ -371,20 +379,27 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
+                else MessageBox.Show("No existen parametros");
             }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            else MessageBox.Show("Error de parametros");
 
             dgvResultados.Columns.Clear();
 
             dgvResultados.DataSource = Datos;
-            dgvResultados.Columns[0].Visible = false;           
+            dgvResultados.Columns[0].Visible = false;
+
+            dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            dgvResultados.Columns["CodEstudiante"].HeaderText = "Código";
+            dgvResultados.Columns["APaterno"].HeaderText = "A. Paterno";
+            dgvResultados.Columns["AMaterno"].HeaderText = "A. Materno";
+            dgvResultados.Columns["Nombre"].HeaderText = "Nombres (s)";
+            dgvResultados.Columns["Asistió"].Width = 80;
 
             if (dgvResultados.Rows.Count <= 10)
             {
@@ -441,48 +456,46 @@ namespace CapaPresentaciones
 
             foreach (DataRow row in dtResumen.Rows)
             {
-                if (row["Asistió"].ToString() == "SI" && row["Observación"].ToString() == "")
-                {
-                    AsistieronPuntual += 1;
-                }
-                else if (row["Asistió"].ToString() == "SI" && row["Observación"].ToString() != "")
-                {
-                    AsistieronTarde += 1;
-                }
-                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() != "FALTO SIN JUSTIFICAR" && row["Observación"].ToString() != "FERIADO" && row["Observación"].ToString() != "SUSPENSION" && row["Observación"].ToString() != "FALTO EL DOCENTE")
-                {
-                    FaltaronJustificado += 1;
-                }
-                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() == "FALTO SIN JUSTIFICAR")
-                {
-                    FaltaronSinJustificar += 1;
-                }
+                if (row["Asistió"].ToString() == "SI" && row["Observación"].ToString() == "") AsistieronPuntual += 1;
+                else if (row["Asistió"].ToString() == "SI" && row["Observación"].ToString() != "") AsistieronTarde += 1;
+                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() != "FALTO SIN JUSTIFICAR" && row["Observación"].ToString() != "FERIADO" && row["Observación"].ToString() != "SUSPENSION" && row["Observación"].ToString() != "FALTO EL DOCENTE") FaltaronJustificado += 1;
+                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() == "FALTO SIN JUSTIFICAR") FaltaronSinJustificar += 1;
             }
 
             // Asistieron puntual
-            cuadroResumen.Rows.Add("Asistieron Puntual", AsistieronPuntual.ToString() + " (" + String.Format("{0:0.00}", AsistieronPuntual / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Asistieron Puntual", AsistieronPuntual.ToString() + " (" + String.Format("{0:0.00}", AsistieronPuntual / Total * 100) + " %)");
 
             // Asistieron tarde
-            cuadroResumen.Rows.Add("Asistieron Tarde", AsistieronTarde.ToString() + " (" + String.Format("{0:0.00}", AsistieronTarde / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Asistieron Tarde", AsistieronTarde.ToString() + " (" + String.Format("{0:0.00}", AsistieronTarde / Total * 100) + " %)");
 
             // Faltaron (Justificado)
-            cuadroResumen.Rows.Add("Faltaron (Justificado)", FaltaronJustificado.ToString() + " (" + String.Format("{0:0.00}", FaltaronJustificado / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Faltaron (Justificado)", FaltaronJustificado.ToString() + " (" + String.Format("{0:0.00}", FaltaronJustificado / Total * 100) + " %)");
 
             // Faltaron (Sin justificar)
-            cuadroResumen.Rows.Add("Faltaron (Sin Justificar)", FaltaronSinJustificar.ToString() + " (" + String.Format("{0:0.00}", FaltaronSinJustificar / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Faltaron (Sin Justificar)", FaltaronSinJustificar.ToString() + " (" + String.Format("{0:0.00}", FaltaronSinJustificar / Total * 100) + " %)");
 
             cuadroResumen.Rows.Add("", "");
 
             // Asistencias
-            cuadroResumen.Rows.Add("Asistencias", (AsistieronPuntual + AsistieronTarde).ToString() + " (" + String.Format("{0:0.00}", (AsistieronPuntual + AsistieronTarde) / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Asistencias", (AsistieronPuntual + AsistieronTarde).ToString() + " (" + String.Format("{0:0.00}", (AsistieronPuntual + AsistieronTarde) / Total * 100) + " %)");
 
             // Faltas
-            cuadroResumen.Rows.Add("Faltas", (FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + String.Format("{0:0.00}", (FaltaronJustificado + FaltaronSinJustificar) / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Faltas", (FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + String.Format("{0:0.00}", (FaltaronJustificado + FaltaronSinJustificar) / Total * 100) + " %)");
 
             // Total
-            cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar) + " (" + "100" + "%)");
+            cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar) + " (" + "100" + " %)");
 
             dgvResumen.DataSource = cuadroResumen;
+
+            dgvResumen.Columns[0].Width = 300;
+
+            dgvResumen.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvResumen.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
 
             // Gráficos
             btnGrafico2.Visible = true;
@@ -571,15 +584,9 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("No existen parámetros");
-                }
+                else A_Dialogo.DialogoError("No existen parámetros");
             }
-            else
-            {
-                MessageBox.Show("Error de parámetros");
-            }
+            else A_Dialogo.DialogoError("Error de parámetros");
 
             if (Datos.Rows.Count == 0)
             {
@@ -590,8 +597,6 @@ namespace CapaPresentaciones
                 dgvResumen.Columns.Clear();
                 dgvResultados.Columns.Clear();
                 dgvResultados.Refresh();
-
-                //tcGraficos.Controls.Clear();
             }
             else
             {
@@ -616,32 +621,50 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[1].Visible = false;
                 dgvResultados.Columns[0].DisplayIndex = 7;
 
-                if (dgvResultados.Rows.Count <= 10)
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
-                    sbResultados.Visible = false;
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
-                else
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
-                    pnContenedorResultados.Height = 341;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+                dgvResultados.Columns["CodEstudiante"].HeaderText = "Código";
+                dgvResultados.Columns["CodEstudiante"].Width = 120;
+                dgvResultados.Columns["APaterno"].HeaderText = "A. Paterno";
+                dgvResultados.Columns["AMaterno"].HeaderText = "A. Materno";
+                dgvResultados.Columns["Nombre"].HeaderText = "Nombre(s)";
+                dgvResultados.Columns["TotalAsistencias"].HeaderText = "Total Asistencias";
+                dgvResultados.Columns["TotalAsistencias"].Width = 150;
+                dgvResultados.Columns["TotalFaltas"].HeaderText = "Total Faltas";
+                dgvResultados.Columns["TotalFaltas"].Width = 120;
+                dgvResultados.Columns[0].Width = 115;
 
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    sbResultados.Visible = true;
-                }
+                //if (dgvResultados.Rows.Count <= 10)
+                //{
+                //    sbResultados.Visible = false;
+                //    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                //    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
+                //    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                //    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                //    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                //    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //}
+                //else
+                //{
+                //    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                //    pnContenedorResultados.Height = 341;
+                //    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                //    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                //    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                //    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //    sbResultados.Visible = true;
+                //}
 
                 //pnInferior.Controls[2].Hide();
                 if (pnContenedorCuadro.Visible)
@@ -697,6 +720,8 @@ namespace CapaPresentaciones
                 GraficoBarrasHorizontales2.TargetCanvas = gxGrafico1;
 
                 gxGrafico1.Update();
+
+                tcGraficos.SetPage(IndiceGrafico1);
             }
         }
 
@@ -716,20 +741,20 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
+                else MessageBox.Show("No existen parámetros");
             }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            else MessageBox.Show("Error de parámetros");
 
             dgvResultados.Columns.Clear();
 
             dgvResultados.DataSource = Datos;
-            //dgvResultados.Columns[0].DisplayIndex = 7;
+
+            dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
 
             if (dgvResultados.Rows.Count <= 10)
             {
@@ -785,52 +810,50 @@ namespace CapaPresentaciones
 
             foreach (DataRow Fila in dtResumen.Rows)
             {
-                if (Fila["Asistió"].ToString() == "SI" && Fila["Observación"].ToString() == "")
-                {
-                    AsistieronPuntual += 1;
-                }
-                else if (Fila["Asistió"].ToString() == "SI" && Fila["Observación"].ToString() != "")
-                {
-                    AsistieronTarde += 1;
-                }
-                else if (Fila["Asistió"].ToString() == "NO" && Fila["Observación"].ToString() != "FALTO SIN JUSTIFICAR" && Fila["Observación"].ToString() != "FERIADO" && Fila["Observación"].ToString() != "SUSPENSION" && Fila["Observación"].ToString() != "FALTO EL DOCENTE")
-                {
-                    FaltaronJustificado += 1;
-                }
-                else if (Fila["Asistió"].ToString() == "NO" && Fila["Observación"].ToString() == "FALTO SIN JUSTIFICAR")
-                {
-                    FaltaronSinJustificar += 1;
-                }
+                if (Fila["Asistió"].ToString() == "SI" && Fila["Observación"].ToString() == "") AsistieronPuntual += 1;
+                else if (Fila["Asistió"].ToString() == "SI" && Fila["Observación"].ToString() != "") AsistieronTarde += 1;
+                else if (Fila["Asistió"].ToString() == "NO" && Fila["Observación"].ToString() != "FALTO SIN JUSTIFICAR" && Fila["Observación"].ToString() != "FERIADO" && Fila["Observación"].ToString() != "SUSPENSION" && Fila["Observación"].ToString() != "FALTO EL DOCENTE") FaltaronJustificado += 1;
+                else if (Fila["Asistió"].ToString() == "NO" && Fila["Observación"].ToString() == "FALTO SIN JUSTIFICAR") FaltaronSinJustificar += 1;
             }
 
             double Total = AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar;
 
             // Asistieron puntual
-            cuadroResumen.Rows.Add("Asistencia Puntual", AsistieronPuntual.ToString() + " (" + String.Format("{0:0.00}", AsistieronPuntual / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Asistencia Puntual", AsistieronPuntual.ToString() + " (" + String.Format("{0:0.00}", AsistieronPuntual / Total * 100) + " %)");
 
             // Asistieron tarde
-            cuadroResumen.Rows.Add("Asistencia Tarde", AsistieronTarde.ToString() + " (" + String.Format("{0:0.00}", AsistieronTarde / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Asistencia Tarde", AsistieronTarde.ToString() + " (" + String.Format("{0:0.00}", AsistieronTarde / Total * 100) + " %)");
 
             // Faltaron (Justificado)
-            cuadroResumen.Rows.Add("Falta (Justificada)", FaltaronJustificado.ToString() + " (" + String.Format("{0:0.00}", FaltaronJustificado / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Falta (Justificada)", FaltaronJustificado.ToString() + " (" + String.Format("{0:0.00}", FaltaronJustificado / Total * 100) + " %)");
 
             // Faltaron (Sin justificar)
-            cuadroResumen.Rows.Add("Falta (Sin Justificar)", FaltaronSinJustificar.ToString() + " (" + String.Format("{0:0.00}", FaltaronSinJustificar / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Falta (Sin Justificar)", FaltaronSinJustificar.ToString() + " (" + String.Format("{0:0.00}", FaltaronSinJustificar / Total * 100) + " %)");
 
             cuadroResumen.Rows.Add("", "");
 
             // Asistencias
-            cuadroResumen.Rows.Add("Asistencias", (AsistieronPuntual + AsistieronTarde).ToString() + " (" + String.Format("{0:0.00}", (AsistieronPuntual + AsistieronTarde) / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Asistencias", (AsistieronPuntual + AsistieronTarde).ToString() + " (" + String.Format("{0:0.00}", (AsistieronPuntual + AsistieronTarde) / Total * 100) + " %)");
 
             // Faltas
-            cuadroResumen.Rows.Add("Faltas", (FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + String.Format("{0:0.00}", (FaltaronJustificado + FaltaronSinJustificar) / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Faltas", (FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + String.Format("{0:0.00}", (FaltaronJustificado + FaltaronSinJustificar) / Total * 100) + " %)");
 
             // Total
-            cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + "100" + "%)");
+            cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + "100" + " %)");
 
             dgvResumen.DataSource = cuadroResumen;
 
-            // Gráficos // Barras verticales y Pie
+            dgvResumen.Columns[0].Width = 300;
+
+            dgvResumen.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvResumen.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+            // Gráficos
             btnGrafico2.Visible = true;
             IndiceGrafico1 = 2;
 
@@ -944,8 +967,6 @@ namespace CapaPresentaciones
                 dgvResumen.Columns.Clear();
                 dgvResultados.Columns.Clear();
                 dgvResultados.Refresh();
-
-                //tcGraficos.Controls.Clear();
             }
             else
             {
@@ -957,32 +978,32 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[2].HeaderText = "Fecha";
                 dgvResultados.Columns[3].HeaderText = "Estado";
 
-                if (dgvResultados.Rows.Count <= 10)
-                {
-                    sbResultados.Visible = false;
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //if (dgvResultados.Rows.Count <= 10)
+                //{
+                //    sbResultados.Visible = false;
+                //    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
-                    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+                //    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
+                //    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                //    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
 
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                }
-                else
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                //    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //}
+                //else
+                //{
+                //    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
-                    pnContenedorResultados.Height = 341;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+                //    pnContenedorResultados.Height = 341;
+                //    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                //    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
 
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    sbResultados.Visible = true;
-                }
+                //    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                //    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //    sbResultados.Visible = true;
+                //}
 
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 
@@ -1021,13 +1042,13 @@ namespace CapaPresentaciones
 
                 dgvResumen.DataSource = cuadroResumen;
 
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
-                pnContenedorCuadro.Height = dgvResumen.Rows.Count * 26 + 81;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+                //pnContenedorCuadro.Height = dgvResumen.Rows.Count * 26 + 81;
+                //this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
+                //this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
 
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                //pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
@@ -1092,15 +1113,9 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else
-                {
-                    Ayudas.A_Dialogo.DialogoError("No existen parametros");
-                }
+                else Ayudas.A_Dialogo.DialogoError("No existen parámetros");
             }
-            else
-            {
-                Ayudas.A_Dialogo.DialogoError("Error de parametros");
-            }
+            else Ayudas.A_Dialogo.DialogoError("Error de parámetros");
             #endregion ===================== DESCRIPCIÓN =====================
 
             // Validar las Fechas dadas
@@ -1113,8 +1128,6 @@ namespace CapaPresentaciones
                 dgvResumen.Columns.Clear();
                 dgvResultados.Columns.Clear();
                 dgvResultados.Refresh();
-
-                //tcGraficos.Controls.Clear();
             }
             else
             {
@@ -1236,24 +1249,30 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
+                else MessageBox.Show("No existen parámetros");
             }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            else MessageBox.Show("Error de parámetros");
 
-            if (Datos.Rows.Count == 0)
-            {
-                A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
-            }
+            if (Datos.Rows.Count == 0) A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
             else
             {
                 dgvResultados.Columns.Clear();
                 dgvResultados.DataSource = Datos;
+
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+
+                dgvResultados.Columns["CodASignatura"].HeaderText = "Código";
+                dgvResultados.Columns["CodAsignatura"].Width = 100;
+                dgvResultados.Columns["NombreAsignatura"].HeaderText = "Asignatura";
+                dgvResultados.Columns["PorcentajeAsistencias"].HeaderText = "Asistencias (%)";
+                dgvResultados.Columns["PorcentajeAsistencias"].Width = 120;
+                dgvResultados.Columns["PorcentajeFaltas"].HeaderText = "Faltas (%)";
+                dgvResultados.Columns["PorcentajeFaltas"].Width = 120;
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
@@ -1305,25 +1324,25 @@ namespace CapaPresentaciones
                 // Cuadro de resumen
                 DataTable cuadroResumen = new DataTable();
                 cuadroResumen.Columns.Add(" ");
-                cuadroResumen.Columns.Add("Porcentaje de Asistencia");
-                cuadroResumen.Columns.Add("Porcentaje de Falta");
+                cuadroResumen.Columns.Add("Asistencia");
+                cuadroResumen.Columns.Add("Falta");
 
                 // Máximo
-                cuadroResumen.Rows.Add("Máximo", Statistics.Maximum(Asistieron), Statistics.Maximum(Faltaron));
+                cuadroResumen.Rows.Add("Máximo", Statistics.Maximum(Asistieron).ToString() + " %", Statistics.Maximum(Faltaron).ToString() + " %");
 
                 // Mínimos
-                cuadroResumen.Rows.Add("Mínimo", Statistics.Minimum(Asistieron), Statistics.Minimum(Faltaron));
+                cuadroResumen.Rows.Add("Mínimo", String.Format("{0:0.00}", Statistics.Minimum(Asistieron)) + " %", String.Format("{0:0.00}", Statistics.Minimum(Faltaron)) + " %");
 
                 // Media
-                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Asistieron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)", String.Format("{0:0.00}", Statistics.Mean(Faltaron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Faltaron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)");
+                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)) + " %", String.Format("{0:0.00}", Statistics.Mean(Faltaron)) + " %");
 
                 // Mediana
-                cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Asistieron)), String.Format("{0:0.00}", Statistics.Median(Faltaron)));
+                cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Asistieron)) + " %", String.Format("{0:0.00}", Statistics.Median(Faltaron)) + " %");
 
                 // Moda
                 var modeAsistieron = Asistieron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
                 var modeFaltaron = Faltaron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
-                cuadroResumen.Rows.Add("Moda", modeAsistieron, modeFaltaron);
+                cuadroResumen.Rows.Add("Moda", String.Format("{0:0.00}", modeAsistieron) + " %", String.Format("{0:0.00}", modeFaltaron) + " %");
 
                 // Varianza
                 cuadroResumen.Rows.Add("Varianza", String.Format("{0:0.00}", Statistics.Variance(Asistieron)), String.Format("{0:0.00}", Statistics.Variance(Faltaron)));
@@ -1331,9 +1350,17 @@ namespace CapaPresentaciones
                 // Desviación Estándar
                 var dvA = Statistics.StandardDeviation(Asistieron);
                 var dvF = Statistics.StandardDeviation(Faltaron);
-                cuadroResumen.Rows.Add("Desv. Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
+                cuadroResumen.Rows.Add("Desviación Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
 
                 dgvResumen.DataSource = cuadroResumen;
+
+                dgvResumen.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                foreach (DataGridViewColumn Columna in dgvResumen.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
 
                 // Gráficos
                 btnGrafico2.Visible = false;
@@ -1375,6 +1402,8 @@ namespace CapaPresentaciones
                 GraficoBarrasHorizontales2.TargetCanvas = gxGrafico1;
 
                 gxGrafico1.Update();
+
+                tcGraficos.SetPage(IndiceGrafico1);
             }
         }
 
@@ -1396,20 +1425,11 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
+                else MessageBox.Show("No existen párametros");
             }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            else MessageBox.Show("Error de parámetros");
 
-            if (Datos.Rows.Count == 0)
-            {
-                A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
-            }
+            if (Datos.Rows.Count == 0) A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
             else
             {
                 // Crear columna
@@ -1434,6 +1454,21 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[4].Visible = false;
                 dgvResultados.Columns[0].DisplayIndex = 6;
 
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                dgvResultados.Columns["CodAsignatura"].HeaderText = "Cod. Asignatura";
+                dgvResultados.Columns["CodAsignatura"].Width = 100;
+                dgvResultados.Columns["NombreAsignatura"].HeaderText = "Asignatura";
+                dgvResultados.Columns["PorcentajeAsistencias"].HeaderText = "Asistencias (%)";
+                dgvResultados.Columns["PorcentajeAsistencias"].Width = 120;
+                dgvResultados.Columns["PorcentajeFaltas"].HeaderText = "Faltas (%)";
+                dgvResultados.Columns["PorcentajeFaltas"].Width = 120;
+                dgvResultados.Columns[0].Width = 180;
+
+                foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
@@ -1564,8 +1599,6 @@ namespace CapaPresentaciones
                 dgvResumen.Columns.Clear();
                 dgvResultados.Columns.Clear();
                 dgvResultados.Refresh();
-
-                //tcGraficos.Controls.Clear();
             }
             else
             {
@@ -1707,14 +1740,8 @@ namespace CapaPresentaciones
 
         private void dgvResultados_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (Equals("System.Windows.Forms.DataGridViewImageColumn", dgvResultados.Columns[e.ColumnIndex].GetType().ToString()))
-            {
-                dgvResultados.Cursor = Cursors.Hand;
-            }
-            else
-            {
-                dgvResultados.Cursor = Cursors.Default;
-            }
+            if (Equals("System.Windows.Forms.DataGridViewImageColumn", dgvResultados.Columns[e.ColumnIndex].GetType().ToString()) && e.RowIndex >= 0) dgvResultados.Cursor = Cursors.Hand;
+            else dgvResultados.Cursor = Cursors.Default;
         }
 
         private void dgvResultados_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1723,12 +1750,16 @@ namespace CapaPresentaciones
             {
                 if (CriterioAsistenciasEstudiantes == "Por Fechas")
                 {
-                    string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, (pnSubcampos.Controls[4] as C_Campo).Valor, (pnSubcampos.Controls[5] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString(), dgvResultados.CurrentRow.Cells["Hora"].Value.ToString() };
-                    DateTime[] FechasNecesarias = { Convert.ToDateTime(dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString(), CultureInfo.GetCultureInfo("es-ES")) };
+                    if (dgvResultados.CurrentRow.Cells["SesiónDictada"].Value.ToString() == "SI")
+                    {
+                        string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, (pnSubcampos.Controls[4] as C_Campo).Valor, (pnSubcampos.Controls[5] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString(), dgvResultados.CurrentRow.Cells["Hora"].Value.ToString() };
+                        DateTime[] FechasNecesarias = { Convert.ToDateTime(dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString(), CultureInfo.GetCultureInfo("es-ES")) };
 
-                    P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, FechasNecesarias, "Por Fechas");
-                    DR.ShowDialog();
-                    DR.Dispose();
+                        P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, FechasNecesarias, "Por Fechas");
+                        DR.ShowDialog();
+                        DR.Dispose();
+                    }
+                    else A_Dialogo.DialogoInformacion("No se dictó sesión el " + dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString());
                 }
                 else if (CriterioAsistenciasEstudiantes == "Por Estudiantes")
                 {

@@ -327,7 +327,7 @@ namespace CapaPresentaciones
         private void btnSesiones_Click(object sender, EventArgs e)
         {
             ActualizarColor();
-            AbrirFormularios<P_TablaAsignaturasAsignadasSesiones>();
+            AbrirFormularios<P_TablaAsignaturasAsignadasPlanSesiones>();
         }
 
         private void btnAsistencia_Click(object sender, EventArgs e)
@@ -340,7 +340,9 @@ namespace CapaPresentaciones
         {
             CargarDatosUsuario();
             GestionarAcceso();
-            AbrirFormularios<P_PrincipalDocente>();
+
+            if (E_InicioSesion.Acceso != "Administrador")
+                AbrirFormularios<P_PrincipalDocente>();
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -558,10 +560,7 @@ namespace CapaPresentaciones
                         ObjEntidadDocente.Fecha = Fecha;
                         ObjEntidadDocente.Hora = Hora;
                         ObjEntidadDocente.CodDocente = Usuario;
-                        ObjEntidadDocente.Asistio = "SI";
-                        ObjEntidadDocente.Observacion = "";
-                        ObjNegocioDocente.RegistrarAsistenciaDiariaDocente(ObjEntidadDocente);
-
+                        ObjNegocioDocente.ActualizarAsistenciaDiariaDocente(ObjEntidadDocente, "SI", "");
                         A_Dialogo.DialogoInformacion("Se registro su asistencia.");
                     }
                     else
