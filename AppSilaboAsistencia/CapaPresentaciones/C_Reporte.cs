@@ -102,10 +102,8 @@ namespace CapaPresentaciones
                     Filas++;
                     AnchoTotal = cpControl.Width + 6;
                 }
-                else
-                {
-                    AnchoTotal += cpControl.Width + 6;
-                }
+                else AnchoTotal += cpControl.Width + 6;
+
             }
 
             this.Cuadricula.RowStyles[0].Height = Filas * 92 + 51;
@@ -130,15 +128,9 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
+                else MessageBox.Show("No existen parametros");
             }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            else MessageBox.Show("Error de parametros");
 
             if (Datos.Rows.Count == 0)
             {
@@ -149,8 +141,6 @@ namespace CapaPresentaciones
                 dgvResumen.Columns.Clear();
                 dgvResultados.Columns.Clear();
                 dgvResultados.Refresh();
-
-                //tcGraficos.Controls.Clear();
             }
             else
             {
@@ -174,6 +164,17 @@ namespace CapaPresentaciones
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[6].Visible = false;
                 dgvResultados.Columns[0].DisplayIndex = 6;
+
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+
+                dgvResultados.Columns["SesiónDictada"].HeaderText = "Sesión Dictada";
+                dgvResultados.Columns["TotalAsistieron"].HeaderText = "Total Asistieron";
+                dgvResultados.Columns["TotalFaltaron"].HeaderText = "Total Faltaron";
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
@@ -223,10 +224,7 @@ namespace CapaPresentaciones
                 // Solo donde SesiónDictada es SI para los estadísticos
                 foreach (DataRow row in Datos.Rows)
                 {
-                    if (row["SesiónDictada"].ToString() == "SI")
-                    {
-                        dtEstadisticos.ImportRow(row);
-                    }
+                    if (row["SesiónDictada"].ToString() == "SI") dtEstadisticos.ImportRow(row);
                 }
 
                 // Listas de valores
@@ -246,7 +244,7 @@ namespace CapaPresentaciones
                 cuadroResumen.Rows.Add("Mínimo", Statistics.Minimum(Asistieron), Statistics.Minimum(Faltaron));
 
                 // Media
-                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Asistieron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)", String.Format("{0:0.00}", Statistics.Mean(Faltaron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Faltaron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)");
+                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Asistieron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + " %)", String.Format("{0:0.00}", Statistics.Mean(Faltaron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Faltaron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + " %)");
 
                 // Mediana
                 cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Asistieron)), String.Format("{0:0.00}", Statistics.Median(Faltaron)));
@@ -262,9 +260,17 @@ namespace CapaPresentaciones
                 // Desviación Estándar
                 var dvA = Statistics.StandardDeviation(Asistieron);
                 var dvF = Statistics.StandardDeviation(Faltaron);
-                cuadroResumen.Rows.Add("Desv. Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
+                cuadroResumen.Rows.Add("Desviación Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
 
                 dgvResumen.DataSource = cuadroResumen;
+
+                dgvResumen.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                foreach (DataGridViewColumn Columna in dgvResumen.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
 
                 pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
@@ -353,7 +359,7 @@ namespace CapaPresentaciones
 
                 gxGrafico2.Update();
 
-                tcGraficos.SetPage(IndiceGrafico1);
+                tcGraficos.SetPage(tcGraficos.PageIndex);
             }
         }
 
@@ -373,20 +379,27 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
+                else MessageBox.Show("No existen parametros");
             }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            else MessageBox.Show("Error de parametros");
 
             dgvResultados.Columns.Clear();
 
             dgvResultados.DataSource = Datos;
-            dgvResultados.Columns[0].Visible = false;           
+            dgvResultados.Columns[0].Visible = false;
+
+            dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            dgvResultados.Columns["CodEstudiante"].HeaderText = "Código";
+            dgvResultados.Columns["APaterno"].HeaderText = "A. Paterno";
+            dgvResultados.Columns["AMaterno"].HeaderText = "A. Materno";
+            dgvResultados.Columns["Nombre"].HeaderText = "Nombres (s)";
+            dgvResultados.Columns["Asistió"].Width = 80;
 
             if (dgvResultados.Rows.Count <= 10)
             {
@@ -443,48 +456,46 @@ namespace CapaPresentaciones
 
             foreach (DataRow row in dtResumen.Rows)
             {
-                if (row["Asistió"].ToString() == "SI" && row["Observación"].ToString() == "")
-                {
-                    AsistieronPuntual += 1;
-                }
-                else if (row["Asistió"].ToString() == "SI" && row["Observación"].ToString() != "")
-                {
-                    AsistieronTarde += 1;
-                }
-                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() != "FALTO SIN JUSTIFICAR" && row["Observación"].ToString() != "FERIADO" && row["Observación"].ToString() != "SUSPENSION" && row["Observación"].ToString() != "FALTO EL DOCENTE")
-                {
-                    FaltaronJustificado += 1;
-                }
-                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() == "FALTO SIN JUSTIFICAR")
-                {
-                    FaltaronSinJustificar += 1;
-                }
+                if (row["Asistió"].ToString() == "SI" && row["Observación"].ToString() == "") AsistieronPuntual += 1;
+                else if (row["Asistió"].ToString() == "SI" && row["Observación"].ToString() != "") AsistieronTarde += 1;
+                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() != "FALTO SIN JUSTIFICAR" && row["Observación"].ToString() != "FERIADO" && row["Observación"].ToString() != "SUSPENSION" && row["Observación"].ToString() != "FALTO EL DOCENTE") FaltaronJustificado += 1;
+                else if (row["Asistió"].ToString() == "NO" && row["Observación"].ToString() == "FALTO SIN JUSTIFICAR") FaltaronSinJustificar += 1;
             }
 
             // Asistieron puntual
-            cuadroResumen.Rows.Add("Asistieron Puntual", AsistieronPuntual.ToString() + " (" + String.Format("{0:0.00}", AsistieronPuntual / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Asistieron Puntual", AsistieronPuntual.ToString() + " (" + String.Format("{0:0.00}", AsistieronPuntual / Total * 100) + " %)");
 
             // Asistieron tarde
-            cuadroResumen.Rows.Add("Asistieron Tarde", AsistieronTarde.ToString() + " (" + String.Format("{0:0.00}", AsistieronTarde / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Asistieron Tarde", AsistieronTarde.ToString() + " (" + String.Format("{0:0.00}", AsistieronTarde / Total * 100) + " %)");
 
             // Faltaron (Justificado)
-            cuadroResumen.Rows.Add("Faltaron (Justificado)", FaltaronJustificado.ToString() + " (" + String.Format("{0:0.00}", FaltaronJustificado / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Faltaron (Justificado)", FaltaronJustificado.ToString() + " (" + String.Format("{0:0.00}", FaltaronJustificado / Total * 100) + " %)");
 
             // Faltaron (Sin justificar)
-            cuadroResumen.Rows.Add("Faltaron (Sin Justificar)", FaltaronSinJustificar.ToString() + " (" + String.Format("{0:0.00}", FaltaronSinJustificar / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Faltaron (Sin Justificar)", FaltaronSinJustificar.ToString() + " (" + String.Format("{0:0.00}", FaltaronSinJustificar / Total * 100) + " %)");
 
             cuadroResumen.Rows.Add("", "");
 
             // Asistencias
-            cuadroResumen.Rows.Add("Asistencias", (AsistieronPuntual + AsistieronTarde).ToString() + " (" + String.Format("{0:0.00}", (AsistieronPuntual + AsistieronTarde) / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Asistencias", (AsistieronPuntual + AsistieronTarde).ToString() + " (" + String.Format("{0:0.00}", (AsistieronPuntual + AsistieronTarde) / Total * 100) + " %)");
 
             // Faltas
-            cuadroResumen.Rows.Add("Faltas", (FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + String.Format("{0:0.00}", (FaltaronJustificado + FaltaronSinJustificar) / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Faltas", (FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + String.Format("{0:0.00}", (FaltaronJustificado + FaltaronSinJustificar) / Total * 100) + " %)");
 
             // Total
-            cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar) + " (" + "100" + "%)");
+            cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar) + " (" + "100" + " %)");
 
             dgvResumen.DataSource = cuadroResumen;
+
+            dgvResumen.Columns[0].Width = 300;
+
+            dgvResumen.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvResumen.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
 
             // Gráficos
             btnGrafico2.Visible = true;
@@ -573,15 +584,9 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("No existen parámetros");
-                }
+                else MessageBox.Show("No existen parámetros");
             }
-            else
-            {
-                MessageBox.Show("Error de parámetros");
-            }
+            else MessageBox.Show("Error de parámetros");
 
             if (Datos.Rows.Count == 0)
             {
@@ -592,8 +597,6 @@ namespace CapaPresentaciones
                 dgvResumen.Columns.Clear();
                 dgvResultados.Columns.Clear();
                 dgvResultados.Refresh();
-
-                //tcGraficos.Controls.Clear();
             }
             else
             {
@@ -617,6 +620,24 @@ namespace CapaPresentaciones
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[1].Visible = false;
                 dgvResultados.Columns[0].DisplayIndex = 7;
+
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+
+                dgvResultados.Columns["CodEstudiante"].HeaderText = "Código";
+                dgvResultados.Columns["CodEstudiante"].Width = 120;
+                dgvResultados.Columns["APaterno"].HeaderText = "A. Paterno";
+                dgvResultados.Columns["AMaterno"].HeaderText = "A. Materno";
+                dgvResultados.Columns["Nombre"].HeaderText = "Nombre (s)";
+                dgvResultados.Columns["TotalAsistencias"].HeaderText = "Total Asistencias";
+                dgvResultados.Columns["TotalAsistencias"].Width = 150;
+                dgvResultados.Columns["TotalFaltas"].HeaderText = "Total Faltas";
+                dgvResultados.Columns["TotalFaltas"].Width = 120;
+                dgvResultados.Columns[0].Width = 115;
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
@@ -720,15 +741,9 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
+                else MessageBox.Show("No existen parámetros");
             }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            else MessageBox.Show("Error de parámetros");
 
             dgvResultados.Columns.Clear();
 
@@ -789,22 +804,10 @@ namespace CapaPresentaciones
 
             foreach (DataRow Fila in dtResumen.Rows)
             {
-                if (Fila["Asistió"].ToString() == "SI" && Fila["Observación"].ToString() == "")
-                {
-                    AsistieronPuntual += 1;
-                }
-                else if (Fila["Asistió"].ToString() == "SI" && Fila["Observación"].ToString() != "")
-                {
-                    AsistieronTarde += 1;
-                }
-                else if (Fila["Asistió"].ToString() == "NO" && Fila["Observación"].ToString() != "FALTO SIN JUSTIFICAR" && Fila["Observación"].ToString() != "FERIADO" && Fila["Observación"].ToString() != "SUSPENSION" && Fila["Observación"].ToString() != "FALTO EL DOCENTE")
-                {
-                    FaltaronJustificado += 1;
-                }
-                else if (Fila["Asistió"].ToString() == "NO" && Fila["Observación"].ToString() == "FALTO SIN JUSTIFICAR")
-                {
-                    FaltaronSinJustificar += 1;
-                }
+                if (Fila["Asistió"].ToString() == "SI" && Fila["Observación"].ToString() == "") AsistieronPuntual += 1;
+                else if (Fila["Asistió"].ToString() == "SI" && Fila["Observación"].ToString() != "") AsistieronTarde += 1;
+                else if (Fila["Asistió"].ToString() == "NO" && Fila["Observación"].ToString() != "FALTO SIN JUSTIFICAR" && Fila["Observación"].ToString() != "FERIADO" && Fila["Observación"].ToString() != "SUSPENSION" && Fila["Observación"].ToString() != "FALTO EL DOCENTE") FaltaronJustificado += 1;
+                else if (Fila["Asistió"].ToString() == "NO" && Fila["Observación"].ToString() == "FALTO SIN JUSTIFICAR") FaltaronSinJustificar += 1;
             }
 
             double Total = AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar;
@@ -834,7 +837,7 @@ namespace CapaPresentaciones
 
             dgvResumen.DataSource = cuadroResumen;
 
-            // Gráficos // Barras verticales y Pie
+            // Gráficos
             btnGrafico2.Visible = true;
             IndiceGrafico1 = 2;
 
@@ -948,8 +951,6 @@ namespace CapaPresentaciones
                 dgvResumen.Columns.Clear();
                 dgvResultados.Columns.Clear();
                 dgvResultados.Refresh();
-
-                //tcGraficos.Controls.Clear();
             }
             else
             {
@@ -1096,15 +1097,9 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else
-                {
-                    Ayudas.A_Dialogo.DialogoError("No existen parametros");
-                }
+                else Ayudas.A_Dialogo.DialogoError("No existen parametros");
             }
-            else
-            {
-                Ayudas.A_Dialogo.DialogoError("Error de parametros");
-            }
+            else Ayudas.A_Dialogo.DialogoError("Error de parametros");
             #endregion ===================== DESCRIPCIÓN =====================
 
             // Validar las Fechas dadas
@@ -1117,8 +1112,6 @@ namespace CapaPresentaciones
                 dgvResumen.Columns.Clear();
                 dgvResultados.Columns.Clear();
                 dgvResultados.Refresh();
-
-                //tcGraficos.Controls.Clear();
             }
             else
             {
@@ -1240,20 +1233,11 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
+                else MessageBox.Show("No existen parametros");
             }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            else MessageBox.Show("Error de parametros");
 
-            if (Datos.Rows.Count == 0)
-            {
-                A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
-            }
+            if (Datos.Rows.Count == 0) A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
             else
             {
                 dgvResultados.Columns.Clear();
@@ -1402,20 +1386,11 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
+                else MessageBox.Show("No existen parametros");
             }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            else MessageBox.Show("Error de parametros");
 
-            if (Datos.Rows.Count == 0)
-            {
-                A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
-            }
+            if (Datos.Rows.Count == 0) A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
             else
             {
                 // Crear columna
@@ -1570,8 +1545,6 @@ namespace CapaPresentaciones
                 dgvResumen.Columns.Clear();
                 dgvResultados.Columns.Clear();
                 dgvResultados.Refresh();
-
-                //tcGraficos.Controls.Clear();
             }
             else
             {
@@ -1713,14 +1686,8 @@ namespace CapaPresentaciones
 
         private void dgvResultados_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (Equals("System.Windows.Forms.DataGridViewImageColumn", dgvResultados.Columns[e.ColumnIndex].GetType().ToString()))
-            {
-                dgvResultados.Cursor = Cursors.Hand;
-            }
-            else
-            {
-                dgvResultados.Cursor = Cursors.Default;
-            }
+            if (Equals("System.Windows.Forms.DataGridViewImageColumn", dgvResultados.Columns[e.ColumnIndex].GetType().ToString())) dgvResultados.Cursor = Cursors.Hand;
+            else dgvResultados.Cursor = Cursors.Default;
         }
 
         private void dgvResultados_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1729,12 +1696,16 @@ namespace CapaPresentaciones
             {
                 if (CriterioAsistenciasEstudiantes == "Por Fechas")
                 {
-                    string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, (pnSubcampos.Controls[4] as C_Campo).Valor, (pnSubcampos.Controls[5] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString(), dgvResultados.CurrentRow.Cells["Hora"].Value.ToString() };
-                    DateTime[] FechasNecesarias = { Convert.ToDateTime(dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString(), CultureInfo.GetCultureInfo("es-ES")) };
+                    if (dgvResultados.CurrentRow.Cells["SesiónDictada"].Value.ToString() == "SI")
+                    {
+                        string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, (pnSubcampos.Controls[4] as C_Campo).Valor, (pnSubcampos.Controls[5] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString(), dgvResultados.CurrentRow.Cells["Hora"].Value.ToString() };
+                        DateTime[] FechasNecesarias = { Convert.ToDateTime(dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString(), CultureInfo.GetCultureInfo("es-ES")) };
 
-                    P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, FechasNecesarias, "Por Fechas");
-                    DR.ShowDialog();
-                    DR.Dispose();
+                        P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, FechasNecesarias, "Por Fechas");
+                        DR.ShowDialog();
+                        DR.Dispose();
+                    }
+                    else A_Dialogo.DialogoInformacion("No se dictó sesión el " + dgvResultados.CurrentRow.Cells["Fecha"].Value.ToString());
                 }
                 else if (CriterioAsistenciasEstudiantes == "Por Estudiantes")
                 {

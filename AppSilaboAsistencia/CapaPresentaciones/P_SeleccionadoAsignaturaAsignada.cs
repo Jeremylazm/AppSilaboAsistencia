@@ -98,7 +98,7 @@ namespace CapaPresentaciones
                 else if (CriterioSeleccion == "Por Asignaturas")
                 {
                     //MostrarEstudiantes();
-                    //dgvDatos.DataSource = N_Matricula.Bus
+                    dgvDatos.DataSource = N_Matricula.BuscarEstudiantesMatriculados(CodSemestre, "IN", txtBuscar.Text);
                 }
             }
             dgvDatos.ClearSelection();
