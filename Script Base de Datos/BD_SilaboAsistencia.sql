@@ -281,7 +281,7 @@ CREATE TABLE TAsistenciaDiariaDocente
 	Fecha_Formatted AS (CONVERT(VARCHAR(10), Fecha, 103)), 
 	Hora TIME(0) NOT NULL, -- Formato: hh:mm:ss (Hora del control de asistencia)
 	CodDocente tyCodDocente, 
-	Asistió VARCHAR(2) NOT NULL,  -- SI/NO (Presente/No presente)
+	Asistió VARCHAR(2),  -- SI/NO (Presente/No presente)
 	Observación VARCHAR(50), -- permisos, feriado, justificación, etc
 
 	-- Determinar las claves
@@ -1533,25 +1533,21 @@ CREATE PROCEDURE spuActualizarMatricula @CodSemestre VARCHAR(7),
 									    @CodEscuelaP VARCHAR(3),
 								        @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
 									    @CodEstudiante VARCHAR(6),
-										@NCodSemestre VARCHAR(7),
-									    @NCodEscuelaP VARCHAR(3),
-								        @NCodAsignatura VARCHAR(9),
-									    @NCodEstudiante VARCHAR(6),
-										@NAPaterno VARCHAR(35),
-									    @NAMaterno VARCHAR(35),
-									    @NNombre VARCHAR(35)
+										@APaterno VARCHAR(35),
+									    @AMaterno VARCHAR(35),
+									    @Nombre VARCHAR(35)
 AS
 BEGIN
 	-- Actualizar una matricula de la tabla de TMatricula
 	UPDATE TMatricula
-		SET CodSemestre = @NCodSemestre,
-		    CodEscuelaP = @NCodEscuelaP,
-			CodAsignatura = @NCodAsignatura,
-			CodEstudiante = @NCodEstudiante,
-			APaterno = @NAPaterno,
-			AMaterno = @NAMaterno,
-			Nombre = @NNombre
-		WHERE CodSemestre = @NCodSemestre AND CodEscuelaP = @CodEscuelaP AND 
+		SET CodSemestre = @CodSemestre,
+		    CodEscuelaP = @CodEscuelaP,
+			CodAsignatura = @CodAsignatura,
+			CodEstudiante = @CodEstudiante,
+			APaterno = @APaterno,
+			AMaterno = @AMaterno,
+			Nombre = @Nombre
+		WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND 
 		      CodAsignatura = @CodAsignatura AND CodEstudiante = @CodEstudiante
 END;
 GO
@@ -1928,13 +1924,15 @@ CREATE PROCEDURE spuActualizarAsistenciaDiariaDocente @CodSemestre VARCHAR(7),
 										              @Fecha DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 												      @Hora TIME(0), -- Formato: hh:mm:ss (Hora del control de asistencia)
 													  @CodDocente VARCHAR(5),
+													  @NAsistió VARCHAR(2), -- SI/NO
 													  @NObservacion VARCHAR(50)
 
 AS
 BEGIN
 	-- Actualizar la asistencia en la tabla TAsistenciaDiariaDocente
 	UPDATE TAsistenciaDiariaDocente
-		SET Observación = @NObservacion
+		SET Asistió = @NAsistió, 
+			Observación = @NObservacion
 
 		WHERE CodSemestre = @CodSemestre AND Fecha = @Fecha AND Hora = @Hora AND CodDocente = @CodDocente
 END;
@@ -2017,7 +2015,6 @@ BEGIN
 	   ORDER BY AD.Fecha DESC
 END;
 GO
-
 -- Procedimiento para mostrar las asistencia de los estudiantes de una asignatura en un rango de fechas
 CREATE PROCEDURE spuAsistenciaEstudiantesPorEstudiante  @CodSemestre VARCHAR(7),
 												        @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
