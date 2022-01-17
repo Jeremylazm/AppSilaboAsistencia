@@ -1,7 +1,7 @@
 ﻿
 namespace CapaPresentaciones
 {
-    partial class P_TablaSesionesAsignatura
+    partial class P_TablaPlanSesionesAsignatura
     {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,7 @@ namespace CapaPresentaciones
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaSesionesAsignatura));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaPlanSesionesAsignatura));
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();

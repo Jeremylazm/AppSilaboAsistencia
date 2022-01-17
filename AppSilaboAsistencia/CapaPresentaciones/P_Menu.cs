@@ -327,7 +327,7 @@ namespace CapaPresentaciones
         private void btnSesiones_Click(object sender, EventArgs e)
         {
             ActualizarColor();
-            AbrirFormularios<P_TablaAsignaturasAsignadasSesiones>();
+            AbrirFormularios<P_TablaAsignaturasAsignadasPlanSesiones>();
         }
 
         private void btnAsistencia_Click(object sender, EventArgs e)
