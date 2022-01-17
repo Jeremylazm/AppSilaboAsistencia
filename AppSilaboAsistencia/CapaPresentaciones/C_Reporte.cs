@@ -361,6 +361,8 @@ namespace CapaPresentaciones
                 GraficoLineas.TargetCanvas = gxGrafico2;
 
                 gxGrafico2.Update();
+
+                tcGraficos.SetPage(IndiceGrafico1);
             }
         }
 
@@ -706,6 +708,8 @@ namespace CapaPresentaciones
                 GraficoBarrasHorizontales2.TargetCanvas = gxGrafico1;
 
                 gxGrafico1.Update();
+
+                tcGraficos.SetPage(IndiceGrafico1);
             }
         }
 
@@ -1314,25 +1318,25 @@ namespace CapaPresentaciones
                 // Cuadro de resumen
                 DataTable cuadroResumen = new DataTable();
                 cuadroResumen.Columns.Add(" ");
-                cuadroResumen.Columns.Add("Porcentaje de Asistencia");
-                cuadroResumen.Columns.Add("Porcentaje de Falta");
+                cuadroResumen.Columns.Add("Asistencia");
+                cuadroResumen.Columns.Add("Falta");
 
                 // Máximo
-                cuadroResumen.Rows.Add("Máximo", Statistics.Maximum(Asistieron), Statistics.Maximum(Faltaron));
+                cuadroResumen.Rows.Add("Máximo", Statistics.Maximum(Asistieron).ToString() + " %", Statistics.Maximum(Faltaron).ToString() + " %");
 
                 // Mínimos
-                cuadroResumen.Rows.Add("Mínimo", Statistics.Minimum(Asistieron), Statistics.Minimum(Faltaron));
+                cuadroResumen.Rows.Add("Mínimo", String.Format("{0:0.00}", Statistics.Minimum(Asistieron)) + " %", String.Format("{0:0.00}", Statistics.Minimum(Faltaron)) + " %");
 
                 // Media
-                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Asistieron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)", String.Format("{0:0.00}", Statistics.Mean(Faltaron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Faltaron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)");
+                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)) + " %", String.Format("{0:0.00}", Statistics.Mean(Faltaron)) + " %");
 
                 // Mediana
-                cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Asistieron)), String.Format("{0:0.00}", Statistics.Median(Faltaron)));
+                cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Asistieron)) + " %", String.Format("{0:0.00}", Statistics.Median(Faltaron)) + " %");
 
                 // Moda
                 var modeAsistieron = Asistieron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
                 var modeFaltaron = Faltaron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
-                cuadroResumen.Rows.Add("Moda", modeAsistieron, modeFaltaron);
+                cuadroResumen.Rows.Add("Moda", String.Format("{0:0.00}", modeAsistieron) + " %", String.Format("{0:0.00}", modeFaltaron) + " %");
 
                 // Varianza
                 cuadroResumen.Rows.Add("Varianza", String.Format("{0:0.00}", Statistics.Variance(Asistieron)), String.Format("{0:0.00}", Statistics.Variance(Faltaron)));
@@ -1384,6 +1388,8 @@ namespace CapaPresentaciones
                 GraficoBarrasHorizontales2.TargetCanvas = gxGrafico1;
 
                 gxGrafico1.Update();
+
+                tcGraficos.SetPage(IndiceGrafico1);
             }
         }
 

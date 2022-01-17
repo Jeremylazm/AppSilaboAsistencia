@@ -100,7 +100,7 @@ namespace CapaDatos
         }
 
         // Método para actualizar la asistencia diaria de un docente:
-        public void ActualizarAsistenciaDiariaDocente(E_AsistenciaDiariaDocente AsistenciaDiariaDocente, string NObservacion)
+        public void ActualizarAsistenciaDiariaDocente(E_AsistenciaDiariaDocente AsistenciaDiariaDocente, string NAsistio, string NObservacion)
         {
             SqlCommand Comando = new SqlCommand("spuActualizarAsistenciaDiariaDocente", Conectar)
             {
@@ -111,7 +111,9 @@ namespace CapaDatos
             Comando.Parameters.AddWithValue("@CodSemestre", AsistenciaDiariaDocente.CodSemestre);
             Comando.Parameters.AddWithValue("@Fecha", AsistenciaDiariaDocente.Fecha);
             Comando.Parameters.AddWithValue("@Hora", AsistenciaDiariaDocente.Hora);
-            Comando.Parameters.AddWithValue("@NObservación", NObservacion);
+            Comando.Parameters.AddWithValue("@CodDocente", AsistenciaDiariaDocente.CodDocente);
+            Comando.Parameters.AddWithValue("@NAsistió", NAsistio);
+            Comando.Parameters.AddWithValue("@NObservacion", NObservacion);
             Comando.ExecuteNonQuery();
             Conectar.Close();
         }

@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
 using Ayudas;
+using System.Globalization;
+
 namespace CapaPresentaciones
 {
     public partial class P_HistorialSesionesAsignatura : Form
@@ -18,7 +20,7 @@ namespace CapaPresentaciones
         private readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodSemestre;
         public string LimtFechaInf;
-        public string LimtFechaSup = DateTime.Now.ToString("dd/MM/yyyy").ToString();
+        public string LimtFechaSup = DateTime.Now.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString();
         public DateTime HoraIniAsignatura;
         public DateTime HoraLimiteR;
         //public string HoraRegistro= DateTime.Now.ToString("HH:mm:ss");
@@ -28,7 +30,7 @@ namespace CapaPresentaciones
             CodAsignatura = pCodAsignatura;
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
-            LimtFechaInf = Semestre.Rows[0][1].ToString();
+            LimtFechaInf = DateTime.Parse(Semestre.Rows[0][1].ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString();
             InitializeComponent();
             MostrarRegistros();
 
@@ -115,54 +117,98 @@ namespace CapaPresentaciones
 		private void btnAgregar_Click(object sender, EventArgs e)
 		{
             string DiaActual = nombre_Dia_Actual();
-            string HoraCompletaActual= DateTime.Now.ToString("HH:mm:ss");
-            //string Hora = HoraCompletaActual.Substring(0,2);
-
+            string HoraCompletaActual = DateTime.Now.ToString("HH:mm:ss");
             DataTable EstudiantesAsigantura = N_Matricula.BuscarEstudiantesAsignatura(CodSemestre, CodAsignatura.Substring(6), CodAsignatura);
-            
-            if (validarHoraDeRegistro(HoraCompletaActual,DiaActual))
+            DataTable busacarAsistenciaDiaraActual = N_AsistenciaDiariaDocente.AsistenciaDocentesPorFechas(CodSemestre,LimtFechaSup,LimtFechaSup);
+            if(busacarAsistenciaDiaraActual.Rows.Count==0)
 			{
-                //DateTime Horalimite = validarHoraDeRegistro(HoraCompletaActual, DiaActual);
-                
-                
-                //registrar la asistencia Normal
-                    
-                if (buscarUnRegistro(HoraIniAsignatura,HoraLimiteR) != true)
-				{
+                if (validarHoraDeRegistro(HoraCompletaActual, DiaActual))
+                {   
+                    //registrar como sesion normal
+                    if (buscarUnRegistro(HoraIniAsignatura, HoraLimiteR) != true)
+                    {
 
-                    Form Fondo = new Form();
-                    P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
-                    NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                    NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
-                    NuevoRegistroAsistencia.txtTipoSesion.Text = "NORMAL";
-                    NuevoRegistroAsistencia.hora = HoraCompletaActual;
-                    NuevoRegistroAsistencia.Owner = Fondo;
-                    NuevoRegistroAsistencia.ShowDialog();
-                    NuevoRegistroAsistencia.Dispose();
+                        Form Fondo = new Form();
+                        P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
+                        NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                        NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
+                        NuevoRegistroAsistencia.txtTipoSesion.Text = "NORMAL";
+                        NuevoRegistroAsistencia.hora = HoraCompletaActual;
+                        NuevoRegistroAsistencia.Owner = Fondo;
+                        NuevoRegistroAsistencia.ShowDialog();
+                        NuevoRegistroAsistencia.Dispose();
+                    }
+                    else
+                    {
+                        A_Dialogo.DialogoInformacion("El registro de Hoy, ¡Ya existe!");
+                    }
                 }
-				else
-				{
-                    A_Dialogo.DialogoInformacion("El registro de Hoy, ¡Ya existe!");
-                }
-                
-                 
-			}
-			else
-			{
-                // registrar la asistencia como recuperacion
-                if (A_Dialogo.DialogoPreguntaAceptarCancelar(" Seee encuentra fuera del Horario de la Asignatura" + Environment.NewLine + "¿Desea Recuperar una Sesion?") == DialogResult.Yes)
+                else
                 {
-                    Form Fondo = new Form();
-                    P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
-                    NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                    NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
-                    NuevoRegistroAsistencia.txtTipoSesion.Text = "RECUPERACIÓN";
-                    NuevoRegistroAsistencia.hora = HoraCompletaActual;
-                    NuevoRegistroAsistencia.Owner = Fondo;
-                    NuevoRegistroAsistencia.ShowDialog();
-                    NuevoRegistroAsistencia.Dispose();
+                    // registrar la asistencia como recuperacion
+                    if (A_Dialogo.DialogoPreguntaAceptarCancelar(" Se encuentra fuera del Horario de la Asignatura" + Environment.NewLine + "¿Desea Recuperar una Sesion?") == DialogResult.Yes)
+                    {
+                        Form Fondo = new Form();
+                        P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
+                        NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                        NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
+                        NuevoRegistroAsistencia.txtTipoSesion.Text = "RECUPERACIÓN";
+                        NuevoRegistroAsistencia.hora = HoraCompletaActual;
+                        NuevoRegistroAsistencia.Owner = Fondo;
+                        NuevoRegistroAsistencia.ShowDialog();
+                        NuevoRegistroAsistencia.Dispose();
+                    }
                 }
             }
+            else
+			{
+                if (busacarAsistenciaDiaraActual.Rows[0][3].Equals("FERIADO") || busacarAsistenciaDiaraActual.Rows[0][3].Equals("SUSPENSION"))
+                {
+                    A_Dialogo.DialogoInformacion("Hoy es un día de " + busacarAsistenciaDiaraActual.Rows[0][3].ToString() + Environment.NewLine + "Tómese un descanso");
+                }
+                else
+                {
+                    if (validarHoraDeRegistro(HoraCompletaActual, DiaActual))
+                    {
+                        //registrar como sesion normal
+                        if (buscarUnRegistro(HoraIniAsignatura, HoraLimiteR) != true)
+                        {
+
+                            Form Fondo = new Form();
+                            P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
+                            NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                            NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
+                            NuevoRegistroAsistencia.txtTipoSesion.Text = "NORMAL";
+                            NuevoRegistroAsistencia.hora = HoraCompletaActual;
+                            NuevoRegistroAsistencia.Owner = Fondo;
+                            NuevoRegistroAsistencia.ShowDialog();
+                            NuevoRegistroAsistencia.Dispose();
+                        }
+                        else
+                        {
+                            A_Dialogo.DialogoInformacion("El registro de Hoy, ¡Ya existe!");
+                        }
+                    }
+                    else
+                    {
+                        // registrar la asistencia como recuperacion
+                        if (A_Dialogo.DialogoPreguntaAceptarCancelar(" Se encuentra fuera del Horario de la Asignatura" + Environment.NewLine + "¿Desea Recuperar una Sesion?") == DialogResult.Yes)
+                        {
+                            Form Fondo = new Form();
+                            P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
+                            NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                            NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
+                            NuevoRegistroAsistencia.txtTipoSesion.Text = "RECUPERACIÓN";
+                            NuevoRegistroAsistencia.hora = HoraCompletaActual;
+                            NuevoRegistroAsistencia.Owner = Fondo;
+                            NuevoRegistroAsistencia.ShowDialog();
+                            NuevoRegistroAsistencia.Dispose();
+                        }
+                    }
+                }
+            }
+            
+            
             //DataTable EstudiantesAsigantura = N_Matricula.BuscarEstudiantesAsignatura(CodSemestre, CodAsignatura.Substring(6), CodAsignatura);
 
             //Form Fondo = new Form();
@@ -202,7 +248,7 @@ namespace CapaPresentaciones
             {
                 if(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString()=="SI")
 				{
-                    DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, CodAsignatura, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
+                    DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, CodAsignatura, DateTime.Parse(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString(), dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
 
                     Form Fondo = new Form();
                     /*using (P_TablaAsistenciaEstudiantes EditarRegistro = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, AsistenciaEstudiantesAsignatura))

@@ -268,6 +268,7 @@ namespace CapaPresentaciones
 			this.dgvDatos.TabIndex = 35;
 			this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
 			this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
+			this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
 			this.dgvDatos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellEnter);
 			// 
 			// ckbAsistencia
@@ -280,13 +281,13 @@ namespace CapaPresentaciones
 			// 
 			// cbxObservaciones
 			// 
+			this.cbxObservaciones.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
 			this.cbxObservaciones.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.cbxObservaciones.HeaderText = "Observaciones";
 			this.cbxObservaciones.Items.AddRange(new object[] {
+            "",
             "PERMISO",
-            "FALTO SIN JUSTIFICAR",
-            "SUSPENSIÓN",
-            "FERIADO"});
+            "FALTO SIN JUSTIFICAR"});
 			this.cbxObservaciones.Name = "cbxObservaciones";
 			// 
 			// btnGuardar
@@ -944,9 +945,9 @@ namespace CapaPresentaciones
 		private Bunifu.UI.WinForms.BunifuLabel lblMarcarTodos;
 		private Bunifu.UI.WinForms.BunifuCheckBox ckbMarcarTodos;
 		private Bunifu.UI.WinForms.BunifuImageButton pbLogo;
-		private System.Windows.Forms.DataGridViewImageColumn ckbAsistencia;
-		private System.Windows.Forms.DataGridViewComboBoxColumn cbxObservaciones;
 		public Bunifu.UI.WinForms.BunifuTextBox txtJD;
 		public Bunifu.UI.WinForms.BunifuTextBox txtSemestreA;
+		private System.Windows.Forms.DataGridViewImageColumn ckbAsistencia;
+		private System.Windows.Forms.DataGridViewComboBoxColumn cbxObservaciones;
 	}
 }

@@ -94,6 +94,10 @@ namespace CapaPresentaciones
             if (Acceso == "Administrador")
             {
                 pnBotonesMenu.Controls.SetChildIndex(btnPlantillas, 0);
+                btnPrincipal.Visible = false;
+                SeparadorMenu2.Visible = false;
+                btnMarcarAsistencia.Visible = false;
+                pbMarcarAsistencia.Visible = false;
                 pnContenedorDocente.Visible = false;
                 pnContenedorDirector.Visible = false;
                 pnContenedorJefe.Visible = false;
@@ -101,17 +105,29 @@ namespace CapaPresentaciones
             }
             else if (Acceso == "Jefe de Departamento")
             {
+                btnPrincipal.Visible = true;
+                SeparadorMenu2.Visible = true;
+                btnMarcarAsistencia.Visible = true;
+                pbMarcarAsistencia.Visible = true;
                 btnPlantillas.Visible = false;
                 pnContenedorDirector.Visible = false;
             }
             else if (Acceso == "Director de Escuela")
             {
+                btnPrincipal.Visible = true;
+                SeparadorMenu2.Visible = true;
+                btnMarcarAsistencia.Visible = true;
+                pbMarcarAsistencia.Visible = true;
                 btnPlantillas.Visible = false;
                 pnBotonesMenu.Controls.SetChildIndex(pnContenedorDirector, 2);
                 pnContenedorJefe.Visible = false;
             }
             else if (Acceso == "Docente")
             {
+                btnPrincipal.Visible = true;
+                SeparadorMenu2.Visible = true;
+                btnMarcarAsistencia.Visible = true;
+                pbMarcarAsistencia.Visible = true;
                 btnPlantillas.Visible = false;
                 pnContenedorDocente.Controls.SetChildIndex(btnContenedorDocente, 5);
                 btnContenedorDocente.Visible = false;
@@ -324,7 +340,7 @@ namespace CapaPresentaciones
         {
             CargarDatosUsuario();
             GestionarAcceso();
-            //AbrirFormularios<P_PrincipalDocente>();
+            AbrirFormularios<P_PrincipalDocente>();
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -499,7 +515,8 @@ namespace CapaPresentaciones
 
         private void btnPlantillas_Click(object sender, EventArgs e)
         {
-
+            ActualizarColor();
+            AbrirFormularios<P_Subir_Plantillas>();
         }
 
         // Registrar asistencia diaria
@@ -541,9 +558,7 @@ namespace CapaPresentaciones
                         ObjEntidadDocente.Fecha = Fecha;
                         ObjEntidadDocente.Hora = Hora;
                         ObjEntidadDocente.CodDocente = Usuario;
-                        ObjEntidadDocente.Asistio = "SI";
-                        ObjEntidadDocente.Observacion = "";
-                        ObjNegocioDocente.RegistrarAsistenciaDiariaDocente(ObjEntidadDocente);
+                        ObjNegocioDocente.ActualizarAsistenciaDiariaDocente(ObjEntidadDocente, "SI", "");
 
                         A_Dialogo.DialogoInformacion("Se registro su asistencia.");
                     }

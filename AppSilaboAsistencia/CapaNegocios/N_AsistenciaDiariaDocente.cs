@@ -33,9 +33,9 @@ namespace CapaNegocios
             ObjAsistenciaDiariaDocente.RegistrarAsistenciaDiariaDocente(AsistenciaDiariaDocente);
         }
 
-        public void ActualizarAsistenciaDiariaDocente(E_AsistenciaDiariaDocente AsistenciaDiariaDocente, string NObservacion)
+        public void ActualizarAsistenciaDiariaDocente(E_AsistenciaDiariaDocente AsistenciaDiariaDocente, string NAsistio, string NObservacion)
         {
-            ObjAsistenciaDiariaDocente.ActualizarAsistenciaDiariaDocente(AsistenciaDiariaDocente, NObservacion);
+            ObjAsistenciaDiariaDocente.ActualizarAsistenciaDiariaDocente(AsistenciaDiariaDocente, NAsistio, NObservacion);
         }
 
         public void EliminarAsistenciaDiariaDocente(E_AsistenciaDiariaDocente AsistenciaDiariaDocente)
