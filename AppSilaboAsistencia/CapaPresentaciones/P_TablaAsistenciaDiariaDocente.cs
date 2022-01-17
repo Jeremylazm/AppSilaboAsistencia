@@ -112,11 +112,10 @@ namespace CapaPresentaciones
                         ObjEntidadDoc.CodDocente = dr.Cells[3].Value.ToString();
 
                         string ObsActualizada = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
-                            
+                        string Asistio = dr.Cells[0].Value.ToString();
 
-                        ObjNegocioDoc.ActualizarAsistenciaDiariaDocente(ObjEntidadDoc,ObsActualizada);
-                                
-
+                    ObjNegocioDoc.ActualizarAsistenciaDiariaDocente(ObjEntidadDoc, Asistio, ObsActualizada);
+          
                     }
                     A_Dialogo.DialogoConfirmacion("Se ha Editado correctamente la asistencia" + Environment.NewLine + " del los Docentes");
                         
