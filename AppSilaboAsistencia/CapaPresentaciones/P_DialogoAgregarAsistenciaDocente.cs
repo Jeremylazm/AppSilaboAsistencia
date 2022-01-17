@@ -77,79 +77,62 @@ namespace CapaPresentaciones
 
             // Marcar asistencia diaria de los docentes por asignatura:
             DataTable AsignaturasAfectadas = N_HorarioAsignatura.BuscarAsignaturasDiaHora(CodSemestre, CodDepartamentoA, Dia, HoraInicio, HoraFin);
+            
             foreach (DataRow asignatura in AsignaturasAfectadas.Rows)
             {
-                string CodAsignatura = asignatura[0].ToString();
-                string CodDocente = asignatura[1].ToString();
+                string pCodAsignatura = asignatura[0].ToString();
+                string pCodDocente = asignatura[1].ToString();
                 ObjEntidadAsistDocentePorAsignatura.CodSemestre = CodSemestre;
                 ObjEntidadAsistDocentePorAsignatura.CodDepartamentoA = CodDepartamentoA;
-                ObjEntidadAsistDocentePorAsignatura.CodAsignatura = CodAsignatura;
+                ObjEntidadAsistDocentePorAsignatura.CodAsignatura = pCodAsignatura;
                 ObjEntidadAsistDocentePorAsignatura.Fecha = Fecha;
                 ObjEntidadAsistDocentePorAsignatura.Hora = Hora;
-                ObjEntidadAsistDocentePorAsignatura.CodDocente = CodDocente;
+                ObjEntidadAsistDocentePorAsignatura.CodDocente = pCodDocente;
                 ObjEntidadAsistDocentePorAsignatura.Asistio = Asistio;
                 ObjEntidadAsistDocentePorAsignatura.TipoSesion = "";
                 ObjEntidadAsistDocentePorAsignatura.NombreTema = "";
                 ObjEntidadAsistDocentePorAsignatura.Observacion = Observacion;
                 ObjNegocioiAsisDocentePorAsignatura.RegistrarAsistenciaDocentePorAsignatura(ObjEntidadAsistDocentePorAsignatura);
-
+                
+                //A_Dialogo.DialogoInformacion("se registró docente"+pCodDocente+"correctamente "+(n).ToString());
                 // Marcar asistencia de los estudiantes:
-                DataTable EscuelaP = N_Catalogo.VerEscuelaAsignatura(CodSemestre, CodAsignatura);
-                DataTable Matriculados = N_Matricula.BuscarEstudiantesAsignatura(CodSemestre, EscuelaP.Rows[0][0].ToString(), CodAsignatura);
-                foreach (DataRow estudiante in Matriculados.Rows)
-                {
-                    string CodEstudiante = estudiante[1].ToString();
-                    ObjEntidadAsistEstudiante.CodSemestre = CodSemestre;
-                    ObjEntidadAsistEstudiante.CodEscuelaP = EscuelaP.Rows[0][0].ToString();
-                    ObjEntidadAsistEstudiante.CodAsignatura = CodAsignatura;
-                    ObjEntidadAsistEstudiante.Fecha = Fecha;
-                    ObjEntidadAsistEstudiante.Hora = Hora;
-                    ObjEntidadAsistEstudiante.CodEstudiante = CodEstudiante;
-                    ObjEntidadAsistEstudiante.Asistio = Asistio;
-                    ObjEntidadAsistEstudiante.Observacion = Observacion;
-                    ObjNegocioAsistEstudiante.RegistrarAsistenciaEstudiante(ObjEntidadAsistEstudiante);
+                DataTable EscuelaP = N_Catalogo.VerEscuelaAsignatura(CodSemestre, pCodAsignatura);
+                DataTable Matriculados = N_Matricula.BuscarEstudiantesAsignatura(CodSemestre, EscuelaP.Rows[0][0].ToString(), pCodAsignatura);
+                int i = 0;
+                if(Matriculados.Rows.Count!=0)
+				{
+                    foreach (DataRow estudiante in Matriculados.Rows)
+                    {
+
+                        string pCodEstudiante = estudiante[1].ToString();
+                        ObjEntidadAsistEstudiante.CodSemestre = CodSemestre;
+                        ObjEntidadAsistEstudiante.CodEscuelaP = EscuelaP.Rows[0][0].ToString();
+                        ObjEntidadAsistEstudiante.CodAsignatura = pCodAsignatura;
+                        ObjEntidadAsistEstudiante.Fecha = Fecha;
+                        ObjEntidadAsistEstudiante.Hora = Hora;
+                        ObjEntidadAsistEstudiante.CodEstudiante = pCodEstudiante;
+                        ObjEntidadAsistEstudiante.Asistio = Asistio;
+                        ObjEntidadAsistEstudiante.Observacion = Observacion;
+                        ObjNegocioAsistEstudiante.RegistrarAsistenciaEstudiante(ObjEntidadAsistEstudiante);
+                        
+                        //A_Dialogo.DialogoInformacion("se registró estudiante" + pCodEstudiante + "correctamente " + (i).ToString());
+                    }
                 }
+                else
+				{
+                    A_Dialogo.DialogoInformacion("Actualizar. No hay estudiantes matriculados para la sigantura "+pCodAsignatura);
+                }
+                
             }
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            /*//agregar una fecha actual
-            DataTable DocentesDA = N_Docente.MostrarDocentesDepartamento(CodDepartamentoA);
-            try
-            {
-                foreach (DataGridViewRow dr in dgvDatos.Rows)
-                {
-                    if (dr.Cells[2].Value.ToString() != "00000")
-                    {
-                        ObjEntidadDoc.CodSemestre = CodSemestre;
-                        ObjEntidadDoc.CodDepartamentoA = "IF";
-                        ObjEntidadDoc.Fecha = txtFecha.Text.ToString();
-                        ObjEntidadDoc.Hora = hora;
-                        ObjEntidadDoc.CodDocente = dr.Cells[2].Value.ToString();
-                        ObjEntidadDoc.Asistio = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
-                        ObjEntidadDoc.Observacion = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
-
-                        ObjNegocioDoc.RegistrarAsistenciaDiariaDocente(ObjEntidadDoc);
-                    }
-
-                }
-                A_Dialogo.DialogoConfirmacion("Se ha registrado correctamente la asistencia" + Environment.NewLine + " del los Docentes");
-                Program.Evento = 0;
-                Close();
-
-
-            }
-            catch (Exception)
-            {
-                A_Dialogo.DialogoError("Error al insertar el registro...");
-            }*/
-            //recuperar el valor de motivo
             string Fecha = dpFecha.Value.ToString("dd/MM/yyyy");
             string Dia = dpFecha.Value.ToString("dddd").Substring(0, 2).ToUpper();
-            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea registrar que "+Fecha+" se declare como "+cxtMotivo.SelectedItem.ToString()) == DialogResult.Yes)
+            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea registrar que "+Fecha+ Dia+ " se declare como "+cxtMotivo.SelectedItem.ToString()) == DialogResult.Yes)
 			{
                 AsistenciaGeneral(Fecha,Dia,"00","23","NO",cxtMotivo.SelectedItem.ToString());
-                A_Dialogo.DialogoConfirmacion("Se ha Editado correctamente la asistencia" + Environment.NewLine + " del los Docentes");
+                A_Dialogo.DialogoConfirmacion("Se ha Editadopipi correctamente la asistencia" + Environment.NewLine + " del los Docentes");
 
                 Close();
             }

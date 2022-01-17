@@ -442,18 +442,5 @@ namespace CapaPresentaciones
             Close();
         }
 
-		private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-		{
-            if(Program.Evento == 0)
-			{
-   
-                InicializarValores();
-            }
-            else
-			{
-
-                InicializarValoresEditar();
-            }
-		}
 	}
 }
