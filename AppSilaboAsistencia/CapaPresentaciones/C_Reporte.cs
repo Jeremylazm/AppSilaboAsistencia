@@ -1063,6 +1063,7 @@ namespace CapaPresentaciones
                 GraficoCircular.TargetCanvas = gxGrafico4;
 
                 gxGrafico4.Update();
+                tcGraficos.SetPage(IndiceGrafico1);
                 #endregion ===================== GRÁFICO =====================
             }
         }
@@ -1659,72 +1660,53 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICO =====================
-                //tcGraficos.TabPages.Clear();
-                /*
-                Chart Grafico1 = new Chart
+                // Gráficos
+                btnGrafico2.Visible = false;
+                IndiceGrafico1 = 0;
+
+                // Grafico 1
+                gxGrafico1.XAxesLabel = "Cantidad";
+                gxGrafico1.YAxesLabel = "Fecha";
+
+                List<string> EtiquetasA = new List<string>();
+
+                List<double> Datos1A = new List<double>();
+                List<Color> Colores1A = new List<Color>();
+
+                List<double> Datos2A = new List<double>();
+                List<Color> Colores2A = new List<Color>();
+
+                foreach (DataRow Fila in Resumen.Rows)
                 {
-                    Dock = DockStyle.Fill,
-                    Palette = ChartColorPalette.Excel
-                };
+                    EtiquetasA.Add(Fila["CodAsignatura"].ToString());
+                    Datos1A.Add(double.Parse(Fila["TemasAvanzados"].ToString()));
+                    Colores1A.Add(Color.FromArgb(104, 13, 15));
+                    Datos2A.Add(double.Parse(Fila["TemasFaltantes"].ToString()));
+                    Colores2A.Add(Color.FromArgb(232, 158, 31));
+                }
 
-                TabPage tpGrafico1 = new TabPage("Gráfico 1");
-                tpGrafico1.Controls.Add(Grafico1);
+                gxGrafico1.Labels = EtiquetasA.ToArray();
+                gxGrafico1.Clear();
 
-                Grafico1.Titles.Clear();
-                Grafico1.Series.Clear();
-                Grafico1.ChartAreas.Clear();
+                GraficoBarrasHorizontales1.Label = "Avance Completado";
+                GraficoBarrasHorizontales1.Data = Datos1A;
+                GraficoBarrasHorizontales1.BackgroundColor = Colores1A;
 
-                Grafico1.Titles.Add("Avance de Asignatura");
+                GraficoBarrasHorizontales2.Label = "Avance Faltante";
+                GraficoBarrasHorizontales2.Data = Datos2A;
+                GraficoBarrasHorizontales2.BackgroundColor = Colores2A;
 
-                ChartArea areaGrafico1 = new ChartArea();
+                GraficoBarrasHorizontales1.TargetCanvas = gxGrafico1;
+                GraficoBarrasHorizontales2.TargetCanvas = gxGrafico1;
 
-                // Propiedades de los ejes
-                areaGrafico1.AxisX.Interval = 1;
-                areaGrafico1.AxisX.Title = "Cód. Estudiante";
-                areaGrafico1.AxisX.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
-                areaGrafico1.AxisX.LabelStyle.Font = new Font("Montserrat Alternates", 14f);
-                areaGrafico1.AxisY.Title = "Cantidad";
-                areaGrafico1.AxisY.TitleFont = new Font("Montserrat Alternates", 12f, FontStyle.Bold);
-                areaGrafico1.AxisY.LabelStyle.Font = new Font("Montserrat Alternates", 11f);
-                areaGrafico1.AxisX.MajorGrid.LineColor = Color.Red;
-                areaGrafico1.AxisX.MajorGrid.Enabled = false;
-                //areaGrafico2.AxisY.MajorGrid.Enabled = false;
-
-                Grafico1.ChartAreas.Add(areaGrafico1);
-
-                Series serie1 = new Series("TotalAsistencias")
-                {
-                    ChartType = SeriesChartType.StackedBar,
-                    XValueMember = "CodEstudiante",
-                    YValueMembers = "TotalAsistencias",
-                    IsValueShownAsLabel = true,
-                    MarkerSize = 14,
-                    Font = new Font("Montserrat Alternates", 10f)
-                };
-
-                Series serie2 = new Series("TotalFaltas")
-                {
-                    ChartType = SeriesChartType.StackedBar,
-                    XValueMember = "CodEstudiante",
-                    YValueMembers = "TotalFaltas",
-                    MarkerSize = 14,
-                    Font = new Font("Montserrat Alternates", 11f)
-                };
-
-                Grafico1.Series.Add(serie1);
-                Grafico1.Series.Add(serie2);
-
-                Grafico1.DataSource = dgvResultados.DataSource;
-
-                tcGraficos.TabPages.Add(tpGrafico1);
-                */
+                gxGrafico1.Update();
+                tcGraficos.SetPage(IndiceGrafico1);
                 #endregion ===================== GRÁFICO =====================
             }
         }
 
         private void dgvResultados_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine(dgvResultados.Columns[e.ColumnIndex].GetType().ToString());
             if (Equals("System.Windows.Forms.DataGridViewImageColumn", dgvResultados.Columns[e.ColumnIndex].GetType().ToString()))
             {
                 dgvResultados.Cursor = Cursors.Hand;

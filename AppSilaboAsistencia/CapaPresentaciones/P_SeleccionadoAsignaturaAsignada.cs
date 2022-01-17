@@ -17,7 +17,7 @@ namespace CapaPresentaciones
         readonly N_Catalogo ObjCatalogo;
         private readonly string CodSemestre;
         private readonly string CodDocente = E_InicioSesion.Usuario;
-        private readonly string CodEscuelaP = "IF";
+        private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
         private readonly string CodAsignatura;
 
         private readonly string AccesoReporte = "";
@@ -56,13 +56,13 @@ namespace CapaPresentaciones
 
         private void MostrarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodEscuelaP, CodDocente);
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodDepartamentoA, CodDocente);
             AccionesTabla();
         }
 
         private void MostrarTodasAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.MostrarCatalogo(CodSemestre, CodEscuelaP);
+            dgvDatos.DataSource = N_Catalogo.MostrarCatalogo(CodSemestre, CodDepartamentoA);
 
             dgvDatos.Columns[3].Visible = false;
             dgvDatos.Columns[6].Visible = false;
@@ -76,7 +76,31 @@ namespace CapaPresentaciones
 
         public void BuscarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodSemestre, CodEscuelaP, CodDocente, txtBuscar.Text);
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodSemestre, CodDepartamentoA, CodDocente, txtBuscar.Text);
+
+            if (AccesoReporte == "Docente")
+            {
+                dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodSemestre, CodDepartamentoA, CodDocente, txtBuscar.Text);
+            }
+            else if (AccesoReporte == "Director de Escuela")
+            {
+                if (CriterioSeleccion == "Por Fechas")
+                {
+                    // MostrarTodasAsignaturas();
+                    dgvDatos.DataSource = N_Catalogo.BuscarCatálogo(CodSemestre, CodDepartamentoA, txtBuscar.Text);
+                }
+                else if (CriterioSeleccion == "Por Estudiantes")
+                {
+                    // MostrarTodasAsignaturas();
+                    dgvDatos.DataSource = N_Catalogo.BuscarCatálogo(CodSemestre, CodDepartamentoA, txtBuscar.Text);
+                }
+
+                else if (CriterioSeleccion == "Por Asignaturas")
+                {
+                    //MostrarEstudiantes();
+                    //dgvDatos.DataSource = N_Matricula.Bus
+                }
+            }
             dgvDatos.ClearSelection();
         }
 

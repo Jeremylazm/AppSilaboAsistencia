@@ -1692,7 +1692,7 @@ END;
 GO
 
 -- Procedimiento para mostrar el avance de los temas en todas las asignaturas de un docente.
-ALTER PROCEDURE spuAvanceAsignaturasDocente @CodSemestre VARCHAR(7),
+CREATE PROCEDURE spuAvanceAsignaturasDocente @CodSemestre VARCHAR(7),
 											 @CodDocente VARCHAR(5)
 AS
 BEGIN
