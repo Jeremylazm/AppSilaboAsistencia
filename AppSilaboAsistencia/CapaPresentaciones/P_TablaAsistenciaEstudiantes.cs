@@ -13,7 +13,7 @@ using System.IO;
 using SpreadsheetLight;
 using ClosedXML.Excel;
 using Ayudas;
-
+using System.Globalization;
 namespace CapaPresentaciones
 {
     public partial class P_TablaAsistenciaEstudiantes : Form
@@ -30,13 +30,13 @@ namespace CapaPresentaciones
         private DataTable PlanSesion;
         public DataTable dgvTabla;
         
-        public string LmFechaInf;
+        public string LimtFechaInf;
         //private readonly string CodDepartamento = E_DepartamentoAcademico.CodDepartamentoA;
         public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente, DataTable pdgv)
         {
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
-            LmFechaInf = Semestre.Rows[0][1].ToString();
+            LimtFechaInf = Semestre.Rows[0][1].ToString();
             ObjNegocio = new N_Catalogo();
             CodAsignatura = pCodAsignatura;
             CodDocente = pCodDocente;
