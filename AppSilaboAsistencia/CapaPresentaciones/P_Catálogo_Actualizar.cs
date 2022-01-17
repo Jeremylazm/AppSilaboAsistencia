@@ -23,6 +23,8 @@ namespace CapaPresentaciones
         readonly N_Catalogo ObjNegocioCE;
         readonly E_HorarioAsignatura ObjEntidadHAE;
         readonly N_HorarioAsignatura ObjNegocioHAE;
+        private readonly string CodSemestre;
+        private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
         int HoraTeoríaA = 0;
         int HoraPrácticaA = 0;
         int HTD1, HTD2 = 0;
@@ -43,6 +45,8 @@ namespace CapaPresentaciones
             ObjNegocioCE = new N_Catalogo();
             ObjEntidadHAE = new E_HorarioAsignatura();
             ObjNegocioHAE = new N_HorarioAsignatura();
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
             InitializeComponent();
             Control[] Controles = { panel1, panel2, label1 };
             Docker.SubscribeControlsToDragEvents(Controles);
@@ -53,12 +57,12 @@ namespace CapaPresentaciones
 
         private void LlenarDatosDocente()
         {
-            Seleccionar_Docente_Cod_Nom.DataSource = N_Docente.MostrarTodosDocentesDepartamento("IF");
+            Seleccionar_Docente_Cod_Nom.DataSource = N_Docente.MostrarTodosDocentesDepartamento(CodDepartamentoA);
 
             Seleccionar_Docente_Cod_Nom.ValueMember = "CodDocente";
             Seleccionar_Docente_Cod_Nom.DisplayMember = "NombreCompleto";
 
-            Seleccionar_Docente_Cod_Nom2.DataSource = N_Docente.MostrarTodosDocentesDepartamento("IF");
+            Seleccionar_Docente_Cod_Nom2.DataSource = N_Docente.MostrarTodosDocentesDepartamento(CodDepartamentoA);
 
             Seleccionar_Docente_Cod_Nom2.ValueMember = "CodDocente";
             Seleccionar_Docente_Cod_Nom2.DisplayMember = "NombreCompleto";
@@ -66,7 +70,7 @@ namespace CapaPresentaciones
 
         private void LlenarDatosAsignatura()
         {
-            Seleccionar_Asignatura_Cod_Nom.DataSource = N_Asignatura.MostrarAsignaturas("IF");
+            Seleccionar_Asignatura_Cod_Nom.DataSource = N_Asignatura.MostrarAsignaturas(CodDepartamentoA);
 
             Seleccionar_Asignatura_Cod_Nom.ValueMember = "CodAsignatura";
             Seleccionar_Asignatura_Cod_Nom.DisplayMember = "NombreAsignatura";
@@ -96,13 +100,13 @@ namespace CapaPresentaciones
         {
             int HT1 = 0;
             int HT2 = 0;
-            DataTable T1 = N_HorarioAsignatura.HorasDocenteHorarioAsignatura(CódigoDocente1, Seleccionar_Semestre.Text);
+            DataTable T1 = N_HorarioAsignatura.HorasDocenteHorarioAsignatura(CódigoDocente1, CodSemestre);
             for (int i = 0; i < T1.Rows.Count; i++)
             {
                 HT1 = HT1 + Convert.ToInt32(T1.Rows[i]["HorasTeoria"].ToString());
                 HT1 = HT1 + Convert.ToInt32(T1.Rows[i]["HorasPractica"].ToString());
             }
-            DataTable T2 = N_HorarioAsignatura.HorasDocenteHorarioAsignatura(CódigoDocente2, Seleccionar_Semestre.Text);
+            DataTable T2 = N_HorarioAsignatura.HorasDocenteHorarioAsignatura(CódigoDocente2, CodSemestre);
             for (int i = 0; i < T2.Rows.Count; i++)
             {
                 HT2 = HT2 + Convert.ToInt32(T2.Rows[i]["HorasTeoria"].ToString());
@@ -120,7 +124,7 @@ namespace CapaPresentaciones
             string Días;
             int HoraI, HoraF;
             bool Pasa = true;
-            DataTable T = N_HorarioAsignatura.HorarioSemanalDocente(Seleccionar_Semestre.Text, CodDocente);
+            DataTable T = N_HorarioAsignatura.HorarioSemanalDocente(CodSemestre, CodDocente);
             if (T.Rows.Count >= 1)
             {
                 for (int i = 0; i < T.Rows.Count; i++)
@@ -174,7 +178,7 @@ namespace CapaPresentaciones
             else
                 Grupo = "C";
 
-            CódigoS = Seleccionar_Semestre.Text;
+            CódigoS = CodSemestre;
             Aula = Seleccionar_Aula.Text;
             Modalidad = Seleccionar_Modalidad.Text;
 
@@ -2422,10 +2426,10 @@ namespace CapaPresentaciones
 
         public void DescontarHoras()
         {
-            if (CódigoD1A == CódigoDocente1 && CódigoSemestreA == Seleccionar_Semestre.Text)
+            if (CódigoD1A == CódigoDocente1 && CódigoSemestreA == CodSemestre)
             {
                 HD1 = 0;
-                DataTable T1 = N_HorarioAsignatura.HorasDocenteAsignaturaHorarioAsignatura(CódigoDocente1, Seleccionar_Semestre.Text, CódigoAsignaturaA, GrupoA);
+                DataTable T1 = N_HorarioAsignatura.HorasDocenteAsignaturaHorarioAsignatura(CódigoDocente1, CodSemestre, CódigoAsignaturaA, GrupoA);
                 for (int i = 0; i < T1.Rows.Count; i++)
                 {
                     HD1 = HD1 + Convert.ToInt32(T1.Rows[i]["HorasTeoria"].ToString());
@@ -2434,10 +2438,10 @@ namespace CapaPresentaciones
                 HTD1 = HTD1 - HD1;
                 Mostrar_Etiquetas();
             }
-            if (CódigoD2A == CódigoDocente2 && CódigoSemestreA == Seleccionar_Semestre.Text)
+            if (CódigoD2A == CódigoDocente2 && CódigoSemestreA == CodSemestre)
             {
                 HD2 = 0;
-                DataTable T1 = N_HorarioAsignatura.HorasDocenteAsignaturaHorarioAsignatura(CódigoDocente2, Seleccionar_Semestre.Text, CódigoAsignaturaA, GrupoA);
+                DataTable T1 = N_HorarioAsignatura.HorasDocenteAsignaturaHorarioAsignatura(CódigoDocente2, CodSemestre, CódigoAsignaturaA, GrupoA);
                 for (int i = 0; i < T1.Rows.Count; i++)
                 {
                     HD2 = HD2 + Convert.ToInt32(T1.Rows[i]["HorasTeoria"].ToString());
@@ -3583,8 +3587,8 @@ namespace CapaPresentaciones
         {
             Limpiar_Colores();
 
-            DataTable T1 = N_HorarioAsignatura.HorarioSemanalDocente(Seleccionar_Semestre.Text, CódigoDocente1);
-            DataTable T2 = N_HorarioAsignatura.HorarioSemanalDocente(Seleccionar_Semestre.Text, CódigoDocente2);
+            DataTable T1 = N_HorarioAsignatura.HorarioSemanalDocente(CodSemestre, CódigoDocente1);
+            DataTable T2 = N_HorarioAsignatura.HorarioSemanalDocente(CodSemestre, CódigoDocente2);
 
             if (T1.Rows.Count >= 1 || T2.Rows.Count >= 1)
             {
@@ -3632,8 +3636,8 @@ namespace CapaPresentaciones
             else
                 Grupo = "C";
 
-            DataTable T1 = N_HorarioAsignatura.HorarioSemanalDocente(Seleccionar_Semestre.Text, CódigoDocente1);
-            DataTable T2 = N_HorarioAsignatura.HorarioSemanalDocente(Seleccionar_Semestre.Text, CódigoDocente2);
+            DataTable T1 = N_HorarioAsignatura.HorarioSemanalDocente(CodSemestre, CódigoDocente1);
+            DataTable T2 = N_HorarioAsignatura.HorarioSemanalDocente(CodSemestre, CódigoDocente2);
 
             string CodA;
             string grupo;
@@ -3642,7 +3646,7 @@ namespace CapaPresentaciones
             string HI;
             string HF;
 
-            if (CódigoD1A == CódigoDocente1 && CódigoSemestreA == Seleccionar_Semestre.Text && CódigoAsignaturaA == CódigoAsignatura && Grupo == GrupoA)
+            if (CódigoD1A == CódigoDocente1 && CódigoSemestreA == CodSemestre && CódigoAsignaturaA == CódigoAsignatura && Grupo == GrupoA)
             {
                 if (CódigoDocente1 != "00000")
                 {
@@ -3659,7 +3663,7 @@ namespace CapaPresentaciones
                     }
                 }
             }
-            if (CódigoD2A == CódigoDocente2 && CódigoSemestreA == Seleccionar_Semestre.Text && CódigoAsignaturaA == CódigoAsignatura && Grupo == GrupoA)
+            if (CódigoD2A == CódigoDocente2 && CódigoSemestreA == CodSemestre && CódigoAsignaturaA == CódigoAsignatura && Grupo == GrupoA)
             {
                 if (CódigoDocente2 != "00000")
                 {
