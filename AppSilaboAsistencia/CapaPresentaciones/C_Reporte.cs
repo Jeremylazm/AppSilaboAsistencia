@@ -748,7 +748,13 @@ namespace CapaPresentaciones
             dgvResultados.Columns.Clear();
 
             dgvResultados.DataSource = Datos;
-            //dgvResultados.Columns[0].DisplayIndex = 7;
+
+            dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
 
             if (dgvResultados.Rows.Count <= 10)
             {
@@ -813,29 +819,39 @@ namespace CapaPresentaciones
             double Total = AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar;
 
             // Asistieron puntual
-            cuadroResumen.Rows.Add("Asistencia Puntual", AsistieronPuntual.ToString() + " (" + String.Format("{0:0.00}", AsistieronPuntual / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Asistencia Puntual", AsistieronPuntual.ToString() + " (" + String.Format("{0:0.00}", AsistieronPuntual / Total * 100) + " %)");
 
             // Asistieron tarde
-            cuadroResumen.Rows.Add("Asistencia Tarde", AsistieronTarde.ToString() + " (" + String.Format("{0:0.00}", AsistieronTarde / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Asistencia Tarde", AsistieronTarde.ToString() + " (" + String.Format("{0:0.00}", AsistieronTarde / Total * 100) + " %)");
 
             // Faltaron (Justificado)
-            cuadroResumen.Rows.Add("Falta (Justificada)", FaltaronJustificado.ToString() + " (" + String.Format("{0:0.00}", FaltaronJustificado / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Falta (Justificada)", FaltaronJustificado.ToString() + " (" + String.Format("{0:0.00}", FaltaronJustificado / Total * 100) + " %)");
 
             // Faltaron (Sin justificar)
-            cuadroResumen.Rows.Add("Falta (Sin Justificar)", FaltaronSinJustificar.ToString() + " (" + String.Format("{0:0.00}", FaltaronSinJustificar / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Falta (Sin Justificar)", FaltaronSinJustificar.ToString() + " (" + String.Format("{0:0.00}", FaltaronSinJustificar / Total * 100) + " %)");
 
             cuadroResumen.Rows.Add("", "");
 
             // Asistencias
-            cuadroResumen.Rows.Add("Asistencias", (AsistieronPuntual + AsistieronTarde).ToString() + " (" + String.Format("{0:0.00}", (AsistieronPuntual + AsistieronTarde) / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Asistencias", (AsistieronPuntual + AsistieronTarde).ToString() + " (" + String.Format("{0:0.00}", (AsistieronPuntual + AsistieronTarde) / Total * 100) + " %)");
 
             // Faltas
-            cuadroResumen.Rows.Add("Faltas", (FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + String.Format("{0:0.00}", (FaltaronJustificado + FaltaronSinJustificar) / Total * 100) + "%)");
+            cuadroResumen.Rows.Add("Faltas", (FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + String.Format("{0:0.00}", (FaltaronJustificado + FaltaronSinJustificar) / Total * 100) + " %)");
 
             // Total
-            cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + "100" + "%)");
+            cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + "100" + " %)");
 
             dgvResumen.DataSource = cuadroResumen;
+
+            dgvResumen.Columns[0].Width = 300;
+
+            dgvResumen.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvResumen.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
 
             // Gráficos
             btnGrafico2.Visible = true;
@@ -1097,9 +1113,9 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else Ayudas.A_Dialogo.DialogoError("No existen parametros");
+                else Ayudas.A_Dialogo.DialogoError("No existen parámetros");
             }
-            else Ayudas.A_Dialogo.DialogoError("Error de parametros");
+            else Ayudas.A_Dialogo.DialogoError("Error de parámetros");
             #endregion ===================== DESCRIPCIÓN =====================
 
             // Validar las Fechas dadas
@@ -1233,15 +1249,30 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else MessageBox.Show("No existen parametros");
+                else MessageBox.Show("No existen parámetros");
             }
-            else MessageBox.Show("Error de parametros");
+            else MessageBox.Show("Error de parámetros");
 
             if (Datos.Rows.Count == 0) A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
             else
             {
                 dgvResultados.Columns.Clear();
                 dgvResultados.DataSource = Datos;
+
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+
+                dgvResultados.Columns["CodASignatura"].HeaderText = "Código";
+                dgvResultados.Columns["CodAsignatura"].Width = 100;
+                dgvResultados.Columns["NombreAsignatura"].HeaderText = "Asignatura";
+                dgvResultados.Columns["PorcentajeAsistencias"].HeaderText = "Asistencias (%)";
+                dgvResultados.Columns["PorcentajeAsistencias"].Width = 120;
+                dgvResultados.Columns["PorcentajeFaltas"].HeaderText = "Faltas (%)";
+                dgvResultados.Columns["PorcentajeFaltas"].Width = 120;
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
@@ -1319,9 +1350,17 @@ namespace CapaPresentaciones
                 // Desviación Estándar
                 var dvA = Statistics.StandardDeviation(Asistieron);
                 var dvF = Statistics.StandardDeviation(Faltaron);
-                cuadroResumen.Rows.Add("Desv. Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
+                cuadroResumen.Rows.Add("Desviación Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
 
                 dgvResumen.DataSource = cuadroResumen;
+
+                dgvResumen.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                foreach (DataGridViewColumn Columna in dgvResumen.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
 
                 // Gráficos
                 btnGrafico2.Visible = false;
@@ -1386,9 +1425,9 @@ namespace CapaPresentaciones
                         pnSubcampos.Controls.Add(Nuevo);
                     }
                 }
-                else MessageBox.Show("No existen parametros");
+                else MessageBox.Show("No existen párametros");
             }
-            else MessageBox.Show("Error de parametros");
+            else MessageBox.Show("Error de parámetros");
 
             if (Datos.Rows.Count == 0) A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
             else
@@ -1415,6 +1454,21 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[4].Visible = false;
                 dgvResultados.Columns[0].DisplayIndex = 6;
 
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                dgvResultados.Columns["CodAsignatura"].HeaderText = "Cod. Asignatura";
+                dgvResultados.Columns["CodAsignatura"].Width = 100;
+                dgvResultados.Columns["NombreAsignatura"].HeaderText = "Asignatura";
+                dgvResultados.Columns["PorcentajeAsistencias"].HeaderText = "Asistencias (%)";
+                dgvResultados.Columns["PorcentajeAsistencias"].Width = 120;
+                dgvResultados.Columns["PorcentajeFaltas"].HeaderText = "Faltas (%)";
+                dgvResultados.Columns["PorcentajeFaltas"].Width = 120;
+                dgvResultados.Columns[0].Width = 180;
+
+                foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
@@ -1686,7 +1740,7 @@ namespace CapaPresentaciones
 
         private void dgvResultados_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (Equals("System.Windows.Forms.DataGridViewImageColumn", dgvResultados.Columns[e.ColumnIndex].GetType().ToString())) dgvResultados.Cursor = Cursors.Hand;
+            if (Equals("System.Windows.Forms.DataGridViewImageColumn", dgvResultados.Columns[e.ColumnIndex].GetType().ToString()) && e.RowIndex >= 0) dgvResultados.Cursor = Cursors.Hand;
             else dgvResultados.Cursor = Cursors.Default;
         }
 
