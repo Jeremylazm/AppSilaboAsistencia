@@ -40,7 +40,7 @@ namespace CapaPresentaciones
 
             if (Criterio == "Por Fechas") // Reporte 2
             {
-                string Titulo = "Reporte de Asistencia Estudiantes" + Environment.NewLine + ValoresNecesarios[5];
+                string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + ValoresNecesarios[5];
                 string[] Titulos = { "Semestre", "Escuela Profesional", "Cod. Asignatura", "Asignatura", "Cod. Docente", "Docente" };
                 string[] Valores = { CodSemestre, ValoresNecesarios[4], ValoresNecesarios[2], ValoresNecesarios[3], ValoresNecesarios[0], ValoresNecesarios[1] };
 
