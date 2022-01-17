@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
 using Ayudas;
+using System.Globalization;
+
 namespace CapaPresentaciones
 {
     public partial class P_HistorialSesionesAsignatura : Form
@@ -18,7 +20,7 @@ namespace CapaPresentaciones
         private readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodSemestre;
         public string LimtFechaInf;
-        public string LimtFechaSup = DateTime.Now.ToString("dd/MM/yyyy").ToString();
+        public string LimtFechaSup = DateTime.Now.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString();
         public DateTime HoraIniAsignatura;
         public DateTime HoraLimiteR;
         //public string HoraRegistro= DateTime.Now.ToString("HH:mm:ss");
@@ -28,7 +30,7 @@ namespace CapaPresentaciones
             CodAsignatura = pCodAsignatura;
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
-            LimtFechaInf = Semestre.Rows[0][1].ToString();
+            LimtFechaInf = DateTime.Parse(Semestre.Rows[0][1].ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString();
             InitializeComponent();
             MostrarRegistros();
 
@@ -246,7 +248,7 @@ namespace CapaPresentaciones
             {
                 if(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString()=="SI")
 				{
-                    DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, CodAsignatura, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
+                    DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, CodAsignatura, DateTime.Parse(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString(), dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
 
                     Form Fondo = new Form();
                     /*using (P_TablaAsistenciaEstudiantes EditarRegistro = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, AsistenciaEstudiantesAsignatura))
