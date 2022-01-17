@@ -394,16 +394,6 @@ namespace CapaPresentaciones
             Reportes.fnReporte7(Titulo, Titulos, Valores, resultados);
         }
 
-        /*private void fnReporte1234()
-        {
-            radiobtnCriterioFechas.CheckedChanged += radioButtons_CheckedChanged;
-            radiobtnCriterioEstudiantes.CheckedChanged += radioButtons_CheckedChanged;
-
-            // Al inicio, Criterio fechas es checked
-            // -> Reporte 1
-            //fnReporte1();
-        }*/
-
         private void fnReporte1(string CodDocenteReporte)
         {
             // Tipo de reporte: Asistencia estudiantes
