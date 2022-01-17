@@ -352,6 +352,8 @@ namespace CapaPresentaciones
                 GraficoLineas.TargetCanvas = gxGrafico2;
 
                 gxGrafico2.Update();
+
+                tcGraficos.SetPage(IndiceGrafico1);
             }
         }
 
@@ -697,6 +699,8 @@ namespace CapaPresentaciones
                 GraficoBarrasHorizontales2.TargetCanvas = gxGrafico1;
 
                 gxGrafico1.Update();
+
+                tcGraficos.SetPage(IndiceGrafico1);
             }
         }
 
