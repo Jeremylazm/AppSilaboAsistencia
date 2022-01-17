@@ -441,5 +441,6 @@ namespace CapaPresentaciones
             GuardarRegistroDocente();
             Close();
         }
-    }
+
+	}
 }
