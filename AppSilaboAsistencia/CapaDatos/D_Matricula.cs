@@ -26,6 +26,23 @@ namespace CapaDatos
             return Resultado;
         }
 
+        // Método para buscar estudiantes matriculados de una escuela profesional utilizando un filtro
+        public DataTable BuscarEstudiantesMatriculados(string CodSemestre, string CodEscuelaP, string Texto)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuBuscarEstudiantesMatriculados", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
+            Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
+            Comando.Parameters.AddWithValue("@Texto", Texto);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
         // Método para buscar las asignaturas a los que esta matriculado un estudiante.
         public DataTable BuscarAsignaturasEstudiante(string CodSemestre, string CodEscuelaP, string CodEstudiante)
         {
