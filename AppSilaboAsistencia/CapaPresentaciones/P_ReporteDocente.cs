@@ -226,7 +226,7 @@ namespace CapaPresentaciones
             pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
-            string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "DEL SEMESTRE " + CodSemestre;
+            string Titulo = "REPORTE DE AVANCE - " + txtCodigo.Text + Environment.NewLine + "SEMESTRE " + CodSemestre;
             string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
             string[] Valores = { CodSemestre, CodDocente, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
 
@@ -300,7 +300,7 @@ namespace CapaPresentaciones
             pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
-            string Titulo = "REPORTE DE AVANCE GENERAL" + Environment.NewLine + "DEL SEMESTRE " + CodSemestre;
+            string Titulo = "REPORTE DE AVANCE GENERAL" + Environment.NewLine + "SEMESTRE - " + CodSemestre;
             string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Escuela Profesional" };
             string[] Valores = { CodSemestre, CodDocente, nombreDocente, txtEscuelaP.Text };
 
