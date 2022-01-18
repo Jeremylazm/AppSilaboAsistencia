@@ -11,7 +11,7 @@ using CapaEntidades;
 using CapaNegocios;
 using Ayudas;
 using Guna.UI2.WinForms;
-
+using System.Globalization;
 namespace CapaPresentaciones
 {
     public partial class P_HistorialAsistenciasDocentes : Form
@@ -23,7 +23,7 @@ namespace CapaPresentaciones
         private readonly string CodSemestre;
         private readonly string CodDepartamentoA;
         public string LimtFechaInf;
-        public string LimtFechaSup = DateTime.Now.ToString("dd/MM/yyyy").ToString();
+        public string LimtFechaSup = DateTime.Now.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString();
 
         public P_HistorialAsistenciasDocentes()
         {
@@ -33,7 +33,7 @@ namespace CapaPresentaciones
 
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
-            LimtFechaInf = Semestre.Rows[0][1].ToString();
+            LimtFechaInf = DateTime.Parse(Semestre.Rows[0][1].ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
             CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
             InitializeComponent();
             MostrarRegistros();
@@ -52,7 +52,7 @@ namespace CapaPresentaciones
 
         public void MostrarRegistros()
         {
-            dgvDatos.DataSource = N_AsistenciaDiariaDocente.AsistenciaDocentesPorFechas(CodSemestre,LimtFechaInf,LimtFechaSup);
+            dgvDatos.DataSource = N_AsistenciaDiariaDocente.AsistenciaDocentesPorFechas(CodSemestre,LimtFechaInf, DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
             AccionesTabla();
         }
         public void MostrarHorarioRegistroAsistencia()
@@ -73,6 +73,7 @@ namespace CapaPresentaciones
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
         {
             MostrarRegistros();
+            MostrarHorarioRegistroAsistencia();
         }
 
         public string NombreCompletoJD()
@@ -104,7 +105,7 @@ namespace CapaPresentaciones
             //Editar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
-                DataTable RegistroAsistenciaDocentesDA = N_AsistenciaDiariaDocente.AsistenciaDiariaDocentes(CodSemestre, CodDepartamentoA, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString());
+                DataTable RegistroAsistenciaDocentesDA = N_AsistenciaDiariaDocente.AsistenciaDiariaDocentes(CodSemestre, CodDepartamentoA, DateTime.Parse(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 				if (dgvDatos.Rows[e.RowIndex].Cells[4].Value.Equals("FERIADO")|| dgvDatos.Rows[e.RowIndex].Cells[4].Value.Equals("SUSPENSION"))
 				{
                     A_Dialogo.DialogoInformacion("No se pude Editar este tipo de registros");
@@ -139,6 +140,7 @@ namespace CapaPresentaciones
             // Por discutir
             Form Fondo = new Form();
             P_DialogoAgregarAsistenciaDocente AddFechaNoLavorable = new P_DialogoAgregarAsistenciaDocente();
+            AddFechaNoLavorable.FormClosed += new FormClosedEventHandler(ActualizarDatos);
             AddFechaNoLavorable.Owner = Fondo;
             AddFechaNoLavorable.ShowDialog();
             AddFechaNoLavorable.Dispose();
@@ -148,54 +150,94 @@ namespace CapaPresentaciones
             DataTable BusacarHorarioRegistroAsistenciaDiariaDocente = N_HorarioRegistroAsistencia.BuscarHorarioRegistroAsistencia(CodSemestre, CodDepartamentoA);
             if(BusacarHorarioRegistroAsistenciaDiariaDocente.Rows.Count == 0)
 			{
-                //Agregar
-                ObjEntidadHorarioRegistroAsistencia.CodSemestre = CodSemestre;
-                ObjEntidadHorarioRegistroAsistencia.CodDepartamentoA = CodDepartamentoA;
-                ObjEntidadHorarioRegistroAsistencia.HoraInicio =txtInicioHoras.Value.ToString()+":"+txtInicioMinutos.Value.ToString()+":00";
-                ObjEntidadHorarioRegistroAsistencia.HoraFin = txtFinHoras.Value.ToString() + ":" + txtFinMinutos.Value.ToString() + ":59";
+                if(A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea registrar el horario  de Asistencia Docentes?") == DialogResult.Yes)
+				{
+                    //Agregar
+                    ObjEntidadHorarioRegistroAsistencia.CodSemestre = CodSemestre;
+                    ObjEntidadHorarioRegistroAsistencia.CodDepartamentoA = CodDepartamentoA;
+                    ObjEntidadHorarioRegistroAsistencia.HoraInicio = txtInicioHoras.Value.ToString() + ":" + txtInicioMinutos.Value.ToString() + ":00";
+                    ObjEntidadHorarioRegistroAsistencia.HoraFin = txtFinHoras.Value.ToString() + ":" + txtFinMinutos.Value.ToString() + ":59";
 
-                ObjNegocioHorarioRegistroAsistencia.InsertarHorarioRegistroAsistencia(ObjEntidadHorarioRegistroAsistencia);
-                A_Dialogo.DialogoConfirmacion("Se Guardó Exitosamente");
+                    ObjNegocioHorarioRegistroAsistencia.InsertarHorarioRegistroAsistencia(ObjEntidadHorarioRegistroAsistencia);
+                    A_Dialogo.DialogoConfirmacion("Se Guardó Exitosamente");
+                }
+               
             }
             else
 			{
-                //Editar
-                ObjEntidadHorarioRegistroAsistencia.CodSemestre = CodSemestre;
-                ObjEntidadHorarioRegistroAsistencia.CodDepartamentoA = CodDepartamentoA;
-                string NHoraInicio = txtInicioHoras.Value.ToString() + ":" + txtInicioMinutos.Value.ToString() + ":00"; ;
-                string NHoraFinal = txtFinHoras.Value.ToString() + ":" + txtFinMinutos.Value.ToString() + ":59";
+                if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea Editar el horario  de Asistencia Docentes?") == DialogResult.Yes)
+                {
+                    //Editar
+                    ObjEntidadHorarioRegistroAsistencia.CodSemestre = CodSemestre;
+                    ObjEntidadHorarioRegistroAsistencia.CodDepartamentoA = CodDepartamentoA;
+                    string NHoraInicio = txtInicioHoras.Value.ToString() + ":" + txtInicioMinutos.Value.ToString() + ":00"; ;
+                    string NHoraFinal = txtFinHoras.Value.ToString() + ":" + txtFinMinutos.Value.ToString() + ":59";
 
-                ObjNegocioHorarioRegistroAsistencia.ActualizarHorarioRegistroAsistencia(ObjEntidadHorarioRegistroAsistencia,NHoraInicio,NHoraFinal);
-                A_Dialogo.DialogoConfirmacion("Se Cambió Exitosamente");
+                    ObjNegocioHorarioRegistroAsistencia.ActualizarHorarioRegistroAsistencia(ObjEntidadHorarioRegistroAsistencia, NHoraInicio, NHoraFinal);
+                    A_Dialogo.DialogoConfirmacion("Se Cambió Exitosamente");
+                }
+                
             }
 		}
 		private void btnCambiar_Click(object sender, EventArgs e)
         {
-            if(txtInicioHoras.Value<=txtFinHoras.Value)
+			if (txtFinHoras.Value == 0)
 			{
-                if(txtInicioHoras.Value == txtFinHoras.Value)
-				{
-                    if(txtInicioMinutos.Value<txtFinMinutos.Value)
-					{
+                
+                if (txtInicioHoras.Value <= txtFinHoras.Value+24)
+                {
+                    if (txtInicioHoras.Value == txtFinHoras.Value)
+                    {
+                        if (txtInicioMinutos.Value < txtFinMinutos.Value)
+                        {
+                            EstablecerHorarioRegistroAsistenciaDiariaDocente();
+
+                        }
+                        else
+                        {
+                            A_Dialogo.DialogoError("La Hora de Inicio debe ser menor a la Hora Final");
+                        }
+                    }
+                    else
+                    {
                         EstablecerHorarioRegistroAsistenciaDiariaDocente();
 
                     }
-                    else
-					{
-                        A_Dialogo.DialogoError("La Hora de Inicio debe ser menor a la Hora Final");
-					}
-				}
-				else
-				{
-                    EstablecerHorarioRegistroAsistenciaDiariaDocente();
-
                 }
-			}
-            else
-			{
-                A_Dialogo.DialogoError("La Hora de Inicio debe ser menor a la Hora final");
+                else
+                {
+                    A_Dialogo.DialogoError("La Hora de Inicio debe ser menor a la Hora final");
+                }
             }
-            
+			else
+			{
+                if (txtInicioHoras.Value <= txtFinHoras.Value)
+                {
+                    if (txtInicioHoras.Value == txtFinHoras.Value)
+                    {
+                        if (txtInicioMinutos.Value < txtFinMinutos.Value)
+                        {
+                            EstablecerHorarioRegistroAsistenciaDiariaDocente();
+
+                        }
+                        else
+                        {
+                            A_Dialogo.DialogoError("La Hora de Inicio debe ser menor a la Hora Final");
+                        }
+                    }
+                    else
+                    {
+                        EstablecerHorarioRegistroAsistenciaDiariaDocente();
+
+                    }
+                }
+                else
+                {
+                    A_Dialogo.DialogoError("La Hora de Inicio debe ser menor a la Hora final");
+                }
+            }
+
+            MostrarHorarioRegistroAsistencia();
         }
 
         private void ValidarTiempo(Guna2NumericUpDown Numero, int Minimo, int Maximo)
