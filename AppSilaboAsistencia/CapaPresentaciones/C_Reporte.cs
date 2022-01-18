@@ -88,6 +88,7 @@ namespace CapaPresentaciones
             pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
             // Verificar el numero de filas de los resultados
+            int AnteriorAlturaResultados = pnContenedorResultados.Height;
             if (dgvResultados.Rows.Count <= 10)
             {
                 sbResultados.Visible = false;
@@ -101,7 +102,6 @@ namespace CapaPresentaciones
             }
 
             // Verificar el tamanho del contenedor de resultados
-            int AnteriorAlturaResultados = pnContenedorResultados.Height;
             if (pnContenedorResultados.Height < AnteriorAlturaResultados)
             {
                 this.Cuadricula.RowStyles[1].Height -= AnteriorAlturaResultados - pnContenedorResultados.Height;

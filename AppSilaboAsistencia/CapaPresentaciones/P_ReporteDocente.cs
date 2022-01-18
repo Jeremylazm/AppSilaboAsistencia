@@ -88,6 +88,8 @@ namespace CapaPresentaciones
             Reportes = Reporte;
             Responsivo();
             pnReporte.Controls.Add(Reporte);
+
+            pnReporte.AutoScrollPosition = new Point(0, 0);
             ActiveControl = Reporte.btnGrafico1;
         }
 
@@ -191,6 +193,7 @@ namespace CapaPresentaciones
 
         private void fnReporte1()
         {
+            pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Asistencia estudiantes
             // Criterio de selección: Por Fechas
 
@@ -205,6 +208,7 @@ namespace CapaPresentaciones
 
         private void fnReporte3()
         {
+            pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Asistencia estudiantes
             // Criterio de selección: Por Estudiantes
 
@@ -219,6 +223,7 @@ namespace CapaPresentaciones
 
         private void fnReporte5()
         {
+            pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
             string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "DEL SEMESTRE " + CodSemestre;
@@ -292,6 +297,7 @@ namespace CapaPresentaciones
 
         private void fnReporte6()
         {
+            pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
             string Titulo = "REPORTE DE AVANCE GENERAL" + Environment.NewLine + "DEL SEMESTRE " + CodSemestre;
