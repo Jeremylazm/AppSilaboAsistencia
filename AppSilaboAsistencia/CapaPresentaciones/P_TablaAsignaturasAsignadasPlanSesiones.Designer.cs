@@ -128,7 +128,7 @@ namespace CapaPresentaciones
             this.txtBuscar.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtBuscar.BorderRadius = 1;
             this.txtBuscar.BorderThickness = 1;
-            this.txtBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.DefaultFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.DefaultText = "";
@@ -172,7 +172,7 @@ namespace CapaPresentaciones
             this.txtBuscar.Padding = new System.Windows.Forms.Padding(3);
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.DimGray;
-            this.txtBuscar.PlaceholderText = "Buscar";
+            this.txtBuscar.PlaceholderText = "BUSCAR";
             this.txtBuscar.ReadOnly = false;
             this.txtBuscar.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtBuscar.SelectedText = "";
@@ -186,7 +186,7 @@ namespace CapaPresentaciones
             this.txtBuscar.TextMarginBottom = 0;
             this.txtBuscar.TextMarginLeft = 7;
             this.txtBuscar.TextMarginTop = 0;
-            this.txtBuscar.TextPlaceholder = "Buscar";
+            this.txtBuscar.TextPlaceholder = "BUSCAR";
             this.txtBuscar.UseSystemPasswordChar = false;
             this.txtBuscar.WordWrap = true;
             // 
@@ -370,7 +370,7 @@ namespace CapaPresentaciones
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this.pnContenedor;
             // 
-            // P_TablaAsignaturasAsignadasSesiones
+            // P_TablaAsignaturasAsignadasPlanSesiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -379,7 +379,7 @@ namespace CapaPresentaciones
             this.ClientSize = new System.Drawing.Size(803, 463);
             this.Controls.Add(this.pnContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "P_TablaAsignaturasAsignadasSesiones";
+            this.Name = "P_TablaAsignaturasAsignadasPlanSesiones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabla de Asignaturas Asignadas - Planes de Sesiones";
             this.pnContenedor.ResumeLayout(false);
