@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Mail;
+using Ayudas;
 
 namespace CapaPresentaciones
 {
@@ -75,12 +76,12 @@ namespace CapaPresentaciones
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    A_Dialogo.DialogoError("Error al enviar la contraseña a su correo");
                 }
             }
             else
             {
-                MessageBox.Show("No hay ningún usuario asociado a esta cuenta");
+                A_Dialogo.DialogoError("No hay ningún usuario asociado a esta cuenta");
             }
         }
 

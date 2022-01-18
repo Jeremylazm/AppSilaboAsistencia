@@ -31,7 +31,7 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_Catálogo_Actualizar));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Salir = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -157,17 +157,11 @@ namespace CapaPresentaciones
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
             this.Seleccionar_Docente_Cod_Nom2 = new System.Windows.Forms.ComboBox();
             this.Seleccionar_Docente_Cod_Nom = new System.Windows.Forms.ComboBox();
             this.Seleccionar_Asignatura_Cod_Nom = new System.Windows.Forms.ComboBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.Label_Horas_Asignadas_Docente2 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.Label_Horas_Asignadas_Docente1 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -179,7 +173,6 @@ namespace CapaPresentaciones
             this.Información = new System.Windows.Forms.PictureBox();
             this.Seleccionar_Modalidad = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.Seleccionar_Semestre = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.Check_2_Docentes = new System.Windows.Forms.CheckBox();
             this.Check_1_Docentes = new System.Windows.Forms.CheckBox();
@@ -239,6 +232,9 @@ namespace CapaPresentaciones
             this.tAsignaturaTableAdapter = new CapaPresentaciones.BDSistemaGestionDataSetTableAdapters.TAsignaturaTableAdapter();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
+            this.lblSemestre = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.Seleccionar_EP = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Salir)).BeginInit();
             this.panel2.SuspendLayout();
@@ -286,6 +282,9 @@ namespace CapaPresentaciones
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.Seleccionar_EP);
+            this.panel2.Controls.Add(this.lblSemestre);
+            this.panel2.Controls.Add(this.label32);
             this.panel2.Controls.Add(this.Panel_Info);
             this.panel2.Controls.Add(this.S20_21);
             this.panel2.Controls.Add(this.S19_20);
@@ -398,17 +397,11 @@ namespace CapaPresentaciones
             this.panel2.Controls.Add(this.label29);
             this.panel2.Controls.Add(this.label30);
             this.panel2.Controls.Add(this.label31);
-            this.panel2.Controls.Add(this.label21);
             this.panel2.Controls.Add(this.Seleccionar_Docente_Cod_Nom2);
             this.panel2.Controls.Add(this.Seleccionar_Docente_Cod_Nom);
             this.panel2.Controls.Add(this.Seleccionar_Asignatura_Cod_Nom);
-            this.panel2.Controls.Add(this.label25);
-            this.panel2.Controls.Add(this.Label_Horas_Asignadas_Docente2);
-            this.panel2.Controls.Add(this.label24);
             this.panel2.Controls.Add(this.label23);
             this.panel2.Controls.Add(this.label22);
-            this.panel2.Controls.Add(this.Label_Horas_Asignadas_Docente1);
-            this.panel2.Controls.Add(this.label20);
             this.panel2.Controls.Add(this.label18);
             this.panel2.Controls.Add(this.label19);
             this.panel2.Controls.Add(this.label17);
@@ -420,7 +413,6 @@ namespace CapaPresentaciones
             this.panel2.Controls.Add(this.Información);
             this.panel2.Controls.Add(this.Seleccionar_Modalidad);
             this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.Seleccionar_Semestre);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.Check_2_Docentes);
             this.panel2.Controls.Add(this.Check_1_Docentes);
@@ -1533,16 +1525,6 @@ namespace CapaPresentaciones
             this.label31.TabIndex = 234;
             this.label31.Text = "Horario Docente 1";
             // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(71, 452);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(47, 15);
-            this.label21.TabIndex = 115;
-            this.label21.Text = "<=  10";
-            // 
             // Seleccionar_Docente_Cod_Nom2
             // 
             this.Seleccionar_Docente_Cod_Nom2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1573,43 +1555,12 @@ namespace CapaPresentaciones
             this.Seleccionar_Asignatura_Cod_Nom.TabIndex = 121;
             this.Seleccionar_Asignatura_Cod_Nom.SelectedIndexChanged += new System.EventHandler(this.Seleccionar_Asignatura_Cod_Nom_SelectedIndexChanged_1);
             // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(71, 493);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(47, 15);
-            this.label25.TabIndex = 119;
-            this.label25.Text = "<=  10";
-            // 
-            // Label_Horas_Asignadas_Docente2
-            // 
-            this.Label_Horas_Asignadas_Docente2.AutoSize = true;
-            this.Label_Horas_Asignadas_Docente2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Horas_Asignadas_Docente2.Location = new System.Drawing.Point(50, 495);
-            this.Label_Horas_Asignadas_Docente2.Name = "Label_Horas_Asignadas_Docente2";
-            this.Label_Horas_Asignadas_Docente2.Size = new System.Drawing.Size(13, 13);
-            this.Label_Horas_Asignadas_Docente2.TabIndex = 118;
-            this.Label_Horas_Asignadas_Docente2.Text = "0";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label24.Location = new System.Drawing.Point(16, 473);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(128, 13);
-            this.label24.TabIndex = 117;
-            this.label24.Text = "HORAS DOCENTE 2:";
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label23.Location = new System.Drawing.Point(121, 360);
+            this.label23.Location = new System.Drawing.Point(16, 425);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(123, 15);
             this.label23.TabIndex = 116;
@@ -1626,32 +1577,11 @@ namespace CapaPresentaciones
             this.label22.TabIndex = 115;
             this.label22.Text = "MAX. HORAS";
             // 
-            // Label_Horas_Asignadas_Docente1
-            // 
-            this.Label_Horas_Asignadas_Docente1.AutoSize = true;
-            this.Label_Horas_Asignadas_Docente1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Horas_Asignadas_Docente1.Location = new System.Drawing.Point(50, 454);
-            this.Label_Horas_Asignadas_Docente1.Name = "Label_Horas_Asignadas_Docente1";
-            this.Label_Horas_Asignadas_Docente1.Size = new System.Drawing.Size(13, 13);
-            this.Label_Horas_Asignadas_Docente1.TabIndex = 113;
-            this.Label_Horas_Asignadas_Docente1.Text = "0";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label20.Location = new System.Drawing.Point(16, 435);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(128, 13);
-            this.label20.TabIndex = 112;
-            this.label20.Text = "HORAS DOCENTE 1:";
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(150, 401);
+            this.label18.Location = new System.Drawing.Point(31, 468);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(42, 13);
             this.label18.TabIndex = 111;
@@ -1661,7 +1591,7 @@ namespace CapaPresentaciones
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(150, 381);
+            this.label19.Location = new System.Drawing.Point(31, 448);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(42, 13);
             this.label19.TabIndex = 110;
@@ -1690,7 +1620,7 @@ namespace CapaPresentaciones
             // LabelPR2
             // 
             this.LabelPR2.AutoSize = true;
-            this.LabelPR2.Location = new System.Drawing.Point(193, 401);
+            this.LabelPR2.Location = new System.Drawing.Point(74, 468);
             this.LabelPR2.Name = "LabelPR2";
             this.LabelPR2.Size = new System.Drawing.Size(13, 13);
             this.LabelPR2.TabIndex = 105;
@@ -1699,7 +1629,7 @@ namespace CapaPresentaciones
             // LabelPR1
             // 
             this.LabelPR1.AutoSize = true;
-            this.LabelPR1.Location = new System.Drawing.Point(193, 381);
+            this.LabelPR1.Location = new System.Drawing.Point(74, 448);
             this.LabelPR1.Name = "LabelPR1";
             this.LabelPR1.Size = new System.Drawing.Size(13, 13);
             this.LabelPR1.TabIndex = 104;
@@ -1757,66 +1687,15 @@ namespace CapaPresentaciones
             this.label15.TabIndex = 100;
             this.label15.Text = "Seleccione la modalidad:";
             // 
-            // Seleccionar_Semestre
-            // 
-            this.Seleccionar_Semestre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Seleccionar_Semestre.FormattingEnabled = true;
-            this.Seleccionar_Semestre.Items.AddRange(new object[] {
-            "2021-I",
-            "2021-II",
-            "2022-I",
-            "2022-II",
-            "2023-I",
-            "2023-II",
-            "2024-I",
-            "2024-II",
-            "2025-I",
-            "2025-II",
-            "2026-I",
-            "2026-II",
-            "2027-I",
-            "2027-II",
-            "2028-I",
-            "2028-II",
-            "2029-I",
-            "2029-II",
-            "2030-I",
-            "2030-II",
-            "2031-I",
-            "2031-II",
-            "2032-I",
-            "2032-II",
-            "2033-I",
-            "2033-II",
-            "2034-I",
-            "2034-II",
-            "2035-I",
-            "2035-II",
-            "2036-I",
-            "2036-II",
-            "2037-I",
-            "2037-II",
-            "2038-I",
-            "2038-II",
-            "2039-I",
-            "2039-II",
-            "2040-I",
-            "2040-II"});
-            this.Seleccionar_Semestre.Location = new System.Drawing.Point(164, 125);
-            this.Seleccionar_Semestre.Name = "Seleccionar_Semestre";
-            this.Seleccionar_Semestre.Size = new System.Drawing.Size(121, 21);
-            this.Seleccionar_Semestre.TabIndex = 99;
-            this.Seleccionar_Semestre.SelectedIndexChanged += new System.EventHandler(this.Seleccionar_Semestre_SelectedIndexChanged);
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(16, 128);
+            this.label14.Location = new System.Drawing.Point(16, 107);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(142, 13);
+            this.label14.Size = new System.Drawing.Size(312, 13);
             this.label14.TabIndex = 98;
-            this.label14.Text = "Seleccione el semestre:";
+            this.label14.Text = "Seleccione la escuela profesional a la que se dictará:";
             // 
             // Check_2_Docentes
             // 
@@ -2240,11 +2119,11 @@ namespace CapaPresentaciones
             this.Botón_Guardar.ColorContrastOnClick = 45;
             this.Botón_Guardar.ColorContrastOnHover = 45;
             this.Botón_Guardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.Botón_Guardar.CustomizableEdges = borderEdges1;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.Botón_Guardar.CustomizableEdges = borderEdges2;
             this.Botón_Guardar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Botón_Guardar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.Botón_Guardar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -2562,6 +2441,74 @@ namespace CapaPresentaciones
             this.Docker.TitleBarOptions.TitleBarControl = null;
             this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
+            // lblSemestre
+            // 
+            this.lblSemestre.AutoSize = true;
+            this.lblSemestre.Location = new System.Drawing.Point(77, 151);
+            this.lblSemestre.Name = "lblSemestre";
+            this.lblSemestre.Size = new System.Drawing.Size(0, 13);
+            this.lblSemestre.TabIndex = 347;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(16, 151);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(63, 13);
+            this.label32.TabIndex = 346;
+            this.label32.Text = "Semestre:";
+            // 
+            // Seleccionar_EP
+            // 
+            this.Seleccionar_EP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Seleccionar_EP.FormattingEnabled = true;
+            this.Seleccionar_EP.Items.AddRange(new object[] {
+            "2021-I",
+            "2021-II",
+            "2022-I",
+            "2022-II",
+            "2023-I",
+            "2023-II",
+            "2024-I",
+            "2024-II",
+            "2025-I",
+            "2025-II",
+            "2026-I",
+            "2026-II",
+            "2027-I",
+            "2027-II",
+            "2028-I",
+            "2028-II",
+            "2029-I",
+            "2029-II",
+            "2030-I",
+            "2030-II",
+            "2031-I",
+            "2031-II",
+            "2032-I",
+            "2032-II",
+            "2033-I",
+            "2033-II",
+            "2034-I",
+            "2034-II",
+            "2035-I",
+            "2035-II",
+            "2036-I",
+            "2036-II",
+            "2037-I",
+            "2037-II",
+            "2038-I",
+            "2038-II",
+            "2039-I",
+            "2039-II",
+            "2040-I",
+            "2040-II"});
+            this.Seleccionar_EP.Location = new System.Drawing.Point(19, 123);
+            this.Seleccionar_EP.Name = "Seleccionar_EP";
+            this.Seleccionar_EP.Size = new System.Drawing.Size(194, 21);
+            this.Seleccionar_EP.TabIndex = 348;
+            // 
             // P_Catálogo_Actualizar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2594,13 +2541,8 @@ namespace CapaPresentaciones
         private System.Windows.Forms.PictureBox Salir;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label Label_Horas_Asignadas_Docente2;
-        private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label Label_Horas_Asignadas_Docente1;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label17;
@@ -2612,7 +2554,6 @@ namespace CapaPresentaciones
         private System.Windows.Forms.PictureBox Información;
         private System.Windows.Forms.ComboBox Seleccionar_Modalidad;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox Seleccionar_Semestre;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox Check_2_Docentes;
         private System.Windows.Forms.CheckBox Check_1_Docentes;
@@ -2674,7 +2615,6 @@ namespace CapaPresentaciones
         private System.Windows.Forms.ComboBox Seleccionar_Asignatura_Cod_Nom;
         private System.Windows.Forms.ComboBox Seleccionar_Docente_Cod_Nom2;
         private System.Windows.Forms.ComboBox Seleccionar_Docente_Cod_Nom;
-        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
@@ -2797,5 +2737,8 @@ namespace CapaPresentaciones
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label42;
         private Bunifu.UI.WinForms.BunifuFormDock Docker;
+        private System.Windows.Forms.Label lblSemestre;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.ComboBox Seleccionar_EP;
     }
 }

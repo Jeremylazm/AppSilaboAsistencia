@@ -425,11 +425,11 @@
     <Compile Include="P_TablaAsignaturasAsignadasEstudiantes.Designer.cs">
       <DependentUpon>P_TablaAsignaturasAsignadasEstudiantes.cs</DependentUpon>
     </Compile>
-    <Compile Include="P_TablaAsignaturasAsignadasSesiones.cs">
+    <Compile Include="P_TablaAsignaturasAsignadasPlanSesiones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="P_TablaAsignaturasAsignadasSesiones.Designer.cs">
-      <DependentUpon>P_TablaAsignaturasAsignadasSesiones.cs</DependentUpon>
+    <Compile Include="P_TablaAsignaturasAsignadasPlanSesiones.Designer.cs">
+      <DependentUpon>P_TablaAsignaturasAsignadasPlanSesiones.cs</DependentUpon>
     </Compile>
     <Compile Include="P_TablaAsignaturasAsignadasSilabos.cs">
       <SubType>Form</SubType>
@@ -461,11 +461,11 @@
     <Compile Include="P_TablaEstudiantesAsignatura.Designer.cs">
       <DependentUpon>P_TablaEstudiantesAsignatura.cs</DependentUpon>
     </Compile>
-    <Compile Include="P_TablaSesionesAsignatura.cs">
+    <Compile Include="P_TablaPlanSesionesAsignatura.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="P_TablaSesionesAsignatura.Designer.cs">
-      <DependentUpon>P_TablaSesionesAsignatura.cs</DependentUpon>
+    <Compile Include="P_TablaPlanSesionesAsignatura.Designer.cs">
+      <DependentUpon>P_TablaPlanSesionesAsignatura.cs</DependentUpon>
     </Compile>
     <Compile Include="P_TablaSilabosAsignatura.cs">
       <SubType>Form</SubType>
@@ -575,8 +575,8 @@
     <EmbeddedResource Include="P_TablaAsignaturasAsignadasEstudiantes.resx">
       <DependentUpon>P_TablaAsignaturasAsignadasEstudiantes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="P_TablaAsignaturasAsignadasSesiones.resx">
-      <DependentUpon>P_TablaAsignaturasAsignadasSesiones.cs</DependentUpon>
+    <EmbeddedResource Include="P_TablaAsignaturasAsignadasPlanSesiones.resx">
+      <DependentUpon>P_TablaAsignaturasAsignadasPlanSesiones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaAsignaturasAsignadasSilabos.resx">
       <DependentUpon>P_TablaAsignaturasAsignadasSilabos.cs</DependentUpon>
@@ -593,8 +593,8 @@
     <EmbeddedResource Include="P_TablaEstudiantesAsignatura.resx">
       <DependentUpon>P_TablaEstudiantesAsignatura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="P_TablaSesionesAsignatura.resx">
-      <DependentUpon>P_TablaSesionesAsignatura.cs</DependentUpon>
+    <EmbeddedResource Include="P_TablaPlanSesionesAsignatura.resx">
+      <DependentUpon>P_TablaPlanSesionesAsignatura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaSilabosAsignatura.resx">
       <DependentUpon>P_TablaSilabosAsignatura.cs</DependentUpon>

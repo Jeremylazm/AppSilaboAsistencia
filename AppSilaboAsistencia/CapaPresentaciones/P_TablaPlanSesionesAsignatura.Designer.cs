@@ -1,7 +1,7 @@
 ﻿
 namespace CapaPresentaciones
 {
-    partial class P_TablaSesionesAsignatura
+    partial class P_TablaPlanSesionesAsignatura
     {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,7 @@ namespace CapaPresentaciones
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaSesionesAsignatura));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaPlanSesionesAsignatura));
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -87,7 +87,7 @@ namespace CapaPresentaciones
             this.btnCerrar.AllowZoomingOnFocus = false;
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCerrar.ErrorImage = null;
             this.btnCerrar.FadeWhenInactive = false;
             this.btnCerrar.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
@@ -166,7 +166,7 @@ namespace CapaPresentaciones
             this.txtBuscar.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtBuscar.BorderRadius = 1;
             this.txtBuscar.BorderThickness = 1;
-            this.txtBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.DefaultFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.DefaultText = "";
@@ -210,7 +210,7 @@ namespace CapaPresentaciones
             this.txtBuscar.Padding = new System.Windows.Forms.Padding(3);
             this.txtBuscar.PasswordChar = '\0';
             this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.DimGray;
-            this.txtBuscar.PlaceholderText = "Buscar";
+            this.txtBuscar.PlaceholderText = "BUSCAR";
             this.txtBuscar.ReadOnly = false;
             this.txtBuscar.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtBuscar.SelectedText = "";
@@ -224,7 +224,7 @@ namespace CapaPresentaciones
             this.txtBuscar.TextMarginBottom = 0;
             this.txtBuscar.TextMarginLeft = 7;
             this.txtBuscar.TextMarginTop = 0;
-            this.txtBuscar.TextPlaceholder = "Buscar";
+            this.txtBuscar.TextPlaceholder = "BUSCAR";
             this.txtBuscar.UseSystemPasswordChar = false;
             this.txtBuscar.WordWrap = true;
             // 
@@ -403,11 +403,12 @@ namespace CapaPresentaciones
             this.Docker.TitleBarOptions.TitleBarControl = null;
             this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
-            // P_TablaSesionesAsignatura
+            // P_TablaPlanSesionesAsignatura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.btnCerrar;
             this.ClientSize = new System.Drawing.Size(791, 456);
             this.Controls.Add(this.sbDatos);
             this.Controls.Add(this.dgvDatos);
@@ -416,7 +417,7 @@ namespace CapaPresentaciones
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "P_TablaSesionesAsignatura";
+            this.Name = "P_TablaPlanSesionesAsignatura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P_TablaSesionesAsignatura";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
