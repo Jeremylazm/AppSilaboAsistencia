@@ -113,36 +113,38 @@ namespace CapaPresentaciones
 		}
         public void GuardarRegistroDiarioDocente()
         {
-            
-            
+
+            try
+            {
                 if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea editar el registro?") == DialogResult.Yes)
                 {
 
                     foreach (DataGridViewRow dr in dgvDatos.Rows)
                     {
-                        string HoraReg = HoraRegistroAsistenciaDocente(CodSemestre,CodDepartamentoA, DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dr.Cells[3].Value.ToString());    
-                                
+                        string HoraReg = HoraRegistroAsistenciaDocente(CodSemestre, CodDepartamentoA, DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dr.Cells[3].Value.ToString());
+
                         ObjEntidadDoc.CodSemestre = CodSemestre;
                         ObjEntidadDoc.Fecha = DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
                         ObjEntidadDoc.Hora = HoraReg;
                         ObjEntidadDoc.CodDocente = dr.Cells[3].Value.ToString();
 
-                        string ObsActualizada = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
                         string Asistio = dr.Cells[0].Value.ToString();
+                        string ObsActualizada = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
+                        
 
-                    ObjNegocioDoc.ActualizarAsistenciaDiariaDocente(ObjEntidadDoc, Asistio, ObsActualizada);
-          
+                        ObjNegocioDoc.ActualizarAsistenciaDiariaDocente(ObjEntidadDoc, Asistio, ObsActualizada);
+
                     }
                     A_Dialogo.DialogoConfirmacion("Se ha Editado correctamente la asistencia" + Environment.NewLine + " del los Docentes");
-                        
+
                     Close();
                 }
 
-            
-            /*catch (Exception)
+            }
+            catch (Exception)
             {
                 A_Dialogo.DialogoError("Error al editar el registro");
-            }*/
+            }
             
         }
 
@@ -178,11 +180,44 @@ namespace CapaPresentaciones
             {
                 return;
             }
+            var DataGrid = (sender as DataGridView);
+
+            if (e.ColumnIndex == 0)
+            {
+                var Celda = DataGrid.Rows[e.RowIndex].Cells[0];
+
+                if ((Celda.Tag == null) || !((bool)Celda.Tag))
+                {
+                    // Falso
+                    DataGrid.Rows[e.RowIndex].Cells[0].Value = ListaImagenes.Images[1];
+                    DataGrid.Rows[e.RowIndex].Cells[0].Tag = true;
+                }
+                else
+                {
+                    DataGrid.Rows[e.RowIndex].Cells[0].Value = ListaImagenes.Images[0];
+                    DataGrid.Rows[e.RowIndex].Cells[0].Tag = false;
+                }
+            }
         }
 
 		private void ckbMarcarTodos_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
 		{
-
+            if (ckbMarcarTodos.Checked)
+            {
+                foreach (DataGridViewRow Fila in dgvDatos.Rows)
+                {
+                    Fila.Cells[0].Value = ListaImagenes.Images[1];
+                    Fila.Cells[0].Tag = true;
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow Fila in dgvDatos.Rows)
+                {
+                    Fila.Cells[0].Value = ListaImagenes.Images[0];
+                    Fila.Cells[0].Tag = false;
+                }
+            }
         }
 
 		private void P_TablaAsistenciaDiariaDocente_Load(object sender, EventArgs e)
