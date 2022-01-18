@@ -158,10 +158,10 @@ namespace ControlesPerzonalizados
             this.ttEvento.ShowIcons = true;
             this.ttEvento.ShowShadows = true;
             this.ttEvento.Tag = null;
-            this.ttEvento.TextFont = new System.Drawing.Font("Montserrat Alternates", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ttEvento.TextFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ttEvento.TextForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.ttEvento.TextMargin = 2;
-            this.ttEvento.TitleFont = new System.Drawing.Font("Montserrat Alternates", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ttEvento.TitleFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ttEvento.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.ttEvento.ToolTipPosition = new System.Drawing.Point(0, 0);
             this.ttEvento.ToolTipTitle = null;

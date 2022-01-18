@@ -78,7 +78,7 @@ namespace CapaDatos
         }
 
         // Método para buscar buscar los estudiantes matriculados en una asignatura.
-        public DataTable BuscarEstudiantesMatriculadosAsignatura(string CodSemestre, string CodEscuelaP, string Texto1, string Texto2)
+        public DataTable BuscarEstudiantesMatriculadosAsignatura(string CodSemestre, string CodEscuelaP, string CodAsignatura, string Texto)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuBuscarEstudiantesMatriculadosAsignatura", Conectar)
@@ -88,8 +88,8 @@ namespace CapaDatos
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@CodEscuelaP", CodEscuelaP);
-            Comando.Parameters.AddWithValue("@Texto1", Texto1); // código o nombre de la asignatura
-            Comando.Parameters.AddWithValue("@Texto2", Texto2); // dato del estudiante
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); // código o nombre de la asignatura
+            Comando.Parameters.AddWithValue("@Texto", Texto); // dato del estudiante
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;

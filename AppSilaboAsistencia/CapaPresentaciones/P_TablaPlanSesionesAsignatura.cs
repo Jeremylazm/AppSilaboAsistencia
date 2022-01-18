@@ -18,7 +18,8 @@ namespace CapaPresentaciones
     public partial class P_TablaPlanSesionesAsignatura : Form
     {
         readonly private string CodAsignatura;
-        private readonly DataTable Asignaturas;
+        private readonly DataTable PlanSesiones;
+        private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
 
         public P_TablaPlanSesionesAsignatura(string CodAsignatura)
         {
@@ -29,8 +30,8 @@ namespace CapaPresentaciones
             Docker.SubscribeControlsToDragEvents(Controles);
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
 
-            Asignaturas = N_Catalogo.BuscarPlanSesionesAsignatura(CodAsignatura.Substring(0, 5), E_InicioSesion.Usuario);
-            MostrarAsignaturas();
+            PlanSesiones = N_Catalogo.MostrarPlanSesionesAsignatura(CodAsignatura.Substring(0, CodDepartamentoA.Length + 3), E_InicioSesion.Usuario);
+            MostrarPlasSesiones();
         }
 
         private void AccionesTabla()
@@ -42,10 +43,15 @@ namespace CapaPresentaciones
             dgvDatos.Columns[6].Visible = false;
         }
 
-        private void MostrarAsignaturas()
+        private void MostrarPlasSesiones()
         {
-            dgvDatos.DataSource = Asignaturas;
+            dgvDatos.DataSource = PlanSesiones;
             AccionesTabla();
+        }
+
+        public void BuscarPlanSesiones()
+        {
+            dgvDatos.DataSource = N_Catalogo.BuscarPlanSesionesAsignatura(CodAsignatura.Substring(0, CodDepartamentoA.Length + 3), E_InicioSesion.Usuario, txtBuscar.Text);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -59,7 +65,7 @@ namespace CapaPresentaciones
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
                 // Descargar el plan de sesiones
-                if (Asignaturas.Rows.Count != 0)
+                if (PlanSesiones.Rows.Count != 0)
                 {
                     saveFileDialog.Title = "Descargar Plan de Sesiones";
                     saveFileDialog.FileName = "Plan de Sesiones " + " - " + CodAsignatura;
@@ -89,6 +95,11 @@ namespace CapaPresentaciones
                     //MessageBox.Show("No hay plan de sesiones");
                 }
             }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BuscarPlanSesiones();
         }
     }
 }

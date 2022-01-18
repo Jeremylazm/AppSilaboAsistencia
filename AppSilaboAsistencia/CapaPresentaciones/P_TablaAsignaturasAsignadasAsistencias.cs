@@ -14,6 +14,7 @@ namespace CapaPresentaciones
     {
         private readonly string CodSemestre;
         private readonly string CodDocente = E_InicioSesion.Usuario;
+        private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
 
         public P_TablaAsignaturasAsignadasAsistencias()
         {
@@ -29,20 +30,20 @@ namespace CapaPresentaciones
             dgvDatos.Columns[0].DisplayIndex = 4;
             dgvDatos.Columns[4].Visible = false;
             dgvDatos.Columns[1].HeaderText = "Código";
-            dgvDatos.Columns[2].HeaderText = "Nombre";
+            dgvDatos.Columns[2].HeaderText = "Asignatura";
             dgvDatos.Columns[3].HeaderText = "Escuela Profesional";
             dgvDatos.Columns[4].HeaderText = "Grupo";
         }
 
         private void MostrarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, "IF", CodDocente);
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodDepartamentoA, CodDocente);
             AccionesTabla();
         }
 
         public void BuscarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodSemestre, "IF", CodDocente, txtBuscar.Text);
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodSemestre, CodDepartamentoA, CodDocente, txtBuscar.Text);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidades;
 using CapaNegocios;
 using Ayudas;
 
@@ -16,7 +17,8 @@ namespace CapaPresentaciones
     public partial class P_TablaSilabosAsignatura : Form
     {
         readonly private string CodAsignatura;
-        private readonly DataTable Asignaturas;
+        private readonly DataTable Silabos;
+        private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
 
         public P_TablaSilabosAsignatura(string CodAsignatura)
         {
@@ -27,8 +29,8 @@ namespace CapaPresentaciones
             Docker.SubscribeControlsToDragEvents(Controles);
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
 
-            Asignaturas = N_Catalogo.BuscarSilabosAsignatura(CodAsignatura.Substring(0, 5));
-            MostrarAsignaturas();
+            Silabos = N_Catalogo.MostrarSilabosAsignatura(CodAsignatura.Substring(0, CodDepartamentoA.Length + 3));
+            MostrarSilabos();
         }
 
         private void AccionesTabla()
@@ -40,10 +42,15 @@ namespace CapaPresentaciones
             dgvDatos.Columns[6].Visible = false;
         }
 
-        private void MostrarAsignaturas()
+        private void MostrarSilabos()
         {
-            dgvDatos.DataSource = Asignaturas;
+            dgvDatos.DataSource = Silabos;
             AccionesTabla();
+        }
+
+        public void BuscarSilabos()
+        {
+            dgvDatos.DataSource = N_Catalogo.BuscarSilabosAsignatura(CodAsignatura.Substring(0, CodDepartamentoA.Length + 3), txtBuscar.Text);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -55,7 +62,7 @@ namespace CapaPresentaciones
         {
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
-                if (Asignaturas.Rows.Count != 0)
+                if (Silabos.Rows.Count != 0)
                 {
                     saveFileDialog.Title = "Descargar Sílabo";
                     saveFileDialog.FileName = "Sílabo " + CodAsignatura;
@@ -85,6 +92,11 @@ namespace CapaPresentaciones
                     //MessageBox.Show("No hay sílabo");
                 }
             }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BuscarSilabos();
         }
     }
 }
