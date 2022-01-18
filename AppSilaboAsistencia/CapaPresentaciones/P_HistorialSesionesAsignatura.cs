@@ -20,7 +20,7 @@ namespace CapaPresentaciones
         private readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodSemestre;
         public string LimtFechaInf;
-        public string LimtFechaSup = DateTime.Now.ToString("dd/MM/yyyy").ToString();
+        public string LimtFechaSup = DateTime.Now.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString();
         public DateTime HoraIniAsignatura;
         public DateTime HoraLimiteR;
         //public string HoraRegistro= DateTime.Now.ToString("HH:mm:ss");
@@ -30,8 +30,8 @@ namespace CapaPresentaciones
             CodAsignatura = pCodAsignatura;
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
-            LimtFechaInf = DateTime.Parse(Semestre.Rows[0][1].ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
-            //LimtFechaInf=DateTime.ParseExact(Semestre.Rows[0][1].ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
+            //LimtFechaInf = DateTime.Parse(Semestre.Rows[0][1].ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
+            LimtFechaInf=DateTime.ParseExact(Semestre.Rows[0][1].ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
             InitializeComponent();
             MostrarRegistros();
 
