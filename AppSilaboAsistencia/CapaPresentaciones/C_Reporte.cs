@@ -1408,7 +1408,7 @@ namespace CapaPresentaciones
             }
         }
 
-        private void btnGrafico1_Click(object sender, EventArgs e)
+        public void btnGrafico1_Click(object sender, EventArgs e)
         {
             tcGraficos.SetPage(IndiceGrafico1);
         }
