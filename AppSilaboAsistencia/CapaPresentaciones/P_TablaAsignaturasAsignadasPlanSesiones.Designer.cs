@@ -189,6 +189,7 @@ namespace CapaPresentaciones
             this.txtBuscar.TextPlaceholder = "BUSCAR";
             this.txtBuscar.UseSystemPasswordChar = false;
             this.txtBuscar.WordWrap = true;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // pnContenedor
             // 
