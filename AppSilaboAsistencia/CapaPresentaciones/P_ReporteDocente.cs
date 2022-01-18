@@ -74,10 +74,10 @@ namespace CapaPresentaciones
             };
 
             fnReporte1();
-            ActiveControl = Reportes.btnGrafico1;
             Responsivo();
 
             pnReporte.Controls.Add(Reportes);
+            ActiveControl = Reportes.btnGrafico1;
             ActiveControl = pnReporte;
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }

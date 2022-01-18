@@ -94,6 +94,7 @@ namespace CapaPresentaciones
 
         private void fnReporte5()
         {
+            pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
             string Titulo = "REPORTE DE AVANCE - " + txtCodigo.Text + Environment.NewLine + "SEMESTRE " + CodSemestre;
@@ -167,6 +168,8 @@ namespace CapaPresentaciones
 
         private void fnReporte9()
         {
+            pnReporte.AutoScrollPosition = new Point(0, 0);
+
             string Titulo = "REPORTE DE AVANCE GENERAL" + Environment.NewLine + "SEMESTRE " + CodSemestre;
             string[] Titulos = { "Semestre" };
             string[] Valores = { CodSemestre };
