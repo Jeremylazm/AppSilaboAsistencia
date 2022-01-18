@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
@@ -22,7 +17,7 @@ namespace CapaPresentaciones
         private readonly string CodSemestre;
         readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
-        C_Reporte Reportes = new C_Reporte();
+        C_Reporte Reportes;
         string nombreDocente;
 
         //readonly string FechaInicial = E_Semestre.
@@ -54,6 +49,11 @@ namespace CapaPresentaciones
 
         private void P_ReporteDocente_Load(object sender, EventArgs e)
         {
+            pnReporte.Parent = pnPadre;
+            pnReporte.Location = new Point(0, 0);
+            pnReporte.Width = pnPadre.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
+            pnReporte.Height = pnPadre.ClientSize.Height + SystemInformation.HorizontalScrollBarHeight;
+
             /*dpFechaInicial.MaxDate = DateTime.Now;
             dpFechaFinal.MaxDate = DateTime.Now;*/
             dpFechaFinal.MaxDate = new DateTime(2022, 03, 01);
@@ -65,30 +65,21 @@ namespace CapaPresentaciones
             dpFechaInicial.Value = new DateTime(2021, 10, 18);
             dpFechaFinal.Value = new DateTime(2021, 11, 05);
 
-            pnReporte.Parent = pnPadre;
-            pnReporte.Location = new Point(0, 0);
-            pnReporte.Width = pnPadre.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
-            pnReporte.Height = pnPadre.ClientSize.Height + SystemInformation.HorizontalScrollBarHeight;
-
             DataTable datosDocente = N_Docente.BuscarDocente(CodDepartamentoA, CodDocente);
             nombreDocente = datosDocente.Rows[0]["Nombre"].ToString() + " " + datosDocente.Rows[0]["APaterno"].ToString() + " " + datosDocente.Rows[0]["AMaterno"].ToString();
 
-            string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
-            string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
-            string[] Valores = { CodSemestre, CodDocente, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
-
-            DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorFechas(CodSemestre, CodDocente, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
-
-            C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text, "Docente")
+            Reportes = new C_Reporte()
             {
-                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
-                
+                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right                
             };
 
-            Reportes = Reporte;
+            fnReporte1();
+            ActiveControl = Reportes.btnGrafico1;
             Responsivo();
-            pnReporte.Controls.Add(Reporte);
-            ActiveControl = Reporte.btnGrafico1;
+
+            pnReporte.Controls.Add(Reportes);
+            ActiveControl = pnReporte;
+            pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 
         private void Responsivo()
@@ -191,6 +182,7 @@ namespace CapaPresentaciones
 
         private void fnReporte1()
         {
+            pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Asistencia estudiantes
             // Criterio de selección: Por Fechas
 
@@ -205,6 +197,7 @@ namespace CapaPresentaciones
 
         private void fnReporte3()
         {
+            pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Asistencia estudiantes
             // Criterio de selección: Por Estudiantes
 
@@ -219,9 +212,10 @@ namespace CapaPresentaciones
 
         private void fnReporte5()
         {
+            pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
-            string Titulo = "REPORTE DE AVANCE" + Environment.NewLine + "DEL SEMESTRE " + CodSemestre;
+            string Titulo = "REPORTE DE AVANCE - " + txtCodigo.Text + Environment.NewLine + "SEMESTRE " + CodSemestre;
             string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
             string[] Valores = { CodSemestre, CodDocente, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
 
@@ -292,9 +286,10 @@ namespace CapaPresentaciones
 
         private void fnReporte6()
         {
+            pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
-            string Titulo = "REPORTE DE AVANCE GENERAL" + Environment.NewLine + "DEL SEMESTRE " + CodSemestre;
+            string Titulo = "REPORTE DE AVANCE GENERAL" + Environment.NewLine + "SEMESTRE - " + CodSemestre;
             string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Escuela Profesional" };
             string[] Valores = { CodSemestre, CodDocente, nombreDocente, txtEscuelaP.Text };
 
