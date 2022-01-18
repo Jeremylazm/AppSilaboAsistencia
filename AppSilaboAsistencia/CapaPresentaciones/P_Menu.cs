@@ -571,7 +571,9 @@ namespace CapaPresentaciones
                         ObjEntidadDocente.Fecha = Fecha;
                         ObjEntidadDocente.Hora = Hora;
                         ObjEntidadDocente.CodDocente = Usuario;
-                        ObjNegocioDocente.ActualizarAsistenciaDiariaDocente(ObjEntidadDocente, "SI", "");
+                        ObjEntidadDocente.Asistio = "SI";
+                        ObjEntidadDocente.Observacion = "";
+                        ObjNegocioDocente.RegistrarAsistenciaDiariaDocente(ObjEntidadDocente);
                         A_Dialogo.DialogoInformacion("Se registro su asistencia.");
                     }
                     else
