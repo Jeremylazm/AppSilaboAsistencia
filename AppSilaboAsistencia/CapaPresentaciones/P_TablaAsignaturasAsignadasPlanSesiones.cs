@@ -26,7 +26,16 @@ namespace CapaPresentaciones
             CodSemestre = Semestre.Rows[0][0].ToString();
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
+
+            dgvDatos.CellMouseEnter += new DataGridViewCellEventHandler(dgvDatos_CellMouseEnter);
+
             MostrarAsignaturas();
+        }
+
+        private void dgvDatos_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Equals("System.Windows.Forms.DataGridViewImageColumn", dgvDatos.Columns[e.ColumnIndex].GetType().ToString()) && e.RowIndex >= 0) dgvDatos.Cursor = Cursors.Hand;
+            else dgvDatos.Cursor = Cursors.Default;
         }
 
         private void AccionesTabla()
@@ -39,6 +48,18 @@ namespace CapaPresentaciones
             dgvDatos.Columns[4].HeaderText = "Nombre";
             dgvDatos.Columns[5].HeaderText = "Escuela Profesional";
             dgvDatos.Columns[6].HeaderText = "Grupo";
+
+            dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            dgvDatos.Columns[0].Width = 70;
+            dgvDatos.Columns[1].Width = 70;
+            dgvDatos.Columns[2].Width = 70;
+            dgvDatos.Columns[3].Width = 70;
         }
 
         private void MostrarAsignaturas()
@@ -88,15 +109,9 @@ namespace CapaPresentaciones
                 string folder = path + "/temp/";
                 string fullFilePath = folder + "temp.xlsx";
 
-                if (!Directory.Exists(folder))
-                {
-                    Directory.CreateDirectory(folder);
-                }
+                if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
-                if (File.Exists(fullFilePath))
-                {
-                    File.Delete(fullFilePath);
-                }
+                if (File.Exists(fullFilePath)) File.Delete(fullFilePath);
 
                 File.WriteAllBytes(fullFilePath, archivo);
 
@@ -128,19 +143,14 @@ namespace CapaPresentaciones
                     {
                         wb.SaveAs(saveFileDialog.FileName);
                         A_Dialogo.DialogoConfirmacion("Archivo guardado exitosamente");
-                        //MessageBox.Show("Archivo guardado correctamente");
                     }
                     catch (IOException)
                     {
                         A_Dialogo.DialogoError("Cierre el archivo antes de que sea reemplazado");
-                        //MessageBox.Show("Cierra el archivo antes de reemplazarlo");
                     }
                 }
 
-                if (Directory.Exists(folder))
-                {
-                    Directory.Delete(folder, true);
-                }
+                if (Directory.Exists(folder)) Directory.Delete(folder, true);
             }
 
             // Descargar

@@ -94,6 +94,7 @@ namespace CapaPresentaciones
             if (Acceso == "Administrador")
             {
                 pnBotonesMenu.Controls.SetChildIndex(btnPlantillas, 0);
+                pnBotonesMenu.Controls.SetChildIndex(btnSemestres, 1);
                 btnPrincipal.Visible = false;
                 SeparadorMenu2.Visible = false;
                 btnMarcarAsistencia.Visible = false;
@@ -102,6 +103,7 @@ namespace CapaPresentaciones
                 pnContenedorDirector.Visible = false;
                 pnContenedorJefe.Visible = false;
                 btnPlantillas.Visible = true;
+                btnSemestres.Visible = true;
             }
             else if (Acceso == "Jefe de Departamento")
             {
@@ -110,6 +112,7 @@ namespace CapaPresentaciones
                 btnMarcarAsistencia.Visible = true;
                 pbMarcarAsistencia.Visible = true;
                 btnPlantillas.Visible = false;
+                btnSemestres.Visible = false;
                 pnContenedorDirector.Visible = false;
             }
             else if (Acceso == "Director de Escuela")
@@ -119,6 +122,7 @@ namespace CapaPresentaciones
                 btnMarcarAsistencia.Visible = true;
                 pbMarcarAsistencia.Visible = true;
                 btnPlantillas.Visible = false;
+                btnSemestres.Visible = false;
                 pnBotonesMenu.Controls.SetChildIndex(pnContenedorDirector, 2);
                 pnContenedorJefe.Visible = false;
             }
@@ -129,6 +133,7 @@ namespace CapaPresentaciones
                 btnMarcarAsistencia.Visible = true;
                 pbMarcarAsistencia.Visible = true;
                 btnPlantillas.Visible = false;
+                btnSemestres.Visible = false;
                 pnContenedorDocente.Controls.SetChildIndex(btnContenedorDocente, 5);
                 btnContenedorDocente.Visible = false;
                 pnContenedorJefe.Visible = false;
@@ -519,6 +524,12 @@ namespace CapaPresentaciones
         {
             ActualizarColor();
             AbrirFormularios<P_Subir_Plantillas>();
+        }
+
+        private void btnSemestres_Click(object sender, EventArgs e)
+        {
+            ActualizarColor();
+            AbrirFormularios<P_TablaSemestre>();
         }
 
         // Registrar asistencia diaria
