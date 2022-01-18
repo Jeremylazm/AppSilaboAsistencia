@@ -73,7 +73,7 @@ namespace CapaPresentaciones
 
             DataTable resultadoss = N_Docente.MostrarDocentesDepartamento(CodDepartamentoA);
             txtCodDocente.Text = resultadoss.Rows[0]["CodDocente"].ToString();
-            txtDocente.Text = resultadoss.Rows[0]["Nombre"].ToString();
+            txtDocente.Text = resultadoss.Rows[0]["Nombre"].ToString() +" "+ resultadoss.Rows[0]["APaterno"]+" "+ resultadoss.Rows[0]["AMaterno"];
             DataTable NombreDepar = N_DepartamentoAcademico.BuscarNombreDepartamento(CodDepartamentoA);
             string NomDepartamento= NombreDepar.Rows[0]["Nombre"].ToString();
             //DataTable datosDocente = N_Docente.BuscarDocente(CodDepartamentoA, CodDocente);
@@ -85,7 +85,7 @@ namespace CapaPresentaciones
 
             DataTable resultados = N_AsistenciaDocentePorAsignatura.AsistenciaAsignaturasDocente(CodSemestre, txtCodDocente.Text,dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
             
-            C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text, "Jefe de Departamento")
+            C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodDocente.Text, "Jefe de Departamento")
             {
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
 
@@ -121,7 +121,7 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            P_SeleccionadoDocente docente = new P_SeleccionadoDocente();
+            P_SeleccionadoDocente docente = new P_SeleccionadoDocente(txtCodDocente.Text,"Jefe de Departamento", cxtCriterioSeleccion.SelectedItem.ToString());
             AddOwnedForm(docente);
             docente.ShowDialog();
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Docentes"))
@@ -165,7 +165,7 @@ namespace CapaPresentaciones
                 lblFechaFinal.Visible = true;
                 dpFechaFinal.Visible = true;
 
-                btnGeneral.Visible = false;
+                btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
 
                 CriterioSeleccionAsistenciaDocentes();
@@ -207,26 +207,29 @@ namespace CapaPresentaciones
         {
             // Tipo de reporte: Asistencia estudiantes
             // Criterio de selección: Por Fechas
+            DataTable NombreDepar = N_DepartamentoAcademico.BuscarNombreDepartamento(CodDepartamentoA);
+            string NomDepartamento = NombreDepar.Rows[0]["Nombre"].ToString();
+            //DataTable datosDocente = N_Docente.BuscarDocente(CodDepartamentoA, CodDocente);
+            //nombreDocente = datosDocente.Rows[0]["Nombre"].ToString() + " " + datosDocente.Rows[0]["APaterno"].ToString() + " " + datosDocente.Rows[0]["AMaterno"].ToString();
 
             string Titulo = "REPORTE DE ASISTENCIA DOCENTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
-            string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
-            string[] Valores = { CodSemestre, CodDocenteReporte, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
+            string[] Titulos = { "Semestre", "Departamento Académico", "Cod. Docente", "Docente" };
+            string[] Valores = { CodSemestre, NomDepartamento, txtCodDocente.Text, txtDocente.Text };
 
-            DataTable resultados = N_AsistenciaDocentePorAsignatura.AsistenciaAsignaturasDocente(CodSemestre, CodDocenteReporte,dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
-
+            DataTable resultados = N_AsistenciaDocentePorAsignatura.AsistenciaAsignaturasDocente(CodSemestre, txtCodDocente.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
             Reportes.fnReporte10(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
         }
         private void fnReporte13()
         {
             // Tipo de reporte: Asistencia estudiantes
             // Criterio de selección: Por Estudiantes
+            DataTable NombreDepar = N_DepartamentoAcademico.BuscarNombreDepartamento(CodDepartamentoA);
+            string NomDepartamento = NombreDepar.Rows[0]["Nombre"].ToString();
 
-            string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
-            string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
-            string[] Valores = { CodSemestre, CodDocenteReporte, nombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
-
-            DataTable resultados = N_AsistenciaDiariaDocente.AsistenciasDocente(CodSemestre, CodDocenteReporte, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
-
+            string Titulo = "REPORTE DE ASISTENCIA DOCENTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            string[] Titulos = { "Semestre", "Departamento Académico", "Cod. Docente", "Docente" };
+            string[] Valores = { CodSemestre, NomDepartamento, txtCodDocente.Text, txtDocente.Text };
+            DataTable resultados = N_AsistenciaDiariaDocente.AsistenciasDocente(CodSemestre, txtCodDocente.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
             Reportes.fnReporte13(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
         }
         private void dpFechaInicial_CloseUp(object sender, EventArgs e)
@@ -243,10 +246,17 @@ namespace CapaPresentaciones
 
         private void dpFechaFinal_CloseUp(object sender, EventArgs e)
         {
-            
+            if (cxtTipoReporte.SelectedItem.Equals("Asistencia Docentes"))
+            {
+                CriterioSeleccionAsistenciaDocentes();
+            }
+            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
+            {
+                fnReporte5();
+            }
         }
 
-        public string CodDocenteReporte = "";
+        //public string CodDocenteReporte = "";
 
         private void fnReporte5()
         {

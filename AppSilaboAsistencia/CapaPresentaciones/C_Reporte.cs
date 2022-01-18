@@ -57,7 +57,7 @@ namespace CapaPresentaciones
             pnSubcampos.Controls.Clear();
         }
 
-        public C_Reporte(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura, string AccesoReporte)
+        public C_Reporte(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasDocentes, string CodAsignatura, string AccesoReporte)
         {
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
@@ -65,7 +65,7 @@ namespace CapaPresentaciones
             dgvResultados.CellMouseEnter += new DataGridViewCellEventHandler(dgvResultados_CellMouseEnter);
             if (AccesoReporte == "Jefe de Departamento")
             {
-                fnReporte13(Titulo, Titulos, Valores, Datos, CriterioAsistenciasEstudiantes, CodAsignatura);
+                fnReporte10(Titulo, Titulos, Valores, Datos, CriterioAsistenciasDocentes, CodAsignatura);
             }
             else
             {
@@ -1780,8 +1780,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[0].HeaderText = "Ver Reporte";
 
                 dgvResultados.DataSource = Datos;
-                dgvResultados.Columns[6].Visible = false;
-                dgvResultados.Columns[0].DisplayIndex = 6;
+                dgvResultados.Columns[0].DisplayIndex = 4;
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
@@ -1810,86 +1809,28 @@ namespace CapaPresentaciones
                     sbResultados.Visible = true;
                 }
 
-                // Mostrar cuadro de resumen
-                if (!pnContenedorCuadro.Visible)
+                // Ocultar cuadro de resumen
+                if (pnContenedorCuadro.Visible)
                 {
+                    pnContenedorCuadro.Visible = false;
                     pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
                     pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
-                    this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
+                    this.Cuadricula.RowStyles[1].Height -= pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
                     this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
 
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
                     pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorCuadro.Visible = true;
                 }
 
-                DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
-                dtEstadisticos.Rows.Clear();
-
-                // Asistencias
-                // Solo donde SesiónDictada es SI para los estadísticos
-                foreach (DataRow row in Datos.Rows)
-                {
-                    if (row["SesiónDictada"].ToString() == "SI")
-                    {
-                        dtEstadisticos.ImportRow(row);
-                    }
-                }
-
-                // Listas de valores
-                List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TotalAsistieron"))).ToList();
-                List<double> Faltaron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TotalFaltaron"))).ToList();
-
-                // Cuadro de resumen
-                DataTable cuadroResumen = new DataTable();
-                cuadroResumen.Columns.Add(" ");
-                cuadroResumen.Columns.Add("Asistieron");
-                cuadroResumen.Columns.Add("Faltaron");
-
-                // Máximos
-                cuadroResumen.Rows.Add("Máximo", Statistics.Maximum(Asistieron), Statistics.Maximum(Faltaron));
-
-                // Mínimos
-                cuadroResumen.Rows.Add("Mínimo", Statistics.Minimum(Asistieron), Statistics.Minimum(Faltaron));
-
-                // Media
-                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Asistieron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)", String.Format("{0:0.00}", Statistics.Mean(Faltaron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Faltaron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)");
-
-                // Mediana
-                cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Asistieron)), String.Format("{0:0.00}", Statistics.Median(Faltaron)));
-
-                // Moda
-                var modeAsistieron = Asistieron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
-                var modeFaltaron = Faltaron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
-                cuadroResumen.Rows.Add("Moda", modeAsistieron, modeFaltaron);
-
-                // Varianza
-                cuadroResumen.Rows.Add("Varianza", String.Format("{0:0.00}", Statistics.Variance(Asistieron)), String.Format("{0:0.00}", Statistics.Variance(Faltaron)));
-
-                // Desviación Estándar
-                var dvA = Statistics.StandardDeviation(Asistieron);
-                var dvF = Statistics.StandardDeviation(Faltaron);
-                cuadroResumen.Rows.Add("Desv. Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
-
-                dgvResumen.DataSource = cuadroResumen;
-
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                pnContenedorCuadro.Height = dgvResumen.Rows.Count * 26 + 81;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
+                #region ===================== GRÁFICO =====================
                 // Gráficos
-                btnGrafico2.Visible = true;
-                IndiceGrafico1 = 0;
-                IndiceGrafico2 = 1;
+                btnGrafico2.Visible = false;
+                IndiceGrafico1 = 4;
 
-                // Grafico 1
-                gxGrafico1.XAxesLabel = "Cantidad";
-                gxGrafico1.YAxesLabel = "Fecha";
+                // Gráfico 1
+                gxGrafico5.XAxesLabel = "";
+                gxGrafico5.YAxesLabel = "Porcentaje";
 
                 List<string> EtiquetasA = new List<string>();
 
@@ -1899,67 +1840,33 @@ namespace CapaPresentaciones
                 List<double> Datos2A = new List<double>();
                 List<Color> Colores2A = new List<Color>();
 
-                foreach (DataRow Fila in dtEstadisticos.Rows)
+                foreach (DataRow Fila in Datos.Rows)
                 {
-                    EtiquetasA.Add(Fila["Fecha"].ToString());
-                    Datos1A.Add(double.Parse(Fila["TotalAsistieron"].ToString()));
+                    EtiquetasA.Add(Fila["CodAsignatura"].ToString());
+                    Datos1A.Add(double.Parse(Fila["PorcentajeAsistencias"].ToString()));
                     Colores1A.Add(Color.FromArgb(104, 13, 15));
-                    Datos2A.Add(double.Parse(Fila["TotalFaltaron"].ToString()));
+                    Datos2A.Add(double.Parse(Fila["PorcentajeFaltas"].ToString()));
                     Colores2A.Add(Color.FromArgb(232, 158, 31));
                 }
 
-                gxGrafico1.Labels = EtiquetasA.ToArray();
-                gxGrafico1.Clear();
+                gxGrafico5.Labels = EtiquetasA.ToArray();
+                gxGrafico5.Clear();
 
-                GraficoBarrasHorizontales1.Label = "Total Asistieron";
-                GraficoBarrasHorizontales1.Data = Datos1A;
-                GraficoBarrasHorizontales1.BackgroundColor = Colores1A;
+                GraficoBarrasCompletas1.Label = "Asistencias (%)";
+                GraficoBarrasCompletas1.Data = Datos1A;
+                GraficoBarrasCompletas1.BackgroundColor = Colores1A;
 
-                GraficoBarrasHorizontales2.Label = "Total Faltaron";
-                GraficoBarrasHorizontales2.Data = Datos2A;
-                GraficoBarrasHorizontales2.BackgroundColor = Colores2A;
+                GraficoBarrasCompletas2.Label = "Faltas (%)";
+                GraficoBarrasCompletas2.Data = Datos2A;
+                GraficoBarrasCompletas2.BackgroundColor = Colores2A;
 
-                GraficoBarrasHorizontales1.TargetCanvas = gxGrafico1;
-                GraficoBarrasHorizontales2.TargetCanvas = gxGrafico1;
+                GraficoBarrasCompletas1.TargetCanvas = gxGrafico5;
+                GraficoBarrasCompletas2.TargetCanvas = gxGrafico5;
 
-                gxGrafico1.Update();
+                gxGrafico5.Update();
+                tcGraficos.SetPage(IndiceGrafico1);
+                #endregion ===================== GRÁFICO =====================
 
-                // Grafico 2
-                gxGrafico2.XAxesLabel = "Fecha";
-                gxGrafico2.YAxesLabel = "Porcentaje de Asistencia";
-
-                List<string> EtiquetasB = new List<string>();
-                List<double> Datos1B = new List<double>();
-                double Valor1 = 0;
-                double Valor2 = 0;
-
-                DataTable dtEstadisticos2 = dtEstadisticos.AsEnumerable().Reverse().CopyToDataTable();
-
-                foreach (DataRow Fila in dtEstadisticos2.Rows)
-                {
-                    EtiquetasB.Add(Fila["Fecha"].ToString());
-                    Valor1 = double.Parse(Fila["TotalAsistieron"].ToString());
-                    Valor2 = double.Parse(Fila["TotalFaltaron"].ToString());
-
-                    if ((Valor1 == 0) && (Valor2 == 0))
-                    {
-                        Datos1B.Add(0.00);
-                    }
-                    else
-                    {
-                        Datos1B.Add(Math.Round((Valor1 * 100) / (Valor1 + Valor2), 2));
-                    }
-                }
-
-                gxGrafico2.Labels = EtiquetasB.ToArray();
-                gxGrafico2.Clear();
-
-                GraficoLineas.Label = "Total Asistieron (%)";
-                GraficoLineas.Data = Datos1B;
-
-                GraficoLineas.TargetCanvas = gxGrafico2;
-
-                gxGrafico2.Update();
             }
         }
         public void fnReporte13(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasDocentes, string CodAsignatura)
@@ -2022,7 +1929,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[0].HeaderText = "Ver Reporte";
 
                 dgvResultados.DataSource = Datos;
-                dgvResultados.Columns[0].DisplayIndex = 4;
+                dgvResultados.Columns[0].DisplayIndex = 3;
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
@@ -2050,8 +1957,7 @@ namespace CapaPresentaciones
                     pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
                     sbResultados.Visible = true;
                 }
-                /*
-                // Mostrar cuadro de resumen
+
                 if (!pnContenedorCuadro.Visible)
                 {
                     pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
@@ -2065,143 +1971,122 @@ namespace CapaPresentaciones
                     pnContenedorCuadro.Visible = true;
                 }
 
-                DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
-                dtEstadisticos.Rows.Clear();
+                DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
 
-                // Asistencias
-                // Solo donde SesiónDictada es SI para los estadísticos
-                
-                foreach (DataRow row in Datos.Rows)
-                {
-                    if (row["SesiónDictada"].ToString() == "SI")
-                    {
-                        dtEstadisticos.ImportRow(row);
-                    }
-                }
-
-                // Listas de valores
-                List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TotalAsistieron"))).ToList();
-                List<double> Faltaron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TotalFaltaron"))).ToList();
-                
                 // Cuadro de resumen
                 DataTable cuadroResumen = new DataTable();
                 cuadroResumen.Columns.Add(" ");
-                cuadroResumen.Columns.Add("Asistieron");
-                cuadroResumen.Columns.Add("Faltaron");
+                cuadroResumen.Columns.Add("Cantidad");
 
-                // Máximos
-                cuadroResumen.Rows.Add("Máximo", Statistics.Maximum(Asistieron), Statistics.Maximum(Faltaron));
+                double Asistio = 0;
+                
+                double FaltaronJustificado = 0;
+                double FaltaronSinJustificar = 0;
 
-                // Mínimos
-                cuadroResumen.Rows.Add("Mínimo", Statistics.Minimum(Asistieron), Statistics.Minimum(Faltaron));
+                foreach (DataRow Fila in dtResumen.Rows)
+                {
+                    if (Fila["Asistió"].ToString() == "SI" && Fila["Observación"].ToString() == "")
+                    {
+                        Asistio += 1;
+                    }
+                    
+                    else if (Fila["Asistió"].ToString() == "NO" && (Fila["Observación"].ToString() == "FERIADO" || Fila["Observación"].ToString() == "SUSPENSION" || Fila["Observación"].ToString() == "PERMISO"))
+                    {
+                        FaltaronJustificado += 1;
+                    }
 
-                // Media
-                cuadroResumen.Rows.Add("Media", String.Format("{0:0.00}", Statistics.Mean(Asistieron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Asistieron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)", String.Format("{0:0.00}", Statistics.Mean(Faltaron)) + " (" + String.Format("{0:0.00}", Statistics.Mean(Faltaron) / (Statistics.Mean(Asistieron) + Statistics.Mean(Faltaron)) * 100) + "%)");
+                    else if (Fila["Asistió"].ToString() == "NO" && Fila["Observación"].ToString() == "FALTO SIN JUSTIFICAR")
+                    {
+                        FaltaronSinJustificar += 1;
+                    }
+                }
 
-                // Mediana
-                cuadroResumen.Rows.Add("Mediana", String.Format("{0:0.00}", Statistics.Median(Asistieron)), String.Format("{0:0.00}", Statistics.Median(Faltaron)));
+                double Total = Asistio + FaltaronJustificado + FaltaronSinJustificar;
 
-                // Moda
-                var modeAsistieron = Asistieron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
-                var modeFaltaron = Faltaron.GroupBy(a => a).OrderByDescending(b => b.Count()).Select(b => b.Key).FirstOrDefault();
-                cuadroResumen.Rows.Add("Moda", modeAsistieron, modeFaltaron);
+                // Asistieron 
+                cuadroResumen.Rows.Add("Asistencias", Asistio.ToString() + " (" + String.Format("{0:0.00}", Asistio / Total * 100) + "%)");
 
-                // Varianza
-                cuadroResumen.Rows.Add("Varianza", String.Format("{0:0.00}", Statistics.Variance(Asistieron)), String.Format("{0:0.00}", Statistics.Variance(Faltaron)));
+                // Faltaron (Justificado)
+                cuadroResumen.Rows.Add("Falta(s) (Justificada(s))", FaltaronJustificado.ToString() + " (" + String.Format("{0:0.00}", FaltaronJustificado / Total * 100) + "%)");
 
-                // Desviación Estándar
-                var dvA = Statistics.StandardDeviation(Asistieron);
-                var dvF = Statistics.StandardDeviation(Faltaron);
-                cuadroResumen.Rows.Add("Desv. Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
+                // Faltaron (Sin justificar)
+                cuadroResumen.Rows.Add("Falta(s) (Sin Justificar)", FaltaronSinJustificar.ToString() + " (" + String.Format("{0:0.00}", FaltaronSinJustificar / Total * 100) + "%)");
+
+                // Faltas
+                cuadroResumen.Rows.Add("Total de Faltas", (FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + String.Format("{0:0.00}", (FaltaronJustificado + FaltaronSinJustificar) / Total * 100) + "%)");
+
+                // Total
+                cuadroResumen.Rows.Add("Total", (Asistio + FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + "100" + "%)");
 
                 dgvResumen.DataSource = cuadroResumen;
 
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                pnContenedorCuadro.Height = dgvResumen.Rows.Count * 26 + 81;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                // Gráficos
+                // Gráficos // Barras verticales y Pie
                 btnGrafico2.Visible = true;
-                IndiceGrafico1 = 0;
-                IndiceGrafico2 = 1;
+                IndiceGrafico1 = 2;
 
-                // Grafico 1
-                gxGrafico1.XAxesLabel = "Cantidad";
-                gxGrafico1.YAxesLabel = "Fecha";
+                // Gráfico 1
+                gxGrafico3.XAxesLabel = "";
+                gxGrafico3.LegendDisplay = false;
+                gxGrafico3.YAxesLabel = "Cantidad";
 
                 List<string> EtiquetasA = new List<string>();
-
                 List<double> Datos1A = new List<double>();
                 List<Color> Colores1A = new List<Color>();
 
-                List<double> Datos2A = new List<double>();
-                List<Color> Colores2A = new List<Color>();
+                Datos1A.Add(Asistio);
+                Datos1A.Add(FaltaronJustificado + FaltaronSinJustificar);
+                Colores1A.Add(Color.FromArgb(104, 13, 15));
+                Colores1A.Add(Color.FromArgb(232, 158, 31));
 
-                foreach (DataRow Fila in dtEstadisticos.Rows)
-                {
-                    EtiquetasA.Add(Fila["Fecha"].ToString());
-                    Datos1A.Add(double.Parse(Fila["TotalAsistieron"].ToString()));
-                    Colores1A.Add(Color.FromArgb(104, 13, 15));
-                    Datos2A.Add(double.Parse(Fila["TotalFaltaron"].ToString()));
-                    Colores2A.Add(Color.FromArgb(232, 158, 31));
-                }
+                EtiquetasA.Add("Total Asistencias");
+                EtiquetasA.Add("Total Faltas");
 
-                gxGrafico1.Labels = EtiquetasA.ToArray();
-                gxGrafico1.Clear();
+                gxGrafico3.Labels = EtiquetasA.ToArray();
+                gxGrafico3.Clear();
 
-                GraficoBarrasHorizontales1.Label = "Total Asistieron";
-                GraficoBarrasHorizontales1.Data = Datos1A;
-                GraficoBarrasHorizontales1.BackgroundColor = Colores1A;
+                GraficoBarrasVerticales.Label = "";
+                GraficoBarrasVerticales.Data = Datos1A;
+                GraficoBarrasVerticales.BackgroundColor = Colores1A;
 
-                GraficoBarrasHorizontales2.Label = "Total Faltaron";
-                GraficoBarrasHorizontales2.Data = Datos2A;
-                GraficoBarrasHorizontales2.BackgroundColor = Colores2A;
+                GraficoBarrasVerticales.TargetCanvas = gxGrafico3;
 
-                GraficoBarrasHorizontales1.TargetCanvas = gxGrafico1;
-                GraficoBarrasHorizontales2.TargetCanvas = gxGrafico1;
+                gxGrafico3.Update();
 
-                gxGrafico1.Update();
+                // Gráfico 2
+                IndiceGrafico2 = 3;
 
-                // Grafico 2
-                gxGrafico2.XAxesLabel = "Fecha";
-                gxGrafico2.YAxesLabel = "Porcentaje de Asistencia";
+                gxGrafico4.XAxesLabel = "";
+                gxGrafico4.YAxesLabel = "";
 
                 List<string> EtiquetasB = new List<string>();
                 List<double> Datos1B = new List<double>();
-                double Valor1 = 0;
-                double Valor2 = 0;
+                List<Color> Color1B = new List<Color>();
 
-                DataTable dtEstadisticos2 = dtEstadisticos.AsEnumerable().Reverse().CopyToDataTable();
+                EtiquetasB.Add("Asistencia Normal");
+              
+                EtiquetasB.Add("Falta (Justificada)");
+                EtiquetasB.Add("Falta (Sin Justificar)");
 
-                foreach (DataRow Fila in dtEstadisticos2.Rows)
-                {
-                    EtiquetasB.Add(Fila["Fecha"].ToString());
-                    Valor1 = double.Parse(Fila["TotalAsistieron"].ToString());
-                    Valor2 = double.Parse(Fila["TotalFaltaron"].ToString());
+                Datos1B.Add(Asistio);
+                
+                Datos1B.Add(FaltaronJustificado);
+                Datos1B.Add(FaltaronSinJustificar);
 
-                    if ((Valor1 == 0) && (Valor2 == 0))
-                    {
-                        Datos1B.Add(0.00);
-                    }
-                    else
-                    {
-                        Datos1B.Add(Math.Round((Valor1 * 100) / (Valor1 + Valor2), 2));
-                    }
-                }
+                Color1B.Add(Color.FromArgb(23, 153, 75));
+                Color1B.Add(Color.FromArgb(117, 163, 229));
+                Color1B.Add(Color.FromArgb(232, 128, 31));
+                Color1B.Add(Color.FromArgb(104, 13, 15));
 
-                gxGrafico2.Labels = EtiquetasB.ToArray();
-                gxGrafico2.Clear();
+                gxGrafico4.Labels = EtiquetasB.ToArray();
+                gxGrafico4.Clear();
 
-                GraficoLineas.Label = "Total Asistieron (%)";
-                GraficoLineas.Data = Datos1B;
+                GraficoCircular.Label = "";
+                GraficoCircular.Data = Datos1B;
+                GraficoCircular.BackgroundColor = Color1B;
 
-                GraficoLineas.TargetCanvas = gxGrafico2;
+                GraficoCircular.TargetCanvas = gxGrafico4;
 
-                gxGrafico2.Update(); */
+                gxGrafico4.Update();
             }
         }
         private void dgvResultados_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
