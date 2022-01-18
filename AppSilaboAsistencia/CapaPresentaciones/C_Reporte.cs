@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MathNet.Numerics.Statistics;
 using Ayudas;
-using System.IO;
-using ClosedXML.Excel;
 using CapaNegocios;
 using ControlesPerzonalizados;
 using System.Globalization;
@@ -262,6 +257,7 @@ namespace CapaPresentaciones
             }
             else
             {
+                #region ===================== CUADRO DE RESULTADOS =====================
                 // Crear columna
                 DataGridViewImageColumn btnVerReporte = new DataGridViewImageColumn
                 {
@@ -296,7 +292,9 @@ namespace CapaPresentaciones
 
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
+                #endregion ===================== CUADRO DE RESULTADOS =====================
 
+                #region ===================== CUADRO DE RESUMEN =====================
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
                 dtEstadisticos.Rows.Clear();
 
@@ -344,8 +342,9 @@ namespace CapaPresentaciones
 
                 // Mostrar y establecer los datos del cuadro de resumen de manera responsiva
                 ResumenResponsivo(true, cuadroResumen);
+                #endregion ===================== CUADRO DE RESUMEN =====================
 
-                // Gráficos
+                #region ===================== GRÁFICOS =====================
                 btnGrafico2.Visible = true;
                 IndiceGrafico1 = 0;
                 IndiceGrafico2 = 1;
@@ -425,6 +424,7 @@ namespace CapaPresentaciones
                 gxGrafico2.Update();
 
                 tcGraficos.SetPage(tcGraficos.PageIndex);
+                #endregion ===================== GRÁFICOS =====================
             }
         }
 
@@ -433,6 +433,7 @@ namespace CapaPresentaciones
             // Actualizar los primeros campos del reporte
             ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
+            #region ===================== CUADRO DE RESULTADOS =====================
             dgvResultados.Columns.Clear();
 
             dgvResultados.DataSource = Datos;
@@ -453,7 +454,9 @@ namespace CapaPresentaciones
 
             // Mostrar los resultados de manera responsiva
             MostrarResultadosResponsivo();
+            #endregion ===================== CUADRO DE RESULTADOS =====================
 
+            #region ===================== CUADRO DE RESUMEN =====================
             DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
 
             // Cuadro de resumen
@@ -502,8 +505,9 @@ namespace CapaPresentaciones
             ResumenResponsivo(true, cuadroResumen);
 
             dgvResumen.Columns[0].Width = 300;
+            #endregion ===================== CUADRO DE RESUMEN =====================
 
-            // Gráficos
+            #region ===================== GRÁFICOS =====================
             btnGrafico2.Visible = true;
             IndiceGrafico1 = 2;
 
@@ -526,7 +530,7 @@ namespace CapaPresentaciones
 
             gxGrafico3.Labels = EtiquetasA.ToArray();
             gxGrafico3.Clear();
-            
+
             GraficoBarrasVerticales.Label = "";
             GraficoBarrasVerticales.Data = Datos1A;
             GraficoBarrasVerticales.BackgroundColor = Colores1A;
@@ -570,6 +574,7 @@ namespace CapaPresentaciones
             GraficoCircular.TargetCanvas = gxGrafico4;
 
             gxGrafico4.Update();
+            #endregion ===================== GRÁFICOS =====================
         }
 
         public void fnReporte3(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura)
@@ -591,6 +596,7 @@ namespace CapaPresentaciones
             }
             else
             {
+                #region ===================== CUADRO DE RESULTADOS =====================
                 // Crear columna
                 DataGridViewImageColumn btnVerReporte = new DataGridViewImageColumn
                 {
@@ -632,11 +638,14 @@ namespace CapaPresentaciones
 
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
+                #endregion ===================== CUADRO DE RESULTADOS =====================
 
+                #region ===================== CUADRO DE RESUMEN =====================
                 // Ocultar el  cuadro de resumen
                 ResumenResponsivo(false);
+                #endregion ===================== CUADRO DE RESUMEN =====================
 
-                // Gráficos
+                #region ===================== GRÁFICOS =====================
                 btnGrafico2.Visible = false;
                 IndiceGrafico1 = 0;
 
@@ -678,6 +687,7 @@ namespace CapaPresentaciones
                 gxGrafico1.Update();
 
                 tcGraficos.SetPage(IndiceGrafico1);
+                #endregion ===================== GRÁFICOS =====================
             }
         }
 
@@ -686,6 +696,7 @@ namespace CapaPresentaciones
             // Actualizar los primeros campos del reporte
             ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
+            #region ===================== CUADRO DE RESULTADOS =====================
             dgvResultados.Columns.Clear();
 
             dgvResultados.DataSource = Datos;
@@ -699,7 +710,9 @@ namespace CapaPresentaciones
 
             // Mostrar los resultados de manera responsiva
             MostrarResultadosResponsivo();
+            #endregion ===================== CUADRO DE RESULTADOS =====================
 
+            #region ===================== CUADRO DE RESUMEN =====================
             DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
 
             // Cuadro de resumen
@@ -749,8 +762,9 @@ namespace CapaPresentaciones
             ResumenResponsivo(true, cuadroResumen);
 
             dgvResumen.Columns[0].Width = 300;
+            #endregion ===================== CUADRO DE RESUMEN =====================
 
-            // Gráficos
+            #region ===================== GRÁFICOS =====================
             btnGrafico2.Visible = true;
             IndiceGrafico1 = 2;
 
@@ -806,7 +820,7 @@ namespace CapaPresentaciones
             Color1B.Add(Color.FromArgb(117, 163, 229));
             Color1B.Add(Color.FromArgb(232, 128, 31));
             Color1B.Add(Color.FromArgb(104, 13, 15));
-            
+
             gxGrafico4.Labels = EtiquetasB.ToArray();
             gxGrafico4.Clear();
 
@@ -817,6 +831,7 @@ namespace CapaPresentaciones
             GraficoCircular.TargetCanvas = gxGrafico4;
 
             gxGrafico4.Update();
+            #endregion ===================== GRÁFICOS =====================
         }
 
         public void fnReporte5(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CodAsignatura, int Completados, int Faltantes)
@@ -849,7 +864,6 @@ namespace CapaPresentaciones
 
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
-
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 
                 #region ===================== CUADRO DE RESUMEN =====================
@@ -873,7 +887,7 @@ namespace CapaPresentaciones
                 ResumenResponsivo(true, cuadroResumen);
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
-                #region ===================== GRÁFICO =====================
+                #region ===================== GRÁFICOS =====================
                 // Gráficos
                 btnGrafico2.Visible = false;
                 IndiceGrafico1 = 3;
@@ -906,7 +920,7 @@ namespace CapaPresentaciones
 
                 gxGrafico4.Update();
                 tcGraficos.SetPage(IndiceGrafico1);
-                #endregion ===================== GRÁFICO =====================
+                #endregion ===================== GRÁFICOS =====================
             }
         }
 
@@ -947,7 +961,7 @@ namespace CapaPresentaciones
                 ResumenResponsivo(false);
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
-                #region ===================== GRÁFICO =====================
+                #region ===================== GRÁFICOS =====================
                 // Gráficos
                 btnGrafico2.Visible = false;
                 IndiceGrafico1 = 4;
@@ -990,7 +1004,7 @@ namespace CapaPresentaciones
 
                 gxGrafico5.Update();
                 tcGraficos.SetPage(IndiceGrafico1);
-                #endregion ===================== GRÁFICO =====================
+                #endregion ===================== GRÁFICOS =====================
             }
         }
 
@@ -1002,6 +1016,7 @@ namespace CapaPresentaciones
             if (Datos.Rows.Count == 0) A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
             else
             {
+                #region ===================== CUADRO DE RESULTADOS =====================
                 dgvResultados.Columns.Clear();
                 dgvResultados.DataSource = Datos;
 
@@ -1022,7 +1037,9 @@ namespace CapaPresentaciones
 
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
+                #endregion ===================== CUADRO DE RESULTADOS =====================
 
+                #region ===================== CUADRO DE RESUMEN =====================
                 // Cuadro de resumen
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
 
@@ -1063,8 +1080,9 @@ namespace CapaPresentaciones
 
                 // Mostrar y establecer los datos del cuadro de resumen de manera responsiva
                 ResumenResponsivo(true, cuadroResumen);
+                #endregion ===================== CUADRO DE RESUMEN =====================
 
-                // Gráficos
+                #region ===================== GRÁFICOS =====================
                 btnGrafico2.Visible = false;
                 IndiceGrafico1 = 0;
 
@@ -1106,6 +1124,7 @@ namespace CapaPresentaciones
                 gxGrafico1.Update();
 
                 tcGraficos.SetPage(IndiceGrafico1);
+                #endregion ===================== GRÁFICOS =====================
             }
         }
 
@@ -1119,6 +1138,7 @@ namespace CapaPresentaciones
             if (Datos.Rows.Count == 0) A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
             else
             {
+                #region ===================== CUADRO DE RESULTADOS =====================
                 // Crear columna
                 DataGridViewImageColumn btnVerReporte = new DataGridViewImageColumn
                 {
@@ -1159,11 +1179,14 @@ namespace CapaPresentaciones
 
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
+                #endregion ===================== CUADRO DE RESULTADOS =====================
 
+                #region ===================== CUADRO DE RESUMEN =====================
                 // Ocultar el cuadro de resumen
                 ResumenResponsivo(false);
+                #endregion ===================== CUADRO DE RESUMEN =====================
 
-                // Gráficos
+                #region ===================== GRÁFICOS =====================
                 btnGrafico2.Visible = false;
                 IndiceGrafico1 = 4;
 
@@ -1204,6 +1227,7 @@ namespace CapaPresentaciones
 
                 gxGrafico5.Update();
                 tcGraficos.SetPage(IndiceGrafico1);
+                #endregion ===================== GRÁFICOS =====================
             }
         }
 
@@ -1280,7 +1304,7 @@ namespace CapaPresentaciones
                 ResumenResponsivo(true, cuadroResumen);
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
-                #region ===================== GRÁFICO =====================
+                #region ===================== GRÁFICOS =====================
                 // Gráficos
                 btnGrafico2.Visible = false;
                 IndiceGrafico1 = 0;
@@ -1322,7 +1346,7 @@ namespace CapaPresentaciones
 
                 gxGrafico1.Update();
                 tcGraficos.SetPage(IndiceGrafico1);
-                #endregion ===================== GRÁFICO =====================
+                #endregion ===================== GRÁFICOS =====================
             }
         }
 
