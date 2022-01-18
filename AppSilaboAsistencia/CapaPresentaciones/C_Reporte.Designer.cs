@@ -1366,7 +1366,6 @@ namespace CapaPresentaciones
 
         #endregion
         private Bunifu.UI.WinForms.BunifuPanel pnTitulo;
-        private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
         private Bunifu.UI.WinForms.BunifuPanel pnSuperior;
         private Bunifu.UI.WinForms.BunifuLabel gbxDescripcion;
         private Bunifu.UI.WinForms.BunifuPanel pnCampos;
@@ -1406,5 +1405,6 @@ namespace CapaPresentaciones
         private Bunifu.Charts.WinForms.ChartTypes.BunifuHorizontalBarChart GraficoBarrasHorizontales2;
         public Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGrafico1;
         private Bunifu.Charts.WinForms.ChartTypes.BunifuBarChart GraficoBarrasCompletas2;
+        public Bunifu.UI.WinForms.BunifuLabel lblTitulo;
     }
 }
