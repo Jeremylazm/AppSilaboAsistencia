@@ -33,29 +33,6 @@ namespace CapaPresentaciones
             dgvResultados.CellMouseEnter += new DataGridViewCellEventHandler(dgvResultados_CellMouseEnter);
         }
 
-        void dataGridView1_MouseWheel(object sender, MouseEventArgs e)
-        {
-            ((HandledMouseEventArgs)e).Handled = true;
-            int currentIndex = this.dgvResultados.FirstDisplayedScrollingRowIndex;
-            int scrollLines = SystemInformation.MouseWheelScrollLines;
-
-            if (e.Delta > 0)
-            {
-                this.dgvResultados.FirstDisplayedScrollingRowIndex = Math.Max(0, currentIndex - scrollLines);
-                this.sbResultados.Value = Math.Max(0, currentIndex - scrollLines);
-            }
-            else if (e.Delta < 0)
-            {
-                this.dgvResultados.FirstDisplayedScrollingRowIndex = currentIndex + scrollLines;
-                this.sbResultados.Value = currentIndex + scrollLines;
-            }
-        }
-
-        public void LimpiarCampos()
-        {
-            pnSubcampos.Controls.Clear();
-        }
-
         public C_Reporte(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura, string AccesoReporte)
         {
             InitializeComponent();
@@ -87,6 +64,115 @@ namespace CapaPresentaciones
             {
                 fnReporte4(Titulo, Titulos, Valores, Datos);
                 tcGraficos.SetPage(IndiceGrafico1);
+            }
+        }
+
+        void dataGridView1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            ((HandledMouseEventArgs)e).Handled = true;
+            int currentIndex = this.dgvResultados.FirstDisplayedScrollingRowIndex;
+            int scrollLines = SystemInformation.MouseWheelScrollLines;
+
+            if (e.Delta > 0)
+            {
+                this.dgvResultados.FirstDisplayedScrollingRowIndex = Math.Max(0, currentIndex - scrollLines);
+                this.sbResultados.Value = Math.Max(0, currentIndex - scrollLines);
+            }
+            else if (e.Delta < 0)
+            {
+                this.dgvResultados.FirstDisplayedScrollingRowIndex = currentIndex + scrollLines;
+                this.sbResultados.Value = currentIndex + scrollLines;
+            }
+        }
+
+        public void LimpiarCampos()
+        {
+            pnSubcampos.Controls.Clear();
+        }
+
+        public void MostrarResultadosResponsivo()
+        {
+            pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+            pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+            int AnteriorAlturaResultados = pnContenedorResultados.Height;
+
+            if (dgvResultados.Rows.Count <= 10)
+            {
+                sbResultados.Visible = false;
+                pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
+                
+            }
+            else
+            {
+                sbResultados.Visible = true;
+                pnContenedorResultados.Height = 341;
+            }
+
+            if (pnContenedorResultados.Height < AnteriorAlturaResultados)
+            {
+                this.Cuadricula.RowStyles[1].Height -= AnteriorAlturaResultados - pnContenedorResultados.Height;
+            }
+            else
+            {
+                this.Cuadricula.RowStyles[1].Height += pnContenedorResultados.Height - AnteriorAlturaResultados;
+            }
+
+            this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+            pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+        }
+
+        private void ResumenResponsivo(bool Mostrar, DataTable Cuadro = null)
+        {
+            pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+            pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+            if ((Mostrar = true) && (!pnContenedorCuadro.Visible))
+            {
+                pnContenedorCuadro.Visible = true;
+                this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
+            }
+
+            if ((Mostrar = false) && (pnContenedorCuadro.Visible))
+            {
+                pnContenedorCuadro.Visible = false;
+                this.Cuadricula.RowStyles[1].Height -= pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
+            }
+
+            this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+            pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+            if (Cuadro != null)
+            {
+                dgvResumen.DataSource = Cuadro;
+
+                dgvResumen.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                foreach (DataGridViewColumn Columna in dgvResumen.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
+
+                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+                int AnteriorAlturaCuadro = pnContenedorCuadro.Height;
+                pnContenedorCuadro.Height = dgvResumen.Rows.Count * 26 + 81;
+                if (pnContenedorCuadro.Height < AnteriorAlturaCuadro)
+                {
+                    this.Cuadricula.RowStyles[1].Height -= AnteriorAlturaCuadro - pnContenedorCuadro.Height;
+                }
+                else
+                {
+                    this.Cuadricula.RowStyles[1].Height += pnContenedorCuadro.Height - AnteriorAlturaCuadro;
+                }
+                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
+
+                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
             }
         }
 
@@ -176,62 +262,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns["TotalAsistieron"].HeaderText = "Total Asistieron";
                 dgvResultados.Columns["TotalFaltaron"].HeaderText = "Total Faltaron";
 
-                if (dgvResultados.Rows.Count <= 10)
-                {
-                    sbResultados.Visible = false;
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    int AnteriorAlturaResultados = pnContenedorResultados.Height;
-                    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                    if (pnContenedorResultados.Height < AnteriorAlturaResultados)
-                    {
-                        this.Cuadricula.RowStyles[1].Height -= AnteriorAlturaResultados - pnContenedorResultados.Height;
-                    }
-                    else
-                    {
-                        this.Cuadricula.RowStyles[1].Height += pnContenedorResultados.Height - AnteriorAlturaResultados;
-                    }
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                }
-                else
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    int AnteriorAlturaResultados = pnContenedorResultados.Height;
-                    pnContenedorResultados.Height = 341;
-                    if (pnContenedorResultados.Height < AnteriorAlturaResultados)
-                    {
-                        this.Cuadricula.RowStyles[1].Height -= AnteriorAlturaResultados - pnContenedorResultados.Height;
-                    }
-                    else
-                    {
-                        this.Cuadricula.RowStyles[1].Height += pnContenedorResultados.Height - AnteriorAlturaResultados;
-                    }
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    sbResultados.Visible = true;
-                }
-
-                // Mostrar cuadro de resumen
-                if (!pnContenedorCuadro.Visible)
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorCuadro.Visible = true;
-                }
+                MostrarResultadosResponsivo();
 
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
                 dtEstadisticos.Rows.Clear();
@@ -278,31 +309,7 @@ namespace CapaPresentaciones
                 var dvF = Statistics.StandardDeviation(Faltaron);
                 cuadroResumen.Rows.Add("Desviación Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
 
-                dgvResumen.DataSource = cuadroResumen;
-
-                dgvResumen.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-                foreach (DataGridViewColumn Columna in dgvResumen.Columns)
-                {
-                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
-                }
-
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                int AnteriorAlturaCuadro = pnContenedorCuadro.Height;
-                pnContenedorCuadro.Height = dgvResumen.Rows.Count * 26 + 81;
-                if (pnContenedorCuadro.Height < AnteriorAlturaCuadro)
-                {
-                    this.Cuadricula.RowStyles[1].Height -= AnteriorAlturaCuadro - pnContenedorCuadro.Height;
-                }
-                else
-                {
-                    this.Cuadricula.RowStyles[1].Height += pnContenedorCuadro.Height - AnteriorAlturaCuadro;
-                }
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+                ResumenResponsivo(true, cuadroResumen);
 
                 // Gráficos
                 btnGrafico2.Visible = true;
@@ -663,48 +670,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns["TotalFaltas"].Width = 120;
                 dgvResultados.Columns[0].Width = 115;
 
-                if (dgvResultados.Rows.Count <= 10)
-                {
-                    sbResultados.Visible = false;
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    int AnteriorAlturaResultados = pnContenedorResultados.Height;
-                    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                    if (pnContenedorResultados.Height < AnteriorAlturaResultados)
-                    {
-                        this.Cuadricula.RowStyles[1].Height -= AnteriorAlturaResultados - pnContenedorResultados.Height;
-                    }
-                    else
-                    {
-                        this.Cuadricula.RowStyles[1].Height += pnContenedorResultados.Height - AnteriorAlturaResultados;
-                    }
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                }
-                else
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    int AnteriorAlturaResultados = pnContenedorResultados.Height;
-                    pnContenedorResultados.Height = 341;
-                    if (pnContenedorResultados.Height < AnteriorAlturaResultados)
-                    {
-                        this.Cuadricula.RowStyles[1].Height -= AnteriorAlturaResultados - pnContenedorResultados.Height;
-                    }
-                    else
-                    {
-                        this.Cuadricula.RowStyles[1].Height += pnContenedorResultados.Height - AnteriorAlturaResultados;
-                    }
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    sbResultados.Visible = true;
-                }
+                MostrarResultadosResponsivo();
 
                 //pnInferior.Controls[2].Hide();
                 if (pnContenedorCuadro.Visible)
@@ -796,32 +762,7 @@ namespace CapaPresentaciones
                 Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
-            if (dgvResultados.Rows.Count <= 10)
-            {
-                sbResultados.Visible = false;
-                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-            }
-            else
-            {
-                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                pnContenedorResultados.Height = 341;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                sbResultados.Visible = true;
-            }
+            MostrarResultadosResponsivo();
 
             if (!pnContenedorCuadro.Visible)
             {
@@ -1018,48 +959,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[2].HeaderText = "Fecha";
                 dgvResultados.Columns[3].HeaderText = "Estado";
 
-                if (dgvResultados.Rows.Count <= 10)
-                {
-                    sbResultados.Visible = false;
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    int AnteriorAlturaResultados = pnContenedorResultados.Height;
-                    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                    if (pnContenedorResultados.Height < AnteriorAlturaResultados)
-                    {
-                        this.Cuadricula.RowStyles[1].Height -= AnteriorAlturaResultados - pnContenedorResultados.Height;
-                    }
-                    else
-                    {
-                        this.Cuadricula.RowStyles[1].Height += pnContenedorResultados.Height - AnteriorAlturaResultados;
-                    }
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                }
-                else
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    int AnteriorAlturaResultados = pnContenedorResultados.Height;
-                    pnContenedorResultados.Height = 341;
-                    if (pnContenedorResultados.Height < AnteriorAlturaResultados)
-                    {
-                        this.Cuadricula.RowStyles[1].Height -= AnteriorAlturaResultados - pnContenedorResultados.Height;
-                    }
-                    else
-                    {
-                        this.Cuadricula.RowStyles[1].Height += pnContenedorResultados.Height - AnteriorAlturaResultados;
-                    }
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    sbResultados.Visible = true;
-                }
+                MostrarResultadosResponsivo();
 
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 
