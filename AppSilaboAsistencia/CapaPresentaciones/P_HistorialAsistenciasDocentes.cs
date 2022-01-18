@@ -38,6 +38,7 @@ namespace CapaPresentaciones
             InitializeComponent();
             MostrarRegistros();
             MostrarHorarioRegistroAsistencia();
+            Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
         }
 
         public void AccionesTabla()

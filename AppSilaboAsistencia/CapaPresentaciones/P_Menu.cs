@@ -554,8 +554,8 @@ namespace CapaPresentaciones
 
             if (date_NIST != null)
             {
-                DateTime date = DateTime.ParseExact(date_NIST, "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-                string Fecha = date.Date.ToString();
+                DateTime date = DateTime.Parse(date_NIST, null);
+                string Fecha = date.Date.ToString("dd/MM/yyyy");
                 string Hora = date.ToString("HH:mm:ss");
 
                 // Registrar asistencia
