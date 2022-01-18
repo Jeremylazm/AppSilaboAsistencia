@@ -96,11 +96,11 @@ namespace CapaDatos
             return Resultado;
         }
 
-        // Método para buscar los silabos de una asignatura.
-        public DataTable BuscarSilabosAsignatura(string CodAsignatura)
+        // Método para para mostrar los silabos de una asignatura.
+        public DataTable MostrarSilabosAsignatura(string CodAsignatura)
         {
             DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("spuBuscarSilabosAsignatura", Conectar)
+            SqlCommand Comando = new SqlCommand("spuMostrarSilabosAsignatura", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -111,11 +111,27 @@ namespace CapaDatos
             return Resultado;
         }
 
-        // Método para buscar los planes de sesión de una asignatura.
-        public DataTable BuscarPlanSesionesAsignatura(string CodAsignatura, string CodDocente)
+        // Método para buscar los silabos de una asignatura por filtro.
+        public DataTable BuscarSilabosAsignatura(string CodAsignatura, string Texto)
         {
             DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("spuBuscarPlanSesionesAsignatura", Conectar)
+            SqlCommand Comando = new SqlCommand("spuBuscarSilabosAsignatura", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
+            Comando.Parameters.AddWithValue("@Texto", Texto);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
+        // Método para mostrar los planes de sesión anteriores de un docente que dictó una asignatura.
+        public DataTable MostrarPlanSesionesAsignatura(string CodAsignatura, string CodDocente)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuMostrarPlanSesionesAsignatura", Conectar)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -126,6 +142,24 @@ namespace CapaDatos
             Data.Fill(Resultado);
             return Resultado;
         }
+
+        // Método para buscar los planes de sesión anteriores de un docente que dictó una asignatura por filtro
+        public DataTable BuscarPlanSesionesAsignatura(string CodAsignatura, string CodDocente, string Texto)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuBuscarPlanSesionesAsignatura", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
+            Comando.Parameters.AddWithValue("@Texto", Texto);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+            return Resultado;
+        }
+
         //Metodo para recuperar plan de sesion de un determinado docente y un determinada asignatura
         public DataTable RecuperarPlanDeSesionAsignatura(string CodSemestre, string CodAsignatura, string CodDocente)
         {

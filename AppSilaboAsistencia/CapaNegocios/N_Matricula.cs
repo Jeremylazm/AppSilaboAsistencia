@@ -28,9 +28,9 @@ namespace CapaNegocios
             return new D_Matricula().BuscarEstudiantesAsignatura(CodSemestre, CodEscuelaP, Texto);
         }
 
-        public static DataTable BuscarEstudiantesMatriculadosAsignatura(string CodSemestre, string CodEscuelaP, string Texto1, string Texto2)
+        public static DataTable BuscarEstudiantesMatriculadosAsignatura(string CodSemestre, string CodEscuelaP, string CodAsignatura, string Texto)
         {
-            return new D_Matricula().BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, Texto1, Texto2);
+            return new D_Matricula().BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, CodAsignatura, Texto);
         }
 
         public void InsertarMatricula(E_Matricula Matricula)

@@ -197,6 +197,7 @@ namespace CapaPresentaciones
             this.txtBuscar.TextPlaceholder = "BUSCAR";
             this.txtBuscar.UseSystemPasswordChar = false;
             this.txtBuscar.WordWrap = true;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // dgvDatos
             // 
@@ -214,6 +215,7 @@ namespace CapaPresentaciones
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDatos.BackgroundColor = System.Drawing.Color.White;
+            this.dgvDatos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDatos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvDatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;

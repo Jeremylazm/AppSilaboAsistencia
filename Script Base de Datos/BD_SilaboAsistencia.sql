@@ -1041,12 +1041,12 @@ BEGIN
 END;
 GO
 
--- Procedimiento para buscar los silabos de una asignatura.
-CREATE PROCEDURE spuBuscarSilabosAsignatura @CodAsignatura VARCHAR(6) -- código (ej. IF065)
+-- Procedimiento para mostrar los silabos de una asignatura.
+CREATE PROCEDURE spuMostrarSilabosAsignatura @CodAsignatura VARCHAR(6) -- código (ej. IF065)
 AS
 BEGIN
 	-- Mostrar los silabos
-	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, D.Nombre, 
+	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), 
 	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.Silabo
 		FROM TCatalogo C INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
@@ -1054,18 +1054,62 @@ BEGIN
 END;
 GO
 
--- Procedimiento para buscar los planes de sesión anteriores de un docente que dictó una asignatura.
-CREATE PROCEDURE spuBuscarPlanSesionesAsignatura @CodAsignatura VARCHAR(6), -- código (ej. IF065)
-											     @CodDocente VARCHAR(5)
+-- Procedimiento para buscar los silabos de una asignatura por filtro.
+CREATE PROCEDURE spuBuscarSilabosAsignatura @CodAsignatura VARCHAR(6), -- código (ej. IF065)
+											@Texto VARCHAR(100)
+AS
+BEGIN
+	-- Mostrar los silabos
+	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), 
+	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.Silabo
+		FROM TCatalogo C INNER JOIN TDocente D ON
+			 C.CodDocente = D.CodDocente
+		WHERE C.CodAsignatura = @CodAsignatura AND C.Silabo IS NOT NULL AND
+			  (C.CodSemestre LIKE (@Texto + '%') OR
+			   C.Grupo LIKE (@Texto + '%') OR
+			   C.CodDocente LIKE (@Texto + '%') OR 
+			   D.APaterno LIKE (@Texto + '%') OR
+			   D.AMaterno LIKE (@Texto + '%') OR
+			   D.Nombre LIKE (@Texto + '%') OR
+			   (C.CodAsignatura + C.Grupo + C.CodEscuelaP) LIKE (@Texto + '%'))
+END;
+GO
+
+-- Procedimiento para mostrar los planes de sesión anteriores de un docente que dictó una asignatura.
+CREATE PROCEDURE spuMostrarPlanSesionesAsignatura @CodAsignatura VARCHAR(6), -- código (ej. IF065)
+											      @CodDocente VARCHAR(5)
 AS
 BEGIN
 	-- Mostrar los planes de sesión
-	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, D.Nombre,
+	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), 
 	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.PlanSesiones
 		FROM TCatalogo C INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
 		WHERE C.CodAsignatura = @CodAsignatura AND 
 		      C.CodDocente = @CodDocente AND C.PlanSesiones IS NOT NULL
+END;
+GO
+
+-- Procedimiento para buscar los planes de sesión anteriores de un docente que dictó una asignatura por filtro.
+CREATE PROCEDURE spuBuscarPlanSesionesAsignatura @CodAsignatura VARCHAR(6), -- código (ej. IF065)
+											     @CodDocente VARCHAR(5),
+												 @Texto VARCHAR(100)
+AS
+BEGIN
+	-- Mostrar los planes de sesión
+	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre), 
+	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.PlanSesiones
+		FROM TCatalogo C INNER JOIN TDocente D ON
+			 C.CodDocente = D.CodDocente
+		WHERE C.CodAsignatura = @CodAsignatura AND 
+		      C.CodDocente = @CodDocente AND C.PlanSesiones IS NOT NULL AND
+			  (C.CodSemestre LIKE (@Texto + '%') OR
+			   C.Grupo LIKE (@Texto + '%') OR
+			   C.CodDocente LIKE (@Texto + '%') OR 
+			   D.APaterno LIKE (@Texto + '%') OR
+			   D.AMaterno LIKE (@Texto + '%') OR
+			   D.Nombre LIKE (@Texto + '%') OR
+			   (C.CodAsignatura + C.Grupo + C.CodEscuelaP) LIKE (@Texto + '%'))
 END;
 GO
 
@@ -1076,7 +1120,7 @@ CREATE PROCEDURE spuRecuperarPlanSesionAsignatura @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar el plan de sesión
-	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, D.Nombre,
+	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre),
 	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.PlanSesiones
 		FROM TCatalogo C INNER JOIN TDocente D ON
 			 C.CodDocente = D.CodDocente
@@ -1495,8 +1539,8 @@ GO
 -- Procedimiento para buscar por sus datos de los estudiantes matriculados a una asignatura
 CREATE PROCEDURE spuBuscarEstudiantesMatriculadosAsignatura @CodSemestre VARCHAR(7),
 															@CodEscuelaP VARCHAR(3),
-															@Texto1 VARCHAR(100), -- código (ej. IF085AIN) o nombre de la asignatura
-															@Texto2 VARCHAR(20)
+															@CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
+															@Texto VARCHAR(100)
 AS
 BEGIN
 	-- Mostrar la tabla de TMatricula
@@ -1504,11 +1548,11 @@ BEGIN
 		FROM TMatricula M INNER JOIN TAsignatura A ON
 			 SUBSTRING(M.CodAsignatura,1,5) = A.CodAsignatura
 	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP AND
-		      (M.CodAsignatura LIKE (@Texto1 + '%') OR A.NombreAsignatura LIKE (@Texto1 + '%')) AND
-			  (M.CodEstudiante LIKE (@Texto2 + '%') OR
-			   M.APaterno LIKE (@Texto2 + '%') OR
-			   M.AMaterno LIKE (@Texto2 + '%') OR
-			   M.Nombre LIKE (@Texto2 + '%'))
+			  M.CodAsignatura = @CodAsignatura AND
+		      (M.CodEstudiante LIKE (@Texto + '%') OR
+			   M.APaterno LIKE (@Texto + '%') OR
+			   M.AMaterno LIKE (@Texto + '%') OR
+			   M.Nombre LIKE (@Texto + '%'))
 END;
 GO
 
