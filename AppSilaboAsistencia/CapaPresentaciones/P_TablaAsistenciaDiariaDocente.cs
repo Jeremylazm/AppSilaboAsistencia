@@ -12,6 +12,7 @@ using CapaEntidades;
 using SpreadsheetLight;
 using ClosedXML.Excel;
 using Ayudas;
+using System.Globalization;
 namespace CapaPresentaciones
 {
 	public partial class P_TablaAsistenciaDiariaDocente : Form
@@ -29,14 +30,15 @@ namespace CapaPresentaciones
 		{
 			DataTable Semestre = N_Semestre.SemestreActual();
 			CodSemestre = Semestre.Rows[0][0].ToString();
-            LmFechaInf = Semestre.Rows[0][1].ToString();
+            LmFechaInf = DateTime.Parse(Semestre.Rows[0][1].ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
             CodDepartamentoA = "IF";
 			dgvTabla = pdgv;
 			ObjEntidadDoc = new E_AsistenciaDiariaDocente();
 			ObjNegocioDoc = new N_AsistenciaDiariaDocente();
 			InitializeComponent();
+            //MostrarEstudiantesRegistrados();
             
-            Control[] Controles = { this, lblTitulo, pbLogo, lblFecha, lblMarcarTodos, txtFecha };
+            Control[] Controles = { this, lblTitulo, pbLogo, lblFecha, lblMarcarTodos, txtFecha};
 			Docker.SubscribeControlsToDragEvents(Controles);
 			Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             txtSemestreA.Text = CodSemestre;
@@ -60,35 +62,49 @@ namespace CapaPresentaciones
             dgvDatos.Columns[6].ReadOnly = true;
             dgvDatos.Columns[7].Visible = false;
             dgvDatos.Columns[8].Visible = false;
-
+            
         }
         public void InicializarValoresEditar()
         {
-            foreach (DataGridViewRow fila in dgvDatos.Rows)
-            {
-                DataGridViewComboBoxCell textBoxcell = (DataGridViewComboBoxCell)(fila.Cells["cbxObservaciones"]);
-                textBoxcell.Value = fila.Cells[8].Value;
-                fila.Cells[0].Value = (fila.Cells[7].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
-                if (fila.Cells[7].Value.Equals("SI"))
+            if(dgvDatos.Rows.Count==0)
+			{
+                A_Dialogo.DialogoInformacion("No hay datos para inicializar");
+
+			}
+            else
+			{
+                foreach (DataGridViewRow fila in dgvDatos.Rows)
                 {
-                    fila.Cells[0].Tag = true;
-                }
-                else
-                {
-                    fila.Cells[0].Tag = false;
+                    DataGridViewComboBoxCell textBoxcell = (DataGridViewComboBoxCell)(fila.Cells["cbxObservaciones"]);
+                    textBoxcell.Value = fila.Cells[8].Value;
+                    fila.Cells[0].Value = (fila.Cells[7].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
+                    if (fila.Cells[7].Value.Equals("SI"))
+                    {
+                        fila.Cells[0].Tag = true;
+                    }
+                    else
+                    {
+                        fila.Cells[0].Tag = false;
+                    }
                 }
             }
+            
         }
         public void MostrarEstudiantesRegistrados()
         {
             dgvDatos.DataSource = dgvTabla;
             AccionesTablaEditar();
+           
 
+        }
+        public void BuscarRegistros()
+        {
+            //dgvDatos.DataSource = N_Docente.BuscarDocentes(CodDepartamentoA, txtBuscar.Text);
         }
         //buscar la hora en que sergistró la asistencia de un docente
         public string HoraRegistroAsistenciaDocente(string pCodSemestre,string pDepartamentoA,string pFecha,string pCodDocente)
 		{
-            DataTable Resultado = N_AsistenciaDiariaDocente.BuscarAsistenciaDocente(pCodSemestre,pDepartamentoA,pFecha,pCodDocente);
+            DataTable Resultado = N_AsistenciaDiariaDocente.BuscarAsistenciaDocente(pCodSemestre,pDepartamentoA, DateTime.Parse(pFecha).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), pCodDocente);
             if(Resultado.Rows.Count != 0)
 			{
                 return Resultado.Rows[0][0].ToString();
@@ -104,10 +120,10 @@ namespace CapaPresentaciones
 
                     foreach (DataGridViewRow dr in dgvDatos.Rows)
                     {
-                        string HoraReg = HoraRegistroAsistenciaDocente(CodSemestre,CodDepartamentoA,txtFecha.Text.ToString(), dr.Cells[3].Value.ToString());    
+                        string HoraReg = HoraRegistroAsistenciaDocente(CodSemestre,CodDepartamentoA, DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dr.Cells[3].Value.ToString());    
                                 
                         ObjEntidadDoc.CodSemestre = CodSemestre;
-                        ObjEntidadDoc.Fecha = txtFecha.Text.ToString();
+                        ObjEntidadDoc.Fecha = DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
                         ObjEntidadDoc.Hora = HoraReg;
                         ObjEntidadDoc.CodDocente = dr.Cells[3].Value.ToString();
 
@@ -137,8 +153,9 @@ namespace CapaPresentaciones
 
 		private void txtBuscar_TextChanged(object sender, EventArgs e)
 		{
+            //BuscarRegistros();
 
-		}
+        }
 
 		private void dgvDatos_CellEnter(object sender, DataGridViewCellEventArgs e)
 		{
@@ -165,6 +182,7 @@ namespace CapaPresentaciones
 
 		private void ckbMarcarTodos_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
 		{
+
         }
 
 		private void P_TablaAsistenciaDiariaDocente_Load(object sender, EventArgs e)
@@ -184,7 +202,7 @@ namespace CapaPresentaciones
 
 		private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
 		{
-            InicializarValoresEditar();
+            //InicializarValoresEditar();
         }
 	}
 }

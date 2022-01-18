@@ -36,7 +36,7 @@ namespace CapaPresentaciones
         {
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
-            LimtFechaInf = Semestre.Rows[0][1].ToString();
+            LimtFechaInf = DateTime.Parse(Semestre.Rows[0][1].ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
             ObjNegocio = new N_Catalogo();
             CodAsignatura = pCodAsignatura;
             CodDocente = pCodDocente;
@@ -45,6 +45,7 @@ namespace CapaPresentaciones
             ObjNegocioEstd = new N_AsistenciaEstudiante();
             ObjEntidadDoc = new E_AsistenciaDocentePorAsignatura();
             ObjNegocioDoc = new N_AsistenciaDocentePorAsignatura();
+
             InitializeComponent();
             Control[] Controles = { this, lblTitulo, pbLogo, lblFecha, lblMarcarTodos, lblTema, txtFecha };
             Docker.SubscribeControlsToDragEvents(Controles);
@@ -142,7 +143,7 @@ namespace CapaPresentaciones
                 ObjEntidadEstd.CodSemestre = CodSemestre;
                 ObjEntidadEstd.CodEscuelaP = CodAsignatura.Substring(6);
                 ObjEntidadEstd.CodAsignatura = CodAsignatura;
-                ObjEntidadEstd.Fecha = txtFecha.Text.ToString();//actual del registro
+                ObjEntidadEstd.Fecha = DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")); //actual del registro
                 ObjEntidadEstd.Hora = hora;//actual del registro
                 ObjEntidadEstd.CodEstudiante = dr.Cells[3].Value.ToString();
                 ObjEntidadEstd.Asistio = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
@@ -159,7 +160,7 @@ namespace CapaPresentaciones
                 ObjEntidadEstd.CodSemestre = CodSemestre;
                 ObjEntidadEstd.CodEscuelaP = CodAsignatura.Substring(6);
                 ObjEntidadEstd.CodAsignatura = CodAsignatura;
-                ObjEntidadEstd.Fecha = txtFecha.Text.ToString();//fecha en la que fue registrado
+                ObjEntidadEstd.Fecha = DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));//fecha en la que fue registrado
                 ObjEntidadEstd.Hora = hora;//hora en el que fue registrado
                 ObjEntidadEstd.CodEstudiante = dr.Cells[3].Value.ToString();
                 
@@ -185,7 +186,7 @@ namespace CapaPresentaciones
                     ObjEntidadDoc.CodSemestre = CodSemestre;
                     ObjEntidadDoc.CodDepartamentoA = "IF";
                     ObjEntidadDoc.CodAsignatura = CodAsignatura;
-                    ObjEntidadDoc.Fecha = txtFecha.Text.ToString();
+                    ObjEntidadDoc.Fecha = DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
                     ObjEntidadDoc.Hora = hora;
                     ObjEntidadDoc.CodDocente = CodDocente;
                     ObjEntidadDoc.Asistio = "SI";
@@ -200,8 +201,8 @@ namespace CapaPresentaciones
                     Program.Evento = 0;
                     Close();
 
+
                 }
-                
                 catch (Exception)
                 {
                     A_Dialogo.DialogoError("Error al insertar el registro");
@@ -215,19 +216,19 @@ namespace CapaPresentaciones
                 {
                     if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea editar el registro?") == DialogResult.Yes)
                     {
-                        DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, txtFecha.Text.ToString(), txtFecha.Text.ToString(), "");
+                        DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), "");
 
                         if (Resultado.Rows.Count != 0)
                         {
 
                             ObjEntidadDoc.CodSemestre = CodSemestre;
                             ObjEntidadDoc.CodAsignatura = CodAsignatura;
-                            ObjEntidadDoc.Fecha = txtFecha.Text.ToString();
+                            ObjEntidadDoc.Fecha = DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
                             ObjEntidadDoc.Hora = hora;
 
                             string TipoSesionActualizado = txtTipoSesion.Text.ToString().ToUpper();
                             string NombreTemaActualizado = txtTema.Text.ToString();
-                            string fechaActualizado = txtFecha.Text.ToString();
+                            
                             string ObsActulizado = "";
 
 
