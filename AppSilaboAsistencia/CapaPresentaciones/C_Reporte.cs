@@ -85,18 +85,14 @@ namespace CapaPresentaciones
             }
         }
 
-        public void LimpiarCampos()
-        {
-            pnSubcampos.Controls.Clear();
-        }
-
+        // Metodo para mostrar la tabla de resultados del reporte de manera responsiva
         public void MostrarResultadosResponsivo()
         {
+            // Establecer el anchor de los contenedores para abajo
             pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
             pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
-            int AnteriorAlturaResultados = pnContenedorResultados.Height;
-
+            // Verificar el numero de filas de los resultados
             if (dgvResultados.Rows.Count <= 10)
             {
                 sbResultados.Visible = false;
@@ -109,6 +105,8 @@ namespace CapaPresentaciones
                 pnContenedorResultados.Height = 341;
             }
 
+            // Verificar el tamanho del contenedor de resultados
+            int AnteriorAlturaResultados = pnContenedorResultados.Height;
             if (pnContenedorResultados.Height < AnteriorAlturaResultados)
             {
                 this.Cuadricula.RowStyles[1].Height -= AnteriorAlturaResultados - pnContenedorResultados.Height;
@@ -118,38 +116,57 @@ namespace CapaPresentaciones
                 this.Cuadricula.RowStyles[1].Height += pnContenedorResultados.Height - AnteriorAlturaResultados;
             }
 
+            // Actualizar la altura del reporte
             this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
 
+            // Normalizar el anchor de los contenedores
             pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
         }
 
+        // Metodo para mostrar u ocultar el cuadro de resumen (de ser el caso, sera responsivo)
         private void ResumenResponsivo(bool Mostrar, DataTable Cuadro = null)
         {
+            // Establecer el anchor de los contenedores para abajo
             pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
             pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
-            if ((Mostrar = true) && (!pnContenedorCuadro.Visible))
+            // Verificar si se quiere mostrar el cuadro de resumen
+            if (Mostrar)
             {
-                pnContenedorCuadro.Visible = true;
-                this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
+                // Validar que no este visible
+                if (!pnContenedorCuadro.Visible)
+                {
+                    // Mostrar el cuadro de resumen
+                    pnContenedorCuadro.Visible = true;
+                    this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
+                }
+            }
+            else
+            {
+                // Validar que este visible
+                if (pnContenedorCuadro.Visible)
+                {
+                    // Ocultar el cuadro de resumen
+                    pnContenedorCuadro.Visible = false;
+                    this.Cuadricula.RowStyles[1].Height -= pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
+                }
             }
 
-            if ((Mostrar = false) && (pnContenedorCuadro.Visible))
-            {
-                pnContenedorCuadro.Visible = false;
-                this.Cuadricula.RowStyles[1].Height -= pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
-            }
-
+            // Actualizar la altura del reporte
             this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
 
+            // Normalizar el anchor de los contenedores
             pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
+            // Verificar si existen datos para el cuadro de resumen
             if (Cuadro != null)
             {
+                // Actualizar los datos del cuadro de resumen
                 dgvResumen.DataSource = Cuadro;
 
+                // Centralizar las columnas del cuadro de resumen
                 dgvResumen.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 foreach (DataGridViewColumn Columna in dgvResumen.Columns)
@@ -158,8 +175,10 @@ namespace CapaPresentaciones
                     Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
 
+                // Establecer el anchor del contenedor para abajo
                 pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
+                // Verificar el tamanho del contenedor de resumen
                 int AnteriorAlturaCuadro = pnContenedorCuadro.Height;
                 pnContenedorCuadro.Height = dgvResumen.Rows.Count * 26 + 81;
                 if (pnContenedorCuadro.Height < AnteriorAlturaCuadro)
@@ -170,10 +189,38 @@ namespace CapaPresentaciones
                 {
                     this.Cuadricula.RowStyles[1].Height += pnContenedorCuadro.Height - AnteriorAlturaCuadro;
                 }
+
+                // Actualizar la altura del reporte
                 this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
 
+                // Normalizar el anchor del contenedor
                 pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
             }
+        }
+
+        // Metodo para actualizar los primeros campos del reporte
+        private void ActualizarPrimerosCampos(string Titulo, string[] Titulos, string[] Valores)
+        {
+            // Actualizar el titulo del reporte
+            lblTitulo.Text = Titulo;
+
+            // Limpiar los campos de la descripcion del reporte
+            pnSubcampos.Controls.Clear();
+
+            // Actualizar la descripcion del reporte validando los parametros
+            if (Titulos.Length.Equals(Valores.Length))
+            {
+                if (Titulos.Length != 0)
+                {
+                    for (int K = 0; K < Titulos.Length; K++)
+                    {
+                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
+                        pnSubcampos.Controls.Add(Nuevo);
+                    }
+                }
+                else A_Dialogo.DialogoError("No existen parametros");
+            }
+            else A_Dialogo.DialogoError("Error de parametros");
         }
 
         private void C_ReporteA_Resize(object sender, EventArgs e)
@@ -200,23 +247,8 @@ namespace CapaPresentaciones
         {
             this.CriterioAsistenciasEstudiantes = CriterioAsistenciasEstudiantes;
 
-            LimpiarCampos();
-
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else A_Dialogo.DialogoError("No existen parametros");
-            }
-            else A_Dialogo.DialogoError("Error de parametros");
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             if (Datos.Rows.Count == 0)
             {
@@ -262,6 +294,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns["TotalAsistieron"].HeaderText = "Total Asistieron";
                 dgvResultados.Columns["TotalFaltaron"].HeaderText = "Total Faltaron";
 
+                // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
 
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
@@ -309,6 +342,7 @@ namespace CapaPresentaciones
                 var dvF = Statistics.StandardDeviation(Faltaron);
                 cuadroResumen.Rows.Add("Desviación Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
 
+                // Mostrar y establecer los datos del cuadro de resumen de manera responsiva
                 ResumenResponsivo(true, cuadroResumen);
 
                 // Gráficos
@@ -396,23 +430,8 @@ namespace CapaPresentaciones
 
         public void fnReporte2(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
         {
-            LimpiarCampos();
-
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else MessageBox.Show("No existen parametros");
-            }
-            else MessageBox.Show("Error de parametros");
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             dgvResultados.Columns.Clear();
 
@@ -432,6 +451,7 @@ namespace CapaPresentaciones
             dgvResultados.Columns["Nombre"].HeaderText = "Nombres (s)";
             dgvResultados.Columns["Asistió"].Width = 80;
 
+            // Mostrar los resultados de manera responsiva
             MostrarResultadosResponsivo();
 
             DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
@@ -478,7 +498,9 @@ namespace CapaPresentaciones
             // Total
             cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar) + " (" + "100" + " %)");
 
+            // Mostrar y establecer los datos del cuadro de resumen de manera responsiva
             ResumenResponsivo(true, cuadroResumen);
+
             dgvResumen.Columns[0].Width = 300;
 
             // Gráficos
@@ -554,23 +576,8 @@ namespace CapaPresentaciones
         {
             this.CriterioAsistenciasEstudiantes = CriterioAsistenciasEstudiantes;
 
-            LimpiarCampos();
-
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else A_Dialogo.DialogoError("No existen parámetros");
-            }
-            else A_Dialogo.DialogoError("Error de parámetros");
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             if (Datos.Rows.Count == 0)
             {
@@ -623,8 +630,10 @@ namespace CapaPresentaciones
                 dgvResultados.Columns["TotalFaltas"].Width = 120;
                 dgvResultados.Columns[0].Width = 115;
 
+                // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
 
+                // Ocultar el  cuadro de resumen
                 ResumenResponsivo(false);
 
                 // Gráficos
@@ -674,23 +683,8 @@ namespace CapaPresentaciones
 
         public void fnReporte4(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
         {
-            LimpiarCampos();
-
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else MessageBox.Show("No existen parámetros");
-            }
-            else MessageBox.Show("Error de parámetros");
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             dgvResultados.Columns.Clear();
 
@@ -703,6 +697,7 @@ namespace CapaPresentaciones
                 Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
+            // Mostrar los resultados de manera responsiva
             MostrarResultadosResponsivo();
 
             DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
@@ -750,7 +745,9 @@ namespace CapaPresentaciones
             // Total
             cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + "100" + " %)");
 
+            // Mostrar y establecer los datos del cuadro de resumen de manera responsiva
             ResumenResponsivo(true, cuadroResumen);
+
             dgvResumen.Columns[0].Width = 300;
 
             // Gráficos
@@ -826,36 +823,8 @@ namespace CapaPresentaciones
         {
             this.CriterioAsistenciasEstudiantes = "";
 
-            // Limpiar los Antiguos Reportes
-            LimpiarCampos();
-
-            #region ===================== TÍTULO =====================
-            // Cambiar el Título
-            lblTitulo.Text = Titulo;
-            #endregion ===================== TÍTULO =====================
-
-            #region ===================== DESCRIPCIÓN =====================
-            // Verificar que los Títulos y los Valores dados Coincidan
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else
-                {
-                    Ayudas.A_Dialogo.DialogoError("No existen parametros");
-                }
-            }
-            else
-            {
-                Ayudas.A_Dialogo.DialogoError("Error de parametros");
-            }
-            #endregion ===================== DESCRIPCIÓN =====================
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             // Validar las Fechas dadas
             if (Datos.Rows.Count == 0)
@@ -878,6 +847,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[2].HeaderText = "Fecha";
                 dgvResultados.Columns[3].HeaderText = "Estado";
 
+                // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
 
                 #endregion ===================== CUADRO DE RESULTADOS =====================
@@ -896,11 +866,10 @@ namespace CapaPresentaciones
                 float Totales = Completado + Faltante;
 
                 cuadroResumen.Rows.Add("Porcentaje de Avance Completado", Completado + "%");
-
                 cuadroResumen.Rows.Add("Porcentaje de Avance Faltante", Faltante + "%");
-
                 cuadroResumen.Rows.Add("TOTAL", Totales + "%");
 
+                // Mostrar y establecer los datos del cuadro de resumen de manera responsiva
                 ResumenResponsivo(true, cuadroResumen);
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
@@ -945,30 +914,8 @@ namespace CapaPresentaciones
         {
             this.CriterioAsistenciasEstudiantes = "";
 
-            // Limpiar los Antiguos Reportes
-            LimpiarCampos();
-
-            #region ===================== TÍTULO =====================
-            // Cambiar el Título
-            lblTitulo.Text = Titulo;
-            #endregion ===================== TÍTULO =====================
-
-            #region ===================== DESCRIPCIÓN =====================
-            // Verificar que los Títulos y los Valores dados Coincidan
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else Ayudas.A_Dialogo.DialogoError("No existen parámetros");
-            }
-            else Ayudas.A_Dialogo.DialogoError("Error de parámetros");
-            #endregion ===================== DESCRIPCIÓN =====================
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             // Validar las Fechas dadas
             if (Datos.Rows.Count == 0)
@@ -991,13 +938,13 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[2].HeaderText = "Porcentaje Temas Avanzados";
                 dgvResultados.Columns[3].HeaderText = "Porcentaje Temas Faltantes";
 
+                // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 
                 #region ===================== CUADRO DE RESUMEN =====================
-                // Ocultar cuadro de resumen
+                // Ocultar el cuadro de resumen
                 ResumenResponsivo(false);
-
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICO =====================
@@ -1049,23 +996,8 @@ namespace CapaPresentaciones
 
         public void fnReporte7(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
         {
-            LimpiarCampos();
-
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else MessageBox.Show("No existen parámetros");
-            }
-            else MessageBox.Show("Error de parámetros");
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             if (Datos.Rows.Count == 0) A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
             else
@@ -1088,6 +1020,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns["PorcentajeFaltas"].HeaderText = "Faltas (%)";
                 dgvResultados.Columns["PorcentajeFaltas"].Width = 120;
 
+                // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
 
                 // Cuadro de resumen
@@ -1128,6 +1061,7 @@ namespace CapaPresentaciones
                 var dvF = Statistics.StandardDeviation(Faltaron);
                 cuadroResumen.Rows.Add("Desviación Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
 
+                // Mostrar y establecer los datos del cuadro de resumen de manera responsiva
                 ResumenResponsivo(true, cuadroResumen);
 
                 // Gráficos
@@ -1179,23 +1113,8 @@ namespace CapaPresentaciones
         {
             this.CriterioAsistenciasEstudiantes = CriterioAsistenciasEstudiantes;
 
-            LimpiarCampos();
-
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else MessageBox.Show("No existen párametros");
-            }
-            else MessageBox.Show("Error de parámetros");
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             if (Datos.Rows.Count == 0) A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
             else
@@ -1238,8 +1157,10 @@ namespace CapaPresentaciones
                     Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
 
+                // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
 
+                // Ocultar el cuadro de resumen
                 ResumenResponsivo(false);
 
                 // Gráficos
@@ -1290,36 +1211,8 @@ namespace CapaPresentaciones
         {
             this.CriterioAsistenciasEstudiantes = "";
 
-            // Limpiar los Antiguos Reportes
-            LimpiarCampos();
-
-            #region ===================== TÍTULO =====================
-            // Cambiar el Título
-            lblTitulo.Text = Titulo;
-            #endregion ===================== TÍTULO =====================
-
-            #region ===================== DESCRIPCIÓN =====================
-            // Verificar que los Títulos y los Valores dados Coincidan
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else
-                {
-                    Ayudas.A_Dialogo.DialogoError("No existen parametros");
-                }
-            }
-            else
-            {
-                Ayudas.A_Dialogo.DialogoError("Error de parametros");
-            }
-            #endregion ===================== DESCRIPCIÓN =====================
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             // Validar las Fechas dadas
             if (Datos.Rows.Count == 0)
@@ -1343,6 +1236,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[3].HeaderText = "Avance Completado";
                 dgvResultados.Columns[4].HeaderText = "Avance que Falta";
 
+                // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 
@@ -1382,6 +1276,7 @@ namespace CapaPresentaciones
                 var dvF = Statistics.StandardDeviation(Falta);
                 cuadroResumen.Rows.Add("Desv. Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
 
+                // Mostrar y establecer los datos del cuadro de resumen de manera responsiva
                 ResumenResponsivo(true, cuadroResumen);
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
