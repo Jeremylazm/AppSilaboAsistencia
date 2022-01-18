@@ -1584,6 +1584,23 @@ BEGIN
 END;
 GO
 
+-- Procedimiento para mostrar el registro de asistencia de un docente para una asignatura en una fecha.
+CREATE PROCEDURE spuMostrarAsistenciaDocenteAsignatura @CodSemestre VARCHAR(7),
+													   @CodDocente VARCHAR(5),
+													   @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)									
+												       @Fecha DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
+AS
+BEGIN
+	-- Mostrar el registro de sesiones en el rango de fechas
+	SELECT Hora, SesiónDictada = Asistió, Observación
+		FROM TAsistenciaDocentePorAsignatura
+	    WHERE CodSemestre = @CodSemestre AND
+			  CodDocente = @CodDocente AND
+			  CodAsignatura = @CodAsignatura AND
+			  Fecha = @Fecha
+END;
+GO
+
 -- Procedimiento para mostrar los registros de las sesiones para una asignatura en un rango de fechas.
 CREATE PROCEDURE spuMostrarSesionesAsignatura @CodSemestre VARCHAR(7),
 										      @CodDocente VARCHAR(5),
