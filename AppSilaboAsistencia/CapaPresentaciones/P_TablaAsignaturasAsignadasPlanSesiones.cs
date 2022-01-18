@@ -45,7 +45,7 @@ namespace CapaPresentaciones
             dgvDatos.Columns[2].DisplayIndex = 6;
             dgvDatos.Columns[6].Visible = false;
             dgvDatos.Columns[3].HeaderText = "Código";
-            dgvDatos.Columns[4].HeaderText = "Nombre";
+            dgvDatos.Columns[4].HeaderText = "Asignatura";
             dgvDatos.Columns[5].HeaderText = "Escuela Profesional";
             dgvDatos.Columns[6].HeaderText = "Grupo";
 
