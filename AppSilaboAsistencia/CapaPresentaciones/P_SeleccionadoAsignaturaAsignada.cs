@@ -50,8 +50,15 @@ namespace CapaPresentaciones
             dgvDatos.Columns[0].HeaderText = "Código";
             dgvDatos.Columns[0].MinimumWidth = 95;
             dgvDatos.Columns[0].Width = 95;
-            dgvDatos.Columns[1].HeaderText = "Nombre";
+            dgvDatos.Columns[1].HeaderText = "Asignatura";
             dgvDatos.Columns[2].HeaderText = "Escuela Profesional";
+
+            dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
 
         private void MostrarAsignaturas()
@@ -67,38 +74,111 @@ namespace CapaPresentaciones
             dgvDatos.Columns[3].Visible = false;
             dgvDatos.Columns[6].Visible = false;
             dgvDatos.Columns[7].Visible = false;
+
+            dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            dgvDatos.Columns["CodAsignatura"].HeaderText = "Cod. Asignatura";
+            dgvDatos.Columns["NombreAsignatura"].HeaderText = "Asignatura";
+            dgvDatos.Columns["EscuelaProfesional"].HeaderText = "Escuela Profesional";
+            dgvDatos.Columns["EscuelaProfesional"].DisplayIndex = 7;
+            dgvDatos.Columns["CodDocente"].HeaderText = "Cod. Docente";
         }
 
         private void MostrarEstudiantes()
         {
             dgvDatos.DataSource = N_Matricula.MostrarEstudiantesMatriculados(CodSemestre, "IN");
+
+            dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            dgvDatos.Columns["CodEstudiante"].HeaderText = "Código";
+            dgvDatos.Columns["CodEstudiante"].Width = 100;
+            dgvDatos.Columns["APaterno"].HeaderText = "A. Paterno";
+            dgvDatos.Columns["AMaterno"].HeaderText = "A. Materno";
+            dgvDatos.Columns["Nombre"].HeaderText = "Nombre (s)";
         }
 
         public void BuscarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodSemestre, CodDepartamentoA, CodDocente, txtBuscar.Text);
-
             if (AccesoReporte == "Docente")
             {
                 dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodSemestre, CodDepartamentoA, CodDocente, txtBuscar.Text);
+
+                dgvDatos.Columns[0].HeaderText = "Código";
+                dgvDatos.Columns[0].MinimumWidth = 95;
+                dgvDatos.Columns[0].Width = 95;
+                dgvDatos.Columns[1].HeaderText = "Asignatura";
+                dgvDatos.Columns[2].HeaderText = "Escuela Profesional";
+
+                dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
             }
             else if (AccesoReporte == "Director de Escuela")
             {
                 if (CriterioSeleccion == "Por Fechas")
                 {
-                    // MostrarTodasAsignaturas();
                     dgvDatos.DataSource = N_Catalogo.BuscarCatálogo(CodSemestre, CodDepartamentoA, txtBuscar.Text);
+
+                    dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                    foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+                    {
+                        Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    }
+
+                    dgvDatos.Columns["CodAsignatura"].HeaderText = "Cod. Asignatura";
+                    dgvDatos.Columns["NombreAsignatura"].HeaderText = "Asignatura";
+                    dgvDatos.Columns["EscuelaProfesional"].HeaderText = "Escuela Profesional";
+                    dgvDatos.Columns["EscuelaProfesional"].DisplayIndex = 7;
+                    dgvDatos.Columns["CodDocente"].HeaderText = "Cod. Docente";
                 }
                 else if (CriterioSeleccion == "Por Estudiantes")
                 {
-                    // MostrarTodasAsignaturas();
                     dgvDatos.DataSource = N_Catalogo.BuscarCatálogo(CodSemestre, CodDepartamentoA, txtBuscar.Text);
+
+                    dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                    foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+                    {
+                        Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    }
+
+                    dgvDatos.Columns["CodAsignatura"].HeaderText = "Cod. Asignatura";
+                    dgvDatos.Columns["NombreAsignatura"].HeaderText = "Asignatura";
+                    dgvDatos.Columns["EscuelaProfesional"].HeaderText = "Escuela Profesional";
+                    dgvDatos.Columns["EscuelaProfesional"].DisplayIndex = 7;
+                    dgvDatos.Columns["CodDocente"].HeaderText = "Cod. Docente";
                 }
 
                 else if (CriterioSeleccion == "Por Asignaturas")
                 {
-                    //MostrarEstudiantes();
-                    //dgvDatos.DataSource = N_Matricula.Bus
+                    dgvDatos.DataSource = N_Matricula.BuscarEstudiantesMatriculados(CodSemestre, CodDepartamentoA, txtBuscar.Text);
+
+                    dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                    foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+                    {
+                        Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    }
+
+                    dgvDatos.Columns["CodEstudiante"].HeaderText = "Código";
+                    dgvDatos.Columns["CodEstudiante"].Width = 100;
+                    dgvDatos.Columns["APaterno"].HeaderText = "A. Paterno";
+                    dgvDatos.Columns["AMaterno"].HeaderText = "A. Materno";
+                    dgvDatos.Columns["Nombre"].HeaderText = "Nombre (s)";
                 }
             }
             dgvDatos.ClearSelection();
@@ -116,79 +196,63 @@ namespace CapaPresentaciones
 
         private void dgvDatos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
             if (AccesoReporte == "Docente")
             {
                 P_ReporteDocente DatosAsingatura = Owner as P_ReporteDocente;
-                string codTemp = DatosAsingatura.txtCodigo.Text;
 
                 DatosAsingatura.txtCodigo.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
                 DatosAsingatura.txtNombre.Text = dgvDatos.CurrentRow.Cells[1].Value.ToString();
                 DatosAsingatura.txtEscuelaP.Text = dgvDatos.CurrentRow.Cells[2].Value.ToString();
 
-                if (codTemp != DatosAsingatura.txtCodigo.Text && DatosAsingatura.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
-                {
-                    DatosAsingatura.CriterioSeleccionAsistenciaEstudiantes();
-                }
+                if (DatosAsingatura.txtCodigo.Text != DatosAsingatura.txtCodigo.Text && DatosAsingatura.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) DatosAsingatura.CriterioSeleccionAsistenciaEstudiantes();
             }
             else if (AccesoReporte == "Director de Escuela")
             {
                 P_ReporteDirector Datos = Owner as P_ReporteDirector;
 
-                // Por Fechas -> Todas las asignaturas
-                // Por Estudiantes -> Todos las asignaturas
-                // Por Asignaturas -> Todos los estudiantes
-
                 if (CriterioSeleccion == "Por Fechas")
                 {
-                    string codTemp = Datos.txtCodigo.Text;
-
                     Datos.txtCodigo.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
                     Datos.txtNombre.Text = dgvDatos.CurrentRow.Cells[1].Value.ToString();
                     Datos.txtEscuelaP.Text = dgvDatos.CurrentRow.Cells[2].Value.ToString();
                     Datos.CodDocenteReporte = dgvDatos.CurrentRow.Cells[4].Value.ToString();
                     Datos.nombreDocente = dgvDatos.CurrentRow.Cells[5].Value.ToString();
 
-                    if (codTemp != Datos.txtCodigo.Text && Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
-                    {
-                        Datos.CriterioSeleccionAsistenciaEstudiantes();
-                    }
+                    if (Datos.txtCodigo.Text != Datos.txtCodigo.Text && Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) Datos.CriterioSeleccionAsistenciaEstudiantes();
                 }
 
                 if (CriterioSeleccion == "Por Estudiantes")
                 {
-                    string codTemp = Datos.txtCodigo.Text;
-
                     Datos.txtCodigo.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
                     Datos.txtNombre.Text = dgvDatos.CurrentRow.Cells[1].Value.ToString();
                     Datos.txtEscuelaP.Text = dgvDatos.CurrentRow.Cells[2].Value.ToString();
                     Datos.CodDocenteReporte = dgvDatos.CurrentRow.Cells[4].Value.ToString();
                     Datos.nombreDocente = dgvDatos.CurrentRow.Cells[5].Value.ToString();
 
-                    if (codTemp != Datos.txtCodigo.Text && Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
-                    {
-                        Datos.CriterioSeleccionAsistenciaEstudiantes();
-                    }
+                    if (Datos.txtCodEstudiante.Text != Datos.txtCodigo.Text && Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) Datos.CriterioSeleccionAsistenciaEstudiantes();
                 }
                 else if (CriterioSeleccion == "Por Asignaturas")
                 {
-                    string codTemp = Datos.txtCodEstudiante.Text;
-
                     Datos.txtCodEstudiante.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
                     Datos.txtEstudiante.Text = dgvDatos.CurrentRow.Cells[3].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[1].Value.ToString() + " " + dgvDatos.CurrentRow.Cells[2].Value.ToString();
 
-                    if (codTemp != Datos.txtCodEstudiante.Text && Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
-                    {
-                        Datos.CriterioSeleccionAsistenciaEstudiantes();
-                    }
+                    if (Datos.txtCodEstudiante.Text != Datos.txtCodEstudiante.Text && Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) Datos.CriterioSeleccionAsistenciaEstudiantes();
                 }    
             }
 
             Close();
         }
 
+        private void dgvDatos_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) dgvDatos.Cursor = Cursors.Hand;
+            else dgvDatos.Cursor = Cursors.Default;
+        }
+
         private void P_SeleccionadoAsignaturaAsignada_Load(object sender, EventArgs e)
         {
+            dgvDatos.CellMouseEnter += new DataGridViewCellEventHandler(dgvDatos_CellMouseEnter);
+
             dgvDatos.ClearSelection();
         }
     }

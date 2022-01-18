@@ -15,12 +15,12 @@ using CapaEntidades;
 
 namespace CapaPresentaciones
 {
-    public partial class P_TablaSesionesAsignatura : Form
+    public partial class P_TablaPlanSesionesAsignatura : Form
     {
         readonly private string CodAsignatura;
         private readonly DataTable Asignaturas;
 
-        public P_TablaSesionesAsignatura(string CodAsignatura)
+        public P_TablaPlanSesionesAsignatura(string CodAsignatura)
         {
             this.CodAsignatura = CodAsignatura;
 
