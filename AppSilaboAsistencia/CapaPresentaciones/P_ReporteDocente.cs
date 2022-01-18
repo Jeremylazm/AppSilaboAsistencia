@@ -74,10 +74,10 @@ namespace CapaPresentaciones
             };
 
             fnReporte1();
-            ActiveControl = Reportes.btnGrafico1;
             Responsivo();
 
             pnReporte.Controls.Add(Reportes);
+            ActiveControl = Reportes.btnGrafico1;
             ActiveControl = pnReporte;
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
@@ -182,7 +182,6 @@ namespace CapaPresentaciones
 
         private void fnReporte1()
         {
-            pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Asistencia estudiantes
             // Criterio de selección: Por Fechas
 
@@ -193,11 +192,11 @@ namespace CapaPresentaciones
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorFechas(CodSemestre, CodDocente, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
             Reportes.fnReporte1(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+            pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 
         private void fnReporte3()
         {
-            pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Asistencia estudiantes
             // Criterio de selección: Por Estudiantes
 
@@ -208,11 +207,11 @@ namespace CapaPresentaciones
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
             Reportes.fnReporte3(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+            pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 
         private void fnReporte5()
         {
-            pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
             string Titulo = "REPORTE DE AVANCE - " + txtCodigo.Text + Environment.NewLine + "SEMESTRE " + CodSemestre;
@@ -282,11 +281,12 @@ namespace CapaPresentaciones
             }
             else
                 Ayudas.A_Dialogo.DialogoError("No hay Plan de Sesiones");
+
+            pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 
         private void fnReporte6()
         {
-            pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
             string Titulo = "REPORTE DE AVANCE GENERAL" + Environment.NewLine + "SEMESTRE - " + CodSemestre;
@@ -335,6 +335,7 @@ namespace CapaPresentaciones
             }
 
             Reportes.fnReporte6(Titulo, Titulos, Valores, ResultadosFinales, ResultadosGrafico, txtCodigo.Text);
+            pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 
         private void dpFechaInicial_CloseUp(object sender, EventArgs e)

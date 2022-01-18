@@ -56,7 +56,9 @@ namespace CapaPresentaciones
 
                 Reportes = Reporte;
                 pnReporte.Controls.Add(Reporte);
+                //Reporte.btnGrafico1.Click += new EventHandler(Reporte.btnGrafico1_Click);
                 ActiveControl = Reporte.btnGrafico1;
+                //ActiveControl = Reporte.lblTitulo;
             }
             else if (Criterio == "Por Estudiantes") // Reporte 4
             {
@@ -75,6 +77,7 @@ namespace CapaPresentaciones
                 Reportes = Reporte;
                 pnReporte.Controls.Add(Reporte);
                 ActiveControl = Reporte.btnGrafico1;
+                ActiveControl = Reporte.lblTitulo;
             }
             else if (Criterio == "Por Asignaturas")
             {
@@ -94,8 +97,11 @@ namespace CapaPresentaciones
                 Reportes = Reporte;
                 pnReporte.Controls.Add(Reporte);
                 ActiveControl = Reporte.btnGrafico1;
+                ActiveControl = Reporte.lblTitulo;
             }
             Responsivo();
+            
+            pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 
         private void Responsivo()

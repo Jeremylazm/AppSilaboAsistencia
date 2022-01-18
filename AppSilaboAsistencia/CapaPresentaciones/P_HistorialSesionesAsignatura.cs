@@ -30,7 +30,8 @@ namespace CapaPresentaciones
             CodAsignatura = pCodAsignatura;
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
-            LimtFechaInf = DateTime.Parse(Semestre.Rows[0][1].ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString();
+            //LimtFechaInf = DateTime.Parse(Semestre.Rows[0][1].ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
+            LimtFechaInf=DateTime.ParseExact(Semestre.Rows[0][1].ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
             InitializeComponent();
             MostrarRegistros();
 
@@ -53,7 +54,7 @@ namespace CapaPresentaciones
 
         public void MostrarRegistros()
         {
-            dgvDatos.DataSource = N_AsistenciaDocentePorAsignatura.MostrarSesionesAsignatura(CodSemestre, CodDocente, CodAsignatura, LimtFechaInf, LimtFechaSup);
+            dgvDatos.DataSource = N_AsistenciaDocentePorAsignatura.MostrarSesionesAsignatura(CodSemestre, CodDocente, CodAsignatura, LimtFechaInf, DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
             AccionesTabla();
         }
 
@@ -64,7 +65,7 @@ namespace CapaPresentaciones
 
         public void BuscarRegistros()
         {
-            dgvDatos.DataSource = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, LimtFechaInf, LimtFechaSup,txtBuscar.Text);
+            dgvDatos.DataSource = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, LimtFechaInf, DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), txtBuscar.Text);
         }
         public bool validarHoraDeRegistro(string HoraSolicitadaRegistro,string Dia)
 		{
@@ -97,7 +98,7 @@ namespace CapaPresentaciones
         //busacar un registro entre un intervalo de tiempo
         public bool buscarUnRegistro(DateTime pHoraIni,DateTime pHoraLimte)
 		{
-            DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, LimtFechaSup, LimtFechaSup, "");
+            DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), "");
             foreach (DataRow fila in Resultado.Rows)
             {
                 DateTime horaRegistrada =Convert.ToDateTime(fila[1].ToString());
@@ -119,7 +120,7 @@ namespace CapaPresentaciones
             string DiaActual = nombre_Dia_Actual();
             string HoraCompletaActual = DateTime.Now.ToString("HH:mm:ss");
             DataTable EstudiantesAsigantura = N_Matricula.BuscarEstudiantesAsignatura(CodSemestre, CodAsignatura.Substring(6), CodAsignatura);
-            DataTable busacarAsistenciaDiaraActual = N_AsistenciaDiariaDocente.AsistenciaDocentesPorFechas(CodSemestre,LimtFechaSup,LimtFechaSup);
+            DataTable busacarAsistenciaDiaraActual = N_AsistenciaDiariaDocente.AsistenciaDocentesPorFechas(CodSemestre, DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
             if(busacarAsistenciaDiaraActual.Rows.Count==0)
 			{
                 if (validarHoraDeRegistro(HoraCompletaActual, DiaActual))
@@ -248,7 +249,7 @@ namespace CapaPresentaciones
             {
                 if(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString()=="SI")
 				{
-                    DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, CodAsignatura, DateTime.Parse(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString(), dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
+                    DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, CodAsignatura, DateTime.ParseExact(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
 
                     Form Fondo = new Form();
                     /*using (P_TablaAsistenciaEstudiantes EditarRegistro = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, AsistenciaEstudiantesAsignatura))

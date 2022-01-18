@@ -14,6 +14,7 @@ namespace CapaPresentaciones
     {
         private readonly string CodSemestre;
         private readonly string CodDocente = E_InicioSesion.Usuario;
+        private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
 
         public P_TablaAsignaturasAsignadasSilabos()
         {
@@ -59,8 +60,13 @@ namespace CapaPresentaciones
 
         private void MostrarAsignaturas()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, "IF", CodDocente);
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodDepartamentoA, CodDocente);
             AccionesTabla();
+        }
+
+        public void BuscarAsignaturas()
+        {
+            dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodSemestre, CodDepartamentoA, CodDocente, txtBuscar.Text);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -265,6 +271,11 @@ namespace CapaPresentaciones
                     MessageBox.Show("No hay registro del sílabo");
                 }
             }*/
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BuscarAsignaturas();
         }
     }
 }
