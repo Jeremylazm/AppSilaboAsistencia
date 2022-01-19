@@ -448,12 +448,16 @@ namespace CapaPresentaciones
                         A_Dialogo.DialogoConfirmacion("Actualizado con éxito");
                         //MessageBox.Show("Actualizado con éxito.");
                         Program.Evento = 0;
+                        Program.Cont = 0;
                         this.Close();
                     }
                     catch
                     {
                         A_Dialogo.DialogoError("Ya se ingresó en el catálogo u horario un contenido similar");
                         //MessageBox.Show("Ya se ingresó en el catálogo u horario un contenido similar.");
+                        Program.Evento = 0;
+                        Program.Cont = 0;
+                        this.Close();
                     }
                 }
                 else
@@ -702,12 +706,16 @@ namespace CapaPresentaciones
                                     A_Dialogo.DialogoConfirmacion("Actualizado con éxito");
                                     //MessageBox.Show("Actualizado con éxito.");
                                     Program.Evento = 0;
+                                    Program.Cont = 0;
                                     this.Close();
                                 }
                                 catch
                                 {
                                     A_Dialogo.DialogoError("Ya se ingresó en el catálogo u horario un contenido similar");
                                     //MessageBox.Show("Ya se ingresó en el catálogo u horario un contenido similar.");
+                                    Program.Evento = 0;
+                                    Program.Cont = 0;
+                                    this.Close();
                                 }
                             }
                             else
@@ -797,6 +805,8 @@ namespace CapaPresentaciones
             {
                 A_Dialogo.DialogoError(Ex.ToString());
                 //MessageBox.Show(Convert.ToString(Ex));
+                Program.Evento = 0;
+                Program.Cont = 0;
                 this.Close();
             }
         }
@@ -2123,7 +2133,7 @@ namespace CapaPresentaciones
 
             CódigoAsignatura = CA;
             Recuperar_Horas_Asignaturas();
-
+            Actualizar_Color();
             DataTable T1 = N_HorarioAsignatura.BuscarHorarioAsignatura(CS, CA, EP, G);
             string[] TipoT = new string[T1.Rows.Count];
             string[] DocenteT = new string[T1.Rows.Count];
@@ -2259,6 +2269,7 @@ namespace CapaPresentaciones
                         Seleccionar_Docente_Cod_Nom2.Enabled = false;
                     }
                 }
+                Actualizar_Color();
                 return true;
             }
             else
@@ -2295,6 +2306,7 @@ namespace CapaPresentaciones
         private void Salir_Click(object sender, EventArgs e)
         {
             Program.Evento = 0;
+            Program.Cont = 0;
             this.Close();
         }
 
