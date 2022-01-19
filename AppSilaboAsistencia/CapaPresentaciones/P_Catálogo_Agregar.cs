@@ -43,6 +43,7 @@ namespace CapaPresentaciones
             LlenarDatosAsignatura();
             LlenarDatosEscuelas();
             Limpiar_Colores();
+            Actualizar_Color();
         }
 
         private void LlenarDatosEscuelas()
@@ -428,12 +429,14 @@ namespace CapaPresentaciones
                         }
                         A_Dialogo.DialogoConfirmacion("Guardado con éxito");
                         //MessageBox.Show("Guardado con éxito.");
+                        Program.Cont = 0;
                         this.Close();
                     }
                     catch
                     {
                         A_Dialogo.DialogoError("Ya se ingresó en el catálogo u horario un contenido similar");
                         //MessageBox.Show("Ya se ingresó en el catálogo u horario un contenido similar.");
+                        Program.Cont = 0;
                         this.Close();
                     }
                 }
@@ -700,12 +703,14 @@ namespace CapaPresentaciones
 
                                     A_Dialogo.DialogoConfirmacion("Guardado con éxito");
                                     //MessageBox.Show("Guardado con éxito.");
+                                    Program.Cont = 0;
                                     this.Close();
                                 }
                                 catch
                                 {
                                     A_Dialogo.DialogoError("Ya se ingresó en el catálogo u horario un contenido similar");
                                     //MessageBox.Show("Ya se ingresó en el catálogo u horario un contenido similar.");
+                                    Program.Cont = 0;
                                     this.Close();
                                 }
                             }
@@ -2061,6 +2066,7 @@ namespace CapaPresentaciones
 
         private void Salir_Click(object sender, EventArgs e)
         {
+            Program.Cont = 0;
             this.Close();
         }
 
@@ -2139,6 +2145,7 @@ namespace CapaPresentaciones
             {
                 A_Dialogo.DialogoError(Ex.ToString());
                 //MessageBox.Show(Convert.ToString(Ex));
+                Program.Cont = 0;
                 this.Close();
             }
         }
