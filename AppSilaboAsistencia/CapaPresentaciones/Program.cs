@@ -10,6 +10,7 @@ namespace CapaPresentaciones
         /// </summary>
 
         public static int Evento = 0;
+        public static int Cont = 0;
 
         [System.Runtime.InteropServices.DllImport("Shcore.dll")]
         static extern int SetProcessDpiAwareness(int PROCESS_DPI_AWARENESS);
