@@ -364,7 +364,12 @@ namespace CapaPresentaciones
 
                         }
                         else
-                            ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "FALTA");
+                        {
+                            if (Total == resultados.Rows.Count)
+                                ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "PROGRESO");
+                            else
+                                ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "FALTA");
+                        }
                         Total = Total + 1;
                         Contador = Contador + 1;
                     }
