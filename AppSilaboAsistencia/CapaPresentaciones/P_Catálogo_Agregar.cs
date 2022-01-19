@@ -142,24 +142,13 @@ namespace CapaPresentaciones
             string CódigoAS, CódigoD1, CódigoD2, CódigoS, Grupo, Día1, Día2, Día3, Día4,
                    Día5, Día6, Tipo1, Tipo2, Tipo3, Tipo4, Tipo5, Tipo6;
             int HoraInicio, HoraFin;
-            string Aula;
-            string Modalidad;
+            string Aula, Modalidad;
             bool Pasa1 = true; 
             bool Pasa2 = true;
-            if (Check_Código_Docente.Checked == true)
-            {
-                CódigoD1 = Seleccionar_Docente_Cod_Nom.Text;
-                CódigoD2 = Seleccionar_Docente_Cod_Nom2.Text;
-            }
-            else
-            {
-                CódigoD1 = Seleccionar_Docente_Cod_Nom.SelectedValue.ToString();
-                CódigoD2 = Seleccionar_Docente_Cod_Nom2.SelectedValue.ToString();
-            }
-            if (Check_Código_Asignatura.Checked == true)
-                CódigoAS = Seleccionar_Asignatura_Cod_Nom.Text;
-            else
-                CódigoAS = Seleccionar_Asignatura_Cod_Nom.SelectedValue.ToString();
+            CódigoD1 = Seleccionar_Docente_Cod_Nom.SelectedValue.ToString();
+            CódigoD2 = Seleccionar_Docente_Cod_Nom2.SelectedValue.ToString();
+
+            CódigoAS = Seleccionar_Asignatura_Cod_Nom.SelectedValue.ToString();
             if (Check_Grupo_A.Checked == true)
                 Grupo = "A";
             else if (Check_Grupo_B.Checked == true)
