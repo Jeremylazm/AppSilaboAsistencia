@@ -22,20 +22,5 @@ namespace CapaDatos
 
             return Resultado;
         }
-        //BuscarNombreDepartamento
-        public DataTable BuscarNombreDepartamento(string CodDepartamentoA)
-        {
-            DataTable Resultado = new DataTable();
-            SqlCommand Comando = new SqlCommand("spuBuscarNombreDepartamento", Conectar)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
-            SqlDataAdapter Data = new SqlDataAdapter(Comando);
-            Data.Fill(Resultado);
-
-            return Resultado;
-        }
-
     }
 }
