@@ -62,22 +62,19 @@ namespace CapaPresentaciones
             }
 
             int Total = 0;
-            int Contador = 9;
+            int Contador = 1;
             for (int i = 9; i <= 61; i++)
             {
                 if (Libro.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString() != "")
                 {
-                    if (Array.Exists(TemasAvanzados, x => x == Convert.ToInt32(Libro.Worksheet(1).Cell("B" + Convert.ToString(i)).Value.ToString())))
-                    {
-
-                    }
-                    else
+                    if (!Array.Exists(TemasAvanzados, x => x == Convert.ToInt32(Libro.Worksheet(1).Cell("B" + Convert.ToString(i)).Value.ToString())))
                     {
                         if (Total == Resultados.Rows.Count)
-                            ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "PROGRESO");
+                            ResultadosFinales.Rows.Add(Contador, Libro.Worksheet(1).Cell("C" + Convert.ToString(i)).Value.ToString(), "", "PROGRESO");
                         else
-                            ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "FALTA");
+                            ResultadosFinales.Rows.Add(Contador, Libro.Worksheet(1).Cell("C" + Convert.ToString(i)).Value.ToString(), "", "FALTA");
                     }
+
                     Total++;
                     Contador++;
                 }
@@ -85,18 +82,24 @@ namespace CapaPresentaciones
 
             dgvSesiones.DataSource = ResultadosFinales;
 
+            foreach (DataGridViewColumn Columna in dgvSesiones.Columns)
+            {
+                Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
             dgvSesiones.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvSesiones.Columns[0].MinimumWidth = 60;
             dgvSesiones.Columns[0].Width = 60;
+
             dgvSesiones.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
             dgvSesiones.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dgvSesiones.Columns[2].MinimumWidth = 140;
-            dgvSesiones.Columns[2].Width = 140;
+            dgvSesiones.Columns[2].MinimumWidth = 120;
+            dgvSesiones.Columns[2].Width = 120;
 
             dgvSesiones.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dgvSesiones.Columns[3].MinimumWidth = 140;
-            dgvSesiones.Columns[3].Width = 140;
+            dgvSesiones.Columns[3].MinimumWidth = 120;
+            dgvSesiones.Columns[3].Width = 120;
 
             AjustarTabla();
         }

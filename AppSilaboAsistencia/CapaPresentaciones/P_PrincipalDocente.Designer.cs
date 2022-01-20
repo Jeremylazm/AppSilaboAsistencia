@@ -33,6 +33,7 @@ namespace CapaPresentaciones
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_PrincipalDocente));
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
+            this.btnMostrarPlanSesiones = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lnAsignatura = new Bunifu.UI.WinForms.BunifuSeparator();
             this.txtAsignatura = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblAsignatura = new Bunifu.UI.WinForms.BunifuLabel();
@@ -41,7 +42,6 @@ namespace CapaPresentaciones
             this.pnHoras = new System.Windows.Forms.FlowLayoutPanel();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.HoraFecha = new System.Windows.Forms.Timer(this.components);
-            this.btnMostrarPlanSesiones = new Bunifu.UI.WinForms.BunifuImageButton();
             this.pnContenedor.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +89,42 @@ namespace CapaPresentaciones
             this.pnContenedor.ShowBorders = true;
             this.pnContenedor.Size = new System.Drawing.Size(1088, 660);
             this.pnContenedor.TabIndex = 17;
+            // 
+            // btnMostrarPlanSesiones
+            // 
+            this.btnMostrarPlanSesiones.ActiveImage = null;
+            this.btnMostrarPlanSesiones.AllowAnimations = true;
+            this.btnMostrarPlanSesiones.AllowBuffering = false;
+            this.btnMostrarPlanSesiones.AllowToggling = false;
+            this.btnMostrarPlanSesiones.AllowZooming = true;
+            this.btnMostrarPlanSesiones.AllowZoomingOnFocus = false;
+            this.btnMostrarPlanSesiones.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnMostrarPlanSesiones.BackColor = System.Drawing.Color.White;
+            this.btnMostrarPlanSesiones.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnMostrarPlanSesiones.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnMostrarPlanSesiones.ErrorImage")));
+            this.btnMostrarPlanSesiones.FadeWhenInactive = false;
+            this.btnMostrarPlanSesiones.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.btnMostrarPlanSesiones.Image = global::CapaPresentaciones.Properties.Resources.Mostrar;
+            this.btnMostrarPlanSesiones.ImageActive = null;
+            this.btnMostrarPlanSesiones.ImageLocation = null;
+            this.btnMostrarPlanSesiones.ImageMargin = 10;
+            this.btnMostrarPlanSesiones.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnMostrarPlanSesiones.ImageZoomSize = new System.Drawing.Size(30, 30);
+            this.btnMostrarPlanSesiones.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnMostrarPlanSesiones.InitialImage")));
+            this.btnMostrarPlanSesiones.Location = new System.Drawing.Point(995, 607);
+            this.btnMostrarPlanSesiones.Name = "btnMostrarPlanSesiones";
+            this.btnMostrarPlanSesiones.Rotation = 0;
+            this.btnMostrarPlanSesiones.ShowActiveImage = true;
+            this.btnMostrarPlanSesiones.ShowCursorChanges = true;
+            this.btnMostrarPlanSesiones.ShowImageBorders = true;
+            this.btnMostrarPlanSesiones.ShowSizeMarkers = false;
+            this.btnMostrarPlanSesiones.Size = new System.Drawing.Size(30, 30);
+            this.btnMostrarPlanSesiones.TabIndex = 81;
+            this.btnMostrarPlanSesiones.ToolTipText = "";
+            this.btnMostrarPlanSesiones.WaitOnLoad = false;
+            this.btnMostrarPlanSesiones.Zoom = 10;
+            this.btnMostrarPlanSesiones.ZoomSpeed = 10;
+            this.btnMostrarPlanSesiones.Click += new System.EventHandler(this.btnMostrarPlanSesiones_Click);
             // 
             // lnAsignatura
             // 
@@ -174,41 +210,6 @@ namespace CapaPresentaciones
             // HoraFecha
             // 
             this.HoraFecha.Tick += new System.EventHandler(this.HoraFecha_Tick);
-            // 
-            // btnMostrarPlanSesiones
-            // 
-            this.btnMostrarPlanSesiones.ActiveImage = null;
-            this.btnMostrarPlanSesiones.AllowAnimations = true;
-            this.btnMostrarPlanSesiones.AllowBuffering = false;
-            this.btnMostrarPlanSesiones.AllowToggling = false;
-            this.btnMostrarPlanSesiones.AllowZooming = true;
-            this.btnMostrarPlanSesiones.AllowZoomingOnFocus = false;
-            this.btnMostrarPlanSesiones.BackColor = System.Drawing.Color.White;
-            this.btnMostrarPlanSesiones.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnMostrarPlanSesiones.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnMostrarPlanSesiones.ErrorImage")));
-            this.btnMostrarPlanSesiones.FadeWhenInactive = false;
-            this.btnMostrarPlanSesiones.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            this.btnMostrarPlanSesiones.Image = global::CapaPresentaciones.Properties.Resources.Mostrar;
-            this.btnMostrarPlanSesiones.ImageActive = null;
-            this.btnMostrarPlanSesiones.ImageLocation = null;
-            this.btnMostrarPlanSesiones.ImageMargin = 10;
-            this.btnMostrarPlanSesiones.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnMostrarPlanSesiones.ImageZoomSize = new System.Drawing.Size(30, 30);
-            this.btnMostrarPlanSesiones.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnMostrarPlanSesiones.InitialImage")));
-            this.btnMostrarPlanSesiones.Location = new System.Drawing.Point(995, 607);
-            this.btnMostrarPlanSesiones.Name = "btnMostrarPlanSesiones";
-            this.btnMostrarPlanSesiones.Rotation = 0;
-            this.btnMostrarPlanSesiones.ShowActiveImage = true;
-            this.btnMostrarPlanSesiones.ShowCursorChanges = true;
-            this.btnMostrarPlanSesiones.ShowImageBorders = true;
-            this.btnMostrarPlanSesiones.ShowSizeMarkers = false;
-            this.btnMostrarPlanSesiones.Size = new System.Drawing.Size(30, 30);
-            this.btnMostrarPlanSesiones.TabIndex = 81;
-            this.btnMostrarPlanSesiones.ToolTipText = "";
-            this.btnMostrarPlanSesiones.WaitOnLoad = false;
-            this.btnMostrarPlanSesiones.Zoom = 10;
-            this.btnMostrarPlanSesiones.ZoomSpeed = 10;
-            this.btnMostrarPlanSesiones.Click += new System.EventHandler(this.btnMostrarPlanSesiones_Click);
             // 
             // P_PrincipalDocente
             // 

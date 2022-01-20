@@ -88,10 +88,15 @@ namespace CapaPresentaciones
             }
             dgvSesiones.DataSource = lst;
 
+            foreach (DataGridViewColumn Columna in dgvSesiones.Columns)
+            {
+                Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
             dgvSesiones.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgvSesiones.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dgvSesiones.Columns[1].MinimumWidth = 130;
-            dgvSesiones.Columns[1].Width = 130;
+            dgvSesiones.Columns[1].MinimumWidth = 120;
+            dgvSesiones.Columns[1].Width = 120;
 
             AjustarTabla();
         }

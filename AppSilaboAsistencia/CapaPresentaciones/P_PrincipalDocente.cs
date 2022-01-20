@@ -195,19 +195,19 @@ namespace CapaPresentaciones
                     {
                         CodAsignatura = FilaHorario["CodAsignatura"].ToString();
                         txtAsignatura.Text = FilaHorario["NombreAsignatura"].ToString();
-                        txtAsignatura.Width = lnAsignatura.Width;
+                        lnAsignatura.Width = txtAsignatura.Width;
                         break;
                     }
                     else
                     {
                         txtAsignatura.Text = "NINGUNA";
-                        txtAsignatura.Width = lnAsignatura.Width;
+                        lnAsignatura.Width = txtAsignatura.Width;
                     }
                 }
                 else
                 {
                     txtAsignatura.Text = "NINGUNA";
-                    txtAsignatura.Width = lnAsignatura.Width;
+                    lnAsignatura.Width = txtAsignatura.Width;
                 }
             }
         }
