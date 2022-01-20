@@ -186,8 +186,6 @@ namespace CapaPresentaciones
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabla de Asignaturas";
             this.Load += new System.EventHandler(this.P_PrincipalDocente_Load);
-            this.Shown += new System.EventHandler(this.P_PrincipalDocente_Shown);
-            this.Enter += new System.EventHandler(this.P_PrincipalDocente_Enter);
             this.pnContenedor.ResumeLayout(false);
             this.pnContenedor.PerformLayout();
             this.ResumeLayout(false);

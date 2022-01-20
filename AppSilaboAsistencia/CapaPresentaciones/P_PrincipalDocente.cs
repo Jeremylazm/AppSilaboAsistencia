@@ -29,60 +29,6 @@ namespace CapaPresentaciones
             InitializeComponent();
         }
 
-        // Obtener hora local del servidor NIST
-        public string GetNISTDateTime(string server, Int32 port)
-        {
-            bool bGoodConnection = false;
-            TcpClient tcpClientConnection = new TcpClient();
-            try
-            {
-                tcpClientConnection.Connect(server, port);
-                bGoodConnection = true;
-            }
-            catch
-            {
-                A_Dialogo.DialogoError("No se encuentra conectado a Internet. Revise su conexión.");
-            }
-
-            if (bGoodConnection == true)
-            {
-                try
-                {
-                    NetworkStream netStream = tcpClientConnection.GetStream();
-
-                    if (netStream.CanRead)
-                    {
-                        byte[] bytes = new byte[tcpClientConnection.ReceiveBufferSize];
-                        netStream.Read(bytes, 0, tcpClientConnection.ReceiveBufferSize);
-                        var sNISTDateTimeFull = Encoding.ASCII.GetString(bytes).Substring(0, 50);
-                        var subStringNISTDateTimeShort = sNISTDateTimeFull.Substring(7, 17);
-                        DateTime dtNISTDateTime = DateTime.Parse("20" + subStringNISTDateTimeShort).ToLocalTime();
-                        tcpClientConnection.Close();
-                        return dtNISTDateTime.ToString();
-                    }
-                    else
-                    {
-                        A_Dialogo.DialogoError("Parece que ha ocurrido un problema. Por favor, vuelva a intentarlo.");
-                        tcpClientConnection.Close();
-                        tcpClientConnection.Close();
-                        netStream.Close();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    if (ex is ArgumentNullException)
-                    {
-                        A_Dialogo.DialogoError("El servidor se encuentra ocupado. Intentelo más tarde.");
-                    }
-                    else if (ex is SocketException)
-                    {
-                        A_Dialogo.DialogoError("Parece que ha ocurrido un problema. Por favor, vuelva a intentarlo.");
-                    }
-                }
-            }
-            return null;
-        }
-
         public static DateTime GetNetworkTime()
         {
             //default Windows time server
@@ -250,28 +196,21 @@ namespace CapaPresentaciones
                     if (HoraIntervalo >= HoraInicio && HoraIntervalo <= HoraFin)
                     {
                         txtAsignatura.Text = FilaHorario["NombreAsignatura"].ToString();
+                        txtAsignatura.Width = lnAsignatura.Width;
                         break;
                     }
                     else
                     {
                         txtAsignatura.Text = "NINGUNA";
+                        txtAsignatura.Width = lnAsignatura.Width;
                     }
                 }
                 else
                 {
                     txtAsignatura.Text = "NINGUNA";
+                    txtAsignatura.Width = lnAsignatura.Width;
                 }
             }
-        }
-
-        private void P_PrincipalDocente_Enter(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void P_PrincipalDocente_Shown(object sender, EventArgs e)
-        {
-            
         }
     }
 }
