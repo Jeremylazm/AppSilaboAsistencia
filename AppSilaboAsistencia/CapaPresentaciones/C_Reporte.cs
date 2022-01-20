@@ -1418,7 +1418,8 @@ namespace CapaPresentaciones
 
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
-
+                // Ocultar el  cuadro de resumen
+                ResumenResponsivo(false);
                 #region ===================== GRÁFICO =====================
                 // Gráficos
                 btnGrafico2.Visible = false;
@@ -1595,8 +1596,8 @@ namespace CapaPresentaciones
             // Total
             cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + "100" + "%)");
 
-            dgvResumen.DataSource = cuadroResumen;
-
+            
+            ResumenResponsivo(true, cuadroResumen);
             // Gráficos // Barras verticales y Pie
             btnGrafico2.Visible = true;
             IndiceGrafico1 = 2;
@@ -1742,8 +1743,8 @@ namespace CapaPresentaciones
                 }
 
                 // Cuadro de resumen
+                MostrarResultadosResponsivo();
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
-
                 // Listas de valores
                 List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<double>("PorcentajeAsistencias"))).ToList();
                 List<double> Faltaron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<double>("PorcentajeFaltas"))).ToList();
@@ -1779,8 +1780,8 @@ namespace CapaPresentaciones
                 var dvF = Statistics.StandardDeviation(Faltaron);
                 cuadroResumen.Rows.Add("Desv. Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
 
-                dgvResumen.DataSource = cuadroResumen;
-
+                
+                ResumenResponsivo(true, cuadroResumen);
                 // Gráficos
                 btnGrafico2.Visible = false;
                 IndiceGrafico1 = 0;
@@ -1924,9 +1925,11 @@ namespace CapaPresentaciones
                     pnContenedorCuadro.Visible = true;
                 }
 
+                // Cuadro de resumen
+                MostrarResultadosResponsivo();
                 DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
 
-                // Cuadro de resumen
+                
                 DataTable cuadroResumen = new DataTable();
                 cuadroResumen.Columns.Add(" ");
                 cuadroResumen.Columns.Add("Cantidad");
@@ -1971,7 +1974,7 @@ namespace CapaPresentaciones
                 // Total
                 cuadroResumen.Rows.Add("Total", (Asistio + FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + "100" + "%)");
 
-                dgvResumen.DataSource = cuadroResumen;
+                ResumenResponsivo(true, cuadroResumen);
 
                 // Gráficos // Barras verticales y Pie
                 btnGrafico2.Visible = true;
@@ -2145,7 +2148,8 @@ namespace CapaPresentaciones
                     pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
                     pnContenedorCuadro.Visible = true;
                 }
-
+                //Resultados
+                MostrarResultadosResponsivo();
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
 
 
@@ -2186,7 +2190,7 @@ namespace CapaPresentaciones
                 var dvF = Statistics.StandardDeviation(Faltaron);
                 cuadroResumen.Rows.Add("Desv. Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
 
-                dgvResumen.DataSource = cuadroResumen;
+                ResumenResponsivo(true, cuadroResumen);
 
                 pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
@@ -2349,7 +2353,7 @@ namespace CapaPresentaciones
                 pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
                 pnContenedorCuadro.Visible = true;
             }
-
+            MostrarResultadosResponsivo();
             DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
 
             // Cuadro de resumen
@@ -2407,7 +2411,7 @@ namespace CapaPresentaciones
             // Total
             cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar) + " (" + "100" + "%)");
 
-            dgvResumen.DataSource = cuadroResumen;
+            ResumenResponsivo(true, cuadroResumen);
 
             // Gráficos
             btnGrafico2.Visible = true;

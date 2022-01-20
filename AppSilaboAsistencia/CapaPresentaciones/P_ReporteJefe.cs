@@ -57,6 +57,11 @@ namespace CapaPresentaciones
         {
             /*dpFechaInicial.MaxDate = DateTime.Now;
             dpFechaFinal.MaxDate = DateTime.Now;*/
+            pnReporte.Parent = pnPadre;
+            pnReporte.Location = new Point(0, 0);
+            pnReporte.Width = pnPadre.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
+            pnReporte.Height = pnPadre.ClientSize.Height + SystemInformation.HorizontalScrollBarHeight;
+
             dpFechaFinal.MaxDate = new DateTime(2022, 03, 01);
             dpFechaFinal.MinDate = new DateTime(2021, 09, 01);
             dpFechaInicial.MaxDate = new DateTime(2022, 03, 01);
@@ -66,10 +71,7 @@ namespace CapaPresentaciones
             dpFechaInicial.Value = new DateTime(2021, 10, 18);
             dpFechaFinal.Value = new DateTime(2021, 11, 05);
 
-            pnReporte.Parent = pnPadre;
-            pnReporte.Location = new Point(0, 0);
-            pnReporte.Width = pnPadre.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
-            pnReporte.Height = pnPadre.ClientSize.Height + SystemInformation.HorizontalScrollBarHeight;
+            
 
             DataTable resultadoss = N_Docente.MostrarDocentesDepartamento(CodDepartamentoA);
             txtCodDocente.Text = resultadoss.Rows[0]["CodDocente"].ToString();
@@ -95,6 +97,7 @@ namespace CapaPresentaciones
             Responsivo();
             pnReporte.Controls.Add(Reporte);
             ActiveControl = Reporte.btnGrafico1;
+            pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 
         private void Responsivo()
@@ -124,18 +127,17 @@ namespace CapaPresentaciones
             P_SeleccionadoDocente docente = new P_SeleccionadoDocente(txtCodDocente.Text, "Jefe de Departamento", cxtCriterioSeleccion.SelectedItem.ToString());
             AddOwnedForm(docente);
             docente.ShowDialog();
+            docente.Dispose();
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Docentes"))
             {
                 if (cxtCriterioSeleccion.SelectedItem.Equals("Por Fechas"))
                 {
                     fnReporte13();
-                    Responsivo();
                 }
 
                 else
                 {
                     fnReporte10();
-                    Responsivo();
                 }
 
             }
@@ -152,12 +154,10 @@ namespace CapaPresentaciones
                 if (cxtCriterioSeleccion.SelectedItem.Equals("Por Asignaturas"))
                 {
                     fnReporte12();
-
                 }
                 else
                 {
                     fnReporte14();
-
                 }
 
             }
@@ -237,7 +237,6 @@ namespace CapaPresentaciones
         }
         private void fnReporte12()
         {
-            pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Asistencia Docentes
             // Criterio de selección: Por Estudiantes
             DataTable NombreDepar = N_DepartamentoAcademico.BuscarNombreDepartamento(CodDepartamentoA);
@@ -262,6 +261,7 @@ namespace CapaPresentaciones
             string[] Valores = { CodSemestre, NomDepartamento, txtCodDocente.Text, txtDocente.Text };
             DataTable resultados = N_AsistenciaDiariaDocente.AsistenciasDocente(CodSemestre, txtCodDocente.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
             Reportes.fnReporte13(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+            pnReporte.AutoScrollPosition = new Point(0, 0);
         }
         private void fnReporte14()
         {
@@ -277,6 +277,7 @@ namespace CapaPresentaciones
             DataTable resultados = N_AsistenciaDiariaDocente.AsistenciaDocentesPorFechas(CodSemestre, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
             Reportes.fnReporte14(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+            pnReporte.AutoScrollPosition = new Point(0, 0);
         }
         private void dpFechaInicial_CloseUp(object sender, EventArgs e)
         {
@@ -381,6 +382,7 @@ namespace CapaPresentaciones
             }
             else
                 Ayudas.A_Dialogo.DialogoError("No hay Plan de Sesiones");
+            pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 
         private void fnReporte9()
@@ -435,6 +437,7 @@ namespace CapaPresentaciones
             }
 
             Reportes.fnReporte9(Titulo, Titulos, Valores, ResultadosFinales, ResultadosResumen);
+            pnReporte.AutoScrollPosition = new Point(0, 0);
         }
     }
 }
