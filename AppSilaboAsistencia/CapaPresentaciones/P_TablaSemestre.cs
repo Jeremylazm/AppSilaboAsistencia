@@ -60,26 +60,25 @@ namespace CapaPresentaciones
         {
             ActualizarColor();
 
-            Form Fondo = new Form();
-            using (P_DatosSemestre NuevoRegistro = new P_DatosSemestre())
+            //Form Fondo = new Form();
+            //using (P_DatosSemestre NuevoRegistro = new P_DatosSemestre())
             {
-                /*
-                Fondo.StartPosition = FormStartPosition.Manual;
-                Fondo.FormBorderStyle = FormBorderStyle.None;
-                Fondo.Opacity = .70d;
-                Fondo.BackColor = Color.Black;
-                Fondo.WindowState = FormWindowState.Maximized;
-                Fondo.TopMost = true;
-                Fondo.Location = this.Location;
-                Fondo.ShowInTaskbar = false;
-                Fondo.Show();*/
+                //Fondo.StartPosition = FormStartPosition.Manual;
+                //Fondo.FormBorderStyle = FormBorderStyle.None;
+                //Fondo.Opacity = .70d;
+                //Fondo.BackColor = Color.Black;
+                //Fondo.WindowState = FormWindowState.Maximized;
+                //Fondo.TopMost = true;
+                //Fondo.Location = this.Location;
+                //Fondo.ShowInTaskbar = false;
+                //Fondo.Show();
 
-                NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                NuevoRegistro.Owner = Fondo;
-                NuevoRegistro.ShowDialog();
-                NuevoRegistro.Dispose();
+                //NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                //NuevoRegistro.Owner = Fondo;
+                //NuevoRegistro.ShowDialog();
+                //NuevoRegistro.Dispose();
 
-                Fondo.Dispose();
+                //Fondo.Dispose();
             }
         }
 
@@ -92,20 +91,19 @@ namespace CapaPresentaciones
         {
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
-                Form Fondo = new Form();
-                
+                //Form Fondo = new Form();
+                /*
                 using (P_DatosSemestre EditarRegistro = new P_DatosSemestre())
                 {
-                    /*
-                    Fondo.StartPosition = FormStartPosition.Manual;
-                    Fondo.FormBorderStyle = FormBorderStyle.None;
-                    Fondo.Opacity = .70d;
-                    Fondo.BackColor = Color.Black;
-                    Fondo.WindowState = FormWindowState.Maximized;
-                    Fondo.TopMost = true;
-                    Fondo.Location = this.Location;
-                    Fondo.ShowInTaskbar = false;
-                    Fondo.Show();*/
+                    //Fondo.StartPosition = FormStartPosition.Manual;
+                    //Fondo.FormBorderStyle = FormBorderStyle.None;
+                    //Fondo.Opacity = .70d;
+                    //Fondo.BackColor = Color.Black;
+                    //Fondo.WindowState = FormWindowState.Maximized;
+                    //Fondo.TopMost = true;
+                    //Fondo.Location = this.Location;
+                    //Fondo.ShowInTaskbar = false;
+                    //Fondo.Show();
 
                     EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
 
@@ -113,12 +111,12 @@ namespace CapaPresentaciones
 
                     EditarRegistro.txtDenominacionSemestre.Text = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
 
-                    EditarRegistro.Owner = Fondo;
+                    //EditarRegistro.Owner = Fondo;
                     EditarRegistro.ShowDialog();
                     EditarRegistro.Dispose();
 
-                    Fondo.Dispose();
-                }
+                    //Fondo.Dispose();
+                }*/
             }
 
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
