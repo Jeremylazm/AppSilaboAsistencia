@@ -109,16 +109,21 @@ namespace CapaPresentaciones
             P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Docente", cxtCriterioSeleccion.SelectedItem.ToString());
             AddOwnedForm(Asignaturas);
             Asignaturas.ShowDialog();
-            if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+            Asignaturas.Dispose();
+
+            if (Asignaturas.DialogResult == DialogResult.Yes)
             {
-                if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
-                    fnReporte3();
-                else
-                    fnReporte1();
-            }
-            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
-            {
-                fnReporte5();
+                if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+                {
+                    if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
+                        fnReporte3();
+                    else
+                        fnReporte1();
+                }
+                else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
+                {
+                    fnReporte5();
+                }
             }
         }
 
@@ -191,7 +196,13 @@ namespace CapaPresentaciones
 
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorFechas(CodSemestre, CodDocente, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
-            Reportes.fnReporte1(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+            string ans = Reportes.fnReporte1(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+
+            if (ans == "Yes")
+            {
+
+            }
+
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 

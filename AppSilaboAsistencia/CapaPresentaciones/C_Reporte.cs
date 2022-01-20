@@ -238,7 +238,7 @@ namespace CapaPresentaciones
             this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
         }
 
-        public void fnReporte1(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura)
+        public string fnReporte1(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasEstudiantes, string CodAsignatura)
         {
             this.CriterioAsistenciasEstudiantes = CriterioAsistenciasEstudiantes;
 
@@ -249,11 +249,13 @@ namespace CapaPresentaciones
             {
                 A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
 
-                lblTitulo.Text = "";
+                /*lblTitulo.Text = "";
                 pnSubcampos.Controls.Clear();
                 dgvResumen.Columns.Clear();
                 dgvResultados.Columns.Clear();
-                dgvResultados.Refresh();
+                dgvResultados.Refresh();*/
+
+                return "Yes";
             }
             else
             {
@@ -425,6 +427,8 @@ namespace CapaPresentaciones
 
                 tcGraficos.SetPage(tcGraficos.PageIndex);
                 #endregion ===================== GRÁFICOS =====================
+
+                return null;
             }
         }
 

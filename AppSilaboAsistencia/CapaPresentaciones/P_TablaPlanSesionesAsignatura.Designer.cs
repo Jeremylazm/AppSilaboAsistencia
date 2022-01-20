@@ -368,7 +368,7 @@ namespace CapaPresentaciones
             // 
             this.Docker.AllowFormDragging = true;
             this.Docker.AllowFormDropShadow = true;
-            this.Docker.AllowFormResizing = true;
+            this.Docker.AllowFormResizing = false;
             this.Docker.AllowHidingBottomRegion = true;
             this.Docker.AllowOpacityChangesWhileDragging = false;
             this.Docker.BorderOptions.BottomBorder.BorderColor = System.Drawing.Color.Silver;
@@ -400,7 +400,7 @@ namespace CapaPresentaciones
             this.Docker.ShowDockingIndicators = false;
             this.Docker.TitleBarOptions.AllowFormDragging = true;
             this.Docker.TitleBarOptions.BunifuFormDock = this.Docker;
-            this.Docker.TitleBarOptions.DoubleClickToExpandWindow = true;
+            this.Docker.TitleBarOptions.DoubleClickToExpandWindow = false;
             this.Docker.TitleBarOptions.TitleBarControl = null;
             this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
