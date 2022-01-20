@@ -20,8 +20,10 @@ namespace CapaPresentaciones
         private readonly string CodSemestre;
         readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
-        C_Reporte Reportes = new C_Reporte();
-        string nombreDocente;
+        C_Reporte Reportes;
+        readonly string[] ValoresNecesarios;
+        readonly DateTime[] FechasNecesarias;
+        readonly string Criterio;
 
         public P_DialogoReporte()
         {
@@ -31,114 +33,15 @@ namespace CapaPresentaciones
             InitializeComponent();
         }
 
-        public P_DialogoReporte(string[] ValoresNecesarios, DateTime[] FechasNecesarias, string Criterio)
+        public P_DialogoReporte(string[] pValoresNecesarios, DateTime[] pFechasNecesarias, string pCriterio)
         {
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
             ObjCatalogo = new N_Catalogo();
+            ValoresNecesarios = pValoresNecesarios;
+            FechasNecesarias = pFechasNecesarias;
+            Criterio = pCriterio;
             InitializeComponent();
-
-            if (Criterio == "Por Fechas") // Reporte 2
-            {
-                string Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + ValoresNecesarios[5];
-                string[] Titulos = { "Semestre", "Escuela Profesional", "Cod. Asignatura", "Asignatura", "Cod. Docente", "Docente" };
-                string[] Valores = { CodSemestre, ValoresNecesarios[4], ValoresNecesarios[2], ValoresNecesarios[3], ValoresNecesarios[0], ValoresNecesarios[1] };
-
-                Console.WriteLine(FechasNecesarias[0].ToString("yyyy/MM/dd"));
-
-                DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, ValoresNecesarios[2], FechasNecesarias[0].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), ValoresNecesarios[6]);
-
-                C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, "Por Fechas")
-                {
-                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
-                    Width = pnReporte.Width
-                };
-
-                Reportes = Reporte;
-                pnReporte.Controls.Add(Reporte);
-                ActiveControl = Reporte.btnGrafico1;
-            }
-            else if (Criterio == "Por Estudiantes") // Reporte 4
-            {
-                string Titulo = "Reporte de Asistencia Estudiantes" + Environment.NewLine + "Desde: " + DateTime.ParseExact(ValoresNecesarios[7], "yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")) + " - " + "Hasta: " + DateTime.ParseExact(ValoresNecesarios[8], "yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES"));
-                string[] Titulos = { "Semestre", "Escuela Profesional", "Cod. Asignatura", "Asignatura", "Cod. Docente", "Docente", "Cod. Estudiante", "Estudiante" };
-                string[] Valores = { CodSemestre, ValoresNecesarios[4], ValoresNecesarios[2], ValoresNecesarios[3], ValoresNecesarios[0], ValoresNecesarios[1], ValoresNecesarios[5], ValoresNecesarios[6] };
-
-                DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudianteAsignatura(CodSemestre, ValoresNecesarios[5], ValoresNecesarios[2], FechasNecesarias[0].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), FechasNecesarias[1].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
-
-                C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, "Por Estudiantes")
-                {
-                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
-                    Width = pnReporte.Width
-                };
-
-                Reportes = Reporte;
-                pnReporte.Controls.Add(Reporte);
-                ActiveControl = Reporte.btnGrafico1;
-            }
-            else if (Criterio == "Por Asignaturas")
-            {
-                string Titulo = "Reporte de Asistencia Estudiantes" + Environment.NewLine + "Desde: " + DateTime.ParseExact(ValoresNecesarios[7], "yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")) + " - " + "Hasta: " + DateTime.ParseExact(ValoresNecesarios[8], "yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES"));
-                string[] Titulos = { "Semestre", "Escuela Profesional", "Cod. Asignatura", "Asignatura", "Cod. Docente", "Docente", "Cod. Estudiante", "Estudiante" };
-                string[] Valores = { CodSemestre, ValoresNecesarios[0], ValoresNecesarios[3], ValoresNecesarios[4], ValoresNecesarios[5], ValoresNecesarios[6], ValoresNecesarios[1], ValoresNecesarios[2] };
-
-                DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudianteAsignatura(CodSemestre, ValoresNecesarios[1], ValoresNecesarios[3], FechasNecesarias[0].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), FechasNecesarias[1].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
-
-
-                C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, "Por Asignaturas")
-                {
-                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
-                    Width = pnReporte.Width
-                };
-
-                Reportes = Reporte;
-                pnReporte.Controls.Add(Reporte);
-                ActiveControl = Reporte.btnGrafico1;
-            }
-            else if (Criterio == "Por Fechas D") // Reporte 15
-            {
-                DataTable NombreDepar = N_DepartamentoAcademico.BuscarNombreDepartamento(CodDepartamentoA);
-                string NomDepartamento = NombreDepar.Rows[0]["Nombre"].ToString();
-                string Titulo = "REPORTE DE ASISTENCIA DOCENTES" + Environment.NewLine + ValoresNecesarios[1];
-                string[] Titulos = { "Semestre", "Dpto Academico " };
-                string[] Valores = { CodSemestre, NomDepartamento };
-
-                Console.WriteLine(FechasNecesarias[0].ToString("yyyy/MM/dd"));
-
-                DataTable resultados = N_AsistenciaDiariaDocente.AsistenciaDiariaDocentes(CodSemestre,CodDepartamentoA, FechasNecesarias[0].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
-
-                C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, "Por Fechas D")
-                {
-                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
-                    Width = pnReporte.Width
-                };
-
-                Reportes = Reporte;
-                pnReporte.Controls.Add(Reporte);
-                ActiveControl = Reporte.btnGrafico1;
-            }
-            else if (Criterio == "Por Asignaturas D") //Reporte 11
-            {
-                DataTable NombreDepar = N_DepartamentoAcademico.BuscarNombreDepartamento(CodDepartamentoA);
-                string NomDepartamento = NombreDepar.Rows[0]["Nombre"].ToString();
-                string Titulo = "Reporte de Asistencia Docente" + Environment.NewLine + "Desde: " + DateTime.ParseExact(ValoresNecesarios[5], "yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")) + " - " + "Hasta: " + DateTime.ParseExact(ValoresNecesarios[6], "yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES"));
-                string[] Titulos = { "Semestre","Departamento Academico","Cod. Asignatura", "Asignatura", "Cod. Docente", "Docente"};
-                string[] Valores = { CodSemestre, NomDepartamento, ValoresNecesarios[3], ValoresNecesarios[4], ValoresNecesarios[1], ValoresNecesarios[2]};
-
-                DataTable resultados = N_AsistenciaDocentePorAsignatura.AsistenciaDocenteAsignatura(CodSemestre, ValoresNecesarios[1], ValoresNecesarios[3], FechasNecesarias[0].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), FechasNecesarias[1].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
-
-
-                C_Reporte Reporte = new C_Reporte(Titulo, Titulos, Valores, resultados, "Por Asignaturas D")
-                {
-                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
-                    Width = pnReporte.Width
-                };
-
-                Reportes = Reporte;
-                pnReporte.Controls.Add(Reporte);
-                ActiveControl = Reporte.btnGrafico1;
-            }
-            Responsivo();
         }
 
         private void Responsivo()
@@ -169,6 +72,49 @@ namespace CapaPresentaciones
             pnReporte.Location = new Point(0, 0);
             pnReporte.Width = pnPadre.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
             pnReporte.Height = pnPadre.ClientSize.Height + SystemInformation.HorizontalScrollBarHeight;
+            string Titulo;
+            string[] Titulos;
+            string[] Valores;
+            DataTable Resultados;
+
+            if (Criterio == "Por Fechas") // Reporte 2
+            {
+                Titulo = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + ValoresNecesarios[5];
+                Titulos = new string[] { "Semestre", "Escuela Profesional", "Cod. Asignatura", "Asignatura", "Cod. Docente", "Docente" };
+                Valores = new string[] { CodSemestre, ValoresNecesarios[4], ValoresNecesarios[2], ValoresNecesarios[3], ValoresNecesarios[0], ValoresNecesarios[1] };
+
+                Console.WriteLine(FechasNecesarias[0].ToString("yyyy/MM/dd"));
+
+                Resultados = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, ValoresNecesarios[2], FechasNecesarias[0].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), ValoresNecesarios[6]);
+            }
+            else if (Criterio == "Por Estudiantes") // Reporte 4
+            {
+                Titulo = "Reporte de Asistencia Estudiantes" + Environment.NewLine + "Desde: " + DateTime.ParseExact(ValoresNecesarios[7], "yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")) + " - " + "Hasta: " + DateTime.ParseExact(ValoresNecesarios[8], "yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES"));
+                Titulos = new string[] { "Semestre", "Escuela Profesional", "Cod. Asignatura", "Asignatura", "Cod. Docente", "Docente", "Cod. Estudiante", "Estudiante" };
+                Valores = new string[] { CodSemestre, ValoresNecesarios[4], ValoresNecesarios[2], ValoresNecesarios[3], ValoresNecesarios[0], ValoresNecesarios[1], ValoresNecesarios[5], ValoresNecesarios[6] };
+
+                Resultados = N_AsistenciaEstudiante.AsistenciaEstudianteAsignatura(CodSemestre, ValoresNecesarios[5], ValoresNecesarios[2], FechasNecesarias[0].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), FechasNecesarias[1].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+            }
+            else // Por Asignaturas
+            {
+                Titulo = "Reporte de Asistencia Estudiantes" + Environment.NewLine + "Desde: " + DateTime.ParseExact(ValoresNecesarios[7], "yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")) + " - " + "Hasta: " + DateTime.ParseExact(ValoresNecesarios[8], "yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")).ToString("dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES"));
+                Titulos = new string[] { "Semestre", "Escuela Profesional", "Cod. Asignatura", "Asignatura", "Cod. Docente", "Docente", "Cod. Estudiante", "Estudiante" };
+                Valores = new string[] { CodSemestre, ValoresNecesarios[0], ValoresNecesarios[3], ValoresNecesarios[4], ValoresNecesarios[5], ValoresNecesarios[6], ValoresNecesarios[1], ValoresNecesarios[2] };
+
+                Resultados = N_AsistenciaEstudiante.AsistenciaEstudianteAsignatura(CodSemestre, ValoresNecesarios[1], ValoresNecesarios[3], FechasNecesarias[0].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), FechasNecesarias[1].ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+            }
+
+            Reportes = new C_Reporte(Titulo, Titulos, Valores, Resultados, Criterio)
+            {
+                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
+                Width = pnReporte.Width
+            };
+
+            pnReporte.Controls.Add(Reportes);
+            Responsivo();
+            ActiveControl = Reportes.btnGrafico1;
+            ActiveControl = pnReporte;
+            pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
