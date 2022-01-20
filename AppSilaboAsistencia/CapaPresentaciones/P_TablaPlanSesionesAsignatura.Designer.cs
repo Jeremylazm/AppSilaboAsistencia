@@ -73,7 +73,7 @@ namespace CapaPresentaciones
             this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblTitulo.Size = new System.Drawing.Size(791, 46);
             this.lblTitulo.TabIndex = 22;
-            this.lblTitulo.Text = "Tabla Sesiones Asignatura";
+            this.lblTitulo.Text = "Tabla Plan de Sesiones Asignatura";
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -245,7 +245,7 @@ namespace CapaPresentaciones
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDatos.BackgroundColor = System.Drawing.Color.White;
-            this.dgvDatos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvDatos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvDatos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvDatos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -368,7 +368,7 @@ namespace CapaPresentaciones
             // 
             this.Docker.AllowFormDragging = true;
             this.Docker.AllowFormDropShadow = true;
-            this.Docker.AllowFormResizing = true;
+            this.Docker.AllowFormResizing = false;
             this.Docker.AllowHidingBottomRegion = true;
             this.Docker.AllowOpacityChangesWhileDragging = false;
             this.Docker.BorderOptions.BottomBorder.BorderColor = System.Drawing.Color.Silver;
@@ -400,7 +400,7 @@ namespace CapaPresentaciones
             this.Docker.ShowDockingIndicators = false;
             this.Docker.TitleBarOptions.AllowFormDragging = true;
             this.Docker.TitleBarOptions.BunifuFormDock = this.Docker;
-            this.Docker.TitleBarOptions.DoubleClickToExpandWindow = true;
+            this.Docker.TitleBarOptions.DoubleClickToExpandWindow = false;
             this.Docker.TitleBarOptions.TitleBarControl = null;
             this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 

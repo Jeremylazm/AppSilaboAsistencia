@@ -33,10 +33,14 @@ namespace CapaPresentaciones
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_PrincipalDocente));
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
-            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.lnAsignatura = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.txtAsignatura = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblAsignatura = new Bunifu.UI.WinForms.BunifuLabel();
             this.pnHorario = new System.Windows.Forms.FlowLayoutPanel();
             this.pnDias = new System.Windows.Forms.FlowLayoutPanel();
             this.pnHoras = new System.Windows.Forms.FlowLayoutPanel();
+            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.HoraFecha = new System.Windows.Forms.Timer(this.components);
             this.pnContenedor.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +75,9 @@ namespace CapaPresentaciones
             this.pnContenedor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.pnContenedor.BorderRadius = 20;
             this.pnContenedor.BorderThickness = 1;
+            this.pnContenedor.Controls.Add(this.lnAsignatura);
+            this.pnContenedor.Controls.Add(this.txtAsignatura);
+            this.pnContenedor.Controls.Add(this.lblAsignatura);
             this.pnContenedor.Controls.Add(this.pnHorario);
             this.pnContenedor.Controls.Add(this.pnDias);
             this.pnContenedor.Controls.Add(this.pnHoras);
@@ -81,34 +88,90 @@ namespace CapaPresentaciones
             this.pnContenedor.Size = new System.Drawing.Size(1088, 660);
             this.pnContenedor.TabIndex = 17;
             // 
-            // Bordeado
+            // lnAsignatura
             // 
-            this.Bordeado.ElipseRadius = 15;
-            this.Bordeado.TargetControl = this.pnContenedor;
+            this.lnAsignatura.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lnAsignatura.BackColor = System.Drawing.Color.Transparent;
+            this.lnAsignatura.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lnAsignatura.BackgroundImage")));
+            this.lnAsignatura.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.lnAsignatura.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
+            this.lnAsignatura.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lnAsignatura.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
+            this.lnAsignatura.LineThickness = 1;
+            this.lnAsignatura.Location = new System.Drawing.Point(294, 634);
+            this.lnAsignatura.Name = "lnAsignatura";
+            this.lnAsignatura.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
+            this.lnAsignatura.Size = new System.Drawing.Size(164, 10);
+            this.lnAsignatura.TabIndex = 79;
+            // 
+            // txtAsignatura
+            // 
+            this.txtAsignatura.AllowParentOverrides = false;
+            this.txtAsignatura.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtAsignatura.AutoEllipsis = false;
+            this.txtAsignatura.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtAsignatura.CursorType = System.Windows.Forms.Cursors.Default;
+            this.txtAsignatura.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAsignatura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtAsignatura.Location = new System.Drawing.Point(294, 610);
+            this.txtAsignatura.Name = "txtAsignatura";
+            this.txtAsignatura.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtAsignatura.Size = new System.Drawing.Size(164, 22);
+            this.txtAsignatura.TabIndex = 80;
+            this.txtAsignatura.Text = "Valor de Asignatura";
+            this.txtAsignatura.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.txtAsignatura.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // lblAsignatura
+            // 
+            this.lblAsignatura.AllowParentOverrides = false;
+            this.lblAsignatura.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblAsignatura.AutoEllipsis = false;
+            this.lblAsignatura.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblAsignatura.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblAsignatura.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAsignatura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblAsignatura.Location = new System.Drawing.Point(101, 610);
+            this.lblAsignatura.Name = "lblAsignatura";
+            this.lblAsignatura.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblAsignatura.Size = new System.Drawing.Size(180, 23);
+            this.lblAsignatura.TabIndex = 68;
+            this.lblAsignatura.Text = "Asignatura en Curso:";
+            this.lblAsignatura.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAsignatura.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // pnHorario
             // 
             this.pnHorario.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pnHorario.Location = new System.Drawing.Point(226, 100);
+            this.pnHorario.Location = new System.Drawing.Point(218, 101);
             this.pnHorario.Name = "pnHorario";
-            this.pnHorario.Size = new System.Drawing.Size(743, 464);
+            this.pnHorario.Size = new System.Drawing.Size(777, 496);
             this.pnHorario.TabIndex = 65;
             // 
             // pnDias
             // 
             this.pnDias.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pnDias.Location = new System.Drawing.Point(226, 65);
+            this.pnDias.Location = new System.Drawing.Point(218, 64);
             this.pnDias.Name = "pnDias";
-            this.pnDias.Size = new System.Drawing.Size(743, 29);
+            this.pnDias.Size = new System.Drawing.Size(777, 31);
             this.pnDias.TabIndex = 66;
             // 
             // pnHoras
             // 
             this.pnHoras.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pnHoras.Location = new System.Drawing.Point(114, 100);
+            this.pnHoras.Location = new System.Drawing.Point(101, 101);
             this.pnHoras.Name = "pnHoras";
-            this.pnHoras.Size = new System.Drawing.Size(106, 464);
+            this.pnHoras.Size = new System.Drawing.Size(111, 496);
             this.pnHoras.TabIndex = 67;
+            // 
+            // Bordeado
+            // 
+            this.Bordeado.ElipseRadius = 15;
+            this.Bordeado.TargetControl = this.pnContenedor;
+            // 
+            // HoraFecha
+            // 
+            this.HoraFecha.Tick += new System.EventHandler(this.HoraFecha_Tick);
             // 
             // P_PrincipalDocente
             // 
@@ -124,6 +187,7 @@ namespace CapaPresentaciones
             this.Text = "Tabla de Asignaturas";
             this.Load += new System.EventHandler(this.P_PrincipalDocente_Load);
             this.pnContenedor.ResumeLayout(false);
+            this.pnContenedor.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -135,5 +199,9 @@ namespace CapaPresentaciones
         private System.Windows.Forms.FlowLayoutPanel pnHorario;
         private System.Windows.Forms.FlowLayoutPanel pnDias;
         private System.Windows.Forms.FlowLayoutPanel pnHoras;
+        private Bunifu.UI.WinForms.BunifuLabel lblAsignatura;
+        private Bunifu.UI.WinForms.BunifuSeparator lnAsignatura;
+        public Bunifu.UI.WinForms.BunifuLabel txtAsignatura;
+        public System.Windows.Forms.Timer HoraFecha;
     }
 }
