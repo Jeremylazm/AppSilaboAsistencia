@@ -49,12 +49,7 @@ namespace CapaPresentaciones
             dgvDatos.Columns[2].MinimumWidth = 95;
             dgvDatos.Columns[2].Width = 95;
             dgvDatos.Columns[5].HeaderText = "Nombre";
-            dgvDatos.Columns[7].Visible = false;
-            dgvDatos.Columns[8].Visible = false;
-            dgvDatos.Columns[9].Visible = false;
-            dgvDatos.Columns[10].Visible = false;
-            dgvDatos.Columns[11].Visible = false;
-
+            
         }
         public void MostrarTodosLosDocentes()
         {
@@ -88,7 +83,7 @@ namespace CapaPresentaciones
                 P_ReporteJefe DatosDocente = Owner as P_ReporteJefe;
 
                 DatosDocente.txtCodDocente.Text = dgvDatos.CurrentRow.Cells[2].Value.ToString();
-                DatosDocente.txtDocente.Text = dgvDatos.CurrentRow.Cells[5].Value.ToString()+" "+dgvDatos.CurrentRow.Cells[3].Value.ToString()+" "+dgvDatos.CurrentRow.Cells[4].Value.ToString();
+                DatosDocente.txtDocente.Text = dgvDatos.CurrentRow.Cells[5].Value.ToString()+ dgvDatos.CurrentRow.Cells[3].Value.ToString()+ dgvDatos.CurrentRow.Cells[4].Value.ToString();
                 DatosDocente.CriterioSeleccionAsistenciaDocentes();
             }
             Close();
