@@ -207,8 +207,7 @@ namespace CapaPresentaciones
                 txtNombre.Text = AntNombreAsignatura;
                 txtEscuelaP.Text = AntEscuelaProfesional;
             }
-
-            pnReporte.AutoScrollPosition = new Point(0, 0);
+            else pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 
         private void fnReporte3()
@@ -223,7 +222,6 @@ namespace CapaPresentaciones
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
             string ans = Reportes.fnReporte3(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
-            pnReporte.AutoScrollPosition = new Point(0, 0);
 
             if (ans == "Si")
             {
@@ -234,6 +232,7 @@ namespace CapaPresentaciones
                 txtNombre.Text = AntNombreAsignatura;
                 txtEscuelaP.Text = AntEscuelaProfesional;
             }
+            else pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 
         private void fnReporte5()
