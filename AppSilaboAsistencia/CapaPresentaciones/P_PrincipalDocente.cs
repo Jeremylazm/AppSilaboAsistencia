@@ -1,25 +1,23 @@
 ﻿using ControlesPerzonalizados;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
 using System.Net.Sockets;
-using Ayudas;
 using System.Globalization;
 using System.Net;
+using ClosedXML.Excel;
+using System.IO;
 
 namespace CapaPresentaciones
 {
     public partial class P_PrincipalDocente : Form
     {
         public bool HoraServidor;
+        public string CodAsignatura;
         readonly string CodSemestre;
 
         public P_PrincipalDocente()
@@ -195,21 +193,63 @@ namespace CapaPresentaciones
 
                     if (HoraIntervalo >= HoraInicio && HoraIntervalo <= HoraFin)
                     {
+                        CodAsignatura = FilaHorario["CodAsignatura"].ToString();
                         txtAsignatura.Text = FilaHorario["NombreAsignatura"].ToString();
-                        txtAsignatura.Width = lnAsignatura.Width;
+                        lnAsignatura.Width = txtAsignatura.Width;
                         break;
                     }
                     else
                     {
                         txtAsignatura.Text = "NINGUNA";
-                        txtAsignatura.Width = lnAsignatura.Width;
+                        lnAsignatura.Width = txtAsignatura.Width;
                     }
                 }
                 else
                 {
                     txtAsignatura.Text = "NINGUNA";
-                    txtAsignatura.Width = lnAsignatura.Width;
+                    lnAsignatura.Width = txtAsignatura.Width;
                 }
+            }
+        }
+
+        private void btnMostrarPlanSesiones_Click(object sender, EventArgs e)
+        {
+            if (txtAsignatura.Text != "NINGUNA")
+            {
+                DataTable PlanSesiones = N_Catalogo.RecuperarPlanDeSesionAsignatura(CodSemestre, CodAsignatura, E_InicioSesion.Usuario);
+
+                if (PlanSesiones.Rows.Count >= 1)
+                {
+                    DataTable Resultados = N_AsistenciaDocentePorAsignatura.AvanceAsignatura(CodSemestre, E_InicioSesion.Usuario, CodAsignatura);
+
+                    string Carpeta = AppDomain.CurrentDomain.BaseDirectory + "/temp/";
+                    string Ruta = Carpeta + "temp.xlsx";
+                    if (!Directory.Exists(Carpeta))
+                    {
+                        Directory.CreateDirectory(Carpeta);
+                    }
+
+                    if (File.Exists(Ruta))
+                    {
+                        File.Delete(Ruta);
+                    }
+
+                    DataRow Fila = PlanSesiones.Rows[0];
+                    byte[] Archivo = Fila["PlanSesiones"] as byte[];
+                    File.WriteAllBytes(Ruta, Archivo);
+                    XLWorkbook Libro = new XLWorkbook(Ruta);
+
+                    P_TablaSesiones Sesiones = new P_TablaSesiones(Resultados, Libro);
+                    Sesiones.Show();
+                }
+                else
+                {
+                    Ayudas.A_Dialogo.DialogoError("No hay Plan de Sesiones de dicha asignatura");
+                }
+            }
+            else
+            {
+                Ayudas.A_Dialogo.DialogoError("No tiene una asignatura en curso");
             }
         }
     }
