@@ -55,7 +55,7 @@ namespace CapaPresentaciones
 
         public void BuscarRegistros()
         {
-            dgvDatos.DataSource = N_Catalogo.BuscarCatálogo(CodSemestre, txtBuscar.Text, CodDepartamentoA);
+            dgvDatos.DataSource = N_Catalogo.BuscarCatálogo(CodSemestre, CodDepartamentoA, txtBuscar.Text);
         }//Listo
 
         private void MensajeConfirmacion(string Mensaje)
@@ -76,8 +76,12 @@ namespace CapaPresentaciones
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             ActualizarColor();
-            P_Catálogo_Agregar C = new P_Catálogo_Agregar();
-            C.Show();
+            Program.Cont = Program.Cont + 1;
+            if (Program.Cont < 2)
+            {
+                P_Catálogo_Agregar C = new P_Catálogo_Agregar();
+                C.Show();
+            }
         }//Listo
 
         public void MostrarRegistros()
@@ -96,8 +100,6 @@ namespace CapaPresentaciones
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
                 string CodAsignatura, CodEscuelaP, Grupo;
-                P_Catálogo_Actualizar ActualizarC = new P_Catálogo_Actualizar();
-                ActualizarC.FormClosed += new FormClosedEventHandler(ActualizarDatos);
 
                 Program.Evento = 1;
 
@@ -105,8 +107,14 @@ namespace CapaPresentaciones
                 CodEscuelaP = dgvDatos.Rows[e.RowIndex].Cells[9].Value.ToString();
                 Grupo = dgvDatos.Rows[e.RowIndex].Cells[5].Value.ToString();
 
-                ActualizarC.Show();
-                ActualizarC.Buscar(CodSemestre, CodAsignatura, CodEscuelaP, Grupo);
+                Program.Cont = Program.Cont + 1;
+                if (Program.Cont < 2)
+                {
+                    P_Catálogo_Actualizar ActualizarC = new P_Catálogo_Actualizar();
+                    ActualizarC.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                    ActualizarC.Show();
+                    ActualizarC.Buscar(CodSemestre, CodAsignatura, CodEscuelaP, Grupo);
+                }
             }//Actualizar Falta
 
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
