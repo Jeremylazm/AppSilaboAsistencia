@@ -198,9 +198,14 @@ namespace CapaPresentaciones
 
             string ans = Reportes.fnReporte1(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
 
-            if (ans == "Yes")
+            if (ans == "Si")
             {
-
+                cxtCriterioSeleccion.SelectedIndex = AntCriterioSeleccion;
+                dpFechaInicial.Value = AntFechaInicial;
+                dpFechaFinal.Value = AntFechaFinal;
+                txtCodigo.Text = AntCodAsignatura;
+                txtNombre.Text = AntNombreAsignatura;
+                txtEscuelaP.Text = AntEscuelaProfesional;
             }
 
             pnReporte.AutoScrollPosition = new Point(0, 0);
@@ -217,8 +222,18 @@ namespace CapaPresentaciones
 
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
-            Reportes.fnReporte3(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+            string ans = Reportes.fnReporte3(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
             pnReporte.AutoScrollPosition = new Point(0, 0);
+
+            if (ans == "Si")
+            {
+                cxtCriterioSeleccion.SelectedIndex = AntCriterioSeleccion;
+                dpFechaInicial.Value = AntFechaInicial;
+                dpFechaFinal.Value = AntFechaFinal;
+                txtCodigo.Text = AntCodAsignatura;
+                txtNombre.Text = AntNombreAsignatura;
+                txtEscuelaP.Text = AntEscuelaProfesional;
+            }
         }
 
         private void fnReporte5()
@@ -364,6 +379,22 @@ namespace CapaPresentaciones
             {
                 fnReporte5();
             }
+        }
+
+        private int AntCriterioSeleccion;
+        private DateTime AntFechaInicial;
+        private DateTime AntFechaFinal;
+        private string AntCodAsignatura;
+        private string AntNombreAsignatura;
+        private string AntEscuelaProfesional;
+        private void dpFechaInicial_MouseDown(object sender, MouseEventArgs e)
+        {
+            AntCriterioSeleccion = cxtCriterioSeleccion.SelectedIndex;
+            AntFechaInicial = dpFechaInicial.Value;
+            AntFechaFinal = dpFechaFinal.Value;
+            AntCodAsignatura = txtCodigo.Text;
+            AntNombreAsignatura = txtNombre.Text;
+            AntEscuelaProfesional = txtEscuelaP.Text;
         }
     }
 }
