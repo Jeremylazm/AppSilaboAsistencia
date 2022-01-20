@@ -236,10 +236,11 @@ namespace CapaPresentaciones
 
                     DataRow Fila = PlanSesiones.Rows[0];
                     byte[] Archivo = Fila["PlanSesiones"] as byte[];
+                    int NroCreditos = int.Parse(Fila["Creditos"].ToString());
                     File.WriteAllBytes(Ruta, Archivo);
                     XLWorkbook Libro = new XLWorkbook(Ruta);
 
-                    P_TablaSesiones Sesiones = new P_TablaSesiones(Resultados, Libro);
+                    P_TablaSesiones Sesiones = new P_TablaSesiones(Resultados, Libro, NroCreditos);
                     Sesiones.Show();
                 }
                 else
