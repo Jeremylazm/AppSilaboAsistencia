@@ -180,9 +180,6 @@ namespace CapaPresentaciones
                 lblFechaFinal.Visible = true;
                 dpFechaFinal.Visible = true;
 
-                btnGeneral.Visible = true;
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
-
                 CriterioSeleccionAsistenciaDocentes();
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
@@ -195,9 +192,6 @@ namespace CapaPresentaciones
 
                 lblFechaFinal.Visible = false;
                 dpFechaFinal.Visible = false;
-
-                btnGeneral.Visible = true;
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
 
                 fnReporte5();
             }

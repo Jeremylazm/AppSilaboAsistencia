@@ -694,7 +694,9 @@ BEGIN
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
 	       Subcategoria, Regimen
 		FROM TDocente
-		WHERE CodDepartamentoA = @CodDepartamentoA AND @Texto != '00000' AND
+		WHERE CodDepartamentoA = @CodDepartamentoA AND
+		      CodDocente != '00000' AND
+		      @Texto != '00000' AND
 		     (CodDocente LIKE (@Texto + '%') OR
 			  APaterno LIKE (@Texto + '%') OR
 			  AMaterno LIKE (@Texto + '%') OR
@@ -1545,15 +1547,14 @@ CREATE PROCEDURE spuBuscarEstudiantesMatriculadosAsignatura @CodSemestre VARCHAR
 AS
 BEGIN
 	-- Mostrar la tabla de TMatricula
-	SELECT ROW_NUMBER() OVER (ORDER BY M.APaterno ASC) AS Id, M.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
-		FROM TMatricula M INNER JOIN TAsignatura A ON
-			 SUBSTRING(M.CodAsignatura,1,5) = A.CodAsignatura
-	    WHERE M.CodSemestre = @CodSemestre AND M.CodEscuelaP = @CodEscuelaP AND
-			  M.CodAsignatura = @CodAsignatura AND
-		      (M.CodEstudiante LIKE (@Texto + '%') OR
-			   M.APaterno LIKE (@Texto + '%') OR
-			   M.AMaterno LIKE (@Texto + '%') OR
-			   M.Nombre LIKE (@Texto + '%'))
+	SELECT ROW_NUMBER() OVER (ORDER BY APaterno ASC) AS Id, CodEstudiante, APaterno, AMaterno, Nombre
+		FROM TMatricula 
+	    WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP AND
+			  CodAsignatura = @CodAsignatura AND
+		      (CodEstudiante LIKE (@Texto + '%') OR
+			   APaterno LIKE (@Texto + '%') OR
+			   AMaterno LIKE (@Texto + '%') OR
+			   Nombre LIKE (@Texto + '%'))
 END;
 GO
 
@@ -1692,10 +1693,12 @@ BEGIN
 			  AD.CodDocente = @CodDocente AND
 			  AD.CodAsignatura = @CodAsignatura AND
 			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
-			  (AD.Fecha LIKE (@Texto + '%') OR 
+			  (AD.Fecha_Formatted LIKE (@Texto + '%') OR
+			   AD.Hora LIKE (@Texto + '%') OR
 			   AD.Asistió LIKE (@Texto + '%') OR 
 			   AD.TipoSesión LIKE (@Texto + '%') OR 
-			   AD.NombreTema LIKE (@Texto + '%'))
+			   AD.NombreTema LIKE (@Texto + '%') OR 
+			   AD.Observación LIKE (@Texto + '%'))
 	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Hora, AD.Asistió, AD.TipoSesión, AD.NombreTema, AD.Observación
 	   ORDER BY AD.Fecha DESC
 END;

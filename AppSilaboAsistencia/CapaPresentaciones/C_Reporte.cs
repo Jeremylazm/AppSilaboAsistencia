@@ -16,29 +16,26 @@ namespace CapaPresentaciones
     {
         private string CriterioAsistenciasEstudiantes;
         private string CriterioAsistenciasDocentes;
-        readonly N_Catalogo ObjCatalogo;
         private int IndiceGrafico1 = 0;
         private int IndiceGrafico2 = 1;
+        private string AccesoReportes = "";
 
         public C_Reporte()
         {
-            ObjCatalogo = new N_Catalogo();
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
 
             dgvResultados.CellMouseEnter += new DataGridViewCellEventHandler(dgvResultados_CellMouseEnter);
         }
-        public void LimpiarCampos()
-        {
-            pnSubcampos.Controls.Clear();
-        }
-        private string AccesoReportes = "";
+        
         public C_Reporte(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistencia, string CodAsignatura, string AccesoReporte)
         {
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
             AccesoReportes = AccesoReporte;
+
             dgvResultados.CellMouseEnter += new DataGridViewCellEventHandler(dgvResultados_CellMouseEnter);
+
             if (AccesoReporte == "Jefe de Departamento")
             {
                 fnReporte10(Titulo, Titulos, Valores, Datos, CriterioAsistencia, CodAsignatura);
@@ -59,46 +56,25 @@ namespace CapaPresentaciones
             if (Criterio == "Por Fechas")
             {
                 fnReporte2(Titulo, Titulos, Valores, Datos);
-                tcGraficos.SetPage(IndiceGrafico1);
             }
             else if (Criterio == "Por Estudiantes")
             {
                 fnReporte4(Titulo, Titulos, Valores, Datos);
-                tcGraficos.SetPage(IndiceGrafico1);
             }
             else if (Criterio == "Por Asignaturas")
             {
                 fnReporte4(Titulo, Titulos, Valores, Datos);
-                tcGraficos.SetPage(IndiceGrafico1);
             }
             else if (Criterio == "Por Asignaturas D")
             {
                 fnReporte11(Titulo, Titulos, Valores, Datos);
-                tcGraficos.SetPage(IndiceGrafico1);
             }
             else if (Criterio == "Por Fechas D")
             {
                 fnReporte15(Titulo, Titulos, Valores, Datos);
-                tcGraficos.SetPage(IndiceGrafico1);
             }
-        }
 
-        void dataGridView1_MouseWheel(object sender, MouseEventArgs e)
-        {
-            ((HandledMouseEventArgs)e).Handled = true;
-            int currentIndex = this.dgvResultados.FirstDisplayedScrollingRowIndex;
-            int scrollLines = SystemInformation.MouseWheelScrollLines;
-
-            if (e.Delta > 0)
-            {
-                this.dgvResultados.FirstDisplayedScrollingRowIndex = Math.Max(0, currentIndex - scrollLines);
-                this.sbResultados.Value = Math.Max(0, currentIndex - scrollLines);
-            }
-            else if (e.Delta < 0)
-            {
-                this.dgvResultados.FirstDisplayedScrollingRowIndex = currentIndex + scrollLines;
-                this.sbResultados.Value = currentIndex + scrollLines;
-            }
+            tcGraficos.SetPage(IndiceGrafico1);
         }
 
         // Metodo para mostrar la tabla de resultados del reporte de manera responsiva
@@ -363,10 +339,10 @@ namespace CapaPresentaciones
 
                 #region ===================== GRÁFICOS =====================
                 btnGrafico2.Visible = true;
-                IndiceGrafico1 = 0;
-                IndiceGrafico2 = 1;
-
+                
                 // Grafico 1
+                IndiceGrafico1 = 0;
+
                 gxGrafico1.XAxesLabel = "Cantidad";
                 gxGrafico1.YAxesLabel = "Fecha";
 
@@ -404,6 +380,8 @@ namespace CapaPresentaciones
                 gxGrafico1.Update();
 
                 // Grafico 2
+                IndiceGrafico2 = 1;
+
                 gxGrafico2.XAxesLabel = "Fecha";
                 gxGrafico2.YAxesLabel = "Porcentaje de Asistencia";
 
@@ -440,7 +418,7 @@ namespace CapaPresentaciones
 
                 gxGrafico2.Update();
 
-                tcGraficos.SetPage(tcGraficos.PageIndex);
+                tcGraficos.SetPage(IndiceGrafico1);
 
                 return "No";
                 #endregion ===================== GRÁFICOS =====================
@@ -528,9 +506,10 @@ namespace CapaPresentaciones
 
             #region ===================== GRÁFICOS =====================
             btnGrafico2.Visible = true;
-            IndiceGrafico1 = 2;
 
             // Gráfico 1
+            IndiceGrafico1 = 2;
+
             gxGrafico3.XAxesLabel = "";
             gxGrafico3.LegendDisplay = false;
             gxGrafico3.YAxesLabel = "Cantidad";
@@ -662,9 +641,10 @@ namespace CapaPresentaciones
 
                 #region ===================== GRÁFICOS =====================
                 btnGrafico2.Visible = false;
-                IndiceGrafico1 = 0;
 
                 // Grafico 1
+                IndiceGrafico1 = 0;
+
                 gxGrafico1.XAxesLabel = "Cantidad";
                 gxGrafico1.YAxesLabel = "Código Estudiante";
 
@@ -783,9 +763,10 @@ namespace CapaPresentaciones
 
             #region ===================== GRÁFICOS =====================
             btnGrafico2.Visible = true;
-            IndiceGrafico1 = 2;
 
             // Gráfico 1
+            IndiceGrafico1 = 2;
+
             gxGrafico3.XAxesLabel = "";
             gxGrafico3.LegendDisplay = false;
             gxGrafico3.YAxesLabel = "Cantidad";
@@ -907,9 +888,9 @@ namespace CapaPresentaciones
                 #region ===================== GRÁFICOS =====================
                 // Gráficos
                 btnGrafico2.Visible = false;
-                IndiceGrafico1 = 3;
 
                 // Grafico 1
+                IndiceGrafico1 = 3;
                 gxGrafico4.XAxesLabel = "";
                 gxGrafico4.YAxesLabel = "";
 
@@ -936,6 +917,7 @@ namespace CapaPresentaciones
                 GraficoCircular.TargetCanvas = gxGrafico4;
 
                 gxGrafico4.Update();
+
                 tcGraficos.SetPage(IndiceGrafico1);
                 #endregion ===================== GRÁFICOS =====================
             }
@@ -981,9 +963,10 @@ namespace CapaPresentaciones
                 #region ===================== GRÁFICOS =====================
                 // Gráficos
                 btnGrafico2.Visible = false;
-                IndiceGrafico1 = 4;
 
                 // Grafico 1
+                IndiceGrafico1 = 4;
+
                 gxGrafico5.XAxesLabel = "";
                 gxGrafico5.YAxesLabel = "Cantidad";
 
@@ -1020,6 +1003,7 @@ namespace CapaPresentaciones
                 GraficoBarrasCompletas2.TargetCanvas = gxGrafico5;
 
                 gxGrafico5.Update();
+
                 tcGraficos.SetPage(IndiceGrafico1);
                 #endregion ===================== GRÁFICOS =====================
             }
@@ -1101,9 +1085,10 @@ namespace CapaPresentaciones
 
                 #region ===================== GRÁFICOS =====================
                 btnGrafico2.Visible = false;
-                IndiceGrafico1 = 0;
 
                 // Gráfico 1
+                IndiceGrafico1 = 0;
+
                 gxGrafico1.XAxesLabel = "Porcentaje";
                 gxGrafico1.YAxesLabel = "Código Asignatura";
 
@@ -1205,9 +1190,10 @@ namespace CapaPresentaciones
 
                 #region ===================== GRÁFICOS =====================
                 btnGrafico2.Visible = false;
-                IndiceGrafico1 = 4;
 
                 // Gráfico 1
+                IndiceGrafico1 = 4;
+
                 gxGrafico5.XAxesLabel = "";
                 gxGrafico5.YAxesLabel = "Porcentaje";
 
@@ -1243,6 +1229,7 @@ namespace CapaPresentaciones
                 GraficoBarrasCompletas2.TargetCanvas = gxGrafico5;
 
                 gxGrafico5.Update();
+
                 tcGraficos.SetPage(IndiceGrafico1);
                 #endregion ===================== GRÁFICOS =====================
             }
@@ -1324,9 +1311,10 @@ namespace CapaPresentaciones
                 #region ===================== GRÁFICOS =====================
                 // Gráficos
                 btnGrafico2.Visible = false;
-                IndiceGrafico1 = 0;
 
                 // Grafico 1
+                IndiceGrafico1 = 0;
+
                 gxGrafico1.XAxesLabel = "Cantidad";
                 gxGrafico1.YAxesLabel = "Fecha";
 
@@ -1362,6 +1350,7 @@ namespace CapaPresentaciones
                 GraficoBarrasHorizontales2.TargetCanvas = gxGrafico1;
 
                 gxGrafico1.Update();
+
                 tcGraficos.SetPage(IndiceGrafico1);
                 #endregion ===================== GRÁFICOS =====================
             }
@@ -1416,16 +1405,22 @@ namespace CapaPresentaciones
                     Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
 
+                // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
-                // Ocultar el  cuadro de resumen
+
+                #region ===================== CUADRO DE RESUMEN =====================
+                // Ocultar el cuadro de resumen
                 ResumenResponsivo(false);
-                #region ===================== GRÁFICO =====================
+                #endregion ===================== CUADRO DE RESUMEN =====================
+
+                #region ===================== GRÁFICOS =====================
                 // Gráficos
                 btnGrafico2.Visible = false;
-                IndiceGrafico1 = 4;
 
                 // Gráfico 1
+                IndiceGrafico1 = 4;
+
                 gxGrafico5.XAxesLabel = "";
                 gxGrafico5.YAxesLabel = "Porcentaje";
 
@@ -1461,83 +1456,29 @@ namespace CapaPresentaciones
                 GraficoBarrasCompletas2.TargetCanvas = gxGrafico5;
 
                 gxGrafico5.Update();
+
                 tcGraficos.SetPage(IndiceGrafico1);
-                #endregion ===================== GRÁFICO =====================
+                #endregion ===================== GRÁFICOS =====================
 
             }
         }
 
         public void fnReporte11(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
         {
-            LimpiarCampos();
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
-
+            #region ===================== CUADRO DE RESULTADOS =====================
             dgvResultados.Columns.Clear();
 
             dgvResultados.DataSource = Datos;
             //dgvResultados.Columns[0].DisplayIndex = 7;
 
-            if (dgvResultados.Rows.Count <= 10)
-            {
-                sbResultados.Visible = false;
-                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+            // Mostrar los resultados de manera responsiva
+            MostrarResultadosResponsivo();
+            #endregion ===================== CUADRO DE RESULTADOS =====================
 
-                pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-            }
-            else
-            {
-                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                pnContenedorResultados.Height = 341;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                sbResultados.Visible = true;
-            }
-
-            if (!pnContenedorCuadro.Visible)
-            {
-                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorCuadro.Visible = true;
-            }
-
+            #region ===================== CUADRO DE RESUMEN =====================
             DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
 
             // Cuadro de resumen
@@ -1596,13 +1537,16 @@ namespace CapaPresentaciones
             // Total
             cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + "100" + "%)");
 
-            
+            // Mostrar y establecer los datos del cuadro de resumen de manera responsiva
             ResumenResponsivo(true, cuadroResumen);
-            // Gráficos // Barras verticales y Pie
+            #endregion ===================== CUADRO DE RESUMEN =====================
+
+            #region ===================== GRÁFICOS =====================
             btnGrafico2.Visible = true;
-            IndiceGrafico1 = 2;
 
             // Gráfico 1
+            IndiceGrafico1 = 2;
+
             gxGrafico3.XAxesLabel = "";
             gxGrafico3.LegendDisplay = false;
             gxGrafico3.YAxesLabel = "Cantidad";
@@ -1665,32 +1609,12 @@ namespace CapaPresentaciones
             GraficoCircular.TargetCanvas = gxGrafico4;
 
             gxGrafico4.Update();
+            #endregion ===================== GRÁFICOS =====================
         }
         public void fnReporte12(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
         {
-            LimpiarCampos();
-
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             if (Datos.Rows.Count == 0)
             {
@@ -1698,52 +1622,15 @@ namespace CapaPresentaciones
             }
             else
             {
+                #region ===================== CUADRO DE RESULTADOS =====================
                 dgvResultados.Columns.Clear();
                 dgvResultados.DataSource = Datos;
 
-
-                if (dgvResultados.Rows.Count <= 10)
-                {
-                    sbResultados.Visible = false;
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                }
-                else
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    pnContenedorResultados.Height = 341;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    sbResultados.Visible = true;
-                }
-
-                if (!pnContenedorCuadro.Visible)
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorCuadro.Visible = true;
-                }
-
-                // Cuadro de resumen
+                // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
+                #endregion ===================== CUADRO DE RESULTADOS =====================
+
+                #region ===================== CUADRO DE RESUMEN =====================
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
                 // Listas de valores
                 List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<double>("PorcentajeAsistencias"))).ToList();
@@ -1780,13 +1667,16 @@ namespace CapaPresentaciones
                 var dvF = Statistics.StandardDeviation(Faltaron);
                 cuadroResumen.Rows.Add("Desv. Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
 
-                
+                // Mostrar y establecer los datos del cuadro de resumen de manera responsiva
                 ResumenResponsivo(true, cuadroResumen);
-                // Gráficos
+                #endregion ===================== CUADRO DE RESUMEN =====================
+
+                #region ===================== GRÁFICOS =====================
                 btnGrafico2.Visible = false;
-                IndiceGrafico1 = 0;
 
                 // Gráfico 1
+                IndiceGrafico1 = 0;
+
                 gxGrafico1.XAxesLabel = "Porcentaje";
                 gxGrafico1.YAxesLabel = "Código Asignatura";
 
@@ -1824,35 +1714,15 @@ namespace CapaPresentaciones
                 gxGrafico1.Update();
 
                 tcGraficos.SetPage(IndiceGrafico1);
+                #endregion ===================== GRÁFICOS =====================
             }
         }
         public void fnReporte13(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasDocentes, string CodAsignatura)
         {
             this.CriterioAsistenciasDocentes = CriterioAsistenciasDocentes;
 
-            LimpiarCampos();
-
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             if (Datos.Rows.Count == 0)
             {
@@ -1868,6 +1738,7 @@ namespace CapaPresentaciones
             }
             else
             {
+                #region ===================== CUADRO DE RESULTADOS =====================
                 // Crear columna
                 DataGridViewImageColumn btnVerReporte = new DataGridViewImageColumn
                 {
@@ -1884,52 +1755,13 @@ namespace CapaPresentaciones
                 dgvResultados.Columns.Clear();
                 dgvResultados.DataSource = Datos;
 
-
-                if (dgvResultados.Rows.Count <= 10)
-                {
-                    sbResultados.Visible = false;
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                }
-                else
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    pnContenedorResultados.Height = 341;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    sbResultados.Visible = true;
-                }
-
-                if (!pnContenedorCuadro.Visible)
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorCuadro.Visible = true;
-                }
-
-                // Cuadro de resumen
+                // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
+                #endregion ===================== CUADRO DE RESULTADOS =====================
+
+                #region ===================== CUADRO DE RESUMEN =====================
                 DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
 
-                
                 DataTable cuadroResumen = new DataTable();
                 cuadroResumen.Columns.Add(" ");
                 cuadroResumen.Columns.Add("Cantidad");
@@ -1974,13 +1806,16 @@ namespace CapaPresentaciones
                 // Total
                 cuadroResumen.Rows.Add("Total", (Asistio + FaltaronJustificado + FaltaronSinJustificar).ToString() + " (" + "100" + "%)");
 
+                // Mostrar y establecer los datos del cuadro de resumen de manera responsiva
                 ResumenResponsivo(true, cuadroResumen);
+                #endregion ===================== CUADRO DE RESUMEN =====================
 
-                // Gráficos // Barras verticales y Pie
+                #region ===================== GRÁFICOS =====================
                 btnGrafico2.Visible = true;
-                IndiceGrafico1 = 2;
 
                 // Gráfico 1
+                IndiceGrafico1 = 2;
+
                 gxGrafico3.XAxesLabel = "";
                 gxGrafico3.LegendDisplay = false;
                 gxGrafico3.YAxesLabel = "Cantidad";
@@ -2043,6 +1878,9 @@ namespace CapaPresentaciones
                 GraficoCircular.TargetCanvas = gxGrafico4;
 
                 gxGrafico4.Update();
+
+                tcGraficos.SetPage(IndiceGrafico1);
+                #endregion ===================== GRÁFICOS =====================
             }
         }
 
@@ -2050,29 +1888,8 @@ namespace CapaPresentaciones
         {
             this.CriterioAsistenciasDocentes = CriterioAsistenciasDocentes;
 
-            LimpiarCampos();
-
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             if (Datos.Rows.Count == 0)
             {
@@ -2088,6 +1905,7 @@ namespace CapaPresentaciones
             }
             else
             {
+                #region ===================== CUADRO DE RESULTADOS =====================
                 // Crear columna
                 DataGridViewImageColumn btnVerReporte = new DataGridViewImageColumn
                 {
@@ -2108,52 +1926,12 @@ namespace CapaPresentaciones
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[0].DisplayIndex = 4;
 
-                if (dgvResultados.Rows.Count <= 10)
-                {
-                    sbResultados.Visible = false;
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                }
-                else
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    pnContenedorResultados.Height = 341;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    sbResultados.Visible = true;
-                }
-
-                // Mostrar cuadro de resumen
-                if (!pnContenedorCuadro.Visible)
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorCuadro.Visible = true;
-                }
-                //Resultados
+                // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
+                #endregion ===================== CUADRO DE RESULTADOS =====================
+
+                #region ===================== CUADRO DE RESUMEN =====================
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
-
-
-
 
                 // Listas de valores
                 List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TotalAsistieron"))).ToList();
@@ -2190,22 +1968,16 @@ namespace CapaPresentaciones
                 var dvF = Statistics.StandardDeviation(Faltaron);
                 cuadroResumen.Rows.Add("Desv. Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
 
+                // Mostrar y establecer los datos del cuadro de resumen de manera responsiva
                 ResumenResponsivo(true, cuadroResumen);
+                #endregion ===================== CUADRO DE RESUMEN =====================
 
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                pnContenedorCuadro.Height = dgvResumen.Rows.Count * 26 + 81;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                // Gráficos
+                #region ===================== GRÁFICOS =====================
                 btnGrafico2.Visible = true;
-                IndiceGrafico1 = 0;
-                IndiceGrafico2 = 1;
 
                 // Grafico 1
+                IndiceGrafico1 = 0;
+
                 gxGrafico1.XAxesLabel = "Cantidad";
                 gxGrafico1.YAxesLabel = "Fecha";
 
@@ -2243,6 +2015,8 @@ namespace CapaPresentaciones
                 gxGrafico1.Update();
 
                 // Grafico 2
+                IndiceGrafico2 = 1;
+
                 gxGrafico2.XAxesLabel = "Fecha";
                 gxGrafico2.YAxesLabel = "Porcentaje de Asistencia";
 
@@ -2280,80 +2054,26 @@ namespace CapaPresentaciones
                 gxGrafico2.Update();
 
                 tcGraficos.SetPage(IndiceGrafico1);
+                #endregion ===================== GRÁFICOS =====================
             }
         }
 
         public void fnReporte15(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
         {
-            LimpiarCampos();
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
-
+            #region ===================== CUADRO DE RESULTADOS =====================
             dgvResultados.Columns.Clear();
 
             dgvResultados.DataSource = Datos;
             dgvResultados.Columns[0].Visible = false;
 
-            if (dgvResultados.Rows.Count <= 10)
-            {
-                sbResultados.Visible = false;
-                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-            }
-            else
-            {
-                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                pnContenedorResultados.Height = 341;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                sbResultados.Visible = true;
-            }
-
-            if (!pnContenedorCuadro.Visible)
-            {
-                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorCuadro.Visible = true;
-            }
+            // Mostrar los resultados de manera responsiva
             MostrarResultadosResponsivo();
+            #endregion ===================== CUADRO DE RESULTADOS =====================
+
+            #region ===================== CUADRO DE RESUMEN =====================
             DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
 
             // Cuadro de resumen
@@ -2411,13 +2131,16 @@ namespace CapaPresentaciones
             // Total
             cuadroResumen.Rows.Add("Total", (AsistieronPuntual + AsistieronTarde + FaltaronJustificado + FaltaronSinJustificar) + " (" + "100" + "%)");
 
+            // Mostrar y establecer los datos del cuadro de resumen de manera responsiva
             ResumenResponsivo(true, cuadroResumen);
+            #endregion ===================== CUADRO DE RESUMEN =====================
 
-            // Gráficos
+            #region ===================== GRÁFICOS =====================
             btnGrafico2.Visible = true;
-            IndiceGrafico1 = 2;
 
             // Gráfico 1
+            IndiceGrafico1 = 2;
+
             gxGrafico3.XAxesLabel = "";
             gxGrafico3.LegendDisplay = false;
             gxGrafico3.YAxesLabel = "Cantidad";
@@ -2480,6 +2203,7 @@ namespace CapaPresentaciones
             GraficoCircular.TargetCanvas = gxGrafico4;
 
             gxGrafico4.Update();
+            #endregion ===================== GRÁFICOS =====================
         }
         private void dgvResultados_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {

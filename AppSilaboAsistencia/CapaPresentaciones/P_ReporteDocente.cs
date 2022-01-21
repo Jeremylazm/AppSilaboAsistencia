@@ -206,6 +206,8 @@ namespace CapaPresentaciones
                 txtCodigo.Text = AntCodAsignatura;
                 txtNombre.Text = AntNombreAsignatura;
                 txtEscuelaP.Text = AntEscuelaProfesional;
+
+                pnReporte.Controls[0].Controls[1].Controls[0].Text = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
             }
             else pnReporte.AutoScrollPosition = new Point(0, 0);
         }
@@ -231,6 +233,8 @@ namespace CapaPresentaciones
                 txtCodigo.Text = AntCodAsignatura;
                 txtNombre.Text = AntNombreAsignatura;
                 txtEscuelaP.Text = AntEscuelaProfesional;
+
+                pnReporte.Controls[0].Controls[1].Controls[0].Text = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
             }
             else pnReporte.AutoScrollPosition = new Point(0, 0);
         }
