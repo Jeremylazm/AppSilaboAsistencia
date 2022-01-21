@@ -14,13 +14,15 @@ namespace CapaPresentaciones
     {
         private DataTable Resultados;
         private XLWorkbook Libro;
+        private int NroCreditos;
         public string CodAsignatura;
         public string CodDocente;
 
-        public P_TablaSesiones(DataTable pResultados, XLWorkbook pLibro)
+        public P_TablaSesiones(DataTable pResultados, XLWorkbook pLibro, int pNroCreditos)
         {
             Resultados = pResultados;
             Libro = pLibro;
+            NroCreditos = pNroCreditos;
             InitializeComponent();
             Control[] Controles = { this, lblTitulo, pbLogo };
             Docker.SubscribeControlsToDragEvents(Controles);
@@ -63,7 +65,14 @@ namespace CapaPresentaciones
 
             int Total = 0;
             int Contador = 1;
-            for (int i = 9; i <= 61; i++)
+            int NroFilas = 0;
+
+            if (NroCreditos == 4)
+                NroFilas = 61;
+            else
+                NroFilas = 43;
+
+            for (int i = 9; i <= NroFilas; i++)
             {
                 if (Libro.Worksheet(1).Cell("E" + Convert.ToString(i)).Value.ToString() != "")
                 {

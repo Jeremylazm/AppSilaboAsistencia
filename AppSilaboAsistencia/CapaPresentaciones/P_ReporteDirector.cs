@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
@@ -121,10 +116,7 @@ namespace CapaPresentaciones
                     Filas++;
                     AnchoTotal = cpControl.Width + 6;
                 }
-                else
-                {
-                    AnchoTotal += cpControl.Width + 6;
-                }
+                else AnchoTotal += cpControl.Width + 6;
             }
 
             Reportes.Cuadricula.RowStyles[0].Height = Filas * 92 + 51;
@@ -246,7 +238,7 @@ namespace CapaPresentaciones
             CriterioSeleccionAsistenciaEstudiantes();
         }
 
-        public void CriterioSeleccionAsistenciaEstudiantes() // por fechas // por estudiantes // por asignaturas
+        public void CriterioSeleccionAsistenciaEstudiantes()
         {
             if (cxtCriterioSeleccion.SelectedItem.Equals("Por Fechas"))
             {
@@ -301,7 +293,6 @@ namespace CapaPresentaciones
                 pnCajas.Visible = false;
 
                 btnGeneral.Visible = true;
-                //btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
 
                 fnReporte8();
             }
@@ -410,7 +401,20 @@ namespace CapaPresentaciones
 
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorFechas(CodSemestre, CodDocenteReporte, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
-            Reportes.fnReporte1(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+            string ans = Reportes.fnReporte1(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+
+            if (ans == "Si")
+            {
+                cxtCriterioSeleccion.SelectedIndex = AntCriterioSeleccion;
+                dpFechaInicial.Value = AntFechaInicial;
+                dpFechaFinal.Value = AntFechaFinal;
+                txtCodigo.Text = AntCodAsignatura;
+                txtNombre.Text = AntNombreAsignatura;
+                txtEscuelaP.Text = AntEscuelaProfesional;
+
+                pnReporte.Controls[0].Controls[1].Controls[0].Text = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            }
+            else pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 
         private void fnReporte3(string CodDocenteReporte)
@@ -424,7 +428,20 @@ namespace CapaPresentaciones
 
             DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
-            Reportes.fnReporte3(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+            string ans = Reportes.fnReporte3(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+
+            if (ans == "Si")
+            {
+                cxtCriterioSeleccion.SelectedIndex = AntCriterioSeleccion;
+                dpFechaInicial.Value = AntFechaInicial;
+                dpFechaFinal.Value = AntFechaFinal;
+                txtCodigo.Text = AntCodAsignatura;
+                txtNombre.Text = AntNombreAsignatura;
+                txtEscuelaP.Text = AntEscuelaProfesional;
+
+                pnReporte.Controls[0].Controls[1].Controls[0].Text = "REPORTE DE ASISTENCIA ESTUDIANTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            }
+            else pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 
         private void fnReporte8()
@@ -488,6 +505,35 @@ namespace CapaPresentaciones
             }
 
             Reportes.fnReporte9(Titulo, Titulos, Valores, ResultadosFinales, ResultadosResumen);
+        }
+
+        private int AntCriterioSeleccion;
+        private DateTime AntFechaInicial;
+        private DateTime AntFechaFinal;
+        private string AntCodAsignatura;
+        private string AntNombreAsignatura;
+        private string AntEscuelaProfesional;
+
+        private void dpFechaInicial_MouseDown(object sender, MouseEventArgs e)
+        {
+            AntCriterioSeleccion = cxtCriterioSeleccion.SelectedIndex;
+            AntFechaInicial = dpFechaInicial.Value;
+            AntFechaFinal = dpFechaFinal.Value;
+            AntCodAsignatura = txtCodigo.Text;
+            AntNombreAsignatura = txtNombre.Text;
+            AntEscuelaProfesional = txtEscuelaP.Text;
+        }
+
+        private void dpFechaInicial_CloseUp(object sender, EventArgs e)
+        {
+            if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+            {
+                CriterioSeleccionAsistenciaEstudiantes();
+            }
+            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
+            {
+                fnReporte5();
+            }
         }
     }
 }
