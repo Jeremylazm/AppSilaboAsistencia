@@ -694,7 +694,9 @@ BEGIN
 	SELECT Perfil1 = Perfil, Perfil2 = Perfil, CodDocente, APaterno, AMaterno, Nombre, Email, Direccion, Telefono, Categoria, 
 	       Subcategoria, Regimen
 		FROM TDocente
-		WHERE CodDepartamentoA = @CodDepartamentoA AND @Texto != '00000' AND
+		WHERE CodDepartamentoA = @CodDepartamentoA AND
+		      CodDocente != '00000' AND
+		      @Texto != '00000' AND
 		     (CodDocente LIKE (@Texto + '%') OR
 			  APaterno LIKE (@Texto + '%') OR
 			  AMaterno LIKE (@Texto + '%') OR
@@ -1692,10 +1694,12 @@ BEGIN
 			  AD.CodDocente = @CodDocente AND
 			  AD.CodAsignatura = @CodAsignatura AND
 			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup) AND
-			  (AD.Fecha LIKE (@Texto + '%') OR 
+			  (AD.Fecha_Formatted LIKE (@Texto + '%') OR
+			   AD.Hora LIKE (@Texto + '%') OR
 			   AD.Asistió LIKE (@Texto + '%') OR 
 			   AD.TipoSesión LIKE (@Texto + '%') OR 
-			   AD.NombreTema LIKE (@Texto + '%'))
+			   AD.NombreTema LIKE (@Texto + '%') OR 
+			   AD.Observación LIKE (@Texto + '%'))
 	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Hora, AD.Asistió, AD.TipoSesión, AD.NombreTema, AD.Observación
 	   ORDER BY AD.Fecha DESC
 END;
