@@ -491,6 +491,8 @@ namespace CapaPresentaciones
             this.dpFechaFinal.Name = "dpFechaFinal";
             this.dpFechaFinal.Size = new System.Drawing.Size(270, 32);
             this.dpFechaFinal.TabIndex = 62;
+            this.dpFechaFinal.CloseUp += new System.EventHandler(this.dpFechaInicial_CloseUp);
+            this.dpFechaFinal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dpFechaInicial_MouseDown);
             // 
             // pnInicial
             // 
@@ -558,6 +560,8 @@ namespace CapaPresentaciones
             this.dpFechaInicial.Name = "dpFechaInicial";
             this.dpFechaInicial.Size = new System.Drawing.Size(270, 32);
             this.dpFechaInicial.TabIndex = 61;
+            this.dpFechaInicial.CloseUp += new System.EventHandler(this.dpFechaInicial_CloseUp);
+            this.dpFechaInicial.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dpFechaInicial_MouseDown);
             // 
             // pnCriterio
             // 
