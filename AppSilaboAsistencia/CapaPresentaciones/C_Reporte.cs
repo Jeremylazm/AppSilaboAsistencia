@@ -855,10 +855,18 @@ namespace CapaPresentaciones
                 #region ===================== CUADRO DE RESULTADOS =====================
                 dgvResultados.Columns.Clear();
                 dgvResultados.DataSource = Datos;
+                //dgvResultados.Columns[0].DisplayIndex = 4;
                 dgvResultados.Columns[0].HeaderText = "Sesión";
                 dgvResultados.Columns[1].HeaderText = "Tema";
                 dgvResultados.Columns[2].HeaderText = "Fecha";
                 dgvResultados.Columns[3].HeaderText = "Estado";
+
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+
+                foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
 
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
@@ -950,6 +958,13 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[1].HeaderText = "Nombre Asignatura";
                 dgvResultados.Columns[2].HeaderText = "Porcentaje Temas Avanzados";
                 dgvResultados.Columns[3].HeaderText = "Porcentaje Temas Faltantes";
+
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+
+                foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
 
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
@@ -1264,6 +1279,13 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[3].HeaderText = "Avance Completado";
                 dgvResultados.Columns[4].HeaderText = "Avance que Falta";
 
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+
+                foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
@@ -1475,6 +1497,13 @@ namespace CapaPresentaciones
             //dgvResultados.Columns[0].DisplayIndex = 7;
 
             // Mostrar los resultados de manera responsiva
+            dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+
+            foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
             MostrarResultadosResponsivo();
             #endregion ===================== CUADRO DE RESULTADOS =====================
 
@@ -1611,6 +1640,7 @@ namespace CapaPresentaciones
             gxGrafico4.Update();
             #endregion ===================== GRÁFICOS =====================
         }
+
         public void fnReporte12(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
         {
             // Actualizar los primeros campos del reporte
@@ -1624,9 +1654,20 @@ namespace CapaPresentaciones
             {
                 #region ===================== CUADRO DE RESULTADOS =====================
                 dgvResultados.Columns.Clear();
+                dgvResultados.Columns.Add("A","");
+                dgvResultados.Columns[0].HeaderText = "";
+
                 dgvResultados.DataSource = Datos;
+                dgvResultados.Columns[0].Visible = false;
 
                 // Mostrar los resultados de manera responsiva
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+
+                foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 
@@ -1739,23 +1780,21 @@ namespace CapaPresentaciones
             else
             {
                 #region ===================== CUADRO DE RESULTADOS =====================
-                // Crear columna
-                DataGridViewImageColumn btnVerReporte = new DataGridViewImageColumn
-                {
-                    ImageLayout = DataGridViewImageCellLayout.Zoom,
-                    Frozen = false,
-                    AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet,
-                    DividerWidth = 0,
-                    FillWeight = 100,
-                    MinimumWidth = 5,
-                    Width = 1032,
-                    Image = Properties.Resources.Mostrar
-                };
-
                 dgvResultados.Columns.Clear();
+                dgvResultados.Columns.Add("A", "");
+                dgvResultados.Columns[0].HeaderText = "";
+
                 dgvResultados.DataSource = Datos;
+                dgvResultados.Columns[0].Visible = false;
 
                 // Mostrar los resultados de manera responsiva
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+
+                foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 
@@ -1927,6 +1966,13 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[0].DisplayIndex = 4;
 
                 // Mostrar los resultados de manera responsiva
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+
+                foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+                {
+                    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 
@@ -2070,6 +2116,13 @@ namespace CapaPresentaciones
             dgvResultados.Columns[0].Visible = false;
 
             // Mostrar los resultados de manera responsiva
+            dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+
+            foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
             MostrarResultadosResponsivo();
             #endregion ===================== CUADRO DE RESULTADOS =====================
 
