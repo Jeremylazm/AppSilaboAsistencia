@@ -1469,74 +1469,15 @@ namespace CapaPresentaciones
 
         public void fnReporte11(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
         {
-            LimpiarCampos();
-
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             dgvResultados.Columns.Clear();
 
             dgvResultados.DataSource = Datos;
             //dgvResultados.Columns[0].DisplayIndex = 7;
 
-            if (dgvResultados.Rows.Count <= 10)
-            {
-                sbResultados.Visible = false;
-                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-            }
-            else
-            {
-                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                pnContenedorResultados.Height = 341;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                sbResultados.Visible = true;
-            }
-
-            if (!pnContenedorCuadro.Visible)
-            {
-                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorCuadro.Visible = true;
-            }
+            MostrarResultadosResponsivo();
 
             DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
 
@@ -1668,29 +1609,8 @@ namespace CapaPresentaciones
         }
         public void fnReporte12(string Titulo, string[] Titulos, string[] Valores, DataTable Datos)
         {
-            LimpiarCampos();
-
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             if (Datos.Rows.Count == 0)
             {
@@ -1701,49 +1621,9 @@ namespace CapaPresentaciones
                 dgvResultados.Columns.Clear();
                 dgvResultados.DataSource = Datos;
 
-
-                if (dgvResultados.Rows.Count <= 10)
-                {
-                    sbResultados.Visible = false;
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                }
-                else
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    pnContenedorResultados.Height = 341;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    sbResultados.Visible = true;
-                }
-
-                if (!pnContenedorCuadro.Visible)
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorCuadro.Visible = true;
-                }
+                MostrarResultadosResponsivo();
 
                 // Cuadro de resumen
-                MostrarResultadosResponsivo();
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
                 // Listas de valores
                 List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<double>("PorcentajeAsistencias"))).ToList();
@@ -1830,29 +1710,8 @@ namespace CapaPresentaciones
         {
             this.CriterioAsistenciasDocentes = CriterioAsistenciasDocentes;
 
-            LimpiarCampos();
-
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             if (Datos.Rows.Count == 0)
             {
@@ -1884,49 +1743,9 @@ namespace CapaPresentaciones
                 dgvResultados.Columns.Clear();
                 dgvResultados.DataSource = Datos;
 
-
-                if (dgvResultados.Rows.Count <= 10)
-                {
-                    sbResultados.Visible = false;
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                }
-                else
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    pnContenedorResultados.Height = 341;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    sbResultados.Visible = true;
-                }
-
-                if (!pnContenedorCuadro.Visible)
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorCuadro.Visible = true;
-                }
+                MostrarResultadosResponsivo();
 
                 // Cuadro de resumen
-                MostrarResultadosResponsivo();
                 DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
 
                 
@@ -2050,29 +1869,8 @@ namespace CapaPresentaciones
         {
             this.CriterioAsistenciasDocentes = CriterioAsistenciasDocentes;
 
-            LimpiarCampos();
-
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             if (Datos.Rows.Count == 0)
             {
@@ -2108,48 +1906,9 @@ namespace CapaPresentaciones
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[0].DisplayIndex = 4;
 
-                if (dgvResultados.Rows.Count <= 10)
-                {
-                    sbResultados.Visible = false;
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                }
-                else
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    pnContenedorResultados.Height = 341;
-                    this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    sbResultados.Visible = true;
-                }
-
-                // Mostrar cuadro de resumen
-                if (!pnContenedorCuadro.Visible)
-                {
-                    pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                    this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
-                    this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                    pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                    pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                    pnContenedorCuadro.Visible = true;
-                }
-                //Resultados
                 MostrarResultadosResponsivo();
+                
+                //Resultados
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
 
 
@@ -2191,14 +1950,6 @@ namespace CapaPresentaciones
                 cuadroResumen.Rows.Add("Desv. Estándar", String.Format("{0:0.00}", dvA), String.Format("{0:0.00}", dvF));
 
                 ResumenResponsivo(true, cuadroResumen);
-
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                pnContenedorCuadro.Height = dgvResumen.Rows.Count * 26 + 81;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
 
                 // Gráficos
                 btnGrafico2.Visible = true;
@@ -2287,72 +2038,14 @@ namespace CapaPresentaciones
         {
             LimpiarCampos();
 
-            lblTitulo.Text = Titulo;
-
-            if (Titulos.Length.Equals(Valores.Length))
-            {
-                if (Titulos.Length != 0)
-                {
-                    for (int K = 0; K < Titulos.Length; K++)
-                    {
-                        C_Campo Nuevo = new C_Campo(Titulos[K], Valores[K]);
-                        pnSubcampos.Controls.Add(Nuevo);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No existen parametros");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Error de parametros");
-            }
+            // Actualizar los primeros campos del reporte
+            ActualizarPrimerosCampos(Titulo, Titulos, Valores);
 
             dgvResultados.Columns.Clear();
 
             dgvResultados.DataSource = Datos;
             dgvResultados.Columns[0].Visible = false;
 
-            if (dgvResultados.Rows.Count <= 10)
-            {
-                sbResultados.Visible = false;
-                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-            }
-            else
-            {
-                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                pnContenedorResultados.Height = 341;
-                this.Cuadricula.RowStyles[1].Height = pnContenedorResultados.Height + pnContenedorCuadro.Height + pnContenedorGraficos.Height;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                sbResultados.Visible = true;
-            }
-
-            if (!pnContenedorCuadro.Visible)
-            {
-                pnContenedorCuadro.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorGraficos.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-
-                this.Cuadricula.RowStyles[1].Height += pnContenedorGraficos.Location.Y - pnContenedorCuadro.Location.Y;
-                this.Height = (int)this.Cuadricula.RowStyles[0].Height + (int)this.Cuadricula.RowStyles[1].Height + 73;
-
-                pnContenedorCuadro.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-                pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-                pnContenedorCuadro.Visible = true;
-            }
             MostrarResultadosResponsivo();
             DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
 
