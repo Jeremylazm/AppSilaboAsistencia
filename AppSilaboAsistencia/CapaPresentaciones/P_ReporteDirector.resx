@@ -226,18 +226,8 @@
   <data name="txtEstudiante.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: left; }</value>
   </data>
-  <data name="lnEstudiante.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAroAAAAKCAYAAABbqP1FAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABFSURBVHhe7daxDQAgDASxXyBiTfZfABr6NKmQLd0OFwAA
-        AAAAAAAAAAAAAABo7VpHkiRJ+q23uwAAAAAAAAAAAADAiOQCprAfa2kO7JYAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="lblEstudiante.BaseStylesheet" xml:space="preserve">
+  <data name="lblCodEstudiante.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
-  </data>
-  <data name="txtCodEstudiante.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: left; }</value>
   </data>
   <data name="lnCodEstudiante.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -246,7 +236,17 @@
         nKfe/gYAQJVkAe86wYEEpSCXAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="lblCodEstudiante.BaseStylesheet" xml:space="preserve">
+  <data name="lnEstudiante.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAroAAAAKCAYAAABbqP1FAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABFSURBVHhe7daxDQAgDASxXyBiTfZfABr6NKmQLd0OFwAA
+        AAAAAAAAAAAAAABo7VpHkiRJ+q23uwAAAAAAAAAAAADAiOQCprAfa2kO7JYAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="txtCodEstudiante.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: left; }</value>
+  </data>
+  <data name="lblEstudiante.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
   </data>
   <data name="btnGeneral.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

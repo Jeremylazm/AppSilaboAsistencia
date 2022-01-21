@@ -16,14 +16,12 @@ namespace CapaPresentaciones
     {
         private string CriterioAsistenciasEstudiantes;
         private string CriterioAsistenciasDocentes;
-        readonly N_Catalogo ObjCatalogo;
         private int IndiceGrafico1 = 0;
         private int IndiceGrafico2 = 1;
         private string AccesoReportes = "";
 
         public C_Reporte()
         {
-            ObjCatalogo = new N_Catalogo();
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
 
@@ -35,7 +33,9 @@ namespace CapaPresentaciones
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
             AccesoReportes = AccesoReporte;
+
             dgvResultados.CellMouseEnter += new DataGridViewCellEventHandler(dgvResultados_CellMouseEnter);
+
             if (AccesoReporte == "Jefe de Departamento")
             {
                 fnReporte10(Titulo, Titulos, Valores, Datos, CriterioAsistencia, CodAsignatura);
