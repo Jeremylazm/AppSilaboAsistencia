@@ -1121,9 +1121,10 @@ AS
 BEGIN
 	-- Mostrar el plan de sesión
 	SELECT DISTINCT C.CodSemestre, C.Grupo, C.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre),
-	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, C.PlanSesiones
-		FROM TCatalogo C INNER JOIN TDocente D ON
-			 C.CodDocente = D.CodDocente
+	                CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP, A.Creditos, C.PlanSesiones
+		FROM (TCatalogo C INNER JOIN TDocente D ON
+			 C.CodDocente = D.CodDocente) INNER JOIN TAsignatura A ON
+			 A.CodAsignatura = C.CodAsignatura
 		WHERE C.CodSemestre = @CodSemestre AND C.CodAsignatura + C.Grupo + C.CodEscuelaP = @CodAsignatura AND 
 		      C.CodDocente = @CodDocente AND C.PlanSesiones IS NOT NULL
 END;

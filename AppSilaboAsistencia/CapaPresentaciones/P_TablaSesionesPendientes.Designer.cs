@@ -1,7 +1,7 @@
 ﻿
 namespace CapaPresentaciones
 {
-    partial class P_TablaSesiones
+    partial class P_TablaSesionesPendientes
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace CapaPresentaciones
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaSesiones));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaSesionesPendientes));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -61,7 +61,7 @@ namespace CapaPresentaciones
             this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblTitulo.Size = new System.Drawing.Size(865, 46);
             this.lblTitulo.TabIndex = 20;
-            this.lblTitulo.Text = "Tabla de Sesiones - ";
+            this.lblTitulo.Text = "Tabla de Sesiones Pendientes - ";
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTitulo.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -203,7 +203,7 @@ namespace CapaPresentaciones
             this.sbDatos.DurationBeforeShrink = 2000;
             this.sbDatos.LargeChange = 10;
             this.sbDatos.Location = new System.Drawing.Point(846, 87);
-            this.sbDatos.Margin = new System.Windows.Forms.Padding(4);
+            this.sbDatos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sbDatos.Maximum = 100;
             this.sbDatos.Minimum = 0;
             this.sbDatos.MinimumThumbLength = 18;
@@ -306,7 +306,7 @@ namespace CapaPresentaciones
             this.dgvSesiones.TabIndex = 37;
             this.dgvSesiones.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             // 
-            // P_TablaSesiones
+            // P_TablaSesionesPendientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -319,7 +319,7 @@ namespace CapaPresentaciones
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "P_TablaSesiones";
+            this.Name = "P_TablaSesionesPendientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabla de Sesiones - ASIGNATURA";
             this.TopMost = true;
