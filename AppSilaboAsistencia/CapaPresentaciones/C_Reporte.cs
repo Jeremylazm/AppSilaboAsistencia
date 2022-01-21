@@ -1497,6 +1497,7 @@ namespace CapaPresentaciones
 
             dgvResultados.DataSource = Datos;
             //dgvResultados.Columns[0].DisplayIndex = 7;
+            dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
 
             if (dgvResultados.Rows.Count <= 10)
             {
@@ -1537,9 +1538,9 @@ namespace CapaPresentaciones
                 pnContenedorGraficos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
                 pnContenedorCuadro.Visible = true;
             }
-
+               
             DataTable dtResumen = (dgvResultados.DataSource as DataTable).Copy();
-
+            
             // Cuadro de resumen
             DataTable cuadroResumen = new DataTable();
             cuadroResumen.Columns.Add(" ");
@@ -1700,7 +1701,7 @@ namespace CapaPresentaciones
             {
                 dgvResultados.Columns.Clear();
                 dgvResultados.DataSource = Datos;
-
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
@@ -1883,7 +1884,7 @@ namespace CapaPresentaciones
 
                 dgvResultados.Columns.Clear();
                 dgvResultados.DataSource = Datos;
-
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
@@ -2107,6 +2108,7 @@ namespace CapaPresentaciones
 
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[0].DisplayIndex = 4;
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
 
                 if (dgvResultados.Rows.Count <= 10)
                 {
@@ -2313,6 +2315,7 @@ namespace CapaPresentaciones
 
             dgvResultados.DataSource = Datos;
             dgvResultados.Columns[0].Visible = false;
+            dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
 
             if (dgvResultados.Rows.Count <= 10)
             {
