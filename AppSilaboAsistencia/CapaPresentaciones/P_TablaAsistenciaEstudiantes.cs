@@ -20,8 +20,11 @@ namespace CapaPresentaciones
     {
         readonly N_Catalogo ObjNegocio;
         private readonly string CodSemestre;
-        public string CodAsignatura;
-        public string CodDocente;
+        private readonly string CodDepartamentoA;
+        private readonly string CodEscuelaP;
+        public readonly string CodAsignatura;
+        public readonly string CodDocente;
+       
         readonly E_AsistenciaEstudiante ObjEntidadEstd;
         readonly N_AsistenciaEstudiante ObjNegocioEstd;
         readonly E_AsistenciaDocentePorAsignatura ObjEntidadDoc;
@@ -37,10 +40,13 @@ namespace CapaPresentaciones
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
             LimtFechaInf = DateTime.ParseExact(Semestre.Rows[0][1].ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
-            ObjNegocio = new N_Catalogo();
+            CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
+            CodEscuelaP = E_InicioSesion.CodEscuelaP;
             CodAsignatura = pCodAsignatura;
             CodDocente = pCodDocente;
             dgvTabla = pdgv;
+
+            ObjNegocio = new N_Catalogo();
             ObjEntidadEstd = new E_AsistenciaEstudiante();
             ObjNegocioEstd = new N_AsistenciaEstudiante();
             ObjEntidadDoc = new E_AsistenciaDocentePorAsignatura();
@@ -56,10 +62,10 @@ namespace CapaPresentaciones
             //MostrarEstudiantes();
         }
 
-        private void AccionesTabla()
+        private void AccionesTablaAdd()
         {
-            dgvDatos.Columns[0].DisplayIndex = 6;
-            dgvDatos.Columns[1].DisplayIndex = 6;
+            dgvDatos.Columns[0].DisplayIndex = 8;
+            dgvDatos.Columns[1].DisplayIndex = 8;
             dgvDatos.Columns[2].HeaderText = "Id.";
             dgvDatos.Columns[2].ReadOnly = true;
             dgvDatos.Columns[3].HeaderText = "Código";
@@ -70,6 +76,8 @@ namespace CapaPresentaciones
             dgvDatos.Columns[5].ReadOnly = true;
             dgvDatos.Columns[6].HeaderText = "Nombre";
             dgvDatos.Columns[6].ReadOnly = true;
+            dgvDatos.Columns[7].Visible = false;
+            dgvDatos.Columns[8].Visible = false;
         }
 
         private void AccionesTablaEditar()
@@ -121,19 +129,57 @@ namespace CapaPresentaciones
 
         private void MostrarEstudiantesNuevoRegistro()
         {
-            dgvDatos.DataSource = dgvTabla;
-            AccionesTabla();
+            int i = 0;
+            foreach (DataRow fila in dgvTabla.Rows)
+            {
+                //DataGridViewComboBoxCell textBoxcell = (DataGridViewComboBoxCell)(fila["cbxObservaciones"]);
+                //textBoxcell.Value = fila[6];
+                //fila.Cells[0].Value = (fila.Cells[6].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
+               
+                
+
+                dgvDatos.Rows.Add(ListaImagenes.Images[0],"", fila[0], fila[1], fila[2], fila[3], fila[4],"","");
+                dgvDatos.Rows[i].Cells[0].Tag = false;
+    
+                i += 1;
+
+            }
+            //dgvDatos.DataSource = dgvTabla;
+            AccionesTablaAdd();
         }
 
         public void MostrarEstudiantesRegistrados()
         {
-            dgvDatos.DataSource = dgvTabla;
+            int i = 0;
+            foreach (DataRow fila in dgvTabla.Rows)
+            {
+                //DataGridViewComboBoxCell textBoxcell = (DataGridViewComboBoxCell)(fila["cbxObservaciones"]);
+                //textBoxcell.Value = fila[6];
+                //fila.Cells[0].Value = (fila.Cells[6].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
+                if (fila[5].Equals("SI"))
+                {
+
+                    dgvDatos.Rows.Add(ListaImagenes.Images[1], fila[6], fila[0], fila[1], fila[2], fila[3], fila[4], fila[5], fila[6]);
+                    dgvDatos.Rows[i].Cells[0].Tag = true;
+                }
+                else
+                {
+                    dgvDatos.Rows.Add(ListaImagenes.Images[0], fila[6], fila[0], fila[1], fila[2], fila[3], fila[4], fila[5], fila[6]);
+
+
+                    dgvDatos.Rows[i].Cells[0].Tag = false;
+                }
+
+                i += 1;
+
+            }
+            //dgvDatos.DataSource = dgvTabla;
             AccionesTablaEditar();
         }
 
         public void BuscarEstudiantes()
         {
-            dgvDatos.DataSource = N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodAsignatura.Substring(6), CodAsignatura, txtBuscar.Text);
+            dgvDatos.DataSource = N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, CodAsignatura, txtBuscar.Text);
         }
 
         public void AgregarRgistroEstudiantes()
@@ -184,7 +230,7 @@ namespace CapaPresentaciones
                 try
                 {
                     ObjEntidadDoc.CodSemestre = CodSemestre;
-                    ObjEntidadDoc.CodDepartamentoA = "IF";
+                    ObjEntidadDoc.CodDepartamentoA = CodDepartamentoA;
                     ObjEntidadDoc.CodAsignatura = CodAsignatura;
                     ObjEntidadDoc.Fecha = DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
                     ObjEntidadDoc.Hora = hora;
@@ -228,7 +274,7 @@ namespace CapaPresentaciones
 
                             string TipoSesionActualizado = txtTipoSesion.Text.ToString().ToUpper();
                             string NombreTemaActualizado = txtTema.Text.ToString();
-                            
+
                             string ObsActulizado = "";
 
 
@@ -380,13 +426,13 @@ namespace CapaPresentaciones
                     btnGuardar.Enabled = false;
                 }
                 MostrarEstudiantesNuevoRegistro();
-                InicializarValores();
+                //InicializarValores();
                 //Program.Evento = 0;
             }
             else
             {
                 MostrarEstudiantesRegistrados();
-                InicializarValoresEditar();
+                //InicializarValoresEditar();
                 //Program.Evento = 1;
             }
         }

@@ -62,7 +62,8 @@ namespace CapaPresentaciones
             dgvDatos.Columns[6].ReadOnly = true;
             dgvDatos.Columns[7].Visible = false;
             dgvDatos.Columns[8].Visible = false;
-            
+
+
         }
         public void InicializarValoresEditar()
         {
@@ -92,7 +93,35 @@ namespace CapaPresentaciones
         }
         public void MostrarEstudiantesRegistrados()
         {
-            dgvDatos.DataSource = dgvTabla;
+            
+            
+            int i = 0;
+            foreach (DataRow fila in dgvTabla.Rows)
+            {
+                //DataGridViewComboBoxCell textBoxcell = (DataGridViewComboBoxCell)(fila["cbxObservaciones"]);
+                //textBoxcell.Value = fila[6];
+                //fila.Cells[0].Value = (fila.Cells[6].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
+                if (fila[5].Equals("SI"))
+                {
+                    
+                    dgvDatos.Rows.Add(ListaImagenes.Images[1], fila[6], fila[0], fila[1], fila[2], fila[3], fila[4],fila[5],fila[6]);
+                    dgvDatos.Rows[i].Cells[0].Tag = true;
+                }
+                else
+                {
+                    dgvDatos.Rows.Add(ListaImagenes.Images[0], fila[6], fila[0], fila[1], fila[2], fila[3], fila[4], fila[5], fila[6]);
+
+
+                    dgvDatos.Rows[i].Cells[0].Tag = false;
+                }
+
+                i += 1;
+
+            }
+            //DataTable dtFromGrid = new DataTable();
+            //dtFromGrid = dgvDatos.DataSource as DataTable;
+            //InicializarValoresEditar();
+            //dgvDatos.DataSource = dgv;
             AccionesTablaEditar();
            
 
@@ -111,7 +140,7 @@ namespace CapaPresentaciones
             }
             return null;
 		}
-        public void GuardarRegistroDiarioDocente()
+        public void GuardarRegistroDiarioDocenteEditado()
         {
 
             try
@@ -128,7 +157,7 @@ namespace CapaPresentaciones
                         ObjEntidadDoc.Hora = HoraReg;
                         ObjEntidadDoc.CodDocente = dr.Cells[3].Value.ToString();
 
-                        string Asistio = dr.Cells[0].Value.ToString();
+                        string Asistio = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
                         string ObsActualizada = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
                         
 
@@ -225,13 +254,13 @@ namespace CapaPresentaciones
 
             
                 MostrarEstudiantesRegistrados();
-                InicializarValoresEditar();
+                //InicializarValoresEditar();
 
         }
 
 		private void btnGuardar_Click(object sender, EventArgs e)
 		{
-            GuardarRegistroDiarioDocente();
+            GuardarRegistroDiarioDocenteEditado();
             Close();
         }
 
