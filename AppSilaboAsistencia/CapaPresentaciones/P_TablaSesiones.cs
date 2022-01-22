@@ -15,10 +15,8 @@ namespace CapaPresentaciones
         private DataTable Resultados;
         private XLWorkbook Libro;
         private int NroCreditos;
-        public string CodAsignatura;
-        public string CodDocente;
 
-        public P_TablaSesiones(DataTable pResultados, XLWorkbook pLibro, int pNroCreditos)
+        public P_TablaSesiones(DataTable pResultados, XLWorkbook pLibro, string CodAsignatura, int pNroCreditos)
         {
             Resultados = pResultados;
             Libro = pLibro;

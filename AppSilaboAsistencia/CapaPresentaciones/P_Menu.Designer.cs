@@ -2210,6 +2210,7 @@ namespace CapaPresentaciones
             this.btnEditarPerfil.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnEditarPerfil.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
             this.btnEditarPerfil.BorderSize = 2;
+            this.btnEditarPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Transicion.SetDecoration(this.btnEditarPerfil, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.btnEditarPerfil.GradientAngle = 50F;
             this.btnEditarPerfil.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarPerfil.Image")));

@@ -33,7 +33,7 @@ namespace CapaPresentaciones
 
             DataTable Semestre = N_Semestre.SemestreActual();
             CodSemestre = Semestre.Rows[0][0].ToString();
-            LimtFechaInf = DateTime.Parse(Semestre.Rows[0][1].ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
+            LimtFechaInf = DateTime.ParseExact(Semestre.Rows[0][1].ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
             CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
             InitializeComponent();
             MostrarRegistros();
@@ -52,7 +52,7 @@ namespace CapaPresentaciones
 
         public void MostrarRegistros()
         {
-            dgvDatos.DataSource = N_AsistenciaDiariaDocente.AsistenciaDocentesPorFechas(CodSemestre,LimtFechaInf, DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+            dgvDatos.DataSource = N_AsistenciaDiariaDocente.AsistenciaDocentesPorFechas(CodSemestre, DateTime.Parse(LimtFechaInf).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
             AccionesTabla();
         }
         public void MostrarHorarioRegistroAsistencia()

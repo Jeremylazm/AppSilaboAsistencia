@@ -106,6 +106,9 @@ namespace CapaPresentaciones
                 pnContenedorJefe.Visible = false;
                 btnPlantillas.Visible = true;
                 btnSemestres.Visible = true;
+
+                btnEditarPerfil.Cursor = Cursors.Default;
+                btnEditarPerfil.Image = Properties.Resources.Perfil;
             }
             else if (Acceso == "Jefe de Departamento")
             {
@@ -284,20 +287,23 @@ namespace CapaPresentaciones
         {
             ActualizarColor();
 
-            P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
+            if (E_InicioSesion.Acceso != "Administrador")
             {
-                UsuarioE = E_InicioSesion.Usuario,
-                perfil = JefeActualizarPerfil,
-                TopLevel = false,
-                Dock = DockStyle.Fill
-            };
+                P_EditarPerfilDocente Editar = new P_EditarPerfilDocente
+                {
+                    UsuarioE = E_InicioSesion.Usuario,
+                    perfil = JefeActualizarPerfil,
+                    TopLevel = false,
+                    Dock = DockStyle.Fill
+                };
 
-            Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
+                Editar.btnGuardar.Click += new EventHandler(ActualizarPerfil);
 
-            pnContenedor.Controls.Add(Editar);
-            pnContenedor.Tag = Editar;
-            Editar.Show();
-            Editar.BringToFront();
+                pnContenedor.Controls.Add(Editar);
+                pnContenedor.Tag = Editar;
+                Editar.Show();
+                Editar.BringToFront();
+            }
         }
 
         private void btnDocentes_Click(object sender, EventArgs e)

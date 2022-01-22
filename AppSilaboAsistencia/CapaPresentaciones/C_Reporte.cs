@@ -9,6 +9,7 @@ using Ayudas;
 using CapaNegocios;
 using ControlesPerzonalizados;
 using System.Globalization;
+using Bunifu.UI.WinForms;
 
 namespace CapaPresentaciones
 {
@@ -338,6 +339,10 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
+                if (tcGraficos.SelectedIndex == 0)
+                    btnGrafico1.Select();
+                else
+                    btnGrafico2.Select();
                 btnGrafico2.Visible = true;
                 
                 // Grafico 1
@@ -418,7 +423,9 @@ namespace CapaPresentaciones
 
                 gxGrafico2.Update();
 
-                tcGraficos.SetPage(IndiceGrafico1);
+                tcGraficos.SetPage(tcGraficos.SelectedIndex);
+
+                lblTitulo.Select();
 
                 return "No";
                 #endregion ===================== GRÁFICOS =====================
@@ -505,6 +512,7 @@ namespace CapaPresentaciones
             #endregion ===================== CUADRO DE RESUMEN =====================
 
             #region ===================== GRÁFICOS =====================
+            btnGrafico1.Select();
             btnGrafico2.Visible = true;
 
             // Gráfico 1
@@ -572,6 +580,8 @@ namespace CapaPresentaciones
             GraficoCircular.TargetCanvas = gxGrafico4;
 
             gxGrafico4.Update();
+
+            lblTitulo.Select();
             #endregion ===================== GRÁFICOS =====================
         }
 
@@ -640,6 +650,7 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
+                btnBug.Visible = true;
                 btnGrafico2.Visible = false;
 
                 // Grafico 1
@@ -762,6 +773,7 @@ namespace CapaPresentaciones
             #endregion ===================== CUADRO DE RESUMEN =====================
 
             #region ===================== GRÁFICOS =====================
+            btnGrafico1.Select();
             btnGrafico2.Visible = true;
 
             // Gráfico 1
@@ -829,6 +841,8 @@ namespace CapaPresentaciones
             GraficoCircular.TargetCanvas = gxGrafico4;
 
             gxGrafico4.Update();
+
+            lblTitulo.Select();
             #endregion ===================== GRÁFICOS =====================
         }
 
@@ -894,7 +908,7 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                // Gráficos
+                btnBug.Visible = true;
                 btnGrafico2.Visible = false;
 
                 // Grafico 1
@@ -976,7 +990,7 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                // Gráficos
+                btnBug.Visible = true;
                 btnGrafico2.Visible = false;
 
                 // Grafico 1
@@ -1099,6 +1113,7 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
+                btnBug.Visible = true;
                 btnGrafico2.Visible = false;
 
                 // Gráfico 1
@@ -1204,6 +1219,7 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
+                btnBug.Visible = true;
                 btnGrafico2.Visible = false;
 
                 // Gráfico 1
@@ -1331,7 +1347,7 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                // Gráficos
+                btnBug.Visible = true;
                 btnGrafico2.Visible = false;
 
                 // Grafico 1
@@ -1437,7 +1453,7 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                // Gráficos
+                btnBug.Visible = true;
                 btnGrafico2.Visible = false;
 
                 // Gráfico 1
@@ -1571,6 +1587,7 @@ namespace CapaPresentaciones
             #endregion ===================== CUADRO DE RESUMEN =====================
 
             #region ===================== GRÁFICOS =====================
+            btnGrafico1.Select();
             btnGrafico2.Visible = true;
 
             // Gráfico 1
@@ -1638,6 +1655,8 @@ namespace CapaPresentaciones
             GraficoCircular.TargetCanvas = gxGrafico4;
 
             gxGrafico4.Update();
+
+            lblTitulo.Select();
             #endregion ===================== GRÁFICOS =====================
         }
 
@@ -1713,6 +1732,7 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
+                btnBug.Visible = true;
                 btnGrafico2.Visible = false;
 
                 // Gráfico 1
@@ -1850,6 +1870,10 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
+                if (tcGraficos.SelectedIndex == 2)
+                    btnGrafico1.Select();
+                else
+                    btnGrafico2.Select();
                 btnGrafico2.Visible = true;
 
                 // Gráfico 1
@@ -1918,7 +1942,7 @@ namespace CapaPresentaciones
 
                 gxGrafico4.Update();
 
-                tcGraficos.SetPage(IndiceGrafico1);
+                tcGraficos.SetPage(tcGraficos.SelectedIndex);
                 #endregion ===================== GRÁFICOS =====================
             }
         }
@@ -2019,6 +2043,10 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
+                if (tcGraficos.SelectedIndex == 0)
+                    btnGrafico1.Select();
+                else
+                    btnGrafico2.Select();
                 btnGrafico2.Visible = true;
 
                 // Grafico 1
@@ -2099,7 +2127,7 @@ namespace CapaPresentaciones
 
                 gxGrafico2.Update();
 
-                tcGraficos.SetPage(IndiceGrafico1);
+                tcGraficos.SetPage(tcGraficos.SelectedIndex);
                 #endregion ===================== GRÁFICOS =====================
             }
         }
@@ -2189,6 +2217,7 @@ namespace CapaPresentaciones
             #endregion ===================== CUADRO DE RESUMEN =====================
 
             #region ===================== GRÁFICOS =====================
+            btnGrafico1.Select();
             btnGrafico2.Visible = true;
 
             // Gráfico 1
@@ -2256,6 +2285,8 @@ namespace CapaPresentaciones
             GraficoCircular.TargetCanvas = gxGrafico4;
 
             gxGrafico4.Update();
+
+            lblTitulo.Select();
             #endregion ===================== GRÁFICOS =====================
         }
         private void dgvResultados_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
@@ -2346,12 +2377,20 @@ namespace CapaPresentaciones
 
         public void btnGrafico1_Click(object sender, EventArgs e)
         {
+            btnBug.Visible = false;
             tcGraficos.SetPage(IndiceGrafico1);
         }
 
         private void btnGrafico2_Click(object sender, EventArgs e)
         {
+            btnBug.Visible = false;
             tcGraficos.SetPage(IndiceGrafico2);
+        }
+
+        private void btnBug_Click(object sender, EventArgs e)
+        {
+            btnBug.Visible = false;
+            btnGrafico1.Select();
         }
     }
 }
