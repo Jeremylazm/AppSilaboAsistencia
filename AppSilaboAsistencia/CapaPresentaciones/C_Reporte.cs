@@ -1263,7 +1263,7 @@ namespace CapaPresentaciones
             }
         }
 
-        public void fnReporte9(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, DataTable Resumen)
+        public void fnReporte9(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, DataTable Resumen, DataTable Gráfico)
         {
             this.CriterioAsistenciasEstudiantes = "";
 
@@ -1361,7 +1361,7 @@ namespace CapaPresentaciones
                 List<double> Datos2A = new List<double>();
                 List<Color> Colores2A = new List<Color>();
 
-                foreach (DataRow Fila in Resumen.Rows)
+                foreach (DataRow Fila in Gráfico.Rows)
                 {
                     EtiquetasA.Add(Fila["CodAsignatura"].ToString());
                     Datos1A.Add(double.Parse(Fila["TemasAvanzados"].ToString()));
@@ -1373,11 +1373,11 @@ namespace CapaPresentaciones
                 gxGrafico1.Labels = EtiquetasA.ToArray();
                 gxGrafico1.Clear();
 
-                GraficoBarrasHorizontales1.Label = "Avance Completado";
+                GraficoBarrasHorizontales1.Label = "Avance Completado (%)";
                 GraficoBarrasHorizontales1.Data = Datos1A;
                 GraficoBarrasHorizontales1.BackgroundColor = Colores1A;
 
-                GraficoBarrasHorizontales2.Label = "Avance Faltante";
+                GraficoBarrasHorizontales2.Label = "Avance Faltante (%)";
                 GraficoBarrasHorizontales2.Data = Datos2A;
                 GraficoBarrasHorizontales2.BackgroundColor = Colores2A;
 
