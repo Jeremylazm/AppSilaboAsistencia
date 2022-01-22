@@ -314,8 +314,23 @@ namespace CapaPresentaciones
                 Reportes.fnReporte5(Titulo, Titulos, Valores, ResultadosFinales, txtCodigo.Text, Hechos, Faltan);
             }
             else
+            {
                 Ayudas.A_Dialogo.DialogoError("No hay Plan de Sesiones");
 
+                lblCriterioSeleccion.Visible = true;
+                cxtCriterioSeleccion.Visible = true;
+
+                lblFechaInicial.Visible = true;
+                dpFechaInicial.Visible = true;
+
+                lblFechaFinal.Visible = true;
+                dpFechaFinal.Visible = true;
+
+                btnGeneral.Visible = false;
+
+                cxtTipoReporte.SelectedIndex = 0;
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
+            }
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 
