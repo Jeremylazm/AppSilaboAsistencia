@@ -652,7 +652,7 @@ namespace CapaPresentaciones
                 #region ===================== GRÁFICOS =====================
                 btnBug.Visible = true;
                 btnGrafico2.Visible = false;
-
+                
                 // Grafico 1
                 IndiceGrafico1 = 0;
 
@@ -1433,7 +1433,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns.Clear();
                 dgvResultados.Columns.Add(btnVerReporte);
                 dgvResultados.Columns[0].HeaderText = "Ver Reporte";
-
+                
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[0].DisplayIndex = 4;
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
@@ -1442,7 +1442,10 @@ namespace CapaPresentaciones
                 {
                     Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
-
+                dgvResultados.Columns["CodAsignatura"].HeaderText = "Cod. Asignatura";
+                dgvResultados.Columns["NombreAsignatura"].HeaderText = "Nombre Asignatura";
+                dgvResultados.Columns["PorcentajeAsistencias"].HeaderText = "Asistencias (%)";
+                dgvResultados.Columns["PorcentajeFaltas"].HeaderText = "Faltas (%)";
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
@@ -1686,7 +1689,10 @@ namespace CapaPresentaciones
                 {
                     Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
-
+                dgvResultados.Columns["CodAsignatura"].HeaderText = "Cod. Asignatura";
+                dgvResultados.Columns["NombreAsignatura"].HeaderText = "Nombre Asignatura";
+                dgvResultados.Columns["PorcentajeAsistencias"].HeaderText = "Asistencias (%)";
+                dgvResultados.Columns["PorcentajeFaltas"].HeaderText = "Faltas (%)";  
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 
@@ -1996,12 +2002,20 @@ namespace CapaPresentaciones
                 {
                     Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
-
+                dgvResultados.Columns["TotalAsistieron"].HeaderText = "Total Asistieron";
+                dgvResultados.Columns["TotalFaltaron"].HeaderText = "Total Faltaron";
+                
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 
                 #region ===================== CUADRO DE RESUMEN =====================
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
+                dtEstadisticos.Rows.Clear();
+                // Solo donde haya asistencia de docentes para los estadísticos
+                foreach (DataRow row in Datos.Rows)
+                {
+                    if (row["TotalFaltaron"].ToString()!= "0" && row["TotalAsistieron"].ToString() != "0") dtEstadisticos.ImportRow(row);
+                }
 
                 // Listas de valores
                 List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TotalAsistieron"))).ToList();
@@ -2099,9 +2113,9 @@ namespace CapaPresentaciones
                 double Valor1 = 0;
                 double Valor2 = 0;
 
+                DataTable dtEstadisticos2 = dtEstadisticos.AsEnumerable().Reverse().CopyToDataTable();
 
-
-                foreach (DataRow Fila in dtEstadisticos.Rows)
+                foreach (DataRow Fila in dtEstadisticos2.Rows)
                 {
                     EtiquetasB.Add(Fila["Fecha"].ToString());
                     Valor1 = double.Parse(Fila["TotalAsistieron"].ToString());
