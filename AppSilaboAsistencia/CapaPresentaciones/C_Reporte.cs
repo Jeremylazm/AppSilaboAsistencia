@@ -339,7 +339,7 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                if (tcGraficos.SelectedIndex == 0)
+                if (tcGraficos.PageIndex == 0)
                     btnGrafico1.Select();
                 else
                     btnGrafico2.Select();
@@ -423,7 +423,7 @@ namespace CapaPresentaciones
 
                 gxGrafico2.Update();
 
-                tcGraficos.SetPage(tcGraficos.SelectedIndex);
+                tcGraficos.SetPage(tcGraficos.PageIndex);
 
                 lblTitulo.Select();
 
@@ -565,10 +565,11 @@ namespace CapaPresentaciones
             Datos1B.Add(FaltaronJustificado);
             Datos1B.Add(FaltaronSinJustificar);
 
-            Color1B.Add(Color.FromArgb(23, 153, 75));
-            Color1B.Add(Color.FromArgb(117, 163, 229));
-            Color1B.Add(Color.FromArgb(232, 128, 31));
             Color1B.Add(Color.FromArgb(104, 13, 15));
+            Color1B.Add(Color.FromArgb(186, 126, 25));
+            Color1B.Add(Color.FromArgb(83, 10, 12));
+            Color1B.Add(Color.FromArgb(232, 158, 31));
+            
 
             gxGrafico4.Labels = EtiquetasB.ToArray();
             gxGrafico4.Clear();
@@ -826,10 +827,10 @@ namespace CapaPresentaciones
             Datos1B.Add(FaltaronJustificado);
             Datos1B.Add(FaltaronSinJustificar);
 
-            Color1B.Add(Color.FromArgb(23, 153, 75));
-            Color1B.Add(Color.FromArgb(117, 163, 229));
-            Color1B.Add(Color.FromArgb(232, 128, 31));
             Color1B.Add(Color.FromArgb(104, 13, 15));
+            Color1B.Add(Color.FromArgb(186, 126, 25));
+            Color1B.Add(Color.FromArgb(83, 10, 12));
+            Color1B.Add(Color.FromArgb(232, 158, 31));
 
             gxGrafico4.Labels = EtiquetasB.ToArray();
             gxGrafico4.Clear();
@@ -1266,7 +1267,7 @@ namespace CapaPresentaciones
             }
         }
 
-        public void fnReporte9(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, DataTable Resumen)
+        public void fnReporte9(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, DataTable Resumen, DataTable Gráfico)
         {
             this.CriterioAsistenciasEstudiantes = "";
 
@@ -1364,7 +1365,7 @@ namespace CapaPresentaciones
                 List<double> Datos2A = new List<double>();
                 List<Color> Colores2A = new List<Color>();
 
-                foreach (DataRow Fila in Resumen.Rows)
+                foreach (DataRow Fila in Gráfico.Rows)
                 {
                     EtiquetasA.Add(Fila["CodAsignatura"].ToString());
                     Datos1A.Add(double.Parse(Fila["TemasAvanzados"].ToString()));
@@ -1376,11 +1377,11 @@ namespace CapaPresentaciones
                 gxGrafico1.Labels = EtiquetasA.ToArray();
                 gxGrafico1.Clear();
 
-                GraficoBarrasHorizontales1.Label = "Avance Completado";
+                GraficoBarrasHorizontales1.Label = "Avance Completado (%)";
                 GraficoBarrasHorizontales1.Data = Datos1A;
                 GraficoBarrasHorizontales1.BackgroundColor = Colores1A;
 
-                GraficoBarrasHorizontales2.Label = "Avance Faltante";
+                GraficoBarrasHorizontales2.Label = "Avance Faltante (%)";
                 GraficoBarrasHorizontales2.Data = Datos2A;
                 GraficoBarrasHorizontales2.BackgroundColor = Colores2A;
 
@@ -1643,10 +1644,9 @@ namespace CapaPresentaciones
             Datos1B.Add(FaltaronJustificado);
             Datos1B.Add(FaltaronSinJustificar);
 
-            Color1B.Add(Color.FromArgb(23, 153, 75));
-            Color1B.Add(Color.FromArgb(117, 163, 229));
-            Color1B.Add(Color.FromArgb(232, 128, 31));
             Color1B.Add(Color.FromArgb(104, 13, 15));
+            Color1B.Add(Color.FromArgb(232, 158, 31));
+            Color1B.Add(Color.FromArgb(83, 10, 12));
 
             gxGrafico4.Labels = EtiquetasB.ToArray();
             gxGrafico4.Clear();
@@ -1876,7 +1876,7 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                if (tcGraficos.SelectedIndex == 2)
+                if (tcGraficos.PageIndex == 2)
                     btnGrafico1.Select();
                 else
                     btnGrafico2.Select();
@@ -1932,10 +1932,9 @@ namespace CapaPresentaciones
                 Datos1B.Add(FaltaronJustificado);
                 Datos1B.Add(FaltaronSinJustificar);
 
-                Color1B.Add(Color.FromArgb(23, 153, 75));
-                Color1B.Add(Color.FromArgb(117, 163, 229));
-                Color1B.Add(Color.FromArgb(232, 128, 31));
                 Color1B.Add(Color.FromArgb(104, 13, 15));
+                Color1B.Add(Color.FromArgb(232, 158, 31));
+                Color1B.Add(Color.FromArgb(83, 10, 12));
 
                 gxGrafico4.Labels = EtiquetasB.ToArray();
                 gxGrafico4.Clear();
@@ -1948,7 +1947,7 @@ namespace CapaPresentaciones
 
                 gxGrafico4.Update();
 
-                tcGraficos.SetPage(tcGraficos.SelectedIndex);
+                tcGraficos.SetPage(tcGraficos.PageIndex);
                 #endregion ===================== GRÁFICOS =====================
             }
         }
@@ -2057,7 +2056,7 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                if (tcGraficos.SelectedIndex == 0)
+                if (tcGraficos.PageIndex == 0)
                     btnGrafico1.Select();
                 else
                     btnGrafico2.Select();
@@ -2141,7 +2140,7 @@ namespace CapaPresentaciones
 
                 gxGrafico2.Update();
 
-                tcGraficos.SetPage(tcGraficos.SelectedIndex);
+                tcGraficos.SetPage(tcGraficos.PageIndex);
                 #endregion ===================== GRÁFICOS =====================
             }
         }
@@ -2284,10 +2283,9 @@ namespace CapaPresentaciones
             Datos1B.Add(FaltaronJustificado);
             Datos1B.Add(FaltaronSinJustificar);
 
-            Color1B.Add(Color.FromArgb(23, 153, 75));
-            Color1B.Add(Color.FromArgb(117, 163, 229));
-            Color1B.Add(Color.FromArgb(232, 128, 31));
             Color1B.Add(Color.FromArgb(104, 13, 15));
+            Color1B.Add(Color.FromArgb(232, 158, 31));
+            Color1B.Add(Color.FromArgb(83, 10, 12));
 
             gxGrafico4.Labels = EtiquetasB.ToArray();
             gxGrafico4.Clear();

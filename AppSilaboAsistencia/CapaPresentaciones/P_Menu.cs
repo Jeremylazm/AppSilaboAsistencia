@@ -602,7 +602,7 @@ namespace CapaPresentaciones
                         ObjEntidadDocente.Asistio = "SI";
                         ObjEntidadDocente.Observacion = "";
                         ObjNegocioDocente.RegistrarAsistenciaDiariaDocente(ObjEntidadDocente);
-                        A_Dialogo.DialogoInformacion("Se registro su asistencia.");
+                        A_Dialogo.DialogoConfirmacion("Se registro su asistencia.");
                     }
                     else
                     {
