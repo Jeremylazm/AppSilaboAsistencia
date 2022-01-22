@@ -403,6 +403,13 @@ namespace CapaPresentaciones
             ResultadosResumen.Columns.Add("TemasAvanzados", typeof(int));
             ResultadosResumen.Columns.Add("TemasFaltantes", typeof(int));
 
+            DataTable ResultadosGráfico = new DataTable();
+            ResultadosGráfico.Columns.Add("CodAsignatura", typeof(string));
+            ResultadosGráfico.Columns.Add("NombreAsignatura", typeof(string));
+            ResultadosGráfico.Columns.Add("Docente", typeof(string));
+            ResultadosGráfico.Columns.Add("TemasAvanzados", typeof(double));
+            ResultadosGráfico.Columns.Add("TemasFaltantes", typeof(double));
+
             int Créditos = 0;
             int TemasTotales = 0;
             float PorcentajeAvanzados = 0;
@@ -420,6 +427,7 @@ namespace CapaPresentaciones
                     PorcentajeAvanzados = 100 * Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()) / TemasTotales;
                     ResultadosFinales.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), resultados.Rows[i]["Docente"].ToString(), Convert.ToString(PorcentajeAvanzados) + "%", Convert.ToString(100 - PorcentajeAvanzados) + "%");
                     ResultadosResumen.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), resultados.Rows[i]["Docente"].ToString(), Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()), TemasTotales - Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()));
+                    ResultadosGráfico.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), resultados.Rows[i]["Docente"].ToString(), PorcentajeAvanzados, Convert.ToDouble(100 - PorcentajeAvanzados));
                 }
                 else
                 {
@@ -427,10 +435,11 @@ namespace CapaPresentaciones
                     PorcentajeAvanzados = 100 * Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()) / TemasTotales;
                     ResultadosFinales.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), resultados.Rows[i]["Docente"].ToString(), Convert.ToString(PorcentajeAvanzados) + "%", Convert.ToString(100 - PorcentajeAvanzados) + "%");
                     ResultadosResumen.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), resultados.Rows[i]["Docente"].ToString(), Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()), TemasTotales - Convert.ToInt32(resultados.Rows[i]["TemasAvanzados"].ToString()));
+                    ResultadosGráfico.Rows.Add(resultados.Rows[i]["CodAsignatura"].ToString(), resultados.Rows[i]["NombreAsignatura"].ToString(), resultados.Rows[i]["Docente"].ToString(), PorcentajeAvanzados, Convert.ToDouble(100 - PorcentajeAvanzados));
                 }
             }
 
-            Reportes.fnReporte9(Titulo, Titulos, Valores, ResultadosFinales, ResultadosResumen);
+            Reportes.fnReporte9(Titulo, Titulos, Valores, ResultadosFinales, ResultadosResumen, ResultadosGráfico);
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
     }
