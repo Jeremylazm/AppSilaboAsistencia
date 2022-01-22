@@ -240,7 +240,7 @@ namespace CapaPresentaciones
                     File.WriteAllBytes(Ruta, Archivo);
                     XLWorkbook Libro = new XLWorkbook(Ruta);
 
-                    P_TablaSesiones Sesiones = new P_TablaSesiones(Resultados, Libro, NroCreditos);
+                    P_TablaSesiones Sesiones = new P_TablaSesiones(Resultados, Libro, CodAsignatura, NroCreditos);
                     Sesiones.Show();
                 }
                 else
