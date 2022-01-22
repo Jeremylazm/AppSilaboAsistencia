@@ -339,7 +339,10 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                btnGrafico1.Select();
+                if (tcGraficos.SelectedIndex == 0)
+                    btnGrafico1.Select();
+                else
+                    btnGrafico2.Select();
                 btnGrafico2.Visible = true;
                 
                 // Grafico 1
@@ -420,7 +423,7 @@ namespace CapaPresentaciones
 
                 gxGrafico2.Update();
 
-                tcGraficos.SetPage(IndiceGrafico1);
+                tcGraficos.SetPage(tcGraficos.SelectedIndex);
 
                 lblTitulo.Select();
 
@@ -1867,7 +1870,10 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                btnGrafico1.Select();
+                if (tcGraficos.SelectedIndex == 2)
+                    btnGrafico1.Select();
+                else
+                    btnGrafico2.Select();
                 btnGrafico2.Visible = true;
 
                 // Gráfico 1
@@ -1936,7 +1942,7 @@ namespace CapaPresentaciones
 
                 gxGrafico4.Update();
 
-                tcGraficos.SetPage(IndiceGrafico1);
+                tcGraficos.SetPage(tcGraficos.SelectedIndex);
                 #endregion ===================== GRÁFICOS =====================
             }
         }
@@ -2037,7 +2043,10 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                btnGrafico1.Select();
+                if (tcGraficos.SelectedIndex == 0)
+                    btnGrafico1.Select();
+                else
+                    btnGrafico2.Select();
                 btnGrafico2.Visible = true;
 
                 // Grafico 1
@@ -2118,7 +2127,7 @@ namespace CapaPresentaciones
 
                 gxGrafico2.Update();
 
-                tcGraficos.SetPage(IndiceGrafico1);
+                tcGraficos.SetPage(tcGraficos.SelectedIndex);
                 #endregion ===================== GRÁFICOS =====================
             }
         }
