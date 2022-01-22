@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocios;
@@ -138,7 +133,7 @@ namespace CapaPresentaciones
 
             pnReporte.Controls.Add(Reportes);
             Responsivo();
-            ActiveControl = Reportes.btnGrafico1;
+
             ActiveControl = pnReporte;
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
