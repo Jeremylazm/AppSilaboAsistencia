@@ -339,7 +339,7 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                if (tcGraficos.SelectedIndex == 0)
+                if (tcGraficos.PageIndex == 0)
                     btnGrafico1.Select();
                 else
                     btnGrafico2.Select();
@@ -423,7 +423,7 @@ namespace CapaPresentaciones
 
                 gxGrafico2.Update();
 
-                tcGraficos.SetPage(tcGraficos.SelectedIndex);
+                tcGraficos.SetPage(tcGraficos.PageIndex);
 
                 lblTitulo.Select();
 
@@ -1870,7 +1870,7 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                if (tcGraficos.SelectedIndex == 2)
+                if (tcGraficos.PageIndex == 2)
                     btnGrafico1.Select();
                 else
                     btnGrafico2.Select();
@@ -1942,7 +1942,7 @@ namespace CapaPresentaciones
 
                 gxGrafico4.Update();
 
-                tcGraficos.SetPage(tcGraficos.SelectedIndex);
+                tcGraficos.SetPage(tcGraficos.PageIndex);
                 #endregion ===================== GRÁFICOS =====================
             }
         }
@@ -2043,7 +2043,7 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                if (tcGraficos.SelectedIndex == 0)
+                if (tcGraficos.PageIndex == 0)
                     btnGrafico1.Select();
                 else
                     btnGrafico2.Select();
@@ -2127,7 +2127,7 @@ namespace CapaPresentaciones
 
                 gxGrafico2.Update();
 
-                tcGraficos.SetPage(tcGraficos.SelectedIndex);
+                tcGraficos.SetPage(tcGraficos.PageIndex);
                 #endregion ===================== GRÁFICOS =====================
             }
         }
