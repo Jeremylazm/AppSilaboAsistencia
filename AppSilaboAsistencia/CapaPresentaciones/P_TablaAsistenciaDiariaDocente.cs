@@ -89,7 +89,7 @@ namespace CapaPresentaciones
                     }
                 }
             }
-            
+      
         }
         public void MostrarEstudiantesRegistrados()
         {

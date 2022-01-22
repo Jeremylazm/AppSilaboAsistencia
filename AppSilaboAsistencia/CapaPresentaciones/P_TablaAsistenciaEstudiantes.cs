@@ -312,7 +312,7 @@ namespace CapaPresentaciones
 
         private void btnSesiones_Click(object sender, EventArgs e)
         {
-            P_TablaSesiones Sesiones = new P_TablaSesiones(CodAsignatura, CodDocente);
+            P_TablaSesionesPendientes Sesiones = new P_TablaSesionesPendientes(CodAsignatura, CodDocente);
 
             Sesiones.ShowDialog();
             Sesiones.Dispose();

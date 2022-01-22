@@ -451,9 +451,9 @@
   </data>
   <data name="lnNombre.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAUMAAAAKCAYAAAAuEzwXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA0SURBVGhD7dRBDQAgDATBM9BgE/8GgEdftcBMshY2AAAA
-        AAAADLvWkaTf6yUCAAAAADzJBZz76Fk3yMpIAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAUIAAAAKCAYAAADB0VcpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAzSURBVGhD7dRBDQAwDAOxEKhGc/wJrJ+xiC0dhQsAAAAA
+        AEC1O+dJUnN/hwAAAABApWQBA9/m1vhB1VYAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="txtNombre.BaseStylesheet" xml:space="preserve">

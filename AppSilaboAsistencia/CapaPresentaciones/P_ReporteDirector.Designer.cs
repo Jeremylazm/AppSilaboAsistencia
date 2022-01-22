@@ -96,11 +96,11 @@ namespace CapaPresentaciones
             this.pnContenedor.BorderThickness = 1;
             this.pnContenedor.Controls.Add(this.btnSeleccionar);
             this.pnContenedor.Controls.Add(this.txtEstudiante);
-            this.pnContenedor.Controls.Add(this.lnEstudiante);
-            this.pnContenedor.Controls.Add(this.lblEstudiante);
-            this.pnContenedor.Controls.Add(this.txtCodEstudiante);
-            this.pnContenedor.Controls.Add(this.lnCodEstudiante);
             this.pnContenedor.Controls.Add(this.lblCodEstudiante);
+            this.pnContenedor.Controls.Add(this.lnCodEstudiante);
+            this.pnContenedor.Controls.Add(this.lnEstudiante);
+            this.pnContenedor.Controls.Add(this.txtCodEstudiante);
+            this.pnContenedor.Controls.Add(this.lblEstudiante);
             this.pnContenedor.Controls.Add(this.btnGeneral);
             this.pnContenedor.Controls.Add(this.Cuadricula);
             this.pnContenedor.Controls.Add(this.pnPadre);
@@ -218,7 +218,7 @@ namespace CapaPresentaciones
             this.txtEstudiante.CursorType = System.Windows.Forms.Cursors.Default;
             this.txtEstudiante.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtEstudiante.Location = new System.Drawing.Point(175, 182);
+            this.txtEstudiante.Location = new System.Drawing.Point(175, 173);
             this.txtEstudiante.Name = "txtEstudiante";
             this.txtEstudiante.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtEstudiante.Size = new System.Drawing.Size(698, 23);
@@ -238,7 +238,7 @@ namespace CapaPresentaciones
             this.lnEstudiante.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lnEstudiante.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.lnEstudiante.LineThickness = 1;
-            this.lnEstudiante.Location = new System.Drawing.Point(176, 207);
+            this.lnEstudiante.Location = new System.Drawing.Point(175, 197);
             this.lnEstudiante.Name = "lnEstudiante";
             this.lnEstudiante.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnEstudiante.Size = new System.Drawing.Size(698, 10);
@@ -254,7 +254,7 @@ namespace CapaPresentaciones
             this.lblEstudiante.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblEstudiante.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblEstudiante.Location = new System.Drawing.Point(175, 150);
+            this.lblEstudiante.Location = new System.Drawing.Point(175, 141);
             this.lblEstudiante.Name = "lblEstudiante";
             this.lblEstudiante.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblEstudiante.Size = new System.Drawing.Size(88, 23);
@@ -272,7 +272,7 @@ namespace CapaPresentaciones
             this.txtCodEstudiante.CursorType = System.Windows.Forms.Cursors.Default;
             this.txtCodEstudiante.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtCodEstudiante.Location = new System.Drawing.Point(24, 182);
+            this.txtCodEstudiante.Location = new System.Drawing.Point(24, 173);
             this.txtCodEstudiante.Name = "txtCodEstudiante";
             this.txtCodEstudiante.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtCodEstudiante.Size = new System.Drawing.Size(128, 23);
@@ -290,7 +290,7 @@ namespace CapaPresentaciones
             this.lnCodEstudiante.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lnCodEstudiante.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.lnCodEstudiante.LineThickness = 1;
-            this.lnCodEstudiante.Location = new System.Drawing.Point(24, 204);
+            this.lnCodEstudiante.Location = new System.Drawing.Point(24, 197);
             this.lnCodEstudiante.Name = "lnCodEstudiante";
             this.lnCodEstudiante.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnCodEstudiante.Size = new System.Drawing.Size(128, 10);
@@ -304,7 +304,7 @@ namespace CapaPresentaciones
             this.lblCodEstudiante.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblCodEstudiante.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblCodEstudiante.Location = new System.Drawing.Point(24, 150);
+            this.lblCodEstudiante.Location = new System.Drawing.Point(24, 141);
             this.lblCodEstudiante.Name = "lblCodEstudiante";
             this.lblCodEstudiante.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblCodEstudiante.Size = new System.Drawing.Size(128, 23);
@@ -491,6 +491,8 @@ namespace CapaPresentaciones
             this.dpFechaFinal.Name = "dpFechaFinal";
             this.dpFechaFinal.Size = new System.Drawing.Size(270, 32);
             this.dpFechaFinal.TabIndex = 62;
+            this.dpFechaFinal.CloseUp += new System.EventHandler(this.dpFechaInicial_CloseUp);
+            this.dpFechaFinal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dpFechaInicial_MouseDown);
             // 
             // pnInicial
             // 
@@ -558,6 +560,8 @@ namespace CapaPresentaciones
             this.dpFechaInicial.Name = "dpFechaInicial";
             this.dpFechaInicial.Size = new System.Drawing.Size(270, 32);
             this.dpFechaInicial.TabIndex = 61;
+            this.dpFechaInicial.CloseUp += new System.EventHandler(this.dpFechaInicial_CloseUp);
+            this.dpFechaInicial.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dpFechaInicial_MouseDown);
             // 
             // pnCriterio
             // 
@@ -742,7 +746,7 @@ namespace CapaPresentaciones
             this.pnPadre.BorderRadius = 3;
             this.pnPadre.BorderThickness = 1;
             this.pnPadre.Controls.Add(this.pnReporte);
-            this.pnPadre.Location = new System.Drawing.Point(22, 243);
+            this.pnPadre.Location = new System.Drawing.Point(22, 228);
             this.pnPadre.Name = "pnPadre";
             this.pnPadre.ShowBorders = true;
             this.pnPadre.Size = new System.Drawing.Size(1057, 406);
@@ -770,7 +774,7 @@ namespace CapaPresentaciones
             // 
             this.pnCajas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnCajas.Location = new System.Drawing.Point(177, 147);
+            this.pnCajas.Location = new System.Drawing.Point(177, 138);
             this.pnCajas.Name = "pnCajas";
             // 
             // pnCajas.Panel1
@@ -910,7 +914,7 @@ namespace CapaPresentaciones
             this.txtCodigo.CursorType = System.Windows.Forms.Cursors.Default;
             this.txtCodigo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtCodigo.Location = new System.Drawing.Point(24, 182);
+            this.txtCodigo.Location = new System.Drawing.Point(24, 173);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtCodigo.Size = new System.Drawing.Size(132, 23);
@@ -929,7 +933,7 @@ namespace CapaPresentaciones
             this.lnCodigo.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lnCodigo.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.lnCodigo.LineThickness = 1;
-            this.lnCodigo.Location = new System.Drawing.Point(24, 204);
+            this.lnCodigo.Location = new System.Drawing.Point(24, 197);
             this.lnCodigo.Name = "lnCodigo";
             this.lnCodigo.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnCodigo.Size = new System.Drawing.Size(132, 10);
@@ -944,7 +948,7 @@ namespace CapaPresentaciones
             this.lblCodigo.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblCodigo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblCodigo.Location = new System.Drawing.Point(24, 150);
+            this.lblCodigo.Location = new System.Drawing.Point(24, 141);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblCodigo.Size = new System.Drawing.Size(132, 23);

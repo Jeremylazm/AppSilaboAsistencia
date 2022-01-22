@@ -22,6 +22,8 @@ namespace CapaPresentaciones
         bool DocenteColapsado = false;
         bool JefeColapsado = true;
         bool DirectorColapsado = true;
+        P_PrincipalDocente Principal;
+        bool pHoraServidor = false;
 
         public P_Menu()
         {
@@ -262,16 +264,20 @@ namespace CapaPresentaciones
         private void ActualizarColor()
         {
             lblSuperior.Focus();
+            if (pHoraServidor)
+                Principal.HoraFecha.Stop();
         }
 
         private void CerrarSesion()
         {
             if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Desea cerrar sesión?") == DialogResult.Yes)
             {
+                ActualizarColor();
                 Close();
                 P_InicioSesion Login = new P_InicioSesion();
                 Login.Show();
             }
+            Principal.HoraFecha.Start();
         }
 
         private void EditarPerfil()
@@ -320,6 +326,7 @@ namespace CapaPresentaciones
 
         private void btnEditarPerfil_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             EditarPerfil();
         }
 
@@ -347,11 +354,24 @@ namespace CapaPresentaciones
             GestionarAcceso();
 
             if (E_InicioSesion.Acceso != "Administrador")
-                AbrirFormularios<P_PrincipalDocente>();
+            {
+                Principal = new P_PrincipalDocente
+                {
+                    HoraServidor = pHoraServidor,
+                    TopLevel = false,
+                    Dock = DockStyle.Fill
+                };
+
+                pnContenedor.Controls.Add(Principal);
+                pnContenedor.Tag = Principal;
+                Principal.Show();
+                Principal.BringToFront();
+            }
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
+            ActualizarColor();
             CerrarSesion();
         }
 
@@ -359,8 +379,10 @@ namespace CapaPresentaciones
         {
             if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Desea salir de la aplicación?") == DialogResult.Yes)
             {
+                ActualizarColor();
                 Application.Exit();
             }
+            Principal.HoraFecha.Start();
         }
 
         private void btnReportesDocente_Click(object sender, EventArgs e)
@@ -517,7 +539,8 @@ namespace CapaPresentaciones
         private void btnPrincipal_Click(object sender, EventArgs e)
         {
             ActualizarColor();
-            AbrirFormularios<P_PrincipalDocente>();
+            Principal.HoraFecha.Start();
+            Principal.BringToFront();
         }
 
         private void btnPlantillas_Click(object sender, EventArgs e)
@@ -532,11 +555,10 @@ namespace CapaPresentaciones
             AbrirFormularios<P_TablaSemestre>();
         }
 
-        // Registrar asistencia diaria
-        private void btnMarcarAsistencia_Click(object sender, EventArgs e)
+        private void MarcarAsistencia()
         {
             ActualizarColor();
-            
+
             // Obtener horario de la base de datos
             DataTable Semestre = N_Semestre.SemestreActual();
             string CodSemestre = Semestre.Rows[0][0].ToString();
@@ -560,7 +582,7 @@ namespace CapaPresentaciones
 
                 // Registrar asistencia
                 DataTable AsistenciaDocente = N_AsistenciaDiariaDocente.BuscarAsistenciaDocente(CodSemestre, CodDepartamentoA, Fecha, Usuario);
-                
+
                 if (AsistenciaDocente.Rows.Count == 0) // El docente todavia no registro su asistencia
                 {
                     var hora_servidor = TimeSpan.Parse(Hora);
@@ -587,6 +609,18 @@ namespace CapaPresentaciones
                     A_Dialogo.DialogoError("Ya registró su asistencia de hoy.");
                 }
             }
+            Principal.HoraFecha.Start();
+        }
+
+        private void pbMarcarAsistencia_Click(object sender, EventArgs e)
+        {
+            MarcarAsistencia();
+        }
+
+        // Registrar asistencia diaria
+        private void btnMarcarAsistencia_Click(object sender, EventArgs e)
+        {
+            MarcarAsistencia();
         }
 
         // Obtener hora local del servidor NIST
