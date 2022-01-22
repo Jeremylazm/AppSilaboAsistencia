@@ -69,7 +69,7 @@ namespace CapaPresentaciones
 
             if (AccesoReporte == "Jefe de Departamento")
             {
-                dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodSemestre, CodDepartamentoA, CodDocente, txtBuscar.Text);
+                dgvDatos.DataSource = N_Docente.BuscarDocentes(CodDepartamentoA, txtBuscar.Text);
             }
             dgvDatos.ClearSelection();
         }
