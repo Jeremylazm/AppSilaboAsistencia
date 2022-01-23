@@ -36,11 +36,11 @@ namespace CapaPresentaciones
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
             this.btnSeleccionar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.txtEstudiante = new Bunifu.UI.WinForms.BunifuLabel();
-            this.lblCodEstudiante = new Bunifu.UI.WinForms.BunifuLabel();
-            this.lnCodEstudiante = new Bunifu.UI.WinForms.BunifuSeparator();
             this.lnEstudiante = new Bunifu.UI.WinForms.BunifuSeparator();
-            this.txtCodEstudiante = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblEstudiante = new Bunifu.UI.WinForms.BunifuLabel();
+            this.txtCodEstudiante = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lnCodEstudiante = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.lblCodEstudiante = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnGeneral = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.Cuadricula = new System.Windows.Forms.TableLayoutPanel();
             this.pnFinal = new Bunifu.UI.WinForms.BunifuPanel();
@@ -227,38 +227,6 @@ namespace CapaPresentaciones
             this.txtEstudiante.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.txtEstudiante.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // lblCodEstudiante
-            // 
-            this.lblCodEstudiante.AllowParentOverrides = false;
-            this.lblCodEstudiante.AutoEllipsis = false;
-            this.lblCodEstudiante.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblCodEstudiante.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblCodEstudiante.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblCodEstudiante.Location = new System.Drawing.Point(24, 141);
-            this.lblCodEstudiante.Name = "lblCodEstudiante";
-            this.lblCodEstudiante.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblCodEstudiante.Size = new System.Drawing.Size(128, 23);
-            this.lblCodEstudiante.TabIndex = 83;
-            this.lblCodEstudiante.Text = "Cód. Estudiante";
-            this.lblCodEstudiante.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblCodEstudiante.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // lnCodEstudiante
-            // 
-            this.lnCodEstudiante.BackColor = System.Drawing.Color.Transparent;
-            this.lnCodEstudiante.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lnCodEstudiante.BackgroundImage")));
-            this.lnCodEstudiante.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.lnCodEstudiante.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
-            this.lnCodEstudiante.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lnCodEstudiante.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
-            this.lnCodEstudiante.LineThickness = 1;
-            this.lnCodEstudiante.Location = new System.Drawing.Point(24, 197);
-            this.lnCodEstudiante.Name = "lnCodEstudiante";
-            this.lnCodEstudiante.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.lnCodEstudiante.Size = new System.Drawing.Size(128, 10);
-            this.lnCodEstudiante.TabIndex = 84;
-            // 
             // lnEstudiante
             // 
             this.lnEstudiante.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -275,24 +243,6 @@ namespace CapaPresentaciones
             this.lnEstudiante.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnEstudiante.Size = new System.Drawing.Size(698, 10);
             this.lnEstudiante.TabIndex = 87;
-            // 
-            // txtCodEstudiante
-            // 
-            this.txtCodEstudiante.AllowParentOverrides = false;
-            this.txtCodEstudiante.AutoEllipsis = false;
-            this.txtCodEstudiante.AutoSize = false;
-            this.txtCodEstudiante.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtCodEstudiante.CursorType = System.Windows.Forms.Cursors.Default;
-            this.txtCodEstudiante.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtCodEstudiante.Location = new System.Drawing.Point(24, 173);
-            this.txtCodEstudiante.Name = "txtCodEstudiante";
-            this.txtCodEstudiante.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtCodEstudiante.Size = new System.Drawing.Size(128, 23);
-            this.txtCodEstudiante.TabIndex = 85;
-            this.txtCodEstudiante.Text = "Valor de Cód. Estudiante";
-            this.txtCodEstudiante.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.txtCodEstudiante.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // lblEstudiante
             // 
@@ -312,6 +262,56 @@ namespace CapaPresentaciones
             this.lblEstudiante.Text = "Estudiante";
             this.lblEstudiante.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblEstudiante.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // txtCodEstudiante
+            // 
+            this.txtCodEstudiante.AllowParentOverrides = false;
+            this.txtCodEstudiante.AutoEllipsis = false;
+            this.txtCodEstudiante.AutoSize = false;
+            this.txtCodEstudiante.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtCodEstudiante.CursorType = System.Windows.Forms.Cursors.Default;
+            this.txtCodEstudiante.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.txtCodEstudiante.Location = new System.Drawing.Point(24, 173);
+            this.txtCodEstudiante.Name = "txtCodEstudiante";
+            this.txtCodEstudiante.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtCodEstudiante.Size = new System.Drawing.Size(128, 23);
+            this.txtCodEstudiante.TabIndex = 85;
+            this.txtCodEstudiante.Text = "Valor de Cód. Estudiante";
+            this.txtCodEstudiante.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.txtCodEstudiante.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // lnCodEstudiante
+            // 
+            this.lnCodEstudiante.BackColor = System.Drawing.Color.Transparent;
+            this.lnCodEstudiante.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lnCodEstudiante.BackgroundImage")));
+            this.lnCodEstudiante.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.lnCodEstudiante.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
+            this.lnCodEstudiante.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lnCodEstudiante.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
+            this.lnCodEstudiante.LineThickness = 1;
+            this.lnCodEstudiante.Location = new System.Drawing.Point(24, 197);
+            this.lnCodEstudiante.Name = "lnCodEstudiante";
+            this.lnCodEstudiante.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
+            this.lnCodEstudiante.Size = new System.Drawing.Size(128, 10);
+            this.lnCodEstudiante.TabIndex = 84;
+            // 
+            // lblCodEstudiante
+            // 
+            this.lblCodEstudiante.AllowParentOverrides = false;
+            this.lblCodEstudiante.AutoEllipsis = false;
+            this.lblCodEstudiante.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblCodEstudiante.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblCodEstudiante.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodEstudiante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.lblCodEstudiante.Location = new System.Drawing.Point(24, 141);
+            this.lblCodEstudiante.Name = "lblCodEstudiante";
+            this.lblCodEstudiante.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblCodEstudiante.Size = new System.Drawing.Size(128, 23);
+            this.lblCodEstudiante.TabIndex = 83;
+            this.lblCodEstudiante.Text = "Cód. Estudiante";
+            this.lblCodEstudiante.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCodEstudiante.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // btnGeneral
             // 
