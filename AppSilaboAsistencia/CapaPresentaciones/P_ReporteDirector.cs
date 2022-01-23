@@ -233,7 +233,7 @@ namespace CapaPresentaciones
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
 
-                fnReporte9();
+                fnReporte5();
             }
         }
 
@@ -417,9 +417,9 @@ namespace CapaPresentaciones
                         else
                         {
                             if (Total == resultados.Rows.Count)
-                                ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "PROGRESO");
+                                ResultadosFinales.Rows.Add(Contador - 8, wb.Worksheet(1).Cell("C" + Convert.ToString(i)).Value.ToString(), "", "PROGRESO");
                             else
-                                ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "FALTA");
+                                ResultadosFinales.Rows.Add(Contador - 8, wb.Worksheet(1).Cell("C" + Convert.ToString(i)).Value.ToString(), "", "FALTA");
                         }
                         Total = Total + 1;
                         Contador = Contador + 1;
@@ -432,7 +432,7 @@ namespace CapaPresentaciones
             }
             else
             {
-                Ayudas.A_Dialogo.DialogoError("El Docente: " + CodDocenteReporte + " no subió su Plan de Sesiones");
+                Ayudas.A_Dialogo.DialogoError("El Docente: " + CodDocenteReporte + " no subió su Plan de Sesiones de la asignatura " + txtCodigo.Text);
             }
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
