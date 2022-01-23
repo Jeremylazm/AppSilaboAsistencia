@@ -280,7 +280,8 @@ namespace CapaPresentaciones
                 P_InicioSesion Login = new P_InicioSesion();
                 Login.Show();
             }
-            Principal.HoraFecha.Start();
+            if (E_InicioSesion.Acceso != "Administrador")
+                Principal.HoraFecha.Start();
         }
 
         private void EditarPerfil()
