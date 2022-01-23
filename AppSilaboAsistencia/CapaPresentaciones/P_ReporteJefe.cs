@@ -179,7 +179,7 @@ namespace CapaPresentaciones
                 lblFechaFinal.Visible = false;
                 dpFechaFinal.Visible = false;
 
-                fnReporte5();
+                fnReporte9();
             }
         }
 
@@ -277,18 +277,7 @@ namespace CapaPresentaciones
             }
             else
             {
-                Ayudas.A_Dialogo.DialogoError("El Docente no subió su Plan de Sesiones");
-
-                lblCriterioSeleccion.Visible = true;
-                cxtCriterioSeleccion.Visible = true;
-
-                lblFechaInicial.Visible = true;
-                dpFechaInicial.Visible = true;
-
-                lblFechaFinal.Visible = true;
-                dpFechaFinal.Visible = true;
-
-                cxtTipoReporte.SelectedIndex = 0;
+                Ayudas.A_Dialogo.DialogoError("El Docente: " + CodDocenteReporte +" no subió su Plan de Sesiones");
             }
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
@@ -431,7 +420,7 @@ namespace CapaPresentaciones
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
-                fnReporte5();
+                fnReporte9();
             }
         }
 
@@ -443,7 +432,7 @@ namespace CapaPresentaciones
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
-                fnReporte5();
+                fnReporte9();
             }
         }
     }
