@@ -35,6 +35,7 @@ namespace CapaPresentaciones
                 if (CriterioSeleccion == "Por Estudiantes") MostrarTodasAsignaturas();
                 if (CriterioSeleccion == "Por Asignaturas") MostrarEstudiantes();
             }
+            else MostrarTodasAsignaturas();
         }
 
         private void AccionesTabla()
