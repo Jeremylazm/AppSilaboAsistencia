@@ -62,25 +62,7 @@ namespace CapaPresentaciones
             //MostrarEstudiantes();
         }
 
-        private void AccionesTablaAdd()
-        {
-            dgvDatos.Columns[0].DisplayIndex = 8;
-            dgvDatos.Columns[1].DisplayIndex = 8;
-            dgvDatos.Columns[2].HeaderText = "Id.";
-            dgvDatos.Columns[2].ReadOnly = true;
-            dgvDatos.Columns[3].HeaderText = "Código";
-            dgvDatos.Columns[3].ReadOnly = true;
-            dgvDatos.Columns[4].HeaderText = "Apellido Paterno";
-            dgvDatos.Columns[4].ReadOnly = true;
-            dgvDatos.Columns[5].HeaderText = "Apellido Materno";
-            dgvDatos.Columns[5].ReadOnly = true;
-            dgvDatos.Columns[6].HeaderText = "Nombre";
-            dgvDatos.Columns[6].ReadOnly = true;
-            dgvDatos.Columns[7].Visible = false;
-            dgvDatos.Columns[8].Visible = false;
-        }
-
-        private void AccionesTablaEditar()
+        private void AccionesTabla()
         {
             dgvDatos.Columns[0].DisplayIndex = 8;
             dgvDatos.Columns[1].DisplayIndex = 8;
@@ -145,7 +127,7 @@ namespace CapaPresentaciones
 
             }
             //dgvDatos.DataSource = dgvTabla;
-            AccionesTablaAdd();
+            AccionesTabla();
         }
 
         public void MostrarEstudiantesRegistrados()
@@ -174,12 +156,87 @@ namespace CapaPresentaciones
 
             }
             //dgvDatos.DataSource = dgvTabla;
-            AccionesTablaEditar();
+            AccionesTabla();
         }
 
         public void BuscarEstudiantes()
         {
-            dgvDatos.DataSource = N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, CodAsignatura, txtBuscar.Text);
+            //dgvDatos.DataSource= N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, CodAsignatura, txtBuscar.Text);
+            DataTable EstudiantesMatriculados = N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, CodAsignatura, txtBuscar.Text);
+            this.dgvDatos.DataSource = null;
+
+
+            this.dgvDatos.Rows.Clear();
+            if (Program.Evento == 0)
+			{
+                //buscar estudiantes el dgv de agregar
+                if (EstudiantesMatriculados.Rows.Count != 0)
+                {
+
+                    foreach (DataRow f in EstudiantesMatriculados.Rows)
+                    {
+
+                        if (dgvTabla.Rows.Count != 0)
+                        {
+                           
+                            int j = 0;
+                            foreach (DataRow fila in dgvTabla.Rows)
+                            {
+                                if (f[1].ToString() == fila[1].ToString())
+                                {
+
+                                    dgvDatos.Rows.Add(ListaImagenes.Images[0], "", fila[0], fila[1], fila[2], fila[3], fila[4], "", "");
+                                    dgvDatos.Rows[j].Cells[0].Tag = false;
+                                    j += 1;
+                                }
+                            }
+                            AccionesTabla();
+                        }
+                    }
+                }
+            }
+			else
+			{
+                //buscar estudiantes el dgv de editar
+                if (EstudiantesMatriculados.Rows.Count != 0)
+                {
+
+                   
+                    foreach (DataRow f in EstudiantesMatriculados.Rows)
+                    {
+
+                        if (dgvTabla.Rows.Count != 0)
+                        {
+                            //A_Dialogo.DialogoInformacion("si hay EN LA TABLA PRICIPAL");
+                            int j = 0;
+                            foreach (DataRow fila in dgvTabla.Rows)
+                            {
+                                if (f[1].ToString() == fila[1].ToString())
+                                {
+
+                                    if (fila[5].ToString() == "SI")
+                                    {
+
+                                        dgvDatos.Rows.Add(ListaImagenes.Images[1], fila[6], fila[0], fila[1], fila[2], fila[3], fila[4], fila[5], fila[6]);
+                                        dgvDatos.Rows[j].Cells[0].Tag = true;
+                                    }
+                                    else
+                                    {
+
+                                        dgvDatos.Rows.Add(ListaImagenes.Images[0], fila[6], fila[0], fila[1], fila[2], fila[3], fila[4], fila[5], fila[6]);
+
+
+                                        dgvDatos.Rows[j].Cells[0].Tag = false;
+                                    }
+                                    j += 1;
+                                }
+                            }
+                            AccionesTabla();
+                        }
+                    }
+                }
+            }
+            
         }
 
         public void AgregarRgistroEstudiantes()
@@ -187,7 +244,7 @@ namespace CapaPresentaciones
             foreach (DataGridViewRow dr in dgvDatos.Rows)
             {
                 ObjEntidadEstd.CodSemestre = CodSemestre;
-                ObjEntidadEstd.CodEscuelaP = CodAsignatura.Substring(6);
+                ObjEntidadEstd.CodEscuelaP = N_Catalogo.VerEscuelaAsignatura(CodSemestre, CodAsignatura).ToString();
                 ObjEntidadEstd.CodAsignatura = CodAsignatura;
                 ObjEntidadEstd.Fecha = DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")); //actual del registro
                 ObjEntidadEstd.Hora = hora;//actual del registro
@@ -203,8 +260,9 @@ namespace CapaPresentaciones
         {
             foreach (DataGridViewRow dr in dgvDatos.Rows)
             {
+                //cambiar es
                 ObjEntidadEstd.CodSemestre = CodSemestre;
-                ObjEntidadEstd.CodEscuelaP = CodAsignatura.Substring(6);
+                ObjEntidadEstd.CodEscuelaP = N_Catalogo.VerEscuelaAsignatura(CodSemestre,CodAsignatura).ToString();//EscuelaProf
                 ObjEntidadEstd.CodAsignatura = CodAsignatura;
                 ObjEntidadEstd.Fecha = DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));//fecha en la que fue registrado
                 ObjEntidadEstd.Hora = hora;//hora en el que fue registrado
@@ -262,7 +320,7 @@ namespace CapaPresentaciones
                 {
                     if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea editar el registro?") == DialogResult.Yes)
                     {
-                        DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, DateTime.ParseExact(txtFecha.Text.ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), DateTime.ParseExact(txtFecha.Text.ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), "");
+                        DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, DateTime.Parse(txtFecha.Text.ToString(), CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), DateTime.Parse(txtFecha.Text.ToString(), CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), "");
 
                         if (Resultado.Rows.Count != 0)
                         {
