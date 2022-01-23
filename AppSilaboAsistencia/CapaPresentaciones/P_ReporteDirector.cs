@@ -233,7 +233,7 @@ namespace CapaPresentaciones
                 btnGeneral.Visible = true;
                 btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
 
-                fnReporte9();
+                fnReporte5();
             }
         }
 
@@ -417,9 +417,9 @@ namespace CapaPresentaciones
                         else
                         {
                             if (Total == resultados.Rows.Count)
-                                ResultadosFinales.Rows.Add(Contador - 8, wb.Worksheet(1).Cell("C" + Convert.ToString(i)).Value.ToString(), "", "PROGRESO");
+                                ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "PROGRESO");
                             else
-                                ResultadosFinales.Rows.Add(Contador - 8, wb.Worksheet(1).Cell("C" + Convert.ToString(i)).Value.ToString(), "", "FALTA");
+                                ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "FALTA");
                         }
                         Total = Total + 1;
                         Contador = Contador + 1;
@@ -432,7 +432,21 @@ namespace CapaPresentaciones
             }
             else
             {
-                Ayudas.A_Dialogo.DialogoError("El Docente: " + CodDocenteReporte + " no subió su Plan de Sesiones");
+                Ayudas.A_Dialogo.DialogoError("El Docente no subió su Plan de Sesiones");
+
+                lblCriterioSeleccion.Visible = true;
+                cxtCriterioSeleccion.Visible = true;
+
+                lblFechaInicial.Visible = true;
+                dpFechaInicial.Visible = true;
+
+                lblFechaFinal.Visible = true;
+                dpFechaFinal.Visible = true;
+
+                btnGeneral.Visible = false;
+
+                cxtTipoReporte.SelectedIndex = 0;
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
             }
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
@@ -545,7 +559,7 @@ namespace CapaPresentaciones
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
-                fnReporte9();
+                fnReporte5();
             }
         }
     }
