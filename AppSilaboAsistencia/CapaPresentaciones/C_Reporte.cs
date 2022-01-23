@@ -339,7 +339,10 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                btnGrafico1.Select();
+                if (tcGraficos.PageIndex == 0)
+                    btnGrafico1.Select();
+                else
+                    btnGrafico2.Select();
                 btnGrafico2.Visible = true;
                 
                 // Grafico 1
@@ -420,7 +423,7 @@ namespace CapaPresentaciones
 
                 gxGrafico2.Update();
 
-                tcGraficos.SetPage(IndiceGrafico1);
+                tcGraficos.SetPage(tcGraficos.PageIndex);
 
                 lblTitulo.Select();
 
@@ -562,10 +565,11 @@ namespace CapaPresentaciones
             Datos1B.Add(FaltaronJustificado);
             Datos1B.Add(FaltaronSinJustificar);
 
-            Color1B.Add(Color.FromArgb(23, 153, 75));
-            Color1B.Add(Color.FromArgb(117, 163, 229));
-            Color1B.Add(Color.FromArgb(232, 128, 31));
             Color1B.Add(Color.FromArgb(104, 13, 15));
+            Color1B.Add(Color.FromArgb(186, 126, 25));
+            Color1B.Add(Color.FromArgb(83, 10, 12));
+            Color1B.Add(Color.FromArgb(232, 158, 31));
+            
 
             gxGrafico4.Labels = EtiquetasB.ToArray();
             gxGrafico4.Clear();
@@ -649,7 +653,7 @@ namespace CapaPresentaciones
                 #region ===================== GRÁFICOS =====================
                 btnBug.Visible = true;
                 btnGrafico2.Visible = false;
-
+                
                 // Grafico 1
                 IndiceGrafico1 = 0;
 
@@ -823,10 +827,10 @@ namespace CapaPresentaciones
             Datos1B.Add(FaltaronJustificado);
             Datos1B.Add(FaltaronSinJustificar);
 
-            Color1B.Add(Color.FromArgb(23, 153, 75));
-            Color1B.Add(Color.FromArgb(117, 163, 229));
-            Color1B.Add(Color.FromArgb(232, 128, 31));
             Color1B.Add(Color.FromArgb(104, 13, 15));
+            Color1B.Add(Color.FromArgb(186, 126, 25));
+            Color1B.Add(Color.FromArgb(83, 10, 12));
+            Color1B.Add(Color.FromArgb(232, 158, 31));
 
             gxGrafico4.Labels = EtiquetasB.ToArray();
             gxGrafico4.Clear();
@@ -1263,7 +1267,7 @@ namespace CapaPresentaciones
             }
         }
 
-        public void fnReporte9(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, DataTable Resumen)
+        public void fnReporte9(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, DataTable Resumen, DataTable Gráfico)
         {
             this.CriterioAsistenciasEstudiantes = "";
 
@@ -1361,7 +1365,7 @@ namespace CapaPresentaciones
                 List<double> Datos2A = new List<double>();
                 List<Color> Colores2A = new List<Color>();
 
-                foreach (DataRow Fila in Resumen.Rows)
+                foreach (DataRow Fila in Gráfico.Rows)
                 {
                     EtiquetasA.Add(Fila["CodAsignatura"].ToString());
                     Datos1A.Add(double.Parse(Fila["TemasAvanzados"].ToString()));
@@ -1373,11 +1377,11 @@ namespace CapaPresentaciones
                 gxGrafico1.Labels = EtiquetasA.ToArray();
                 gxGrafico1.Clear();
 
-                GraficoBarrasHorizontales1.Label = "Avance Completado";
+                GraficoBarrasHorizontales1.Label = "Avance Completado (%)";
                 GraficoBarrasHorizontales1.Data = Datos1A;
                 GraficoBarrasHorizontales1.BackgroundColor = Colores1A;
 
-                GraficoBarrasHorizontales2.Label = "Avance Faltante";
+                GraficoBarrasHorizontales2.Label = "Avance Faltante (%)";
                 GraficoBarrasHorizontales2.Data = Datos2A;
                 GraficoBarrasHorizontales2.BackgroundColor = Colores2A;
 
@@ -1430,7 +1434,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns.Clear();
                 dgvResultados.Columns.Add(btnVerReporte);
                 dgvResultados.Columns[0].HeaderText = "Ver Reporte";
-
+                
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[0].DisplayIndex = 4;
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
@@ -1439,7 +1443,10 @@ namespace CapaPresentaciones
                 {
                     Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
-
+                dgvResultados.Columns["CodAsignatura"].HeaderText = "Cod. Asignatura";
+                dgvResultados.Columns["NombreAsignatura"].HeaderText = "Nombre Asignatura";
+                dgvResultados.Columns["PorcentajeAsistencias"].HeaderText = "Asistencias (%)";
+                dgvResultados.Columns["PorcentajeFaltas"].HeaderText = "Faltas (%)";
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
@@ -1637,10 +1644,9 @@ namespace CapaPresentaciones
             Datos1B.Add(FaltaronJustificado);
             Datos1B.Add(FaltaronSinJustificar);
 
-            Color1B.Add(Color.FromArgb(23, 153, 75));
-            Color1B.Add(Color.FromArgb(117, 163, 229));
-            Color1B.Add(Color.FromArgb(232, 128, 31));
             Color1B.Add(Color.FromArgb(104, 13, 15));
+            Color1B.Add(Color.FromArgb(232, 158, 31));
+            Color1B.Add(Color.FromArgb(83, 10, 12));
 
             gxGrafico4.Labels = EtiquetasB.ToArray();
             gxGrafico4.Clear();
@@ -1683,7 +1689,10 @@ namespace CapaPresentaciones
                 {
                     Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
-
+                dgvResultados.Columns["CodAsignatura"].HeaderText = "Cod. Asignatura";
+                dgvResultados.Columns["NombreAsignatura"].HeaderText = "Nombre Asignatura";
+                dgvResultados.Columns["PorcentajeAsistencias"].HeaderText = "Asistencias (%)";
+                dgvResultados.Columns["PorcentajeFaltas"].HeaderText = "Faltas (%)";  
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 
@@ -1867,7 +1876,10 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                btnGrafico1.Select();
+                if (tcGraficos.PageIndex == 2)
+                    btnGrafico1.Select();
+                else
+                    btnGrafico2.Select();
                 btnGrafico2.Visible = true;
 
                 // Gráfico 1
@@ -1920,10 +1932,9 @@ namespace CapaPresentaciones
                 Datos1B.Add(FaltaronJustificado);
                 Datos1B.Add(FaltaronSinJustificar);
 
-                Color1B.Add(Color.FromArgb(23, 153, 75));
-                Color1B.Add(Color.FromArgb(117, 163, 229));
-                Color1B.Add(Color.FromArgb(232, 128, 31));
                 Color1B.Add(Color.FromArgb(104, 13, 15));
+                Color1B.Add(Color.FromArgb(232, 158, 31));
+                Color1B.Add(Color.FromArgb(83, 10, 12));
 
                 gxGrafico4.Labels = EtiquetasB.ToArray();
                 gxGrafico4.Clear();
@@ -1936,7 +1947,7 @@ namespace CapaPresentaciones
 
                 gxGrafico4.Update();
 
-                tcGraficos.SetPage(IndiceGrafico1);
+                tcGraficos.SetPage(tcGraficos.PageIndex);
                 #endregion ===================== GRÁFICOS =====================
             }
         }
@@ -1990,12 +2001,20 @@ namespace CapaPresentaciones
                 {
                     Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
-
+                dgvResultados.Columns["TotalAsistieron"].HeaderText = "Total Asistieron";
+                dgvResultados.Columns["TotalFaltaron"].HeaderText = "Total Faltaron";
+                
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 
                 #region ===================== CUADRO DE RESUMEN =====================
                 DataTable dtEstadisticos = (dgvResultados.DataSource as DataTable).Copy();
+                dtEstadisticos.Rows.Clear();
+                // Solo donde haya asistencia de docentes para los estadísticos
+                foreach (DataRow row in Datos.Rows)
+                {
+                    if (row["TotalFaltaron"].ToString()!= "0" && row["TotalAsistieron"].ToString() != "0") dtEstadisticos.ImportRow(row);
+                }
 
                 // Listas de valores
                 List<double> Asistieron = dtEstadisticos.AsEnumerable().Select(x => Convert.ToDouble(x.Field<int>("TotalAsistieron"))).ToList();
@@ -2037,7 +2056,10 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
-                btnGrafico1.Select();
+                if (tcGraficos.PageIndex == 0)
+                    btnGrafico1.Select();
+                else
+                    btnGrafico2.Select();
                 btnGrafico2.Visible = true;
 
                 // Grafico 1
@@ -2090,9 +2112,9 @@ namespace CapaPresentaciones
                 double Valor1 = 0;
                 double Valor2 = 0;
 
+                DataTable dtEstadisticos2 = dtEstadisticos.AsEnumerable().Reverse().CopyToDataTable();
 
-
-                foreach (DataRow Fila in dtEstadisticos.Rows)
+                foreach (DataRow Fila in dtEstadisticos2.Rows)
                 {
                     EtiquetasB.Add(Fila["Fecha"].ToString());
                     Valor1 = double.Parse(Fila["TotalAsistieron"].ToString());
@@ -2118,7 +2140,7 @@ namespace CapaPresentaciones
 
                 gxGrafico2.Update();
 
-                tcGraficos.SetPage(IndiceGrafico1);
+                tcGraficos.SetPage(tcGraficos.PageIndex);
                 #endregion ===================== GRÁFICOS =====================
             }
         }
@@ -2261,10 +2283,9 @@ namespace CapaPresentaciones
             Datos1B.Add(FaltaronJustificado);
             Datos1B.Add(FaltaronSinJustificar);
 
-            Color1B.Add(Color.FromArgb(23, 153, 75));
-            Color1B.Add(Color.FromArgb(117, 163, 229));
-            Color1B.Add(Color.FromArgb(232, 128, 31));
             Color1B.Add(Color.FromArgb(104, 13, 15));
+            Color1B.Add(Color.FromArgb(232, 158, 31));
+            Color1B.Add(Color.FromArgb(83, 10, 12));
 
             gxGrafico4.Labels = EtiquetasB.ToArray();
             gxGrafico4.Clear();
