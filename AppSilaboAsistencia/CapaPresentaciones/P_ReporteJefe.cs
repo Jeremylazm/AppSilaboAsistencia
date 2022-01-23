@@ -110,12 +110,12 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            P_SeleccionadoDocente docente = new P_SeleccionadoDocente(txtCodDocente.Text, "Jefe de Departamento", cxtCriterioSeleccion.SelectedItem.ToString());
-            AddOwnedForm(docente);
-            docente.ShowDialog();
-            docente.Dispose();
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Docentes"))
             {
+                P_SeleccionadoDocente docente = new P_SeleccionadoDocente(txtCodDocente.Text, "Jefe de Departamento", cxtCriterioSeleccion.SelectedItem.ToString());
+                AddOwnedForm(docente);
+                docente.ShowDialog();
+                docente.Dispose();
                 if (cxtCriterioSeleccion.SelectedItem.Equals("Por Fechas"))
                 {
                     fnReporte13();
@@ -127,8 +127,13 @@ namespace CapaPresentaciones
                 }
 
             }
-            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignatura"))
+            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
+                P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Jefe de Departamento", "");
+                AddOwnedForm(Asignaturas);
+                Asignaturas.ShowDialog();
+                Asignaturas.Dispose();
+
                 fnReporte5();
             }
         }
@@ -179,7 +184,7 @@ namespace CapaPresentaciones
                 lblFechaFinal.Visible = false;
                 dpFechaFinal.Visible = false;
 
-                fnReporte5();
+                fnReporte9();
             }
         }
 
@@ -262,9 +267,9 @@ namespace CapaPresentaciones
                         else
                         {
                             if (Total == resultados.Rows.Count)
-                                ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "PROGRESO");
+                                ResultadosFinales.Rows.Add(Contador - 8, wb.Worksheet(1).Cell("C" + Convert.ToString(i)).Value.ToString(), "", "PROGRESO");
                             else
-                                ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "FALTA");
+                                ResultadosFinales.Rows.Add(Contador - 8, wb.Worksheet(1).Cell("C" + Convert.ToString(i)).Value.ToString(), "", "FALTA");
                         }
                         Total = Total + 1;
                         Contador = Contador + 1;
@@ -277,18 +282,7 @@ namespace CapaPresentaciones
             }
             else
             {
-                Ayudas.A_Dialogo.DialogoError("El Docente no subió su Plan de Sesiones");
-
-                lblCriterioSeleccion.Visible = true;
-                cxtCriterioSeleccion.Visible = true;
-
-                lblFechaInicial.Visible = true;
-                dpFechaInicial.Visible = true;
-
-                lblFechaFinal.Visible = true;
-                dpFechaFinal.Visible = true;
-
-                cxtTipoReporte.SelectedIndex = 0;
+                Ayudas.A_Dialogo.DialogoError("El Docente: " + CodDocenteReporte + " no subió su Plan de Sesiones");
             }
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }

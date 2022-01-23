@@ -239,7 +239,7 @@ namespace CapaPresentaciones
             this.lnDocente.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.lnDocente.LineThickness = 1;
             this.lnDocente.Location = new System.Drawing.Point(175, 197);
-            this.lnDocente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lnDocente.Margin = new System.Windows.Forms.Padding(4);
             this.lnDocente.Name = "lnDocente";
             this.lnDocente.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnDocente.Size = new System.Drawing.Size(698, 10);
@@ -292,7 +292,7 @@ namespace CapaPresentaciones
             this.lnCodDocente.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.lnCodDocente.LineThickness = 1;
             this.lnCodDocente.Location = new System.Drawing.Point(24, 197);
-            this.lnCodDocente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lnCodDocente.Margin = new System.Windows.Forms.Padding(4);
             this.lnCodDocente.Name = "lnCodDocente";
             this.lnCodDocente.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnCodDocente.Size = new System.Drawing.Size(109, 10);
@@ -822,7 +822,7 @@ namespace CapaPresentaciones
             this.lnNombre.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.lnNombre.LineThickness = 1;
             this.lnNombre.Location = new System.Drawing.Point(3, 59);
-            this.lnNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lnNombre.Margin = new System.Windows.Forms.Padding(4);
             this.lnNombre.Name = "lnNombre";
             this.lnNombre.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnNombre.Size = new System.Drawing.Size(322, 10);
@@ -879,7 +879,7 @@ namespace CapaPresentaciones
             this.lnEscuelaP.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.lnEscuelaP.LineThickness = 1;
             this.lnEscuelaP.Location = new System.Drawing.Point(3, 59);
-            this.lnEscuelaP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lnEscuelaP.Margin = new System.Windows.Forms.Padding(4);
             this.lnEscuelaP.Name = "lnEscuelaP";
             this.lnEscuelaP.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnEscuelaP.Size = new System.Drawing.Size(331, 10);
@@ -934,7 +934,7 @@ namespace CapaPresentaciones
             this.lnCodigo.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.lnCodigo.LineThickness = 1;
             this.lnCodigo.Location = new System.Drawing.Point(24, 197);
-            this.lnCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lnCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.lnCodigo.Name = "lnCodigo";
             this.lnCodigo.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnCodigo.Size = new System.Drawing.Size(132, 10);
