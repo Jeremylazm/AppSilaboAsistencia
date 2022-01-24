@@ -179,7 +179,7 @@ namespace CapaPresentaciones
                 lblFechaFinal.Visible = false;
                 dpFechaFinal.Visible = false;
 
-                fnReporte9();
+                fnReporte5();
             }
         }
 
@@ -238,7 +238,7 @@ namespace CapaPresentaciones
 
                 DataTable ResultadosFinales = new DataTable();
                 ResultadosFinales.Columns.Add("Sesión", typeof(int));
-                ResultadosFinales.Columns.Add("NombreTema", typeof(string));
+                ResultadosFinales.Columns.Add("Tema", typeof(string));
                 ResultadosFinales.Columns.Add("Fecha", typeof(string));
                 ResultadosFinales.Columns.Add("Estado", typeof(string));
 
@@ -262,9 +262,9 @@ namespace CapaPresentaciones
                         else
                         {
                             if (Total == resultados.Rows.Count)
-                                ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "PROGRESO");
+                                ResultadosFinales.Rows.Add(Contador - 8, wb.Worksheet(1).Cell("C" + Convert.ToString(i)).Value.ToString(), "", "PROGRESO");
                             else
-                                ResultadosFinales.Rows.Add(Contador - 8, "Tema" + Convert.ToString(Contador - 8), "", "FALTA");
+                                ResultadosFinales.Rows.Add(Contador - 8, wb.Worksheet(1).Cell("C" + Convert.ToString(i)).Value.ToString(), "", "FALTA");
                         }
                         Total = Total + 1;
                         Contador = Contador + 1;
@@ -277,7 +277,7 @@ namespace CapaPresentaciones
             }
             else
             {
-                Ayudas.A_Dialogo.DialogoError("El Docente: " + CodDocenteReporte +" no subió su Plan de Sesiones");
+                Ayudas.A_Dialogo.DialogoError("El Docente: " + CodDocenteReporte + " no subió su Plan de Sesiones de la asignatura " + txtCodigo.Text);
             }
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }

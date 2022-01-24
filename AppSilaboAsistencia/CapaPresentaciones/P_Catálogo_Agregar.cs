@@ -42,7 +42,6 @@ namespace CapaPresentaciones
             LlenarDatosDocente();
             LlenarDatosAsignatura();
             LlenarDatosEscuelas();
-            Limpiar_Colores();
             Actualizar_Color();
         }
 

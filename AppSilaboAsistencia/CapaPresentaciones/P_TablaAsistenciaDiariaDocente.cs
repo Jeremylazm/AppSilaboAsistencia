@@ -31,8 +31,8 @@ namespace CapaPresentaciones
 			DataTable Semestre = N_Semestre.SemestreActual();
 			CodSemestre = Semestre.Rows[0][0].ToString();
             LmFechaInf = DateTime.ParseExact(Semestre.Rows[0][1].ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
-            CodDepartamentoA = "IF";
-			dgvTabla = pdgv;
+            CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
+            dgvTabla = pdgv;
 			ObjEntidadDoc = new E_AsistenciaDiariaDocente();
 			ObjNegocioDoc = new N_AsistenciaDiariaDocente();
 			InitializeComponent();
@@ -41,7 +41,7 @@ namespace CapaPresentaciones
             Control[] Controles = { this, lblTitulo, pbLogo, lblFecha, lblMarcarTodos, txtFecha};
 			Docker.SubscribeControlsToDragEvents(Controles);
 			Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
-            txtSemestreA.Text = CodSemestre;
+            txtSemestre.Text = CodSemestre;
 			lblFecha.Text += "    ";
 			
 		}
@@ -65,33 +65,7 @@ namespace CapaPresentaciones
 
 
         }
-        public void InicializarValoresEditar()
-        {
-            if(dgvDatos.Rows.Count==0)
-			{
-                A_Dialogo.DialogoInformacion("No hay datos para inicializar");
-
-			}
-            else
-			{
-                foreach (DataGridViewRow fila in dgvDatos.Rows)
-                {
-                    DataGridViewComboBoxCell textBoxcell = (DataGridViewComboBoxCell)(fila.Cells["cbxObservaciones"]);
-                    textBoxcell.Value = fila.Cells[8].Value;
-                    fila.Cells[0].Value = (fila.Cells[7].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
-                    if (fila.Cells[7].Value.Equals("SI"))
-                    {
-                        fila.Cells[0].Tag = true;
-                    }
-                    else
-                    {
-                        fila.Cells[0].Tag = false;
-                    }
-                }
-            }
-      
-        }
-        public void MostrarEstudiantesRegistrados()
+        public void MostrarDocentesRegistrados()
         {
             
             
@@ -129,6 +103,47 @@ namespace CapaPresentaciones
         public void BuscarRegistros()
         {
             //dgvDatos.DataSource = N_Docente.BuscarDocentes(CodDepartamentoA, txtBuscar.Text);
+            DataTable Docentes = N_Docente.BuscarDocentes(CodDepartamentoA, txtBuscar.Text);
+            this.dgvDatos.DataSource = null;
+            this.dgvDatos.Rows.Clear();
+
+            if (Docentes.Rows.Count != 0)
+            {
+
+                foreach (DataRow f in Docentes.Rows)
+                {
+
+                    if (dgvTabla.Rows.Count != 0)
+                    {
+
+                        int i = 0;
+                        foreach (DataRow fila in dgvTabla.Rows)
+                        {
+							if (f[2].ToString() == fila[1].ToString())
+							{
+                                if (fila[5].ToString() == "SI")
+                                {
+
+                                    dgvDatos.Rows.Add(ListaImagenes.Images[1], fila[6], fila[0], fila[1], fila[2], fila[3], fila[4], fila[5], fila[6]);
+                                    dgvDatos.Rows[i].Cells[0].Tag = true;
+                                }
+                                else
+                                {
+                                    dgvDatos.Rows.Add(ListaImagenes.Images[0], fila[6], fila[0], fila[1], fila[2], fila[3], fila[4], fila[5], fila[6]);
+
+
+                                    dgvDatos.Rows[i].Cells[0].Tag = false;
+                                }
+
+                                i += 1;
+                            }
+                            
+                        }
+                        AccionesTablaEditar();
+                    }
+                }
+            }
+
         }
         //buscar la hora en que sergistró la asistencia de un docente
         public string HoraRegistroAsistenciaDocente(string pCodSemestre,string pDepartamentoA,string pFecha,string pCodDocente)
@@ -177,14 +192,31 @@ namespace CapaPresentaciones
             
         }
 
-		private void btnCerrar_Click(object sender, EventArgs e)
+        private void AjustarTabla()
+        {
+            // Verificar el numero de filas de los resultados
+            if (dgvDatos.Rows.Count <= 20)
+            {
+                sbDatos.Visible = false;
+                dgvDatos.Width = 1124;
+                this.Height = dgvDatos.Rows.Count * 26 + 253;
+            }
+            else
+            {
+                sbDatos.Visible = true;
+                sbDatos.Maximum = dgvDatos.Rows.Count - 20;
+                this.Height = 773;
+            }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
 		{
             Close();
         }
 
 		private void txtBuscar_TextChanged(object sender, EventArgs e)
 		{
-            //BuscarRegistros();
+            BuscarRegistros();
 
         }
 
@@ -253,8 +285,9 @@ namespace CapaPresentaciones
 		{
 
             
-                MostrarEstudiantesRegistrados();
+                MostrarDocentesRegistrados();
                 //InicializarValoresEditar();
+                AjustarTabla();
 
         }
 
@@ -268,5 +301,5 @@ namespace CapaPresentaciones
 		{
             //InicializarValoresEditar();
         }
-	}
+    }
 }

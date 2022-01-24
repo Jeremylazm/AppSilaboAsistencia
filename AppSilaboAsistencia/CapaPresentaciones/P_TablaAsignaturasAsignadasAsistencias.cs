@@ -7,7 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using CapaNegocios;
 using CapaEntidades;
-
+using Ayudas;
 namespace CapaPresentaciones
 {
     public partial class P_TablaAsignaturasAsignadasAsistencias : Form
@@ -55,18 +55,29 @@ namespace CapaPresentaciones
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Estudiantes
-            if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
-            {
-                P_HistorialSesionesAsignatura HistorialSesiones = new P_HistorialSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString()) //codasignatura y coddocente
+            string CodEscuelaP = N_Catalogo.VerEscuelaAsignatura(CodSemestre, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString()).Rows[0][0].ToString();
+
+            DataTable Estudiantes = N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre,CodEscuelaP, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), "");
+			if (Estudiantes.Rows.Count != 0)
+			{
+                if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
                 {
-                    TopLevel = false,
-                    Dock = DockStyle.Fill
-                };
-                ParentForm.Controls.Find("pnPrincipal", false)[0].Controls.Find("pnContenedor", false)[0].Controls.Add(HistorialSesiones);
-                HistorialSesiones.Show();
-                HistorialSesiones.BringToFront();
-                //HistorialSesiones.Dispose();
+                    P_HistorialSesionesAsignatura HistorialSesiones = new P_HistorialSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString()) //codasignatura y coddocente
+                    {
+                        TopLevel = false,
+                        Dock = DockStyle.Fill
+                    };
+                    ParentForm.Controls.Find("pnPrincipal", false)[0].Controls.Find("pnContenedor", false)[0].Controls.Add(HistorialSesiones);
+                    HistorialSesiones.Show();
+                    HistorialSesiones.BringToFront();
+                    //HistorialSesiones.Dispose();
+                }
             }
+			else
+			{
+                A_Dialogo.DialogoError("No hay Estudiantes Matriculados" + Environment.NewLine + "Ud. debe actualizar");
+			}
+            
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)

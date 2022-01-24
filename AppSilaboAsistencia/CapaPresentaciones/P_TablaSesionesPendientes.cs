@@ -33,12 +33,10 @@ namespace CapaPresentaciones
         private void AjustarTabla()
         {
             // Verificar el numero de filas de los resultados
-            int AnteriorAlturaResultados = dgvSesiones.Height;
             if (dgvSesiones.Rows.Count <= 15)
             {
                 sbDatos.Visible = false;
                 this.Height = dgvSesiones.Rows.Count * 26 + 102;
-
             }
             else
             {

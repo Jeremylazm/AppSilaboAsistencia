@@ -16,7 +16,7 @@ namespace CapaPresentaciones
 {
     public partial class P_HistorialSesionesAsignatura : Form
     {
-        public string CodAsignatura;
+        public readonly string CodAsignatura;
         private readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodSemestre;
         public string LimtFechaInf;
@@ -249,7 +249,7 @@ namespace CapaPresentaciones
             {
                 if(dgvDatos.Rows[e.RowIndex].Cells[3].Value.ToString()=="SI")
 				{
-                    DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, CodAsignatura, DateTime.ParseExact(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
+                    DataTable AsistenciaEstudiantesAsignatura = N_AsistenciaEstudiante.AsistenciaEstudiantes(CodSemestre, CodAsignatura, DateTime.Parse(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString());
 
                     Form Fondo = new Form();
                     /*using (P_TablaAsistenciaEstudiantes EditarRegistro = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, AsistenciaEstudiantesAsignatura))
