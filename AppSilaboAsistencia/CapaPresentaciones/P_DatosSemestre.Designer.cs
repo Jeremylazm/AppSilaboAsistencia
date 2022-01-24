@@ -31,7 +31,7 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_DatosSemestre));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.pbLogo = new Bunifu.UI.WinForms.BunifuImageButton();
             this.btnGuardar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
@@ -135,11 +135,11 @@ namespace CapaPresentaciones
             this.btnGuardar.ColorContrastOnClick = 45;
             this.btnGuardar.ColorContrastOnHover = 45;
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnGuardar.CustomizableEdges = borderEdges2;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnGuardar.CustomizableEdges = borderEdges1;
             this.btnGuardar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnGuardar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnGuardar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -282,9 +282,9 @@ namespace CapaPresentaciones
             this.txtSemestre.Location = new System.Drawing.Point(22, 93);
             this.txtSemestre.Name = "txtSemestre";
             this.txtSemestre.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtSemestre.Size = new System.Drawing.Size(149, 22);
+            this.txtSemestre.Size = new System.Drawing.Size(68, 22);
             this.txtSemestre.TabIndex = 69;
-            this.txtSemestre.Text = "Valor de Semestre";
+            this.txtSemestre.Text = "2088 - II";
             this.txtSemestre.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.txtSemestre.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 

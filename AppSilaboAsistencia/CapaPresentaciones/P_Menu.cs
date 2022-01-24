@@ -549,7 +549,7 @@ namespace CapaPresentaciones
         private void btnPlantillas_Click(object sender, EventArgs e)
         {
             ActualizarColor();
-            AbrirFormularios<P_Subir_Plantillas>();
+            AbrirFormularios<P_TablaPlantillas>();
         }
 
         private void btnSemestres_Click(object sender, EventArgs e)
