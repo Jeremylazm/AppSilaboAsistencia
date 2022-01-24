@@ -199,12 +199,13 @@ namespace CapaPresentaciones
             {
                 sbDatos.Visible = false;
                 dgvDatos.Width = 1124;
-                this.Height = dgvDatos.Rows.Count * 26 + (28 + this.Height - dgvDatos.Height);
+                this.Height = dgvDatos.Rows.Count * 26 + 253;
             }
             else
             {
                 sbDatos.Visible = true;
-                this.Height = 622;
+                sbDatos.Maximum = dgvDatos.Rows.Count - 20;
+                this.Height = 773;
             }
         }
 
