@@ -393,7 +393,7 @@ namespace CapaPresentaciones
 
                 DataTable ResultadosFinales = new DataTable();
                 ResultadosFinales.Columns.Add("Sesión", typeof(int));
-                ResultadosFinales.Columns.Add("NombreTema", typeof(string));
+                ResultadosFinales.Columns.Add("Tema", typeof(string));
                 ResultadosFinales.Columns.Add("Fecha", typeof(string));
                 ResultadosFinales.Columns.Add("Estado", typeof(string));
 

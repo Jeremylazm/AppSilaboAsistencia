@@ -31,12 +31,10 @@ namespace CapaPresentaciones
         private void AjustarTabla()
         {
             // Verificar el numero de filas de los resultados
-            int AnteriorAlturaResultados = dgvSesiones.Height;
             if (dgvSesiones.Rows.Count <= 20)
             {
                 sbDatos.Visible = false;
                 this.Height = dgvSesiones.Rows.Count * 26 + 102;
-
             }
             else
             {
@@ -49,7 +47,7 @@ namespace CapaPresentaciones
         {
             DataTable ResultadosFinales = new DataTable();
             ResultadosFinales.Columns.Add("Sesión", typeof(int));
-            ResultadosFinales.Columns.Add("NombreTema", typeof(string));
+            ResultadosFinales.Columns.Add("Tema", typeof(string));
             ResultadosFinales.Columns.Add("Fecha", typeof(string));
             ResultadosFinales.Columns.Add("Estado", typeof(string));
 
