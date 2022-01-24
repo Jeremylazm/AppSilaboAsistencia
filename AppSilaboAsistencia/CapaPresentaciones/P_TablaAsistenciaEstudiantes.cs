@@ -24,7 +24,7 @@ namespace CapaPresentaciones
         private readonly string CodEscuelaP;
         public readonly string CodAsignatura;
         public readonly string CodDocente;
-       
+
         readonly E_AsistenciaEstudiante ObjEntidadEstd;
         readonly N_AsistenciaEstudiante ObjNegocioEstd;
         readonly E_AsistenciaDocentePorAsignatura ObjEntidadDoc;
@@ -32,25 +32,28 @@ namespace CapaPresentaciones
         public string hora;
         private DataTable PlanSesion;
         public DataTable dgvTabla;
-        
+
         public string LimtFechaInf;
         //private readonly string CodDepartamento = E_DepartamentoAcademico.CodDepartamentoA;
         public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente, DataTable pdgv)
         {
-            DataTable Semestre = N_Semestre.SemestreActual();
-            CodSemestre = Semestre.Rows[0][0].ToString();
-            LimtFechaInf = DateTime.ParseExact(Semestre.Rows[0][1].ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
-            CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
-            CodEscuelaP = E_InicioSesion.CodEscuelaP;
-            CodAsignatura = pCodAsignatura;
             CodDocente = pCodDocente;
             dgvTabla = pdgv;
+            CodAsignatura = pCodAsignatura;
+            CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
+            DataTable EsculeaProf = N_Catalogo.VerEscuelaAsignatura(CodSemestre,CodAsignatura);
 
-            ObjNegocio = new N_Catalogo();
+            
+            LimtFechaInf = DateTime.ParseExact(Semestre.Rows[0][1].ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
+            CodEscuelaP = EsculeaProf.Rows[0][0].ToString();
+            
             ObjEntidadEstd = new E_AsistenciaEstudiante();
             ObjNegocioEstd = new N_AsistenciaEstudiante();
             ObjEntidadDoc = new E_AsistenciaDocentePorAsignatura();
             ObjNegocioDoc = new N_AsistenciaDocentePorAsignatura();
+            ObjNegocio = new N_Catalogo();
 
             InitializeComponent();
             Control[] Controles = { this, lblTitulo, pbLogo, lblFecha, lblMarcarTodos, lblTema, txtFecha };
@@ -62,25 +65,7 @@ namespace CapaPresentaciones
             //MostrarEstudiantes();
         }
 
-        private void AccionesTablaAdd()
-        {
-            dgvDatos.Columns[0].DisplayIndex = 8;
-            dgvDatos.Columns[1].DisplayIndex = 8;
-            dgvDatos.Columns[2].HeaderText = "Id.";
-            dgvDatos.Columns[2].ReadOnly = true;
-            dgvDatos.Columns[3].HeaderText = "Código";
-            dgvDatos.Columns[3].ReadOnly = true;
-            dgvDatos.Columns[4].HeaderText = "Apellido Paterno";
-            dgvDatos.Columns[4].ReadOnly = true;
-            dgvDatos.Columns[5].HeaderText = "Apellido Materno";
-            dgvDatos.Columns[5].ReadOnly = true;
-            dgvDatos.Columns[6].HeaderText = "Nombre";
-            dgvDatos.Columns[6].ReadOnly = true;
-            dgvDatos.Columns[7].Visible = false;
-            dgvDatos.Columns[8].Visible = false;
-        }
-
-        private void AccionesTablaEditar()
+        private void AccionesTabla()
         {
             dgvDatos.Columns[0].DisplayIndex = 8;
             dgvDatos.Columns[1].DisplayIndex = 8;
@@ -116,12 +101,12 @@ namespace CapaPresentaciones
                 DataGridViewComboBoxCell textBoxcell = (DataGridViewComboBoxCell)(fila.Cells["cbxObservaciones"]);
                 textBoxcell.Value = fila.Cells[8].Value;
                 fila.Cells[0].Value = (fila.Cells[7].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
-                if(fila.Cells[7].Value.Equals("SI"))
+                if (fila.Cells[7].Value.Equals("SI"))
                 {
                     fila.Cells[0].Tag = true;
                 }
                 else
-				{
+                {
                     fila.Cells[0].Tag = false;
                 }
             }
@@ -135,17 +120,17 @@ namespace CapaPresentaciones
                 //DataGridViewComboBoxCell textBoxcell = (DataGridViewComboBoxCell)(fila["cbxObservaciones"]);
                 //textBoxcell.Value = fila[6];
                 //fila.Cells[0].Value = (fila.Cells[6].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
-               
-                
 
-                dgvDatos.Rows.Add(ListaImagenes.Images[0],"", fila[0], fila[1], fila[2], fila[3], fila[4],"","");
+
+
+                dgvDatos.Rows.Add(ListaImagenes.Images[0], "", fila[0], fila[1], fila[2], fila[3], fila[4], "", "");
                 dgvDatos.Rows[i].Cells[0].Tag = false;
-    
+
                 i += 1;
 
             }
             //dgvDatos.DataSource = dgvTabla;
-            AccionesTablaAdd();
+            AccionesTabla();
         }
 
         public void MostrarEstudiantesRegistrados()
@@ -174,12 +159,87 @@ namespace CapaPresentaciones
 
             }
             //dgvDatos.DataSource = dgvTabla;
-            AccionesTablaEditar();
+            AccionesTabla();
         }
 
         public void BuscarEstudiantes()
         {
-            dgvDatos.DataSource = N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, CodAsignatura, txtBuscar.Text);
+            //A_Dialogo.DialogoInformacion("esi: "+ N_Catalogo.VerEscuelaAsignatura(CodSemestre,CodAsignatura).ToString());
+            //dgvDatos.DataSource= N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, CodAsignatura, txtBuscar.Text);
+            DataTable EstudiantesMatriculados = N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, CodAsignatura, txtBuscar.Text);
+            dgvDatos.DataSource = null;
+            dgvDatos.Rows.Clear();
+
+            if (Program.Evento == 0)
+			{
+                //buscar estudiantes el dgv de agregar
+                if (EstudiantesMatriculados.Rows.Count != 0)
+                {
+
+                    foreach (DataRow f in EstudiantesMatriculados.Rows)
+                    {
+
+                        if (dgvTabla.Rows.Count != 0)
+                        {
+                           
+                            int j = 0;
+                            foreach (DataRow fila in dgvTabla.Rows)
+                            {
+                                if (f[1].ToString() == fila[1].ToString())
+                                {
+
+                                    dgvDatos.Rows.Add(ListaImagenes.Images[0], "", fila[0], fila[1], fila[2], fila[3], fila[4], "", "");
+                                    dgvDatos.Rows[j].Cells[0].Tag = false;
+                                    j += 1;
+                                }
+                            }
+                            AccionesTabla();
+                        }
+                    }
+                }
+            }
+			else
+			{
+                //buscar estudiantes el dgv de editar
+                if (EstudiantesMatriculados.Rows.Count != 0)
+                {
+
+                   
+                    foreach (DataRow f in EstudiantesMatriculados.Rows)
+                    {
+
+                        if (dgvTabla.Rows.Count != 0)
+                        {
+                            //A_Dialogo.DialogoInformacion("si hay EN LA TABLA PRICIPAL");
+                            int j = 0;
+                            foreach (DataRow fila in dgvTabla.Rows)
+                            {
+                                if (f[1].ToString() == fila[1].ToString())
+                                {
+
+                                    if (fila[5].ToString() == "SI")
+                                    {
+
+                                        dgvDatos.Rows.Add(ListaImagenes.Images[1], fila[6], fila[0], fila[1], fila[2], fila[3], fila[4], fila[5], fila[6]);
+                                        dgvDatos.Rows[j].Cells[0].Tag = true;
+                                    }
+                                    else
+                                    {
+
+                                        dgvDatos.Rows.Add(ListaImagenes.Images[0], fila[6], fila[0], fila[1], fila[2], fila[3], fila[4], fila[5], fila[6]);
+
+
+                                        dgvDatos.Rows[j].Cells[0].Tag = false;
+                                    }
+                                    j += 1;
+                                }
+                            }
+                            AccionesTabla();
+                        }
+                    }
+                }
+            }
+            
         }
 
         public void AgregarRgistroEstudiantes()
@@ -187,7 +247,7 @@ namespace CapaPresentaciones
             foreach (DataGridViewRow dr in dgvDatos.Rows)
             {
                 ObjEntidadEstd.CodSemestre = CodSemestre;
-                ObjEntidadEstd.CodEscuelaP = CodAsignatura.Substring(6);
+                ObjEntidadEstd.CodEscuelaP = CodEscuelaP;
                 ObjEntidadEstd.CodAsignatura = CodAsignatura;
                 ObjEntidadEstd.Fecha = DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")); //actual del registro
                 ObjEntidadEstd.Hora = hora;//actual del registro
@@ -203,15 +263,16 @@ namespace CapaPresentaciones
         {
             foreach (DataGridViewRow dr in dgvDatos.Rows)
             {
+                //cambiar es
                 ObjEntidadEstd.CodSemestre = CodSemestre;
-                ObjEntidadEstd.CodEscuelaP = CodAsignatura.Substring(6);
+                ObjEntidadEstd.CodEscuelaP = CodEscuelaP;
                 ObjEntidadEstd.CodAsignatura = CodAsignatura;
                 ObjEntidadEstd.Fecha = DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));//fecha en la que fue registrado
                 ObjEntidadEstd.Hora = hora;//hora en el que fue registrado
                 ObjEntidadEstd.CodEstudiante = dr.Cells[3].Value.ToString();
-                
-                string AsistioActualizado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";              
-                string ObsActualizada = (dr.Cells[1].Value==null)?"":dr.Cells[1].Value.ToString();
+
+                string AsistioActualizado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
+                string ObsActualizada = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
 
                 ObjNegocioEstd.ActualizarAsistenciaEstudiante(ObjEntidadEstd, AsistioActualizado, ObsActualizada);
             }
@@ -262,7 +323,7 @@ namespace CapaPresentaciones
                 {
                     if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea editar el registro?") == DialogResult.Yes)
                     {
-                        DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, DateTime.ParseExact(txtFecha.Text.ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), DateTime.ParseExact(txtFecha.Text.ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), "");
+                        DataTable Resultado = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, DateTime.Parse(txtFecha.Text.ToString(), CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), DateTime.Parse(txtFecha.Text.ToString(), CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), "");
 
                         if (Resultado.Rows.Count != 0)
                         {
@@ -279,8 +340,9 @@ namespace CapaPresentaciones
 
 
                             ObjNegocioDoc.ActualizarAsistenciaDocentePorAsignatura(ObjEntidadDoc, TipoSesionActualizado, NombreTemaActualizado, ObsActulizado);
-                            A_Dialogo.DialogoConfirmacion("Se ha Editado  la Asistencia" + Environment.NewLine + " del Docente y los Estudiantes");
                             EditarRegistroEstudiantes();
+                            A_Dialogo.DialogoConfirmacion("Se ha Editado  la Asistencia" + Environment.NewLine + " del Docente y los Estudiantes");
+                            
                             Program.Evento = 0;
 
                             Close();
@@ -299,6 +361,23 @@ namespace CapaPresentaciones
             }
         }
 
+        private void AjustarTabla()
+        {
+            // Verificar el numero de filas de los resultados
+            if (dgvDatos.Rows.Count <= 20)
+            {
+                sbDatos.Visible = false;
+                dgvDatos.Width = 1124;
+                this.Height = dgvDatos.Rows.Count * 26 + 253;
+            }
+            else
+            {
+                sbDatos.Visible = true;
+                sbDatos.Maximum = dgvDatos.Rows.Count - 20;
+                this.Height = 773;
+            }
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Program.Evento = 0;
@@ -308,14 +387,6 @@ namespace CapaPresentaciones
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             BuscarEstudiantes();
-        }
-
-        private void btnSesiones_Click(object sender, EventArgs e)
-        {
-            P_TablaSesionesPendientes Sesiones = new P_TablaSesionesPendientes(CodAsignatura, CodDocente);
-
-            Sesiones.ShowDialog();
-            Sesiones.Dispose();
         }
 
         private void dgvDatos_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -357,7 +428,7 @@ namespace CapaPresentaciones
                     DataGrid.Rows[e.RowIndex].Cells[0].Value = ListaImagenes.Images[0];
                     DataGrid.Rows[e.RowIndex].Cells[0].Tag = false;
                 }
-            }           
+            }
         }
 
         private void ckbMarcarTodos_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
@@ -420,21 +491,20 @@ namespace CapaPresentaciones
                 }
                 else
                 {
-                    btnSesiones.Enabled = false;
+                    btnMostrarPlanSesiones.Enabled = false;
                     A_Dialogo.DialogoInformacion("Aun no subio un plan de sesiones");
                     txtTema.Text = "No hay tema a sugerir";
                     btnGuardar.Enabled = false;
                 }
                 MostrarEstudiantesNuevoRegistro();
-                //InicializarValores();
-                //Program.Evento = 0;
+
             }
             else
             {
                 MostrarEstudiantesRegistrados();
-                //InicializarValoresEditar();
-                //Program.Evento = 1;
+
             }
+            AjustarTabla();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -476,18 +546,29 @@ namespace CapaPresentaciones
                 arreglo = File.ReadAllBytes(fullFilePath);
 
                 ObjNegocio.ActualizarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodDocente, arreglo);
-                //GuardarRegistroDocente();
-                //Close();
+
             }
-            else
-            {
-                //GuardarRegistroDocente();
-                //Close();               
-            }
-            
+
             GuardarRegistroDocente();
             Close();
         }
 
-	}
+        private void btnMostrarPlanSesiones_Click(object sender, EventArgs e)
+        {
+            P_TablaSesionesPendientes Sesiones = new P_TablaSesionesPendientes(CodAsignatura, CodDocente);
+
+            Sesiones.ShowDialog();
+            Sesiones.Dispose();
+        }
+
+        private void dgvDatos_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
+
+        private void sbDatos_Scroll(object sender, Bunifu.UI.WinForms.BunifuVScrollBar.ScrollEventArgs e)
+        {
+            //MessageBox.Show(sbDatos.Value.ToString());
+        }
+    }
 }

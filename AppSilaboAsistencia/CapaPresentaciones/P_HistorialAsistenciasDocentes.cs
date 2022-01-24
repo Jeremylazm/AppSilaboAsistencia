@@ -76,19 +76,6 @@ namespace CapaPresentaciones
             MostrarHorarioRegistroAsistencia();
         }
 
-        public string NombreCompletoJD()
-		{
-            DataTable DocentesDepartamentoA = N_Docente.MostrarTodosDocentesDepartamento(CodDepartamentoA);
-            foreach (DataRow fila in DocentesDepartamentoA.Rows)
-            {          
-                if (fila[0].Equals(CodDocente))
-                {
-                    return fila[1].ToString();
-                }
-            }
-            return "--";
-        }
-
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
@@ -105,7 +92,7 @@ namespace CapaPresentaciones
             //Editar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
             {
-                DataTable RegistroAsistenciaDocentesDA = N_AsistenciaDiariaDocente.AsistenciaDiariaDocentes(CodSemestre, CodDepartamentoA, DateTime.Parse(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+                DataTable RegistroAsistenciaDocentesDA = N_AsistenciaDiariaDocente.AsistenciaDiariaDocentes(CodSemestre, CodDepartamentoA, DateTime.Parse(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 				if (dgvDatos.Rows[e.RowIndex].Cells[4].Value.Equals("FERIADO")|| dgvDatos.Rows[e.RowIndex].Cells[4].Value.Equals("SUSPENSION"))
 				{
                     A_Dialogo.DialogoInformacion("No se pude Editar este tipo de registros");
@@ -119,9 +106,9 @@ namespace CapaPresentaciones
 
                         EddRegistroAsistenciaDocente.FormClosed += new FormClosedEventHandler(ActualizarDatos);
                         EddRegistroAsistenciaDocente.txtFecha.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
-                        EddRegistroAsistenciaDocente.txtSemestreA.Text = CodSemestre;
+                        //EddRegistroAsistenciaDocente.txtSemestre.Text = CodSemestre;
                         //EddRegistroAsistenciaDocente.hora = DateTime.Now.ToString("HH:mm:ss");
-                        EddRegistroAsistenciaDocente.txtJD.Text = NombreCompletoJD();
+                        //EddRegistroAsistenciaDocente.txtJD.Text = E_InicioSesion.Datos;
                         EddRegistroAsistenciaDocente.Owner = Fondo;
                         EddRegistroAsistenciaDocente.ShowDialog();
                         EddRegistroAsistenciaDocente.Dispose();

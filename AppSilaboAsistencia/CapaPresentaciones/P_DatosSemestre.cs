@@ -16,6 +16,7 @@ namespace CapaPresentaciones
         readonly A_Validador Validador;
         readonly E_Semestre ObjEntidad;
         readonly N_Semestre ObjNegocio;
+
         public P_DatosSemestre()
         {
             Validador = new A_Validador();
@@ -23,14 +24,7 @@ namespace CapaPresentaciones
             ObjNegocio = new N_Semestre();
             InitializeComponent();
         }
-        private void LimpiarCajas()
-        {
-            txtDenominacionSemestre.Clear();
-        }
-        private void lblDatos_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         private void RegistrarSemestre()
         {
             //Validar semestre
@@ -45,8 +39,8 @@ namespace CapaPresentaciones
 
                     if (Resultado.Rows.Count != 0)
                     {
-                        ObjEntidad.Denominacion = txtDenominacionSemestre.Text.ToUpper();
-                        ObjEntidad.FechaInicio = dpFechaInicialSemestre.Value.ToString("dd/MM/yyyy");
+                        ObjEntidad.Denominacion = txtSemestre.Text.ToUpper();
+                        ObjEntidad.FechaInicio = dpFechaInicial.Value.ToString("dd/MM/yyyy");
 
                         ObjNegocio.InsertarSemestre(ObjEntidad);
                         A_Dialogo.DialogoConfirmacion("Registro insertado exitosamente");
@@ -76,12 +70,12 @@ namespace CapaPresentaciones
 
                         if (Resultado.Rows.Count != 0)
                         {
-                            ObjEntidad.Denominacion = txtDenominacionSemestre.Text.ToUpper();
-                            ObjEntidad.FechaInicio = dpFechaInicialSemestre.Text.ToUpper();
+                            ObjEntidad.Denominacion = txtSemestre.Text.ToUpper();
+                            ObjEntidad.FechaInicio = dpFechaInicial.Text.ToUpper();
                             //ObjEntidad.Creditos = Convert.ToInt32(txtCreditos.Text);
-                            
 
-                            ObjNegocio.ActualizarSemestre(ObjEntidad,txtDenominacionSemestre.Text,dpFechaInicialSemestre.Value.ToString("dd/MM/yyyy"));
+
+                            ObjNegocio.ActualizarSemestre(ObjEntidad, txtSemestre.Text, dpFechaInicial.Value.ToString("dd/MM/yyyy"));
                             A_Dialogo.DialogoConfirmacion("Registro editado exitosamente");
                             Program.Evento = 0;
                             Close();
@@ -98,20 +92,16 @@ namespace CapaPresentaciones
                 }
             }
         }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             ActualizarColor();
             RegistrarSemestre();
         }
+
         private void ActualizarColor()
         {
             lblTitulo.Focus();
-        }
-
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            ActualizarColor();
-            LimpiarCajas();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

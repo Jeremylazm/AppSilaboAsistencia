@@ -95,8 +95,7 @@ namespace CapaPresentaciones
         {
             if (Acceso == "Administrador")
             {
-                pnBotonesMenu.Controls.SetChildIndex(btnPlantillas, 0);
-                pnBotonesMenu.Controls.SetChildIndex(btnSemestres, 1);
+                pnBotonesMenu.Controls.SetChildIndex(pnContenedorAdministrador, 0);
                 btnPrincipal.Visible = false;
                 SeparadorMenu2.Visible = false;
                 btnMarcarAsistencia.Visible = false;
@@ -104,8 +103,8 @@ namespace CapaPresentaciones
                 pnContenedorDocente.Visible = false;
                 pnContenedorDirector.Visible = false;
                 pnContenedorJefe.Visible = false;
-                btnPlantillas.Visible = true;
-                btnSemestres.Visible = true;
+                pnContenedorAdministrador.Visible = true;
+                pnContenedorAdministrador.Size = pnContenedorAdministrador.MaximumSize;
 
                 btnEditarPerfil.Cursor = Cursors.Default;
                 btnEditarPerfil.Image = Properties.Resources.Perfil;
@@ -116,8 +115,7 @@ namespace CapaPresentaciones
                 SeparadorMenu2.Visible = true;
                 btnMarcarAsistencia.Visible = true;
                 pbMarcarAsistencia.Visible = true;
-                btnPlantillas.Visible = false;
-                btnSemestres.Visible = false;
+                pnContenedorAdministrador.Visible = false;
                 pnContenedorDirector.Visible = false;
             }
             else if (Acceso == "Director de Escuela")
@@ -126,8 +124,7 @@ namespace CapaPresentaciones
                 SeparadorMenu2.Visible = true;
                 btnMarcarAsistencia.Visible = true;
                 pbMarcarAsistencia.Visible = true;
-                btnPlantillas.Visible = false;
-                btnSemestres.Visible = false;
+                pnContenedorAdministrador.Visible = false;
                 pnBotonesMenu.Controls.SetChildIndex(pnContenedorDirector, 2);
                 pnContenedorJefe.Visible = false;
             }
@@ -137,8 +134,7 @@ namespace CapaPresentaciones
                 SeparadorMenu2.Visible = true;
                 btnMarcarAsistencia.Visible = true;
                 pbMarcarAsistencia.Visible = true;
-                btnPlantillas.Visible = false;
-                btnSemestres.Visible = false;
+                pnContenedorAdministrador.Visible = false;
                 pnContenedorDocente.Controls.SetChildIndex(btnContenedorDocente, 5);
                 btnContenedorDocente.Visible = false;
                 pnContenedorJefe.Visible = false;
@@ -280,7 +276,8 @@ namespace CapaPresentaciones
                 P_InicioSesion Login = new P_InicioSesion();
                 Login.Show();
             }
-            Principal.HoraFecha.Start();
+            if (E_InicioSesion.Acceso != "Administrador")
+                Principal.HoraFecha.Start();
         }
 
         private void EditarPerfil()
@@ -552,7 +549,7 @@ namespace CapaPresentaciones
         private void btnPlantillas_Click(object sender, EventArgs e)
         {
             ActualizarColor();
-            AbrirFormularios<P_Subir_Plantillas>();
+            AbrirFormularios<P_TablaPlantillas>();
         }
 
         private void btnSemestres_Click(object sender, EventArgs e)
@@ -616,11 +613,27 @@ namespace CapaPresentaciones
                 }
             }
             Principal.HoraFecha.Start();
+
+            if(E_InicioSesion.Acceso=="Jefe de Departamento")
+			{
+				foreach (Control item in pnContenedor.Controls)
+				{
+					if (item.Name == "P_HistorialAsistenciasDocentes")
+					{
+                        (item as P_HistorialAsistenciasDocentes).MostrarRegistros();
+					}
+				}
+			}
         }
 
         private void pbMarcarAsistencia_Click(object sender, EventArgs e)
         {
             MarcarAsistencia();
+        }
+
+        private void btnEstudiantes_Click(object sender, EventArgs e)
+        {
+
         }
 
         // Registrar asistencia diaria

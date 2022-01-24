@@ -59,7 +59,7 @@ namespace CapaPresentaciones
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTitulo.Size = new System.Drawing.Size(865, 46);
+            this.lblTitulo.Size = new System.Drawing.Size(984, 46);
             this.lblTitulo.TabIndex = 20;
             this.lblTitulo.Text = "Tabla de Sesiones - ";
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -86,7 +86,7 @@ namespace CapaPresentaciones
             this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
             this.btnCerrar.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.btnCerrar.InitialImage = null;
-            this.btnCerrar.Location = new System.Drawing.Point(825, 7);
+            this.btnCerrar.Location = new System.Drawing.Point(944, 7);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Rotation = 0;
             this.btnCerrar.ShowActiveImage = true;
@@ -202,7 +202,7 @@ namespace CapaPresentaciones
             this.sbDatos.BorderThickness = 1;
             this.sbDatos.DurationBeforeShrink = 2000;
             this.sbDatos.LargeChange = 10;
-            this.sbDatos.Location = new System.Drawing.Point(846, 87);
+            this.sbDatos.Location = new System.Drawing.Point(965, 87);
             this.sbDatos.Margin = new System.Windows.Forms.Padding(4);
             this.sbDatos.Maximum = 100;
             this.sbDatos.Minimum = 0;
@@ -214,11 +214,11 @@ namespace CapaPresentaciones
             this.sbDatos.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbDatos.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.sbDatos.ShrinkSizeLimit = 3;
-            this.sbDatos.Size = new System.Drawing.Size(10, 301);
+            this.sbDatos.Size = new System.Drawing.Size(10, 416);
             this.sbDatos.SmallChange = 1;
             this.sbDatos.TabIndex = 33;
             this.sbDatos.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.sbDatos.ThumbLength = 29;
+            this.sbDatos.ThumbLength = 40;
             this.sbDatos.ThumbMargin = 1;
             this.sbDatos.ThumbStyle = Bunifu.UI.WinForms.BunifuVScrollBar.ThumbStyles.Inset;
             this.sbDatos.Value = 1;
@@ -302,7 +302,7 @@ namespace CapaPresentaciones
             this.dgvSesiones.RowTemplate.Height = 26;
             this.dgvSesiones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvSesiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSesiones.Size = new System.Drawing.Size(844, 329);
+            this.dgvSesiones.Size = new System.Drawing.Size(963, 444);
             this.dgvSesiones.TabIndex = 37;
             this.dgvSesiones.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
             // 
@@ -312,7 +312,7 @@ namespace CapaPresentaciones
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(865, 403);
+            this.ClientSize = new System.Drawing.Size(984, 518);
             this.Controls.Add(this.sbDatos);
             this.Controls.Add(this.dgvSesiones);
             this.Controls.Add(this.pbLogo);
