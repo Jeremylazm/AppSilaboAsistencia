@@ -32,7 +32,7 @@ namespace CapaPresentaciones
         int HD2 = 0;
         string CódigoDocente1, CódigoDocente2, CódigoAsignatura;
         int HoraTeoría, HoraPráctica;
-        string CódigoAsignaturaA, CódigoSemestreA, GrupoA;
+        string CódigoAsignaturaA, CódigoSemestreA, GrupoA, EscuelaPA;
         string CódigoD1A = "";
         string CódigoD2A = "";
         public P_Catálogo_Actualizar()
@@ -54,6 +54,7 @@ namespace CapaPresentaciones
             LlenarDatosEscuelas();
             LlenarDatosAsignatura();
             LlenarDatosDocente();
+            Limpiar_Colores();
         }
 
         private void LlenarDatosEscuelas()
@@ -131,11 +132,14 @@ namespace CapaPresentaciones
             string Días;
             int HoraI, HoraF;
             bool Pasa = true;
+
             DataTable T = N_HorarioAsignatura.HorarioSemanalDocente(CodSemestre, CodDocente);
+
             if (T.Rows.Count >= 1)
             {
                 for (int i = 0; i < T.Rows.Count; i++)
                 {
+
                     Días = T.Rows[i]["Dia"].ToString();
                     if (Días == Día)
                     {
@@ -253,6 +257,14 @@ namespace CapaPresentaciones
 
             if (Check_1_Docentes.Checked == true)
             {
+                //Eliminar el registro anterior de Horario Asignatura
+                ObjEntidadHAE.CodSemestre = CódigoSemestreA;
+                ObjEntidadHAE.CodAsignatura = CódigoAsignaturaA;
+                ObjEntidadHAE.CodEscuelaP = EscuelaPA;
+                ObjEntidadHAE.Grupo = GrupoA;
+
+                ObjNegocioHAE.EliminarHorarioAsignatura(ObjEntidadHAE);
+
                 if (Día1 != "")
                     Pasa1 = Pasa1 && Verificar_Horario(CódigoD1, Día1, Hora_Inicio_Lunes.Text, Hora_Fin_Lunes.Text);
                 if (Día2 != "")
@@ -274,7 +286,7 @@ namespace CapaPresentaciones
 
                         ObjEntidadHAE.CodSemestre = CódigoSemestreA;
                         ObjEntidadHAE.CodAsignatura = CódigoAsignaturaA;
-                        ObjEntidadHAE.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
+                        ObjEntidadHAE.CodEscuelaP = EscuelaPA;
                         ObjEntidadHAE.Grupo = GrupoA;
 
                         ObjNegocioHAE.EliminarHorarioAsignatura(ObjEntidadHAE);
@@ -283,7 +295,7 @@ namespace CapaPresentaciones
 
                         ObjEntidadCE.CodSemestre = CódigoSemestreA;
                         ObjEntidadCE.CodAsignatura = CódigoAsignaturaA;
-                        ObjEntidadCE.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
+                        ObjEntidadCE.CodEscuelaP = EscuelaPA;
                         ObjEntidadCE.Grupo = GrupoA;
 
                         ObjNegocioCE.EliminarAsignaturaCatalogo(ObjEntidadCE);
@@ -848,38 +860,6 @@ namespace CapaPresentaciones
                 Check_1_Docentes.Checked = true;
                 Actualizar_Color();
                 Borrar_Color();
-            }
-        }
-
-        private void Seleccionar_Docente_Cod_Nom_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Check_Código_Docente.Checked == true)
-                    CódigoDocente1 = Seleccionar_Docente_Cod_Nom.Text;
-                else
-                    CódigoDocente1 = Seleccionar_Docente_Cod_Nom.SelectedValue.ToString();
-                Recuperar_Horas_Docentes();
-            }
-            catch
-            {
-                //Falta ver cuál es el problema...
-            }
-        }
-
-        private void Seleccionar_Docente_Cod_Nom2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Check_Código_Docente.Checked == true)
-                    CódigoDocente2 = Seleccionar_Docente_Cod_Nom2.Text;
-                else
-                    CódigoDocente2 = Seleccionar_Docente_Cod_Nom2.SelectedValue.ToString();
-                Recuperar_Horas_Docentes();
-            }
-            catch
-            {
-                //Falta ver cuál es el problema...
             }
         }
 
@@ -2114,11 +2094,12 @@ namespace CapaPresentaciones
             Borrar_Color();
         }
 
-        public bool Buscar(string CS, string CA, string EP, string G)
+        public void Buscar(string CS, string CA, string EP, string G)
         {
             string CodDocente, Día, Tipo, HI, HF, Aula, Modalidad;
             CódigoAsignaturaA = CA;
             GrupoA = G;
+            EscuelaPA = EP;
             CódigoSemestreA = CS;
             if (G == "A")
                 Check_Grupo_A.Checked = true;
@@ -2269,11 +2250,9 @@ namespace CapaPresentaciones
                         Seleccionar_Docente_Cod_Nom2.Enabled = false;
                     }
                 }
-                Actualizar_Color();
-                return true;
             }
-            else
-                return false;
+            Check_Código_Docente.Checked = true;
+            Check_Nombre_Docente.Checked = true;
         }
 
         private void Seleccionar_Modalidad_SelectedIndexChanged(object sender, EventArgs e)
