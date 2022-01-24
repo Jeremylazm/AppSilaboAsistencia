@@ -119,9 +119,9 @@ namespace CapaPresentaciones
 
                         EddRegistroAsistenciaDocente.FormClosed += new FormClosedEventHandler(ActualizarDatos);
                         EddRegistroAsistenciaDocente.txtFecha.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
-                        EddRegistroAsistenciaDocente.txtSemestreA.Text = CodSemestre;
+                        EddRegistroAsistenciaDocente.txtSemestre.Text = CodSemestre;
                         //EddRegistroAsistenciaDocente.hora = DateTime.Now.ToString("HH:mm:ss");
-                        EddRegistroAsistenciaDocente.txtJD.Text = NombreCompletoJD();
+                        //EddRegistroAsistenciaDocente.txtJD.Text = NombreCompletoJD();
                         EddRegistroAsistenciaDocente.Owner = Fondo;
                         EddRegistroAsistenciaDocente.ShowDialog();
                         EddRegistroAsistenciaDocente.Dispose();

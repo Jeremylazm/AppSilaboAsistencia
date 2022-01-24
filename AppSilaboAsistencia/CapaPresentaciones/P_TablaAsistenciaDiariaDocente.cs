@@ -41,7 +41,7 @@ namespace CapaPresentaciones
             Control[] Controles = { this, lblTitulo, pbLogo, lblFecha, lblMarcarTodos, txtFecha};
 			Docker.SubscribeControlsToDragEvents(Controles);
 			Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
-            txtSemestreA.Text = CodSemestre;
+            txtSemestre.Text = CodSemestre;
 			lblFecha.Text += "    ";
 			
 		}
@@ -177,7 +177,23 @@ namespace CapaPresentaciones
             
         }
 
-		private void btnCerrar_Click(object sender, EventArgs e)
+        private void AjustarTabla()
+        {
+            // Verificar el numero de filas de los resultados
+            if (dgvDatos.Rows.Count <= 20)
+            {
+                sbDatos.Visible = false;
+                dgvDatos.Width = 1124;
+                this.Height = dgvDatos.Rows.Count * 26 + (28 + this.Height - dgvDatos.Height);
+            }
+            else
+            {
+                sbDatos.Visible = true;
+                this.Height = 622;
+            }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
 		{
             Close();
         }
@@ -251,11 +267,9 @@ namespace CapaPresentaciones
 
 		private void P_TablaAsistenciaDiariaDocente_Load(object sender, EventArgs e)
 		{
-
-            
-                MostrarEstudiantesRegistrados();
-                //InicializarValoresEditar();
-
+            MostrarEstudiantesRegistrados();
+            //InicializarValoresEditar();
+            AjustarTabla();
         }
 
 		private void btnGuardar_Click(object sender, EventArgs e)
@@ -268,5 +282,5 @@ namespace CapaPresentaciones
 		{
             //InicializarValoresEditar();
         }
-	}
+    }
 }
