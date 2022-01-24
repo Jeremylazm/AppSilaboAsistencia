@@ -361,6 +361,22 @@ namespace CapaPresentaciones
             }
         }
 
+        private void AjustarTabla()
+        {
+            // Verificar el numero de filas de los resultados
+            if (dgvDatos.Rows.Count <= 20)
+            {
+                sbDatos.Visible = false;
+                dgvDatos.Width = 1124;
+                this.Height = dgvDatos.Rows.Count * 26 + (28 + this.Height - dgvDatos.Height);
+            }
+            else
+            {
+                sbDatos.Visible = true;
+                this.Height = 622;
+            }
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Program.Evento = 0;
@@ -482,7 +498,7 @@ namespace CapaPresentaciones
                 }
                 else
                 {
-                    btnSesiones.Enabled = false;
+                    btnMostrarPlanSesiones.Enabled = false;
                     A_Dialogo.DialogoInformacion("Aun no subio un plan de sesiones");
                     txtTema.Text = "No hay tema a sugerir";
                     btnGuardar.Enabled = false;
@@ -495,6 +511,8 @@ namespace CapaPresentaciones
                 MostrarEstudiantesRegistrados();
 
             }
+
+            AjustarTabla();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

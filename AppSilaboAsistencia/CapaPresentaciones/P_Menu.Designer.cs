@@ -48,8 +48,9 @@ namespace CapaPresentaciones
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges15 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges16 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges17 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges18 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges19 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             Bunifu.UI.WinForms.BunifuAnimatorNS.Animation animation1 = new Bunifu.UI.WinForms.BunifuAnimatorNS.Animation();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges18 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.pnPrincipal = new Bunifu.UI.WinForms.BunifuPanel();
             this.btnMaximizar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.btnRestaurar = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -97,6 +98,8 @@ namespace CapaPresentaciones
             this.AnimacionDocenteContenedor = new System.Windows.Forms.Timer(this.components);
             this.AnimacionJefeContenedor = new System.Windows.Forms.Timer(this.components);
             this.AnimacionDirectorContenedor = new System.Windows.Forms.Timer(this.components);
+            this.pnContenedorAdministrador = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnEstudiantes = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.pnPrincipal.SuspendLayout();
             this.pnOpciones.SuspendLayout();
             this.pnBotonesMenu.SuspendLayout();
@@ -104,6 +107,7 @@ namespace CapaPresentaciones
             this.pnContenedorJefe.SuspendLayout();
             this.pnContenedorDirector.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnEditarPerfil)).BeginInit();
+            this.pnContenedorAdministrador.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnPrincipal
@@ -434,8 +438,7 @@ namespace CapaPresentaciones
             this.pnBotonesMenu.Controls.Add(this.pnContenedorDocente);
             this.pnBotonesMenu.Controls.Add(this.pnContenedorJefe);
             this.pnBotonesMenu.Controls.Add(this.pnContenedorDirector);
-            this.pnBotonesMenu.Controls.Add(this.btnPlantillas);
-            this.pnBotonesMenu.Controls.Add(this.btnSemestres);
+            this.pnBotonesMenu.Controls.Add(this.pnContenedorAdministrador);
             this.Transicion.SetDecoration(this.pnBotonesMenu, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.pnBotonesMenu.Location = new System.Drawing.Point(0, 288);
             this.pnBotonesMenu.Margin = new System.Windows.Forms.Padding(0);
@@ -1918,7 +1921,7 @@ namespace CapaPresentaciones
             this.btnPlantillas.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Principal;
             this.btnPlantillas.IdleIconRightImage = null;
             this.btnPlantillas.IndicateFocus = false;
-            this.btnPlantillas.Location = new System.Drawing.Point(0, 353);
+            this.btnPlantillas.Location = new System.Drawing.Point(0, 0);
             this.btnPlantillas.Margin = new System.Windows.Forms.Padding(0);
             this.btnPlantillas.Name = "btnPlantillas";
             this.btnPlantillas.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
@@ -2010,7 +2013,7 @@ namespace CapaPresentaciones
             this.btnSemestres.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Principal;
             this.btnSemestres.IdleIconRightImage = null;
             this.btnSemestres.IndicateFocus = false;
-            this.btnSemestres.Location = new System.Drawing.Point(0, 392);
+            this.btnSemestres.Location = new System.Drawing.Point(0, 39);
             this.btnSemestres.Margin = new System.Windows.Forms.Padding(0);
             this.btnSemestres.Name = "btnSemestres";
             this.btnSemestres.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
@@ -2074,11 +2077,11 @@ namespace CapaPresentaciones
             this.btnMarcarAsistencia.ColorContrastOnClick = 45;
             this.btnMarcarAsistencia.ColorContrastOnHover = 45;
             this.btnMarcarAsistencia.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges18.BottomLeft = true;
-            borderEdges18.BottomRight = true;
-            borderEdges18.TopLeft = true;
-            borderEdges18.TopRight = true;
-            this.btnMarcarAsistencia.CustomizableEdges = borderEdges18;
+            borderEdges19.BottomLeft = true;
+            borderEdges19.BottomRight = true;
+            borderEdges19.TopLeft = true;
+            borderEdges19.TopRight = true;
+            this.btnMarcarAsistencia.CustomizableEdges = borderEdges19;
             this.Transicion.SetDecoration(this.btnMarcarAsistencia, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.btnMarcarAsistencia.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnMarcarAsistencia.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
@@ -2413,6 +2416,112 @@ namespace CapaPresentaciones
             this.AnimacionDirectorContenedor.Interval = 10;
             this.AnimacionDirectorContenedor.Tick += new System.EventHandler(this.AnimacionDirectorContenedor_Tick);
             // 
+            // pnContenedorAdministrador
+            // 
+            this.pnContenedorAdministrador.Controls.Add(this.btnPlantillas);
+            this.pnContenedorAdministrador.Controls.Add(this.btnSemestres);
+            this.pnContenedorAdministrador.Controls.Add(this.btnEstudiantes);
+            this.Transicion.SetDecoration(this.pnContenedorAdministrador, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.pnContenedorAdministrador.Location = new System.Drawing.Point(0, 353);
+            this.pnContenedorAdministrador.Margin = new System.Windows.Forms.Padding(0);
+            this.pnContenedorAdministrador.MaximumSize = new System.Drawing.Size(220, 119);
+            this.pnContenedorAdministrador.MinimumSize = new System.Drawing.Size(220, 39);
+            this.pnContenedorAdministrador.Name = "pnContenedorAdministrador";
+            this.pnContenedorAdministrador.Size = new System.Drawing.Size(220, 39);
+            this.pnContenedorAdministrador.TabIndex = 68;
+            // 
+            // btnEstudiantes
+            // 
+            this.btnEstudiantes.AllowAnimations = true;
+            this.btnEstudiantes.AllowMouseEffects = true;
+            this.btnEstudiantes.AllowToggling = false;
+            this.btnEstudiantes.AnimationSpeed = 200;
+            this.btnEstudiantes.AutoGenerateColors = false;
+            this.btnEstudiantes.AutoRoundBorders = false;
+            this.btnEstudiantes.AutoSizeLeftIcon = true;
+            this.btnEstudiantes.AutoSizeRightIcon = true;
+            this.btnEstudiantes.BackColor = System.Drawing.Color.Transparent;
+            this.btnEstudiantes.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnEstudiantes.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEstudiantes.BackgroundImage")));
+            this.btnEstudiantes.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnEstudiantes.ButtonText = "Estudiantes";
+            this.btnEstudiantes.ButtonTextMarginLeft = 0;
+            this.btnEstudiantes.ColorContrastOnClick = 45;
+            this.btnEstudiantes.ColorContrastOnHover = 45;
+            this.btnEstudiantes.Cursor = System.Windows.Forms.Cursors.Hand;
+            borderEdges18.BottomLeft = true;
+            borderEdges18.BottomRight = true;
+            borderEdges18.TopLeft = true;
+            borderEdges18.TopRight = true;
+            this.btnEstudiantes.CustomizableEdges = borderEdges18;
+            this.Transicion.SetDecoration(this.btnEstudiantes, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.btnEstudiantes.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnEstudiantes.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnEstudiantes.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnEstudiantes.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnEstudiantes.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            this.btnEstudiantes.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEstudiantes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnEstudiantes.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEstudiantes.IconLeftCursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEstudiantes.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnEstudiantes.IconMarginLeft = 11;
+            this.btnEstudiantes.IconPadding = 10;
+            this.btnEstudiantes.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEstudiantes.IconRightCursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEstudiantes.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnEstudiantes.IconSize = 25;
+            this.btnEstudiantes.IdleBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnEstudiantes.IdleBorderRadius = 1;
+            this.btnEstudiantes.IdleBorderThickness = 1;
+            this.btnEstudiantes.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnEstudiantes.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Principal;
+            this.btnEstudiantes.IdleIconRightImage = null;
+            this.btnEstudiantes.IndicateFocus = false;
+            this.btnEstudiantes.Location = new System.Drawing.Point(0, 78);
+            this.btnEstudiantes.Margin = new System.Windows.Forms.Padding(0);
+            this.btnEstudiantes.Name = "btnEstudiantes";
+            this.btnEstudiantes.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnEstudiantes.OnDisabledState.BorderRadius = 1;
+            this.btnEstudiantes.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnEstudiantes.OnDisabledState.BorderThickness = 1;
+            this.btnEstudiantes.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnEstudiantes.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnEstudiantes.OnDisabledState.IconLeftImage = null;
+            this.btnEstudiantes.OnDisabledState.IconRightImage = null;
+            this.btnEstudiantes.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnEstudiantes.onHoverState.BorderRadius = 1;
+            this.btnEstudiantes.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnEstudiantes.onHoverState.BorderThickness = 1;
+            this.btnEstudiantes.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnEstudiantes.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnEstudiantes.onHoverState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Principal_2;
+            this.btnEstudiantes.onHoverState.IconRightImage = null;
+            this.btnEstudiantes.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnEstudiantes.OnIdleState.BorderRadius = 1;
+            this.btnEstudiantes.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnEstudiantes.OnIdleState.BorderThickness = 1;
+            this.btnEstudiantes.OnIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnEstudiantes.OnIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnEstudiantes.OnIdleState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Principal;
+            this.btnEstudiantes.OnIdleState.IconRightImage = null;
+            this.btnEstudiantes.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnEstudiantes.OnPressedState.BorderRadius = 1;
+            this.btnEstudiantes.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnEstudiantes.OnPressedState.BorderThickness = 1;
+            this.btnEstudiantes.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.btnEstudiantes.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.btnEstudiantes.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Principal;
+            this.btnEstudiantes.OnPressedState.IconRightImage = null;
+            this.btnEstudiantes.Size = new System.Drawing.Size(220, 39);
+            this.btnEstudiantes.TabIndex = 73;
+            this.btnEstudiantes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEstudiantes.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnEstudiantes.TextMarginLeft = 0;
+            this.btnEstudiantes.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnEstudiantes.UseDefaultRadiusAndThickness = true;
+            this.btnEstudiantes.Click += new System.EventHandler(this.btnEstudiantes_Click);
+            // 
             // P_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2434,6 +2543,7 @@ namespace CapaPresentaciones
             this.pnContenedorJefe.ResumeLayout(false);
             this.pnContenedorDirector.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnEditarPerfil)).EndInit();
+            this.pnContenedorAdministrador.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2487,5 +2597,7 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnAsistenciasDocentes;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnPlantillas;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnSemestres;
+        private System.Windows.Forms.FlowLayoutPanel pnContenedorAdministrador;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnEstudiantes;
     }
 }
