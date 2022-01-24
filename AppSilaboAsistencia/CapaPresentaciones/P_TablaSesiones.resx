@@ -126,10 +126,11 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="sbDatos.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAoAAAEtCAYAAAAx7PGHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB3SURBVGhD7cqxDcIwAABBBjDOmuzsMTIAhBIRXepIX1z1
-        /3g9t3V4X1jf8Sz8aaRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRGaqRG
-        aqRGaqRGaqRGaqRGaqRGusc45n4Wfoy5fwDjLcbiL04p7gAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAAoAAAGgCAYAAACTwvaBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACMSURBVHhe7co3EYAAAMBABFBs4hkZCKCMHFww8MNPybBO
+        y3Y5fmz3+BVejMmYjMmYjMmYjMmYjMmYjMmYjMmYjMmYjMmYjMmYjMmYjMmYjMmYjMmYjMmYjMmYjMmY
+        jMmYjMmYjMmYjMmYjMmYjMmYjMmYjMmYjMmYjMmYjMmYjMmYjGlYx3n/Cg/jvJ8IwZHF+cjLLwAAAABJ
+        RU5ErkJggg==
 </value>
   </data>
   <metadata name="Docker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

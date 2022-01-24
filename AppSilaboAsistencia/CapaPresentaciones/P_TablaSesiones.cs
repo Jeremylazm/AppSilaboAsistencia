@@ -32,7 +32,7 @@ namespace CapaPresentaciones
         {
             // Verificar el numero de filas de los resultados
             int AnteriorAlturaResultados = dgvSesiones.Height;
-            if (dgvSesiones.Rows.Count <= 15)
+            if (dgvSesiones.Rows.Count <= 20)
             {
                 sbDatos.Visible = false;
                 this.Height = dgvSesiones.Rows.Count * 26 + 102;
@@ -41,7 +41,7 @@ namespace CapaPresentaciones
             else
             {
                 sbDatos.Visible = true;
-                this.Height = 492;
+                this.Height = 622;
             }
         }
 
