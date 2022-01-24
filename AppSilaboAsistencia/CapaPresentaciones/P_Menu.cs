@@ -616,6 +616,17 @@ namespace CapaPresentaciones
                 }
             }
             Principal.HoraFecha.Start();
+
+            if(E_InicioSesion.Acceso=="Jefe de Departamento")
+			{
+				foreach (Control item in pnContenedor.Controls)
+				{
+					if (item.Name == "P_HistorialAsistenciasDocentes")
+					{
+                        (item as P_HistorialAsistenciasDocentes).MostrarRegistros();
+					}
+				}
+			}
         }
 
         private void pbMarcarAsistencia_Click(object sender, EventArgs e)

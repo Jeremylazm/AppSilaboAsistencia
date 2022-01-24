@@ -16,7 +16,7 @@ namespace CapaPresentaciones
 {
     public partial class P_HistorialSesionesAsignatura : Form
     {
-        public string CodAsignatura;
+        public readonly string CodAsignatura;
         private readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodSemestre;
         public string LimtFechaInf;

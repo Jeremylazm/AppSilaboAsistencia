@@ -123,24 +123,16 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>67</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="txtJD.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAOMAAAAgCAYAAADg8s9WAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABASURBVHhe7cMxDQAwCACwGWDYxCXSmIc9PG3SAwAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAwLeK2xU56uacByQGVvgKP3O8AAAAAElFTkSuQmCC
-</value>
+  <data name="txtFecha.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: left; }</value>
   </data>
-  <data name="txtSemestreA.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAGkAAAAgCAYAAAAR1VaeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAwSURBVGhD7cMxDQAwCAAwDAA2cTlpzAZHmzQAAAAAAAAA
-        AAAAAADgqMl6k71e3fsB+cGee5VH5ZsAAAAASUVORK5CYII=
-</value>
+  <data name="txtSemestreA.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: left; }</value>
   </data>
   <data name="lblMarcarTodos.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ckbMarcarTodos.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -158,28 +150,19 @@
         /6m4XZGjqrp7zgPXjm+/r5xfTgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="bunifuLabel2.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
-  </data>
   <data name="bunifuLabel1.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
-  </data>
-  <data name="txtFecha.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAGkAAAAgCAYAAAAR1VaeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAwSURBVGhD7cMxDQAwCAAwDAA2cTlpzAZHmzQAAAAAAAAA
-        AAAAAADgqMl6k71e3fsB+cGee5VH5ZsAAAAASUVORK5CYII=
-</value>
   </data>
   <data name="lblFecha.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 1px;font-family: 'Montserrat Alternates'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(104, 13, 15); text-align: center; }</value>
   </data>
   <data name="sbDatos.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAoAAAFwCAYAAACB/OquAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACFSURBVGhD7cqxDcIwAABBBjDOmuzsMTIAhBIRXZT+i6v+
-        H6/ntg7vC+s7noU/jdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRI
-        jdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIjdRIN8Yx97PwY8z9A8Jsu/gyLfwvAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAAsAAAFrCAYAAAAHL3PIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACHSURBVHhe7co5EYBAAMBABPDYxDMyEMDT7QxXICDFVsm0
+        L9vxuH443nkUhprVrGY1q1nNalazmtWsZjWrWc1qVrOa1axmNatZzWpWs5rVrGY1q1nNalazmtWsZjWr
+        Wc1qVrOa1axmNatZzWpWs5rVrGY1q1nNalazmtWsZjVr2uf1HIWPeT1vOUyVQfb0xvsAAAAASUVORK5C
+        YII=
 </value>
   </data>
   <data name="btnGuardar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -239,39 +222,39 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAA+
-        CAAAAk1TRnQBSQFMAgEBAgEAAVABAQFQAQEBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        CAAAAk1TRnQBSQFMAgEBAgEAAWgBAQFoAQEBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABEAMAAQEBAAEgBgABEBIAAwcBCgJIAUkBhwNKAYsCSAFJAYgCSAFJAYgCSAFJAYgCSAFJAYgCSAFJ
-        AYgCSAFJAYgCSAFJAYgCSAFJAYgCSAFJAYgCSAFJAYgDSgGLAkgBSQGHAwcBCgM6AWICUwFkAfECAAE+
-        Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+
-        Af8CAAE+Af8CUwFkAfEDOgFigAACSAFJAYcDFgEfMAADFgEfAkgBSQGHAlMBZAHxAgABPgH/AgABPgH/
-        AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/
-        AgABPgH/AgABPgH/AlMBZAHxgAADSgGLOAADSgGLAgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/
-        AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/
-        AgABPgH/gAACSAFJAYg4AAJIAUkBiAIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIA
-        AT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/4AA
-        AkgBSQGIOAACSAFJAYgCAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+
-        Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af+AAAJIAUkBiDgA
-        AkgBSQGIAgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AlABUgGjAzABSwJUAWEB7gIA
-        AT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/4AAAkgBSQGIOAACSAFJAYgCAAE+
-        Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CUQFSAaEDAgEDAwoBDQMjATQCVAFhAe4CAAE+Af8CAAE+
-        Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af+AAAJIAUkBiDgAAkgBSQGIAgABPgH/AgABPgH/AgABPgH/
-        AgABPgH/AlMBVQGtAwIBAwNEAXkCXAFhAdwDFQEdAyMBNAJUAWEB7gIAAT4B/wIAAT4B/wIAAT4B/wIA
-        AT4B/wIAAT4B/4AAAkgBSQGIOAACSAFJAYgCAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CVQFWAbQDSgGM
-        AgABPgH/AgABPgH/AlwBYQHcAxUBHQMjATQCVAFhAe4CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af+AAAJI
-        AUkBiDgAAkgBSQGIAgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/
-        AgABPgH/AlwBYQHcAxUBHQMjATQCWQFnAfICAAE+Af8CAAE+Af8CAAE+Af+AAAJIAUkBiDgAAkgBSQGI
-        AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/
-        AlwBYQHcAykBPgJaAWAB3gIAAT4B/wIAAT4B/wIAAT4B/4AAAkgBSQGIOAACSAFJAYgCAAE+Af8CAAE+
-        Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+
-        Af8CAAE+Af8CAAE+Af8CAAE+Af8CAAE+Af+AAAJIAUkBiDgAAkgBSQGIAgABPgH/AgABPgH/AgABPgH/
-        AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/
-        AgABPgH/AgABPgH/AgABPgH/gAADSgGLOAADSgGLAgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/
-        AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/
-        AgABPgH/gAACSAFJAYcDFgEfMAADFgEfAkgBSQGHAlMBZAHxAgABPgH/AgABPgH/AgABPgH/AgABPgH/
-        AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/AgABPgH/
+        AYgCSAFJAYgCSAFJAYgCSAFJAYgCSAFJAYgCSAFJAYgDSgGLAkgBSQGHAwcBCgM6AWICUwFkAfECAAE7
+        Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7
+        Af8CAAE7Af8CUwFkAfEDOgFigAACSAFJAYcDFgEfMAADFgEfAkgBSQGHAlMBZAHxAgABOwH/AgABOwH/
+        AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/
+        AgABOwH/AgABOwH/AlMBZAHxgAADSgGLOAADSgGLAgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/
+        AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/
+        AgABOwH/gAACSAFJAYg4AAJIAUkBiAIAATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/wIA
+        ATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/4AA
+        AkgBSQGIOAACSAFJAYgCAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7
+        Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af+AAAJIAUkBiDgA
+        AkgBSQGIAgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AlABUgGjAzABSwJUAWEB7gIA
+        ATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/4AAAkgBSQGIOAACSAFJAYgCAAE7
+        Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CUQFSAaEDAgEDAwoBDQMjATQCVAFhAe4CAAE7Af8CAAE7
+        Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af+AAAJIAUkBiDgAAkgBSQGIAgABOwH/AgABOwH/AgABOwH/
+        AgABOwH/AlMBVQGtAwIBAwNEAXkCXAFhAdwDFQEdAyMBNAJUAWEB7gIAATsB/wIAATsB/wIAATsB/wIA
+        ATsB/wIAATsB/4AAAkgBSQGIOAACSAFJAYgCAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CVQFWAbQDSgGM
+        AgABOwH/AgABOwH/AlwBYQHcAxUBHQMjATQCVAFhAe4CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af+AAAJI
+        AUkBiDgAAkgBSQGIAgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/
+        AgABOwH/AlwBYQHcAxUBHQMjATQCWQFnAfICAAE7Af8CAAE7Af8CAAE7Af+AAAJIAUkBiDgAAkgBSQGI
+        AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/
+        AlwBYQHcAykBPgJaAWAB3gIAATsB/wIAATsB/wIAATsB/4AAAkgBSQGIOAACSAFJAYgCAAE7Af8CAAE7
+        Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7
+        Af8CAAE7Af8CAAE7Af8CAAE7Af8CAAE7Af+AAAJIAUkBiDgAAkgBSQGIAgABOwH/AgABOwH/AgABOwH/
+        AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/
+        AgABOwH/AgABOwH/AgABOwH/gAADSgGLOAADSgGLAgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/
+        AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/
+        AgABOwH/gAACSAFJAYcDFgEfMAADFgEfAkgBSQGHAlMBZAHxAgABOwH/AgABOwH/AgABOwH/AgABOwH/
+        AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/AgABOwH/
         AlMBZAHxgAADBwEKAkgBSQGHA0oBiwJIAUkBiAJIAUkBiAJIAUkBiAJIAUkBiAJIAUkBiAJIAUkBiAJI
-        AUkBiAJIAUkBiAJIAUkBiAJIAUkBiANKAYsCSAFJAYcDBwEKAzoBYgJTAWQB8QIAAT4B/wIAAT4B/wIA
-        AT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wIAAT4B/wJT
+        AUkBiAJIAUkBiAJIAUkBiAJIAUkBiANKAYsCSAFJAYcDBwEKAzoBYgJTAWQB8QIAATsB/wIAATsB/wIA
+        ATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/wIAATsB/wJT
         AWQB8QM7AWOAAAFCAU0BPgcAAT4DAAEoAwABQAMAARADAAEBAQABAQUAAYAXAAP/CQABPwH8BgABfwH+
         BgABfwH+BgABfwH+BgABfwH+BgABfwH+BgABfwH+BgABfwH+BgABfwH+BgABfwH+BgABfwH+BgABfwH+
         BgABfwH+BgABPwH8DgAL

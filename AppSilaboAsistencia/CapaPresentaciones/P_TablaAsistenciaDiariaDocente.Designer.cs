@@ -35,41 +35,17 @@ namespace CapaPresentaciones
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties13 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties14 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties15 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaAsistenciaDiariaDocente));
 			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
 			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
 			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
 			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaAsistenciaDiariaDocente));
 			this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
 			this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
 			this.ListaImagenes = new System.Windows.Forms.ImageList(this.components);
 			this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
 			this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
 			this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
-			this.btnGuardar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-			this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
-			this.txtFecha = new Bunifu.UI.WinForms.BunifuTextBox();
-			this.lblFecha = new Bunifu.UI.WinForms.BunifuLabel();
-			this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
-			this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
-			this.txtBuscar = new Bunifu.UI.WinForms.BunifuTextBox();
-			this.lblMarcarTodos = new Bunifu.UI.WinForms.BunifuLabel();
-			this.ckbMarcarTodos = new Bunifu.UI.WinForms.BunifuCheckBox();
-			this.pbLogo = new Bunifu.UI.WinForms.BunifuImageButton();
-			this.txtSemestreA = new Bunifu.UI.WinForms.BunifuTextBox();
-			this.txtJD = new Bunifu.UI.WinForms.BunifuTextBox();
 			this.ckbAsistencia = new System.Windows.Forms.DataGridViewImageColumn();
 			this.cbxObservaciones = new System.Windows.Forms.DataGridViewComboBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +55,16 @@ namespace CapaPresentaciones
 			this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btnGuardar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+			this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
+			this.lblFecha = new Bunifu.UI.WinForms.BunifuLabel();
+			this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
+			this.txtBuscar = new Bunifu.UI.WinForms.BunifuTextBox();
+			this.lblMarcarTodos = new Bunifu.UI.WinForms.BunifuLabel();
+			this.ckbMarcarTodos = new Bunifu.UI.WinForms.BunifuCheckBox();
+			this.pbLogo = new Bunifu.UI.WinForms.BunifuImageButton();
+			this.txtSemestreA = new Bunifu.UI.WinForms.BunifuLabel();
+			this.txtFecha = new Bunifu.UI.WinForms.BunifuLabel();
 			((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -260,7 +246,7 @@ namespace CapaPresentaciones
 			this.dgvDatos.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
 			this.dgvDatos.HeaderBgColor = System.Drawing.Color.Empty;
 			this.dgvDatos.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			this.dgvDatos.Location = new System.Drawing.Point(27, 181);
+			this.dgvDatos.Location = new System.Drawing.Point(30, 143);
 			this.dgvDatos.MultiSelect = false;
 			this.dgvDatos.Name = "dgvDatos";
 			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -284,6 +270,60 @@ namespace CapaPresentaciones
 			this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
 			this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
 			this.dgvDatos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellEnter);
+			// 
+			// ckbAsistencia
+			// 
+			this.ckbAsistencia.HeaderText = "Asistencia";
+			this.ckbAsistencia.Image = global::CapaPresentaciones.Properties.Resources.Unchecked_18x18;
+			this.ckbAsistencia.MinimumWidth = 6;
+			this.ckbAsistencia.Name = "ckbAsistencia";
+			this.ckbAsistencia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			// 
+			// cbxObservaciones
+			// 
+			this.cbxObservaciones.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+			this.cbxObservaciones.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.cbxObservaciones.HeaderText = "Observaciones";
+			this.cbxObservaciones.Items.AddRange(new object[] {
+            "",
+            "PERMISO",
+            "FALTO SIN JUSTIFICAR"});
+			this.cbxObservaciones.Name = "cbxObservaciones";
+			// 
+			// Column2
+			// 
+			this.Column2.HeaderText = "Id.";
+			this.Column2.Name = "Column2";
+			// 
+			// Column3
+			// 
+			this.Column3.HeaderText = "Codigo";
+			this.Column3.Name = "Column3";
+			// 
+			// Column4
+			// 
+			this.Column4.HeaderText = "Apellido Paterno";
+			this.Column4.Name = "Column4";
+			// 
+			// Column5
+			// 
+			this.Column5.HeaderText = "Apellido Materno";
+			this.Column5.Name = "Column5";
+			// 
+			// Column6
+			// 
+			this.Column6.HeaderText = "Nombre";
+			this.Column6.Name = "Column6";
+			// 
+			// Column7
+			// 
+			this.Column7.HeaderText = "Asistio";
+			this.Column7.Name = "Column7";
+			// 
+			// Column8
+			// 
+			this.Column8.HeaderText = "Observacion";
+			this.Column8.Name = "Column8";
 			// 
 			// btnGuardar
 			// 
@@ -396,7 +436,7 @@ namespace CapaPresentaciones
 			this.sbDatos.BorderThickness = 1;
 			this.sbDatos.DurationBeforeShrink = 2000;
 			this.sbDatos.LargeChange = 10;
-			this.sbDatos.Location = new System.Drawing.Point(763, 207);
+			this.sbDatos.Location = new System.Drawing.Point(766, 171);
 			this.sbDatos.Margin = new System.Windows.Forms.Padding(4);
 			this.sbDatos.Maximum = 100;
 			this.sbDatos.Minimum = 0;
@@ -408,92 +448,14 @@ namespace CapaPresentaciones
 			this.sbDatos.ScrollBarBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
 			this.sbDatos.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
 			this.sbDatos.ShrinkSizeLimit = 3;
-			this.sbDatos.Size = new System.Drawing.Size(10, 368);
+			this.sbDatos.Size = new System.Drawing.Size(11, 363);
 			this.sbDatos.SmallChange = 1;
 			this.sbDatos.TabIndex = 61;
 			this.sbDatos.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			this.sbDatos.ThumbLength = 36;
+			this.sbDatos.ThumbLength = 35;
 			this.sbDatos.ThumbMargin = 1;
 			this.sbDatos.ThumbStyle = Bunifu.UI.WinForms.BunifuVScrollBar.ThumbStyles.Inset;
 			this.sbDatos.Value = 0;
-			// 
-			// txtFecha
-			// 
-			this.txtFecha.AcceptsReturn = false;
-			this.txtFecha.AcceptsTab = false;
-			this.txtFecha.AnimationSpeed = 200;
-			this.txtFecha.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-			this.txtFecha.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-			this.txtFecha.AutoSizeHeight = true;
-			this.txtFecha.BackColor = System.Drawing.Color.White;
-			this.txtFecha.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtFecha.BackgroundImage")));
-			this.txtFecha.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			this.txtFecha.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-			this.txtFecha.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			this.txtFecha.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			this.txtFecha.BorderRadius = 1;
-			this.txtFecha.BorderThickness = 1;
-			this.txtFecha.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-			this.txtFecha.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtFecha.DefaultFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtFecha.DefaultText = "";
-			this.txtFecha.FillColor = System.Drawing.Color.White;
-			this.txtFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			this.txtFecha.HideSelection = true;
-			this.txtFecha.IconLeft = null;
-			this.txtFecha.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtFecha.IconPadding = 0;
-			this.txtFecha.IconRight = null;
-			this.txtFecha.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtFecha.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.txtFecha.Lines = new string[0];
-			this.txtFecha.Location = new System.Drawing.Point(683, 62);
-			this.txtFecha.Margin = new System.Windows.Forms.Padding(0);
-			this.txtFecha.MaxLength = 32767;
-			this.txtFecha.MinimumSize = new System.Drawing.Size(1, 1);
-			this.txtFecha.Modified = false;
-			this.txtFecha.Multiline = false;
-			this.txtFecha.Name = "txtFecha";
-			stateProperties13.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			stateProperties13.FillColor = System.Drawing.Color.Empty;
-			stateProperties13.ForeColor = System.Drawing.Color.Empty;
-			stateProperties13.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.txtFecha.OnActiveState = stateProperties13;
-			stateProperties14.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-			stateProperties14.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-			stateProperties14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-			stateProperties14.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-			this.txtFecha.OnDisabledState = stateProperties14;
-			stateProperties15.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			stateProperties15.FillColor = System.Drawing.Color.Empty;
-			stateProperties15.ForeColor = System.Drawing.Color.Empty;
-			stateProperties15.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.txtFecha.OnHoverState = stateProperties15;
-			stateProperties16.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			stateProperties16.FillColor = System.Drawing.Color.White;
-			stateProperties16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			stateProperties16.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.txtFecha.OnIdleState = stateProperties16;
-			this.txtFecha.Padding = new System.Windows.Forms.Padding(3);
-			this.txtFecha.PasswordChar = '\0';
-			this.txtFecha.PlaceholderForeColor = System.Drawing.Color.DimGray;
-			this.txtFecha.PlaceholderText = "fecha";
-			this.txtFecha.ReadOnly = true;
-			this.txtFecha.ScrollBars = System.Windows.Forms.ScrollBars.None;
-			this.txtFecha.SelectedText = "";
-			this.txtFecha.SelectionLength = 0;
-			this.txtFecha.SelectionStart = 0;
-			this.txtFecha.ShortcutsEnabled = true;
-			this.txtFecha.Size = new System.Drawing.Size(105, 32);
-			this.txtFecha.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
-			this.txtFecha.TabIndex = 63;
-			this.txtFecha.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-			this.txtFecha.TextMarginBottom = 0;
-			this.txtFecha.TextMarginLeft = 0;
-			this.txtFecha.TextMarginTop = 0;
-			this.txtFecha.TextPlaceholder = "fecha";
-			this.txtFecha.UseSystemPasswordChar = false;
-			this.txtFecha.WordWrap = true;
 			// 
 			// lblFecha
 			// 
@@ -529,23 +491,6 @@ namespace CapaPresentaciones
 			this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
 			this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
 			// 
-			// bunifuLabel2
-			// 
-			this.bunifuLabel2.AllowParentOverrides = false;
-			this.bunifuLabel2.AutoEllipsis = false;
-			this.bunifuLabel2.Cursor = System.Windows.Forms.Cursors.Default;
-			this.bunifuLabel2.CursorType = System.Windows.Forms.Cursors.Default;
-			this.bunifuLabel2.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
-			this.bunifuLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			this.bunifuLabel2.Location = new System.Drawing.Point(27, 100);
-			this.bunifuLabel2.Name = "bunifuLabel2";
-			this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.bunifuLabel2.Size = new System.Drawing.Size(187, 23);
-			this.bunifuLabel2.TabIndex = 65;
-			this.bunifuLabel2.Text = "Jefe de Departamento:";
-			this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-			this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-			// 
 			// txtBuscar
 			// 
 			this.txtBuscar.AcceptsReturn = false;
@@ -578,33 +523,33 @@ namespace CapaPresentaciones
 			this.txtBuscar.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
 			this.txtBuscar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this.txtBuscar.Lines = new string[0];
-			this.txtBuscar.Location = new System.Drawing.Point(27, 147);
+			this.txtBuscar.Location = new System.Drawing.Point(27, 106);
 			this.txtBuscar.Margin = new System.Windows.Forms.Padding(0);
 			this.txtBuscar.MaxLength = 32767;
 			this.txtBuscar.MinimumSize = new System.Drawing.Size(1, 1);
 			this.txtBuscar.Modified = false;
 			this.txtBuscar.Multiline = false;
 			this.txtBuscar.Name = "txtBuscar";
-			stateProperties9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			stateProperties9.FillColor = System.Drawing.Color.Empty;
-			stateProperties9.ForeColor = System.Drawing.Color.Empty;
-			stateProperties9.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.txtBuscar.OnActiveState = stateProperties9;
-			stateProperties10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-			stateProperties10.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-			stateProperties10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-			stateProperties10.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-			this.txtBuscar.OnDisabledState = stateProperties10;
-			stateProperties11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			stateProperties11.FillColor = System.Drawing.Color.Empty;
-			stateProperties11.ForeColor = System.Drawing.Color.Empty;
-			stateProperties11.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.txtBuscar.OnHoverState = stateProperties11;
-			stateProperties12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			stateProperties12.FillColor = System.Drawing.Color.White;
-			stateProperties12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			stateProperties12.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.txtBuscar.OnIdleState = stateProperties12;
+			stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+			stateProperties1.FillColor = System.Drawing.Color.Empty;
+			stateProperties1.ForeColor = System.Drawing.Color.Empty;
+			stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+			this.txtBuscar.OnActiveState = stateProperties1;
+			stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+			stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+			stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+			stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+			this.txtBuscar.OnDisabledState = stateProperties2;
+			stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+			stateProperties3.FillColor = System.Drawing.Color.Empty;
+			stateProperties3.ForeColor = System.Drawing.Color.Empty;
+			stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+			this.txtBuscar.OnHoverState = stateProperties3;
+			stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+			stateProperties4.FillColor = System.Drawing.Color.White;
+			stateProperties4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+			stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+			this.txtBuscar.OnIdleState = stateProperties4;
 			this.txtBuscar.Padding = new System.Windows.Forms.Padding(3);
 			this.txtBuscar.PasswordChar = '\0';
 			this.txtBuscar.PlaceholderForeColor = System.Drawing.Color.DimGray;
@@ -635,7 +580,7 @@ namespace CapaPresentaciones
 			this.lblMarcarTodos.CursorType = System.Windows.Forms.Cursors.Default;
 			this.lblMarcarTodos.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
 			this.lblMarcarTodos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			this.lblMarcarTodos.Location = new System.Drawing.Point(661, 155);
+			this.lblMarcarTodos.Location = new System.Drawing.Point(651, 114);
 			this.lblMarcarTodos.Name = "lblMarcarTodos";
 			this.lblMarcarTodos.RightToLeft = System.Windows.Forms.RightToLeft.No;
 			this.lblMarcarTodos.Size = new System.Drawing.Size(112, 23);
@@ -662,7 +607,7 @@ namespace CapaPresentaciones
 			this.ckbMarcarTodos.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Unchecked;
 			this.ckbMarcarTodos.Cursor = System.Windows.Forms.Cursors.Default;
 			this.ckbMarcarTodos.CustomCheckmarkImage = null;
-			this.ckbMarcarTodos.Location = new System.Drawing.Point(641, 160);
+			this.ckbMarcarTodos.Location = new System.Drawing.Point(627, 119);
 			this.ckbMarcarTodos.MinimumSize = new System.Drawing.Size(17, 17);
 			this.ckbMarcarTodos.Name = "ckbMarcarTodos";
 			this.ckbMarcarTodos.OnCheck.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -735,213 +680,39 @@ namespace CapaPresentaciones
 			// 
 			// txtSemestreA
 			// 
-			this.txtSemestreA.AcceptsReturn = false;
-			this.txtSemestreA.AcceptsTab = false;
-			this.txtSemestreA.AnimationSpeed = 200;
-			this.txtSemestreA.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-			this.txtSemestreA.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-			this.txtSemestreA.AutoSizeHeight = true;
-			this.txtSemestreA.BackColor = System.Drawing.Color.White;
-			this.txtSemestreA.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtSemestreA.BackgroundImage")));
-			this.txtSemestreA.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			this.txtSemestreA.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-			this.txtSemestreA.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			this.txtSemestreA.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			this.txtSemestreA.BorderRadius = 1;
-			this.txtSemestreA.BorderThickness = 1;
-			this.txtSemestreA.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-			this.txtSemestreA.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtSemestreA.DefaultFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtSemestreA.DefaultText = "";
-			this.txtSemestreA.FillColor = System.Drawing.Color.White;
+			this.txtSemestreA.AllowParentOverrides = false;
+			this.txtSemestreA.AutoEllipsis = false;
+			this.txtSemestreA.AutoSize = false;
+			this.txtSemestreA.Cursor = System.Windows.Forms.Cursors.Default;
+			this.txtSemestreA.CursorType = System.Windows.Forms.Cursors.Default;
+			this.txtSemestreA.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtSemestreA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			this.txtSemestreA.HideSelection = true;
-			this.txtSemestreA.IconLeft = null;
-			this.txtSemestreA.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtSemestreA.IconPadding = 0;
-			this.txtSemestreA.IconRight = null;
-			this.txtSemestreA.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtSemestreA.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.txtSemestreA.Lines = new string[0];
-			this.txtSemestreA.Location = new System.Drawing.Point(227, 49);
-			this.txtSemestreA.Margin = new System.Windows.Forms.Padding(0);
-			this.txtSemestreA.MaxLength = 32767;
-			this.txtSemestreA.MinimumSize = new System.Drawing.Size(1, 1);
-			this.txtSemestreA.Modified = false;
-			this.txtSemestreA.Multiline = false;
+			this.txtSemestreA.Location = new System.Drawing.Point(220, 52);
 			this.txtSemestreA.Name = "txtSemestreA";
-			stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			stateProperties5.FillColor = System.Drawing.Color.Empty;
-			stateProperties5.ForeColor = System.Drawing.Color.Empty;
-			stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.txtSemestreA.OnActiveState = stateProperties5;
-			stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-			stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-			stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-			stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-			this.txtSemestreA.OnDisabledState = stateProperties6;
-			stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			stateProperties7.FillColor = System.Drawing.Color.Empty;
-			stateProperties7.ForeColor = System.Drawing.Color.Empty;
-			stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.txtSemestreA.OnHoverState = stateProperties7;
-			stateProperties8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			stateProperties8.FillColor = System.Drawing.Color.White;
-			stateProperties8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.txtSemestreA.OnIdleState = stateProperties8;
-			this.txtSemestreA.Padding = new System.Windows.Forms.Padding(3);
-			this.txtSemestreA.PasswordChar = '\0';
-			this.txtSemestreA.PlaceholderForeColor = System.Drawing.Color.DimGray;
-			this.txtSemestreA.PlaceholderText = "";
-			this.txtSemestreA.ReadOnly = true;
-			this.txtSemestreA.ScrollBars = System.Windows.Forms.ScrollBars.None;
-			this.txtSemestreA.SelectedText = "";
-			this.txtSemestreA.SelectionLength = 0;
-			this.txtSemestreA.SelectionStart = 0;
-			this.txtSemestreA.ShortcutsEnabled = true;
-			this.txtSemestreA.Size = new System.Drawing.Size(105, 32);
-			this.txtSemestreA.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
-			this.txtSemestreA.TabIndex = 70;
-			this.txtSemestreA.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-			this.txtSemestreA.TextMarginBottom = 0;
-			this.txtSemestreA.TextMarginLeft = 0;
-			this.txtSemestreA.TextMarginTop = 0;
-			this.txtSemestreA.TextPlaceholder = "";
-			this.txtSemestreA.UseSystemPasswordChar = false;
-			this.txtSemestreA.WordWrap = true;
+			this.txtSemestreA.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.txtSemestreA.Size = new System.Drawing.Size(59, 23);
+			this.txtSemestreA.TabIndex = 86;
+			this.txtSemestreA.Text = "Semestre";
+			this.txtSemestreA.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+			this.txtSemestreA.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
 			// 
-			// txtJD
+			// txtFecha
 			// 
-			this.txtJD.AcceptsReturn = false;
-			this.txtJD.AcceptsTab = false;
-			this.txtJD.AnimationSpeed = 200;
-			this.txtJD.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-			this.txtJD.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-			this.txtJD.AutoSizeHeight = true;
-			this.txtJD.BackColor = System.Drawing.Color.White;
-			this.txtJD.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtJD.BackgroundImage")));
-			this.txtJD.BorderColorActive = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			this.txtJD.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-			this.txtJD.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			this.txtJD.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			this.txtJD.BorderRadius = 1;
-			this.txtJD.BorderThickness = 1;
-			this.txtJD.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-			this.txtJD.Cursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtJD.DefaultFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txtJD.DefaultText = "";
-			this.txtJD.FillColor = System.Drawing.Color.White;
-			this.txtJD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			this.txtJD.HideSelection = true;
-			this.txtJD.IconLeft = null;
-			this.txtJD.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtJD.IconPadding = 0;
-			this.txtJD.IconRight = null;
-			this.txtJD.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-			this.txtJD.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.txtJD.Lines = new string[0];
-			this.txtJD.Location = new System.Drawing.Point(227, 91);
-			this.txtJD.Margin = new System.Windows.Forms.Padding(0);
-			this.txtJD.MaxLength = 32767;
-			this.txtJD.MinimumSize = new System.Drawing.Size(1, 1);
-			this.txtJD.Modified = false;
-			this.txtJD.Multiline = false;
-			this.txtJD.Name = "txtJD";
-			stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			stateProperties1.FillColor = System.Drawing.Color.Empty;
-			stateProperties1.ForeColor = System.Drawing.Color.Empty;
-			stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.txtJD.OnActiveState = stateProperties1;
-			stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-			stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-			stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-			stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-			this.txtJD.OnDisabledState = stateProperties2;
-			stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-			stateProperties3.FillColor = System.Drawing.Color.Empty;
-			stateProperties3.ForeColor = System.Drawing.Color.Empty;
-			stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.txtJD.OnHoverState = stateProperties3;
-			stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			stateProperties4.FillColor = System.Drawing.Color.White;
-			stateProperties4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-			stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
-			this.txtJD.OnIdleState = stateProperties4;
-			this.txtJD.Padding = new System.Windows.Forms.Padding(3);
-			this.txtJD.PasswordChar = '\0';
-			this.txtJD.PlaceholderForeColor = System.Drawing.Color.DimGray;
-			this.txtJD.PlaceholderText = "";
-			this.txtJD.ReadOnly = true;
-			this.txtJD.ScrollBars = System.Windows.Forms.ScrollBars.None;
-			this.txtJD.SelectedText = "";
-			this.txtJD.SelectionLength = 0;
-			this.txtJD.SelectionStart = 0;
-			this.txtJD.ShortcutsEnabled = true;
-			this.txtJD.Size = new System.Drawing.Size(227, 32);
-			this.txtJD.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Material;
-			this.txtJD.TabIndex = 71;
-			this.txtJD.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-			this.txtJD.TextMarginBottom = 0;
-			this.txtJD.TextMarginLeft = 0;
-			this.txtJD.TextMarginTop = 0;
-			this.txtJD.TextPlaceholder = "";
-			this.txtJD.UseSystemPasswordChar = false;
-			this.txtJD.WordWrap = true;
-			// 
-			// ckbAsistencia
-			// 
-			this.ckbAsistencia.HeaderText = "Asistencia";
-			this.ckbAsistencia.Image = global::CapaPresentaciones.Properties.Resources.Unchecked_18x18;
-			this.ckbAsistencia.MinimumWidth = 6;
-			this.ckbAsistencia.Name = "ckbAsistencia";
-			this.ckbAsistencia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-			// 
-			// cbxObservaciones
-			// 
-			this.cbxObservaciones.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-			this.cbxObservaciones.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.cbxObservaciones.HeaderText = "Observaciones";
-			this.cbxObservaciones.Items.AddRange(new object[] {
-            "",
-            "PERMISO",
-            "FALTO SIN JUSTIFICAR"});
-			this.cbxObservaciones.Name = "cbxObservaciones";
-			// 
-			// Column2
-			// 
-			this.Column2.HeaderText = "Id.";
-			this.Column2.Name = "Column2";
-			// 
-			// Column3
-			// 
-			this.Column3.HeaderText = "Codigo";
-			this.Column3.Name = "Column3";
-			// 
-			// Column4
-			// 
-			this.Column4.HeaderText = "Apellido Paterno";
-			this.Column4.Name = "Column4";
-			// 
-			// Column5
-			// 
-			this.Column5.HeaderText = "Apellido Materno";
-			this.Column5.Name = "Column5";
-			// 
-			// Column6
-			// 
-			this.Column6.HeaderText = "Nombre";
-			this.Column6.Name = "Column6";
-			// 
-			// Column7
-			// 
-			this.Column7.HeaderText = "Asistio";
-			this.Column7.Name = "Column7";
-			// 
-			// Column8
-			// 
-			this.Column8.HeaderText = "Observacion";
-			this.Column8.Name = "Column8";
+			this.txtFecha.AllowParentOverrides = false;
+			this.txtFecha.AutoEllipsis = false;
+			this.txtFecha.AutoSize = false;
+			this.txtFecha.Cursor = System.Windows.Forms.Cursors.Default;
+			this.txtFecha.CursorType = System.Windows.Forms.Cursors.Default;
+			this.txtFecha.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+			this.txtFecha.Location = new System.Drawing.Point(686, 67);
+			this.txtFecha.Name = "txtFecha";
+			this.txtFecha.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.txtFecha.Size = new System.Drawing.Size(90, 23);
+			this.txtFecha.TabIndex = 88;
+			this.txtFecha.Text = "fecha";
+			this.txtFecha.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+			this.txtFecha.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
 			// 
 			// P_TablaAsistenciaDiariaDocente
 			// 
@@ -950,15 +721,13 @@ namespace CapaPresentaciones
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(802, 636);
-			this.Controls.Add(this.txtJD);
+			this.Controls.Add(this.txtFecha);
 			this.Controls.Add(this.txtSemestreA);
 			this.Controls.Add(this.pbLogo);
 			this.Controls.Add(this.lblMarcarTodos);
 			this.Controls.Add(this.ckbMarcarTodos);
 			this.Controls.Add(this.txtBuscar);
-			this.Controls.Add(this.bunifuLabel2);
 			this.Controls.Add(this.bunifuLabel1);
-			this.Controls.Add(this.txtFecha);
 			this.Controls.Add(this.lblFecha);
 			this.Controls.Add(this.sbDatos);
 			this.Controls.Add(this.btnGuardar);
@@ -986,16 +755,12 @@ namespace CapaPresentaciones
 		public Bunifu.UI.WinForms.BunifuDataGridView dgvDatos;
 		private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGuardar;
 		private Bunifu.UI.WinForms.BunifuVScrollBar sbDatos;
-		public Bunifu.UI.WinForms.BunifuTextBox txtFecha;
 		private Bunifu.UI.WinForms.BunifuLabel lblFecha;
-		private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
 		private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
 		private Bunifu.UI.WinForms.BunifuTextBox txtBuscar;
 		private Bunifu.UI.WinForms.BunifuLabel lblMarcarTodos;
 		private Bunifu.UI.WinForms.BunifuCheckBox ckbMarcarTodos;
 		private Bunifu.UI.WinForms.BunifuImageButton pbLogo;
-		public Bunifu.UI.WinForms.BunifuTextBox txtJD;
-		public Bunifu.UI.WinForms.BunifuTextBox txtSemestreA;
 		private System.Windows.Forms.DataGridViewImageColumn ckbAsistencia;
 		private System.Windows.Forms.DataGridViewComboBoxColumn cbxObservaciones;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -1005,5 +770,7 @@ namespace CapaPresentaciones
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+		public Bunifu.UI.WinForms.BunifuLabel txtSemestreA;
+		public Bunifu.UI.WinForms.BunifuLabel txtFecha;
 	}
 }

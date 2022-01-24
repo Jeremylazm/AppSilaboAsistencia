@@ -65,7 +65,7 @@ namespace CapaPresentaciones
 
 
         }
-        public void MostrarEstudiantesRegistrados()
+        public void MostrarDocentesRegistrados()
         {
             
             
@@ -268,7 +268,7 @@ namespace CapaPresentaciones
 		{
 
             
-                MostrarEstudiantesRegistrados();
+                MostrarDocentesRegistrados();
                 //InicializarValoresEditar();
 
         }

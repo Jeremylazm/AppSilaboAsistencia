@@ -37,20 +37,23 @@ namespace CapaPresentaciones
         //private readonly string CodDepartamento = E_DepartamentoAcademico.CodDepartamentoA;
         public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente, DataTable pdgv)
         {
-            DataTable Semestre = N_Semestre.SemestreActual();
-            CodSemestre = Semestre.Rows[0][0].ToString();
-            LimtFechaInf = DateTime.ParseExact(Semestre.Rows[0][1].ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
-            CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
-            CodEscuelaP = E_InicioSesion.CodEscuelaP;
-            CodAsignatura = pCodAsignatura;
             CodDocente = pCodDocente;
             dgvTabla = pdgv;
+            CodAsignatura = pCodAsignatura;
+            CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
+            DataTable Semestre = N_Semestre.SemestreActual();
+            CodSemestre = Semestre.Rows[0][0].ToString();
+            DataTable EsculeaProf = N_Catalogo.VerEscuelaAsignatura(CodSemestre,CodAsignatura);
 
-            ObjNegocio = new N_Catalogo();
+            
+            LimtFechaInf = DateTime.ParseExact(Semestre.Rows[0][1].ToString(), "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
+            CodEscuelaP = EsculeaProf.Rows[0][0].ToString();
+            
             ObjEntidadEstd = new E_AsistenciaEstudiante();
             ObjNegocioEstd = new N_AsistenciaEstudiante();
             ObjEntidadDoc = new E_AsistenciaDocentePorAsignatura();
             ObjNegocioDoc = new N_AsistenciaDocentePorAsignatura();
+            ObjNegocio = new N_Catalogo();
 
             InitializeComponent();
             Control[] Controles = { this, lblTitulo, pbLogo, lblFecha, lblMarcarTodos, lblTema, txtFecha };
@@ -161,12 +164,12 @@ namespace CapaPresentaciones
 
         public void BuscarEstudiantes()
         {
+            //A_Dialogo.DialogoInformacion("esi: "+ N_Catalogo.VerEscuelaAsignatura(CodSemestre,CodAsignatura).ToString());
             //dgvDatos.DataSource= N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, CodAsignatura, txtBuscar.Text);
             DataTable EstudiantesMatriculados = N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, CodAsignatura, txtBuscar.Text);
-            this.dgvDatos.DataSource = null;
+            dgvDatos.DataSource = null;
+            dgvDatos.Rows.Clear();
 
-
-            this.dgvDatos.Rows.Clear();
             if (Program.Evento == 0)
 			{
                 //buscar estudiantes el dgv de agregar
@@ -244,7 +247,7 @@ namespace CapaPresentaciones
             foreach (DataGridViewRow dr in dgvDatos.Rows)
             {
                 ObjEntidadEstd.CodSemestre = CodSemestre;
-                ObjEntidadEstd.CodEscuelaP = N_Catalogo.VerEscuelaAsignatura(CodSemestre, CodAsignatura).ToString();
+                ObjEntidadEstd.CodEscuelaP = CodEscuelaP;
                 ObjEntidadEstd.CodAsignatura = CodAsignatura;
                 ObjEntidadEstd.Fecha = DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")); //actual del registro
                 ObjEntidadEstd.Hora = hora;//actual del registro
@@ -262,7 +265,7 @@ namespace CapaPresentaciones
             {
                 //cambiar es
                 ObjEntidadEstd.CodSemestre = CodSemestre;
-                ObjEntidadEstd.CodEscuelaP = N_Catalogo.VerEscuelaAsignatura(CodSemestre,CodAsignatura).ToString();//EscuelaProf
+                ObjEntidadEstd.CodEscuelaP = CodEscuelaP;
                 ObjEntidadEstd.CodAsignatura = CodAsignatura;
                 ObjEntidadEstd.Fecha = DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));//fecha en la que fue registrado
                 ObjEntidadEstd.Hora = hora;//hora en el que fue registrado
@@ -337,8 +340,9 @@ namespace CapaPresentaciones
 
 
                             ObjNegocioDoc.ActualizarAsistenciaDocentePorAsignatura(ObjEntidadDoc, TipoSesionActualizado, NombreTemaActualizado, ObsActulizado);
-                            A_Dialogo.DialogoConfirmacion("Se ha Editado  la Asistencia" + Environment.NewLine + " del Docente y los Estudiantes");
                             EditarRegistroEstudiantes();
+                            A_Dialogo.DialogoConfirmacion("Se ha Editado  la Asistencia" + Environment.NewLine + " del Docente y los Estudiantes");
+                            
                             Program.Evento = 0;
 
                             Close();
@@ -484,14 +488,12 @@ namespace CapaPresentaciones
                     btnGuardar.Enabled = false;
                 }
                 MostrarEstudiantesNuevoRegistro();
-                //InicializarValores();
-                //Program.Evento = 0;
+
             }
             else
             {
                 MostrarEstudiantesRegistrados();
-                //InicializarValoresEditar();
-                //Program.Evento = 1;
+
             }
         }
 
@@ -534,13 +536,7 @@ namespace CapaPresentaciones
                 arreglo = File.ReadAllBytes(fullFilePath);
 
                 ObjNegocio.ActualizarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodDocente, arreglo);
-                //GuardarRegistroDocente();
-                //Close();
-            }
-            else
-            {
-                //GuardarRegistroDocente();
-                //Close();               
+
             }
             
             GuardarRegistroDocente();
