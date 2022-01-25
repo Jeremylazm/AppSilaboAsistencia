@@ -875,7 +875,9 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[1].HeaderText = "Tema";
                 dgvResultados.Columns[2].HeaderText = "Fecha";
                 dgvResultados.Columns[3].HeaderText = "Estado";
-                dgvResultados.Columns["Sesión"].Width = 50;
+                dgvResultados.Columns[0].Width = 70;
+                dgvResultados.Columns[2].Width = 110;
+                dgvResultados.Columns[3].Width = 160;
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
 
@@ -972,9 +974,11 @@ namespace CapaPresentaciones
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[0].HeaderText = "Código Asignatura";
                 dgvResultados.Columns[1].HeaderText = "Nombre Asignatura";
-                dgvResultados.Columns[2].HeaderText = "Porcentaje Temas Avanzados";
-                dgvResultados.Columns[3].HeaderText = "Porcentaje Temas Faltantes";
-                dgvResultados.Columns["Código Asignatura"].Width = 70;
+                dgvResultados.Columns[2].HeaderText = "Temas Avanzados (%)";
+                dgvResultados.Columns[3].HeaderText = "Temas Faltantes (%)";
+                dgvResultados.Columns[0].Width = 145;
+                dgvResultados.Columns[2].Width = 170;
+                dgvResultados.Columns[3].Width = 180;
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
 
@@ -1296,8 +1300,10 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[1].HeaderText = "Nombre Asignatura";
                 dgvResultados.Columns[2].HeaderText = "Docente";
                 dgvResultados.Columns[3].HeaderText = "Avance Completado";
-                dgvResultados.Columns[4].HeaderText = "Avance que Falta";
-                dgvResultados.Columns["Código Asignatura"].Width = 70;
+                dgvResultados.Columns[4].HeaderText = "Avance Faltante";
+                dgvResultados.Columns[0].Width = 155;
+                dgvResultados.Columns[3].Width = 175;
+                dgvResultados.Columns[4].Width = 165;
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
 

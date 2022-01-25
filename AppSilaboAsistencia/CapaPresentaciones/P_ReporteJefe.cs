@@ -147,7 +147,7 @@ namespace CapaPresentaciones
                 }
 
             }
-            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignatura"))
+            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
                 fnReporte9();
             }
@@ -313,7 +313,7 @@ namespace CapaPresentaciones
 
             int Créditos = 0;
             int TemasTotales = 0;
-            float PorcentajeAvanzados = 0;
+            double PorcentajeAvanzados;
 
             for (int i = 0; i < resultados.Rows.Count; i++)
             {
