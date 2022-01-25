@@ -132,6 +132,14 @@ namespace CapaPresentaciones
             string Días;
             int HoraI, HoraF;
             bool Pasa = true;
+            string Grupo;
+
+            if (Check_Grupo_A.Checked == true)
+                Grupo = "A";
+            else if (Check_Grupo_A.Checked == true)
+                Grupo = "B";
+            else
+                Grupo = "C";
 
             DataTable T = N_HorarioAsignatura.HorarioSemanalDocente(CodSemestre, CodDocente);
 
@@ -150,13 +158,20 @@ namespace CapaPresentaciones
                         else if (Convert.ToInt32(HoraInicio) >= HoraF)
                             Pasa = Pasa && true;
                         else
-                            Pasa = Pasa && false;
+                        {
+                            if ((CódigoD1A == CodDocente || CódigoD2A == CodDocente) && CódigoSemestreA == CodSemestre && CódigoAsignaturaA == CódigoAsignatura && Grupo == GrupoA)
+                                Pasa = Pasa && true;
+                            else
+                                Pasa = Pasa && false;
+                        }
                     }
                 }
                 return Pasa;
             }
             else
+            {
                 return Pasa;
+            }
         }
 
         public void Guardar()

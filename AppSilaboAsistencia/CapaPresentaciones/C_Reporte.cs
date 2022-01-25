@@ -453,7 +453,7 @@ namespace CapaPresentaciones
             dgvResultados.Columns["CodEstudiante"].HeaderText = "Código";
             dgvResultados.Columns["APaterno"].HeaderText = "A. Paterno";
             dgvResultados.Columns["AMaterno"].HeaderText = "A. Materno";
-            dgvResultados.Columns["Nombre"].HeaderText = "Nombres (s)";
+            dgvResultados.Columns["Nombre"].HeaderText = "Nombre(s)";
             dgvResultados.Columns["Asistió"].Width = 80;
 
             // Mostrar los resultados de manera responsiva
@@ -875,6 +875,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[1].HeaderText = "Tema";
                 dgvResultados.Columns[2].HeaderText = "Fecha";
                 dgvResultados.Columns[3].HeaderText = "Estado";
+                dgvResultados.Columns["Sesión"].Width = 50;
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
 
@@ -973,6 +974,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[1].HeaderText = "Nombre Asignatura";
                 dgvResultados.Columns[2].HeaderText = "Porcentaje Temas Avanzados";
                 dgvResultados.Columns[3].HeaderText = "Porcentaje Temas Faltantes";
+                dgvResultados.Columns["Código Asignatura"].Width = 70;
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
 
@@ -1295,6 +1297,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[2].HeaderText = "Docente";
                 dgvResultados.Columns[3].HeaderText = "Avance Completado";
                 dgvResultados.Columns[4].HeaderText = "Avance que Falta";
+                dgvResultados.Columns["Código Asignatura"].Width = 70;
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
 
@@ -2301,6 +2304,7 @@ namespace CapaPresentaciones
             lblTitulo.Select();
             #endregion ===================== GRÁFICOS =====================
         }
+
         private void dgvResultados_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (Equals("System.Windows.Forms.DataGridViewImageColumn", dgvResultados.Columns[e.ColumnIndex].GetType().ToString()) && e.RowIndex >= 0) dgvResultados.Cursor = Cursors.Hand;
