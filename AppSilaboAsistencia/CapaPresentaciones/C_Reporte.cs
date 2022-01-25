@@ -880,6 +880,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[3].Width = 160;
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+                dgvResultados.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
                 foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
@@ -981,6 +982,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[3].Width = 180;
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+                dgvResultados.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
                 foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
@@ -1306,6 +1308,8 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[4].Width = 165;
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+                dgvResultados.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgvResultados.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
                 foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
