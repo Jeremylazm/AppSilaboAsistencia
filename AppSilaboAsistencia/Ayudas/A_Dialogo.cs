@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -10,6 +11,8 @@ namespace Ayudas
 {
     public class A_Dialogo
     {
+        private static int Tiempo { get; set; }
+
         public static DialogResult DialogoPreguntaAceptarCancelar(string Pregunta)
         {
             Form Fondo = new Form();
@@ -73,6 +76,23 @@ namespace Ayudas
         public static void DialogoInformacion(string Mensaje)
         {
             A_DialogoRespuesta1.Mostrar(Mensaje, (Image)Properties.Resources.Dialogo_Informacion);
+        }
+
+        private static void TiempoCarga()
+        {
+            for (int K = 0; K <= 100; K++)
+            {
+                Thread.Sleep(Tiempo);
+            }
+        }
+
+        public static void DialogoCargando(Form Formulario, int pTiempo)
+        {
+            Tiempo = pTiempo;
+            using (A_DialogoCargando Dialogo = new A_DialogoCargando(TiempoCarga))
+            {
+                Dialogo.ShowDialog(Formulario);
+            }
         }
     }
 }
