@@ -364,6 +364,7 @@ namespace CapaPresentaciones
 
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
+
         private void fnReporte12()
         {
             // Tipo de reporte: Asistencia Docentes
@@ -379,6 +380,7 @@ namespace CapaPresentaciones
 
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
+
         private void fnReporte13()
         {
             pnReporte.AutoScrollPosition = new Point(0, 0);
@@ -395,6 +397,7 @@ namespace CapaPresentaciones
             
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
+
         private void fnReporte14()
         {
             pnReporte.AutoScrollPosition = new Point(0, 0);
@@ -412,6 +415,7 @@ namespace CapaPresentaciones
             
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
+
         private void dpFechaInicial_CloseUp(object sender, EventArgs e)
         {
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Docentes"))
