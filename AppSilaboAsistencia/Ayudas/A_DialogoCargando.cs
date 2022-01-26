@@ -33,11 +33,6 @@ namespace Ayudas
             AparicionFormulario.Start();
         }
 
-        private void A_DialogoCargando_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void AparicionFormulario_Tick(object sender, EventArgs e)
         {
             if (this.Opacity < 1)

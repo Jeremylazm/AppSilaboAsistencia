@@ -54,13 +54,13 @@ namespace CapaPresentaciones
 
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Estudiantes
-            string CodEscuelaP = N_Catalogo.VerEscuelaAsignatura(CodSemestre, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString()).Rows[0][0].ToString();
+            if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
+            {
+                // Estudiantes
+                string CodEscuelaP = N_Catalogo.VerEscuelaAsignatura(CodSemestre, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString()).Rows[0][0].ToString();
+                DataTable Estudiantes = N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), "");
 
-            DataTable Estudiantes = N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre,CodEscuelaP, dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), "");
-			if (Estudiantes.Rows.Count != 0)
-			{
-                if ((e.RowIndex >= 0) && (e.ColumnIndex == 0))
+                if (Estudiantes.Rows.Count != 0)
                 {
                     P_HistorialSesionesAsignatura HistorialSesiones = new P_HistorialSesionesAsignatura(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString()) //codasignatura y coddocente
                     {
@@ -72,11 +72,11 @@ namespace CapaPresentaciones
                     HistorialSesiones.BringToFront();
                     //HistorialSesiones.Dispose();
                 }
+                else
+                {
+                    A_Dialogo.DialogoError("No hay Estudiantes Matriculados" + Environment.NewLine + "Ud. debe actualizar");
+                }
             }
-			else
-			{
-                A_Dialogo.DialogoError("No hay Estudiantes Matriculados" + Environment.NewLine + "Ud. debe actualizar");
-			}
             
         }
 

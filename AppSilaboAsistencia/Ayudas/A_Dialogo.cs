@@ -94,5 +94,25 @@ namespace Ayudas
             //    Dialogo.ShowDialog(Formulario);
             //}
         }
+
+        private void EstablecerCarga(Form Formulario, bool displayLoader)
+        {
+            if (displayLoader)
+            {
+                Formulario.Invoke((MethodInvoker)delegate
+                {
+                    //EnProceso = true;
+                    //Dialogo.Mostrar();
+                });
+            }
+            else
+            {
+                Formulario.Invoke((MethodInvoker)delegate
+                {
+                    //Dialogo.Ocultar();
+                    //EnProceso = false;
+                });
+            }
+        }
     }
 }
