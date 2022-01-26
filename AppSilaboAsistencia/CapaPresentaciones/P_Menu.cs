@@ -388,7 +388,10 @@ namespace CapaPresentaciones
                 ActualizarColor();
                 Application.Exit();
             }
-            Principal.HoraFecha.Start();
+            else
+            {
+                Principal.HoraFecha.Start();
+            }
         }
 
         private void btnReportesDocente_Click(object sender, EventArgs e)

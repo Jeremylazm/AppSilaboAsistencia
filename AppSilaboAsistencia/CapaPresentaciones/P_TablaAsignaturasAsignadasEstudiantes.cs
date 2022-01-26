@@ -7,8 +7,6 @@ using CapaNegocios;
 using System.Data;
 using CapaEntidades;
 using Ayudas;
-using System.Drawing;
-using System.Threading;
 
 namespace CapaPresentaciones
 {
@@ -20,8 +18,6 @@ namespace CapaPresentaciones
         private readonly string CodSemestre;
         private readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
-        A_DialogoCargando Dialogo;
-        private bool EnProceso = false;
 
         public P_TablaAsignaturasAsignadasEstudiantes()
         {
@@ -30,7 +26,6 @@ namespace CapaPresentaciones
             ObjCatalogo = new N_Catalogo();
             ObjEntidadMatricula = new E_Matricula();
             ObjNegocioMatricula = new N_Matricula();
-            Dialogo = new A_DialogoCargando();
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             MostrarAsignaturas();
@@ -110,12 +105,10 @@ namespace CapaPresentaciones
                 if (ex is NoSuchElementException)
                 {
                     A_Dialogo.DialogoError("El servidor se encuentra temporalmente fuera de servicio");
-                    //MessageBox.Show("El servidor se encuentra temporalmente fuera de servicio.");
                 }
                 else if (ex is WebDriverException)
                 {
                     A_Dialogo.DialogoError("No se encuentra conectado a Internet. Revise su conexión");
-                    //MessageBox.Show("No se encuentra conectado a Internet. Revise su conexión.");
                 }
             }
 
@@ -134,7 +127,7 @@ namespace CapaPresentaciones
             return null;
         }
 
-        private void ActualizarData()
+        private void ActualizarEstudiantes()
         {
             string CodAsignatura = "";
             this.Invoke((MethodInvoker)delegate
@@ -142,7 +135,7 @@ namespace CapaPresentaciones
                 CodAsignatura = dgvDatos.Rows[dgvDatos.SelectedCells[0].RowIndex].Cells[2].Value.ToString();
             });
 
-            EstablecerCarga(true);
+            A_Dialogo.EstablecerCarga(this, true);
             List<Tuple<string, string>> ListaActualizada = Parse(CodAsignatura);
             if (ListaActualizada != null)
             {
@@ -195,7 +188,7 @@ namespace CapaPresentaciones
                 // Actualizar lista matriculados
                 string[] MatriculadosActual = NuevaLista.ToArray();
                 ObjCatalogo.ActualizarMatriculadosAsignatura(CodSemestre, CodAsignatura, CodDocente, string.Join(",", MatriculadosActual));
-                EstablecerCarga(false);
+                A_Dialogo.EstablecerCarga(this, false);
                 A_Dialogo.DialogoInformacion("La actualización ha terminado..." + Environment.NewLine +
                                              "Nuevos estudiantes matriculados: " + matriculados.ToString() + Environment.NewLine +
                                              "Estudiantes desmatriculados: " + desmatriculados.ToString() + Environment.NewLine);
@@ -209,65 +202,17 @@ namespace CapaPresentaciones
             {
                 string CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
 
-                //Form Fondo = new Form();
                 using (P_TablaEstudiantesAsignatura Estudiantes = new P_TablaEstudiantesAsignatura(CodAsignatura))
                 {
-                    //Fondo.StartPosition = FormStartPosition.Manual;
-                    //Fondo.FormBorderStyle = FormBorderStyle.None;
-                    //Fondo.Opacity = .70d;
-                    //Fondo.BackColor = Color.Black;
-                    //Fondo.WindowState = FormWindowState.Maximized;
-                    //Fondo.TopMost = true;
-                    //Fondo.Location = this.Location;
-                    //Fondo.ShowInTaskbar = false;
-                    //Fondo.Show();
-
-                    //Estudiantes.Owner = Fondo;
                     Estudiantes.ShowDialog();
                     Estudiantes.Dispose();
-
-                    //Fondo.Dispose();
                 }
             }
 
             // Actualizar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
-                if (EnProceso)
-                {
-                    A_Dialogo.DialogoError("Espere a que se actualice los estudiantes de la asignatura seleccionada");
-                    return;
-                }
-
-                try
-                {
-                    Thread threadInput = new Thread(ActualizarData);
-                    threadInput.Start();
-                }
-                catch (Exception)
-                {
-                    A_Dialogo.DialogoError("Error al actualizar los estudiantes");
-                }
-            }
-        }
-
-        private void EstablecerCarga(bool displayLoader)
-        {
-            if (displayLoader)
-            {
-                this.Invoke((MethodInvoker)delegate
-                {
-                    EnProceso = true;
-                    Dialogo.Mostrar();
-                });
-            }
-            else
-            {
-                this.Invoke((MethodInvoker)delegate
-                {
-                    Dialogo.Ocultar();
-                    EnProceso = false;
-                });
+                A_Dialogo.DialogoCargando(ActualizarEstudiantes, "Espere a que se actualice los estudiantes de la asignatura seleccionada");
             }
         }
 

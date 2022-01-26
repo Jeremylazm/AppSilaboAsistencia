@@ -28,24 +28,6 @@ namespace CapaPresentaciones
 
             dgvResultados.CellMouseEnter += new DataGridViewCellEventHandler(dgvResultados_CellMouseEnter);
         }
-        
-        public C_Reporte(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistencia, string CodAsignatura, string AccesoReporte)
-        {
-            InitializeComponent();
-            Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
-            AccesoReportes = AccesoReporte;
-
-            dgvResultados.CellMouseEnter += new DataGridViewCellEventHandler(dgvResultados_CellMouseEnter);
-
-            if (AccesoReporte == "Jefe de Departamento")
-            {
-                fnReporte10(Titulo, Titulos, Valores, Datos, CriterioAsistencia, CodAsignatura);
-            }
-            else
-            {
-                fnReporte1(Titulo, Titulos, Valores, Datos, CriterioAsistencia, CodAsignatura);
-            }
-        }
 
         public C_Reporte(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string Criterio)
         {
