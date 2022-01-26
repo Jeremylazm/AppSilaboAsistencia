@@ -276,8 +276,11 @@ namespace CapaPresentaciones
                 P_InicioSesion Login = new P_InicioSesion();
                 Login.Show();
             }
-            if (E_InicioSesion.Acceso != "Administrador")
-                Principal.HoraFecha.Start();
+            else
+            {
+                if (E_InicioSesion.Acceso != "Administrador")
+                    Principal.HoraFecha.Start();
+            }
         }
 
         private void EditarPerfil()
@@ -356,20 +359,20 @@ namespace CapaPresentaciones
             CargarDatosUsuario();
             GestionarAcceso();
 
-            if (E_InicioSesion.Acceso != "Administrador")
-            {
-                Principal = new P_PrincipalDocente
-                {
-                    HoraServidor = pHoraServidor,
-                    TopLevel = false,
-                    Dock = DockStyle.Fill
-                };
+            //if (E_InicioSesion.Acceso != "Administrador")
+            //{
+            //    Principal = new P_PrincipalDocente
+            //    {
+            //        HoraServidor = pHoraServidor,
+            //        TopLevel = false,
+            //        Dock = DockStyle.Fill
+            //    };
 
-                pnContenedor.Controls.Add(Principal);
-                pnContenedor.Tag = Principal;
-                Principal.Show();
-                Principal.BringToFront();
-            }
+            //    pnContenedor.Controls.Add(Principal);
+            //    pnContenedor.Tag = Principal;
+            //    Principal.Show();
+            //    Principal.BringToFront();
+            //}
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)

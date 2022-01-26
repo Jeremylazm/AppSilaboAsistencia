@@ -545,7 +545,7 @@ namespace CapaPresentaciones
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
-                fnReporte9();
+                fnReporte5();
             }
         }
     }

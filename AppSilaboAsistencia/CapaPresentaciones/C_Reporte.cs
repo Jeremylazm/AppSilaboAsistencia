@@ -453,7 +453,7 @@ namespace CapaPresentaciones
             dgvResultados.Columns["CodEstudiante"].HeaderText = "Código";
             dgvResultados.Columns["APaterno"].HeaderText = "A. Paterno";
             dgvResultados.Columns["AMaterno"].HeaderText = "A. Materno";
-            dgvResultados.Columns["Nombre"].HeaderText = "Nombres (s)";
+            dgvResultados.Columns["Nombre"].HeaderText = "Nombre(s)";
             dgvResultados.Columns["Asistió"].Width = 80;
 
             // Mostrar los resultados de manera responsiva
@@ -875,8 +875,12 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[1].HeaderText = "Tema";
                 dgvResultados.Columns[2].HeaderText = "Fecha";
                 dgvResultados.Columns[3].HeaderText = "Estado";
+                dgvResultados.Columns[0].Width = 70;
+                dgvResultados.Columns[2].Width = 110;
+                dgvResultados.Columns[3].Width = 160;
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+                dgvResultados.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
                 foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
@@ -971,10 +975,14 @@ namespace CapaPresentaciones
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[0].HeaderText = "Código Asignatura";
                 dgvResultados.Columns[1].HeaderText = "Nombre Asignatura";
-                dgvResultados.Columns[2].HeaderText = "Porcentaje Temas Avanzados";
-                dgvResultados.Columns[3].HeaderText = "Porcentaje Temas Faltantes";
+                dgvResultados.Columns[2].HeaderText = "Temas Avanzados (%)";
+                dgvResultados.Columns[3].HeaderText = "Temas Faltantes (%)";
+                dgvResultados.Columns[0].Width = 145;
+                dgvResultados.Columns[2].Width = 170;
+                dgvResultados.Columns[3].Width = 180;
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+                dgvResultados.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
                 foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
@@ -1294,9 +1302,14 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[1].HeaderText = "Nombre Asignatura";
                 dgvResultados.Columns[2].HeaderText = "Docente";
                 dgvResultados.Columns[3].HeaderText = "Avance Completado";
-                dgvResultados.Columns[4].HeaderText = "Avance que Falta";
+                dgvResultados.Columns[4].HeaderText = "Avance Faltante";
+                dgvResultados.Columns[0].Width = 155;
+                dgvResultados.Columns[3].Width = 175;
+                dgvResultados.Columns[4].Width = 165;
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+                dgvResultados.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                dgvResultados.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
                 foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
@@ -2301,6 +2314,7 @@ namespace CapaPresentaciones
             lblTitulo.Select();
             #endregion ===================== GRÁFICOS =====================
         }
+
         private void dgvResultados_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (Equals("System.Windows.Forms.DataGridViewImageColumn", dgvResultados.Columns[e.ColumnIndex].GetType().ToString()) && e.RowIndex >= 0) dgvResultados.Cursor = Cursors.Hand;

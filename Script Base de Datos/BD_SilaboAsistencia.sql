@@ -654,7 +654,7 @@ BEGIN
 	-- Mostrar la tabla TDocente
 	SELECT CodDocente, NombreCompleto = (APaterno + ' ' + AMaterno + ', ' + Nombre)
 		FROM TDocente
-	    WHERE CodDepartamentoA = @CodDepartamentoA AND CodDocente != '00000'
+	    WHERE CodDepartamentoA = @CodDepartamentoA
 		ORDER BY APaterno
 END;
 GO
