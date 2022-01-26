@@ -83,35 +83,6 @@ namespace CapaPresentaciones
             dgvDatos.Columns[8].Visible = false;
         }
 
-        public void InicializarValores()
-        {
-            foreach (DataGridViewRow fila in dgvDatos.Rows)
-            {
-                DataGridViewComboBoxCell textBoxcell = (DataGridViewComboBoxCell)(fila.Cells["cbxObservaciones"]);
-                textBoxcell.Value = "";
-                fila.Cells[0].Value = ListaImagenes.Images[0];
-                fila.Cells[0].Tag = false;
-            }
-        }
-
-        public void InicializarValoresEditar()
-        {
-            foreach (DataGridViewRow fila in dgvDatos.Rows)
-            {
-                DataGridViewComboBoxCell textBoxcell = (DataGridViewComboBoxCell)(fila.Cells["cbxObservaciones"]);
-                textBoxcell.Value = fila.Cells[8].Value;
-                fila.Cells[0].Value = (fila.Cells[7].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
-                if(fila.Cells[7].Value.Equals("SI"))
-                {
-                    fila.Cells[0].Tag = true;
-                }
-                else
-				{
-                    fila.Cells[0].Tag = false;
-                }
-            }
-        }
-
         private void MostrarEstudiantesNuevoRegistro()
         {
             int i = 0;
@@ -376,7 +347,24 @@ namespace CapaPresentaciones
                 this.Height = 622;
             }
         }
+        public void ValidaCheckBox()
+        {
+            bool R = true;
+            foreach (DataGridViewRow Fila in dgvDatos.Rows)
+            {
+                if (Fila.Cells[0].Tag.Equals(false))
+                {
+                    R = false;
+                    break;
+                }
 
+            }
+            if (R.Equals(true))
+            {
+                Console.WriteLine("llegue aqui");
+                ckbMarcarTodos.Checked = true;
+            }
+        }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Program.Evento = 0;
@@ -435,7 +423,9 @@ namespace CapaPresentaciones
                     DataGrid.Rows[e.RowIndex].Cells[0].Value = ListaImagenes.Images[0];
                     DataGrid.Rows[e.RowIndex].Cells[0].Tag = false;
                 }
-            }           
+                ValidaCheckBox();
+            }
+            
         }
 
         private void ckbMarcarTodos_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
@@ -457,7 +447,7 @@ namespace CapaPresentaciones
                 }
             }
         }
-
+        
 
         private void P_TablaAsistenciaEstudiantes_Load(object sender, EventArgs e)
         {
@@ -511,8 +501,9 @@ namespace CapaPresentaciones
                 MostrarEstudiantesRegistrados();
 
             }
-
+            ValidaCheckBox();
             AjustarTabla();
+            
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

@@ -207,7 +207,24 @@ namespace CapaPresentaciones
                 this.Height = 622;
             }
         }
+        public void ValidaCheckBox()
+        {
+            bool R = true;
+            foreach (DataGridViewRow Fila in dgvDatos.Rows)
+            {
+                if (Fila.Cells[0].Tag.Equals(false))
+                {
+                    R = false;
+                    break;
+                }
 
+            }
+            if (R.Equals(true))
+            {
+                Console.WriteLine("llegue aqui");
+                ckbMarcarTodos.Checked = true;
+            }
+        }
         private void btnCerrar_Click(object sender, EventArgs e)
 		{
             Close();
@@ -257,6 +274,7 @@ namespace CapaPresentaciones
                     DataGrid.Rows[e.RowIndex].Cells[0].Value = ListaImagenes.Images[0];
                     DataGrid.Rows[e.RowIndex].Cells[0].Tag = false;
                 }
+                ValidaCheckBox();
             }
         }
 
@@ -284,9 +302,9 @@ namespace CapaPresentaciones
 		{
 
             
-                MostrarDocentesRegistrados();
-                //InicializarValoresEditar();
-                AjustarTabla();
+            MostrarDocentesRegistrados();
+            ValidaCheckBox();
+            AjustarTabla();
 
         }
 
