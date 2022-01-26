@@ -75,7 +75,7 @@ namespace CapaPresentaciones
                 fnReporte15(Titulo, Titulos, Valores, Datos);
             }
 
-            tcGraficos.SetPage(IndiceGrafico1);
+            tcGraficos.SetPage(tcGraficos.PageIndex);
         }
 
         // Metodo para mostrar la tabla de resultados del reporte de manera responsiva
@@ -338,6 +338,8 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
+                tcGraficos.SetPage(0);
+
                 if (tcGraficos.PageIndex == 0)
                     btnGrafico1.Select();
                 else
@@ -574,6 +576,8 @@ namespace CapaPresentaciones
             GraficoCircular.TargetCanvas = gxGrafico4;
 
             gxGrafico4.Update();
+
+            tcGraficos.SetPage(IndiceGrafico1);
 
             lblTitulo.Select();
             #endregion ===================== GRÁFICOS =====================
@@ -839,6 +843,8 @@ namespace CapaPresentaciones
             GraficoCircular.TargetCanvas = gxGrafico4;
 
             gxGrafico4.Update();
+
+            tcGraficos.SetPage(IndiceGrafico1);
 
             lblTitulo.Select();
             #endregion ===================== GRÁFICOS =====================
@@ -1192,7 +1198,7 @@ namespace CapaPresentaciones
 
                 dgvResultados.Columns.Clear();
                 dgvResultados.Columns.Add(btnVerReporte);
-                dgvResultados.Columns[0].HeaderText = "Reporte Por Fechas";
+                dgvResultados.Columns[0].HeaderText = "Ver Reporte";
 
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[3].Visible = false;
