@@ -266,7 +266,7 @@ namespace CapaPresentaciones
                 pnCajas.Visible = true;
 
                 btnGeneral.Visible = false;
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
 
                 fnReporte1();
             }
@@ -285,7 +285,7 @@ namespace CapaPresentaciones
                 pnCajas.Visible = true;
 
                 btnGeneral.Visible = false;
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
 
                 fnReporte3();
             }
@@ -304,6 +304,11 @@ namespace CapaPresentaciones
                 pnCajas.Visible = false;
 
                 btnGeneral.Visible = true;
+
+                btnGeneral.Location = new Point(btnGeneral.Location.X, 131);
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 175);
+
+
 
                 fnReporte8();
             }
