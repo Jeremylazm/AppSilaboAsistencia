@@ -8,6 +8,7 @@ using System.Data;
 using CapaEntidades;
 using Ayudas;
 using System.Drawing;
+using System.Threading;
 
 namespace CapaPresentaciones
 {
@@ -19,6 +20,8 @@ namespace CapaPresentaciones
         private readonly string CodSemestre;
         private readonly string CodDocente = E_InicioSesion.Usuario;
         private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
+        A_DialogoCargando Dialogo;
+        private bool EnProceso = false;
 
         public P_TablaAsignaturasAsignadasEstudiantes()
         {
@@ -27,6 +30,7 @@ namespace CapaPresentaciones
             ObjCatalogo = new N_Catalogo();
             ObjEntidadMatricula = new E_Matricula();
             ObjNegocioMatricula = new N_Matricula();
+            Dialogo = new A_DialogoCargando();
             InitializeComponent();
             Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvDatos, sbDatos);
             MostrarAsignaturas();
@@ -130,6 +134,74 @@ namespace CapaPresentaciones
             return null;
         }
 
+        private void ActualizarData()
+        {
+            string CodAsignatura = "";
+            this.Invoke((MethodInvoker)delegate
+            {
+                CodAsignatura = dgvDatos.Rows[dgvDatos.SelectedCells[0].RowIndex].Cells[2].Value.ToString();
+            });
+
+            EstablecerCarga(true);
+            List<Tuple<string, string>> ListaActualizada = Parse(CodAsignatura);
+            if (ListaActualizada != null)
+            {
+                DataTable Matriculados = N_Catalogo.ListaEstudiantesMatriculados(CodSemestre, CodAsignatura, CodDocente);
+                string ListaConcatenada = Matriculados.Rows[0]["Matriculados"].ToString();
+                String[] Lista = ListaConcatenada.Split(',');
+                List<string> NuevaLista = new List<string>();
+
+                int matriculados = 0, desmatriculados = 0;
+                // Buscar cod estudiante de la lista de matriculados en la lista actualizada:
+                foreach (var codigo in Lista)
+                {
+                    Tuple<string, string> estudiante = BuscarEstudiante(ListaActualizada, codigo);
+                    if (estudiante != null) // cod estudiante se encuentra en la lista actualizada
+                    {
+                        ListaActualizada.Remove(estudiante);
+                        NuevaLista.Add(codigo);
+                    }
+                    else
+                    {
+                        if (codigo != "")
+                        {
+                            // Eliminar de la tabla matricula 
+                            ObjEntidadMatricula.CodSemestre = CodSemestre;
+                            ObjEntidadMatricula.CodEscuelaP = CodAsignatura.Substring(6);
+                            ObjEntidadMatricula.CodAsignatura = CodAsignatura;
+                            ObjEntidadMatricula.CodEstudiante = codigo;
+                            ObjNegocioMatricula.EliminarMatricula(ObjEntidadMatricula);
+                            desmatriculados += 1;
+                        }
+                    }
+                }
+                // Agregar los estudiantes que quedan en la lista actualizada
+                foreach (var estudiante in ListaActualizada)
+                {
+                    NuevaLista.Add(estudiante.Item1);
+                    // Agregar a la tabla matricula
+                    string[] NombresApellidos = estudiante.Item2.Split(new string[] { "-", "--" }, StringSplitOptions.RemoveEmptyEntries);
+                    ObjEntidadMatricula.CodSemestre = CodSemestre;
+                    ObjEntidadMatricula.CodEscuelaP = CodAsignatura.Substring(6);
+                    ObjEntidadMatricula.CodAsignatura = CodAsignatura;
+                    ObjEntidadMatricula.CodEstudiante = estudiante.Item1;
+                    ObjEntidadMatricula.APaterno = NombresApellidos[0];
+                    ObjEntidadMatricula.AMaterno = NombresApellidos[1];
+                    ObjEntidadMatricula.Nombre = NombresApellidos[2];
+                    ObjNegocioMatricula.InsertarMatricula(ObjEntidadMatricula);
+                    matriculados += 1;
+                }
+
+                // Actualizar lista matriculados
+                string[] MatriculadosActual = NuevaLista.ToArray();
+                ObjCatalogo.ActualizarMatriculadosAsignatura(CodSemestre, CodAsignatura, CodDocente, string.Join(",", MatriculadosActual));
+                EstablecerCarga(false);
+                A_Dialogo.DialogoInformacion("La actualización ha terminado..." + Environment.NewLine +
+                                             "Nuevos estudiantes matriculados: " + matriculados.ToString() + Environment.NewLine +
+                                             "Estudiantes desmatriculados: " + desmatriculados.ToString() + Environment.NewLine);
+            }
+        }
+
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Estudiantes
@@ -161,73 +233,41 @@ namespace CapaPresentaciones
             // Actualizar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
-                //A_Dialogo.DialogoCargando(this, 10);
-                //A_DialogoCargando Dialogo = new A_DialogoCargando();
-                //Dialogo.TopMost = true;
-                //Application.DoEvents();
-                //Dialogo.ShowDialog();
-                string CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
-                                
-                List<Tuple<string, string>> ListaActualizada = Parse(CodAsignatura);
-                if (ListaActualizada != null)
+                if (EnProceso)
                 {
-                    DataTable Matriculados = N_Catalogo.ListaEstudiantesMatriculados(CodSemestre, CodAsignatura, CodDocente);
-                    string ListaConcatenada = Matriculados.Rows[0]["Matriculados"].ToString();
-                    String[] Lista = ListaConcatenada.Split(',');
-                    List<string> NuevaLista = new List<string>();
-
-                    int matriculados = 0, desmatriculados = 0;
-                    // Buscar cod estudiante de la lista de matriculados en la lista actualizada:
-                    foreach (var codigo in Lista)
-                    {
-                        Tuple<string, string> estudiante = BuscarEstudiante(ListaActualizada, codigo);
-                        if (estudiante != null) // cod estudiante se encuentra en la lista actualizada
-                        {
-                            ListaActualizada.Remove(estudiante);
-                            NuevaLista.Add(codigo);
-                        }
-                        else
-                        {
-                            if (codigo != "")
-                            {
-                                // Eliminar de la tabla matricula 
-                                ObjEntidadMatricula.CodSemestre = CodSemestre;
-                                ObjEntidadMatricula.CodEscuelaP = CodAsignatura.Substring(6);
-                                ObjEntidadMatricula.CodAsignatura = CodAsignatura;
-                                ObjEntidadMatricula.CodEstudiante = codigo;
-                                ObjNegocioMatricula.EliminarMatricula(ObjEntidadMatricula);
-                                desmatriculados += 1;
-                            }
-                        } 
-                    }
-                    // Agregar los estudiantes que quedan en la lista actualizada
-                    foreach (var estudiante in ListaActualizada)
-                    {
-                        NuevaLista.Add(estudiante.Item1);
-                        // Agregar a la tabla matricula
-                        string[] NombresApellidos = estudiante.Item2.Split(new string[] { "-", "--" }, StringSplitOptions.RemoveEmptyEntries);
-                        ObjEntidadMatricula.CodSemestre = CodSemestre;
-                        ObjEntidadMatricula.CodEscuelaP = CodAsignatura.Substring(6);
-                        ObjEntidadMatricula.CodAsignatura = CodAsignatura;
-                        ObjEntidadMatricula.CodEstudiante = estudiante.Item1;
-                        ObjEntidadMatricula.APaterno = NombresApellidos[0];
-                        ObjEntidadMatricula.AMaterno = NombresApellidos[1];
-                        ObjEntidadMatricula.Nombre = NombresApellidos[2];
-                        ObjNegocioMatricula.InsertarMatricula(ObjEntidadMatricula);
-                        matriculados += 1;
-                    }
-
-                    // Actualizar lista matriculados
-                    string[] MatriculadosActual = NuevaLista.ToArray();
-                    ObjCatalogo.ActualizarMatriculadosAsignatura(CodSemestre, CodAsignatura, CodDocente, string.Join(",", MatriculadosActual));
-                    //Dialogo.Close();
-                    A_Dialogo.DialogoInformacion("La actualización ha terminado..." + Environment.NewLine +
-                                                 "Nuevos estudiantes matriculados: " + matriculados.ToString() + Environment.NewLine +
-                                                 "Estudiantes desmatriculados: " + desmatriculados.ToString() + Environment.NewLine);
-                    //MessageBox.Show("La actualización ha terminado...\n" +
-                    //                "Nuevos estudiantes matriculados: " + matriculados.ToString() + "\n" +
-                    //                "Estudiantes desmatriculados: " + desmatriculados.ToString() + "\n");
+                    A_Dialogo.DialogoError("Espere a que se actualice los estudiantes de la asignatura seleccionada");
+                    return;
                 }
+
+                try
+                {
+                    Thread threadInput = new Thread(ActualizarData);
+                    threadInput.Start();
+                }
+                catch (Exception)
+                {
+                    A_Dialogo.DialogoError("Error al actualizar los estudiantes");
+                }
+            }
+        }
+
+        private void EstablecerCarga(bool displayLoader)
+        {
+            if (displayLoader)
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    EnProceso = true;
+                    Dialogo.Mostrar();
+                });
+            }
+            else
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    Dialogo.Ocultar();
+                    EnProceso = false;
+                });
             }
         }
 

@@ -25,6 +25,38 @@ namespace Ayudas
             //Trabajador = pTrabajador;
         }
 
+        public void Mostrar()
+        {
+            this.TopMost = true;
+            this.Show();
+            this.Opacity = 0.0;
+            AparicionFormulario.Start();
+        }
+
+        private void A_DialogoCargando_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void AparicionFormulario_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity < 1)
+                this.Opacity += 0.2;
+            if (this.Opacity == 1)
+            {
+                AparicionFormulario.Stop();
+                pbProgreso.Visible = true;
+                lblTitulo.Visible = true;
+                lblMensaje.Visible = true;
+            }
+        }
+
+        public void Ocultar()
+        {
+            this.TopMost = false;
+            this.Hide();
+        }
+
         //protected override void OnLoad(EventArgs e)
         //{
         //    base.OnLoad(e);
