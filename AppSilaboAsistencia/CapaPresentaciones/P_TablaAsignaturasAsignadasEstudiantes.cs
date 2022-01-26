@@ -161,8 +161,13 @@ namespace CapaPresentaciones
             // Actualizar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
+                //A_Dialogo.DialogoCargando(this, 10);
+                //A_DialogoCargando Dialogo = new A_DialogoCargando();
+                //Dialogo.TopMost = true;
+                //Application.DoEvents();
+                //Dialogo.ShowDialog();
                 string CodAsignatura = dgvDatos.Rows[e.RowIndex].Cells[2].Value.ToString();
-
+                                
                 List<Tuple<string, string>> ListaActualizada = Parse(CodAsignatura);
                 if (ListaActualizada != null)
                 {
@@ -215,6 +220,7 @@ namespace CapaPresentaciones
                     // Actualizar lista matriculados
                     string[] MatriculadosActual = NuevaLista.ToArray();
                     ObjCatalogo.ActualizarMatriculadosAsignatura(CodSemestre, CodAsignatura, CodDocente, string.Join(",", MatriculadosActual));
+                    //Dialogo.Close();
                     A_Dialogo.DialogoInformacion("La actualización ha terminado..." + Environment.NewLine +
                                                  "Nuevos estudiantes matriculados: " + matriculados.ToString() + Environment.NewLine +
                                                  "Estudiantes desmatriculados: " + desmatriculados.ToString() + Environment.NewLine);

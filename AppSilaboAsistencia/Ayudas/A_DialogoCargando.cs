@@ -14,21 +14,21 @@ namespace Ayudas
     {
         public Action Trabajador { get; set; }
 
-        public A_DialogoCargando(Action pTrabajador)
+        public A_DialogoCargando()
         {
             InitializeComponent();
 
-            if (pTrabajador == null)
-            {
-                throw new ArgumentNullException();
-            }
-            Trabajador = pTrabajador;
+            //if (pTrabajador == null)
+            //{
+            //    throw new ArgumentNullException();
+            //}
+            //Trabajador = pTrabajador;
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            Task.Factory.StartNew(Trabajador).ContinueWith(T => { this.Close(); }, TaskScheduler.FromCurrentSynchronizationContext());  
-        }
+        //protected override void OnLoad(EventArgs e)
+        //{
+        //    base.OnLoad(e);
+        //    Task.Factory.StartNew(Trabajador).ContinueWith(T => { this.Close(); }, TaskScheduler.FromCurrentSynchronizationContext());  
+        //}
     }
 }

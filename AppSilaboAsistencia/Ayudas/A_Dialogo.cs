@@ -80,7 +80,7 @@ namespace Ayudas
 
         private static void TiempoCarga()
         {
-            for (int K = 0; K <= 100; K++)
+            for (int K = 0; K <= 1000; K++)
             {
                 Thread.Sleep(Tiempo);
             }
@@ -88,11 +88,11 @@ namespace Ayudas
 
         public static void DialogoCargando(Form Formulario, int pTiempo)
         {
-            Tiempo = pTiempo;
-            using (A_DialogoCargando Dialogo = new A_DialogoCargando(TiempoCarga))
-            {
-                Dialogo.ShowDialog(Formulario);
-            }
+            //Tiempo = pTiempo;
+            //using (A_DialogoCargando Dialogo = new A_DialogoCargando(TiempoCarga))
+            //{
+            //    Dialogo.ShowDialog(Formulario);
+            //}
         }
     }
 }
