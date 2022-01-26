@@ -91,7 +91,6 @@ namespace CapaPresentaciones
             {
                 sbResultados.Visible = false;
                 pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                
             }
             else
             {
@@ -273,7 +272,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[6].Visible = false;
                 dgvResultados.Columns[0].DisplayIndex = 6;
 
-                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
@@ -281,8 +280,8 @@ namespace CapaPresentaciones
                 }
 
                 dgvResultados.Columns["SesiónDictada"].HeaderText = "Sesión Dictada";
-                dgvResultados.Columns["TotalAsistieron"].HeaderText = "Total Asistieron";
-                dgvResultados.Columns["TotalFaltaron"].HeaderText = "Total Faltaron";
+                dgvResultados.Columns["TotalAsistieron"].HeaderText = "Asistieron";
+                dgvResultados.Columns["TotalFaltaron"].HeaderText = "Faltaron";
 
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
@@ -403,14 +402,8 @@ namespace CapaPresentaciones
                     Valor1 = double.Parse(Fila["TotalAsistieron"].ToString());
                     Valor2 = double.Parse(Fila["TotalFaltaron"].ToString());
 
-                    if ((Valor1 == 0) && (Valor2 == 0))
-                    {
-                        Datos1B.Add(0.00);
-                    }
-                    else
-                    {
-                        Datos1B.Add(Math.Round((Valor1 * 100) / (Valor1 + Valor2), 2));
-                    }
+                    if ((Valor1 == 0) && (Valor2 == 0)) Datos1B.Add(0.00);
+                    else Datos1B.Add(Math.Round((Valor1 * 100) / (Valor1 + Valor2), 2));
                 }
 
                 gxGrafico2.Labels = EtiquetasB.ToArray();
@@ -623,7 +616,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[1].Visible = false;
                 dgvResultados.Columns[0].DisplayIndex = 7;
 
-                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvResultados.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
@@ -632,14 +625,18 @@ namespace CapaPresentaciones
 
                 dgvResultados.Columns["CodEstudiante"].HeaderText = "Código";
                 dgvResultados.Columns["CodEstudiante"].Width = 120;
+                dgvResultados.Columns["CodEstudiante"].MinimumWidth = 120;
                 dgvResultados.Columns["APaterno"].HeaderText = "A. Paterno";
                 dgvResultados.Columns["AMaterno"].HeaderText = "A. Materno";
                 dgvResultados.Columns["Nombre"].HeaderText = "Nombre(s)";
-                dgvResultados.Columns["TotalAsistencias"].HeaderText = "Total Asistencias";
+                dgvResultados.Columns["TotalAsistencias"].HeaderText = "Asistencias";
                 dgvResultados.Columns["TotalAsistencias"].Width = 150;
-                dgvResultados.Columns["TotalFaltas"].HeaderText = "Total Faltas";
+                dgvResultados.Columns["TotalAsistencias"].MinimumWidth = 150;
+                dgvResultados.Columns["TotalFaltas"].HeaderText = "Faltas";
                 dgvResultados.Columns["TotalFaltas"].Width = 120;
+                dgvResultados.Columns["TotalFaltas"].MinimumWidth = 120;
                 dgvResultados.Columns[0].Width = 115;
+                dgvResultados.Columns[0].MinimumWidth = 115;
 
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
