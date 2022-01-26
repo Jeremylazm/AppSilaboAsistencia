@@ -31,6 +31,23 @@ namespace CapaPresentaciones
             CodSemestre = Semestre.Rows[0][0].ToString();
             InitializeComponent();
             LLenarCampos();
+
+            // Definir minimas y maximas fechas para los filtros
+            dpFechaInicial.MaxDate = new DateTime(2022, 03, 01);
+            dpFechaInicial.MinDate = new DateTime(2021, 09, 01);
+            dpFechaFinal.MaxDate = new DateTime(2022, 03, 01);
+            dpFechaFinal.MinDate = new DateTime(2021, 09, 01);
+
+            // Inicializar las fechas de los reportes         
+            dpFechaInicial.Value = new DateTime(2021, 10, 18);
+            dpFechaFinal.Value = new DateTime(2021, 11, 05);
+
+            AntCriterioSeleccion = cxtCriterioSeleccion.SelectedIndex;
+            AntFechaInicial = dpFechaInicial.Value;
+            AntFechaFinal = dpFechaFinal.Value;
+            AntCodAsignatura = txtCodigo.Text;
+            AntNombreAsignatura = txtNombre.Text;
+            AntEscuelaProfesional = txtEscuelaP.Text;
         }
 
         private void LLenarCampos()
@@ -56,16 +73,6 @@ namespace CapaPresentaciones
             pnReporte.Location = new Point(0, 0);
             pnReporte.Width = pnPadre.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
             pnReporte.Height = pnPadre.ClientSize.Height + SystemInformation.HorizontalScrollBarHeight;
-
-            // Definir minimas y maximas fechas para los filtros
-            dpFechaInicial.MaxDate = new DateTime(2022, 03, 01);
-            dpFechaInicial.MinDate = new DateTime(2021, 09, 01);
-            dpFechaFinal.MaxDate = new DateTime(2022, 03, 01);
-            dpFechaFinal.MinDate = new DateTime(2021, 09, 01);
-            
-            // Inicializar las fechas de los reportes         
-            dpFechaInicial.Value = new DateTime(2021, 10, 18);
-            dpFechaFinal.Value = new DateTime(2021, 11, 05);
 
             // Determinar el nombre del docente
             DataTable DatosDocente = N_Docente.BuscarDocente(CodDepartamentoA, CodDocente);

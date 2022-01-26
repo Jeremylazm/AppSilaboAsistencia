@@ -46,6 +46,23 @@ namespace CapaPresentaciones
 
             btnGeneral.Visible = false;
             btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+
+            // Definir minimas y maximas fechas para los filtros
+            dpFechaInicial.MaxDate = new DateTime(2022, 03, 01);
+            dpFechaInicial.MinDate = new DateTime(2021, 09, 01);
+            dpFechaFinal.MaxDate = new DateTime(2022, 03, 01);
+            dpFechaFinal.MinDate = new DateTime(2021, 09, 01);
+
+            // Inicializar las fechas de los reportes  
+            dpFechaInicial.Value = new DateTime(2021, 10, 18);
+            dpFechaFinal.Value = new DateTime(2021, 12, 01);
+
+            AntCriterioSeleccion = cxtCriterioSeleccion.SelectedIndex;
+            AntFechaInicial = dpFechaInicial.Value;
+            AntFechaFinal = dpFechaFinal.Value;
+            AntCodAsignatura = txtCodigo.Text;
+            AntNombreAsignatura = txtNombre.Text;
+            AntEscuelaProfesional = txtEscuelaP.Text;
         }
 
         private void LLenarCampos()
@@ -79,16 +96,6 @@ namespace CapaPresentaciones
             pnReporte.Location = new Point(0, 0);
             pnReporte.Width = pnPadre.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
             pnReporte.Height = pnPadre.ClientSize.Height + SystemInformation.HorizontalScrollBarHeight;
-
-            // Definir minimas y maximas fechas para los filtros
-            dpFechaInicial.MaxDate = new DateTime(2022, 03, 01);
-            dpFechaInicial.MinDate = new DateTime(2021, 09, 01);
-            dpFechaFinal.MaxDate = new DateTime(2022, 03, 01);
-            dpFechaFinal.MinDate = new DateTime(2021, 09, 01);
-
-            // Inicializar las fechas de los reportes  
-            dpFechaInicial.Value = new DateTime(2021, 10, 18);
-            dpFechaFinal.Value = new DateTime(2021, 12, 01);
 
             // Crear un objeto reporte
             Reportes = new C_Reporte()
@@ -539,14 +546,8 @@ namespace CapaPresentaciones
 
         private void dpFechaInicial_CloseUp(object sender, EventArgs e)
         {
-            if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
-            {
-                CriterioSeleccionAsistenciaEstudiantes();
-            }
-            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
-            {
-                fnReporte5();
-            }
+            if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) CriterioSeleccionAsistenciaEstudiantes();
+            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas")) fnReporte5();
         }
     }
 }
