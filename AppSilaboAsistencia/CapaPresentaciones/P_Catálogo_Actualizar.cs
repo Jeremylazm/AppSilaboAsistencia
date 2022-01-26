@@ -174,6 +174,22 @@ namespace CapaPresentaciones
             }
         }
 
+        public bool Verificar_Docente(string Semestre, string CodAsignatura, string EscuelaProfesional, string Grupo, string CodDocente)
+        {
+            bool Pasa = true;
+            if (CodDocente != "00000")
+            {
+                DataTable T = N_Catalogo.BuscarDocentesAsignatura(Semestre, CodAsignatura, EscuelaProfesional, Grupo);
+                if (T.Rows.Count >= 1)
+                    Pasa = Pasa && false;
+                else
+                    Pasa = Pasa && true;
+                return Pasa;
+            }
+            else
+                return Pasa;
+        }
+
         public void Guardar()
         {
             string CódigoAS, CódigoD1, CódigoD2, CódigoS, Grupo, Día1, Día2, Día3, Día4
@@ -295,203 +311,205 @@ namespace CapaPresentaciones
 
                 if (Pasa1 || CódigoD1 == "00000")
                 {
-                    try
+                    if (Verificar_Docente(CódigoS, CódigoAS, Seleccionar_EP.SelectedValue.ToString(), Grupo, CódigoD1))
                     {
-                        //Eliminar el anterior registro de THorarioAsignatura
-
-                        ObjEntidadHAE.CodSemestre = CódigoSemestreA;
-                        ObjEntidadHAE.CodAsignatura = CódigoAsignaturaA;
-                        ObjEntidadHAE.CodEscuelaP = EscuelaPA;
-                        ObjEntidadHAE.Grupo = GrupoA;
-
-                        ObjNegocioHAE.EliminarHorarioAsignatura(ObjEntidadHAE);
-
-                        //Eliminar registro del catálogo
-
-                        ObjEntidadCE.CodSemestre = CódigoSemestreA;
-                        ObjEntidadCE.CodAsignatura = CódigoAsignaturaA;
-                        ObjEntidadCE.CodEscuelaP = EscuelaPA;
-                        ObjEntidadCE.Grupo = GrupoA;
-
-                        ObjNegocioCE.EliminarAsignaturaCatalogo(ObjEntidadCE);
-
-                        //Insertar primer elemento a la tabla TCatálogo
-                        ObjEntidadC.CodSemestre = CódigoS;
-                        ObjEntidadC.CodAsignatura = CódigoAS;
-                        ObjEntidadC.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
-                        ObjEntidadC.Grupo = Grupo;
-                        ObjEntidadC.CodDocente = CódigoD1;
-                        ObjEntidadC.Silabo = new byte[1];
-                        ObjEntidadC.PlanSesiones = new byte[1];
-
-                        ObjNegocioC.InsertarAsignaturaCatalogo(ObjEntidadC);
-
-                        //Insertar elementos a la tabla THorarioAsignatura
-
-                        ObjEntidadHA.CodSemestre = CódigoS;
-                        ObjEntidadHA.CodAsignatura = CódigoAS;
-                        ObjEntidadHA.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
-                        ObjEntidadHA.Grupo = Grupo;
-                        ObjEntidadHA.CodDocente = CódigoD1;
-
-                        if (Día1 != "")
+                        try
                         {
-                            ObjEntidadHA.Dia = Día1;
-                            ObjEntidadHA.Tipo = Tipo1;
-                            HoraInicio = Convert.ToInt32(Hora_Inicio_Lunes.Text);
-                            HoraFin = Convert.ToInt32(Hora_Fin_Lunes.Text);
-                            ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
-                            ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
-                            if (Tipo1 == "T")
-                            {
-                                ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
-                                ObjEntidadHA.HorasPractica = 0;
-                            }
-                            else
-                            {
-                                ObjEntidadHA.HorasTeoria = 0;
-                                ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
-                            }
-                            ObjEntidadHA.Aula = Aula;
-                            ObjEntidadHA.Modalidad = Modalidad;
+                            //Eliminar el anterior registro de THorarioAsignatura
 
-                            ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
+                            ObjEntidadHAE.CodSemestre = CódigoSemestreA;
+                            ObjEntidadHAE.CodAsignatura = CódigoAsignaturaA;
+                            ObjEntidadHAE.CodEscuelaP = EscuelaPA;
+                            ObjEntidadHAE.Grupo = GrupoA;
+
+                            ObjNegocioHAE.EliminarHorarioAsignatura(ObjEntidadHAE);
+
+                            //Eliminar registro del catálogo
+
+                            ObjEntidadCE.CodSemestre = CódigoSemestreA;
+                            ObjEntidadCE.CodAsignatura = CódigoAsignaturaA;
+                            ObjEntidadCE.CodEscuelaP = EscuelaPA;
+                            ObjEntidadCE.Grupo = GrupoA;
+
+                            ObjNegocioCE.EliminarAsignaturaCatalogo(ObjEntidadCE);
+
+                            //Insertar primer elemento a la tabla TCatálogo
+                            ObjEntidadC.CodSemestre = CódigoS;
+                            ObjEntidadC.CodAsignatura = CódigoAS;
+                            ObjEntidadC.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
+                            ObjEntidadC.Grupo = Grupo;
+                            ObjEntidadC.CodDocente = CódigoD1;
+                            ObjEntidadC.Silabo = new byte[1];
+                            ObjEntidadC.PlanSesiones = new byte[1];
+
+                            ObjNegocioC.InsertarAsignaturaCatalogo(ObjEntidadC);
+
+                            //Insertar elementos a la tabla THorarioAsignatura
+
+                            ObjEntidadHA.CodSemestre = CódigoS;
+                            ObjEntidadHA.CodAsignatura = CódigoAS;
+                            ObjEntidadHA.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
+                            ObjEntidadHA.Grupo = Grupo;
+                            ObjEntidadHA.CodDocente = CódigoD1;
+
+                            if (Día1 != "")
+                            {
+                                ObjEntidadHA.Dia = Día1;
+                                ObjEntidadHA.Tipo = Tipo1;
+                                HoraInicio = Convert.ToInt32(Hora_Inicio_Lunes.Text);
+                                HoraFin = Convert.ToInt32(Hora_Fin_Lunes.Text);
+                                ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
+                                ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
+                                if (Tipo1 == "T")
+                                {
+                                    ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
+                                    ObjEntidadHA.HorasPractica = 0;
+                                }
+                                else
+                                {
+                                    ObjEntidadHA.HorasTeoria = 0;
+                                    ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
+                                }
+                                ObjEntidadHA.Aula = Aula;
+                                ObjEntidadHA.Modalidad = Modalidad;
+
+                                ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
+                            }
+                            if (Día2 != "")
+                            {
+                                ObjEntidadHA.Dia = Día2;
+                                ObjEntidadHA.Tipo = Tipo2;
+                                HoraInicio = Convert.ToInt32(Hora_Inicio_Martes.Text);
+                                HoraFin = Convert.ToInt32(Hora_Fin_Martes.Text);
+                                ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
+                                ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
+                                if (Tipo2 == "T")
+                                {
+                                    ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
+                                    ObjEntidadHA.HorasPractica = 0;
+                                }
+                                else
+                                {
+                                    ObjEntidadHA.HorasTeoria = 0;
+                                    ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
+                                }
+                                ObjEntidadHA.Aula = Aula;
+                                ObjEntidadHA.Modalidad = Modalidad;
+
+                                ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
+                            }
+                            if (Día3 != "")
+                            {
+                                ObjEntidadHA.Dia = Día3;
+                                ObjEntidadHA.Tipo = Tipo3;
+                                HoraInicio = Convert.ToInt32(Hora_Inicio_Miércoles.Text);
+                                HoraFin = Convert.ToInt32(Hora_Fin_Miércoles.Text);
+                                ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
+                                ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
+                                if (Tipo3 == "T")
+                                {
+                                    ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
+                                    ObjEntidadHA.HorasPractica = 0;
+                                }
+                                else
+                                {
+                                    ObjEntidadHA.HorasTeoria = 0;
+                                    ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
+                                }
+                                ObjEntidadHA.Aula = Aula;
+                                ObjEntidadHA.Modalidad = Modalidad;
+
+                                ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
+                            }
+                            if (Día4 != "")
+                            {
+                                ObjEntidadHA.Dia = Día4;
+                                ObjEntidadHA.Tipo = Tipo4;
+                                HoraInicio = Convert.ToInt32(Hora_Inicio_Jueves.Text);
+                                HoraFin = Convert.ToInt32(Hora_Fin_Jueves.Text);
+                                ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
+                                ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
+                                if (Tipo4 == "T")
+                                {
+                                    ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
+                                    ObjEntidadHA.HorasPractica = 0;
+                                }
+                                else
+                                {
+                                    ObjEntidadHA.HorasTeoria = 0;
+                                    ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
+                                }
+                                ObjEntidadHA.Aula = Aula;
+                                ObjEntidadHA.Modalidad = Modalidad;
+
+                                ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
+                            }
+                            if (Día5 != "")
+                            {
+                                ObjEntidadHA.Dia = Día5;
+                                ObjEntidadHA.Tipo = Tipo5;
+                                HoraInicio = Convert.ToInt32(Hora_Inicio_Viernes.Text);
+                                HoraFin = Convert.ToInt32(Hora_Fin_Viernes.Text);
+                                ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
+                                ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
+                                if (Tipo5 == "T")
+                                {
+                                    ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
+                                    ObjEntidadHA.HorasPractica = 0;
+                                }
+                                else
+                                {
+                                    ObjEntidadHA.HorasTeoria = 0;
+                                    ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
+                                }
+                                ObjEntidadHA.Aula = Aula;
+                                ObjEntidadHA.Modalidad = Modalidad;
+
+                                ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
+                            }
+                            if (Día6 != "")
+                            {
+                                ObjEntidadHA.Dia = Día6;
+                                ObjEntidadHA.Tipo = Tipo6;
+                                HoraInicio = Convert.ToInt32(Hora_Inicio_Sábado.Text);
+                                HoraFin = Convert.ToInt32(Hora_Fin_Sábado.Text);
+                                ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
+                                ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
+                                if (Tipo6 == "T")
+                                {
+                                    ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
+                                    ObjEntidadHA.HorasPractica = 0;
+                                }
+                                else
+                                {
+                                    ObjEntidadHA.HorasTeoria = 0;
+                                    ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
+                                }
+                                ObjEntidadHA.Aula = Aula;
+                                ObjEntidadHA.Modalidad = Modalidad;
+
+                                ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
+                            }
+                            A_Dialogo.DialogoConfirmacion("Actualizado con éxito");
+                            //MessageBox.Show("Actualizado con éxito.");
+                            Program.Evento = 0;
+                            Program.Cont = 0;
+                            this.Close();
                         }
-                        if (Día2 != "")
+                        catch
                         {
-                            ObjEntidadHA.Dia = Día2;
-                            ObjEntidadHA.Tipo = Tipo2;
-                            HoraInicio = Convert.ToInt32(Hora_Inicio_Martes.Text);
-                            HoraFin = Convert.ToInt32(Hora_Fin_Martes.Text);
-                            ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
-                            ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
-                            if (Tipo2 == "T")
-                            {
-                                ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
-                                ObjEntidadHA.HorasPractica = 0;
-                            }
-                            else
-                            {
-                                ObjEntidadHA.HorasTeoria = 0;
-                                ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
-                            }
-                            ObjEntidadHA.Aula = Aula;
-                            ObjEntidadHA.Modalidad = Modalidad;
-
-                            ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
+                            A_Dialogo.DialogoError("Ya se ingresó en el catálogo u horario un contenido similar");
+                            //MessageBox.Show("Ya se ingresó en el catálogo u horario un contenido similar.");
+                            Program.Evento = 0;
+                            Program.Cont = 0;
+                            this.Close();
                         }
-                        if (Día3 != "")
-                        {
-                            ObjEntidadHA.Dia = Día3;
-                            ObjEntidadHA.Tipo = Tipo3;
-                            HoraInicio = Convert.ToInt32(Hora_Inicio_Miércoles.Text);
-                            HoraFin = Convert.ToInt32(Hora_Fin_Miércoles.Text);
-                            ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
-                            ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
-                            if (Tipo3 == "T")
-                            {
-                                ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
-                                ObjEntidadHA.HorasPractica = 0;
-                            }
-                            else
-                            {
-                                ObjEntidadHA.HorasTeoria = 0;
-                                ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
-                            }
-                            ObjEntidadHA.Aula = Aula;
-                            ObjEntidadHA.Modalidad = Modalidad;
-
-                            ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
-                        }
-                        if (Día4 != "")
-                        {
-                            ObjEntidadHA.Dia = Día4;
-                            ObjEntidadHA.Tipo = Tipo4;
-                            HoraInicio = Convert.ToInt32(Hora_Inicio_Jueves.Text);
-                            HoraFin = Convert.ToInt32(Hora_Fin_Jueves.Text);
-                            ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
-                            ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
-                            if (Tipo4 == "T")
-                            {
-                                ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
-                                ObjEntidadHA.HorasPractica = 0;
-                            }
-                            else
-                            {
-                                ObjEntidadHA.HorasTeoria = 0;
-                                ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
-                            }
-                            ObjEntidadHA.Aula = Aula;
-                            ObjEntidadHA.Modalidad = Modalidad;
-
-                            ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
-                        }
-                        if (Día5 != "")
-                        {
-                            ObjEntidadHA.Dia = Día5;
-                            ObjEntidadHA.Tipo = Tipo5;
-                            HoraInicio = Convert.ToInt32(Hora_Inicio_Viernes.Text);
-                            HoraFin = Convert.ToInt32(Hora_Fin_Viernes.Text);
-                            ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
-                            ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
-                            if (Tipo5 == "T")
-                            {
-                                ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
-                                ObjEntidadHA.HorasPractica = 0;
-                            }
-                            else
-                            {
-                                ObjEntidadHA.HorasTeoria = 0;
-                                ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
-                            }
-                            ObjEntidadHA.Aula = Aula;
-                            ObjEntidadHA.Modalidad = Modalidad;
-
-                            ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
-                        }
-                        if (Día6 != "")
-                        {
-                            ObjEntidadHA.Dia = Día6;
-                            ObjEntidadHA.Tipo = Tipo6;
-                            HoraInicio = Convert.ToInt32(Hora_Inicio_Sábado.Text);
-                            HoraFin = Convert.ToInt32(Hora_Fin_Sábado.Text);
-                            ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
-                            ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
-                            if (Tipo6 == "T")
-                            {
-                                ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
-                                ObjEntidadHA.HorasPractica = 0;
-                            }
-                            else
-                            {
-                                ObjEntidadHA.HorasTeoria = 0;
-                                ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
-                            }
-                            ObjEntidadHA.Aula = Aula;
-                            ObjEntidadHA.Modalidad = Modalidad;
-
-                            ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
-                        }
-                        A_Dialogo.DialogoConfirmacion("Actualizado con éxito");
-                        //MessageBox.Show("Actualizado con éxito.");
-                        Program.Evento = 0;
-                        Program.Cont = 0;
-                        this.Close();
                     }
-                    catch
-                    {
+                    else
                         A_Dialogo.DialogoError("Ya se ingresó en el catálogo u horario un contenido similar");
-                        //MessageBox.Show("Ya se ingresó en el catálogo u horario un contenido similar.");
-                        Program.Evento = 0;
-                        Program.Cont = 0;
-                        this.Close();
-                    }
                 }
                 else
-                {
                     A_Dialogo.DialogoError("Hay un cruce de horarios de ese docente");
-                    //MessageBox.Show("Hay un cruce de horarios de ese docente.");
-                }
             }
             else
             {
@@ -546,230 +564,221 @@ namespace CapaPresentaciones
                         {
                             if (Pasa2 || CódigoD2 == "00000")
                             {
-                                try
+                                if (Verificar_Docente(CódigoS, CódigoAS, Seleccionar_EP.SelectedValue.ToString(), Grupo, CódigoD1) && Verificar_Docente(CódigoS, CódigoAS, Seleccionar_EP.SelectedValue.ToString(), Grupo, CódigoD2))
                                 {
-                                    //Eliminar el anterior registro de THorarioAsignatura
-
-                                    ObjEntidadHAE.CodSemestre = CódigoSemestreA;
-                                    ObjEntidadHAE.CodAsignatura = CódigoAsignaturaA;
-                                    ObjEntidadHAE.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
-                                    ObjEntidadHAE.Grupo = GrupoA;
-
-                                    ObjNegocioHAE.EliminarHorarioAsignatura(ObjEntidadHAE);
-
-                                    //Eliminar registro del catálogo
-
-                                    ObjEntidadCE.CodSemestre = CódigoSemestreA;
-                                    ObjEntidadCE.CodAsignatura = CódigoAsignaturaA;
-                                    ObjEntidadCE.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
-                                    ObjEntidadCE.Grupo = GrupoA;
-
-                                    ObjNegocioCE.EliminarAsignaturaCatalogo(ObjEntidadCE);
-
-                                    //Insertar primer elemento a la tabla TCatálogo
-                                    ObjEntidadC.CodSemestre = CódigoS;
-                                    ObjEntidadC.CodAsignatura = CódigoAS;
-                                    ObjEntidadC.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
-                                    ObjEntidadC.Grupo = Grupo;
-                                    ObjEntidadC.CodDocente = CódigoD1;
-                                    ObjEntidadC.Silabo = new byte[1];
-                                    ObjEntidadC.PlanSesiones = new byte[1];
-
-                                    ObjNegocioC.InsertarAsignaturaCatalogo(ObjEntidadC);
-
-                                    //Insertar segundo elemento a la tabla TCatálogo
-                                    ObjEntidadC.CodSemestre = CódigoS;
-                                    ObjEntidadC.CodAsignatura = CódigoAS;
-                                    ObjEntidadC.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
-                                    ObjEntidadC.Grupo = Grupo;
-                                    ObjEntidadC.CodDocente = CódigoD2;
-                                    ObjEntidadC.Silabo = new byte[1];
-                                    ObjEntidadC.PlanSesiones = new byte[1];
-
-                                    ObjNegocioC.InsertarAsignaturaCatalogo(ObjEntidadC);
-
-                                    //Insertar elementos a la tabla THorarioAsignatura
-
-                                    ObjEntidadHA.CodSemestre = CódigoS;
-                                    ObjEntidadHA.CodAsignatura = CódigoAS;
-                                    ObjEntidadHA.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
-                                    ObjEntidadHA.Grupo = Grupo;
-                                    ObjEntidadHA.Aula = Aula;
-                                    ObjEntidadHA.Modalidad = Modalidad;
-
-                                    if (Día1 != "")
+                                    try
                                     {
-                                        ObjEntidadHA.Dia = Día1;
-                                        ObjEntidadHA.Tipo = Tipo1;
-                                        HoraInicio = Convert.ToInt32(Hora_Inicio_Lunes.Text);
-                                        HoraFin = Convert.ToInt32(Hora_Fin_Lunes.Text);
-                                        ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
-                                        ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
-                                        if (Tipo1 == "P")
-                                        {
-                                            ObjEntidadHA.CodDocente = CódigoD2;
-                                            ObjEntidadHA.HorasTeoria = 0;
-                                            ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
-                                        }
-                                        else
-                                        {
-                                            ObjEntidadHA.CodDocente = CódigoD1;
-                                            ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
-                                            ObjEntidadHA.HorasPractica = 0;
-                                        }
-                                        ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
-                                    }
-                                    if (Día2 != "")
-                                    {
-                                        ObjEntidadHA.Dia = Día2;
-                                        ObjEntidadHA.Tipo = Tipo2;
-                                        HoraInicio = Convert.ToInt32(Hora_Inicio_Martes.Text);
-                                        HoraFin = Convert.ToInt32(Hora_Fin_Martes.Text);
-                                        ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
-                                        ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
-                                        if (Tipo2 == "P")
-                                        {
-                                            ObjEntidadHA.CodDocente = CódigoD2;
-                                            ObjEntidadHA.HorasTeoria = 0;
-                                            ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
-                                        }
-                                        else
-                                        {
-                                            ObjEntidadHA.CodDocente = CódigoD1;
-                                            ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
-                                            ObjEntidadHA.HorasPractica = 0;
-                                        }
-                                        ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
-                                    }
-                                    if (Día3 != "")
-                                    {
-                                        ObjEntidadHA.Dia = Día3;
-                                        ObjEntidadHA.Tipo = Tipo3;
-                                        HoraInicio = Convert.ToInt32(Hora_Inicio_Miércoles.Text);
-                                        HoraFin = Convert.ToInt32(Hora_Fin_Miércoles.Text);
-                                        ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
-                                        ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
-                                        if (Tipo3 == "P")
-                                        {
-                                            ObjEntidadHA.CodDocente = CódigoD2;
-                                            ObjEntidadHA.HorasTeoria = 0;
-                                            ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
-                                        }
-                                        else
-                                        {
-                                            ObjEntidadHA.CodDocente = CódigoD1;
-                                            ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
-                                            ObjEntidadHA.HorasPractica = 0;
-                                        }
-                                        ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
-                                    }
-                                    if (Día4 != "")
-                                    {
-                                        ObjEntidadHA.Dia = Día4;
-                                        ObjEntidadHA.Tipo = Tipo4;
-                                        HoraInicio = Convert.ToInt32(Hora_Inicio_Jueves.Text);
-                                        HoraFin = Convert.ToInt32(Hora_Fin_Jueves.Text);
-                                        ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
-                                        ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
-                                        if (Tipo4 == "P")
-                                        {
-                                            ObjEntidadHA.CodDocente = CódigoD2;
-                                            ObjEntidadHA.HorasTeoria = 0;
-                                            ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
-                                        }
-                                        else
-                                        {
-                                            ObjEntidadHA.CodDocente = CódigoD1;
-                                            ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
-                                            ObjEntidadHA.HorasPractica = 0;
-                                        }
-                                        ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
-                                    }
-                                    if (Día5 != "")
-                                    {
-                                        ObjEntidadHA.Dia = Día5;
-                                        ObjEntidadHA.Tipo = Tipo5;
-                                        HoraInicio = Convert.ToInt32(Hora_Inicio_Viernes.Text);
-                                        HoraFin = Convert.ToInt32(Hora_Fin_Viernes.Text);
-                                        ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
-                                        ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
-                                        if (Tipo5 == "P")
-                                        {
-                                            ObjEntidadHA.CodDocente = CódigoD2;
-                                            ObjEntidadHA.HorasTeoria = 0;
-                                            ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
-                                        }
-                                        else
-                                        {
-                                            ObjEntidadHA.CodDocente = CódigoD1;
-                                            ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
-                                            ObjEntidadHA.HorasPractica = 0;
-                                        }
-                                        ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
-                                    }
-                                    if (Día6 != "")
-                                    {
-                                        ObjEntidadHA.Dia = Día6;
-                                        ObjEntidadHA.Tipo = Tipo6;
-                                        HoraInicio = Convert.ToInt32(Hora_Inicio_Sábado.Text);
-                                        HoraFin = Convert.ToInt32(Hora_Fin_Sábado.Text);
-                                        ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
-                                        ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
-                                        if (Tipo6 == "P")
-                                        {
-                                            ObjEntidadHA.CodDocente = CódigoD2;
-                                            ObjEntidadHA.HorasTeoria = 0;
-                                            ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
-                                        }
-                                        else
-                                        {
-                                            ObjEntidadHA.CodDocente = CódigoD1;
-                                            ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
-                                            ObjEntidadHA.HorasPractica = 0;
-                                        }
-                                        ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
-                                    }
+                                        //Eliminar el anterior registro de THorarioAsignatura
 
-                                    A_Dialogo.DialogoConfirmacion("Actualizado con éxito");
-                                    //MessageBox.Show("Actualizado con éxito.");
-                                    Program.Evento = 0;
-                                    Program.Cont = 0;
-                                    this.Close();
+                                        ObjEntidadHAE.CodSemestre = CódigoSemestreA;
+                                        ObjEntidadHAE.CodAsignatura = CódigoAsignaturaA;
+                                        ObjEntidadHAE.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
+                                        ObjEntidadHAE.Grupo = GrupoA;
+
+                                        ObjNegocioHAE.EliminarHorarioAsignatura(ObjEntidadHAE);
+
+                                        //Eliminar registro del catálogo
+
+                                        ObjEntidadCE.CodSemestre = CódigoSemestreA;
+                                        ObjEntidadCE.CodAsignatura = CódigoAsignaturaA;
+                                        ObjEntidadCE.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
+                                        ObjEntidadCE.Grupo = GrupoA;
+
+                                        ObjNegocioCE.EliminarAsignaturaCatalogo(ObjEntidadCE);
+
+                                        //Insertar primer elemento a la tabla TCatálogo
+                                        ObjEntidadC.CodSemestre = CódigoS;
+                                        ObjEntidadC.CodAsignatura = CódigoAS;
+                                        ObjEntidadC.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
+                                        ObjEntidadC.Grupo = Grupo;
+                                        ObjEntidadC.CodDocente = CódigoD1;
+                                        ObjEntidadC.Silabo = new byte[1];
+                                        ObjEntidadC.PlanSesiones = new byte[1];
+
+                                        ObjNegocioC.InsertarAsignaturaCatalogo(ObjEntidadC);
+
+                                        //Insertar segundo elemento a la tabla TCatálogo
+                                        ObjEntidadC.CodSemestre = CódigoS;
+                                        ObjEntidadC.CodAsignatura = CódigoAS;
+                                        ObjEntidadC.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
+                                        ObjEntidadC.Grupo = Grupo;
+                                        ObjEntidadC.CodDocente = CódigoD2;
+                                        ObjEntidadC.Silabo = new byte[1];
+                                        ObjEntidadC.PlanSesiones = new byte[1];
+
+                                        ObjNegocioC.InsertarAsignaturaCatalogo(ObjEntidadC);
+
+                                        //Insertar elementos a la tabla THorarioAsignatura
+
+                                        ObjEntidadHA.CodSemestre = CódigoS;
+                                        ObjEntidadHA.CodAsignatura = CódigoAS;
+                                        ObjEntidadHA.CodEscuelaP = Seleccionar_EP.SelectedValue.ToString();
+                                        ObjEntidadHA.Grupo = Grupo;
+                                        ObjEntidadHA.Aula = Aula;
+                                        ObjEntidadHA.Modalidad = Modalidad;
+
+                                        if (Día1 != "")
+                                        {
+                                            ObjEntidadHA.Dia = Día1;
+                                            ObjEntidadHA.Tipo = Tipo1;
+                                            HoraInicio = Convert.ToInt32(Hora_Inicio_Lunes.Text);
+                                            HoraFin = Convert.ToInt32(Hora_Fin_Lunes.Text);
+                                            ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
+                                            ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
+                                            if (Tipo1 == "P")
+                                            {
+                                                ObjEntidadHA.CodDocente = CódigoD2;
+                                                ObjEntidadHA.HorasTeoria = 0;
+                                                ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
+                                            }
+                                            else
+                                            {
+                                                ObjEntidadHA.CodDocente = CódigoD1;
+                                                ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
+                                                ObjEntidadHA.HorasPractica = 0;
+                                            }
+                                            ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
+                                        }
+                                        if (Día2 != "")
+                                        {
+                                            ObjEntidadHA.Dia = Día2;
+                                            ObjEntidadHA.Tipo = Tipo2;
+                                            HoraInicio = Convert.ToInt32(Hora_Inicio_Martes.Text);
+                                            HoraFin = Convert.ToInt32(Hora_Fin_Martes.Text);
+                                            ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
+                                            ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
+                                            if (Tipo2 == "P")
+                                            {
+                                                ObjEntidadHA.CodDocente = CódigoD2;
+                                                ObjEntidadHA.HorasTeoria = 0;
+                                                ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
+                                            }
+                                            else
+                                            {
+                                                ObjEntidadHA.CodDocente = CódigoD1;
+                                                ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
+                                                ObjEntidadHA.HorasPractica = 0;
+                                            }
+                                            ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
+                                        }
+                                        if (Día3 != "")
+                                        {
+                                            ObjEntidadHA.Dia = Día3;
+                                            ObjEntidadHA.Tipo = Tipo3;
+                                            HoraInicio = Convert.ToInt32(Hora_Inicio_Miércoles.Text);
+                                            HoraFin = Convert.ToInt32(Hora_Fin_Miércoles.Text);
+                                            ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
+                                            ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
+                                            if (Tipo3 == "P")
+                                            {
+                                                ObjEntidadHA.CodDocente = CódigoD2;
+                                                ObjEntidadHA.HorasTeoria = 0;
+                                                ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
+                                            }
+                                            else
+                                            {
+                                                ObjEntidadHA.CodDocente = CódigoD1;
+                                                ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
+                                                ObjEntidadHA.HorasPractica = 0;
+                                            }
+                                            ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
+                                        }
+                                        if (Día4 != "")
+                                        {
+                                            ObjEntidadHA.Dia = Día4;
+                                            ObjEntidadHA.Tipo = Tipo4;
+                                            HoraInicio = Convert.ToInt32(Hora_Inicio_Jueves.Text);
+                                            HoraFin = Convert.ToInt32(Hora_Fin_Jueves.Text);
+                                            ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
+                                            ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
+                                            if (Tipo4 == "P")
+                                            {
+                                                ObjEntidadHA.CodDocente = CódigoD2;
+                                                ObjEntidadHA.HorasTeoria = 0;
+                                                ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
+                                            }
+                                            else
+                                            {
+                                                ObjEntidadHA.CodDocente = CódigoD1;
+                                                ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
+                                                ObjEntidadHA.HorasPractica = 0;
+                                            }
+                                            ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
+                                        }
+                                        if (Día5 != "")
+                                        {
+                                            ObjEntidadHA.Dia = Día5;
+                                            ObjEntidadHA.Tipo = Tipo5;
+                                            HoraInicio = Convert.ToInt32(Hora_Inicio_Viernes.Text);
+                                            HoraFin = Convert.ToInt32(Hora_Fin_Viernes.Text);
+                                            ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
+                                            ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
+                                            if (Tipo5 == "P")
+                                            {
+                                                ObjEntidadHA.CodDocente = CódigoD2;
+                                                ObjEntidadHA.HorasTeoria = 0;
+                                                ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
+                                            }
+                                            else
+                                            {
+                                                ObjEntidadHA.CodDocente = CódigoD1;
+                                                ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
+                                                ObjEntidadHA.HorasPractica = 0;
+                                            }
+                                            ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
+                                        }
+                                        if (Día6 != "")
+                                        {
+                                            ObjEntidadHA.Dia = Día6;
+                                            ObjEntidadHA.Tipo = Tipo6;
+                                            HoraInicio = Convert.ToInt32(Hora_Inicio_Sábado.Text);
+                                            HoraFin = Convert.ToInt32(Hora_Fin_Sábado.Text);
+                                            ObjEntidadHA.HoraInicio = Convert.ToString(HoraInicio);
+                                            ObjEntidadHA.HoraFin = Convert.ToString(HoraFin);
+                                            if (Tipo6 == "P")
+                                            {
+                                                ObjEntidadHA.CodDocente = CódigoD2;
+                                                ObjEntidadHA.HorasTeoria = 0;
+                                                ObjEntidadHA.HorasPractica = HoraFin - HoraInicio;
+                                            }
+                                            else
+                                            {
+                                                ObjEntidadHA.CodDocente = CódigoD1;
+                                                ObjEntidadHA.HorasTeoria = HoraFin - HoraInicio;
+                                                ObjEntidadHA.HorasPractica = 0;
+                                            }
+                                            ObjNegocioHA.InsertarHorarioAsignatura(ObjEntidadHA);
+                                        }
+
+                                        A_Dialogo.DialogoConfirmacion("Actualizado con éxito");
+                                        //MessageBox.Show("Actualizado con éxito.");
+                                        Program.Evento = 0;
+                                        Program.Cont = 0;
+                                        this.Close();
+                                    }
+                                    catch
+                                    {
+                                        A_Dialogo.DialogoError("Ya se ingresó en el catálogo u horario un contenido similar");
+                                        //MessageBox.Show("Ya se ingresó en el catálogo u horario un contenido similar.");
+                                        Program.Evento = 0;
+                                        Program.Cont = 0;
+                                        this.Close();
+                                    }
                                 }
-                                catch
-                                {
+                                else
                                     A_Dialogo.DialogoError("Ya se ingresó en el catálogo u horario un contenido similar");
-                                    //MessageBox.Show("Ya se ingresó en el catálogo u horario un contenido similar.");
-                                    Program.Evento = 0;
-                                    Program.Cont = 0;
-                                    this.Close();
-                                }
                             }
                             else
-                            {
                                 A_Dialogo.DialogoError("Hay un cruce de horarios del segundo docente");
-                                //MessageBox.Show("Hay un cruce de horarios del segundo docente.");
-                            }
-
                         }
                         else
-                        {
                             A_Dialogo.DialogoError("Hay un cruce de horarios del primer docente");
-                            //MessageBox.Show("Hay un cruce de horarios del primer docente.");
-                        }
-
                     }
                     else
-                    {
                         A_Dialogo.DialogoError("Los docentes seleccionados no deben ser iguales");
-                        //MessageBox.Show("Los docentes seleccionados no deben ser iguales.");
-                    }
                 }
                 else
-                {
-                    A_Dialogo.DialogoError("Ese curso no puede llevar 2 docentes");
-                    //MessageBox.Show("Ese curso no puede llevar 2 docentes.");
-                }                  
+                    A_Dialogo.DialogoError("Ese curso no puede llevar 2 docentes");                 
             }
         }
 
