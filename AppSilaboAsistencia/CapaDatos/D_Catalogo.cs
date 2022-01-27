@@ -178,7 +178,7 @@ namespace CapaDatos
         }       
 
         //Metodo para obtener la lista de los estudiantes matriculados en una asignatura. 
-        public DataTable ListaEstudiantesMatriculados(string CodSemestre, string CodAsignatura, string CodDocente)
+        public DataTable ListaEstudiantesMatriculados(string CodSemestre, string CodAsignatura)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuListaEstudiantesMatriculados", Conectar)
@@ -188,7 +188,6 @@ namespace CapaDatos
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura);
-            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             SqlDataAdapter Data = new SqlDataAdapter(Comando);
             Data.Fill(Resultado);
             return Resultado;

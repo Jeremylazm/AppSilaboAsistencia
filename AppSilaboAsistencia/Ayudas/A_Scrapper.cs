@@ -90,7 +90,7 @@ namespace Ayudas
             List<Tuple<string, string>> ListaActualizada = Parser(CodAsignatura);
             if (ListaActualizada != null)
             {
-                DataTable Matriculados = N_Catalogo.ListaEstudiantesMatriculados(CodSemestre, CodAsignatura, CodDocente);
+                DataTable Matriculados = N_Catalogo.ListaEstudiantesMatriculados(CodSemestre, CodAsignatura);
                 string ListaConcatenada = Matriculados.Rows[0]["Matriculados"].ToString();
                 string[] Lista = ListaConcatenada.Split(',');
                 List<string> NuevaLista = new List<string>();
