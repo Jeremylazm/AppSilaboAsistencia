@@ -33,7 +33,6 @@ namespace CapaPresentaciones
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_Bienvenida));
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.lblPie = new Bunifu.UI.WinForms.BunifuLabel();
             this.pbLogo = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblBienvenida = new Bunifu.UI.WinForms.BunifuLabel();
@@ -68,46 +67,6 @@ namespace CapaPresentaciones
             // 
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this;
-            // 
-            // Docker
-            // 
-            this.Docker.AllowFormDragging = true;
-            this.Docker.AllowFormDropShadow = true;
-            this.Docker.AllowFormResizing = false;
-            this.Docker.AllowHidingBottomRegion = true;
-            this.Docker.AllowOpacityChangesWhileDragging = false;
-            this.Docker.BorderOptions.BottomBorder.BorderColor = System.Drawing.Color.Silver;
-            this.Docker.BorderOptions.BottomBorder.BorderThickness = 1;
-            this.Docker.BorderOptions.BottomBorder.ShowBorder = true;
-            this.Docker.BorderOptions.LeftBorder.BorderColor = System.Drawing.Color.Silver;
-            this.Docker.BorderOptions.LeftBorder.BorderThickness = 1;
-            this.Docker.BorderOptions.LeftBorder.ShowBorder = true;
-            this.Docker.BorderOptions.RightBorder.BorderColor = System.Drawing.Color.Silver;
-            this.Docker.BorderOptions.RightBorder.BorderThickness = 1;
-            this.Docker.BorderOptions.RightBorder.ShowBorder = true;
-            this.Docker.BorderOptions.TopBorder.BorderColor = System.Drawing.Color.Silver;
-            this.Docker.BorderOptions.TopBorder.BorderThickness = 1;
-            this.Docker.BorderOptions.TopBorder.ShowBorder = true;
-            this.Docker.ContainerControl = this;
-            this.Docker.DockingIndicatorsColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(215)))), ((int)(((byte)(233)))));
-            this.Docker.DockingIndicatorsOpacity = 0.5D;
-            this.Docker.DockingOptions.DockAll = false;
-            this.Docker.DockingOptions.DockBottomLeft = false;
-            this.Docker.DockingOptions.DockBottomRight = false;
-            this.Docker.DockingOptions.DockFullScreen = false;
-            this.Docker.DockingOptions.DockLeft = false;
-            this.Docker.DockingOptions.DockRight = false;
-            this.Docker.DockingOptions.DockTopLeft = false;
-            this.Docker.DockingOptions.DockTopRight = false;
-            this.Docker.FormDraggingOpacity = 0.9D;
-            this.Docker.ParentForm = this;
-            this.Docker.ShowCursorChanges = true;
-            this.Docker.ShowDockingIndicators = false;
-            this.Docker.TitleBarOptions.AllowFormDragging = true;
-            this.Docker.TitleBarOptions.BunifuFormDock = this.Docker;
-            this.Docker.TitleBarOptions.DoubleClickToExpandWindow = true;
-            this.Docker.TitleBarOptions.TitleBarControl = null;
-            this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
             // lblPie
             // 
@@ -176,7 +135,7 @@ namespace CapaPresentaciones
             this.lblBienvenida.Location = new System.Drawing.Point(769, 82);
             this.lblBienvenida.Name = "lblBienvenida";
             this.lblBienvenida.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblBienvenida.Size = new System.Drawing.Size(390, 78);
+            this.lblBienvenida.Size = new System.Drawing.Size(390, 89);
             this.lblBienvenida.TabIndex = 24;
             this.lblBienvenida.Text = "Bienvenid@";
             this.lblBienvenida.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -273,7 +232,6 @@ namespace CapaPresentaciones
 
         private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
-        private Bunifu.UI.WinForms.BunifuFormDock Docker;
         private Bunifu.UI.WinForms.BunifuLabel lblPie;
         private Bunifu.UI.WinForms.BunifuImageButton pbLogo;
         private Bunifu.UI.WinForms.BunifuLabel lblDatos;

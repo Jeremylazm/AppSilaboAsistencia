@@ -371,8 +371,29 @@ namespace CapaPresentaciones
             CargarDatosUsuario();
             GestionarAcceso();
 
+            if (E_InicioSesion.Acceso == "Jefe de Departamento")
+            {
+                AbrirFormularios<P_DatosDocente>();
+                AbrirFormularios<P_TablaCatálogo>();
+                AbrirFormularios<P_ReporteJefe>();
+                AbrirFormularios<P_HistorialAsistenciasDocentes>();
+            }
+
+            if (E_InicioSesion.Acceso == "Director de Escuela")
+            {
+                AbrirFormularios<P_TablaAsignaturas>();
+                AbrirFormularios<P_ReporteDirector>();
+            }
+
             if (E_InicioSesion.Acceso != "Administrador")
             {
+                EditarPerfil();
+                AbrirFormularios<P_TablaAsignaturasAsignadasEstudiantes>();
+                AbrirFormularios<P_TablaAsignaturasAsignadasSilabos>();
+                AbrirFormularios<P_TablaAsignaturasAsignadasAsistencias>();
+                AbrirFormularios<P_TablaAsignaturasAsignadasPlanSesiones>();
+                AbrirFormularios<P_ReporteDocente>();
+
                 Principal = new P_PrincipalDocente
                 {
                     HoraServidor = pHoraServidor,
@@ -384,6 +405,11 @@ namespace CapaPresentaciones
                 pnContenedor.Tag = Principal;
                 Principal.Show();
                 Principal.BringToFront();
+            }
+            else
+            {
+                AbrirFormularios<P_TablaSemestre>();
+                AbrirFormularios<P_TablaPlantillas>();
             }
         }
 
