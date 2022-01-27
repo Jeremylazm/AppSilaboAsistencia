@@ -232,6 +232,12 @@
     <Compile Include="C_Reporte.Designer.cs">
       <DependentUpon>C_Reporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="P_Bienvenida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_Bienvenida.Designer.cs">
+      <DependentUpon>P_Bienvenida.cs</DependentUpon>
+    </Compile>
     <Compile Include="P_CambioContraseña.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -487,6 +493,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_Bienvenida.resx">
+      <DependentUpon>P_Bienvenida.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_CambioContraseña.resx">
       <DependentUpon>P_CambioContraseña.cs</DependentUpon>

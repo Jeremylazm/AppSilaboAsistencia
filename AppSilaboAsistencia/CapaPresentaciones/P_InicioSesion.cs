@@ -3,15 +3,19 @@ using CapaEntidades;
 using CapaNegocios;
 using System;
 using Ayudas;
+using System.Threading;
 
 namespace CapaPresentaciones
 {
     public partial class P_InicioSesion : Form
     {
         readonly A_Validador Validador;
+        P_Bienvenida Bienvenida;
+
         public P_InicioSesion()
         {
             Validador = new A_Validador();
+            Bienvenida = new P_Bienvenida();
             InitializeComponent();
             Control[] Controles = { this, lblTitulo, pnLogo, pbLogo, lblUniversidad };
             Docker.SubscribeControlsToDragEvents(Controles);
@@ -20,6 +24,76 @@ namespace CapaPresentaciones
         private void ActualizarColor()
         {
             lblTitulo.Focus();
+        }
+
+        private void EstablecerCarga(bool Flag)
+        {
+            if (Flag)
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    Bienvenida.Abrir();
+                });
+            }
+            else
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    Bienvenida.Cerrar();
+                });
+            }
+        }
+
+        private void MostrarMenu(string pAcceso, int Tiempo)
+        {
+            try
+            {
+                Thread Tarea = new Thread(() =>
+                {
+                    P_Menu Menu = new P_Menu
+                    {
+                        Acceso = pAcceso
+                    };
+                    Application.Run(Menu);
+                });
+                Tarea.Start();
+                Thread.Sleep(Tiempo * 1000);
+            }
+            catch (Exception)
+            {
+                A_Dialogo.DialogoError("Error al mostrar el menú principal");
+            }
+        }
+
+        private void CargarBienvenida()
+        {
+            EstablecerCarga(true);
+
+            // Si el usuario es Administrador
+            if (E_InicioSesion.Acceso == E_Acceso.Administrador)
+            {
+                MostrarMenu(E_InicioSesion.Acceso, 4);
+            }
+
+            // Si el usuarios es Jefe de Departamento Académico
+            if (E_InicioSesion.Acceso == E_Acceso.JefeDepartamentoAcademico)
+            {
+                MostrarMenu(E_InicioSesion.Acceso, 30);
+            }
+
+            // Si el usuario es Director de Escuela
+            if (E_InicioSesion.Acceso == E_Acceso.DirectorEscuelaProfesional)
+            {
+                MostrarMenu(E_InicioSesion.Acceso, 30);
+            }
+
+            // Si el usuario es Docente
+            if (E_InicioSesion.Acceso == E_Acceso.Docente)
+            {
+                MostrarMenu(E_InicioSesion.Acceso, 30);
+            }
+                        
+            EstablecerCarga(false);
         }
 
         public void IniciarSesion()
@@ -39,49 +113,14 @@ namespace CapaPresentaciones
                     {
                         this.Hide();
 
-                        //Mostrar mensaje de bienvenida
-                        //P_Bienvenida Bienvenida = new P_Bienvenida();
-
-                        //Bienvenida.ShowDialog();
-
-                        // Si el usuario es administrador
-                        if (E_InicioSesion.Acceso == E_Acceso.Administrador)
+                        try
                         {
-                            P_Menu Menu = new P_Menu
-                            {
-                                Acceso = "Administrador"
-                            };
-                            Menu.Show();
+                            Thread Tarea = new Thread(CargarBienvenida);
+                            Tarea.Start();
                         }
-
-                        // Si el usuarios es Jefe de Departamento Académico
-                        if (E_InicioSesion.Acceso == E_Acceso.JefeDepartamentoAcademico)
+                        catch (Exception)
                         {
-                            P_Menu Menu = new P_Menu
-                            {
-                                Acceso = "Jefe de Departamento"
-                            };
-                            Menu.Show();
-                        }
-
-                        // Si el usuario es Director de Escuela
-                        if (E_InicioSesion.Acceso == E_Acceso.DirectorEscuelaProfesional)
-                        {
-                            P_Menu Menu = new P_Menu
-                            {
-                                Acceso = "Director de Escuela"
-                            };
-                            Menu.Show();
-                        }
-
-                        // Si el usuario es Docente
-                        if (E_InicioSesion.Acceso == E_Acceso.Docente)
-                        {
-                            P_Menu Menu = new P_Menu
-                            {
-                                Acceso = "Docente"
-                            };
-                            Menu.Show();
+                            A_Dialogo.DialogoError("Error al ejecutar la tarea");
                         }
                     }
                     // Si los datos son incorrectos

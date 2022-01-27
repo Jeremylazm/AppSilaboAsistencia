@@ -10,6 +10,7 @@ using System.Drawing.Drawing2D;
 using Ayudas;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 
 namespace CapaPresentaciones
 {
@@ -273,8 +274,19 @@ namespace CapaPresentaciones
             {
                 ActualizarColor();
                 Close();
-                P_InicioSesion Login = new P_InicioSesion();
-                Login.Show();
+                try
+                {
+                    Thread Tarea = new Thread(() =>
+                    {
+                        P_InicioSesion Login = new P_InicioSesion();
+                        Application.Run(Login);
+                    });
+                    Tarea.Start();
+                }
+                catch (Exception)
+                {
+                    A_Dialogo.DialogoError("Error al mostrar el inicio de sesión");
+                }
             }
             else
             {
@@ -359,20 +371,20 @@ namespace CapaPresentaciones
             CargarDatosUsuario();
             GestionarAcceso();
 
-            //if (E_InicioSesion.Acceso != "Administrador")
-            //{
-            //    Principal = new P_PrincipalDocente
-            //    {
-            //        HoraServidor = pHoraServidor,
-            //        TopLevel = false,
-            //        Dock = DockStyle.Fill
-            //    };
+            if (E_InicioSesion.Acceso != "Administrador")
+            {
+                Principal = new P_PrincipalDocente
+                {
+                    HoraServidor = pHoraServidor,
+                    TopLevel = false,
+                    Dock = DockStyle.Fill
+                };
 
-            //    pnContenedor.Controls.Add(Principal);
-            //    pnContenedor.Tag = Principal;
-            //    Principal.Show();
-            //    Principal.BringToFront();
-            //}
+                pnContenedor.Controls.Add(Principal);
+                pnContenedor.Tag = Principal;
+                Principal.Show();
+                Principal.BringToFront();
+            }
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
