@@ -590,6 +590,7 @@ namespace CapaPresentaciones
         {
             // Obtener relación de departamentos académicos
             DataTable DptoAcademico = N_DepartamentoAcademico.MostrarDepartamentos();
+            bool Ok = true;
             foreach (DataRow Dpto in DptoAcademico.Rows)
             {
                 // Obtener relación de asignaturas del catálogo de cada departamento académico
@@ -597,65 +598,21 @@ namespace CapaPresentaciones
                 DataTable Asignaturas = N_Catalogo.MostrarCatalogo(CodSemestre, CodDptoA);
                 foreach (DataRow Asignatura in Asignaturas.Rows)
                 {
+                    // Actualizar la relación de estudiantes de la asignatura
                     string CodAsignatura = Asignatura[0].ToString();
                     string CodDocente = Asignatura[4].ToString();
-                    // Actualizar la relación de estudiantes para cada asignatura
-                    List<Tuple<string, string>> ListaActualizada = A_Scrapper.Parser(CodAsignatura);
-                    if (ListaActualizada != null)
+                    Tuple<int, int> Info = A_Scrapper.ActualizarEstudiantesAsignatura(CodAsignatura, CodDocente, false);
+                    if (Info == null)
                     {
-                        DataTable Matriculados = N_Catalogo.ListaEstudiantesMatriculados(CodSemestre, CodAsignatura, CodDocente);
-                        string ListaConcatenada = Matriculados.Rows[0]["Matriculados"].ToString();
-                        string[] Lista = ListaConcatenada.Split(',');
-                        List<string> NuevaLista = new List<string>();
-
-                        int matriculados = 0, desmatriculados = 0;
-                        // Buscar cod estudiante de la lista de matriculados en la lista actualizada:
-                        foreach (var codigo in Lista)
-                        {
-                            Tuple<string, string> estudiante = BuscarEstudiante(ListaActualizada, codigo);
-                            if (estudiante != null) // cod estudiante se encuentra en la lista actualizada
-                            {
-                                ListaActualizada.Remove(estudiante);
-                                NuevaLista.Add(codigo);
-                            }
-                            else
-                            {
-                                if (codigo != "")
-                                {
-                                    // Eliminar de la tabla matricula 
-                                    ObjEntidadMatricula.CodSemestre = CodSemestre;
-                                    ObjEntidadMatricula.CodEscuelaP = CodAsignatura.Substring(6);
-                                    ObjEntidadMatricula.CodAsignatura = CodAsignatura;
-                                    ObjEntidadMatricula.CodEstudiante = codigo;
-                                    ObjNegocioMatricula.EliminarMatricula(ObjEntidadMatricula);
-                                    desmatriculados += 1;
-                                }
-                            }
-                        }
-                        // Agregar los estudiantes que quedan en la lista actualizada
-                        foreach (var estudiante in ListaActualizada)
-                        {
-                            NuevaLista.Add(estudiante.Item1);
-                            // Agregar a la tabla matricula
-                            string[] NombresApellidos = estudiante.Item2.Split(new string[] { "-", "--" }, StringSplitOptions.RemoveEmptyEntries);
-                            ObjEntidadMatricula.CodSemestre = CodSemestre;
-                            ObjEntidadMatricula.CodEscuelaP = CodAsignatura.Substring(6);
-                            ObjEntidadMatricula.CodAsignatura = CodAsignatura;
-                            ObjEntidadMatricula.CodEstudiante = estudiante.Item1;
-                            ObjEntidadMatricula.APaterno = NombresApellidos[0];
-                            ObjEntidadMatricula.AMaterno = NombresApellidos[1];
-                            ObjEntidadMatricula.Nombre = NombresApellidos[2];
-                            ObjNegocioMatricula.InsertarMatricula(ObjEntidadMatricula);
-                            matriculados += 1;
-                        }
-
-                        // Actualizar lista matriculados
-                        string[] MatriculadosActual = NuevaLista.ToArray();
-                        ObjCatalogo.ActualizarMatriculadosAsignatura(CodSemestre, CodAsignatura, CodDocente, string.Join(",", MatriculadosActual));
+                        Ok = false;
+                        break;
                     }
                 }
             }
-            A_Dialogo.DialogoInformacion("La actualización ha terminado...");
+            if (Ok)
+            {
+                A_Dialogo.DialogoInformacion("La actualización ha terminado...");
+            }
         }
 
         private void btnEstudiantes_Click(object sender, EventArgs e)

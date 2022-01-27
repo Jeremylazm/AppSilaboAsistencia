@@ -57,18 +57,6 @@ namespace CapaPresentaciones
             Close();
         }
 
-        public Tuple<string, string> BuscarEstudiante(List<Tuple<string, string>> ListaActualizada, string CodEstudiante)
-        {
-            foreach (var estudiante in ListaActualizada)
-            {
-                if (estudiante.Item1 == CodEstudiante)
-                {
-                    return estudiante;
-                }
-            }
-            return null;
-        }
-
         private void ActualizarEstudiantes()
         {
             string CodAsignatura = "";
@@ -78,63 +66,13 @@ namespace CapaPresentaciones
             });
 
             A_Dialogo.EstablecerCarga(this, true);
-            List<Tuple<string, string>> ListaActualizada = A_Scrapper.Parser(CodAsignatura);
-            if (ListaActualizada != null)
-            {
-                DataTable Matriculados = N_Catalogo.ListaEstudiantesMatriculados(CodSemestre, CodAsignatura, CodDocente);
-                string ListaConcatenada = Matriculados.Rows[0]["Matriculados"].ToString();
-                string[] Lista = ListaConcatenada.Split(',');
-                List<string> NuevaLista = new List<string>();
-
-                int matriculados = 0, desmatriculados = 0;
-                // Buscar cod estudiante de la lista de matriculados en la lista actualizada:
-                foreach (var codigo in Lista)
-                {
-                    Tuple<string, string> estudiante = BuscarEstudiante(ListaActualizada, codigo);
-                    if (estudiante != null) // cod estudiante se encuentra en la lista actualizada
-                    {
-                        ListaActualizada.Remove(estudiante);
-                        NuevaLista.Add(codigo);
-                    }
-                    else
-                    {
-                        if (codigo != "")
-                        {
-                            // Eliminar de la tabla matricula 
-                            ObjEntidadMatricula.CodSemestre = CodSemestre;
-                            ObjEntidadMatricula.CodEscuelaP = CodAsignatura.Substring(6);
-                            ObjEntidadMatricula.CodAsignatura = CodAsignatura;
-                            ObjEntidadMatricula.CodEstudiante = codigo;
-                            ObjNegocioMatricula.EliminarMatricula(ObjEntidadMatricula);
-                            desmatriculados += 1;
-                        }
-                    }
-                }
-                // Agregar los estudiantes que quedan en la lista actualizada
-                foreach (var estudiante in ListaActualizada)
-                {
-                    NuevaLista.Add(estudiante.Item1);
-                    // Agregar a la tabla matricula
-                    string[] NombresApellidos = estudiante.Item2.Split(new string[] { "-", "--" }, StringSplitOptions.RemoveEmptyEntries);
-                    ObjEntidadMatricula.CodSemestre = CodSemestre;
-                    ObjEntidadMatricula.CodEscuelaP = CodAsignatura.Substring(6);
-                    ObjEntidadMatricula.CodAsignatura = CodAsignatura;
-                    ObjEntidadMatricula.CodEstudiante = estudiante.Item1;
-                    ObjEntidadMatricula.APaterno = NombresApellidos[0];
-                    ObjEntidadMatricula.AMaterno = NombresApellidos[1];
-                    ObjEntidadMatricula.Nombre = NombresApellidos[2];
-                    ObjNegocioMatricula.InsertarMatricula(ObjEntidadMatricula);
-                    matriculados += 1;
-                }
-
-                // Actualizar lista matriculados
-                string[] MatriculadosActual = NuevaLista.ToArray();
-                ObjCatalogo.ActualizarMatriculadosAsignatura(CodSemestre, CodAsignatura, CodDocente, string.Join(",", MatriculadosActual));
-                A_Dialogo.EstablecerCarga(this, false);
-                A_Dialogo.DialogoInformacion("La actualización ha terminado..." + Environment.NewLine +
-                                             "Nuevos estudiantes matriculados: " + matriculados.ToString() + Environment.NewLine +
-                                             "Estudiantes desmatriculados: " + desmatriculados.ToString() + Environment.NewLine);
-            }
+            Tuple<int, int> Info = A_Scrapper.ActualizarEstudiantesAsignatura(CodAsignatura, CodDocente, true);
+            int matriculados = Info.Item1;
+            int desmatriculados = Info.Item2;
+            A_Dialogo.EstablecerCarga(this, false);
+            A_Dialogo.DialogoInformacion("La actualización ha terminado..." + Environment.NewLine +
+                                         "Nuevos estudiantes matriculados: " + matriculados + Environment.NewLine +
+                                         "Estudiantes desmatriculados: " + desmatriculados + Environment.NewLine);
         }
 
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
