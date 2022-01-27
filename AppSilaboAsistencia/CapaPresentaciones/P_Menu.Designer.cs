@@ -2292,7 +2292,6 @@ namespace CapaPresentaciones
             this.pbMarcarAsistencia.WaitOnLoad = false;
             this.pbMarcarAsistencia.Zoom = 10;
             this.pbMarcarAsistencia.ZoomSpeed = 10;
-            this.pbMarcarAsistencia.Click += new System.EventHandler(this.pbMarcarAsistencia_Click);
             // 
             // SeparadorMenu2
             // 
