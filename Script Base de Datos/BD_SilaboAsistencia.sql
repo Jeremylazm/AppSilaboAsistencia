@@ -1668,7 +1668,7 @@ BEGIN
 			  AD.CodAsignatura = @CodAsignatura AND
 			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
 	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Hora, AD.Asistió, AD.TipoSesión, AD.NombreTema, AD.Observación
-	   ORDER BY AD.Fecha DESC
+	   ORDER BY AD.Fecha DESC, AD.Hora DESC
 END;
 GO
 
@@ -1700,7 +1700,7 @@ BEGIN
 			   AD.NombreTema LIKE (@Texto + '%') OR 
 			   AD.Observación LIKE (@Texto + '%'))
 	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Hora, AD.Asistió, AD.TipoSesión, AD.NombreTema, AD.Observación
-	   ORDER BY AD.Fecha DESC
+	   ORDER BY AD.Fecha DESC, AD.Hora DESC
 END;
 GO
 
@@ -2152,7 +2152,7 @@ BEGIN
 			  (AE.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
 		GROUP BY AE.CodAsignatura, A.NombreAsignatura)
 
-	SELECT R.CodAsignatura, NombreAsignatura, C.CodDocente, Docente = (D.Nombre + ' ' + D.APaterno + ' ' + D.AMaterno),
+	SELECT DISTINCT R.CodAsignatura, NombreAsignatura,
 	       PorcentajeAsistencias = CAST(ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT),
 	       PorcentajeFaltas = CAST(ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT)
 	FROM (Resumen R INNER JOIN TCatalogo C ON
