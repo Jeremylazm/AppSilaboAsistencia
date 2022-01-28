@@ -418,8 +418,8 @@ namespace CapaPresentaciones
             }
             else
             {
-                AbrirFormularios<P_TablaSemestre>();
-                AbrirFormularios<P_TablaPlantillas>();
+                //AbrirFormularios<P_TablaSemestre>();
+                //AbrirFormularios<P_TablaPlantillas>();
             }
         }
 
@@ -626,19 +626,24 @@ namespace CapaPresentaciones
 
         private void ActualizarEstudiantes()
         {
+            A_Dialogo.EstablecerCarga(this, true);
+
             // Obtener relación de departamentos académicos
             DataTable DptoAcademico = N_DepartamentoAcademico.MostrarDepartamentos();
             bool Ok = true;
+
             foreach (DataRow Dpto in DptoAcademico.Rows)
             {
                 // Obtener relación de asignaturas del catálogo de cada departamento académico
                 string CodDptoA = Dpto[0].ToString();
                 DataTable Asignaturas = N_Catalogo.MostrarCatalogo(CodSemestre, CodDptoA);
+
                 foreach (DataRow Asignatura in Asignaturas.Rows)
                 {
                     // Actualizar la relación de estudiantes de la asignatura
                     string CodAsignatura = Asignatura[0].ToString();
                     string CodDocente = Asignatura[4].ToString();
+
                     Tuple<int, int> Info = A_Scrapper.ActualizarEstudiantesAsignatura(CodAsignatura, CodDocente, false);
                     if (Info == null)
                     {
@@ -647,15 +652,19 @@ namespace CapaPresentaciones
                     }
                 }
             }
+
+            A_Dialogo.EstablecerCarga(this, false);
+
             if (Ok)
             {
-                A_Dialogo.DialogoInformacion("La actualización ha terminado...");
+                A_Dialogo.DialogoInformacion("La actualización ha terminado");
             }
         }
 
         private void btnEstudiantes_Click(object sender, EventArgs e)
         {
-            ActualizarEstudiantes();
+            ActualizarColor();
+            A_Dialogo.DialogoCargando(ActualizarEstudiantes, "Espere a que se actualicen los estudiantes");
         }
 
         private void MarcarAsistencia()

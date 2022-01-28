@@ -1486,7 +1486,7 @@ BEGIN
 	SELECT DISTINCT CodEstudiante, APaterno, AMaterno, Nombre
 		FROM TMatricula
 	    WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP
-		ORDER BY APaterno ASC
+		ORDER BY APaterno, AMaterno, Nombre ASC
 END;
 GO
 
@@ -2140,7 +2140,7 @@ END;
 GO
 
 -- Procedimiento para mostrar el porcentaje de asistencia de un estudiante para cada una de sus asignaturas
-ALTER PROCEDURE spuAsistenciaAsignaturasEstudiante @CodSemestre VARCHAR(7),
+CREATE PROCEDURE spuAsistenciaAsignaturasEstudiante @CodSemestre VARCHAR(7),
 													@CodEstudiante VARCHAR(6),
 												    @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 													@LimFechaSup DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy

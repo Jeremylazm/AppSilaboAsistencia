@@ -66,10 +66,13 @@ namespace CapaPresentaciones
             });
 
             A_Dialogo.EstablecerCarga(this, true);
+
             Tuple<int, int> Info = A_Scrapper.ActualizarEstudiantesAsignatura(CodAsignatura, CodDocente, true);
             int matriculados = Info.Item1;
             int desmatriculados = Info.Item2;
+
             A_Dialogo.EstablecerCarga(this, false);
+
             A_Dialogo.DialogoInformacion("La actualización ha terminado..." + Environment.NewLine +
                                          "Nuevos estudiantes matriculados: " + matriculados + Environment.NewLine +
                                          "Estudiantes desmatriculados: " + desmatriculados + Environment.NewLine);
@@ -92,7 +95,7 @@ namespace CapaPresentaciones
             // Actualizar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
-                A_Dialogo.DialogoCargando(ActualizarEstudiantes, "Espere a que se actualice los estudiantes de la asignatura seleccionada");
+                A_Dialogo.DialogoCargando(ActualizarEstudiantes, "Espere a que se actualicen los estudiantes de la asignatura seleccionada");
             }
         }
 
