@@ -1134,14 +1134,13 @@ GO
 
 -- Procedimiento para obtener la lista de los estudiantes matriculados en una asignatura. 
 CREATE PROCEDURE spuListaEstudiantesMatriculados @CodSemestre VARCHAR(7),
-										         @CodAsignatura VARCHAR(9), -- código (ej. IF065AIN)
-											     @CodDocente VARCHAR(5)
+										         @CodAsignatura VARCHAR(9) -- código (ej. IF065AIN)
 AS
 BEGIN
 	-- Mostrar la relación de estudiantes matriculados
 	SELECT Matriculados
 		FROM TCatalogo
-		WHERE CodSemestre = @CodSemestre AND CodAsignatura + Grupo + CodEscuelaP = @CodAsignatura AND CodDocente = @CodDocente
+		WHERE CodSemestre = @CodSemestre AND CodAsignatura + Grupo + CodEscuelaP = @CodAsignatura
 END;
 GO
 
@@ -1668,7 +1667,7 @@ BEGIN
 			  AD.CodAsignatura = @CodAsignatura AND
 			  (AD.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
 	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Hora, AD.Asistió, AD.TipoSesión, AD.NombreTema, AD.Observación
-	   ORDER BY AD.Fecha DESC
+	   ORDER BY AD.Fecha DESC, AD.Hora DESC
 END;
 GO
 
@@ -1700,7 +1699,7 @@ BEGIN
 			   AD.NombreTema LIKE (@Texto + '%') OR 
 			   AD.Observación LIKE (@Texto + '%'))
 	   GROUP BY AD.Fecha, AD.Fecha_Formatted, AD.Hora, AD.Asistió, AD.TipoSesión, AD.NombreTema, AD.Observación
-	   ORDER BY AD.Fecha DESC
+	   ORDER BY AD.Fecha DESC, AD.Hora DESC
 END;
 GO
 
@@ -2026,14 +2025,18 @@ CREATE PROCEDURE spuAsistenciaEstudiantes @CodSemestre VARCHAR(7),
 AS
 BEGIN
 	-- Mostrar el registro de asistencias
-	SELECT ROW_NUMBER() OVER (ORDER BY M.APaterno ASC) AS Id, AE.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre,
-	       AE.Asistió, AE.Observación
-		FROM (TAsistenciaEstudiante AE INNER JOIN TMatricula M ON
-			 AE.CodEstudiante = M.CodEstudiante) 
-	    WHERE AE.CodSemestre = @CodSemestre AND
-			  AE.CodAsignatura = @CodAsignatura AND
-			  AE.Fecha = @Fecha AND
-			  AE.Hora = @Hora
+	WITH Aux AS (
+		SELECT DISTINCT AE.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre,
+				AE.Asistió, AE.Observación
+			FROM (TAsistenciaEstudiante AE INNER JOIN TMatricula M ON
+				AE.CodAsignatura = M.CodAsignatura AND AE.CodEstudiante = M.CodEstudiante) 
+			WHERE AE.CodSemestre = @CodSemestre AND
+				AE.CodAsignatura = @CodAsignatura AND
+				AE.Fecha = @Fecha AND
+				AE.Hora = @Hora)
+	SELECT ROW_NUMBER() OVER (ORDER BY APaterno ASC) AS Id, CodEstudiante, APaterno, AMaterno, Nombre,
+			Asistió, Observación
+		FROM Aux
 END;
 GO
 
@@ -2080,11 +2083,13 @@ BEGIN
 	   ORDER BY AD.Fecha DESC
 END;
 GO
+
 -- Procedimiento para mostrar las asistencia de los estudiantes de una asignatura en un rango de fechas
-CREATE PROCEDURE spuAsistenciaEstudiantesPorEstudiante  @CodSemestre VARCHAR(7),
-												        @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
-										                @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
-										                @LimFechaSup DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
+CREATE PROCEDURE spuAsistenciaEstudiantesPorEstudiante @CodSemestre VARCHAR(7),
+												       @CodAsignatura VARCHAR(9), -- código (ej. IF085AIN)
+													   @CodDocente VARCHAR(5),
+										               @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
+										               @LimFechaSup DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
 AS
 BEGIN
 	-- Mostrar el registro de asistenciaS
@@ -2092,10 +2097,12 @@ BEGIN
 	       TotalAsistencias = SUM(CASE WHEN AE.Asistió = 'SI' THEN 1 ELSE 0 END),
 		   TotalFaltas = SUM(CASE WHEN AE.Asistió = 'NO' AND AE.Observación NOT IN ('FERIADO','SUSPENSION','FALTO EL DOCENTE')
 		                     THEN 1 ELSE 0 END)
-		FROM (TAsistenciaEstudiante AE INNER JOIN TMatricula M ON
-			 AE.CodEstudiante = M.CodEstudiante) 
+		FROM (TAsistenciaDocentePorAsignatura AD INNER JOIN TAsistenciaEstudiante AE ON
+		     (AD.CodSemestre = AE.CodSemestre AND AD.CodAsignatura = AE.CodAsignatura AND AD.Fecha = AE.Fecha)) INNER JOIN TMatricula M ON
+			 AE.CodAsignatura = M.CodAsignatura AND AE.CodEstudiante = M.CodEstudiante
 	    WHERE AE.CodSemestre = @CodSemestre AND
 			  AE.CodAsignatura = @CodAsignatura AND
+			  AD.CodDocente = @CodDocente AND
 			  (AE.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
 	    GROUP BY AE.CodEstudiante, M.APaterno, M.AMaterno, M.Nombre
 END;
@@ -2133,7 +2140,7 @@ END;
 GO
 
 -- Procedimiento para mostrar el porcentaje de asistencia de un estudiante para cada una de sus asignaturas
-CREATE PROCEDURE spuAsistenciaAsignaturasEstudiante @CodSemestre VARCHAR(7),
+ALTER PROCEDURE spuAsistenciaAsignaturasEstudiante @CodSemestre VARCHAR(7),
 													@CodEstudiante VARCHAR(6),
 												    @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 													@LimFechaSup DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
@@ -2150,16 +2157,31 @@ BEGIN
 	    WHERE AE.CodSemestre = @CodSemestre  AND
 			  AE.CodEstudiante = @CodEstudiante AND
 			  (AE.Fecha BETWEEN @LimFechaInf AND @LimFechaSup)
-		GROUP BY AE.CodAsignatura, A.NombreAsignatura)
-
-	SELECT R.CodAsignatura, NombreAsignatura, C.CodDocente, Docente = (D.Nombre + ' ' + D.APaterno + ' ' + D.AMaterno),
-	       PorcentajeAsistencias = CAST(ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT),
-	       PorcentajeFaltas = CAST(ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT)
-	FROM (Resumen R INNER JOIN TCatalogo C ON
-	     R.CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP) INNER JOIN TDocente D ON
-		 C.CodDocente = D.CodDocente
-	GROUP BY R.CodAsignatura, NombreAsignatura, C.CodDocente, D.APaterno, D.AMaterno, D.Nombre, TotalAsistencias, TotalFaltas
-	ORDER BY NombreAsignatura
+		GROUP BY AE.CodAsignatura, A.NombreAsignatura),
+	Va AS(
+		SELECT R.CodAsignatura, COUNT(R.CodAsignatura) AS N
+		FROM Resumen R INNER JOIN TCatalogo C ON
+			 R.CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP
+		GROUP BY R.CodAsignatura),	
+	Aux AS (
+	    SELECT DISTINCT R.CodAsignatura, NombreAsignatura, C.CodDocente, Docente = (D.APaterno + ' ' + D.AMaterno + ', ' + D.Nombre),
+		   PorcentajeAsistencias = CAST(ROUND(TotalAsistencias * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT),
+		   PorcentajeFaltas = CAST(ROUND(TotalFaltas * 100.0 / SUM(TotalAsistencias + TotalFaltas), 2) AS FLOAT)
+		FROM ((Resumen R INNER JOIN TCatalogo C ON
+			 R.CodAsignatura = C.CodAsignatura + C.Grupo + C.CodEscuelaP) INNER JOIN TDocente D ON
+			 C.CodDocente = D.CodDocente)
+		GROUP BY R.CodAsignatura, NombreAsignatura, C.CodDocente, D.APaterno, D.AMaterno, D.Nombre, 
+		         TotalAsistencias, TotalFaltas),
+	Teoria AS (
+		SELECT DISTINCT A.CodAsignatura, NombreAsignatura, A.CodDocente, Docente, PorcentajeAsistencias, PorcentajeFaltas,
+			   T = (CASE WHEN V.N = 1 THEN 'T' ELSE HA.Tipo END)
+		FROM (Aux A INNER JOIN Va V ON (A.CodAsignatura = V.CodAsignatura)) INNER JOIN THorarioAsignatura HA ON
+			 (A.CodAsignatura = HA.CodAsignatura + HA.Grupo + HA.CodEscuelaP AND A.CodDocente = HA.CodDocente))
+			 	
+	SELECT CodAsignatura, NombreAsignatura, CodDocente, Docente, PorcentajeAsistencias, PorcentajeFaltas
+		FROM Teoria
+		WHERE T = 'T'
+		ORDER BY NombreAsignatura
 END;
 GO
 

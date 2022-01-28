@@ -30,14 +30,12 @@ namespace Ayudas
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Bunifu.UI.WinForms.BunifuAnimatorNS.Animation animation4 = new Bunifu.UI.WinForms.BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(A_DialogoCargando));
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.AparicionFormulario = new System.Windows.Forms.Timer(this.components);
-            this.AparicionImagen = new Bunifu.UI.WinForms.BunifuTransition(this.components);
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblMensaje = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuCircleProgress1 = new Bunifu.UI.WinForms.BunifuCircleProgress();
+            this.pbProgreso = new Bunifu.UI.WinForms.BunifuCircleProgress();
             this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.SuspendLayout();
             // 
@@ -46,26 +44,9 @@ namespace Ayudas
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this;
             // 
-            // AparicionImagen
+            // AparicionFormulario
             // 
-            this.AparicionImagen.AnimationType = Bunifu.UI.WinForms.BunifuAnimatorNS.AnimationType.ScaleAndRotate;
-            this.AparicionImagen.Cursor = null;
-            animation4.AnimateOnlyDifferences = true;
-            animation4.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.BlindCoeff")));
-            animation4.LeafCoeff = 0F;
-            animation4.MaxTime = 1F;
-            animation4.MinTime = 0F;
-            animation4.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicCoeff")));
-            animation4.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicShift")));
-            animation4.MosaicSize = 0;
-            animation4.Padding = new System.Windows.Forms.Padding(30);
-            animation4.RotateCoeff = 0.5F;
-            animation4.RotateLimit = 0.2F;
-            animation4.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.ScaleCoeff")));
-            animation4.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.SlideCoeff")));
-            animation4.TimeCoeff = 0F;
-            animation4.TransparencyCoeff = 0F;
-            this.AparicionImagen.DefaultAnimation = animation4;
+            this.AparicionFormulario.Tick += new System.EventHandler(this.AparicionFormulario_Tick);
             // 
             // lblTitulo
             // 
@@ -76,7 +57,6 @@ namespace Ayudas
             this.lblTitulo.AutoSize = false;
             this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblTitulo.CursorType = System.Windows.Forms.Cursors.Default;
-            this.AparicionImagen.SetDecoration(this.lblTitulo, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblTitulo.Location = new System.Drawing.Point(23, 12);
@@ -95,7 +75,6 @@ namespace Ayudas
             this.lblMensaje.AutoEllipsis = false;
             this.lblMensaje.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblMensaje.CursorType = System.Windows.Forms.Cursors.Default;
-            this.AparicionImagen.SetDecoration(this.lblMensaje, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lblMensaje.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensaje.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblMensaje.Location = new System.Drawing.Point(169, 335);
@@ -106,43 +85,44 @@ namespace Ayudas
             this.lblMensaje.Text = "Cargando...";
             this.lblMensaje.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblMensaje.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblMensaje.Visible = false;
             // 
-            // bunifuCircleProgress1
+            // pbProgreso
             // 
-            this.bunifuCircleProgress1.Animated = true;
-            this.bunifuCircleProgress1.AnimationInterval = 1;
-            this.bunifuCircleProgress1.AnimationSpeed = 1;
-            this.bunifuCircleProgress1.BackColor = System.Drawing.Color.White;
-            this.bunifuCircleProgress1.CircleMargin = 10;
-            this.AparicionImagen.SetDecoration(this.bunifuCircleProgress1, Bunifu.UI.WinForms.BunifuTransition.DecorationType.Custom);
-            this.bunifuCircleProgress1.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCircleProgress1.ForeColor = System.Drawing.Color.White;
-            this.bunifuCircleProgress1.IsPercentage = false;
-            this.bunifuCircleProgress1.LineProgressThickness = 20;
-            this.bunifuCircleProgress1.LineThickness = 5;
-            this.bunifuCircleProgress1.Location = new System.Drawing.Point(104, 89);
-            this.bunifuCircleProgress1.Name = "bunifuCircleProgress1";
-            this.bunifuCircleProgress1.ProgressAnimationSpeed = 200;
-            this.bunifuCircleProgress1.ProgressBackColor = System.Drawing.Color.White;
-            this.bunifuCircleProgress1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.bunifuCircleProgress1.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.bunifuCircleProgress1.ProgressEndCap = Bunifu.UI.WinForms.BunifuCircleProgress.CapStyles.Round;
-            this.bunifuCircleProgress1.ProgressFillStyle = Bunifu.UI.WinForms.BunifuCircleProgress.FillStyles.Gradient;
-            this.bunifuCircleProgress1.ProgressStartCap = Bunifu.UI.WinForms.BunifuCircleProgress.CapStyles.Round;
-            this.bunifuCircleProgress1.SecondaryFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCircleProgress1.Size = new System.Drawing.Size(223, 223);
-            this.bunifuCircleProgress1.SubScriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.bunifuCircleProgress1.SubScriptMargin = new System.Windows.Forms.Padding(5, -20, 0, 0);
-            this.bunifuCircleProgress1.SubScriptText = "";
-            this.bunifuCircleProgress1.SuperScriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.bunifuCircleProgress1.SuperScriptMargin = new System.Windows.Forms.Padding(5, 20, 0, 0);
-            this.bunifuCircleProgress1.SuperScriptText = "";
-            this.bunifuCircleProgress1.TabIndex = 16;
-            this.bunifuCircleProgress1.Text = "30";
-            this.bunifuCircleProgress1.TextMargin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.bunifuCircleProgress1.Value = 30;
-            this.bunifuCircleProgress1.ValueByTransition = 30;
-            this.bunifuCircleProgress1.ValueMargin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.pbProgreso.Animated = true;
+            this.pbProgreso.AnimationInterval = 5;
+            this.pbProgreso.AnimationSpeed = 1;
+            this.pbProgreso.BackColor = System.Drawing.Color.White;
+            this.pbProgreso.CircleMargin = 10;
+            this.pbProgreso.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pbProgreso.ForeColor = System.Drawing.Color.White;
+            this.pbProgreso.IsPercentage = false;
+            this.pbProgreso.LineProgressThickness = 20;
+            this.pbProgreso.LineThickness = 5;
+            this.pbProgreso.Location = new System.Drawing.Point(104, 89);
+            this.pbProgreso.Name = "pbProgreso";
+            this.pbProgreso.ProgressAnimationSpeed = 200;
+            this.pbProgreso.ProgressBackColor = System.Drawing.Color.White;
+            this.pbProgreso.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            this.pbProgreso.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.pbProgreso.ProgressEndCap = Bunifu.UI.WinForms.BunifuCircleProgress.CapStyles.Round;
+            this.pbProgreso.ProgressFillStyle = Bunifu.UI.WinForms.BunifuCircleProgress.FillStyles.Gradient;
+            this.pbProgreso.ProgressStartCap = Bunifu.UI.WinForms.BunifuCircleProgress.CapStyles.Round;
+            this.pbProgreso.SecondaryFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pbProgreso.Size = new System.Drawing.Size(223, 223);
+            this.pbProgreso.SubScriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.pbProgreso.SubScriptMargin = new System.Windows.Forms.Padding(5, -20, 0, 0);
+            this.pbProgreso.SubScriptText = "";
+            this.pbProgreso.SuperScriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.pbProgreso.SuperScriptMargin = new System.Windows.Forms.Padding(5, 20, 0, 0);
+            this.pbProgreso.SuperScriptText = "";
+            this.pbProgreso.TabIndex = 16;
+            this.pbProgreso.Text = "30";
+            this.pbProgreso.TextMargin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.pbProgreso.Value = 30;
+            this.pbProgreso.ValueByTransition = 30;
+            this.pbProgreso.ValueMargin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.pbProgreso.Visible = false;
             // 
             // Docker
             // 
@@ -190,10 +170,9 @@ namespace Ayudas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(429, 382);
-            this.Controls.Add(this.bunifuCircleProgress1);
+            this.Controls.Add(this.pbProgreso);
             this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.lblTitulo);
-            this.AparicionImagen.SetDecoration(this, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "A_DialogoCargando";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -206,10 +185,9 @@ namespace Ayudas
         #endregion
         private Bunifu.Framework.UI.BunifuElipse Bordeado;
         private System.Windows.Forms.Timer AparicionFormulario;
-        private Bunifu.UI.WinForms.BunifuTransition AparicionImagen;
         private Bunifu.UI.WinForms.BunifuFormDock Docker;
         private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
         private Bunifu.UI.WinForms.BunifuLabel lblMensaje;
-        private Bunifu.UI.WinForms.BunifuCircleProgress bunifuCircleProgress1;
+        private Bunifu.UI.WinForms.BunifuCircleProgress pbProgreso;
     }
 }

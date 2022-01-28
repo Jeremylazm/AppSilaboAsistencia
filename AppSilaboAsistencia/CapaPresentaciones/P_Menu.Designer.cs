@@ -134,7 +134,7 @@ namespace CapaPresentaciones
             this.pnPrincipal.Margin = new System.Windows.Forms.Padding(0);
             this.pnPrincipal.Name = "pnPrincipal";
             this.pnPrincipal.ShowBorders = true;
-            this.pnPrincipal.Size = new System.Drawing.Size(1330, 768);
+            this.pnPrincipal.Size = new System.Drawing.Size(1330, 726);
             this.pnPrincipal.TabIndex = 0;
             // 
             // btnMaximizar
@@ -218,7 +218,7 @@ namespace CapaPresentaciones
             this.pnContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnContenedor.Location = new System.Drawing.Point(220, 44);
             this.pnContenedor.Name = "pnContenedor";
-            this.pnContenedor.Size = new System.Drawing.Size(1110, 680);
+            this.pnContenedor.Size = new System.Drawing.Size(1110, 638);
             this.pnContenedor.TabIndex = 16;
             // 
             // btnMinimizar
@@ -343,7 +343,7 @@ namespace CapaPresentaciones
             this.lblInferior.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblInferior.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInferior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblInferior.Location = new System.Drawing.Point(220, 724);
+            this.lblInferior.Location = new System.Drawing.Point(220, 682);
             this.lblInferior.Name = "lblInferior";
             this.lblInferior.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblInferior.Size = new System.Drawing.Size(1110, 44);
@@ -429,7 +429,7 @@ namespace CapaPresentaciones
             this.pnOpciones.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnOpciones.Location = new System.Drawing.Point(0, 0);
             this.pnOpciones.Name = "pnOpciones";
-            this.pnOpciones.Size = new System.Drawing.Size(220, 768);
+            this.pnOpciones.Size = new System.Drawing.Size(220, 726);
             this.pnOpciones.TabIndex = 15;
             // 
             // pnBotonesMenu
@@ -443,7 +443,7 @@ namespace CapaPresentaciones
             this.pnBotonesMenu.Location = new System.Drawing.Point(0, 288);
             this.pnBotonesMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pnBotonesMenu.Name = "pnBotonesMenu";
-            this.pnBotonesMenu.Size = new System.Drawing.Size(220, 418);
+            this.pnBotonesMenu.Size = new System.Drawing.Size(220, 376);
             this.pnBotonesMenu.TabIndex = 71;
             // 
             // btnPrincipal
@@ -2212,7 +2212,7 @@ namespace CapaPresentaciones
             this.btnMarcarAsistencia.IdleIconLeftImage = null;
             this.btnMarcarAsistencia.IdleIconRightImage = null;
             this.btnMarcarAsistencia.IndicateFocus = false;
-            this.btnMarcarAsistencia.Location = new System.Drawing.Point(5, 724);
+            this.btnMarcarAsistencia.Location = new System.Drawing.Point(5, 682);
             this.btnMarcarAsistencia.Name = "btnMarcarAsistencia";
             this.btnMarcarAsistencia.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnMarcarAsistencia.OnDisabledState.BorderRadius = 15;
@@ -2278,7 +2278,7 @@ namespace CapaPresentaciones
             this.pbMarcarAsistencia.ImageSize = new System.Drawing.Size(20, 20);
             this.pbMarcarAsistencia.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.pbMarcarAsistencia.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbMarcarAsistencia.InitialImage")));
-            this.pbMarcarAsistencia.Location = new System.Drawing.Point(8, 727);
+            this.pbMarcarAsistencia.Location = new System.Drawing.Point(8, 685);
             this.pbMarcarAsistencia.Name = "pbMarcarAsistencia";
             this.pbMarcarAsistencia.Rotation = 0;
             this.pbMarcarAsistencia.ShowActiveImage = false;
@@ -2292,7 +2292,6 @@ namespace CapaPresentaciones
             this.pbMarcarAsistencia.WaitOnLoad = false;
             this.pbMarcarAsistencia.Zoom = 10;
             this.pbMarcarAsistencia.ZoomSpeed = 10;
-            this.pbMarcarAsistencia.Click += new System.EventHandler(this.pbMarcarAsistencia_Click);
             // 
             // SeparadorMenu2
             // 
@@ -2305,7 +2304,7 @@ namespace CapaPresentaciones
             this.SeparadorMenu2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.SeparadorMenu2.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.SeparadorMenu2.LineThickness = 1;
-            this.SeparadorMenu2.Location = new System.Drawing.Point(5, 709);
+            this.SeparadorMenu2.Location = new System.Drawing.Point(5, 667);
             this.SeparadorMenu2.Name = "SeparadorMenu2";
             this.SeparadorMenu2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.SeparadorMenu2.Size = new System.Drawing.Size(209, 14);
@@ -2527,7 +2526,7 @@ namespace CapaPresentaciones
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1330, 768);
+            this.ClientSize = new System.Drawing.Size(1330, 726);
             this.Controls.Add(this.pnPrincipal);
             this.Transicion.SetDecoration(this, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
