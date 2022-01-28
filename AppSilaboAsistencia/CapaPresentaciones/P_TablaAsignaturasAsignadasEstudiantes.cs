@@ -73,7 +73,7 @@ namespace CapaPresentaciones
 
             A_Dialogo.EstablecerCarga(this, false);
 
-            A_Dialogo.DialogoInformacion("La actualización ha terminado..." + Environment.NewLine +
+            A_Dialogo.DialogoInformacion("La actualización ha terminado" + Environment.NewLine +
                                          "Nuevos estudiantes matriculados: " + matriculados + Environment.NewLine +
                                          "Estudiantes desmatriculados: " + desmatriculados + Environment.NewLine);
         }
@@ -95,7 +95,7 @@ namespace CapaPresentaciones
             // Actualizar
             if ((e.RowIndex >= 0) && (e.ColumnIndex == 1))
             {
-                A_Dialogo.DialogoCargando(ActualizarEstudiantes, "Espere a que se actualicen los estudiantes de la asignatura seleccionada");
+                A_Dialogo.DialogoCargando(ActualizarEstudiantes, "Actualizando...", "Espere a que se actualicen los estudiantes de la asignatura seleccionada", "Error al actualizar los estudiantes de la asignatura seleccionada");
             }
         }
 

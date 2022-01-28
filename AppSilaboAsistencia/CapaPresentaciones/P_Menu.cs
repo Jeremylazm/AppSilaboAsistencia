@@ -664,7 +664,7 @@ namespace CapaPresentaciones
         private void btnEstudiantes_Click(object sender, EventArgs e)
         {
             ActualizarColor();
-            A_Dialogo.DialogoCargando(ActualizarEstudiantes, "Espere a que se actualicen los estudiantes");
+            A_Dialogo.DialogoCargando(ActualizarEstudiantes, "Actualizando...", "Espere a que se actualicen los estudiantes", "Error al actualizar los estudiantes");
         }
 
         private void MarcarAsistencia()
