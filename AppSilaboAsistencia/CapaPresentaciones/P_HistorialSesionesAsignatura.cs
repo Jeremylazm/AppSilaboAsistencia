@@ -48,10 +48,10 @@ namespace CapaPresentaciones
             dgvDatos.Columns[1].HeaderText = "Fecha";
             dgvDatos.Columns[2].HeaderText = "Hora";
             dgvDatos.Columns[3].HeaderText = "Sesión Dictada";
-            dgvDatos.Columns[4].HeaderText = "Tipo de Sesión";
-            dgvDatos.Columns[5].HeaderText = "Nombre del Tema";
-            dgvDatos.Columns[6].HeaderText = "TotalAsistieron";
-            dgvDatos.Columns[7].HeaderText = "TotalFaltaron";
+            dgvDatos.Columns[4].HeaderText = "Tipo";
+            dgvDatos.Columns[5].HeaderText = "Tema";
+            dgvDatos.Columns[6].HeaderText = "Asistieron";
+            dgvDatos.Columns[7].HeaderText = "Faltaron";
             dgvDatos.Columns[8].HeaderText = "Observación";
         }
 

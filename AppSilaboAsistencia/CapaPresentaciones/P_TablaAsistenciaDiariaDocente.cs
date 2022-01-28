@@ -50,7 +50,7 @@ namespace CapaPresentaciones
             dgvDatos.Columns[0].DisplayIndex = 8;
             dgvDatos.Columns[1].DisplayIndex = 8;
 
-            dgvDatos.Columns[2].HeaderText = "Id.";
+            dgvDatos.Columns[2].HeaderText = "Nro.";
             dgvDatos.Columns[2].ReadOnly = true;
             dgvDatos.Columns[3].HeaderText = "Código";
             dgvDatos.Columns[3].ReadOnly = true;
@@ -58,7 +58,7 @@ namespace CapaPresentaciones
             dgvDatos.Columns[4].ReadOnly = true;
             dgvDatos.Columns[5].HeaderText = "Apellido Materno";
             dgvDatos.Columns[5].ReadOnly = true;
-            dgvDatos.Columns[6].HeaderText = "Nombre";
+            dgvDatos.Columns[6].HeaderText = "Nombres";
             dgvDatos.Columns[6].ReadOnly = true;
             dgvDatos.Columns[7].Visible = false;
             dgvDatos.Columns[8].Visible = false;
@@ -199,12 +199,13 @@ namespace CapaPresentaciones
             {
                 sbDatos.Visible = false;
                 dgvDatos.Width = 1124;
-                this.Height = dgvDatos.Rows.Count * 26 + (28 + this.Height - dgvDatos.Height);
+                this.Height = dgvDatos.Rows.Count * 26 + 253;
             }
             else
             {
                 sbDatos.Visible = true;
-                this.Height = 622;
+                sbDatos.Maximum = dgvDatos.Rows.Count - 20;
+                this.Height = 773;
             }
         }
         public void ValidaCheckBox()

@@ -31,11 +31,14 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_Catálogo_Actualizar));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Salir = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Seleccionar_EP = new System.Windows.Forms.ComboBox();
+            this.lblSemestre = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
             this.Panel_Info = new System.Windows.Forms.Panel();
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
@@ -232,9 +235,6 @@ namespace CapaPresentaciones
             this.tAsignaturaTableAdapter = new CapaPresentaciones.BDSistemaGestionDataSetTableAdapters.TAsignaturaTableAdapter();
             this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
-            this.lblSemestre = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.Seleccionar_EP = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Salir)).BeginInit();
             this.panel2.SuspendLayout();
@@ -472,6 +472,74 @@ namespace CapaPresentaciones
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(750, 587);
             this.panel2.TabIndex = 3;
+            // 
+            // Seleccionar_EP
+            // 
+            this.Seleccionar_EP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Seleccionar_EP.FormattingEnabled = true;
+            this.Seleccionar_EP.Items.AddRange(new object[] {
+            "2021-I",
+            "2021-II",
+            "2022-I",
+            "2022-II",
+            "2023-I",
+            "2023-II",
+            "2024-I",
+            "2024-II",
+            "2025-I",
+            "2025-II",
+            "2026-I",
+            "2026-II",
+            "2027-I",
+            "2027-II",
+            "2028-I",
+            "2028-II",
+            "2029-I",
+            "2029-II",
+            "2030-I",
+            "2030-II",
+            "2031-I",
+            "2031-II",
+            "2032-I",
+            "2032-II",
+            "2033-I",
+            "2033-II",
+            "2034-I",
+            "2034-II",
+            "2035-I",
+            "2035-II",
+            "2036-I",
+            "2036-II",
+            "2037-I",
+            "2037-II",
+            "2038-I",
+            "2038-II",
+            "2039-I",
+            "2039-II",
+            "2040-I",
+            "2040-II"});
+            this.Seleccionar_EP.Location = new System.Drawing.Point(19, 123);
+            this.Seleccionar_EP.Name = "Seleccionar_EP";
+            this.Seleccionar_EP.Size = new System.Drawing.Size(309, 21);
+            this.Seleccionar_EP.TabIndex = 348;
+            // 
+            // lblSemestre
+            // 
+            this.lblSemestre.AutoSize = true;
+            this.lblSemestre.Location = new System.Drawing.Point(77, 151);
+            this.lblSemestre.Name = "lblSemestre";
+            this.lblSemestre.Size = new System.Drawing.Size(0, 13);
+            this.lblSemestre.TabIndex = 347;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(16, 151);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(63, 13);
+            this.label32.TabIndex = 346;
+            this.label32.Text = "Semestre:";
             // 
             // Panel_Info
             // 
@@ -2119,11 +2187,11 @@ namespace CapaPresentaciones
             this.Botón_Guardar.ColorContrastOnClick = 45;
             this.Botón_Guardar.ColorContrastOnHover = 45;
             this.Botón_Guardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.Botón_Guardar.CustomizableEdges = borderEdges2;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.Botón_Guardar.CustomizableEdges = borderEdges1;
             this.Botón_Guardar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Botón_Guardar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.Botón_Guardar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -2440,74 +2508,6 @@ namespace CapaPresentaciones
             this.Docker.TitleBarOptions.DoubleClickToExpandWindow = true;
             this.Docker.TitleBarOptions.TitleBarControl = null;
             this.Docker.TitleBarOptions.UseBackColorOnDockingIndicators = false;
-            // 
-            // lblSemestre
-            // 
-            this.lblSemestre.AutoSize = true;
-            this.lblSemestre.Location = new System.Drawing.Point(77, 151);
-            this.lblSemestre.Name = "lblSemestre";
-            this.lblSemestre.Size = new System.Drawing.Size(0, 13);
-            this.lblSemestre.TabIndex = 347;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(16, 151);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(63, 13);
-            this.label32.TabIndex = 346;
-            this.label32.Text = "Semestre:";
-            // 
-            // Seleccionar_EP
-            // 
-            this.Seleccionar_EP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Seleccionar_EP.FormattingEnabled = true;
-            this.Seleccionar_EP.Items.AddRange(new object[] {
-            "2021-I",
-            "2021-II",
-            "2022-I",
-            "2022-II",
-            "2023-I",
-            "2023-II",
-            "2024-I",
-            "2024-II",
-            "2025-I",
-            "2025-II",
-            "2026-I",
-            "2026-II",
-            "2027-I",
-            "2027-II",
-            "2028-I",
-            "2028-II",
-            "2029-I",
-            "2029-II",
-            "2030-I",
-            "2030-II",
-            "2031-I",
-            "2031-II",
-            "2032-I",
-            "2032-II",
-            "2033-I",
-            "2033-II",
-            "2034-I",
-            "2034-II",
-            "2035-I",
-            "2035-II",
-            "2036-I",
-            "2036-II",
-            "2037-I",
-            "2037-II",
-            "2038-I",
-            "2038-II",
-            "2039-I",
-            "2039-II",
-            "2040-I",
-            "2040-II"});
-            this.Seleccionar_EP.Location = new System.Drawing.Point(19, 123);
-            this.Seleccionar_EP.Name = "Seleccionar_EP";
-            this.Seleccionar_EP.Size = new System.Drawing.Size(194, 21);
-            this.Seleccionar_EP.TabIndex = 348;
             // 
             // P_Catálogo_Actualizar
             // 

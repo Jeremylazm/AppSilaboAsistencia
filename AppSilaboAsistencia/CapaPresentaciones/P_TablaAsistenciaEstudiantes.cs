@@ -24,7 +24,7 @@ namespace CapaPresentaciones
         private readonly string CodEscuelaP;
         public readonly string CodAsignatura;
         public readonly string CodDocente;
-       
+
         readonly E_AsistenciaEstudiante ObjEntidadEstd;
         readonly N_AsistenciaEstudiante ObjNegocioEstd;
         readonly E_AsistenciaDocentePorAsignatura ObjEntidadDoc;
@@ -32,7 +32,7 @@ namespace CapaPresentaciones
         public string hora;
         private DataTable PlanSesion;
         public DataTable dgvTabla;
-        
+
         public string LimtFechaInf;
         //private readonly string CodDepartamento = E_DepartamentoAcademico.CodDepartamentoA;
         public P_TablaAsistenciaEstudiantes(string pCodAsignatura, string pCodDocente, DataTable pdgv)
@@ -69,7 +69,7 @@ namespace CapaPresentaciones
         {
             dgvDatos.Columns[0].DisplayIndex = 8;
             dgvDatos.Columns[1].DisplayIndex = 8;
-            dgvDatos.Columns[2].HeaderText = "Id.";
+            dgvDatos.Columns[2].HeaderText = "Nro.";
             dgvDatos.Columns[2].ReadOnly = true;
             dgvDatos.Columns[3].HeaderText = "Código";
             dgvDatos.Columns[3].ReadOnly = true;
@@ -77,12 +77,12 @@ namespace CapaPresentaciones
             dgvDatos.Columns[4].ReadOnly = true;
             dgvDatos.Columns[5].HeaderText = "Apellido Materno";
             dgvDatos.Columns[5].ReadOnly = true;
-            dgvDatos.Columns[6].HeaderText = "Nombre";
+            dgvDatos.Columns[6].HeaderText = "Nombres";
             dgvDatos.Columns[6].ReadOnly = true;
             dgvDatos.Columns[7].Visible = false;
             dgvDatos.Columns[8].Visible = false;
         }
-
+        
         private void MostrarEstudiantesNuevoRegistro()
         {
             int i = 0;
@@ -91,16 +91,17 @@ namespace CapaPresentaciones
                 //DataGridViewComboBoxCell textBoxcell = (DataGridViewComboBoxCell)(fila["cbxObservaciones"]);
                 //textBoxcell.Value = fila[6];
                 //fila.Cells[0].Value = (fila.Cells[6].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
-               
-                
 
-                dgvDatos.Rows.Add(ListaImagenes.Images[0],"", fila[0], fila[1], fila[2], fila[3], fila[4],"","");
+
+
+                dgvDatos.Rows.Add(ListaImagenes.Images[0], "", fila[0], fila[1], fila[2], fila[3], fila[4], "", "");
                 dgvDatos.Rows[i].Cells[0].Tag = false;
-    
+
                 i += 1;
 
             }
             //dgvDatos.DataSource = dgvTabla;
+           
             AccionesTabla();
         }
 
@@ -130,6 +131,7 @@ namespace CapaPresentaciones
 
             }
             //dgvDatos.DataSource = dgvTabla;
+            
             AccionesTabla();
         }
 
@@ -164,6 +166,7 @@ namespace CapaPresentaciones
                                     j += 1;
                                 }
                             }
+                           
                             AccionesTabla();
                         }
                     }
@@ -205,6 +208,7 @@ namespace CapaPresentaciones
                                     j += 1;
                                 }
                             }
+                           
                             AccionesTabla();
                         }
                     }
@@ -241,9 +245,9 @@ namespace CapaPresentaciones
                 ObjEntidadEstd.Fecha = DateTime.Parse(txtFecha.Text.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));//fecha en la que fue registrado
                 ObjEntidadEstd.Hora = hora;//hora en el que fue registrado
                 ObjEntidadEstd.CodEstudiante = dr.Cells[3].Value.ToString();
-                
-                string AsistioActualizado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";              
-                string ObsActualizada = (dr.Cells[1].Value==null)?"":dr.Cells[1].Value.ToString();
+
+                string AsistioActualizado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
+                string ObsActualizada = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
 
                 ObjNegocioEstd.ActualizarAsistenciaEstudiante(ObjEntidadEstd, AsistioActualizado, ObsActualizada);
             }
@@ -339,22 +343,24 @@ namespace CapaPresentaciones
             {
                 sbDatos.Visible = false;
                 dgvDatos.Width = 1124;
-                this.Height = dgvDatos.Rows.Count * 26 + (28 + this.Height - dgvDatos.Height);
+                this.Height = dgvDatos.Rows.Count * 26 + 253;
             }
             else
             {
                 sbDatos.Visible = true;
-                this.Height = 622;
+                sbDatos.Maximum = dgvDatos.Rows.Count - 20;
+                this.Height = 773;
             }
         }
-        public void ValidaCheckBox()
+        public void ActualizarCheckBox()
         {
             bool R = true;
             foreach (DataGridViewRow Fila in dgvDatos.Rows)
             {
-                if (Fila.Cells[0].Tag.Equals(false))
+                if (Fila.Cells[0].Tag.Equals(false) && Fila.Cells[0]!=null)
                 {
                     R = false;
+                    //ckbMarcarTodos.Checked = false;
                     break;
                 }
 
@@ -362,7 +368,7 @@ namespace CapaPresentaciones
             if (R.Equals(true))
             {
                 Console.WriteLine("llegue aqui");
-                ckbMarcarTodos.Checked = true;
+                ckbMarcarTodos.Checked=true;
             }
         }
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -374,14 +380,7 @@ namespace CapaPresentaciones
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             BuscarEstudiantes();
-        }
-
-        private void btnSesiones_Click(object sender, EventArgs e)
-        {
-            P_TablaSesionesPendientes Sesiones = new P_TablaSesionesPendientes(CodAsignatura, CodDocente);
-
-            Sesiones.ShowDialog();
-            Sesiones.Dispose();
+            //ActualizarCheckBox();
         }
 
         private void dgvDatos_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -423,7 +422,7 @@ namespace CapaPresentaciones
                     DataGrid.Rows[e.RowIndex].Cells[0].Value = ListaImagenes.Images[0];
                     DataGrid.Rows[e.RowIndex].Cells[0].Tag = false;
                 }
-                ValidaCheckBox();
+                ActualizarCheckBox();
             }
             
         }
@@ -501,7 +500,7 @@ namespace CapaPresentaciones
                 MostrarEstudiantesRegistrados();
 
             }
-            ValidaCheckBox();
+            //ActualizarCheckBox();
             AjustarTabla();
             
         }
@@ -547,10 +546,23 @@ namespace CapaPresentaciones
                 ObjNegocio.ActualizarPlanSesionesAsignatura(CodSemestre, CodAsignatura, CodDocente, arreglo);
 
             }
-            
+
             GuardarRegistroDocente();
             Close();
         }
 
-	}
+        private void btnMostrarPlanSesiones_Click(object sender, EventArgs e)
+        {
+            P_TablaSesionesPendientes Sesiones = new P_TablaSesionesPendientes(CodAsignatura, CodDocente);
+
+            Sesiones.ShowDialog();
+            Sesiones.Dispose();
+        }
+
+
+        private void sbDatos_Scroll(object sender, Bunifu.UI.WinForms.BunifuVScrollBar.ScrollEventArgs e)
+        {
+            //MessageBox.Show(sbDatos.Value.ToString());
+        }
+    }
 }

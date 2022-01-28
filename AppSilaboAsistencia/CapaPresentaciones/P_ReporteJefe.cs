@@ -147,7 +147,7 @@ namespace CapaPresentaciones
                 }
 
             }
-            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignatura"))
+            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
                 fnReporte9();
             }
@@ -313,7 +313,7 @@ namespace CapaPresentaciones
 
             int Créditos = 0;
             int TemasTotales = 0;
-            float PorcentajeAvanzados = 0;
+            double PorcentajeAvanzados;
 
             for (int i = 0; i < resultados.Rows.Count; i++)
             {
@@ -364,6 +364,7 @@ namespace CapaPresentaciones
 
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
+
         private void fnReporte12()
         {
             // Tipo de reporte: Asistencia Docentes
@@ -379,6 +380,7 @@ namespace CapaPresentaciones
 
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
+
         private void fnReporte13()
         {
             pnReporte.AutoScrollPosition = new Point(0, 0);
@@ -395,6 +397,7 @@ namespace CapaPresentaciones
             
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
+
         private void fnReporte14()
         {
             pnReporte.AutoScrollPosition = new Point(0, 0);
@@ -412,6 +415,7 @@ namespace CapaPresentaciones
             
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
+
         private void dpFechaInicial_CloseUp(object sender, EventArgs e)
         {
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Docentes"))
@@ -420,7 +424,7 @@ namespace CapaPresentaciones
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
-                fnReporte9();
+                fnReporte5();
             }
         }
 
@@ -432,7 +436,7 @@ namespace CapaPresentaciones
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
-                fnReporte9();
+                fnReporte5();
             }
         }
     }
