@@ -109,5 +109,10 @@ namespace CapaPresentaciones
             Program.Evento = 0;
             Close();
         }
+
+        private void P_DatosSemestre_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

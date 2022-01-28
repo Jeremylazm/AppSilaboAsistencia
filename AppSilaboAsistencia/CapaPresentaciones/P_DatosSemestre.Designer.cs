@@ -63,17 +63,18 @@ namespace CapaPresentaciones
             this.btnCerrar.ImageActive = null;
             this.btnCerrar.ImageLocation = null;
             this.btnCerrar.ImageMargin = 10;
-            this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnCerrar.ImageZoomSize = new System.Drawing.Size(30, 30);
+            this.btnCerrar.ImageSize = new System.Drawing.Size(30, 27);
+            this.btnCerrar.ImageZoomSize = new System.Drawing.Size(40, 37);
             this.btnCerrar.InitialImage = null;
-            this.btnCerrar.Location = new System.Drawing.Point(273, 7);
+            this.btnCerrar.Location = new System.Drawing.Point(364, 9);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Rotation = 0;
             this.btnCerrar.ShowActiveImage = true;
             this.btnCerrar.ShowCursorChanges = true;
             this.btnCerrar.ShowImageBorders = true;
             this.btnCerrar.ShowSizeMarkers = false;
-            this.btnCerrar.Size = new System.Drawing.Size(30, 30);
+            this.btnCerrar.Size = new System.Drawing.Size(40, 37);
             this.btnCerrar.TabIndex = 12;
             this.btnCerrar.ToolTipText = "";
             this.btnCerrar.WaitOnLoad = false;
@@ -99,17 +100,18 @@ namespace CapaPresentaciones
             this.pbLogo.ImageActive = null;
             this.pbLogo.ImageLocation = null;
             this.pbLogo.ImageMargin = 0;
-            this.pbLogo.ImageSize = new System.Drawing.Size(24, 30);
-            this.pbLogo.ImageZoomSize = new System.Drawing.Size(24, 30);
+            this.pbLogo.ImageSize = new System.Drawing.Size(32, 37);
+            this.pbLogo.ImageZoomSize = new System.Drawing.Size(32, 37);
             this.pbLogo.InitialImage = null;
-            this.pbLogo.Location = new System.Drawing.Point(8, 7);
+            this.pbLogo.Location = new System.Drawing.Point(11, 9);
+            this.pbLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Rotation = 0;
             this.pbLogo.ShowActiveImage = false;
             this.pbLogo.ShowCursorChanges = false;
             this.pbLogo.ShowImageBorders = true;
             this.pbLogo.ShowSizeMarkers = false;
-            this.pbLogo.Size = new System.Drawing.Size(24, 30);
+            this.pbLogo.Size = new System.Drawing.Size(32, 37);
             this.pbLogo.TabIndex = 13;
             this.pbLogo.ToolTipText = "";
             this.pbLogo.WaitOnLoad = false;
@@ -163,7 +165,8 @@ namespace CapaPresentaciones
             this.btnGuardar.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Guardar;
             this.btnGuardar.IdleIconRightImage = null;
             this.btnGuardar.IndicateFocus = false;
-            this.btnGuardar.Location = new System.Drawing.Point(69, 218);
+            this.btnGuardar.Location = new System.Drawing.Point(92, 268);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnGuardar.OnDisabledState.BorderRadius = 15;
@@ -197,7 +200,7 @@ namespace CapaPresentaciones
             this.btnGuardar.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnGuardar.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Guardar;
             this.btnGuardar.OnPressedState.IconRightImage = null;
-            this.btnGuardar.Size = new System.Drawing.Size(170, 39);
+            this.btnGuardar.Size = new System.Drawing.Size(227, 48);
             this.btnGuardar.TabIndex = 8;
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnGuardar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -263,9 +266,10 @@ namespace CapaPresentaciones
             this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.lblTitulo.Location = new System.Drawing.Point(0, 0);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTitulo.Size = new System.Drawing.Size(313, 46);
+            this.lblTitulo.Size = new System.Drawing.Size(417, 57);
             this.lblTitulo.TabIndex = 20;
             this.lblTitulo.Text = "Datos de Semestre";
             this.lblTitulo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -279,10 +283,11 @@ namespace CapaPresentaciones
             this.txtSemestre.CursorType = System.Windows.Forms.Cursors.Default;
             this.txtSemestre.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSemestre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtSemestre.Location = new System.Drawing.Point(22, 93);
+            this.txtSemestre.Location = new System.Drawing.Point(29, 114);
+            this.txtSemestre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSemestre.Name = "txtSemestre";
             this.txtSemestre.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtSemestre.Size = new System.Drawing.Size(68, 22);
+            this.txtSemestre.Size = new System.Drawing.Size(86, 27);
             this.txtSemestre.TabIndex = 69;
             this.txtSemestre.Text = "2088 - II";
             this.txtSemestre.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
@@ -297,10 +302,11 @@ namespace CapaPresentaciones
             this.lnSemestre.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lnSemestre.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.lnSemestre.LineThickness = 1;
-            this.lnSemestre.Location = new System.Drawing.Point(22, 117);
+            this.lnSemestre.Location = new System.Drawing.Point(29, 144);
+            this.lnSemestre.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.lnSemestre.Name = "lnSemestre";
             this.lnSemestre.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.lnSemestre.Size = new System.Drawing.Size(270, 10);
+            this.lnSemestre.Size = new System.Drawing.Size(360, 12);
             this.lnSemestre.TabIndex = 68;
             // 
             // lblSemestre
@@ -311,10 +317,11 @@ namespace CapaPresentaciones
             this.lblSemestre.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblSemestre.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSemestre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblSemestre.Location = new System.Drawing.Point(22, 61);
+            this.lblSemestre.Location = new System.Drawing.Point(29, 75);
+            this.lblSemestre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblSemestre.Name = "lblSemestre";
             this.lblSemestre.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblSemestre.Size = new System.Drawing.Size(77, 23);
+            this.lblSemestre.Size = new System.Drawing.Size(95, 27);
             this.lblSemestre.TabIndex = 67;
             this.lblSemestre.Text = "Semestre";
             this.lblSemestre.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -328,10 +335,11 @@ namespace CapaPresentaciones
             this.lblFechaInicial.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblFechaInicial.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaInicial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblFechaInicial.Location = new System.Drawing.Point(22, 140);
+            this.lblFechaInicial.Location = new System.Drawing.Point(29, 172);
+            this.lblFechaInicial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lblFechaInicial.Name = "lblFechaInicial";
             this.lblFechaInicial.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblFechaInicial.Size = new System.Drawing.Size(125, 23);
+            this.lblFechaInicial.Size = new System.Drawing.Size(156, 27);
             this.lblFechaInicial.TabIndex = 70;
             this.lblFechaInicial.Text = "Fecha de Inicio";
             this.lblFechaInicial.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -360,20 +368,21 @@ namespace CapaPresentaciones
             this.dpFechaInicial.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.dpFechaInicial.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Left;
             this.dpFechaInicial.LeftTextMargin = 0;
-            this.dpFechaInicial.Location = new System.Drawing.Point(22, 171);
+            this.dpFechaInicial.Location = new System.Drawing.Point(29, 210);
+            this.dpFechaInicial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dpFechaInicial.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             this.dpFechaInicial.MinimumSize = new System.Drawing.Size(4, 32);
             this.dpFechaInicial.Name = "dpFechaInicial";
-            this.dpFechaInicial.Size = new System.Drawing.Size(270, 32);
+            this.dpFechaInicial.Size = new System.Drawing.Size(359, 32);
             this.dpFechaInicial.TabIndex = 71;
             // 
             // P_DatosSemestre
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(313, 273);
+            this.ClientSize = new System.Drawing.Size(417, 336);
             this.Controls.Add(this.lblFechaInicial);
             this.Controls.Add(this.dpFechaInicial);
             this.Controls.Add(this.txtSemestre);
@@ -384,9 +393,11 @@ namespace CapaPresentaciones
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "P_DatosSemestre";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos de Asignatura";
+            this.Load += new System.EventHandler(this.P_DatosSemestre_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
