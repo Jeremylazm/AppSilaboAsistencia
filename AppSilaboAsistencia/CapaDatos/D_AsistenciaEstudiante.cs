@@ -67,7 +67,7 @@ namespace CapaDatos
         }
 
         // Método para mostrar las asistencia de los estudiantes de una asignatura en un rango de fechas
-        public DataTable AsistenciaEstudiantesPorEstudiante(string CodSemestre, string CodAsignatura, string LimFechaInf, string LimFechaSup)
+        public DataTable AsistenciaEstudiantesPorEstudiante(string CodSemestre, string CodAsignatura, string CodDocente, string LimFechaInf, string LimFechaSup)
         {
             DataTable Resultado = new DataTable();
             SqlCommand Comando = new SqlCommand("spuAsistenciaEstudiantesPorEstudiante", Conectar)
@@ -77,6 +77,7 @@ namespace CapaDatos
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@CodAsignatura", CodAsignatura); // Código (ej. IF085AIN)
+            Comando.Parameters.AddWithValue("@CodDocente", CodDocente);
             Comando.Parameters.AddWithValue("@LimFechaInf", LimFechaInf); // Formato: dd/mm/yyyy o dd-mm-yyyy
             Comando.Parameters.AddWithValue("@LimFechaSup", LimFechaSup); // Formato: dd/mm/yyyy o dd-mm-yyyy
             SqlDataAdapter Data = new SqlDataAdapter(Comando);

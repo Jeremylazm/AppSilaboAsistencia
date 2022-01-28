@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ayudas
 {
     public class A_Dialogo
     {
-        private static int Tiempo { get; set; }
+        private static A_DialogoCargando DialogoLoader = new A_DialogoCargando();
+        private static bool EnProceso = false;
+        private static string MensajeEspera = "";
+        private static string MensajeError = "";
 
         public static DialogResult DialogoPreguntaAceptarCancelar(string Pregunta)
         {
@@ -78,39 +77,61 @@ namespace Ayudas
             A_DialogoRespuesta1.Mostrar(Mensaje, (Image)Properties.Resources.Dialogo_Informacion);
         }
 
-        private static void TiempoCarga()
+        public static void DialogoCargando(ThreadStart Metodo, string Mensaje, string pMensajeEspera, string pMensajeError)
         {
-            for (int K = 0; K <= 1000; K++)
+            DialogoLoader.Text = Mensaje;
+            DialogoLoader.lblMensaje.Text = Mensaje;
+
+            MensajeEspera = pMensajeEspera;
+            MensajeError = pMensajeError;
+
+            if (EnProceso)
             {
-                Thread.Sleep(Tiempo);
+                DialogoError(MensajeEspera);
+                return;
+            }
+
+            try
+            {
+                Thread Tarea = new Thread(Metodo);
+                Tarea.Start();
+            }
+            catch (Exception)
+            {
+                DialogoError(MensajeError);
             }
         }
 
-        public static void DialogoCargando(Form Formulario, int pTiempo)
+        public static int  MensajeEnEspera()
         {
-            //Tiempo = pTiempo;
-            //using (A_DialogoCargando Dialogo = new A_DialogoCargando(TiempoCarga))
-            //{
-            //    Dialogo.ShowDialog(Formulario);
-            //}
+            int ValorEspera = 0;
+
+            if (EnProceso)
+            {
+                DialogoError(MensajeEspera);
+                ValorEspera = -1;
+            }
+
+            return ValorEspera;
         }
 
-        private void EstablecerCarga(Form Formulario, bool displayLoader)
+        public static void EstablecerCarga(Form Formulario, bool MostrarLoader)
         {
-            if (displayLoader)
+            if (MostrarLoader)
             {
                 Formulario.Invoke((MethodInvoker)delegate
                 {
-                    //EnProceso = true;
-                    //Dialogo.Mostrar();
+                    EnProceso = true;
+                    DialogoLoader.Mostrar();
                 });
             }
             else
             {
                 Formulario.Invoke((MethodInvoker)delegate
                 {
-                    //Dialogo.Ocultar();
-                    //EnProceso = false;
+                    DialogoLoader.Ocultar();
+                    EnProceso = false;
+
                 });
             }
         }

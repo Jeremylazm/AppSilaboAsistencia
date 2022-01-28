@@ -46,6 +46,23 @@ namespace CapaPresentaciones
 
             btnGeneral.Visible = false;
             btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+
+            // Definir minimas y maximas fechas para los filtros
+            dpFechaInicial.MaxDate = new DateTime(2022, 03, 01);
+            dpFechaInicial.MinDate = new DateTime(2021, 09, 01);
+            dpFechaFinal.MaxDate = new DateTime(2022, 03, 01);
+            dpFechaFinal.MinDate = new DateTime(2021, 09, 01);
+
+            // Inicializar las fechas de los reportes  
+            dpFechaInicial.Value = new DateTime(2021, 10, 18);
+            dpFechaFinal.Value = new DateTime(2021, 12, 01);
+
+            AntCriterioSeleccion = cxtCriterioSeleccion.SelectedIndex;
+            AntFechaInicial = dpFechaInicial.Value;
+            AntFechaFinal = dpFechaFinal.Value;
+            AntCodAsignatura = txtCodigo.Text;
+            AntNombreAsignatura = txtNombre.Text;
+            AntEscuelaProfesional = txtEscuelaP.Text;
         }
 
         private void LLenarCampos()
@@ -79,16 +96,6 @@ namespace CapaPresentaciones
             pnReporte.Location = new Point(0, 0);
             pnReporte.Width = pnPadre.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
             pnReporte.Height = pnPadre.ClientSize.Height + SystemInformation.HorizontalScrollBarHeight;
-
-            // Definir minimas y maximas fechas para los filtros
-            dpFechaInicial.MaxDate = new DateTime(2022, 03, 01);
-            dpFechaInicial.MinDate = new DateTime(2021, 09, 01);
-            dpFechaFinal.MaxDate = new DateTime(2022, 03, 01);
-            dpFechaFinal.MinDate = new DateTime(2021, 09, 01);
-
-            // Inicializar las fechas de los reportes  
-            dpFechaInicial.Value = new DateTime(2021, 10, 18);
-            dpFechaFinal.Value = new DateTime(2021, 12, 01);
 
             // Crear un objeto reporte
             Reportes = new C_Reporte()
@@ -259,7 +266,7 @@ namespace CapaPresentaciones
                 pnCajas.Visible = true;
 
                 btnGeneral.Visible = false;
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
 
                 fnReporte1();
             }
@@ -278,7 +285,7 @@ namespace CapaPresentaciones
                 pnCajas.Visible = true;
 
                 btnGeneral.Visible = false;
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 152);
 
                 fnReporte3();
             }
@@ -297,6 +304,11 @@ namespace CapaPresentaciones
                 pnCajas.Visible = false;
 
                 btnGeneral.Visible = true;
+
+                btnGeneral.Location = new Point(btnGeneral.Location.X, 131);
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 175);
+
+
 
                 fnReporte8();
             }
@@ -338,7 +350,7 @@ namespace CapaPresentaciones
             string[] Titulos = { "Semestre", "Cod. Docente", "Docente", "Cod. Asignatura", "Asignatura", "Escuela Profesional" };
             string[] Valores = { CodSemestre, CodDocenteReporte, NombreDocente, txtCodigo.Text, txtNombre.Text, txtEscuelaP.Text };
 
-            DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, txtCodigo.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+            DataTable resultados = N_AsistenciaEstudiante.AsistenciaEstudiantesPorEstudiante(CodSemestre, txtCodigo.Text,CodDocenteReporte, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
             string ans = Reportes.fnReporte3(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
 
@@ -539,14 +551,8 @@ namespace CapaPresentaciones
 
         private void dpFechaInicial_CloseUp(object sender, EventArgs e)
         {
-            if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
-            {
-                CriterioSeleccionAsistenciaEstudiantes();
-            }
-            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
-            {
-                fnReporte5();
-            }
+            if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) CriterioSeleccionAsistenciaEstudiantes();
+            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas")) fnReporte5();
         }
     }
 }

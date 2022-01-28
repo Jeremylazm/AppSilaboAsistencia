@@ -28,24 +28,6 @@ namespace CapaPresentaciones
 
             dgvResultados.CellMouseEnter += new DataGridViewCellEventHandler(dgvResultados_CellMouseEnter);
         }
-        
-        public C_Reporte(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistencia, string CodAsignatura, string AccesoReporte)
-        {
-            InitializeComponent();
-            Bunifu.Utils.DatagridView.BindDatagridViewScrollBar(dgvResultados, sbResultados);
-            AccesoReportes = AccesoReporte;
-
-            dgvResultados.CellMouseEnter += new DataGridViewCellEventHandler(dgvResultados_CellMouseEnter);
-
-            if (AccesoReporte == "Jefe de Departamento")
-            {
-                fnReporte10(Titulo, Titulos, Valores, Datos, CriterioAsistencia, CodAsignatura);
-            }
-            else
-            {
-                fnReporte1(Titulo, Titulos, Valores, Datos, CriterioAsistencia, CodAsignatura);
-            }
-        }
 
         public C_Reporte(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string Criterio)
         {
@@ -75,7 +57,7 @@ namespace CapaPresentaciones
                 fnReporte15(Titulo, Titulos, Valores, Datos);
             }
 
-            tcGraficos.SetPage(IndiceGrafico1);
+            tcGraficos.SetPage(tcGraficos.PageIndex);
         }
 
         // Metodo para mostrar la tabla de resultados del reporte de manera responsiva
@@ -91,7 +73,6 @@ namespace CapaPresentaciones
             {
                 sbResultados.Visible = false;
                 pnContenedorResultados.Height = dgvResultados.Rows.Count * 26 + 81;
-                
             }
             else
             {
@@ -273,7 +254,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[6].Visible = false;
                 dgvResultados.Columns[0].DisplayIndex = 6;
 
-                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
@@ -281,8 +262,8 @@ namespace CapaPresentaciones
                 }
 
                 dgvResultados.Columns["SesiónDictada"].HeaderText = "Sesión Dictada";
-                dgvResultados.Columns["TotalAsistieron"].HeaderText = "Total Asistieron";
-                dgvResultados.Columns["TotalFaltaron"].HeaderText = "Total Faltaron";
+                dgvResultados.Columns["TotalAsistieron"].HeaderText = "Asistieron";
+                dgvResultados.Columns["TotalFaltaron"].HeaderText = "Faltaron";
 
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
@@ -339,6 +320,8 @@ namespace CapaPresentaciones
                 #endregion ===================== CUADRO DE RESUMEN =====================
 
                 #region ===================== GRÁFICOS =====================
+                tcGraficos.SetPage(0);
+
                 if (tcGraficos.PageIndex == 0)
                     btnGrafico1.Select();
                 else
@@ -403,14 +386,8 @@ namespace CapaPresentaciones
                     Valor1 = double.Parse(Fila["TotalAsistieron"].ToString());
                     Valor2 = double.Parse(Fila["TotalFaltaron"].ToString());
 
-                    if ((Valor1 == 0) && (Valor2 == 0))
-                    {
-                        Datos1B.Add(0.00);
-                    }
-                    else
-                    {
-                        Datos1B.Add(Math.Round((Valor1 * 100) / (Valor1 + Valor2), 2));
-                    }
+                    if ((Valor1 == 0) && (Valor2 == 0)) Datos1B.Add(0.00);
+                    else Datos1B.Add(Math.Round((Valor1 * 100) / (Valor1 + Valor2), 2));
                 }
 
                 gxGrafico2.Labels = EtiquetasB.ToArray();
@@ -582,6 +559,8 @@ namespace CapaPresentaciones
 
             gxGrafico4.Update();
 
+            tcGraficos.SetPage(IndiceGrafico1);
+
             lblTitulo.Select();
             #endregion ===================== GRÁFICOS =====================
         }
@@ -623,7 +602,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[1].Visible = false;
                 dgvResultados.Columns[0].DisplayIndex = 7;
 
-                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvResultados.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
@@ -632,14 +611,18 @@ namespace CapaPresentaciones
 
                 dgvResultados.Columns["CodEstudiante"].HeaderText = "Código";
                 dgvResultados.Columns["CodEstudiante"].Width = 120;
+                dgvResultados.Columns["CodEstudiante"].MinimumWidth = 120;
                 dgvResultados.Columns["APaterno"].HeaderText = "A. Paterno";
                 dgvResultados.Columns["AMaterno"].HeaderText = "A. Materno";
                 dgvResultados.Columns["Nombre"].HeaderText = "Nombre(s)";
-                dgvResultados.Columns["TotalAsistencias"].HeaderText = "Total Asistencias";
+                dgvResultados.Columns["TotalAsistencias"].HeaderText = "Asistencias";
                 dgvResultados.Columns["TotalAsistencias"].Width = 150;
-                dgvResultados.Columns["TotalFaltas"].HeaderText = "Total Faltas";
+                dgvResultados.Columns["TotalAsistencias"].MinimumWidth = 150;
+                dgvResultados.Columns["TotalFaltas"].HeaderText = "Faltas";
                 dgvResultados.Columns["TotalFaltas"].Width = 120;
+                dgvResultados.Columns["TotalFaltas"].MinimumWidth = 120;
                 dgvResultados.Columns[0].Width = 115;
+                dgvResultados.Columns[0].MinimumWidth = 115;
 
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
@@ -842,6 +825,8 @@ namespace CapaPresentaciones
             GraficoCircular.TargetCanvas = gxGrafico4;
 
             gxGrafico4.Update();
+
+            tcGraficos.SetPage(IndiceGrafico1);
 
             lblTitulo.Select();
             #endregion ===================== GRÁFICOS =====================
@@ -1195,7 +1180,7 @@ namespace CapaPresentaciones
 
                 dgvResultados.Columns.Clear();
                 dgvResultados.Columns.Add(btnVerReporte);
-                dgvResultados.Columns[0].HeaderText = "Reporte Por Fechas";
+                dgvResultados.Columns[0].HeaderText = "Ver Reporte";
 
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[3].Visible = false;
@@ -2392,7 +2377,7 @@ namespace CapaPresentaciones
 
                     string[] ValoresNecesarios = { (pnSubcampos.Controls[1] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["CodAsignatura"].Value.ToString(), dgvResultados.CurrentRow.Cells["NombreAsignatura"].Value.ToString(), dgvResultados.CurrentRow.Cells["CodDocente"].Value.ToString(), dgvResultados.CurrentRow.Cells["Docente"].Value.ToString(), FechaInicial, FechaFinal };
 
-                    DateTime[] FechasNecesarias = { Convert.ToDateTime(Fechas[1], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4]) };
+                    DateTime[] FechasNecesarias = { Convert.ToDateTime(Fechas[1], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4], CultureInfo.GetCultureInfo("es-ES")) };
 
                     P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, FechasNecesarias, "Por Asignaturas");
                     DR.ShowDialog();
