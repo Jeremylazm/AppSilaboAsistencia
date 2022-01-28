@@ -421,6 +421,8 @@ namespace CapaPresentaciones
                 //AbrirFormularios<P_TablaSemestre>();
                 //AbrirFormularios<P_TablaPlantillas>();
             }
+
+            ActualizarColor();
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -438,7 +440,8 @@ namespace CapaPresentaciones
             }
             else
             {
-                Principal.HoraFecha.Start();
+                if (E_InicioSesion.Acceso != "Administrador")
+                    Principal.HoraFecha.Start();
             }
         }
 
