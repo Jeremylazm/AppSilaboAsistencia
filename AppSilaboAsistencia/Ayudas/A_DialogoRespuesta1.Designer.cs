@@ -277,7 +277,7 @@ namespace Ayudas
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "A_DialogoRespuesta1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dialogo de Error";
+            this.Text = "Dialogo";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.P_DialogoRespuesta1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();

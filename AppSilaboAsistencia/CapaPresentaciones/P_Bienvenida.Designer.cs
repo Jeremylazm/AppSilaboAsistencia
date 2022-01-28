@@ -79,7 +79,7 @@ namespace CapaPresentaciones
             this.lblPie.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblPie.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblPie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.lblPie.Location = new System.Drawing.Point(0, 680);
+            this.lblPie.Location = new System.Drawing.Point(0, 722);
             this.lblPie.Name = "lblPie";
             this.lblPie.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblPie.Size = new System.Drawing.Size(1330, 46);
@@ -110,7 +110,7 @@ namespace CapaPresentaciones
             this.pbLogo.ImageSize = new System.Drawing.Size(438, 588);
             this.pbLogo.ImageZoomSize = new System.Drawing.Size(438, 588);
             this.pbLogo.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbLogo.InitialImage")));
-            this.pbLogo.Location = new System.Drawing.Point(110, 68);
+            this.pbLogo.Location = new System.Drawing.Point(110, 95);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Rotation = 0;
             this.pbLogo.ShowActiveImage = false;
@@ -132,7 +132,7 @@ namespace CapaPresentaciones
             this.lblBienvenida.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblBienvenida.Font = new System.Drawing.Font("Montserrat Alternates", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBienvenida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblBienvenida.Location = new System.Drawing.Point(769, 82);
+            this.lblBienvenida.Location = new System.Drawing.Point(769, 99);
             this.lblBienvenida.Name = "lblBienvenida";
             this.lblBienvenida.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblBienvenida.Size = new System.Drawing.Size(390, 89);
@@ -151,7 +151,7 @@ namespace CapaPresentaciones
             this.lblDatos.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblDatos.Font = new System.Drawing.Font("Montserrat Alternates", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDatos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblDatos.Location = new System.Drawing.Point(754, 159);
+            this.lblDatos.Location = new System.Drawing.Point(754, 186);
             this.lblDatos.Name = "lblDatos";
             this.lblDatos.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblDatos.Size = new System.Drawing.Size(405, 126);
@@ -173,7 +173,7 @@ namespace CapaPresentaciones
             this.pbProgreso.IsPercentage = false;
             this.pbProgreso.LineProgressThickness = 20;
             this.pbProgreso.LineThickness = 5;
-            this.pbProgreso.Location = new System.Drawing.Point(803, 314);
+            this.pbProgreso.Location = new System.Drawing.Point(803, 341);
             this.pbProgreso.Name = "pbProgreso";
             this.pbProgreso.ProgressAnimationSpeed = 200;
             this.pbProgreso.ProgressBackColor = System.Drawing.Color.White;
@@ -211,7 +211,7 @@ namespace CapaPresentaciones
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1330, 726);
+            this.ClientSize = new System.Drawing.Size(1330, 768);
             this.Controls.Add(this.pbProgreso);
             this.Controls.Add(this.lblDatos);
             this.Controls.Add(this.lblBienvenida);

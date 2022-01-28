@@ -10,6 +10,7 @@ namespace Ayudas
         private static A_DialogoCargando DialogoLoader = new A_DialogoCargando();
         private static bool EnProceso = false;
         private static string MensajeEspera = "";
+        private static string MensajeError = "";
 
         public static DialogResult DialogoPreguntaAceptarCancelar(string Pregunta)
         {
@@ -76,9 +77,13 @@ namespace Ayudas
             A_DialogoRespuesta1.Mostrar(Mensaje, (Image)Properties.Resources.Dialogo_Informacion);
         }
 
-        public static void DialogoCargando(ThreadStart Metodo, string Mensaje)
+        public static void DialogoCargando(ThreadStart Metodo, string Mensaje, string pMensajeEspera, string pMensajeError)
         {
-            MensajeEspera = Mensaje;
+            DialogoLoader.Text = Mensaje;
+            DialogoLoader.lblMensaje.Text = Mensaje;
+
+            MensajeEspera = pMensajeEspera;
+            MensajeError = pMensajeError;
 
             if (EnProceso)
             {
@@ -93,8 +98,21 @@ namespace Ayudas
             }
             catch (Exception)
             {
-                DialogoError("Error al ejecutar la tarea");
+                DialogoError(MensajeError);
             }
+        }
+
+        public static int  MensajeEnEspera()
+        {
+            int ValorEspera = 0;
+
+            if (EnProceso)
+            {
+                DialogoError(MensajeEspera);
+                ValorEspera = -1;
+            }
+
+            return ValorEspera;
         }
 
         public static void EstablecerCarga(Form Formulario, bool MostrarLoader)
