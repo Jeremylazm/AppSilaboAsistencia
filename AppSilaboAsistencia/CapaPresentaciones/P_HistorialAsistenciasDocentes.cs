@@ -45,14 +45,36 @@ namespace CapaPresentaciones
         {
             dgvDatos.Columns[0].DisplayIndex = 4;
             dgvDatos.Columns[1].HeaderText = "Fecha";
-            dgvDatos.Columns[2].HeaderText = "Total Asistieron";
-            dgvDatos.Columns[3].HeaderText = "Total Faltaron";
-            dgvDatos.Columns[4].HeaderText = "Observacion";
+            dgvDatos.Columns[2].HeaderText = "Asistieron";
+            dgvDatos.Columns[3].HeaderText = "Faltaron";
+            dgvDatos.Columns[4].HeaderText = "Observación";
         }
 
         public void MostrarRegistros()
         {
             dgvDatos.DataSource = N_AsistenciaDiariaDocente.AsistenciaDocentesPorFechas(CodSemestre, DateTime.Parse(LimtFechaInf).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+            //atributos del las columnas del datagridview
+            dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
+                Columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            }
+            dgvDatos.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            dgvDatos.Columns[0].MinimumWidth = 150;
+            dgvDatos.Columns[0].Width = 150;
+            dgvDatos.Columns[1].MinimumWidth = 200;
+            dgvDatos.Columns[1].Width = 200;
+            dgvDatos.Columns[2].MinimumWidth = 200;
+            dgvDatos.Columns[2].Width = 200;
+            dgvDatos.Columns[3].MinimumWidth = 200;
+            dgvDatos.Columns[3].Width = 200;
+            dgvDatos.Columns[4].MinimumWidth = 350;
+            dgvDatos.Columns[4].Width = 350;
             AccionesTabla();
         }
         public void MostrarHorarioRegistroAsistencia()
@@ -105,7 +127,7 @@ namespace CapaPresentaciones
                         P_TablaAsistenciaDiariaDocente EddRegistroAsistenciaDocente = new P_TablaAsistenciaDiariaDocente(RegistroAsistenciaDocentesDA);
 
                         EddRegistroAsistenciaDocente.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                        EddRegistroAsistenciaDocente.txtFecha.Text = dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        EddRegistroAsistenciaDocente.txtFecha.Text = DateTime.Parse(dgvDatos.Rows[e.RowIndex].Cells[1].Value.ToString(), CultureInfo.GetCultureInfo("es-ES")).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES"));
                         //EddRegistroAsistenciaDocente.txtSemestre.Text = CodSemestre;
                         //EddRegistroAsistenciaDocente.hora = DateTime.Now.ToString("HH:mm:ss");
                         //EddRegistroAsistenciaDocente.txtJD.Text = E_InicioSesion.Datos;

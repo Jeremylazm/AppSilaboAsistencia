@@ -658,6 +658,17 @@ BEGIN
 		ORDER BY APaterno
 END;
 GO
+--Segundo Procedimiento para mostrar todos los docentes de una escuela profesional,para P_dialogoAgregarAsistenciaDocente.
+CREATE PROCEDURE spuDosMostrarTodosDocentesDepartamento @CodDepartamentoA VARCHAR(3)
+AS
+BEGIN
+	-- Mostrar la tabla TDocente
+	SELECT CodDocente, NombreCompleto = (APaterno + ' ' + AMaterno + ', ' + Nombre)
+		FROM TDocente
+	    WHERE CodDepartamentoA = @CodDepartamentoA AND CodDocente != '00000'
+		ORDER BY APaterno
+END;
+GO
 
 -- Procedimiento para mostrar los docentes de un departamento académico.
 CREATE PROCEDURE spuMostrarDocentesDepartamento @CodDepartamentoA VARCHAR(3)

@@ -32,6 +32,22 @@ namespace CapaDatos
           
             return Resultado;
         }
+        // Segundo Método para mostrar los docentes de un departamento académico
+        public DataTable DosMostrarTodosDocentesDepartamento(string CodDepartamentoA)
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuDosMostrarTodosDocentesDepartamento", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            Comando.Parameters.AddWithValue("@CodDepartamentoA", CodDepartamentoA);
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+
+
+            return Resultado;
+        }
 
         // Método para mostrar los docentes de un departamento académico
         public DataTable MostrarDocentesDepartamento(string CodDepartamentoA)

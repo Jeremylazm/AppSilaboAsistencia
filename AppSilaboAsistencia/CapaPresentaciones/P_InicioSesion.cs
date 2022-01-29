@@ -15,7 +15,7 @@ namespace CapaPresentaciones
         public P_InicioSesion()
         {
             Validador = new A_Validador();
-            Bienvenida = new P_Bienvenida();
+            //Bienvenida = new P_Bienvenida();
             InitializeComponent();
             Control[] Controles = { this, lblTitulo, pnLogo, pbLogo, lblUniversidad };
             Docker.SubscribeControlsToDragEvents(Controles);
@@ -43,27 +43,28 @@ namespace CapaPresentaciones
                 });
             }
         }
-
+        P_Menu Menu;
         private void MostrarMenu(string pAcceso, int Tiempo)
         {
             this.Invoke((MethodInvoker)delegate
             {
-                P_Menu Menu = new P_Menu
+                Menu = new P_Menu
                 {
                     Acceso = pAcceso
                 };
 
                 Menu.Show();
             });
-            
+           
+
             //Thread.Sleep(Tiempo * 1000);
         }
 
         private void CargarBienvenida()
         {
-            EstablecerCarga(true);
+            
 
-            //Application.ExitThread();
+            EstablecerCarga(true);
 
             // Si el usuario es Administrador
             if (E_InicioSesion.Acceso == E_Acceso.Administrador)
@@ -108,6 +109,8 @@ namespace CapaPresentaciones
                     if (ValidarDatos == true)
                     {
                         this.Hide();
+
+                        Bienvenida = new P_Bienvenida();
 
                         try
                         {

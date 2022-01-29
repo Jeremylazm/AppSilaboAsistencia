@@ -44,6 +44,7 @@ namespace CapaPresentaciones
         private void MostrarAsignaturas()
         {
             dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodDepartamentoA, CodDocente);
+            
             AccionesTabla();
         }   
 
