@@ -28,7 +28,7 @@ namespace CapaPresentaciones
 
             dgvResultados.CellMouseEnter += new DataGridViewCellEventHandler(dgvResultados_CellMouseEnter);
         }
-
+        
         public C_Reporte(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string Criterio)
         {
             InitializeComponent();
@@ -2308,7 +2308,7 @@ namespace CapaPresentaciones
 
         private void dgvResultados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if ((e.RowIndex >= 0) && (e.ColumnIndex == 0) && AccesoReportes == "Jefe de Departamento")// denis cpp
+            if ((e.RowIndex >= 0) && (e.ColumnIndex == 0) && CriterioAsistenciasDocentes == "Por Asignaturas")// denis cpp
             {
                 if (CriterioAsistenciasDocentes == "Por Fechas")
                 {
