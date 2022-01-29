@@ -179,7 +179,7 @@ namespace CapaPresentaciones
                 dpFechaFinal.Visible = false;
 
                 btnGeneral.Visible = true;
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 172);
 
                 fnReporte5();
             }
