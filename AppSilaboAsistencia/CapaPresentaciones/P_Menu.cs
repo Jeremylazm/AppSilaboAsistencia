@@ -418,8 +418,8 @@ namespace CapaPresentaciones
             }
             else
             {
-                //AbrirFormularios<P_TablaSemestre>();
-                //AbrirFormularios<P_TablaPlantillas>();
+                AbrirFormularios<P_TablaPlantillas>();
+                AbrirFormularios<P_TablaSemestre>();
             }
 
             ActualizarColor();
