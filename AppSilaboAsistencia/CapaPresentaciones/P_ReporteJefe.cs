@@ -110,12 +110,12 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            P_SeleccionadoDocente docente = new P_SeleccionadoDocente(txtCodDocente.Text, "Jefe de Departamento", cxtCriterioSeleccion.SelectedItem.ToString());
-            AddOwnedForm(docente);
-            docente.ShowDialog();
-            docente.Dispose();
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Docentes"))
             {
+                P_SeleccionadoDocente docente = new P_SeleccionadoDocente(txtCodDocente.Text, "Jefe de Departamento", cxtCriterioSeleccion.SelectedItem.ToString());
+                AddOwnedForm(docente);
+                docente.ShowDialog();
+                docente.Dispose();
                 if (cxtCriterioSeleccion.SelectedItem.Equals("Por Fechas"))
                 {
                     fnReporte13();
@@ -127,8 +127,12 @@ namespace CapaPresentaciones
                 }
 
             }
-            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignatura"))
+            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
+                P_SeleccionadoAsignatura docente = new P_SeleccionadoAsignatura(txtCodDocente.Text, "Jefe de Departamento", cxtCriterioSeleccion.SelectedItem.ToString());
+                AddOwnedForm(docente);
+                docente.ShowDialog();
+                docente.Dispose();
                 fnReporte5();
             }
         }
