@@ -163,9 +163,9 @@ namespace CapaPresentaciones.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap buscar_archivo {
+        internal static System.Drawing.Bitmap Buscar_Archivo {
             get {
-                object obj = ResourceManager.GetObject("buscar-archivo", resourceCulture);
+                object obj = ResourceManager.GetObject("Buscar_Archivo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

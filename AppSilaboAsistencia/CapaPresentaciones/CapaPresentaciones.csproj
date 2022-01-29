@@ -845,9 +845,6 @@
     <None Include="Resources\Asistencias 2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\buscar-archivo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Exclamacion1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -939,6 +936,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Subir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buscar_Archivo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.96.0.4664.4500\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.96.0.4664.4500\build\Selenium.WebDriver.ChromeDriver.targets')" />
