@@ -58,6 +58,47 @@ namespace CapaPresentaciones
         public void MostrarRegistros()
         {
             dgvDatos.DataSource = N_AsistenciaDocentePorAsignatura.MostrarSesionesAsignatura(CodSemestre, CodDocente, CodAsignatura, LimtFechaInf, DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+            dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
+                
+            }
+            dgvDatos.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            //dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            dgvDatos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            dgvDatos.Columns[0].MinimumWidth = 60;
+            dgvDatos.Columns[0].Width = 60;
+            dgvDatos.Columns[1].MinimumWidth = 100;
+            dgvDatos.Columns[1].Width = 100;
+            dgvDatos.Columns[2].MinimumWidth = 90;
+            dgvDatos.Columns[2].Width = 90;
+            dgvDatos.Columns[3].MinimumWidth = 110;
+            dgvDatos.Columns[3].Width = 110;
+            dgvDatos.Columns[4].MinimumWidth = 90;
+            dgvDatos.Columns[4].Width = 90;
+            dgvDatos.Columns[5].MinimumWidth = 350;
+            dgvDatos.Columns[5].Width = 350;
+            dgvDatos.Columns[6].MinimumWidth = 85;
+            dgvDatos.Columns[6].Width = 85;
+            dgvDatos.Columns[7].MinimumWidth = 85;
+            dgvDatos.Columns[7].Width = 85;
+            dgvDatos.Columns[8].MinimumWidth = 105;
+            dgvDatos.Columns[8].Width = 105;
+            //dgvDatos.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            
             AccionesTabla();
         }
 
@@ -69,6 +110,45 @@ namespace CapaPresentaciones
         public void BuscarRegistros()
         {
             dgvDatos.DataSource = N_AsistenciaDocentePorAsignatura.BuscarSesionAsignatura(CodSemestre, CodDocente, CodAsignatura, LimtFechaInf, DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), txtBuscar.Text);
+            dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            dgvDatos.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            //dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            dgvDatos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            dgvDatos.Columns[0].MinimumWidth = 60;
+            dgvDatos.Columns[0].Width = 60;
+            dgvDatos.Columns[1].MinimumWidth = 100;
+            dgvDatos.Columns[1].Width = 100;
+            dgvDatos.Columns[2].MinimumWidth = 90;
+            dgvDatos.Columns[2].Width = 90;
+            dgvDatos.Columns[3].MinimumWidth = 110;
+            dgvDatos.Columns[3].Width = 110;
+            dgvDatos.Columns[4].MinimumWidth = 90;
+            dgvDatos.Columns[4].Width = 90;
+            dgvDatos.Columns[5].MinimumWidth = 350;
+            dgvDatos.Columns[5].Width = 350;
+            dgvDatos.Columns[6].MinimumWidth = 85;
+            dgvDatos.Columns[6].Width = 85;
+            dgvDatos.Columns[7].MinimumWidth = 85;
+            dgvDatos.Columns[7].Width = 85;
+            dgvDatos.Columns[8].MinimumWidth = 105;
+            dgvDatos.Columns[8].Width = 105;
+            AccionesTabla();
         }
         public bool validarHoraDeRegistro(string HoraSolicitadaRegistro,string Dia)
 		{
@@ -161,59 +241,15 @@ namespace CapaPresentaciones
         
 		private void btnAgregar_Click(object sender, EventArgs e)
 		{
-			if (TemasPendientes().Count!= 0)
+            if(PlanSesion.Rows.Count > 0)
 			{
-                string DiaActual = nombre_Dia_Actual();
-                string HoraCompletaActual = DateTime.Now.ToString("HH:mm:ss");
-                DataTable EstudiantesAsigantura = N_Matricula.BuscarEstudiantesAsignatura(CodSemestre, CodAsignatura.Substring(6), CodAsignatura);
-                DataTable busacarAsistenciaDiaraActual = N_AsistenciaDiariaDocente.AsistenciaDocentesPorFechas(CodSemestre, DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
-                if (busacarAsistenciaDiaraActual.Rows.Count == 0)
+                if (TemasPendientes().Count != 0)
                 {
-                    if (validarHoraDeRegistro(HoraCompletaActual, DiaActual))
-                    {
-                        //registrar como sesion normal
-                        if (buscarUnRegistro(HoraIniAsignatura, HoraLimiteR) != true)
-                        {
-
-                            Form Fondo = new Form();
-                            P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
-                            NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                            NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
-                            NuevoRegistroAsistencia.txtTipoSesion.Text = "NORMAL";
-                            NuevoRegistroAsistencia.hora = HoraCompletaActual;
-                            NuevoRegistroAsistencia.Owner = Fondo;
-                            NuevoRegistroAsistencia.ShowDialog();
-                            NuevoRegistroAsistencia.Dispose();
-                        }
-                        else
-                        {
-                            A_Dialogo.DialogoInformacion("El registro de Hoy, ¡Ya existe!");
-                        }
-                    }
-                    else
-                    {
-                        // registrar la asistencia como recuperacion
-                        if (A_Dialogo.DialogoPreguntaAceptarCancelar(" Se encuentra fuera del Horario de la Asignatura" + Environment.NewLine + "¿Desea Recuperar una Sesion?") == DialogResult.Yes)
-                        {
-                            Form Fondo = new Form();
-                            P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
-                            NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                            NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
-                            NuevoRegistroAsistencia.txtTipoSesion.Text = "RECUPERACIÓN";
-                            NuevoRegistroAsistencia.hora = HoraCompletaActual;
-                            NuevoRegistroAsistencia.Owner = Fondo;
-                            NuevoRegistroAsistencia.ShowDialog();
-                            NuevoRegistroAsistencia.Dispose();
-                        }
-                    }
-                }
-                else
-                {
-                    if (busacarAsistenciaDiaraActual.Rows[0][3].Equals("FERIADO") || busacarAsistenciaDiaraActual.Rows[0][3].Equals("SUSPENSION"))
-                    {
-                        A_Dialogo.DialogoInformacion("Hoy es un día de " + busacarAsistenciaDiaraActual.Rows[0][3].ToString() + Environment.NewLine + "Tómese un descanso");
-                    }
-                    else
+                    string DiaActual = nombre_Dia_Actual();
+                    string HoraCompletaActual = DateTime.Now.ToString("HH:mm:ss");
+                    DataTable EstudiantesAsigantura = N_Matricula.BuscarEstudiantesAsignatura(CodSemestre, CodAsignatura.Substring(6), CodAsignatura);
+                    DataTable busacarAsistenciaDiaraActual = N_AsistenciaDiariaDocente.AsistenciaDocentesPorFechas(CodSemestre, DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+                    if (busacarAsistenciaDiaraActual.Rows.Count == 0)
                     {
                         if (validarHoraDeRegistro(HoraCompletaActual, DiaActual))
                         {
@@ -253,13 +289,65 @@ namespace CapaPresentaciones
                             }
                         }
                     }
-                }
+                    else
+                    {
+                        if (busacarAsistenciaDiaraActual.Rows[0][3].Equals("FERIADO") || busacarAsistenciaDiaraActual.Rows[0][3].Equals("SUSPENSION"))
+                        {
+                            A_Dialogo.DialogoInformacion("Hoy es un día de " + busacarAsistenciaDiaraActual.Rows[0][3].ToString() + Environment.NewLine + "Tómese un descanso");
+                        }
+                        else
+                        {
+                            if (validarHoraDeRegistro(HoraCompletaActual, DiaActual))
+                            {
+                                //registrar como sesion normal
+                                if (buscarUnRegistro(HoraIniAsignatura, HoraLimiteR) != true)
+                                {
 
+                                    Form Fondo = new Form();
+                                    P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
+                                    NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                                    NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
+                                    NuevoRegistroAsistencia.txtTipoSesion.Text = "NORMAL";
+                                    NuevoRegistroAsistencia.hora = HoraCompletaActual;
+                                    NuevoRegistroAsistencia.Owner = Fondo;
+                                    NuevoRegistroAsistencia.ShowDialog();
+                                    NuevoRegistroAsistencia.Dispose();
+                                }
+                                else
+                                {
+                                    A_Dialogo.DialogoInformacion("El registro de Hoy, ¡Ya existe!");
+                                }
+                            }
+                            else
+                            {
+                                // registrar la asistencia como recuperacion
+                                if (A_Dialogo.DialogoPreguntaAceptarCancelar(" Se encuentra fuera del Horario de la Asignatura" + Environment.NewLine + "¿Desea Recuperar una Sesion?") == DialogResult.Yes)
+                                {
+                                    Form Fondo = new Form();
+                                    P_TablaAsistenciaEstudiantes NuevoRegistroAsistencia = new P_TablaAsistenciaEstudiantes(CodAsignatura, CodDocente, EstudiantesAsigantura);
+                                    NuevoRegistroAsistencia.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                                    NuevoRegistroAsistencia.txtFecha.Text = LimtFechaSup;
+                                    NuevoRegistroAsistencia.txtTipoSesion.Text = "RECUPERACIÓN";
+                                    NuevoRegistroAsistencia.hora = HoraCompletaActual;
+                                    NuevoRegistroAsistencia.Owner = Fondo;
+                                    NuevoRegistroAsistencia.ShowDialog();
+                                    NuevoRegistroAsistencia.Dispose();
+                                }
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+                    A_Dialogo.DialogoError("Ya no hay temas pendiantes");
+                }
             }
-			else
+            else
 			{
-                A_Dialogo.DialogoError("Ya no hay temas pendiantes");
-			}
+                A_Dialogo.DialogoInformacion("Aun no subio un plan de sesiones");
+            }
+			
             
             
             //DataTable EstudiantesAsigantura = N_Matricula.BuscarEstudiantesAsignatura(CodSemestre, CodAsignatura.Substring(6), CodAsignatura);
