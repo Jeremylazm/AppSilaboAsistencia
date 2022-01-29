@@ -17,6 +17,10 @@ namespace CapaNegocios
         {
             return new D_Docente().MostrarTodosDocentesDepartamento(CodDepartamentoA);
         }
+        public static DataTable DosMostrarTodosDocentesDepartamento(string CodDepartamentoA)
+        {
+            return new D_Docente().DosMostrarTodosDocentesDepartamento(CodDepartamentoA);
+        }
 
         public static DataTable BuscarDocente(string CodDepartamentoA, string CodDocente)
         {

@@ -69,7 +69,7 @@ namespace CapaPresentaciones
         {
             dgvDatos.Columns[0].DisplayIndex = 8;
             dgvDatos.Columns[1].DisplayIndex = 8;
-            dgvDatos.Columns[2].HeaderText = "Id.";
+            dgvDatos.Columns[2].HeaderText = "Nro.";
             dgvDatos.Columns[2].ReadOnly = true;
             dgvDatos.Columns[3].HeaderText = "Código";
             dgvDatos.Columns[3].ReadOnly = true;
@@ -77,43 +77,15 @@ namespace CapaPresentaciones
             dgvDatos.Columns[4].ReadOnly = true;
             dgvDatos.Columns[5].HeaderText = "Apellido Materno";
             dgvDatos.Columns[5].ReadOnly = true;
-            dgvDatos.Columns[6].HeaderText = "Nombre";
+            dgvDatos.Columns[6].HeaderText = "Nombres";
             dgvDatos.Columns[6].ReadOnly = true;
             dgvDatos.Columns[7].Visible = false;
             dgvDatos.Columns[8].Visible = false;
         }
-
-        public void InicializarValores()
-        {
-            foreach (DataGridViewRow fila in dgvDatos.Rows)
-            {
-                DataGridViewComboBoxCell textBoxcell = (DataGridViewComboBoxCell)(fila.Cells["cbxObservaciones"]);
-                textBoxcell.Value = "";
-                fila.Cells[0].Value = ListaImagenes.Images[0];
-                fila.Cells[0].Tag = false;
-            }
-        }
-
-        public void InicializarValoresEditar()
-        {
-            foreach (DataGridViewRow fila in dgvDatos.Rows)
-            {
-                DataGridViewComboBoxCell textBoxcell = (DataGridViewComboBoxCell)(fila.Cells["cbxObservaciones"]);
-                textBoxcell.Value = fila.Cells[8].Value;
-                fila.Cells[0].Value = (fila.Cells[7].Value.Equals("SI")) ? ListaImagenes.Images[1] : ListaImagenes.Images[0];
-                if (fila.Cells[7].Value.Equals("SI"))
-                {
-                    fila.Cells[0].Tag = true;
-                }
-                else
-                {
-                    fila.Cells[0].Tag = false;
-                }
-            }
-        }
-
+        
         private void MostrarEstudiantesNuevoRegistro()
         {
+            //agregar fila al datagridview
             int i = 0;
             foreach (DataRow fila in dgvTabla.Rows)
             {
@@ -129,12 +101,37 @@ namespace CapaPresentaciones
                 i += 1;
 
             }
-            //dgvDatos.DataSource = dgvTabla;
+            //atributos de las columnas
+            dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Columna.AutoSizeMode= DataGridViewAutoSizeColumnMode.None;
+
+            }
+            
+            dgvDatos.Columns[0].MinimumWidth = 100;
+            dgvDatos.Columns[0].Width = 100;
+            dgvDatos.Columns[1].MinimumWidth = 200;
+            dgvDatos.Columns[1].Width = 200;
+            dgvDatos.Columns[2].MinimumWidth = 40;
+            dgvDatos.Columns[2].Width = 40;
+            dgvDatos.Columns[3].MinimumWidth = 80;
+            dgvDatos.Columns[3].Width = 80;
+            dgvDatos.Columns[4].MinimumWidth = 250;
+            dgvDatos.Columns[4].Width = 250;
+            dgvDatos.Columns[5].MinimumWidth = 250;
+            dgvDatos.Columns[5].Width = 250;
+            dgvDatos.Columns[6].MinimumWidth = 200;
+            dgvDatos.Columns[6].Width = 200;
+           
             AccionesTabla();
         }
 
         public void MostrarEstudiantesRegistrados()
         {
+            //agregar fila al datagridview
             int i = 0;
             foreach (DataRow fila in dgvTabla.Rows)
             {
@@ -159,6 +156,29 @@ namespace CapaPresentaciones
 
             }
             //dgvDatos.DataSource = dgvTabla;
+            dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            }
+
+            dgvDatos.Columns[0].MinimumWidth = 100;
+            dgvDatos.Columns[0].Width = 100;
+            dgvDatos.Columns[1].MinimumWidth = 200;
+            dgvDatos.Columns[1].Width = 200;
+            dgvDatos.Columns[2].MinimumWidth = 40;
+            dgvDatos.Columns[2].Width = 40;
+            dgvDatos.Columns[3].MinimumWidth = 80;
+            dgvDatos.Columns[3].Width = 80;
+            dgvDatos.Columns[4].MinimumWidth = 250;
+            dgvDatos.Columns[4].Width = 250;
+            dgvDatos.Columns[5].MinimumWidth = 250;
+            dgvDatos.Columns[5].Width = 250;
+            dgvDatos.Columns[6].MinimumWidth = 200;
+            dgvDatos.Columns[6].Width = 200;
             AccionesTabla();
         }
 
@@ -181,7 +201,7 @@ namespace CapaPresentaciones
 
                         if (dgvTabla.Rows.Count != 0)
                         {
-                           
+                            //agregar fila al datagridview
                             int j = 0;
                             foreach (DataRow fila in dgvTabla.Rows)
                             {
@@ -193,6 +213,30 @@ namespace CapaPresentaciones
                                     j += 1;
                                 }
                             }
+                            //atributos de las columnas
+                            dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                            foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+                            {
+                                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                Columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+                            }
+
+                            dgvDatos.Columns[0].MinimumWidth = 100;
+                            dgvDatos.Columns[0].Width = 100;
+                            dgvDatos.Columns[1].MinimumWidth = 200;
+                            dgvDatos.Columns[1].Width = 200;
+                            dgvDatos.Columns[2].MinimumWidth = 40;
+                            dgvDatos.Columns[2].Width = 40;
+                            dgvDatos.Columns[3].MinimumWidth = 80;
+                            dgvDatos.Columns[3].Width = 80;
+                            dgvDatos.Columns[4].MinimumWidth = 250;
+                            dgvDatos.Columns[4].Width = 250;
+                            dgvDatos.Columns[5].MinimumWidth = 250;
+                            dgvDatos.Columns[5].Width = 250;
+                            dgvDatos.Columns[6].MinimumWidth = 200;
+                            dgvDatos.Columns[6].Width = 200;
                             AccionesTabla();
                         }
                     }
@@ -210,7 +254,7 @@ namespace CapaPresentaciones
 
                         if (dgvTabla.Rows.Count != 0)
                         {
-                            //A_Dialogo.DialogoInformacion("si hay EN LA TABLA PRICIPAL");
+                            //agregar fila al datagridview
                             int j = 0;
                             foreach (DataRow fila in dgvTabla.Rows)
                             {
@@ -234,6 +278,30 @@ namespace CapaPresentaciones
                                     j += 1;
                                 }
                             }
+                            //atributos de las columnas
+                            dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                            foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+                            {
+                                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                Columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+                            }
+
+                            dgvDatos.Columns[0].MinimumWidth = 100;
+                            dgvDatos.Columns[0].Width = 100;
+                            dgvDatos.Columns[1].MinimumWidth = 200;
+                            dgvDatos.Columns[1].Width = 200;
+                            dgvDatos.Columns[2].MinimumWidth = 40;
+                            dgvDatos.Columns[2].Width = 40;
+                            dgvDatos.Columns[3].MinimumWidth = 80;
+                            dgvDatos.Columns[3].Width = 80;
+                            dgvDatos.Columns[4].MinimumWidth = 250;
+                            dgvDatos.Columns[4].Width = 250;
+                            dgvDatos.Columns[5].MinimumWidth = 250;
+                            dgvDatos.Columns[5].Width = 250;
+                            dgvDatos.Columns[6].MinimumWidth = 200;
+                            dgvDatos.Columns[6].Width = 200;
                             AccionesTabla();
                         }
                     }
@@ -253,7 +321,7 @@ namespace CapaPresentaciones
                 ObjEntidadEstd.Hora = hora;//actual del registro
                 ObjEntidadEstd.CodEstudiante = dr.Cells[3].Value.ToString();
                 ObjEntidadEstd.Asistio = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
-                ObjEntidadEstd.Observacion = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
+                ObjEntidadEstd.Observacion = (dr.Cells[0].Tag.Equals(true))? ((dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString()): ((dr.Cells[1].Value == null|| dr.Cells[1].Value.ToString()=="") ? "FALTO SIN JUSTIFICAR" : dr.Cells[1].Value.ToString());
                 ObjNegocioEstd.RegistrarAsistenciaEstudiante(ObjEntidadEstd);
             }
             //A_Dialogo.DialogoConfirmacion("El registro de la asistencia de los estudiantes se insertó éxitosamente");
@@ -272,7 +340,7 @@ namespace CapaPresentaciones
                 ObjEntidadEstd.CodEstudiante = dr.Cells[3].Value.ToString();
 
                 string AsistioActualizado = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
-                string ObsActualizada = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
+                string ObsActualizada = (dr.Cells[0].Tag.Equals(true)) ? ((dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString()) : ((dr.Cells[1].Value == null || dr.Cells[1].Value.ToString() == "") ? "FALTO SIN JUSTIFICAR" : dr.Cells[1].Value.ToString());
 
                 ObjNegocioEstd.ActualizarAsistenciaEstudiante(ObjEntidadEstd, AsistioActualizado, ObsActualizada);
             }
@@ -377,7 +445,25 @@ namespace CapaPresentaciones
                 this.Height = 773;
             }
         }
+        public void ActualizarCheckBox()
+        {
+            bool R = true;
+            foreach (DataGridViewRow Fila in dgvDatos.Rows)
+            {
+                if (Fila.Cells[0].Tag.Equals(false) && Fila.Cells[0]!=null)
+                {
+                    R = false;
+                    //ckbMarcarTodos.Checked = false;
+                    break;
+                }
 
+            }
+            if (R.Equals(true))
+            {
+                Console.WriteLine("llegue aqui");
+                ckbMarcarTodos.Checked=true;
+            }
+        }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Program.Evento = 0;
@@ -387,6 +473,7 @@ namespace CapaPresentaciones
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             BuscarEstudiantes();
+            //ActualizarCheckBox();
         }
 
         private void dgvDatos_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -428,7 +515,9 @@ namespace CapaPresentaciones
                     DataGrid.Rows[e.RowIndex].Cells[0].Value = ListaImagenes.Images[0];
                     DataGrid.Rows[e.RowIndex].Cells[0].Tag = false;
                 }
+                ActualizarCheckBox();
             }
+            
         }
 
         private void ckbMarcarTodos_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
@@ -450,7 +539,7 @@ namespace CapaPresentaciones
                 }
             }
         }
-
+        
 
         private void P_TablaAsistenciaEstudiantes_Load(object sender, EventArgs e)
         {
@@ -504,7 +593,9 @@ namespace CapaPresentaciones
                 MostrarEstudiantesRegistrados();
 
             }
+            //ActualizarCheckBox();
             AjustarTabla();
+            
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -561,14 +652,15 @@ namespace CapaPresentaciones
             Sesiones.Dispose();
         }
 
-        private void dgvDatos_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
 
         private void sbDatos_Scroll(object sender, Bunifu.UI.WinForms.BunifuVScrollBar.ScrollEventArgs e)
         {
             //MessageBox.Show(sbDatos.Value.ToString());
         }
-    }
+
+		private void ckbMarcarTodos_Click(object sender, EventArgs e)
+		{
+            //probar
+		}
+	}
 }

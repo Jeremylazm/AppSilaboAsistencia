@@ -35,12 +35,12 @@ namespace CapaPresentaciones
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
 			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
 			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
 			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
 			Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
 			this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
 			this.pbLogo = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -48,15 +48,6 @@ namespace CapaPresentaciones
 			this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
 			this.sbDatos = new Bunifu.UI.WinForms.BunifuVScrollBar();
 			this.dgvDatos = new Bunifu.UI.WinForms.BunifuDataGridView();
-			this.ckbAsistencia = new System.Windows.Forms.DataGridViewImageColumn();
-			this.cbxObservaciones = new System.Windows.Forms.DataGridViewComboBoxColumn();
-			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.lblFecha = new Bunifu.UI.WinForms.BunifuLabel();
 			this.ckbMarcarTodos = new Bunifu.UI.WinForms.BunifuCheckBox();
 			this.ListaImagenes = new System.Windows.Forms.ImageList(this.components);
@@ -68,6 +59,15 @@ namespace CapaPresentaciones
 			this.txtFecha = new Bunifu.UI.WinForms.BunifuLabel();
 			this.lnFecha = new Bunifu.UI.WinForms.BunifuSeparator();
 			this.txtBuscar = new Bunifu.UI.WinForms.BunifuTextBox();
+			this.ckbAsistencia = new System.Windows.Forms.DataGridViewImageColumn();
+			this.cbxObservaciones = new System.Windows.Forms.DataGridViewComboBoxColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -342,63 +342,6 @@ namespace CapaPresentaciones
 			this.dgvDatos.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Maroon;
 			this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
 			this.dgvDatos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellEnter);
-			// 
-			// ckbAsistencia
-			// 
-			this.ckbAsistencia.HeaderText = "Asistencia";
-			this.ckbAsistencia.Image = global::CapaPresentaciones.Properties.Resources.Unchecked_18x18;
-			this.ckbAsistencia.MinimumWidth = 6;
-			this.ckbAsistencia.Name = "ckbAsistencia";
-			this.ckbAsistencia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-			// 
-			// cbxObservaciones
-			// 
-			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.cbxObservaciones.DefaultCellStyle = dataGridViewCellStyle3;
-			this.cbxObservaciones.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-			this.cbxObservaciones.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.cbxObservaciones.HeaderText = "Observaciones";
-			this.cbxObservaciones.Items.AddRange(new object[] {
-            "",
-            "PERMISO",
-            "TARDE",
-            "FALTO SIN JUSTIFICAR"});
-			this.cbxObservaciones.Name = "cbxObservaciones";
-			// 
-			// Column2
-			// 
-			this.Column2.HeaderText = "Id.";
-			this.Column2.Name = "Column2";
-			// 
-			// Column3
-			// 
-			this.Column3.HeaderText = "Código";
-			this.Column3.Name = "Column3";
-			// 
-			// Column4
-			// 
-			this.Column4.HeaderText = "Apellido Paterno";
-			this.Column4.Name = "Column4";
-			// 
-			// Column5
-			// 
-			this.Column5.HeaderText = "Apellido Materno";
-			this.Column5.Name = "Column5";
-			// 
-			// Column6
-			// 
-			this.Column6.HeaderText = "Nombre";
-			this.Column6.Name = "Column6";
-			// 
-			// Column7
-			// 
-			this.Column7.HeaderText = "Asistio";
-			this.Column7.Name = "Column7";
-			// 
-			// Column8
-			// 
-			this.Column8.HeaderText = "Observacion";
-			this.Column8.Name = "Column8";
 			// 
 			// lblFecha
 			// 
@@ -746,6 +689,62 @@ namespace CapaPresentaciones
 			this.txtBuscar.WordWrap = true;
 			this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
 			// 
+			// ckbAsistencia
+			// 
+			this.ckbAsistencia.HeaderText = "Asistencia";
+			this.ckbAsistencia.Image = global::CapaPresentaciones.Properties.Resources.Unchecked_18x18;
+			this.ckbAsistencia.MinimumWidth = 6;
+			this.ckbAsistencia.Name = "ckbAsistencia";
+			this.ckbAsistencia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			// 
+			// cbxObservaciones
+			// 
+			dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.cbxObservaciones.DefaultCellStyle = dataGridViewCellStyle3;
+			this.cbxObservaciones.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+			this.cbxObservaciones.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.cbxObservaciones.HeaderText = "Observaciones";
+			this.cbxObservaciones.Items.AddRange(new object[] {
+            "",
+            "PERMISO",
+            "FALTO SIN JUSTIFICAR"});
+			this.cbxObservaciones.Name = "cbxObservaciones";
+			// 
+			// Column2
+			// 
+			this.Column2.HeaderText = "Nro.";
+			this.Column2.Name = "Column2";
+			// 
+			// Column3
+			// 
+			this.Column3.HeaderText = "Código";
+			this.Column3.Name = "Column3";
+			// 
+			// Column4
+			// 
+			this.Column4.HeaderText = "Apellido Paterno";
+			this.Column4.Name = "Column4";
+			// 
+			// Column5
+			// 
+			this.Column5.HeaderText = "Apellido Materno";
+			this.Column5.Name = "Column5";
+			// 
+			// Column6
+			// 
+			this.Column6.HeaderText = "Nombres";
+			this.Column6.Name = "Column6";
+			// 
+			// Column7
+			// 
+			this.Column7.HeaderText = "Asistio";
+			this.Column7.Name = "Column7";
+			// 
+			// Column8
+			// 
+			this.Column8.HeaderText = "Observacion";
+			this.Column8.Name = "Column8";
+			// 
 			// P_TablaAsistenciaDiariaDocente
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -794,19 +793,19 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuLabel lblMarcarTodos;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGuardar;
         private Bunifu.UI.WinForms.BunifuLabel lblSemestre;
-        private System.Windows.Forms.DataGridViewImageColumn ckbAsistencia;
-        private System.Windows.Forms.DataGridViewComboBoxColumn cbxObservaciones;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         public Bunifu.UI.WinForms.BunifuLabel txtSemestre;
         private Bunifu.UI.WinForms.BunifuSeparator lnSemestre;
         public Bunifu.UI.WinForms.BunifuLabel txtFecha;
         private Bunifu.UI.WinForms.BunifuSeparator lnFecha;
         private Bunifu.UI.WinForms.BunifuTextBox txtBuscar;
-    }
+		private System.Windows.Forms.DataGridViewImageColumn ckbAsistencia;
+		private System.Windows.Forms.DataGridViewComboBoxColumn cbxObservaciones;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+	}
 }
