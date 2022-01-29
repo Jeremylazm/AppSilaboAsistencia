@@ -395,11 +395,11 @@
     <Compile Include="P_TablaAsistenciaDiariaDocente.Designer.cs">
       <DependentUpon>P_TablaAsistenciaDiariaDocente.cs</DependentUpon>
     </Compile>
-    <Compile Include="P_TablaSemestre.cs">
+    <Compile Include="P_TablaSemestres.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="P_TablaSemestre.Designer.cs">
-      <DependentUpon>P_TablaSemestre.cs</DependentUpon>
+    <Compile Include="P_TablaSemestres.Designer.cs">
+      <DependentUpon>P_TablaSemestres.cs</DependentUpon>
     </Compile>
     <Compile Include="P_TablaSesiones.cs">
       <SubType>Form</SubType>
@@ -566,8 +566,8 @@
     <EmbeddedResource Include="P_TablaAsistenciaDiariaDocente.resx">
       <DependentUpon>P_TablaAsistenciaDiariaDocente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="P_TablaSemestre.resx">
-      <DependentUpon>P_TablaSemestre.cs</DependentUpon>
+    <EmbeddedResource Include="P_TablaSemestres.resx">
+      <DependentUpon>P_TablaSemestres.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_TablaSesiones.resx">
       <DependentUpon>P_TablaSesiones.cs</DependentUpon>

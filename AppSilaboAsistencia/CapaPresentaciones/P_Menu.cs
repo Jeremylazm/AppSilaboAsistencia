@@ -419,7 +419,7 @@ namespace CapaPresentaciones
             else
             {
                 AbrirFormularios<P_TablaPlantillas>();
-                AbrirFormularios<P_TablaSemestre>();
+                AbrirFormularios<P_TablaSemestres>();
             }
 
             ActualizarColor();
@@ -612,7 +612,7 @@ namespace CapaPresentaciones
         private void btnSemestres_Click(object sender, EventArgs e)
         {
             ActualizarColor();
-            AbrirFormularios<P_TablaSemestre>();
+            AbrirFormularios<P_TablaSemestres>();
         }
 
         public Tuple<string, string> BuscarEstudiante(List<Tuple<string, string>> ListaActualizada, string CodEstudiante)
