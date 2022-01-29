@@ -960,13 +960,13 @@ namespace CapaPresentaciones
                 dgvResultados.DataSource = Datos;
                 dgvResultados.Columns[0].HeaderText = "Código Asignatura";
                 dgvResultados.Columns[1].HeaderText = "Nombre Asignatura";
-                dgvResultados.Columns[2].HeaderText = "Temas Avanzados (%)";
-                dgvResultados.Columns[3].HeaderText = "Temas Faltantes (%)";
+                dgvResultados.Columns[2].HeaderText = "Temas Avanzados";
+                dgvResultados.Columns[3].HeaderText = "Temas Faltantes";
                 dgvResultados.Columns[0].Width = 145;
-                dgvResultados.Columns[2].Width = 170;
-                dgvResultados.Columns[3].Width = 180;
+                dgvResultados.Columns[2].Width = 165;
+                dgvResultados.Columns[3].Width = 175;
 
-                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
+                dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvResultados.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
                 foreach (DataGridViewColumn Columna in dgvResultados.Columns)

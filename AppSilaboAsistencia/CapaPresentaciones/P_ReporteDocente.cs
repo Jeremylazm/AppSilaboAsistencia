@@ -39,8 +39,11 @@ namespace CapaPresentaciones
             dpFechaFinal.MinDate = new DateTime(2021, 09, 01);
 
             // Inicializar las fechas de los reportes         
-            dpFechaInicial.Value = new DateTime(2021, 10, 18);
-            dpFechaFinal.Value = new DateTime(2021, 11, 05);
+            //dpFechaInicial.Value = new DateTime(2021, 10, 18);
+            //dpFechaFinal.Value = new DateTime(2021, 11, 05);
+            
+            dpFechaInicial.Value = Convert.ToDateTime(Semestre.Rows[0][1], CultureInfo.GetCultureInfo("es-ES"));
+            dpFechaFinal.Value = DateTime.Today;
 
             AntCriterioSeleccion = cxtCriterioSeleccion.SelectedIndex;
             AntFechaInicial = dpFechaInicial.Value;
