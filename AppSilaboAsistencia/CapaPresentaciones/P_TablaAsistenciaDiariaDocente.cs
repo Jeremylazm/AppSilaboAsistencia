@@ -92,10 +92,30 @@ namespace CapaPresentaciones
                 i += 1;
 
             }
-            //DataTable dtFromGrid = new DataTable();
-            //dtFromGrid = dgvDatos.DataSource as DataTable;
-            //InicializarValoresEditar();
-            //dgvDatos.DataSource = dgv;
+            //atributos de las columnas
+            dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            }
+
+            dgvDatos.Columns[0].MinimumWidth = 100;
+            dgvDatos.Columns[0].Width = 100;
+            dgvDatos.Columns[1].MinimumWidth = 200;
+            dgvDatos.Columns[1].Width = 200;
+            dgvDatos.Columns[2].MinimumWidth = 40;
+            dgvDatos.Columns[2].Width = 40;
+            dgvDatos.Columns[3].MinimumWidth = 80;
+            dgvDatos.Columns[3].Width = 80;
+            dgvDatos.Columns[4].MinimumWidth = 250;
+            dgvDatos.Columns[4].Width = 250;
+            dgvDatos.Columns[5].MinimumWidth = 250;
+            dgvDatos.Columns[5].Width = 250;
+            dgvDatos.Columns[6].MinimumWidth = 200;
+            dgvDatos.Columns[6].Width = 200;
             AccionesTablaEditar();
            
 
@@ -173,8 +193,8 @@ namespace CapaPresentaciones
                         ObjEntidadDoc.CodDocente = dr.Cells[3].Value.ToString();
 
                         string Asistio = (dr.Cells[0].Tag.Equals(true)) ? "SI" : "NO";
-                        string ObsActualizada = (dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString();
-                        
+                        string ObsActualizada = (dr.Cells[0].Tag.Equals(true)) ? ((dr.Cells[1].Value == null) ? "" : dr.Cells[1].Value.ToString()) : ((dr.Cells[1].Value == null || dr.Cells[1].Value.ToString() == "") ? "FALTO SIN JUSTIFICAR" : dr.Cells[1].Value.ToString());
+
 
                         ObjNegocioDoc.ActualizarAsistenciaDiariaDocente(ObjEntidadDoc, Asistio, ObsActualizada);
 
@@ -208,7 +228,7 @@ namespace CapaPresentaciones
                 this.Height = 773;
             }
         }
-        public void ValidaCheckBox()
+        public void ActualizarCheckBox()
         {
             bool R = true;
             foreach (DataGridViewRow Fila in dgvDatos.Rows)
@@ -275,7 +295,7 @@ namespace CapaPresentaciones
                     DataGrid.Rows[e.RowIndex].Cells[0].Value = ListaImagenes.Images[0];
                     DataGrid.Rows[e.RowIndex].Cells[0].Tag = false;
                 }
-                ValidaCheckBox();
+                ActualizarCheckBox();
             }
         }
 
@@ -304,7 +324,7 @@ namespace CapaPresentaciones
 
             
             MostrarDocentesRegistrados();
-            ValidaCheckBox();
+            ActualizarCheckBox();
             AjustarTabla();
 
         }

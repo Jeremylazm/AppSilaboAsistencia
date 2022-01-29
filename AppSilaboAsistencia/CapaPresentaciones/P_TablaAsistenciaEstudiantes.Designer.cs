@@ -475,6 +475,7 @@ namespace CapaPresentaciones
 			this.ckbMarcarTodos.ThreeState = false;
 			this.ckbMarcarTodos.ToolTipText = null;
 			this.ckbMarcarTodos.CheckedChanged += new System.EventHandler<Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs>(this.ckbMarcarTodos_CheckedChanged);
+			this.ckbMarcarTodos.Click += new System.EventHandler(this.ckbMarcarTodos_Click);
 			// 
 			// lblTema
 			// 

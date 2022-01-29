@@ -46,28 +46,24 @@ namespace CapaPresentaciones
 
         private void MostrarMenu(string pAcceso, int Tiempo)
         {
-            try
+            this.Invoke((MethodInvoker)delegate
             {
-                Thread Tarea = new Thread(() =>
+                P_Menu Menu = new P_Menu
                 {
-                    P_Menu Menu = new P_Menu
-                    {
-                        Acceso = pAcceso
-                    };
-                    Application.Run(Menu);
-                });
-                Tarea.Start();
-                Thread.Sleep(Tiempo * 1000);
-            }
-            catch (Exception)
-            {
-                A_Dialogo.DialogoError("Error al mostrar el menú principal");
-            }
+                    Acceso = pAcceso
+                };
+
+                Menu.Show();
+            });
+            
+            //Thread.Sleep(Tiempo * 1000);
         }
 
         private void CargarBienvenida()
         {
             //EstablecerCarga(true);
+
+            //Application.ExitThread();
 
             // Si el usuario es Administrador
             if (E_InicioSesion.Acceso == E_Acceso.Administrador)
@@ -92,7 +88,7 @@ namespace CapaPresentaciones
             {
                 MostrarMenu(E_InicioSesion.Acceso, 30);
             }
-                        
+                       
             //EstablecerCarga(false);
         }
 

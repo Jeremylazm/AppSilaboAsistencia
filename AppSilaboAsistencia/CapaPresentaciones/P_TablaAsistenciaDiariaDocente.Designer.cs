@@ -707,7 +707,6 @@ namespace CapaPresentaciones
 			this.cbxObservaciones.Items.AddRange(new object[] {
             "",
             "PERMISO",
-            "TARDE",
             "FALTO SIN JUSTIFICAR"});
 			this.cbxObservaciones.Name = "cbxObservaciones";
 			// 

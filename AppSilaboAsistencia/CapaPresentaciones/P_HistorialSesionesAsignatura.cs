@@ -58,26 +58,18 @@ namespace CapaPresentaciones
         public void MostrarRegistros()
         {
             dgvDatos.DataSource = N_AsistenciaDocentePorAsignatura.MostrarSesionesAsignatura(CodSemestre, CodDocente, CodAsignatura, LimtFechaInf, DateTime.Parse(LimtFechaSup).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
+            //atributos del las columnas del datagridview
             dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             foreach (DataGridViewColumn Columna in dgvDatos.Columns)
             {
                 Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
-                
+                Columna.AutoSizeMode= DataGridViewAutoSizeColumnMode.None;
+
             }
             dgvDatos.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             //dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-
-            dgvDatos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dgvDatos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dgvDatos.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dgvDatos.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dgvDatos.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dgvDatos.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dgvDatos.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dgvDatos.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
 
             dgvDatos.Columns[0].MinimumWidth = 60;
             dgvDatos.Columns[0].Width = 60;
