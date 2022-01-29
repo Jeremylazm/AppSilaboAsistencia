@@ -118,7 +118,7 @@ namespace ControlesPerzonalizados
             this.txtTexto.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.txtTexto.OnPressedState.IconLeftImage = null;
             this.txtTexto.OnPressedState.IconRightImage = null;
-            this.txtTexto.Size = new System.Drawing.Size(105, 25);
+            this.txtTexto.Size = new System.Drawing.Size(115, 25);
             this.txtTexto.TabIndex = 1;
             this.txtTexto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.txtTexto.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -132,7 +132,7 @@ namespace ControlesPerzonalizados
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.txtTexto);
             this.Name = "C_Encabezado";
-            this.Size = new System.Drawing.Size(105, 25);
+            this.Size = new System.Drawing.Size(115, 25);
             this.ResumeLayout(false);
 
         }

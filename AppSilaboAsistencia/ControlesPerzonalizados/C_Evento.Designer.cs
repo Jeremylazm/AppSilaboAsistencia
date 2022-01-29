@@ -120,7 +120,7 @@ namespace ControlesPerzonalizados
             this.btnEvento.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEvento.OnPressedState.IconLeftImage = null;
             this.btnEvento.OnPressedState.IconRightImage = null;
-            this.btnEvento.Size = new System.Drawing.Size(105, 25);
+            this.btnEvento.Size = new System.Drawing.Size(115, 25);
             this.btnEvento.TabIndex = 0;
             this.btnEvento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnEvento.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -173,7 +173,7 @@ namespace ControlesPerzonalizados
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btnEvento);
             this.Name = "C_Evento";
-            this.Size = new System.Drawing.Size(105, 25);
+            this.Size = new System.Drawing.Size(115, 25);
             this.ttEvento.SetToolTip(this, "");
             this.ttEvento.SetToolTipIcon(this, null);
             this.ttEvento.SetToolTipTitle(this, "");

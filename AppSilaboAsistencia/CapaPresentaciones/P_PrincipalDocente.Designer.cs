@@ -183,7 +183,7 @@ namespace CapaPresentaciones
             this.pnHorario.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnHorario.Location = new System.Drawing.Point(218, 101);
             this.pnHorario.Name = "pnHorario";
-            this.pnHorario.Size = new System.Drawing.Size(777, 496);
+            this.pnHorario.Size = new System.Drawing.Size(726, 434);
             this.pnHorario.TabIndex = 65;
             // 
             // pnDias
@@ -191,15 +191,15 @@ namespace CapaPresentaciones
             this.pnDias.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnDias.Location = new System.Drawing.Point(218, 64);
             this.pnDias.Name = "pnDias";
-            this.pnDias.Size = new System.Drawing.Size(777, 31);
+            this.pnDias.Size = new System.Drawing.Size(726, 31);
             this.pnDias.TabIndex = 66;
             // 
             // pnHoras
             // 
             this.pnHoras.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pnHoras.Location = new System.Drawing.Point(101, 101);
+            this.pnHoras.Location = new System.Drawing.Point(91, 101);
             this.pnHoras.Name = "pnHoras";
-            this.pnHoras.Size = new System.Drawing.Size(111, 496);
+            this.pnHoras.Size = new System.Drawing.Size(121, 434);
             this.pnHoras.TabIndex = 67;
             // 
             // Bordeado
