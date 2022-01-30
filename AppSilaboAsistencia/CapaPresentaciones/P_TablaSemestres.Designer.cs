@@ -163,7 +163,7 @@ namespace CapaPresentaciones
             this.lnSemestre.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.lnSemestre.LineThickness = 1;
             this.lnSemestre.Location = new System.Drawing.Point(231, 434);
-            this.lnSemestre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lnSemestre.Margin = new System.Windows.Forms.Padding(4);
             this.lnSemestre.Name = "lnSemestre";
             this.lnSemestre.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnSemestre.Size = new System.Drawing.Size(68, 10);
@@ -233,7 +233,7 @@ namespace CapaPresentaciones
             this.btnEditar.onHoverState.BorderThickness = 1;
             this.btnEditar.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnEditar.onHoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnEditar.onHoverState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Agregar_2;
+            this.btnEditar.onHoverState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Editar_2;
             this.btnEditar.onHoverState.IconRightImage = null;
             this.btnEditar.OnIdleState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.btnEditar.OnIdleState.BorderRadius = 15;
@@ -249,7 +249,7 @@ namespace CapaPresentaciones
             this.btnEditar.OnPressedState.BorderThickness = 1;
             this.btnEditar.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEditar.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            this.btnEditar.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Agregar;
+            this.btnEditar.OnPressedState.IconLeftImage = global::CapaPresentaciones.Properties.Resources.Editar;
             this.btnEditar.OnPressedState.IconRightImage = null;
             this.btnEditar.Size = new System.Drawing.Size(170, 39);
             this.btnEditar.TabIndex = 35;
@@ -391,7 +391,7 @@ namespace CapaPresentaciones
             this.sbDatos.DurationBeforeShrink = 2000;
             this.sbDatos.LargeChange = 10;
             this.sbDatos.Location = new System.Drawing.Point(773, 78);
-            this.sbDatos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sbDatos.Margin = new System.Windows.Forms.Padding(4);
             this.sbDatos.Maximum = 100;
             this.sbDatos.Minimum = 0;
             this.sbDatos.MinimumThumbLength = 18;
@@ -499,7 +499,7 @@ namespace CapaPresentaciones
             this.Bordeado.ElipseRadius = 15;
             this.Bordeado.TargetControl = this.pnContenedor;
             // 
-            // P_TablaSemestre
+            // P_TablaSemestres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -508,7 +508,7 @@ namespace CapaPresentaciones
             this.ClientSize = new System.Drawing.Size(803, 463);
             this.Controls.Add(this.pnContenedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "P_TablaSemestre";
+            this.Name = "P_TablaSemestres";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabla de Asignaturas Asignadas - Asistencias";
             this.Load += new System.EventHandler(this.P_TablaSemestre_Load);

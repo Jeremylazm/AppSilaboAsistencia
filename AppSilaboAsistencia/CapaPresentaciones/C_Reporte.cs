@@ -963,7 +963,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[2].HeaderText = "Temas Avanzados";
                 dgvResultados.Columns[3].HeaderText = "Temas Faltantes";
                 dgvResultados.Columns[0].Width = 145;
-                dgvResultados.Columns[2].Width = 165;
+                dgvResultados.Columns[2].Width = 155;
                 dgvResultados.Columns[3].Width = 175;
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
