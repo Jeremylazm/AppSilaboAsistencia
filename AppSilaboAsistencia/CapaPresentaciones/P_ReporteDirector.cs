@@ -186,7 +186,21 @@ namespace CapaPresentaciones
 
                 fnReporte9();
             }
-            else if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) fnReporte7();
+            else if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+            {
+                lblCodEstudiante.Visible = false;
+                txtCodEstudiante.Visible = false;
+                lnCodEstudiante.Visible = false;
+                lblEstudiante.Visible = false;
+                txtEstudiante.Visible = false;
+                lnEstudiante.Visible = false;
+
+                lblCodigo.Visible = false;
+                txtCodigo.Visible = false;
+                lnCodigo.Visible = false;
+                pnCajas.Visible = false;
+                fnReporte7();
+            }
         }
 
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)

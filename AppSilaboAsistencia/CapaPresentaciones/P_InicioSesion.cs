@@ -38,6 +38,7 @@ namespace CapaPresentaciones
             this.Hide();
 
             // Preparar el control de bienvenida para mostrarlo
+            this.Text = "Bienvenid@";
             this.Size = new Size(1330, 768);
             this.CenterToScreen();
             this.TopMost = true;
