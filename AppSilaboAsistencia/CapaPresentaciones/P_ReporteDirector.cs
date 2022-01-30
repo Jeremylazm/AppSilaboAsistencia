@@ -138,6 +138,16 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
+            lblCodigo.Visible = true;
+            lblNombre.Visible = true;
+            lblEscuelaP.Visible = true;
+            txtCodigo.Visible = true;
+            txtNombre.Visible = true;
+            txtEscuelaP.Visible = true;
+            lnCodigo.Visible = true;
+            lnNombre.Visible = true;
+            lnEscuelaP.Visible = true;
+
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
             {
                 P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Director de Escuela", cxtCriterioSeleccion.SelectedItem.ToString());
@@ -162,12 +172,35 @@ namespace CapaPresentaciones
 
         private void btnGeneral_Click(object sender, EventArgs e)
         {
-            if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))  fnReporte9();
+            if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
+            {
+                lblCodigo.Visible = false;
+                lblNombre.Visible = false;
+                lblEscuelaP.Visible = false;
+                txtCodigo.Visible = false;
+                txtNombre.Visible = false;
+                txtEscuelaP.Visible = false;
+                lnCodigo.Visible = false;
+                lnNombre.Visible = false;
+                lnEscuelaP.Visible = false;
+
+                fnReporte9();
+            }
             else if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) fnReporte7();
         }
 
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            lblCodigo.Visible = true;
+            lblNombre.Visible = true;
+            lblEscuelaP.Visible = true;
+            txtCodigo.Visible = true;
+            txtNombre.Visible = true;
+            txtEscuelaP.Visible = true;
+            lnCodigo.Visible = true;
+            lnNombre.Visible = true;
+            lnEscuelaP.Visible = true;
+
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
             {
                 lblCriterioSeleccion.Visible = true;
