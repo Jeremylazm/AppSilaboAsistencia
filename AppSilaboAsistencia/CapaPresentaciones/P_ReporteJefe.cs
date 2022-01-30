@@ -17,6 +17,12 @@ namespace CapaPresentaciones
         private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
         public string CodDocenteReporte = "";
         public string NombreDocente;
+        private int AntCriterioSeleccion;
+        private DateTime AntFechaInicial;
+        private DateTime AntFechaFinal;
+        private string AntCodAsignatura;
+        private string AntNombreAsignatura;
+        private string AntEscuelaProfesional;
         C_Reporte Reportes;
 
         public P_ReporteJefe()
@@ -25,6 +31,25 @@ namespace CapaPresentaciones
             CodSemestre = Semestre.Rows[0][0].ToString();
             InitializeComponent();
             LLenarCampos();
+            // Definir minimas y maximas fechas para los filtros
+            dpFechaInicial.MaxDate = new DateTime(2022, 03, 01);
+            dpFechaInicial.MinDate = new DateTime(2021, 09, 01);
+            dpFechaFinal.MaxDate = new DateTime(2022, 03, 01);
+            dpFechaFinal.MinDate = new DateTime(2021, 09, 01);
+
+            // Inicializar las fechas de los reportes         
+            //dpFechaInicial.Value = new DateTime(2021, 10, 18);
+            //dpFechaFinal.Value = new DateTime(2021, 11, 05);
+
+            dpFechaInicial.Value = Convert.ToDateTime(Semestre.Rows[0][1], CultureInfo.GetCultureInfo("es-ES"));
+            dpFechaFinal.Value = DateTime.Today;
+
+            AntCriterioSeleccion = cxtCriterioSeleccion.SelectedIndex;
+            AntFechaInicial = dpFechaInicial.Value;
+            AntFechaFinal = dpFechaFinal.Value;
+            AntCodAsignatura = txtCodigo.Text;
+            AntNombreAsignatura = txtNombre.Text;
+            AntEscuelaProfesional = txtEscuelaP.Text;
         }
         private void LLenarCampos()
         {
@@ -58,15 +83,6 @@ namespace CapaPresentaciones
             pnReporte.Width = pnPadre.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
             pnReporte.Height = pnPadre.ClientSize.Height + SystemInformation.HorizontalScrollBarHeight;
 
-            // Definir minimas y maximas fechas para los filtros
-            dpFechaInicial.MaxDate = new DateTime(2022, 03, 01);
-            dpFechaInicial.MinDate = new DateTime(2021, 09, 01);
-            dpFechaFinal.MaxDate = new DateTime(2022, 03, 01);
-            dpFechaFinal.MinDate = new DateTime(2021, 09, 01);
-
-            // Inicializar las fechas de los reportes  
-            dpFechaInicial.Value = new DateTime(2021, 10, 18);
-            dpFechaFinal.Value = new DateTime(2021, 11, 05);
 
             // Crear un objeto reporte
             Reportes = new C_Reporte()
@@ -395,12 +411,25 @@ namespace CapaPresentaciones
             string[] Valores = { CodSemestre, NomDepartamento, txtCodDocente.Text, txtDocente.Text };
 
             DataTable resultados = N_AsistenciaDocentePorAsignatura.AsistenciaAsignaturasDocente(CodSemestre, txtCodDocente.Text, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
-            Reportes.fnReporte10(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+            //Reportes.fnReporte10(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
 
-            pnReporte.AutoScrollPosition = new Point(0, 0);
+            string ans = Reportes.fnReporte10(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+
+            if (ans == "Si")
+            {
+                cxtCriterioSeleccion.SelectedIndex = AntCriterioSeleccion;
+                dpFechaInicial.Value = AntFechaInicial;
+                dpFechaFinal.Value = AntFechaFinal;
+                txtCodigo.Text = AntCodAsignatura;
+                txtNombre.Text = AntNombreAsignatura;
+                txtEscuelaP.Text = AntEscuelaProfesional;
+
+                pnReporte.Controls[0].Controls[1].Controls[0].Text = "REPORTE DE ASISTENCIA DOCENTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            }
+            else pnReporte.AutoScrollPosition = new Point(0, 0);
         }
 
-        private void fnReporte12()
+            private void fnReporte12()
         {
             // Tipo de reporte: Asistencia Docentes
             // Criterio de selección: Por Estudiantes
@@ -446,9 +475,24 @@ namespace CapaPresentaciones
 
             DataTable resultados = N_AsistenciaDiariaDocente.AsistenciaDocentesPorFechas(CodSemestre, dpFechaInicial.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")), dpFechaFinal.Value.ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
 
-            Reportes.fnReporte14(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
-            
-            pnReporte.AutoScrollPosition = new Point(0, 0);
+            //Reportes.fnReporte14(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+            string ans = Reportes.fnReporte14(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
+
+            if (ans == "Si")
+            {
+                cxtCriterioSeleccion.SelectedIndex = AntCriterioSeleccion;
+                dpFechaInicial.Value = AntFechaInicial;
+                dpFechaFinal.Value = AntFechaFinal;
+                txtCodigo.Text = AntCodAsignatura;
+                txtNombre.Text = AntNombreAsignatura;
+                txtEscuelaP.Text = AntEscuelaProfesional;
+
+                pnReporte.Controls[0].Controls[1].Controls[0].Text = "REPORTE DE ASISTENCIA DOCENTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
+            }
+            else
+            { 
+                pnReporte.AutoScrollPosition = new Point(0, 0);
+            }
         }
 
         private void dpFechaInicial_CloseUp(object sender, EventArgs e)
@@ -474,5 +518,6 @@ namespace CapaPresentaciones
                 fnReporte5();
             }
         }
+
     }
 }

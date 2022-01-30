@@ -41,7 +41,7 @@ namespace CapaPresentaciones
         }
         public void MostrarRegistros()
         {
-            dgvDatos.DataSource = N_Semestre.SemestreActual(); // El filtro es por departamento
+            dgvDatos.DataSource = N_Semestre.MostrarSemestres(); // El filtro es por departamento
             txtSemestreActivo.Text = (dgvDatos.DataSource as DataTable).Rows[0][0].ToString(); 
             AccionesTabla();
         }
@@ -92,7 +92,6 @@ namespace CapaPresentaciones
                     EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
                     Program.Evento = 1;
                     EditarRegistro.txtSemestre.Text = semestreActual.ToString();
-
 
                     //EditarRegistro.Owner = Fondo;
                     EditarRegistro.ShowDialog();
