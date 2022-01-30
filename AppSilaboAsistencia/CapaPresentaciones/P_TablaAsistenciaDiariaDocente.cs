@@ -236,6 +236,7 @@ namespace CapaPresentaciones
                 if (Fila.Cells[0].Tag.Equals(false))
                 {
                     R = false;
+                    ckbMarcarTodos.Checked = false;
                     break;
                 }
 
@@ -297,26 +298,12 @@ namespace CapaPresentaciones
                 }
                 ActualizarCheckBox();
             }
+            
         }
 
 		private void ckbMarcarTodos_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
 		{
-            if (ckbMarcarTodos.Checked)
-            {
-                foreach (DataGridViewRow Fila in dgvDatos.Rows)
-                {
-                    Fila.Cells[0].Value = ListaImagenes.Images[1];
-                    Fila.Cells[0].Tag = true;
-                }
-            }
-            else
-            {
-                foreach (DataGridViewRow Fila in dgvDatos.Rows)
-                {
-                    Fila.Cells[0].Value = ListaImagenes.Images[0];
-                    Fila.Cells[0].Tag = false;
-                }
-            }
+            
         }
 
 		private void P_TablaAsistenciaDiariaDocente_Load(object sender, EventArgs e)
@@ -339,5 +326,27 @@ namespace CapaPresentaciones
 		{
             //InicializarValoresEditar();
         }
-    }
+
+		private void ckbMarcarTodos_Click(object sender, EventArgs e)
+		{
+            if (ckbMarcarTodos.Checked)
+            {
+                foreach (DataGridViewRow Fila in dgvDatos.Rows)
+                {
+                    Fila.Cells[0].Value = ListaImagenes.Images[1];
+                    Fila.Cells[0].Tag = true;
+                    Fila.Cells[1].Value = "";
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow Fila in dgvDatos.Rows)
+                {
+                    Fila.Cells[0].Value = ListaImagenes.Images[0];
+                    Fila.Cells[0].Tag = false;
+                    Fila.Cells[1].Value = "";
+                }
+            }
+        }
+	}
 }
