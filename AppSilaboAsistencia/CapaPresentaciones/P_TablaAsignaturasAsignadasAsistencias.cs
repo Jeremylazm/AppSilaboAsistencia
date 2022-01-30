@@ -38,12 +38,49 @@ namespace CapaPresentaciones
         private void MostrarAsignaturas()
         {
             dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodDepartamentoA, CodDocente);
+            //modificar atributos de las columnas
+            dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            }
+            dgvDatos.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDatos.Columns[0].MinimumWidth = 100;
+            dgvDatos.Columns[0].Width = 100;
+            dgvDatos.Columns[1].MinimumWidth = 100;
+            dgvDatos.Columns[1].Width = 100;
+            dgvDatos.Columns[2].MinimumWidth = 480;
+            dgvDatos.Columns[2].Width = 480;
+            dgvDatos.Columns[3].MinimumWidth = 400;
+            dgvDatos.Columns[3].Width = 400;
             AccionesTabla();
         }
 
         public void BuscarAsignaturas()
         {
             dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodSemestre, CodDepartamentoA, CodDocente, txtBuscar.Text);
+            //modificar atributos de las columnas
+            dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+            }
+            dgvDatos.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDatos.Columns[0].MinimumWidth = 100;
+            dgvDatos.Columns[0].Width = 100;
+            dgvDatos.Columns[1].MinimumWidth = 100;
+            dgvDatos.Columns[1].Width = 100;
+            dgvDatos.Columns[2].MinimumWidth = 480;
+            dgvDatos.Columns[2].Width = 480;
+            dgvDatos.Columns[3].MinimumWidth = 400;
+            dgvDatos.Columns[3].Width = 400;
+            AccionesTabla();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

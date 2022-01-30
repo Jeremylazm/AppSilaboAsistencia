@@ -15,12 +15,12 @@ using Bunifu.UI.WinForms;
 
 namespace CapaPresentaciones
 {
-    public partial class P_TablaSemestre : Form
+    public partial class P_TablaSemestres : Form
     {
         readonly E_Semestre ObjEntidad;
         readonly N_Semestre ObjNegocio;
         
-        public P_TablaSemestre()
+        public P_TablaSemestres()
         {
             ObjEntidad = new E_Semestre();
             ObjNegocio = new N_Semestre();

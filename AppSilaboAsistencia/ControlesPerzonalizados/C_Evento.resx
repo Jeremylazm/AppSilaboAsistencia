@@ -120,14 +120,14 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnEvento.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAGkAAAAZCAYAAAAyoAD7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFVSURBVGhD7Zk9S8RAEIa3tLS0tPQn+BPuTwg2gqWldvcD
-        rhCL662tba+0TRuyyQYLEfyKcH7BFfpO3Dtx2DZ3s/AOPGGzM0mRh83CjtPRtu1WXdeHYAoK8E0Gp2ia
-        5rKqqmN8/+2oIh0o2scDt2DuvU+9jAxE/N7v4AHjUVTyP5A4Q0FHOSYQD+dRzW/EFdSpQrJZXkIIB72g
-        uAfdqwJigyf42ZFVdIKbL5UkBohbz9RhSV3pJDFF4XAJapIYAqvpQyQlk8QOlJQBlJQBlJQBlJQBlJQB
-        lJQBlJQBlJQBIulRTxI7eO8XImmmE8QUQU7BTzFYqAQxgJyCS1td+km7mGDDzyadNGT7xh+MHcHYa6KI
-        bAg4mUPQpBe0DCRmSLzpYrJ+IOcT3EjXPOr5C0gao+hZP0SGR/afOO7wV7tIClpGWZZ7sVvLZuB6uYOo
-        69UetArnfgA3QAnTlyfZwQAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAIgAAAAfCAYAAAA82YWpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFqSURBVHhe7dutTsNQGIfxSiQSieQSuARuggRDgkSC2wUg
+        CGIejcZOYmubtmuDICR8lWR8JRPwf8vZCCfNewE9z0l+S9dzNrMnXUVPFo+2bTfquj6QqeTyjVHL5/P5
+        ZVmWR/rtN0MGw0OLdvWBW1lUVTX0ZRih8Fu/y4OO90IO/4cmTrWgI4zkWQPnIYvfEa4cXbQQ6Xppmma/
+        jyPcc9xHC4AntbFlV49jvfmKJpG4cKsxzXQpuYongSDP9NJEJ4GeriIfFsjgJGAIBC4CgYtA4CIQuAgE
+        LgKBi0DgIhC4CAQuAoGLQOAiELgIBC4CgcsCeYxPAqaqqqUFMosngKCxZ1JPdLCMJpA4eybVNlTZU+3b
+        OsGWB8Q62w7Tb31QLYeq5XVgERKkHhaK46yPYzU0MdPEW7wYaVEYn3Jj+6VCGn9DgUy06Dn+EMbN7jfC
+        cad/kovBOFajKIqdsFeG7RDpuFMk1+t7jvXIsh9IL0GyeL/dRwAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="ttEvento.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

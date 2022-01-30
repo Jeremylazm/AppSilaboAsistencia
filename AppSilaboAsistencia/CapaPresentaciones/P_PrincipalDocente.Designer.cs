@@ -111,7 +111,7 @@ namespace CapaPresentaciones
             this.btnMostrarPlanSesiones.ImageSize = new System.Drawing.Size(20, 20);
             this.btnMostrarPlanSesiones.ImageZoomSize = new System.Drawing.Size(30, 30);
             this.btnMostrarPlanSesiones.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnMostrarPlanSesiones.InitialImage")));
-            this.btnMostrarPlanSesiones.Location = new System.Drawing.Point(995, 607);
+            this.btnMostrarPlanSesiones.Location = new System.Drawing.Point(975, 614);
             this.btnMostrarPlanSesiones.Name = "btnMostrarPlanSesiones";
             this.btnMostrarPlanSesiones.Rotation = 0;
             this.btnMostrarPlanSesiones.ShowActiveImage = true;
@@ -136,7 +136,7 @@ namespace CapaPresentaciones
             this.lnAsignatura.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lnAsignatura.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.Solid;
             this.lnAsignatura.LineThickness = 1;
-            this.lnAsignatura.Location = new System.Drawing.Point(294, 634);
+            this.lnAsignatura.Location = new System.Drawing.Point(271, 640);
             this.lnAsignatura.Name = "lnAsignatura";
             this.lnAsignatura.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.lnAsignatura.Size = new System.Drawing.Size(164, 10);
@@ -151,7 +151,7 @@ namespace CapaPresentaciones
             this.txtAsignatura.CursorType = System.Windows.Forms.Cursors.Default;
             this.txtAsignatura.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAsignatura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.txtAsignatura.Location = new System.Drawing.Point(294, 610);
+            this.txtAsignatura.Location = new System.Drawing.Point(271, 617);
             this.txtAsignatura.Name = "txtAsignatura";
             this.txtAsignatura.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtAsignatura.Size = new System.Drawing.Size(164, 22);
@@ -169,7 +169,7 @@ namespace CapaPresentaciones
             this.lblAsignatura.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblAsignatura.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAsignatura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.lblAsignatura.Location = new System.Drawing.Point(101, 610);
+            this.lblAsignatura.Location = new System.Drawing.Point(78, 617);
             this.lblAsignatura.Name = "lblAsignatura";
             this.lblAsignatura.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblAsignatura.Size = new System.Drawing.Size(180, 23);
@@ -181,25 +181,25 @@ namespace CapaPresentaciones
             // pnHorario
             // 
             this.pnHorario.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pnHorario.Location = new System.Drawing.Point(218, 101);
+            this.pnHorario.Location = new System.Drawing.Point(194, 112);
             this.pnHorario.Name = "pnHorario";
-            this.pnHorario.Size = new System.Drawing.Size(777, 496);
+            this.pnHorario.Size = new System.Drawing.Size(840, 490);
             this.pnHorario.TabIndex = 65;
             // 
             // pnDias
             // 
             this.pnDias.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pnDias.Location = new System.Drawing.Point(218, 64);
+            this.pnDias.Location = new System.Drawing.Point(194, 76);
             this.pnDias.Name = "pnDias";
-            this.pnDias.Size = new System.Drawing.Size(777, 31);
+            this.pnDias.Size = new System.Drawing.Size(840, 34);
             this.pnDias.TabIndex = 66;
             // 
             // pnHoras
             // 
             this.pnHoras.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pnHoras.Location = new System.Drawing.Point(101, 101);
+            this.pnHoras.Location = new System.Drawing.Point(52, 112);
             this.pnHoras.Name = "pnHoras";
-            this.pnHoras.Size = new System.Drawing.Size(111, 496);
+            this.pnHoras.Size = new System.Drawing.Size(140, 490);
             this.pnHoras.TabIndex = 67;
             // 
             // Bordeado

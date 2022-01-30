@@ -63,7 +63,7 @@ namespace CapaPresentaciones
             string Hora = DateTime.Now.ToString("HH:mm:ss");
 
             // Marcar asistencia diaria de los docentes:
-            DataTable Docentes = N_Docente.MostrarTodosDocentesDepartamento(CodDepartamentoA);
+            DataTable Docentes = N_Docente.DosMostrarTodosDocentesDepartamento(CodDepartamentoA);
 			if (Docentes.Rows.Count!=0)
 			{
                 foreach (DataRow docente in Docentes.Rows)
@@ -132,11 +132,11 @@ namespace CapaPresentaciones
                     }
                     if (i != 0)
                     {
-                        A_Dialogo.DialogoInformacion((j).ToString() + " Asignaturas no se dicatarán " + Environment.NewLine + (i).ToString() + " Asignaturas no tienen estudiantes matriculados");
+                        A_Dialogo.DialogoInformacion((j).ToString() + " Asignaturas no se dictarán " + Environment.NewLine + (i).ToString() + " Asignaturas no tienen estudiantes matriculados");
                     }
                     else
                     {
-                        A_Dialogo.DialogoInformacion((j).ToString() + " Asignaturas no se dicatarán");
+                        A_Dialogo.DialogoInformacion((j).ToString() + " Asignaturas no se dictarán");
                     }
                 }
                 else
@@ -146,7 +146,7 @@ namespace CapaPresentaciones
             }
             else
 			{
-                A_Dialogo.DialogoError("No hay docentes en el Departamento Academico");
+                A_Dialogo.DialogoError("No hay docentes en el Departamento Académico");
 			}
            
             
@@ -155,7 +155,7 @@ namespace CapaPresentaciones
         {
             string pFecha = dpFecha.Value.ToString("dd/MM/yyyy");
             string Dia = dpFecha.Value.ToString("dddd").Substring(0, 2).ToUpper();
-            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea  que "+pFecha +Environment.NewLine + "Se declare como " +cxtMotivo.SelectedItem.ToString()+"?") == DialogResult.Yes)
+            if (A_Dialogo.DialogoPreguntaAceptarCancelar("¿Realmente desea  que "+pFecha +Environment.NewLine + "Se Registre como " +cxtMotivo.SelectedItem.ToString()+"?") == DialogResult.Yes)
 			{
                 DataTable resultados = N_AsistenciaDiariaDocente.AsistenciaDiariaDocentes(CodSemestre,CodDepartamentoA, DateTime.Parse(dpFecha.Value.ToString()).ToString("yyyy/MM/dd", CultureInfo.GetCultureInfo("es-ES")));
                 if(resultados.Rows.Count==0)

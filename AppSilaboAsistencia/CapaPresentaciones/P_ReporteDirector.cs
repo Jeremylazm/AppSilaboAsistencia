@@ -45,7 +45,7 @@ namespace CapaPresentaciones
             pnCajas.Visible = true;
 
             btnGeneral.Visible = false;
-            btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+            btnSeleccionar.Location = new Point(btnGeneral.Location.X, 172);
 
             // Definir minimas y maximas fechas para los filtros
             dpFechaInicial.MaxDate = new DateTime(2022, 03, 01);
@@ -194,7 +194,7 @@ namespace CapaPresentaciones
                     pnCajas.Visible = true;
 
                     btnGeneral.Visible = true;
-                    btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+                    btnSeleccionar.Location = new Point(btnGeneral.Location.X, 172);
                 }
                 else if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
                 {
@@ -228,7 +228,7 @@ namespace CapaPresentaciones
                     pnCajas.Visible = true;
 
                     btnGeneral.Visible = true;
-                    btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+                    btnSeleccionar.Location = new Point(btnGeneral.Location.X, 172);
                 }
 
                 CriterioSeleccionAsistenciaEstudiantes();
@@ -245,7 +245,7 @@ namespace CapaPresentaciones
                 dpFechaFinal.Visible = false;
 
                 btnGeneral.Visible = true;
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 172);
 
                 fnReporte5();
             }
@@ -312,8 +312,7 @@ namespace CapaPresentaciones
 
                 btnGeneral.Visible = true;
 
-                btnGeneral.Location = new Point(btnGeneral.Location.X, 131);
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 175);
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 172);
 
                 fnReporte8();
             }
