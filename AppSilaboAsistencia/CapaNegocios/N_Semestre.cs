@@ -12,7 +12,12 @@ namespace CapaNegocios
         {
             return new D_Semestre().SemestreActual();
         }
-      
+
+        public static DataTable MostrarSemestres()
+        {
+            return new D_Semestre().MostrarSemestres();
+        }
+
         public void InsertarSemestre(E_Semestre Semestre)
         {
             ObjSemestre.InsertarSemestre(Semestre);
