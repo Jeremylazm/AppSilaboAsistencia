@@ -16,7 +16,7 @@ namespace CapaPresentaciones
         private readonly string CodSemestre;
         private readonly string CodDepartamentoA = E_InicioSesion.CodDepartamentoA;
         public string CodDocenteReporte = "";
-        string NombreDocente;
+        public string NombreDocente;
         C_Reporte Reportes;
 
         public P_ReporteJefe()
@@ -129,10 +129,11 @@ namespace CapaPresentaciones
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
-                P_SeleccionadoAsignatura docente = new P_SeleccionadoAsignatura(txtCodDocente.Text, "Jefe de Departamento", cxtCriterioSeleccion.SelectedItem.ToString());
+                P_SeleccionadoAsignatura docente = new P_SeleccionadoAsignatura("Jefe de Departamento");
                 AddOwnedForm(docente);
                 docente.ShowDialog();
                 docente.Dispose();
+
                 fnReporte5();
             }
         }
