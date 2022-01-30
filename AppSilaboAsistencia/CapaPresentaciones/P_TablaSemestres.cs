@@ -81,23 +81,25 @@ namespace CapaPresentaciones
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            using (P_DatosSemestre EditarRegistro = new P_DatosSemestre())
+            if (A_Dialogo.DialogoPreguntaAceptarCancelar("El editar la fecha de inicio de semestre podria afectar a algunos registros") == DialogResult.Yes)
             {
-               
+                using (P_DatosSemestre EditarRegistro = new P_DatosSemestre())
+                {
 
-                DataTable Semestre = N_Semestre.SemestreActual();
-                string semestreActual = Semestre.Rows[0]["Denominacion"].ToString();
-                EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                Program.Evento = 1;
-                EditarRegistro.txtSemestre.Text = semestreActual.ToString();
-                
 
-                //EditarRegistro.Owner = Fondo;
-                EditarRegistro.ShowDialog();
-                EditarRegistro.Dispose();
-                //Fondo.Dispose();
+                    DataTable Semestre = N_Semestre.SemestreActual();
+                    string semestreActual = Semestre.Rows[0]["Denominacion"].ToString();
+                    EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                    Program.Evento = 1;
+                    EditarRegistro.txtSemestre.Text = semestreActual.ToString();
+
+
+                    //EditarRegistro.Owner = Fondo;
+                    EditarRegistro.ShowDialog();
+                    EditarRegistro.Dispose();
+                    //Fondo.Dispose();
+                }
             }
-
 
         }
 
