@@ -51,5 +51,26 @@ namespace CapaPresentaciones
         {
 
         }
+
+        private void btnSubirPlantilla1_Click(object sender, EventArgs e)
+        {
+            P_SubirArchivo sa = new P_SubirArchivo("Plantilla Silabo");
+            sa.ShowDialog();
+            sa.Dispose();
+        }
+
+        private void btnSubirPlantilla2_Click(object sender, EventArgs e)
+        {
+            P_SubirArchivo sa = new P_SubirArchivo("Plantilla Sesiones 2 y 3 créditos");
+            sa.ShowDialog();
+            sa.Dispose();
+        }
+
+        private void btnSubirPlantilla3_Click(object sender, EventArgs e)
+        {
+            P_SubirArchivo sa = new P_SubirArchivo("Plantilla Sesiones 4 créditos");
+            sa.ShowDialog();
+            sa.Dispose();
+        }
     }
 }
