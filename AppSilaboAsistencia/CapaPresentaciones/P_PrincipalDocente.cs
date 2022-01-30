@@ -88,27 +88,24 @@ namespace CapaPresentaciones
 
         private void P_PrincipalDocente_Load(object sender, EventArgs e)
         {
-            string[] Dias = { "LU", "MA", "MI", "JU", "VI", "SA", "DO" };
+            string[] Dias = { "LU", "MA", "MI", "JU", "VI", "SA" };
 
-            for (int J = 0; J < 7; J++)
+            for (int J = 1; J <= 6; J++)
             {
                 C_Encabezado EncabezadoDia = new C_Encabezado();
-                EncabezadoDia.txtTexto.Name = "Dia0" + (J + 1);
-                EncabezadoDia.txtTexto.Text = Dias[J];
+                EncabezadoDia.txtTexto.Name = "Dia0" + J;
+                EncabezadoDia.txtTexto.Text = Dias[J - 1];
                 pnDias.Controls.Add(EncabezadoDia);
             }
 
-            for (int J = 0; J < 16; J++)
+            for (int I = 1; I <= 14; I++)
             {
                 C_Encabezado EncabezadoHora = new C_Encabezado();
-                EncabezadoHora.txtTexto.Name = "Hora" + (J + 1).ToString("D2");
-                EncabezadoHora.txtTexto.Text = (J + 7).ToString("D2") + " - " + (J + 8).ToString("D2") + "";
+                EncabezadoHora.txtTexto.Name = "Hora" + I.ToString("D2");
+                EncabezadoHora.txtTexto.Text = (I + 6).ToString("D2") + ":00 - " + (I + 7).ToString("D2") + ":00";
                 pnHoras.Controls.Add(EncabezadoHora);
-            }
 
-            for (int I = 1; I <= 16; I++)
-            {
-                for (int J = 1; J <= 7; J++)
+                for (int J = 1; J <= 6; J++)
                 {
                     C_Evento EventoPersonalizado = new C_Evento();
                     EventoPersonalizado.btnEvento.Name = "Evento" + I.ToString("D2") + "_" + J.ToString("D2");
@@ -124,6 +121,7 @@ namespace CapaPresentaciones
                 string Asignatura = FilaHorario["CodAsignatura"].ToString();
                 string Nombre = FilaHorario["NombreAsignatura"].ToString();
                 string Tipo = FilaHorario["Tipo"].ToString();
+                string TipoCompleto = "";
                 string Aula = FilaHorario["Aula"].ToString();
                 string Modalidad = FilaHorario["Modalidad"].ToString();
                 string Dia = FilaHorario["Dia"].ToString(); 
@@ -154,10 +152,10 @@ namespace CapaPresentaciones
 
                                 EventoPersonalizado.btnEvento.Text = Asignatura;
                                 if (Tipo.Equals("T"))
-                                    Tipo = "TEORÍA";
+                                    TipoCompleto = "TEORÍA";
                                 else
-                                    Tipo = "PRÁCTICA";
-                                EventoPersonalizado.ttEvento.SetToolTip(EventoPersonalizado.btnEvento, "<b>ASIGNATURA:</b> " + Nombre + "<br/><b>TIPO:</b> " + Tipo + "<br/><b>AULA:</b> " + Aula + "<br/><b>MODALIDAD:</b> " + Modalidad);
+                                    TipoCompleto = "PRÁCTICA";
+                                EventoPersonalizado.ttEvento.SetToolTip(EventoPersonalizado.btnEvento, "<b>ASIGNATURA:</b> " + Nombre + "<br/><b>TIPO:</b> " + TipoCompleto + "<br/><b>AULA:</b> " + Aula + "<br/><b>MODALIDAD:</b> " + Modalidad);
                                 HorasAsignatura.RemoveAt(0);
                             }
                         }

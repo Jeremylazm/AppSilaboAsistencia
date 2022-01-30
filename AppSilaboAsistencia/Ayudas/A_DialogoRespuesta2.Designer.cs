@@ -374,7 +374,7 @@ namespace Ayudas
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "A_DialogoRespuesta2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dialogo de Pregunta";
+            this.Text = "Dialogo";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.P_DialogoRespuesta2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();

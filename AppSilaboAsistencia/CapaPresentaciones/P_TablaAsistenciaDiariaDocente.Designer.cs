@@ -361,13 +361,12 @@ namespace CapaPresentaciones
 			this.cbxObservaciones.Items.AddRange(new object[] {
             "",
             "PERMISO",
-            "TARDE",
             "FALTO SIN JUSTIFICAR"});
 			this.cbxObservaciones.Name = "cbxObservaciones";
 			// 
 			// Column2
 			// 
-			this.Column2.HeaderText = "Id.";
+			this.Column2.HeaderText = "Nro.";
 			this.Column2.Name = "Column2";
 			// 
 			// Column3
@@ -387,7 +386,7 @@ namespace CapaPresentaciones
 			// 
 			// Column6
 			// 
-			this.Column6.HeaderText = "Nombre";
+			this.Column6.HeaderText = "Nombres";
 			this.Column6.Name = "Column6";
 			// 
 			// Column7
@@ -470,6 +469,7 @@ namespace CapaPresentaciones
 			this.ckbMarcarTodos.ThreeState = false;
 			this.ckbMarcarTodos.ToolTipText = null;
 			this.ckbMarcarTodos.CheckedChanged += new System.EventHandler<Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs>(this.ckbMarcarTodos_CheckedChanged);
+			this.ckbMarcarTodos.Click += new System.EventHandler(this.ckbMarcarTodos_Click);
 			// 
 			// ListaImagenes
 			// 
@@ -794,19 +794,19 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuLabel lblMarcarTodos;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnGuardar;
         private Bunifu.UI.WinForms.BunifuLabel lblSemestre;
-        private System.Windows.Forms.DataGridViewImageColumn ckbAsistencia;
-        private System.Windows.Forms.DataGridViewComboBoxColumn cbxObservaciones;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         public Bunifu.UI.WinForms.BunifuLabel txtSemestre;
         private Bunifu.UI.WinForms.BunifuSeparator lnSemestre;
         public Bunifu.UI.WinForms.BunifuLabel txtFecha;
         private Bunifu.UI.WinForms.BunifuSeparator lnFecha;
         private Bunifu.UI.WinForms.BunifuTextBox txtBuscar;
-    }
+		private System.Windows.Forms.DataGridViewImageColumn ckbAsistencia;
+		private System.Windows.Forms.DataGridViewComboBoxColumn cbxObservaciones;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+	}
 }

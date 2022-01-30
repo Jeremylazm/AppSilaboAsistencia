@@ -11,6 +11,7 @@ using System.Drawing.Drawing2D;
 using Ayudas;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 
 namespace CapaPresentaciones
 {
@@ -283,8 +284,19 @@ namespace CapaPresentaciones
             {
                 ActualizarColor();
                 Close();
-                P_InicioSesion Login = new P_InicioSesion();
-                Login.Show();
+                try
+                {
+                    Thread Tarea = new Thread(() =>
+                    {
+                        P_InicioSesion Login = new P_InicioSesion();
+                        Application.Run(Login);
+                    });
+                    Tarea.Start();
+                }
+                catch (Exception)
+                {
+                    A_Dialogo.DialogoError("Error al mostrar el inicio de sesión");
+                }
             }
             else
             {
@@ -369,20 +381,48 @@ namespace CapaPresentaciones
             CargarDatosUsuario();
             GestionarAcceso();
 
-            //if (E_InicioSesion.Acceso != "Administrador")
-            //{
-            //    Principal = new P_PrincipalDocente
-            //    {
-            //        HoraServidor = pHoraServidor,
-            //        TopLevel = false,
-            //        Dock = DockStyle.Fill
-            //    };
+            if (E_InicioSesion.Acceso == "Jefe de Departamento")
+            {
+                AbrirFormularios<P_DatosDocente>();
+                AbrirFormularios<P_TablaCatálogo>();
+                AbrirFormularios<P_ReporteJefe>();
+                AbrirFormularios<P_HistorialAsistenciasDocentes>();
+            }
 
-            //    pnContenedor.Controls.Add(Principal);
-            //    pnContenedor.Tag = Principal;
-            //    Principal.Show();
-            //    Principal.BringToFront();
-            //}
+            if (E_InicioSesion.Acceso == "Director de Escuela")
+            {
+                AbrirFormularios<P_TablaAsignaturas>();
+                AbrirFormularios<P_ReporteDirector>();
+            }
+
+            if (E_InicioSesion.Acceso != "Administrador")
+            {
+                EditarPerfil();
+                AbrirFormularios<P_TablaAsignaturasAsignadasEstudiantes>();
+                AbrirFormularios<P_TablaAsignaturasAsignadasSilabos>();
+                AbrirFormularios<P_TablaAsignaturasAsignadasAsistencias>();
+                AbrirFormularios<P_TablaAsignaturasAsignadasPlanSesiones>();
+                AbrirFormularios<P_ReporteDocente>();
+
+                Principal = new P_PrincipalDocente
+                {
+                    HoraServidor = pHoraServidor,
+                    TopLevel = false,
+                    Dock = DockStyle.Fill
+                };
+
+                pnContenedor.Controls.Add(Principal);
+                pnContenedor.Tag = Principal;
+                Principal.Show();
+                Principal.BringToFront();
+            }
+            else
+            {
+                AbrirFormularios<P_TablaPlantillas>();
+                AbrirFormularios<P_TablaSemestres>();
+            }
+
+            ActualizarColor();
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -400,7 +440,8 @@ namespace CapaPresentaciones
             }
             else
             {
-                Principal.HoraFecha.Start();
+                if (E_InicioSesion.Acceso != "Administrador")
+                    Principal.HoraFecha.Start();
             }
         }
 
@@ -571,7 +612,7 @@ namespace CapaPresentaciones
         private void btnSemestres_Click(object sender, EventArgs e)
         {
             ActualizarColor();
-            AbrirFormularios<P_TablaSemestre>();
+            AbrirFormularios<P_TablaSemestres>();
         }
 
         public Tuple<string, string> BuscarEstudiante(List<Tuple<string, string>> ListaActualizada, string CodEstudiante)
@@ -588,19 +629,24 @@ namespace CapaPresentaciones
 
         private void ActualizarEstudiantes()
         {
+            A_Dialogo.EstablecerCarga(this, true);
+
             // Obtener relación de departamentos académicos
             DataTable DptoAcademico = N_DepartamentoAcademico.MostrarDepartamentos();
             bool Ok = true;
+
             foreach (DataRow Dpto in DptoAcademico.Rows)
             {
                 // Obtener relación de asignaturas del catálogo de cada departamento académico
                 string CodDptoA = Dpto[0].ToString();
                 DataTable Asignaturas = N_Catalogo.MostrarCatalogo(CodSemestre, CodDptoA);
+
                 foreach (DataRow Asignatura in Asignaturas.Rows)
                 {
                     // Actualizar la relación de estudiantes de la asignatura
                     string CodAsignatura = Asignatura[0].ToString();
                     string CodDocente = Asignatura[4].ToString();
+
                     Tuple<int, int> Info = A_Scrapper.ActualizarEstudiantesAsignatura(CodAsignatura, CodDocente, false);
                     if (Info == null)
                     {
@@ -609,15 +655,19 @@ namespace CapaPresentaciones
                     }
                 }
             }
+
+            A_Dialogo.EstablecerCarga(this, false);
+
             if (Ok)
             {
-                A_Dialogo.DialogoInformacion("La actualización ha terminado...");
+                A_Dialogo.DialogoInformacion("La actualización ha terminado");
             }
         }
 
         private void btnEstudiantes_Click(object sender, EventArgs e)
         {
-            ActualizarEstudiantes();
+            ActualizarColor();
+            A_Dialogo.DialogoCargando(ActualizarEstudiantes, "Actualizando...", "Espere a que se actualicen los estudiantes", "Error al actualizar los estudiantes");
         }
 
         private void MarcarAsistencia()

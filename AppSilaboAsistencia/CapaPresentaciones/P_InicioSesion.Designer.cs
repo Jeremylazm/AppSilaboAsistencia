@@ -29,18 +29,20 @@ namespace CapaPresentaciones
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_InicioSesion));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties21 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties22 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties23 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties24 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties17 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties18 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties19 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties20 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuAnimatorNS.Animation animation1 = new Bunifu.UI.WinForms.BunifuAnimatorNS.Animation();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
-            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse();
+            this.Bordeado = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.lblUsuario = new Bunifu.UI.WinForms.BunifuLabel();
             this.txtUsuario = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtContraseña = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -57,7 +59,12 @@ namespace CapaPresentaciones
             this.pbErrorContraseña = new Bunifu.UI.WinForms.BunifuImageButton();
             this.Docker = new Bunifu.UI.WinForms.BunifuFormDock();
             this.btnMostrarOcultarContraseña = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.pnBienvenida = new Bunifu.UI.WinForms.BunifuPanel();
+            this.TiempoDesaparicion = new System.Windows.Forms.Timer(this.components);
+            this.AparicionBienvenida = new Bunifu.UI.WinForms.BunifuTransition(this.components);
+            this.Bienvenida = new ControlesPerzonalizados.C_Bienvenida();
             this.pnLogo.SuspendLayout();
+            this.pnBienvenida.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -68,6 +75,7 @@ namespace CapaPresentaciones
             this.lblTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblTitulo.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblTitulo.CursorType = System.Windows.Forms.Cursors.Default;
+            this.AparicionBienvenida.SetDecoration(this.lblTitulo, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblTitulo.Font = new System.Drawing.Font("Montserrat Alternates", 14F);
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
@@ -91,6 +99,7 @@ namespace CapaPresentaciones
             this.lblUsuario.AutoEllipsis = false;
             this.lblUsuario.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblUsuario.CursorType = System.Windows.Forms.Cursors.Default;
+            this.AparicionBienvenida.SetDecoration(this.lblUsuario, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lblUsuario.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblUsuario.Location = new System.Drawing.Point(21, 103);
@@ -120,6 +129,7 @@ namespace CapaPresentaciones
             this.txtUsuario.BorderThickness = 1;
             this.txtUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtUsuario.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.AparicionBienvenida.SetDecoration(this.txtUsuario, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.txtUsuario.DefaultFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.DefaultText = "";
             this.txtUsuario.FillColor = System.Drawing.Color.White;
@@ -139,26 +149,26 @@ namespace CapaPresentaciones
             this.txtUsuario.Modified = false;
             this.txtUsuario.Multiline = false;
             this.txtUsuario.Name = "txtUsuario";
-            stateProperties21.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties21.FillColor = System.Drawing.Color.Empty;
-            stateProperties21.ForeColor = System.Drawing.Color.Empty;
-            stateProperties21.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtUsuario.OnActiveState = stateProperties21;
-            stateProperties22.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties22.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties22.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtUsuario.OnDisabledState = stateProperties22;
-            stateProperties23.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties23.FillColor = System.Drawing.Color.Empty;
-            stateProperties23.ForeColor = System.Drawing.Color.Empty;
-            stateProperties23.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtUsuario.OnHoverState = stateProperties23;
-            stateProperties24.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties24.FillColor = System.Drawing.Color.White;
-            stateProperties24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties24.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtUsuario.OnIdleState = stateProperties24;
+            stateProperties5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties5.FillColor = System.Drawing.Color.Empty;
+            stateProperties5.ForeColor = System.Drawing.Color.Empty;
+            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtUsuario.OnActiveState = stateProperties5;
+            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtUsuario.OnDisabledState = stateProperties6;
+            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties7.FillColor = System.Drawing.Color.Empty;
+            stateProperties7.ForeColor = System.Drawing.Color.Empty;
+            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtUsuario.OnHoverState = stateProperties7;
+            stateProperties8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties8.FillColor = System.Drawing.Color.White;
+            stateProperties8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtUsuario.OnIdleState = stateProperties8;
             this.txtUsuario.Padding = new System.Windows.Forms.Padding(3);
             this.txtUsuario.PasswordChar = '\0';
             this.txtUsuario.PlaceholderForeColor = System.Drawing.Color.DimGray;
@@ -200,6 +210,7 @@ namespace CapaPresentaciones
             this.txtContraseña.BorderThickness = 1;
             this.txtContraseña.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtContraseña.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.AparicionBienvenida.SetDecoration(this.txtContraseña, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.txtContraseña.DefaultFont = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContraseña.DefaultText = "";
             this.txtContraseña.FillColor = System.Drawing.Color.White;
@@ -218,26 +229,26 @@ namespace CapaPresentaciones
             this.txtContraseña.Modified = false;
             this.txtContraseña.Multiline = false;
             this.txtContraseña.Name = "txtContraseña";
-            stateProperties17.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties17.FillColor = System.Drawing.Color.Empty;
-            stateProperties17.ForeColor = System.Drawing.Color.Empty;
-            stateProperties17.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtContraseña.OnActiveState = stateProperties17;
-            stateProperties18.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties18.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties18.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtContraseña.OnDisabledState = stateProperties18;
-            stateProperties19.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
-            stateProperties19.FillColor = System.Drawing.Color.Empty;
-            stateProperties19.ForeColor = System.Drawing.Color.Empty;
-            stateProperties19.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtContraseña.OnHoverState = stateProperties19;
-            stateProperties20.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties20.FillColor = System.Drawing.Color.White;
-            stateProperties20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            stateProperties20.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtContraseña.OnIdleState = stateProperties20;
+            stateProperties1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties1.FillColor = System.Drawing.Color.Empty;
+            stateProperties1.ForeColor = System.Drawing.Color.Empty;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtContraseña.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtContraseña.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtContraseña.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties4.FillColor = System.Drawing.Color.White;
+            stateProperties4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtContraseña.OnIdleState = stateProperties4;
             this.txtContraseña.Padding = new System.Windows.Forms.Padding(3);
             this.txtContraseña.PasswordChar = '\0';
             this.txtContraseña.PlaceholderForeColor = System.Drawing.Color.DimGray;
@@ -267,6 +278,7 @@ namespace CapaPresentaciones
             this.lblContraseña.AutoEllipsis = false;
             this.lblContraseña.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblContraseña.CursorType = System.Windows.Forms.Cursors.Default;
+            this.AparicionBienvenida.SetDecoration(this.lblContraseña, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lblContraseña.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblContraseña.Location = new System.Drawing.Point(21, 198);
@@ -297,11 +309,12 @@ namespace CapaPresentaciones
             this.btnIngresar.ColorContrastOnClick = 45;
             this.btnIngresar.ColorContrastOnHover = 45;
             this.btnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            this.btnIngresar.CustomizableEdges = borderEdges3;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnIngresar.CustomizableEdges = borderEdges1;
+            this.AparicionBienvenida.SetDecoration(this.btnIngresar, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.btnIngresar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnIngresar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnIngresar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -380,6 +393,7 @@ namespace CapaPresentaciones
             this.pnLogo.Controls.Add(this.lblUniversidad);
             this.pnLogo.Controls.Add(this.pbLogo);
             this.pnLogo.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.AparicionBienvenida.SetDecoration(this.pnLogo, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.pnLogo.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnLogo.Location = new System.Drawing.Point(376, 0);
             this.pnLogo.Margin = new System.Windows.Forms.Padding(0);
@@ -398,6 +412,7 @@ namespace CapaPresentaciones
             this.btnCerrar.AllowZoomingOnFocus = false;
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
+            this.AparicionBienvenida.SetDecoration(this.btnCerrar, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnCerrar.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnCerrar.ErrorImage")));
             this.btnCerrar.FadeWhenInactive = false;
@@ -431,6 +446,7 @@ namespace CapaPresentaciones
             this.lblUniversidad.AutoSize = false;
             this.lblUniversidad.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblUniversidad.CursorType = System.Windows.Forms.Cursors.Default;
+            this.AparicionBienvenida.SetDecoration(this.lblUniversidad, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lblUniversidad.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblUniversidad.Font = new System.Drawing.Font("Montserrat Alternates", 12F);
             this.lblUniversidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
@@ -453,6 +469,7 @@ namespace CapaPresentaciones
             this.pbLogo.AllowZoomingOnFocus = false;
             this.pbLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.pbLogo.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.AparicionBienvenida.SetDecoration(this.pbLogo, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.pbLogo.DialogResult = System.Windows.Forms.DialogResult.None;
             this.pbLogo.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbLogo.ErrorImage")));
             this.pbLogo.FadeWhenInactive = false;
@@ -482,6 +499,7 @@ namespace CapaPresentaciones
             // 
             this.btnOlvidarContraseña.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnOlvidarContraseña.AutoSize = true;
+            this.AparicionBienvenida.SetDecoration(this.btnOlvidarContraseña, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.btnOlvidarContraseña.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOlvidarContraseña.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.btnOlvidarContraseña.LinkColor = System.Drawing.Color.Black;
@@ -493,7 +511,7 @@ namespace CapaPresentaciones
             this.btnOlvidarContraseña.Text = "Olvidé mi contraseña";
             this.btnOlvidarContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnOlvidarContraseña.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
-            this.btnOlvidarContraseña.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnOlvidarContraseña_LinkClicked_1);
+            this.btnOlvidarContraseña.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnOlvidarContraseña_LinkClicked);
             // 
             // lblErrorUsuario
             // 
@@ -501,6 +519,7 @@ namespace CapaPresentaciones
             this.lblErrorUsuario.AutoEllipsis = false;
             this.lblErrorUsuario.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblErrorUsuario.CursorType = System.Windows.Forms.Cursors.Default;
+            this.AparicionBienvenida.SetDecoration(this.lblErrorUsuario, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lblErrorUsuario.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblErrorUsuario.Location = new System.Drawing.Point(58, 172);
@@ -519,6 +538,7 @@ namespace CapaPresentaciones
             this.lblErrorContraseña.AutoEllipsis = false;
             this.lblErrorContraseña.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblErrorContraseña.CursorType = System.Windows.Forms.Cursors.Default;
+            this.AparicionBienvenida.SetDecoration(this.lblErrorContraseña, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.lblErrorContraseña.Font = new System.Drawing.Font("Montserrat Alternates", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.lblErrorContraseña.Location = new System.Drawing.Point(58, 267);
@@ -541,6 +561,7 @@ namespace CapaPresentaciones
             this.pbErrorUsuario.AllowZoomingOnFocus = false;
             this.pbErrorUsuario.BackColor = System.Drawing.Color.White;
             this.pbErrorUsuario.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.AparicionBienvenida.SetDecoration(this.pbErrorUsuario, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.pbErrorUsuario.DialogResult = System.Windows.Forms.DialogResult.None;
             this.pbErrorUsuario.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbErrorUsuario.ErrorImage")));
             this.pbErrorUsuario.FadeWhenInactive = false;
@@ -577,6 +598,7 @@ namespace CapaPresentaciones
             this.pbErrorContraseña.AllowZoomingOnFocus = false;
             this.pbErrorContraseña.BackColor = System.Drawing.Color.White;
             this.pbErrorContraseña.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.AparicionBienvenida.SetDecoration(this.pbErrorContraseña, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.pbErrorContraseña.DialogResult = System.Windows.Forms.DialogResult.None;
             this.pbErrorContraseña.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbErrorContraseña.ErrorImage")));
             this.pbErrorContraseña.FadeWhenInactive = false;
@@ -607,7 +629,7 @@ namespace CapaPresentaciones
             // 
             this.Docker.AllowFormDragging = true;
             this.Docker.AllowFormDropShadow = true;
-            this.Docker.AllowFormResizing = true;
+            this.Docker.AllowFormResizing = false;
             this.Docker.AllowHidingBottomRegion = true;
             this.Docker.AllowOpacityChangesWhileDragging = false;
             this.Docker.BorderOptions.BottomBorder.BorderColor = System.Drawing.Color.Silver;
@@ -653,6 +675,7 @@ namespace CapaPresentaciones
             this.btnMostrarOcultarContraseña.AllowZoomingOnFocus = false;
             this.btnMostrarOcultarContraseña.BackColor = System.Drawing.Color.White;
             this.btnMostrarOcultarContraseña.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AparicionBienvenida.SetDecoration(this.btnMostrarOcultarContraseña, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.btnMostrarOcultarContraseña.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnMostrarOcultarContraseña.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnMostrarOcultarContraseña.ErrorImage")));
             this.btnMostrarOcultarContraseña.FadeWhenInactive = false;
@@ -680,12 +703,65 @@ namespace CapaPresentaciones
             this.btnMostrarOcultarContraseña.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMostrarOcultarContraseña_MouseDown);
             this.btnMostrarOcultarContraseña.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMostrarOcultarContraseña_MouseUp);
             // 
+            // pnBienvenida
+            // 
+            this.pnBienvenida.BackgroundColor = System.Drawing.Color.White;
+            this.pnBienvenida.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnBienvenida.BackgroundImage")));
+            this.pnBienvenida.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnBienvenida.BorderColor = System.Drawing.Color.Transparent;
+            this.pnBienvenida.BorderRadius = 3;
+            this.pnBienvenida.BorderThickness = 1;
+            this.pnBienvenida.Controls.Add(this.Bienvenida);
+            this.AparicionBienvenida.SetDecoration(this.pnBienvenida, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.pnBienvenida.Location = new System.Drawing.Point(0, 0);
+            this.pnBienvenida.Margin = new System.Windows.Forms.Padding(0);
+            this.pnBienvenida.Name = "pnBienvenida";
+            this.pnBienvenida.ShowBorders = true;
+            this.pnBienvenida.Size = new System.Drawing.Size(23, 23);
+            this.pnBienvenida.TabIndex = 15;
+            this.pnBienvenida.Visible = false;
+            // 
+            // TiempoDesaparicion
+            // 
+            this.TiempoDesaparicion.Tick += new System.EventHandler(this.TiempoDesaparicion_Tick);
+            // 
+            // AparicionBienvenida
+            // 
+            this.AparicionBienvenida.AnimationType = Bunifu.UI.WinForms.BunifuAnimatorNS.AnimationType.Transparent;
+            this.AparicionBienvenida.Cursor = null;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 1F;
+            this.AparicionBienvenida.DefaultAnimation = animation1;
+            // 
+            // Bienvenida
+            // 
+            this.Bienvenida.BackColor = System.Drawing.Color.White;
+            this.AparicionBienvenida.SetDecoration(this.Bienvenida, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
+            this.Bienvenida.Location = new System.Drawing.Point(0, 0);
+            this.Bienvenida.Name = "Bienvenida";
+            this.Bienvenida.Size = new System.Drawing.Size(1330, 768);
+            this.Bienvenida.TabIndex = 0;
+            // 
             // P_InicioSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(631, 388);
+            this.Controls.Add(this.pnBienvenida);
             this.Controls.Add(this.btnMostrarOcultarContraseña);
             this.Controls.Add(this.pbErrorContraseña);
             this.Controls.Add(this.pbErrorUsuario);
@@ -699,11 +775,13 @@ namespace CapaPresentaciones
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.pnLogo);
+            this.AparicionBienvenida.SetDecoration(this, Bunifu.UI.WinForms.BunifuTransition.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "P_InicioSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de Sesión";
             this.pnLogo.ResumeLayout(false);
+            this.pnBienvenida.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -728,5 +806,9 @@ namespace CapaPresentaciones
         private Bunifu.UI.WinForms.BunifuImageButton pbErrorUsuario;
         private Bunifu.UI.WinForms.BunifuFormDock Docker;
         private Bunifu.UI.WinForms.BunifuImageButton btnMostrarOcultarContraseña;
+        private Bunifu.UI.WinForms.BunifuPanel pnBienvenida;
+        private System.Windows.Forms.Timer TiempoDesaparicion;
+        private Bunifu.UI.WinForms.BunifuTransition AparicionBienvenida;
+        private ControlesPerzonalizados.C_Bienvenida Bienvenida;
     }
 }

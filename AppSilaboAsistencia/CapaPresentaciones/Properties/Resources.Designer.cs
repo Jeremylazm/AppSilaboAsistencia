@@ -163,9 +163,9 @@ namespace CapaPresentaciones.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap buscar_archivo {
+        internal static System.Drawing.Bitmap Buscar_Archivo {
             get {
-                object obj = ResourceManager.GetObject("buscar-archivo", resourceCulture);
+                object obj = ResourceManager.GetObject("Buscar_Archivo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -276,6 +276,16 @@ namespace CapaPresentaciones.Properties {
         internal static System.Drawing.Bitmap Correo_2 {
             get {
                 object obj = ResourceManager.GetObject("Correo_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Descargar {
+            get {
+                object obj = ResourceManager.GetObject("Descargar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -733,6 +743,26 @@ namespace CapaPresentaciones.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Plantillas {
+            get {
+                object obj = ResourceManager.GetObject("Plantillas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Plantillas_2 {
+            get {
+                object obj = ResourceManager.GetObject("Plantillas_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Principal {
             get {
                 object obj = ResourceManager.GetObject("Principal", resourceCulture);
@@ -843,6 +873,26 @@ namespace CapaPresentaciones.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Semestres {
+            get {
+                object obj = ResourceManager.GetObject("Semestres", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Semestres_2 {
+            get {
+                object obj = ResourceManager.GetObject("Semestres_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Sílabos {
             get {
                 object obj = ResourceManager.GetObject("Sílabos", resourceCulture);
@@ -856,6 +906,16 @@ namespace CapaPresentaciones.Properties {
         internal static System.Drawing.Bitmap Sílabos_2 {
             get {
                 object obj = ResourceManager.GetObject("Sílabos_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Subir {
+            get {
+                object obj = ResourceManager.GetObject("Subir", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -916,6 +976,26 @@ namespace CapaPresentaciones.Properties {
         internal static System.Drawing.Bitmap Tabla_2 {
             get {
                 object obj = ResourceManager.GetObject("Tabla_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TodosEstudiantes {
+            get {
+                object obj = ResourceManager.GetObject("TodosEstudiantes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TodosEstudiantes_2 {
+            get {
+                object obj = ResourceManager.GetObject("TodosEstudiantes_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

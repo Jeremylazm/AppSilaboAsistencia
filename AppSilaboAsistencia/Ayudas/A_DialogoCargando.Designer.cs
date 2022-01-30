@@ -176,7 +176,7 @@ namespace Ayudas
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "A_DialogoCargando";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dialogo de Error";
+            this.Text = "Cargando...";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,7 +187,7 @@ namespace Ayudas
         private System.Windows.Forms.Timer AparicionFormulario;
         private Bunifu.UI.WinForms.BunifuFormDock Docker;
         private Bunifu.UI.WinForms.BunifuLabel lblTitulo;
-        private Bunifu.UI.WinForms.BunifuLabel lblMensaje;
         private Bunifu.UI.WinForms.BunifuCircleProgress pbProgreso;
+        public Bunifu.UI.WinForms.BunifuLabel lblMensaje;
     }
 }

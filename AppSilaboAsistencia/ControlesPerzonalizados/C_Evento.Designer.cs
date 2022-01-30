@@ -66,7 +66,7 @@ namespace ControlesPerzonalizados
             this.btnEvento.DisabledForecolor = System.Drawing.Color.White;
             this.btnEvento.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEvento.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
-            this.btnEvento.Font = new System.Drawing.Font("Montserrat Alternates", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEvento.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEvento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEvento.IconLeft = null;
             this.btnEvento.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -87,6 +87,7 @@ namespace ControlesPerzonalizados
             this.btnEvento.IdleIconRightImage = null;
             this.btnEvento.IndicateFocus = false;
             this.btnEvento.Location = new System.Drawing.Point(0, 0);
+            this.btnEvento.Margin = new System.Windows.Forms.Padding(2);
             this.btnEvento.Name = "btnEvento";
             this.btnEvento.OnDisabledState.BorderColor = System.Drawing.Color.Gainsboro;
             this.btnEvento.OnDisabledState.BorderRadius = 15;
@@ -120,7 +121,7 @@ namespace ControlesPerzonalizados
             this.btnEvento.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.btnEvento.OnPressedState.IconLeftImage = null;
             this.btnEvento.OnPressedState.IconRightImage = null;
-            this.btnEvento.Size = new System.Drawing.Size(105, 25);
+            this.btnEvento.Size = new System.Drawing.Size(136, 31);
             this.btnEvento.TabIndex = 0;
             this.btnEvento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnEvento.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -172,8 +173,9 @@ namespace ControlesPerzonalizados
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btnEvento);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "C_Evento";
-            this.Size = new System.Drawing.Size(105, 25);
+            this.Size = new System.Drawing.Size(136, 31);
             this.ttEvento.SetToolTip(this, "");
             this.ttEvento.SetToolTipIcon(this, null);
             this.ttEvento.SetToolTipTitle(this, "");

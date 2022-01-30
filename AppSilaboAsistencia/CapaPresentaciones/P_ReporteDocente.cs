@@ -39,8 +39,11 @@ namespace CapaPresentaciones
             dpFechaFinal.MinDate = new DateTime(2021, 09, 01);
 
             // Inicializar las fechas de los reportes         
-            dpFechaInicial.Value = new DateTime(2021, 10, 18);
-            dpFechaFinal.Value = new DateTime(2021, 11, 05);
+            //dpFechaInicial.Value = new DateTime(2021, 10, 18);
+            //dpFechaFinal.Value = new DateTime(2021, 11, 05);
+            
+            dpFechaInicial.Value = Convert.ToDateTime(Semestre.Rows[0][1], CultureInfo.GetCultureInfo("es-ES"));
+            dpFechaFinal.Value = DateTime.Today;
 
             AntCriterioSeleccion = cxtCriterioSeleccion.SelectedIndex;
             AntFechaInicial = dpFechaInicial.Value;
@@ -120,21 +123,39 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Docente", cxtCriterioSeleccion.SelectedItem.ToString());
-            AddOwnedForm(Asignaturas);
-            Asignaturas.ShowDialog();
-            Asignaturas.Dispose();
+            lblCodigo.Visible = true;
+            lblNombre.Visible = true;
+            lblEscuelaP.Visible = true;
+            txtCodigo.Visible = true;
+            txtNombre.Visible = true;
+            txtEscuelaP.Visible = true;
+            lnCodigo.Visible = true;
+            lnNombre.Visible = true;
+            lnEscuelaP.Visible = true;
 
-            if (Asignaturas.DialogResult == DialogResult.Yes)
+            if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
             {
-                if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+                P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Docente", cxtCriterioSeleccion.SelectedItem.ToString());
+                AddOwnedForm(Asignaturas);
+                Asignaturas.ShowDialog();
+                Asignaturas.Dispose();
+
+                if (Asignaturas.DialogResult == DialogResult.Yes)
                 {
                     if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
                         fnReporte3();
                     else
                         fnReporte1();
                 }
-                else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
+            }
+            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
+            {
+                P_SeleccionadoAsignatura Asignaturas = new P_SeleccionadoAsignatura("Docente");
+                AddOwnedForm(Asignaturas);
+                Asignaturas.ShowDialog();
+                Asignaturas.Dispose();
+
+                if (Asignaturas.DialogResult == DialogResult.Yes)
                 {
                     fnReporte5();
                 }
@@ -143,11 +164,31 @@ namespace CapaPresentaciones
 
         private void btnGeneral_Click(object sender, EventArgs e)
         {
+            lblCodigo.Visible = false;
+            lblNombre.Visible = false;
+            lblEscuelaP.Visible = false;
+            txtCodigo.Visible = false;
+            txtNombre.Visible = false;
+            txtEscuelaP.Visible = false;
+            lnCodigo.Visible = false;
+            lnNombre.Visible = false;
+            lnEscuelaP.Visible = false;
+
             fnReporte6();
         }
 
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            lblCodigo.Visible = true;
+            lblNombre.Visible = true;
+            lblEscuelaP.Visible = true;
+            txtCodigo.Visible = true;
+            txtNombre.Visible = true;
+            txtEscuelaP.Visible = true;
+            lnCodigo.Visible = true;
+            lnNombre.Visible = true;
+            lnEscuelaP.Visible = true;
+
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
             {
                 lblCriterioSeleccion.Visible = true;
@@ -176,7 +217,7 @@ namespace CapaPresentaciones
                 dpFechaFinal.Visible = false;
 
                 btnGeneral.Visible = true;
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 172);
 
                 fnReporte5();
             }

@@ -669,6 +669,17 @@ BEGIN
 		ORDER BY APaterno
 END;
 GO
+--Segundo Procedimiento para mostrar todos los docentes de una escuela profesional,para P_dialogoAgregarAsistenciaDocente.
+CREATE PROCEDURE spuDosMostrarTodosDocentesDepartamento @CodDepartamentoA VARCHAR(3)
+AS
+BEGIN
+	-- Mostrar la tabla TDocente
+	SELECT CodDocente, NombreCompleto = (APaterno + ' ' + AMaterno + ', ' + Nombre)
+		FROM TDocente
+	    WHERE CodDepartamentoA = @CodDepartamentoA AND CodDocente != '00000'
+		ORDER BY APaterno
+END;
+GO
 
 -- Procedimiento para mostrar los docentes de un departamento académico.
 CREATE PROCEDURE spuMostrarDocentesDepartamento @CodDepartamentoA VARCHAR(3)
@@ -977,7 +988,7 @@ BEGIN
 			 C.CodDocente = D.CodDocente
 		WHERE C.CodSemestre = @CodSemestre AND
 		      SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
-			  (C.CodAsignatura LIKE (@Texto + '%') OR
+			  ((C.CodAsignatura + C.Grupo + C.CodEscuelaP) LIKE (@Texto + '%') OR
 			   A.NombreAsignatura LIKE (@Texto + '%') OR
 			   C.CodEscuelaP = @Texto OR
 			   EP.Nombre LIKE (@Texto + '%') OR
@@ -1497,7 +1508,7 @@ BEGIN
 	SELECT DISTINCT CodEstudiante, APaterno, AMaterno, Nombre
 		FROM TMatricula
 	    WHERE CodSemestre = @CodSemestre AND CodEscuelaP = @CodEscuelaP
-		ORDER BY APaterno ASC
+		ORDER BY APaterno, AMaterno, Nombre ASC
 END;
 GO
 
@@ -2151,7 +2162,7 @@ END;
 GO
 
 -- Procedimiento para mostrar el porcentaje de asistencia de un estudiante para cada una de sus asignaturas
-ALTER PROCEDURE spuAsistenciaAsignaturasEstudiante @CodSemestre VARCHAR(7),
+CREATE PROCEDURE spuAsistenciaAsignaturasEstudiante @CodSemestre VARCHAR(7),
 													@CodEstudiante VARCHAR(6),
 												    @LimFechaInf DATE, -- Formato: dd/mm/yyyy o dd-mm-yyyy
 													@LimFechaSup DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
