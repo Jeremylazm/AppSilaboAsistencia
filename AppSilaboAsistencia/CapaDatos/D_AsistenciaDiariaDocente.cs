@@ -70,6 +70,7 @@ namespace CapaDatos
             {
                 CommandType = CommandType.StoredProcedure
             };
+            Comando.CommandTimeout = 90;
 
             Comando.Parameters.AddWithValue("@CodSemestre", CodSemestre);
             Comando.Parameters.AddWithValue("@LimFechaInf", LimFechaInf); // Formato: yyyy-mm-dd

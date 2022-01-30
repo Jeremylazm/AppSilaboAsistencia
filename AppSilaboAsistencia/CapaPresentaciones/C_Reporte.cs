@@ -1393,7 +1393,7 @@ namespace CapaPresentaciones
             }
         }
 
-        public void fnReporte10(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasDocentes, string CodAsignatura)
+        public string fnReporte10(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasDocentes, string CodAsignatura)
         {
             this.CriterioAsistenciasDocentes = CriterioAsistenciasDocentes;
 
@@ -1403,15 +1403,10 @@ namespace CapaPresentaciones
             // Validar las Fechas dadas
             if (Datos.Rows.Count == 0)
             {
-                A_Dialogo.DialogoInformacion("No hay registros disponibles");
+                A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
 
-                lblTitulo.Text = "";
-                pnSubcampos.Controls.Clear();
-                dgvResumen.Columns.Clear();
-                dgvResultados.Columns.Clear();
-                dgvResultados.Refresh();
+                return "Si";
 
-                //tcGraficos.Controls.Clear();
             }
             else
             {
@@ -1498,6 +1493,7 @@ namespace CapaPresentaciones
                 gxGrafico5.Update();
 
                 tcGraficos.SetPage(IndiceGrafico1);
+                return "No";
                 #endregion ===================== GRÁFICOS =====================
 
             }
@@ -1658,6 +1654,7 @@ namespace CapaPresentaciones
             gxGrafico4.Update();
 
             lblTitulo.Select();
+            tcGraficos.SetPage(IndiceGrafico1);
             #endregion ===================== GRÁFICOS =====================
         }
 
@@ -1945,12 +1942,12 @@ namespace CapaPresentaciones
 
                 gxGrafico4.Update();
 
-                tcGraficos.SetPage(tcGraficos.PageIndex);
+                tcGraficos.SetPage(IndiceGrafico1);
                 #endregion ===================== GRÁFICOS =====================
             }
         }
 
-        public void fnReporte14(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasDocentes, string CodAsignatura)
+        public string fnReporte14(string Titulo, string[] Titulos, string[] Valores, DataTable Datos, string CriterioAsistenciasDocentes, string CodAsignatura)
         {
             this.CriterioAsistenciasDocentes = CriterioAsistenciasDocentes;
 
@@ -1961,11 +1958,7 @@ namespace CapaPresentaciones
             {
                 A_Dialogo.DialogoInformacion("No hay registros entre estas fechas, por favor selecciona otro rango de fechas");
 
-                lblTitulo.Text = "";
-                pnSubcampos.Controls.Clear();
-                dgvResumen.Columns.Clear();
-                dgvResultados.Columns.Clear();
-                dgvResultados.Refresh();
+                return "Si";
 
                 //tcGraficos.Controls.Clear();
             }
@@ -2138,7 +2131,8 @@ namespace CapaPresentaciones
 
                 gxGrafico2.Update();
 
-                tcGraficos.SetPage(tcGraficos.PageIndex);
+                tcGraficos.SetPage(IndiceGrafico1);
+                return "No";
                 #endregion ===================== GRÁFICOS =====================
             }
         }
@@ -2297,6 +2291,7 @@ namespace CapaPresentaciones
             gxGrafico4.Update();
 
             lblTitulo.Select();
+            tcGraficos.SetPage(IndiceGrafico1);
             #endregion ===================== GRÁFICOS =====================
         }
 
@@ -2308,7 +2303,7 @@ namespace CapaPresentaciones
 
         private void dgvResultados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if ((e.RowIndex >= 0) && (e.ColumnIndex == 0) && CriterioAsistenciasDocentes == "Por Asignaturas")// denis cpp
+            if ((e.RowIndex >= 0) && (e.ColumnIndex == 0) && (CriterioAsistenciasDocentes == "Por Asignaturas" || CriterioAsistenciasDocentes=="Por Fechas"))// denis cpp
             {
                 if (CriterioAsistenciasDocentes == "Por Fechas")
                 {
@@ -2329,7 +2324,8 @@ namespace CapaPresentaciones
 
                     string[] ValoresNecesarios = { (pnSubcampos.Controls[0] as C_Campo).Valor, (pnSubcampos.Controls[2] as C_Campo).Valor, (pnSubcampos.Controls[3] as C_Campo).Valor, dgvResultados.CurrentRow.Cells["CodAsignatura"].Value.ToString(), dgvResultados.CurrentRow.Cells["NombreAsignatura"].Value.ToString(), FechaInicial, FechaFinal };
 
-                    DateTime[] FechasNecesarias = { Convert.ToDateTime(Fechas[1], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4]) };
+                    DateTime[] FechasNecesarias = { Convert.ToDateTime(Fechas[1], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4], CultureInfo.GetCultureInfo("es-ES")) };
+                    //DateTime[] FechasNecesarias = { Convert.ToDateTime(Fechas[1], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4], CultureInfo.GetCultureInfo("es-ES")), Convert.ToDateTime(Fechas[4]) };
 
                     P_DialogoReporte DR = new P_DialogoReporte(ValoresNecesarios, FechasNecesarias, "Por Asignaturas D");
                     DR.ShowDialog();

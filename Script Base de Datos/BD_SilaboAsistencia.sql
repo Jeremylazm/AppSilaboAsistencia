@@ -603,7 +603,7 @@ BEGIN
 	-- Mostrar la relación de semestres
 	SELECT Denominacion, FechaInicio = FechaInicio_Formatted 
 	    FROM TSemestre
-		ORDER BY IdSemestre ASC
+		ORDER BY IdSemestre DESC
 END;
 GO
 
