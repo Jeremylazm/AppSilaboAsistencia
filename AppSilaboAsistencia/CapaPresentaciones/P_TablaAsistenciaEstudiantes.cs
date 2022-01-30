@@ -186,12 +186,13 @@ namespace CapaPresentaciones
         {
             //A_Dialogo.DialogoInformacion("esi: "+ N_Catalogo.VerEscuelaAsignatura(CodSemestre,CodAsignatura).ToString());
             //dgvDatos.DataSource= N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, CodAsignatura, txtBuscar.Text);
-            DataTable EstudiantesMatriculados = N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, CodAsignatura, txtBuscar.Text);
-            dgvDatos.DataSource = null;
-            dgvDatos.Rows.Clear();
+            
 
             if (Program.Evento == 0)
 			{
+                DataTable EstudiantesMatriculados = N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, CodAsignatura, txtBuscar.Text);
+                this.dgvDatos.DataSource = null;
+                this.dgvDatos.Rows.Clear();
                 //buscar estudiantes el dgv de agregar
                 if (EstudiantesMatriculados.Rows.Count != 0)
                 {
@@ -244,6 +245,9 @@ namespace CapaPresentaciones
             }
 			else
 			{
+                DataTable EstudiantesMatriculados = N_Matricula.BuscarEstudiantesMatriculadosAsignatura(CodSemestre, CodEscuelaP, CodAsignatura, txtBuscar.Text);
+                this.dgvDatos.DataSource = null;
+                this.dgvDatos.Rows.Clear();
                 //buscar estudiantes el dgv de editar
                 if (EstudiantesMatriculados.Rows.Count != 0)
                 {
@@ -450,10 +454,10 @@ namespace CapaPresentaciones
             bool R = true;
             foreach (DataGridViewRow Fila in dgvDatos.Rows)
             {
-                if (Fila.Cells[0].Tag.Equals(false) && Fila.Cells[0]!=null)
+                if (Fila.Cells[0].Value==ListaImagenes.Images[0])
                 {
                     R = false;
-                    //ckbMarcarTodos.Checked = false;
+                    ckbMarcarTodos.Checked = false;
                     break;
                 }
 
@@ -515,29 +519,14 @@ namespace CapaPresentaciones
                     DataGrid.Rows[e.RowIndex].Cells[0].Value = ListaImagenes.Images[0];
                     DataGrid.Rows[e.RowIndex].Cells[0].Tag = false;
                 }
-                ActualizarCheckBox();
+                //ActualizarCheckBox();
             }
             
         }
 
         private void ckbMarcarTodos_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
         {
-            if (ckbMarcarTodos.Checked)
-            {
-                foreach (DataGridViewRow Fila in dgvDatos.Rows)
-                {
-                    Fila.Cells[0].Value = ListaImagenes.Images[1];
-                    Fila.Cells[0].Tag = true;
-                }
-            }
-            else
-            {
-                foreach (DataGridViewRow Fila in dgvDatos.Rows)
-                {
-                    Fila.Cells[0].Value = ListaImagenes.Images[0];
-                    Fila.Cells[0].Tag = false;
-                }
-            }
+            
         }
         
 
@@ -586,11 +575,13 @@ namespace CapaPresentaciones
                     btnGuardar.Enabled = false;
                 }
                 MostrarEstudiantesNuevoRegistro();
+                
 
             }
             else
             {
                 MostrarEstudiantesRegistrados();
+                
 
             }
             //ActualizarCheckBox();
@@ -660,7 +651,25 @@ namespace CapaPresentaciones
 
 		private void ckbMarcarTodos_Click(object sender, EventArgs e)
 		{
-            //probar
-		}
+            //
+            if (ckbMarcarTodos.Checked)
+            {
+                foreach (DataGridViewRow Fila in dgvDatos.Rows)
+                {
+                    Fila.Cells[0].Value = ListaImagenes.Images[1];
+                    Fila.Cells[0].Tag = true;
+                    Fila.Cells[1].Value = "";
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow Fila in dgvDatos.Rows)
+                {
+                    Fila.Cells[0].Value = ListaImagenes.Images[0];
+                    Fila.Cells[0].Tag = false;
+                    Fila.Cells[1].Value = "";
+                }
+            }
+        }
 	}
 }

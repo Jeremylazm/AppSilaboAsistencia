@@ -53,158 +53,188 @@ namespace CapaPresentaciones
             Close();
         }
 
-        
-
         private void btnDescargarPlantilla1_Click(object sender, EventArgs e)
         {
-            saveFileDialog.Title = "Descargar plantilla de sílabo";
-            saveFileDialog.Filter = "Archivo de Excel | *.xlsx";
-            saveFileDialog.DefaultExt = "xlsx";
-            saveFileDialog.FilterIndex = 1;
-            // El registro de la plantilla
-            DataTable PlantillaSilabo = N_Recursos.DescargarPlantillaSilabo();
-            // Se crea un archivo temporal, para después abrirlo con ClosedXML
-            string path = AppDomain.CurrentDomain.BaseDirectory;
-            string folder = path + "/temp/";
-            string fullFilePath = folder + "temp.xlsx";
-            if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
-            if (File.Exists(fullFilePath)) File.Delete(fullFilePath);
-
-            if (PlantillaSilabo.Rows[0]["PlantillaSilabo"].ToString() != "")
-            {
-                byte[] archivo = PlantillaSilabo.Rows[0]["PlantillaSilabo"] as byte[];
-
-                File.WriteAllBytes(fullFilePath, archivo);
-                XLWorkbook wb = new XLWorkbook(fullFilePath);
-                saveFileDialog.FileName = "Plantilla Sílabo";
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        wb.SaveAs(saveFileDialog.FileName);
-                        A_Dialogo.DialogoConfirmacion("Archivo guardado exitosamente");
-                    }
-                    catch (IOException)
-                    {
-                        A_Dialogo.DialogoError("Cierre el archivo antes de que sea reemplazado");
-                    }
-                }
-            }
-            else
-            {
-                A_Dialogo.DialogoError("Aun no subio una plantilla para descargar");
-            }
-
-            
         }
 
-        private void btnSubirPlantilla1_Click_1(object sender, EventArgs e)
+        private void btnSubirPlantilla1_Click(object sender, EventArgs e)
         {
-            P_SubirArchivo sa = new P_SubirArchivo("Plantilla Silabo");
-            sa.ShowDialog();
-            sa.Dispose();
-        }
 
-        private void btnSubirPlantilla2_Click_1(object sender, EventArgs e)
-        {
-            P_SubirArchivo sa = new P_SubirArchivo("Plantilla Sesiones 2 y 3 créditos");
-            sa.ShowDialog();
-            sa.Dispose();
-        }
-
-        private void btnSubirPlantilla3_Click_1(object sender, EventArgs e)
-        {
-            P_SubirArchivo sa = new P_SubirArchivo("Plantilla Sesiones 4 créditos");
-            sa.ShowDialog();
-            sa.Dispose();
         }
 
         private void btnDescargarPlantilla2_Click(object sender, EventArgs e)
         {
-            saveFileDialog.Title = "Descargar plantilla de sílabo";
-            saveFileDialog.Filter = "Archivo de Excel | *.xlsx";
-            saveFileDialog.DefaultExt = "xlsx";
-            saveFileDialog.FilterIndex = 1;
-            // El registro de la plantilla
-            DataTable PlantillaSilabo = N_Recursos.DescargarPlantillaPlanSesiones2y3();
-            // Se crea un archivo temporal, para después abrirlo con ClosedXML
-            string path = AppDomain.CurrentDomain.BaseDirectory;
-            string folder = path + "/temp/";
-            string fullFilePath = folder + "temp.xlsx";
-            if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
-            if (File.Exists(fullFilePath)) File.Delete(fullFilePath);
-            
-            if (PlantillaSilabo.Rows[0]["PlantillaPlanSesiones2y3"].ToString()!="")
-            {
-                byte[] archivo = PlantillaSilabo.Rows[0]["PlantillaPlanSesiones2y3"] as byte[];
+        }
 
-                File.WriteAllBytes(fullFilePath, archivo);
-                XLWorkbook wb = new XLWorkbook(fullFilePath);
-                saveFileDialog.FileName = "Plantilla Plan de Sesiones de 2 y 3 créditos";
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        wb.SaveAs(saveFileDialog.FileName);
-                        A_Dialogo.DialogoConfirmacion("Archivo guardado exitosamente");
-                    }
-                    catch (IOException)
-                    {
-                        A_Dialogo.DialogoError("Cierre el archivo antes de que sea reemplazado");
-                    }
-                }
-            }
-            else
-            {
-                A_Dialogo.DialogoError("Aun no subio una plantilla para descargar");
-            }
-            
+        private void btnSubirPlantilla2_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnDescargarPlantilla3_Click(object sender, EventArgs e)
         {
-            saveFileDialog.Title = "Descargar plantilla de sílabo";
-            saveFileDialog.Filter = "Archivo de Excel | *.xlsx";
-            saveFileDialog.DefaultExt = "xlsx";
-            saveFileDialog.FilterIndex = 1;
-            // El registro de la plantilla
-            DataTable PlantillaSilabo = N_Recursos.DescargarPlantillaPlanSesiones4();
-            // Se crea un archivo temporal, para después abrirlo con ClosedXML
-            string path = AppDomain.CurrentDomain.BaseDirectory;
-            string folder = path + "/temp/";
-            string fullFilePath = folder + "temp.xlsx";
-            if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
 
-            if (File.Exists(fullFilePath)) File.Delete(fullFilePath);
-
-            if (PlantillaSilabo.Rows[0]["PlantillaPlanSesiones4"].ToString() != "")
-            {
-                byte[] archivo = PlantillaSilabo.Rows[0]["PlantillaPlanSesiones4"] as byte[];
-
-                File.WriteAllBytes(fullFilePath, archivo);
-                XLWorkbook wb = new XLWorkbook(fullFilePath);
-                saveFileDialog.FileName = "Plantilla Plan de Sesiones de 4 créditos";
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        wb.SaveAs(saveFileDialog.FileName);
-                        A_Dialogo.DialogoConfirmacion("Archivo guardado exitosamente");
-                    }
-                    catch (IOException)
-                    {
-                        A_Dialogo.DialogoError("Cierre el archivo antes de que sea reemplazado");
-                    }
-                }
-            }
-            else
-            {
-                A_Dialogo.DialogoError("Aun no subio una plantilla para descargar");
-            }
-
-            
         }
+
+        private void btnSubirPlantilla3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        //private void btnDescargarPlantilla1_Click(object sender, EventArgs e)
+        //{
+        //    saveFileDialog.Title = "Descargar plantilla de sílabo";
+        //    saveFileDialog.Filter = "Archivo de Excel | *.xlsx";
+        //    saveFileDialog.DefaultExt = "xlsx";
+        //    saveFileDialog.FilterIndex = 1;
+        //    // El registro de la plantilla
+        //    DataTable PlantillaSilabo = N_Recursos.DescargarPlantillaSilabo();
+        //    // Se crea un archivo temporal, para después abrirlo con ClosedXML
+        //    string path = AppDomain.CurrentDomain.BaseDirectory;
+        //    string folder = path + "/temp/";
+        //    string fullFilePath = folder + "temp.xlsx";
+        //    if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+
+        //    if (File.Exists(fullFilePath)) File.Delete(fullFilePath);
+
+        //    if (PlantillaSilabo.Rows[0]["PlantillaSilabo"].ToString() != "")
+        //    {
+        //        byte[] archivo = PlantillaSilabo.Rows[0]["PlantillaSilabo"] as byte[];
+
+        //        File.WriteAllBytes(fullFilePath, archivo);
+        //        XLWorkbook wb = new XLWorkbook(fullFilePath);
+        //        saveFileDialog.FileName = "Plantilla Sílabo";
+        //        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+        //        {
+        //            try
+        //            {
+        //                wb.SaveAs(saveFileDialog.FileName);
+        //                A_Dialogo.DialogoConfirmacion("Archivo guardado exitosamente");
+        //            }
+        //            catch (IOException)
+        //            {
+        //                A_Dialogo.DialogoError("Cierre el archivo antes de que sea reemplazado");
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        A_Dialogo.DialogoError("Aun no subio una plantilla para descargar");
+        //    }
+
+
+        //}
+
+        //private void btnSubirPlantilla1_Click_1(object sender, EventArgs e)
+        //{
+        //    P_SubirArchivo sa = new P_SubirArchivo("Plantilla Silabo");
+        //    sa.ShowDialog();
+        //    sa.Dispose();
+        //}
+
+        //private void btnSubirPlantilla2_Click_1(object sender, EventArgs e)
+        //{
+        //    P_SubirArchivo sa = new P_SubirArchivo("Plantilla Sesiones 2 y 3 créditos");
+        //    sa.ShowDialog();
+        //    sa.Dispose();
+        //}
+
+        //private void btnSubirPlantilla3_Click_1(object sender, EventArgs e)
+        //{
+        //    P_SubirArchivo sa = new P_SubirArchivo("Plantilla Sesiones 4 créditos");
+        //    sa.ShowDialog();
+        //    sa.Dispose();
+        //}
+
+        //private void btnDescargarPlantilla2_Click(object sender, EventArgs e)
+        //{
+        //    saveFileDialog.Title = "Descargar plantilla de sílabo";
+        //    saveFileDialog.Filter = "Archivo de Excel | *.xlsx";
+        //    saveFileDialog.DefaultExt = "xlsx";
+        //    saveFileDialog.FilterIndex = 1;
+        //    // El registro de la plantilla
+        //    DataTable PlantillaSilabo = N_Recursos.DescargarPlantillaPlanSesiones2y3();
+        //    // Se crea un archivo temporal, para después abrirlo con ClosedXML
+        //    string path = AppDomain.CurrentDomain.BaseDirectory;
+        //    string folder = path + "/temp/";
+        //    string fullFilePath = folder + "temp.xlsx";
+        //    if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+
+        //    if (File.Exists(fullFilePath)) File.Delete(fullFilePath);
+
+        //    if (PlantillaSilabo.Rows[0]["PlantillaPlanSesiones2y3"].ToString()!="")
+        //    {
+        //        byte[] archivo = PlantillaSilabo.Rows[0]["PlantillaPlanSesiones2y3"] as byte[];
+
+        //        File.WriteAllBytes(fullFilePath, archivo);
+        //        XLWorkbook wb = new XLWorkbook(fullFilePath);
+        //        saveFileDialog.FileName = "Plantilla Plan de Sesiones de 2 y 3 créditos";
+        //        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+        //        {
+        //            try
+        //            {
+        //                wb.SaveAs(saveFileDialog.FileName);
+        //                A_Dialogo.DialogoConfirmacion("Archivo guardado exitosamente");
+        //            }
+        //            catch (IOException)
+        //            {
+        //                A_Dialogo.DialogoError("Cierre el archivo antes de que sea reemplazado");
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        A_Dialogo.DialogoError("Aun no subio una plantilla para descargar");
+        //    }
+
+        //}
+
+        //private void btnDescargarPlantilla3_Click(object sender, EventArgs e)
+        //{
+        //    saveFileDialog.Title = "Descargar plantilla de sílabo";
+        //    saveFileDialog.Filter = "Archivo de Excel | *.xlsx";
+        //    saveFileDialog.DefaultExt = "xlsx";
+        //    saveFileDialog.FilterIndex = 1;
+        //    // El registro de la plantilla
+        //    DataTable PlantillaSilabo = N_Recursos.DescargarPlantillaPlanSesiones4();
+        //    // Se crea un archivo temporal, para después abrirlo con ClosedXML
+        //    string path = AppDomain.CurrentDomain.BaseDirectory;
+        //    string folder = path + "/temp/";
+        //    string fullFilePath = folder + "temp.xlsx";
+        //    if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
+
+        //    if (File.Exists(fullFilePath)) File.Delete(fullFilePath);
+
+        //    if (PlantillaSilabo.Rows[0]["PlantillaPlanSesiones4"].ToString() != "")
+        //    {
+        //        byte[] archivo = PlantillaSilabo.Rows[0]["PlantillaPlanSesiones4"] as byte[];
+
+        //        File.WriteAllBytes(fullFilePath, archivo);
+        //        XLWorkbook wb = new XLWorkbook(fullFilePath);
+        //        saveFileDialog.FileName = "Plantilla Plan de Sesiones de 4 créditos";
+        //        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+        //        {
+        //            try
+        //            {
+        //                wb.SaveAs(saveFileDialog.FileName);
+        //                A_Dialogo.DialogoConfirmacion("Archivo guardado exitosamente");
+        //            }
+        //            catch (IOException)
+        //            {
+        //                A_Dialogo.DialogoError("Cierre el archivo antes de que sea reemplazado");
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        A_Dialogo.DialogoError("Aun no subio una plantilla para descargar");
+        //    }
+
+
+        //}
     }
 }

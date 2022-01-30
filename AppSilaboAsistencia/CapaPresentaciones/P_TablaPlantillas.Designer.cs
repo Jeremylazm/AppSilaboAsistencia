@@ -31,12 +31,12 @@ namespace CapaPresentaciones
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(P_TablaPlantillas));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges7 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges9 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges10 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges11 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges borderEdges12 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderEdges();
             this.lblTitulo = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnCerrar = new Bunifu.UI.WinForms.BunifuImageButton();
             this.pnContenedor = new Bunifu.UI.WinForms.BunifuPanel();
@@ -197,11 +197,11 @@ namespace CapaPresentaciones
             this.btnSubirPlantilla3.ColorContrastOnClick = 45;
             this.btnSubirPlantilla3.ColorContrastOnHover = 45;
             this.btnSubirPlantilla3.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnSubirPlantilla3.CustomizableEdges = borderEdges1;
+            borderEdges7.BottomLeft = true;
+            borderEdges7.BottomRight = true;
+            borderEdges7.TopLeft = true;
+            borderEdges7.TopRight = true;
+            this.btnSubirPlantilla3.CustomizableEdges = borderEdges7;
             this.btnSubirPlantilla3.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnSubirPlantilla3.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSubirPlantilla3.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -266,6 +266,7 @@ namespace CapaPresentaciones
             this.btnSubirPlantilla3.TextMarginLeft = 0;
             this.btnSubirPlantilla3.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnSubirPlantilla3.UseDefaultRadiusAndThickness = true;
+            this.btnSubirPlantilla3.Click += new System.EventHandler(this.btnSubirPlantilla3_Click);
             // 
             // btnDescargarPlantilla3
             // 
@@ -287,11 +288,11 @@ namespace CapaPresentaciones
             this.btnDescargarPlantilla3.ColorContrastOnClick = 45;
             this.btnDescargarPlantilla3.ColorContrastOnHover = 45;
             this.btnDescargarPlantilla3.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnDescargarPlantilla3.CustomizableEdges = borderEdges2;
+            borderEdges8.BottomLeft = true;
+            borderEdges8.BottomRight = true;
+            borderEdges8.TopLeft = true;
+            borderEdges8.TopRight = true;
+            this.btnDescargarPlantilla3.CustomizableEdges = borderEdges8;
             this.btnDescargarPlantilla3.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnDescargarPlantilla3.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnDescargarPlantilla3.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -356,6 +357,7 @@ namespace CapaPresentaciones
             this.btnDescargarPlantilla3.TextMarginLeft = 0;
             this.btnDescargarPlantilla3.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnDescargarPlantilla3.UseDefaultRadiusAndThickness = true;
+            this.btnDescargarPlantilla3.Click += new System.EventHandler(this.btnDescargarPlantilla3_Click);
             // 
             // gbxPlantilla2
             // 
@@ -369,9 +371,9 @@ namespace CapaPresentaciones
             this.gbxPlantilla2.Location = new System.Drawing.Point(34, 183);
             this.gbxPlantilla2.Name = "gbxPlantilla2";
             this.gbxPlantilla2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gbxPlantilla2.Size = new System.Drawing.Size(345, 23);
+            this.gbxPlantilla2.Size = new System.Drawing.Size(372, 23);
             this.gbxPlantilla2.TabIndex = 89;
-            this.gbxPlantilla2.Text = "Plantilla de Plan de Sesiones (3 créditos)";
+            this.gbxPlantilla2.Text = "Plantilla de Plan de Sesiones (2 y 3 créditos)";
             this.gbxPlantilla2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.gbxPlantilla2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -413,11 +415,11 @@ namespace CapaPresentaciones
             this.btnSubirPlantilla2.ColorContrastOnClick = 45;
             this.btnSubirPlantilla2.ColorContrastOnHover = 45;
             this.btnSubirPlantilla2.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            this.btnSubirPlantilla2.CustomizableEdges = borderEdges3;
+            borderEdges9.BottomLeft = true;
+            borderEdges9.BottomRight = true;
+            borderEdges9.TopLeft = true;
+            borderEdges9.TopRight = true;
+            this.btnSubirPlantilla2.CustomizableEdges = borderEdges9;
             this.btnSubirPlantilla2.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnSubirPlantilla2.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSubirPlantilla2.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -482,6 +484,7 @@ namespace CapaPresentaciones
             this.btnSubirPlantilla2.TextMarginLeft = 0;
             this.btnSubirPlantilla2.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnSubirPlantilla2.UseDefaultRadiusAndThickness = true;
+            this.btnSubirPlantilla2.Click += new System.EventHandler(this.btnSubirPlantilla2_Click);
             // 
             // btnDescargarPlantilla2
             // 
@@ -503,11 +506,11 @@ namespace CapaPresentaciones
             this.btnDescargarPlantilla2.ColorContrastOnClick = 45;
             this.btnDescargarPlantilla2.ColorContrastOnHover = 45;
             this.btnDescargarPlantilla2.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges4.BottomLeft = true;
-            borderEdges4.BottomRight = true;
-            borderEdges4.TopLeft = true;
-            borderEdges4.TopRight = true;
-            this.btnDescargarPlantilla2.CustomizableEdges = borderEdges4;
+            borderEdges10.BottomLeft = true;
+            borderEdges10.BottomRight = true;
+            borderEdges10.TopLeft = true;
+            borderEdges10.TopRight = true;
+            this.btnDescargarPlantilla2.CustomizableEdges = borderEdges10;
             this.btnDescargarPlantilla2.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnDescargarPlantilla2.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnDescargarPlantilla2.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -572,6 +575,7 @@ namespace CapaPresentaciones
             this.btnDescargarPlantilla2.TextMarginLeft = 0;
             this.btnDescargarPlantilla2.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnDescargarPlantilla2.UseDefaultRadiusAndThickness = true;
+            this.btnDescargarPlantilla2.Click += new System.EventHandler(this.btnDescargarPlantilla2_Click);
             // 
             // gbxPlantilla1
             // 
@@ -585,7 +589,7 @@ namespace CapaPresentaciones
             this.gbxPlantilla1.Location = new System.Drawing.Point(34, 62);
             this.gbxPlantilla1.Name = "gbxPlantilla1";
             this.gbxPlantilla1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gbxPlantilla1.Size = new System.Drawing.Size(168, 23);
+            this.gbxPlantilla1.Size = new System.Drawing.Size(164, 23);
             this.gbxPlantilla1.TabIndex = 87;
             this.gbxPlantilla1.Text = "Plantilla de Sílabo";
             this.gbxPlantilla1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -629,11 +633,11 @@ namespace CapaPresentaciones
             this.btnSubirPlantilla1.ColorContrastOnClick = 45;
             this.btnSubirPlantilla1.ColorContrastOnHover = 45;
             this.btnSubirPlantilla1.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges5.BottomLeft = true;
-            borderEdges5.BottomRight = true;
-            borderEdges5.TopLeft = true;
-            borderEdges5.TopRight = true;
-            this.btnSubirPlantilla1.CustomizableEdges = borderEdges5;
+            borderEdges11.BottomLeft = true;
+            borderEdges11.BottomRight = true;
+            borderEdges11.TopLeft = true;
+            borderEdges11.TopRight = true;
+            this.btnSubirPlantilla1.CustomizableEdges = borderEdges11;
             this.btnSubirPlantilla1.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnSubirPlantilla1.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSubirPlantilla1.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -698,6 +702,7 @@ namespace CapaPresentaciones
             this.btnSubirPlantilla1.TextMarginLeft = 0;
             this.btnSubirPlantilla1.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnSubirPlantilla1.UseDefaultRadiusAndThickness = true;
+            this.btnSubirPlantilla1.Click += new System.EventHandler(this.btnSubirPlantilla1_Click);
             // 
             // btnDescargarPlantilla1
             // 
@@ -719,11 +724,11 @@ namespace CapaPresentaciones
             this.btnDescargarPlantilla1.ColorContrastOnClick = 45;
             this.btnDescargarPlantilla1.ColorContrastOnHover = 45;
             this.btnDescargarPlantilla1.Cursor = System.Windows.Forms.Cursors.Hand;
-            borderEdges6.BottomLeft = true;
-            borderEdges6.BottomRight = true;
-            borderEdges6.TopLeft = true;
-            borderEdges6.TopRight = true;
-            this.btnDescargarPlantilla1.CustomizableEdges = borderEdges6;
+            borderEdges12.BottomLeft = true;
+            borderEdges12.BottomRight = true;
+            borderEdges12.TopLeft = true;
+            borderEdges12.TopRight = true;
+            this.btnDescargarPlantilla1.CustomizableEdges = borderEdges12;
             this.btnDescargarPlantilla1.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnDescargarPlantilla1.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnDescargarPlantilla1.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -788,6 +793,7 @@ namespace CapaPresentaciones
             this.btnDescargarPlantilla1.TextMarginLeft = 0;
             this.btnDescargarPlantilla1.TextPadding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnDescargarPlantilla1.UseDefaultRadiusAndThickness = true;
+            this.btnDescargarPlantilla1.Click += new System.EventHandler(this.btnDescargarPlantilla1_Click);
             // 
             // Bordeado
             // 
