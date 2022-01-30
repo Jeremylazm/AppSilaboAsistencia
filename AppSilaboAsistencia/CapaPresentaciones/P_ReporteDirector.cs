@@ -138,19 +138,24 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Director de Escuela", cxtCriterioSeleccion.SelectedItem.ToString());
-            AddOwnedForm(Asignaturas);
-            Asignaturas.ShowDialog();
-
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
             {
+                P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Director de Escuela", cxtCriterioSeleccion.SelectedItem.ToString());
+                AddOwnedForm(Asignaturas);
+                Asignaturas.ShowDialog();
+
                 //if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
-                    //fnReporte3(); // es fnReporte(8)
+                //fnReporte3(); // es fnReporte(8)
                 //else
-                    //fnReporte1();
+                //fnReporte1();
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
+                P_SeleccionadoAsignatura Asignaturas = new P_SeleccionadoAsignatura("Director de Escuela");
+                AddOwnedForm(Asignaturas);
+                Asignaturas.ShowDialog();
+                Asignaturas.Dispose();
+
                 fnReporte5();
             }
         }
