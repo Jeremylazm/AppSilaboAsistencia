@@ -121,6 +121,7 @@ namespace CapaPresentaciones
                 string Asignatura = FilaHorario["CodAsignatura"].ToString();
                 string Nombre = FilaHorario["NombreAsignatura"].ToString();
                 string Tipo = FilaHorario["Tipo"].ToString();
+                string TipoCompleto = "";
                 string Aula = FilaHorario["Aula"].ToString();
                 string Modalidad = FilaHorario["Modalidad"].ToString();
                 string Dia = FilaHorario["Dia"].ToString(); 
@@ -151,10 +152,10 @@ namespace CapaPresentaciones
 
                                 EventoPersonalizado.btnEvento.Text = Asignatura;
                                 if (Tipo.Equals("T"))
-                                    Tipo = "TEORÍA";
+                                    TipoCompleto = "TEORÍA";
                                 else
-                                    Tipo = "PRÁCTICA";
-                                EventoPersonalizado.ttEvento.SetToolTip(EventoPersonalizado.btnEvento, "<b>ASIGNATURA:</b> " + Nombre + "<br/><b>TIPO:</b> " + Tipo + "<br/><b>AULA:</b> " + Aula + "<br/><b>MODALIDAD:</b> " + Modalidad);
+                                    TipoCompleto = "PRÁCTICA";
+                                EventoPersonalizado.ttEvento.SetToolTip(EventoPersonalizado.btnEvento, "<b>ASIGNATURA:</b> " + Nombre + "<br/><b>TIPO:</b> " + TipoCompleto + "<br/><b>AULA:</b> " + Aula + "<br/><b>MODALIDAD:</b> " + Modalidad);
                                 HorasAsignatura.RemoveAt(0);
                             }
                         }

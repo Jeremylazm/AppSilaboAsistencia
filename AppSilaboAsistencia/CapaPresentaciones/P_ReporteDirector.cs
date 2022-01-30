@@ -138,16 +138,6 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            lblCodigo.Visible = true;
-            lblNombre.Visible = true;
-            lblEscuelaP.Visible = true;
-            txtCodigo.Visible = true;
-            txtNombre.Visible = true;
-            txtEscuelaP.Visible = true;
-            lnCodigo.Visible = true;
-            lnNombre.Visible = true;
-            lnEscuelaP.Visible = true;
-
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
             {
                 P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Director de Escuela", cxtCriterioSeleccion.SelectedItem.ToString());
@@ -172,35 +162,26 @@ namespace CapaPresentaciones
 
         private void btnGeneral_Click(object sender, EventArgs e)
         {
-            if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
+            if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas")) fnReporte9();
+            else if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
             {
-                lblCodigo.Visible = false;
-                lblNombre.Visible = false;
-                lblEscuelaP.Visible = false;
-                txtCodigo.Visible = false;
-                txtNombre.Visible = false;
-                txtEscuelaP.Visible = false;
-                lnCodigo.Visible = false;
-                lnNombre.Visible = false;
-                lnEscuelaP.Visible = false;
+                lblCodEstudiante.Visible = false;
+                txtCodEstudiante.Visible = false;
+                lnCodEstudiante.Visible = false;
+                lblEstudiante.Visible = false;
+                txtEstudiante.Visible = false;
+                lnEstudiante.Visible = false;
 
-                fnReporte9();
+                lblCodigo.Visible = false;
+                txtCodigo.Visible = false;
+                lnCodigo.Visible = false;
+                pnCajas.Visible = false;
+                fnReporte7();
             }
-            else if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) fnReporte7();
         }
 
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            lblCodigo.Visible = true;
-            lblNombre.Visible = true;
-            lblEscuelaP.Visible = true;
-            txtCodigo.Visible = true;
-            txtNombre.Visible = true;
-            txtEscuelaP.Visible = true;
-            lnCodigo.Visible = true;
-            lnNombre.Visible = true;
-            lnEscuelaP.Visible = true;
-
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
             {
                 lblCriterioSeleccion.Visible = true;
