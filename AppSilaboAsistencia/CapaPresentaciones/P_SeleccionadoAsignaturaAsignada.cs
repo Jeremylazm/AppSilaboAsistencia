@@ -224,12 +224,12 @@ namespace CapaPresentaciones
                     Datos.CodDocenteReporte = dgvDatos.CurrentRow.Cells[4].Value.ToString();
                     Datos.NombreDocente = dgvDatos.CurrentRow.Cells[5].Value.ToString();
 
-                    if (codTemp != Datos.txtCodigo.Text && Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) Datos.CriterioSeleccionAsistenciaEstudiantes();
+                    if (Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) Datos.CriterioSeleccionAsistenciaEstudiantes();
                 }
 
                 if (CriterioSeleccion == "Por Estudiantes")
                 {
-                    string codTemp = Datos.txtCodigo.Text;
+                    string codTemp1 = Datos.txtCodigo.Text;
 
                     Datos.txtCodigo.Text = dgvDatos.CurrentRow.Cells[0].Value.ToString();
                     Datos.txtNombre.Text = dgvDatos.CurrentRow.Cells[1].Value.ToString();
@@ -237,7 +237,7 @@ namespace CapaPresentaciones
                     Datos.CodDocenteReporte = dgvDatos.CurrentRow.Cells[4].Value.ToString();
                     Datos.NombreDocente = dgvDatos.CurrentRow.Cells[5].Value.ToString();
 
-                    if (codTemp != Datos.txtCodigo.Text && Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) Datos.CriterioSeleccionAsistenciaEstudiantes();
+                    if (Datos.cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) Datos.CriterioSeleccionAsistenciaEstudiantes();
                 }
                 else if (CriterioSeleccion == "Por Asignaturas")
                 {
