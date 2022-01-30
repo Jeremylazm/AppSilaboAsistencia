@@ -123,21 +123,29 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Docente", cxtCriterioSeleccion.SelectedItem.ToString());
-            AddOwnedForm(Asignaturas);
-            Asignaturas.ShowDialog();
-            Asignaturas.Dispose();
-
-            if (Asignaturas.DialogResult == DialogResult.Yes)
+            if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
             {
-                if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+                P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Docente", cxtCriterioSeleccion.SelectedItem.ToString());
+                AddOwnedForm(Asignaturas);
+                Asignaturas.ShowDialog();
+                Asignaturas.Dispose();
+
+                if (Asignaturas.DialogResult == DialogResult.Yes)
                 {
                     if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
                         fnReporte3();
                     else
                         fnReporte1();
                 }
-                else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
+            }
+            else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
+            {
+                P_SeleccionadoAsignatura Asignaturas = new P_SeleccionadoAsignatura("Docente");
+                AddOwnedForm(Asignaturas);
+                Asignaturas.ShowDialog();
+                Asignaturas.Dispose();
+
+                if (Asignaturas.DialogResult == DialogResult.Yes)
                 {
                     fnReporte5();
                 }
@@ -179,7 +187,7 @@ namespace CapaPresentaciones
                 dpFechaFinal.Visible = false;
 
                 btnGeneral.Visible = true;
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 172);
 
                 fnReporte5();
             }

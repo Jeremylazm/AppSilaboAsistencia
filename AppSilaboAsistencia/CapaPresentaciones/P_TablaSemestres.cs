@@ -15,12 +15,12 @@ using Bunifu.UI.WinForms;
 
 namespace CapaPresentaciones
 {
-    public partial class P_TablaSemestre : Form
+    public partial class P_TablaSemestres : Form
     {
         readonly E_Semestre ObjEntidad;
         readonly N_Semestre ObjNegocio;
         
-        public P_TablaSemestre()
+        public P_TablaSemestres()
         {
             ObjEntidad = new E_Semestre();
             ObjNegocio = new N_Semestre();
@@ -81,23 +81,25 @@ namespace CapaPresentaciones
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            using (P_DatosSemestre EditarRegistro = new P_DatosSemestre())
+            if (A_Dialogo.DialogoPreguntaAceptarCancelar("El editar la fecha de inicio de semestre podria afectar a algunos registros") == DialogResult.Yes)
             {
-               
+                using (P_DatosSemestre EditarRegistro = new P_DatosSemestre())
+                {
 
-                DataTable Semestre = N_Semestre.SemestreActual();
-                string semestreActual = Semestre.Rows[0]["Denominacion"].ToString();
-                EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
-                Program.Evento = 1;
-                EditarRegistro.txtSemestre.Text = semestreActual.ToString();
-                
 
-                //EditarRegistro.Owner = Fondo;
-                EditarRegistro.ShowDialog();
-                EditarRegistro.Dispose();
-                //Fondo.Dispose();
+                    DataTable Semestre = N_Semestre.SemestreActual();
+                    string semestreActual = Semestre.Rows[0]["Denominacion"].ToString();
+                    EditarRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
+                    Program.Evento = 1;
+                    EditarRegistro.txtSemestre.Text = semestreActual.ToString();
+
+
+                    //EditarRegistro.Owner = Fondo;
+                    EditarRegistro.ShowDialog();
+                    EditarRegistro.Dispose();
+                    //Fondo.Dispose();
+                }
             }
-
 
         }
 

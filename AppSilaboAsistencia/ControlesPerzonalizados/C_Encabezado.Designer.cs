@@ -64,7 +64,7 @@ namespace ControlesPerzonalizados
             this.txtTexto.DisabledForecolor = System.Drawing.Color.Empty;
             this.txtTexto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtTexto.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
-            this.txtTexto.Font = new System.Drawing.Font("Montserrat Alternates", 11F, System.Drawing.FontStyle.Bold);
+            this.txtTexto.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Bold);
             this.txtTexto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.txtTexto.IconLeft = null;
             this.txtTexto.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -85,6 +85,7 @@ namespace ControlesPerzonalizados
             this.txtTexto.IdleIconRightImage = null;
             this.txtTexto.IndicateFocus = false;
             this.txtTexto.Location = new System.Drawing.Point(0, 0);
+            this.txtTexto.Margin = new System.Windows.Forms.Padding(2);
             this.txtTexto.Name = "txtTexto";
             this.txtTexto.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(13)))), ((int)(((byte)(15)))));
             this.txtTexto.OnDisabledState.BorderRadius = 15;
@@ -118,7 +119,7 @@ namespace ControlesPerzonalizados
             this.txtTexto.OnPressedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(158)))), ((int)(((byte)(31)))));
             this.txtTexto.OnPressedState.IconLeftImage = null;
             this.txtTexto.OnPressedState.IconRightImage = null;
-            this.txtTexto.Size = new System.Drawing.Size(105, 25);
+            this.txtTexto.Size = new System.Drawing.Size(136, 31);
             this.txtTexto.TabIndex = 1;
             this.txtTexto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.txtTexto.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -131,8 +132,9 @@ namespace ControlesPerzonalizados
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.txtTexto);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "C_Encabezado";
-            this.Size = new System.Drawing.Size(105, 25);
+            this.Size = new System.Drawing.Size(136, 31);
             this.ResumeLayout(false);
 
         }

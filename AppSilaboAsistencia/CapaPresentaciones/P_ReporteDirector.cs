@@ -45,7 +45,7 @@ namespace CapaPresentaciones
             pnCajas.Visible = true;
 
             btnGeneral.Visible = false;
-            btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+            btnSeleccionar.Location = new Point(btnGeneral.Location.X, 172);
 
             // Definir minimas y maximas fechas para los filtros
             dpFechaInicial.MaxDate = new DateTime(2022, 03, 01);
@@ -138,27 +138,46 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Director de Escuela", cxtCriterioSeleccion.SelectedItem.ToString());
-            AddOwnedForm(Asignaturas);
-            Asignaturas.ShowDialog();
-
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
             {
+                P_SeleccionadoAsignaturaAsignada Asignaturas = new P_SeleccionadoAsignaturaAsignada(txtCodigo.Text, "Director de Escuela", cxtCriterioSeleccion.SelectedItem.ToString());
+                AddOwnedForm(Asignaturas);
+                Asignaturas.ShowDialog();
+
                 //if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
-                    //fnReporte3(); // es fnReporte(8)
+                //fnReporte3(); // es fnReporte(8)
                 //else
-                    //fnReporte1();
+                //fnReporte1();
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
+                P_SeleccionadoAsignatura Asignaturas = new P_SeleccionadoAsignatura("Director de Escuela");
+                AddOwnedForm(Asignaturas);
+                Asignaturas.ShowDialog();
+                Asignaturas.Dispose();
+
                 fnReporte5();
             }
         }
 
         private void btnGeneral_Click(object sender, EventArgs e)
         {
-            if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))  fnReporte9();
-            else if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes")) fnReporte7();
+            if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas")) fnReporte9();
+            else if (cxtTipoReporte.SelectedItem.Equals("Asistencia Estudiantes"))
+            {
+                lblCodEstudiante.Visible = false;
+                txtCodEstudiante.Visible = false;
+                lnCodEstudiante.Visible = false;
+                lblEstudiante.Visible = false;
+                txtEstudiante.Visible = false;
+                lnEstudiante.Visible = false;
+
+                lblCodigo.Visible = false;
+                txtCodigo.Visible = false;
+                lnCodigo.Visible = false;
+                pnCajas.Visible = false;
+                fnReporte7();
+            }
         }
 
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
@@ -189,7 +208,7 @@ namespace CapaPresentaciones
                     pnCajas.Visible = true;
 
                     btnGeneral.Visible = true;
-                    btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+                    btnSeleccionar.Location = new Point(btnGeneral.Location.X, 172);
                 }
                 else if (cxtCriterioSeleccion.SelectedItem.Equals("Por Estudiantes"))
                 {
@@ -223,7 +242,7 @@ namespace CapaPresentaciones
                     pnCajas.Visible = true;
 
                     btnGeneral.Visible = true;
-                    btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+                    btnSeleccionar.Location = new Point(btnGeneral.Location.X, 172);
                 }
 
                 CriterioSeleccionAsistenciaEstudiantes();
@@ -240,7 +259,7 @@ namespace CapaPresentaciones
                 dpFechaFinal.Visible = false;
 
                 btnGeneral.Visible = true;
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 131);
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 172);
 
                 fnReporte5();
             }
@@ -307,8 +326,7 @@ namespace CapaPresentaciones
 
                 btnGeneral.Visible = true;
 
-                btnGeneral.Location = new Point(btnGeneral.Location.X, 131);
-                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 175);
+                btnSeleccionar.Location = new Point(btnGeneral.Location.X, 172);
 
                 fnReporte8();
             }

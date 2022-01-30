@@ -243,7 +243,7 @@ namespace CapaPresentaciones
             this.btnGeneral.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Tabla;
             this.btnGeneral.IdleIconRightImage = null;
             this.btnGeneral.IndicateFocus = false;
-            this.btnGeneral.Location = new System.Drawing.Point(893, 172);
+            this.btnGeneral.Location = new System.Drawing.Point(893, 131);
             this.btnGeneral.Name = "btnGeneral";
             this.btnGeneral.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnGeneral.OnDisabledState.BorderRadius = 15;

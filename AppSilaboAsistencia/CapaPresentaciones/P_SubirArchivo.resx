@@ -121,6 +121,24 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="txtRuta.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAr4AAAAsCAYAAACDtrsUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALbSURBVHhe7dy/a5R3AMfxZxTJ5RQpjVwudxdStMGOov9A
+        0X9ANxsdjEcUEu+uNLYVkq2lHUqpLsZBUShGcVDHFlIhi4ON2y3CISWiaZPij0gdnvIkX4egZM4939cL
+        PtP34eY3D9/nEgAAiNZIkmw7VSgen/h498VmtfawXiimZmZmZmZbdVmzNvoHroz29NbHi8UdIWs3Vy8U
+        Draqtc7M8RMvfrtwMW3/cT8FAICtLGvWuZnL6dWx069a1cFno729h0PeflizUjs3vf/A8mK7HX4CAAC6
+        y79Pn6Y/fH5oeXLv8E8hczfK3vRm0RueBwCArvbLkaP/TPSVjoXcXZfd6W2Uq4tLnU54DAAAutvrlZX0
+        y8GhpbHt2/tC9mZve4sTvzZbb8IzAACQC9k3a9kfNoTsTZJGuTI7f+16OAYAgHzIPnrL/vEhZO9a+D5+
+        svAoHAMAQD5k1x3O7ProdcjetasO4QgAAPIla92QvcIXAID8Er4AAERB+AIAEAXhCwBAFIQvAABREL4A
+        AERB+AIAEAXhCwBAFIQvAABREL4AAERB+AIAEAXhCwBAFIQvAABREL4AAERB+AIAEAXhCwBAFIQvAABR
+        EL4AAERB+AIAEAXhCwBAFIQvAABREL4AAERB+AIAEAXhCwBAFIQvAABR2BC+432l50udTjgCAIB8+G91
+        NR3buettyN4kaVVrv/955244BgCAfHiy8ChtlCuPQ/YmSb2nd/LWt+ffhnMAAMiFuZnLaaN/4ErI3iQ5
+        VSxWv/pkz3L2KhgAAPJiev+B5XqhcDBk77rx3aWTl74YWQnPAABAV7s9Nf2iNTj0Y8jdjbK7vjcmz730
+        5hcAgG5297vvV7/+dHh+JEm2hdR939lSeeqbfZ/9PX/t+tplYAAA6AaL7Xb6YPbm2vWGZqX286bR+85o
+        T8/eRrkym30Bl/3vmZmZmZnZVt/Z0sBfzWrt3nt3egEAIB5J8j/mo6lD7+yscAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnSubir.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAKoAAAAnCAYAAACfWNOEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -135,17 +153,6 @@
         xqL2Rk9Gvnfy8en8V9tGICm3j+ZW3lxxL/UiXV/yrnrvRO4bT1akwa0j2Z+v5orPZH5vP9G/q1E1s8sX
         3c8yhpIJfxg0GcvvHxzpHfdhuVC2Rrq+moHZIzNT5aYl36+AQYmqXnPtZH+w8U66sRznN5S2sNAjWEdA
         AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="txtRuta.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAuEAAAAqCAYAAAAd8IXMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEVSURBVHhe7dYxDQMxAARB80fll2EERgAksuQmALxpZqRr
-        DsEOAADgD9Zarznnx8zMzMzM7m1390nwMfYBAADctbv7JLgIBwCAgggHAICYCAcAgJgIBwCAmAgHAICY
-        CAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICY
-        CAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICY
-        CAcAgJgIBwCAmAgHAICYCAcAgJgIBwCAmAgHAICYCAcAgJgIBwCA2E+EP8/z3oeZmZmZmd3b7u6T4AAA
-        QGeMLwfWOYIcQQOCAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="lblTitulo.BaseStylesheet" xml:space="preserve">
