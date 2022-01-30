@@ -1658,6 +1658,7 @@ namespace CapaPresentaciones
             gxGrafico4.Update();
 
             lblTitulo.Select();
+            tcGraficos.SetPage(IndiceGrafico1);
             #endregion ===================== GRÁFICOS =====================
         }
 
@@ -1945,7 +1946,7 @@ namespace CapaPresentaciones
 
                 gxGrafico4.Update();
 
-                tcGraficos.SetPage(tcGraficos.PageIndex);
+                tcGraficos.SetPage(IndiceGrafico1);
                 #endregion ===================== GRÁFICOS =====================
             }
         }
@@ -2138,7 +2139,7 @@ namespace CapaPresentaciones
 
                 gxGrafico2.Update();
 
-                tcGraficos.SetPage(tcGraficos.PageIndex);
+                tcGraficos.SetPage(IndiceGrafico1);
                 #endregion ===================== GRÁFICOS =====================
             }
         }
@@ -2297,6 +2298,7 @@ namespace CapaPresentaciones
             gxGrafico4.Update();
 
             lblTitulo.Select();
+            tcGraficos.SetPage(IndiceGrafico1);
             #endregion ===================== GRÁFICOS =====================
         }
 
@@ -2308,7 +2310,7 @@ namespace CapaPresentaciones
 
         private void dgvResultados_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if ((e.RowIndex >= 0) && (e.ColumnIndex == 0) && CriterioAsistenciasDocentes == "Por Asignaturas")// denis cpp
+            if ((e.RowIndex >= 0) && (e.ColumnIndex == 0) && (CriterioAsistenciasDocentes == "Por Asignaturas" || CriterioAsistenciasDocentes=="Por Fechas"))// denis cpp
             {
                 if (CriterioAsistenciasDocentes == "Por Fechas")
                 {
