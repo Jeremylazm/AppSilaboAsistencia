@@ -61,8 +61,6 @@ namespace CapaPresentaciones
             dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasDocente(CodSemestre, CodDepartamentoA, CodDocente);
 
             dgvDatos.Columns[0].HeaderText = "Código";
-            dgvDatos.Columns[0].MinimumWidth = 95;
-            dgvDatos.Columns[0].Width = 95;
             dgvDatos.Columns[1].HeaderText = "Asignatura";
             dgvDatos.Columns[2].HeaderText = "Escuela Profesional";
 
@@ -79,8 +77,6 @@ namespace CapaPresentaciones
             dgvDatos.DataSource = N_Catalogo.MostrarCatalogo(CodSemestre, CodDepartamentoA);
 
             dgvDatos.Columns[0].HeaderText = "Código";
-            dgvDatos.Columns[0].MinimumWidth = 95;
-            dgvDatos.Columns[0].Width = 95;
             dgvDatos.Columns[1].HeaderText = "Asignatura";
             dgvDatos.Columns[2].HeaderText = "Escuela Profesional";
             dgvDatos.Columns[4].Visible = false;
@@ -101,8 +97,6 @@ namespace CapaPresentaciones
             dgvDatos.DataSource = N_Catalogo.BuscarAsignaturasAsignadasDocente(CodSemestre, CodDepartamentoA, CodDocente, txtBuscar.Text);
 
             dgvDatos.Columns[0].HeaderText = "Código";
-            dgvDatos.Columns[0].MinimumWidth = 95;
-            dgvDatos.Columns[0].Width = 95;
             dgvDatos.Columns[1].HeaderText = "Asignatura";
             dgvDatos.Columns[2].HeaderText = "Escuela Profesional";
 
@@ -119,8 +113,6 @@ namespace CapaPresentaciones
             dgvDatos.DataSource = N_Catalogo.BuscarCatálogo(CodSemestre, CodDepartamentoA, txtBuscar.Text);
 
             dgvDatos.Columns[0].HeaderText = "Código";
-            dgvDatos.Columns[0].MinimumWidth = 95;
-            dgvDatos.Columns[0].Width = 95;
             dgvDatos.Columns[1].HeaderText = "Asignatura";
             dgvDatos.Columns[2].HeaderText = "Escuela Profesional";
             dgvDatos.Columns[4].Visible = false;
@@ -154,10 +146,7 @@ namespace CapaPresentaciones
                 DatosAsignatura.txtNombre.Text = dgvDatos.CurrentRow.Cells[1].Value.ToString();
                 DatosAsignatura.txtEscuelaP.Text = dgvDatos.CurrentRow.Cells[2].Value.ToString();
 
-                if (codTemp != DatosAsignatura.txtCodigo.Text)
-                {
-                    this.DialogResult = DialogResult.Yes;
-                }
+                this.DialogResult = DialogResult.Yes;
             }
             else if (AccesoReporte == "Director de Escuela")
             {
@@ -171,10 +160,7 @@ namespace CapaPresentaciones
                 DatosAsignatura.CodDocenteReporte = dgvDatos.CurrentRow.Cells[4].Value.ToString();
                 DatosAsignatura.NombreDocente = dgvDatos.CurrentRow.Cells[5].Value.ToString();
 
-                if (codTemp != DatosAsignatura.txtCodigo.Text)
-                {
-                    this.DialogResult = DialogResult.Yes;
-                }
+                this.DialogResult = DialogResult.Yes;
             }
             else
             {
@@ -188,10 +174,7 @@ namespace CapaPresentaciones
                 DatosAsignatura.CodDocenteReporte = dgvDatos.CurrentRow.Cells[4].Value.ToString();
                 DatosAsignatura.NombreDocente = dgvDatos.CurrentRow.Cells[5].Value.ToString();
 
-                if (codTemp != DatosAsignatura.txtCodigo.Text)
-                {
-                    this.DialogResult = DialogResult.Yes;
-                }
+                this.DialogResult = DialogResult.Yes;
             }
         }
 

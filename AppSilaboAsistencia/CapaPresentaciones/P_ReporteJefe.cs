@@ -110,6 +110,16 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
+            lblCodigo.Visible = true;
+            lblNombre.Visible = true;
+            lblEscuelaP.Visible = true;
+            txtCodigo.Visible = true;
+            txtNombre.Visible = true;
+            txtEscuelaP.Visible = true;
+            lnCodigo.Visible = true;
+            lnNombre.Visible = true;
+            lnEscuelaP.Visible = true;
+
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Docentes"))
             {
                 P_SeleccionadoDocente docente = new P_SeleccionadoDocente(txtCodDocente.Text, "Jefe de Departamento", cxtCriterioSeleccion.SelectedItem.ToString());
@@ -154,12 +164,32 @@ namespace CapaPresentaciones
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
+                lblCodigo.Visible = false;
+                lblNombre.Visible = false;
+                lblEscuelaP.Visible = false;
+                txtCodigo.Visible = false;
+                txtNombre.Visible = false;
+                txtEscuelaP.Visible = false;
+                lnCodigo.Visible = false;
+                lnNombre.Visible = false;
+                lnEscuelaP.Visible = false;
+
                 fnReporte9();
             }
         }
 
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            lblCodigo.Visible = true;
+            lblNombre.Visible = true;
+            lblEscuelaP.Visible = true;
+            txtCodigo.Visible = true;
+            txtNombre.Visible = true;
+            txtEscuelaP.Visible = true;
+            lnCodigo.Visible = true;
+            lnNombre.Visible = true;
+            lnEscuelaP.Visible = true;
+
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Docentes"))
             {
                 lblCriterioSeleccion.Visible = true;

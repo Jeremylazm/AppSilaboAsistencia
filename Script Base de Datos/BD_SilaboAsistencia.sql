@@ -977,7 +977,7 @@ BEGIN
 			 C.CodDocente = D.CodDocente
 		WHERE C.CodSemestre = @CodSemestre AND
 		      SUBSTRING(C.CodAsignatura,1,LEN(@CodDepartamentoA)) = @CodDepartamentoA AND
-			  (C.CodAsignatura LIKE (@Texto + '%') OR
+			  ((C.CodAsignatura + C.Grupo + C.CodEscuelaP) LIKE (@Texto + '%') OR
 			   A.NombreAsignatura LIKE (@Texto + '%') OR
 			   C.CodEscuelaP = @Texto OR
 			   EP.Nombre LIKE (@Texto + '%') OR
