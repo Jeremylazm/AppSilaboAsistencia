@@ -64,7 +64,7 @@ namespace CapaPresentaciones
         {
             
 
-            EstablecerCarga(true);
+            //EstablecerCarga(true);
 
             // Si el usuario es Administrador
             if (E_InicioSesion.Acceso == E_Acceso.Administrador)
@@ -90,7 +90,7 @@ namespace CapaPresentaciones
                 MostrarMenu(E_InicioSesion.Acceso, 30);
             }
                        
-            EstablecerCarga(false);
+            //EstablecerCarga(false);
         }
 
         public void IniciarSesion()
