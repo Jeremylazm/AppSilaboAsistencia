@@ -300,7 +300,7 @@ namespace CapaPresentaciones
             this.dgvSesiones.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvSesiones.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Montserrat Alternates", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvSesiones.RowTemplate.Height = 26;
-            this.dgvSesiones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvSesiones.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvSesiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSesiones.Size = new System.Drawing.Size(963, 444);
             this.dgvSesiones.TabIndex = 37;
