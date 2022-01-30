@@ -11,11 +11,13 @@ namespace CapaPresentaciones
 {
     public partial class P_TablaDocentes : Form
     {
-        readonly E_Docente ObjEntidad;
-        readonly N_Docente ObjNegocio;
+        private readonly string Departamento;
+        private readonly E_Docente ObjEntidad;
+        private readonly N_Docente ObjNegocio;
 
         public P_TablaDocentes()
         {
+            Departamento = E_InicioSesion.CodDepartamentoA;
             ObjEntidad = new E_Docente();
             ObjNegocio = new N_Docente();
             InitializeComponent();
@@ -25,38 +27,86 @@ namespace CapaPresentaciones
 
         public void AccionesTabla()
         {
+            // Editar
             dgvDatos.Columns[0].DisplayIndex = 13;
+            dgvDatos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[0].MinimumWidth = 60;
+            dgvDatos.Columns[0].Width = 60;
+
+            // Eliminar
             dgvDatos.Columns[1].DisplayIndex = 13;
+            dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[1].MinimumWidth = 80;
+            dgvDatos.Columns[1].Width = 80;
+
+            // Perfil 1
             dgvDatos.Columns[2].Visible = false;
 
+            // Perfil 2
             dgvDatos.Columns[3].HeaderText = "";
-            //dgvDatos.Columns[3].FillWeight = 1;
             dgvDatos.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvDatos.Columns[3].MinimumWidth = 30;
             dgvDatos.Columns[3].Width = 30;
+
+            // Codigo
             dgvDatos.Columns[4].HeaderText = "Código";
+            dgvDatos.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[4].MinimumWidth = 70;
+            dgvDatos.Columns[4].Width = 70;
+
+            // Apellido Paterno
             dgvDatos.Columns[5].HeaderText = "A. Paterno";
+            dgvDatos.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            // Apellido Materno
             dgvDatos.Columns[6].HeaderText = "A. Materno";
-            dgvDatos.Columns[7].HeaderText = "Nombre";
+            dgvDatos.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            // Nombre
+            dgvDatos.Columns[7].HeaderText = "Nombre(s)";
+            dgvDatos.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            // Email
             dgvDatos.Columns[8].HeaderText = "Email";
-            dgvDatos.Columns[9].HeaderText = "Dirección";
+            dgvDatos.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            // Direccion
+            dgvDatos.Columns[9].Visible = false;
+
+            // Telefono
             dgvDatos.Columns[10].HeaderText = "Teléfono";
+            dgvDatos.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[10].MinimumWidth = 110;
+            dgvDatos.Columns[10].Width = 110;
+
+            // Categoria
             dgvDatos.Columns[11].HeaderText = "Categoría";
+            dgvDatos.Columns[11].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[11].MinimumWidth = 135;
+            dgvDatos.Columns[11].Width = 135;
+
+            // Subcategoria
             dgvDatos.Columns[12].HeaderText = "Subcategoría";
+            dgvDatos.Columns[12].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[12].MinimumWidth = 125;
+            dgvDatos.Columns[12].Width = 125;
+
+            // Regimen
             dgvDatos.Columns[13].HeaderText = "Régimen";
-            //dgvDatos.Columns[14].HeaderText = "D. Académico";
-            //dgvDatos.Columns[13].HeaderText = "Escuela P.";
+            dgvDatos.Columns[13].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[13].MinimumWidth = 225;
+            dgvDatos.Columns[13].Width = 225;
         }
 
         public void MostrarRegistros()
         {
-            dgvDatos.DataSource = N_Docente.MostrarDocentesDepartamento("IF"); // El filtro es por departamento
+            dgvDatos.DataSource = N_Docente.MostrarDocentesDepartamento(Departamento); // El filtro es por departamento
             AccionesTabla();
         }
 
         public void BuscarRegistros()
         {
-            dgvDatos.DataSource = N_Docente.BuscarDocentes("IF", txtBuscar.Text);
+            dgvDatos.DataSource = N_Docente.BuscarDocentes(Departamento, txtBuscar.Text);
         }
 
         private void ActualizarDatos(object sender, FormClosedEventArgs e)
@@ -117,9 +167,6 @@ namespace CapaPresentaciones
                 NuevoRegistro.FormClosed += new FormClosedEventHandler(ActualizarDatos);
                 //NuevoRegistro.Owner = Fondo;
                 NuevoRegistro.ShowDialog();
-                NuevoRegistro.Dispose();
-
-                //Fondo.Dispose();
             }
         }
 
@@ -225,9 +272,6 @@ namespace CapaPresentaciones
                             (this.Parent.Parent.Parent as P_Menu).ActualizarPerfilJefe(EditarRegistro.pbPerfil.Image);
                         }
                     }
-
-                    EditarRegistro.Dispose();
-                    //Fondo.Dispose();
                 }
             }
 

@@ -47,9 +47,10 @@ namespace CapaPresentaciones
             dgvDatos.Columns[8].Visible = false;
             dgvDatos.Columns[9].Visible = false;
             dgvDatos.Columns[0].Width = 50;
-            dgvDatos.Columns[1].Width = 50;
-            dgvDatos.Columns[5].Width = 60;
-            dgvDatos.Columns[6].Width = 90;
+            dgvDatos.Columns[1].Width = 60;
+            dgvDatos.Columns[2].Width = 65;
+            dgvDatos.Columns[5].Width = 50;
+            dgvDatos.Columns[6].Width = 110;
             dgvDatos.Columns[8].Width = 70;
             dgvDatos.Columns[9].Width = 50;
         }//Listo

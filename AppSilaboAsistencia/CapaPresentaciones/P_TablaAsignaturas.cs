@@ -23,16 +23,59 @@ namespace CapaPresentaciones
 
 		public void AccionesTabla()
 		{
-			dgvDatos.Columns[0].DisplayIndex = 9;
-			dgvDatos.Columns[1].DisplayIndex = 9;
+            // Editar
+            dgvDatos.Columns[0].DisplayIndex = 9;
+            dgvDatos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[0].MinimumWidth = 60;
+            dgvDatos.Columns[0].Width = 60;
 
-			dgvDatos.Columns[2].HeaderText = "Código";
-			dgvDatos.Columns[3].HeaderText = "Nombre";
-			dgvDatos.Columns[4].HeaderText = "Nro. Créditos";
-			dgvDatos.Columns[5].HeaderText = "Categoría";
-			dgvDatos.Columns[6].HeaderText = "Hrs. Teoria";
-			dgvDatos.Columns[7].HeaderText = "Hrs. Práctica";
+            // Eliminar
+            dgvDatos.Columns[1].DisplayIndex = 9;
+            dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[1].MinimumWidth = 80;
+            dgvDatos.Columns[1].Width = 80;
+
+            // Codigo
+            dgvDatos.Columns[2].HeaderText = "Código";
+            dgvDatos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[2].MinimumWidth = 70;
+            dgvDatos.Columns[2].Width = 70;
+
+            // Apellido Paterno
+            dgvDatos.Columns[3].HeaderText = "Nombre";
+            dgvDatos.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            // Telefono
+            dgvDatos.Columns[4].HeaderText = "Nro. Créditos";
+            dgvDatos.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[4].MinimumWidth = 120;
+            dgvDatos.Columns[4].Width = 120;
+
+            // Categoria
+            dgvDatos.Columns[5].HeaderText = "Categoría";
+            dgvDatos.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[5].MinimumWidth = 100;
+            dgvDatos.Columns[5].Width = 100;
+
+            // Subcategoria
+            dgvDatos.Columns[6].HeaderText = "Hrs. Teoría";
+            dgvDatos.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[6].MinimumWidth = 105;
+            dgvDatos.Columns[6].Width = 105;
+
+            // Regimen
+            dgvDatos.Columns[7].HeaderText = "Hrs. Práctica";
+            dgvDatos.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[7].MinimumWidth = 115;
+            dgvDatos.Columns[7].Width = 115;
+
+			// Prerrequisitos
 			dgvDatos.Columns[8].HeaderText = "Prerrequisitos";
+            dgvDatos.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDatos.Columns[8].MinimumWidth = 140;
+            dgvDatos.Columns[8].Width = 140;
+
+            // Sumilla
             dgvDatos.Columns[9].Visible = false;
         }
 
