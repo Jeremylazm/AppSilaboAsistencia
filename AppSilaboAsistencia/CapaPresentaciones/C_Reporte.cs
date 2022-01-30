@@ -420,18 +420,34 @@ namespace CapaPresentaciones
             dgvResultados.DataSource = Datos;
             dgvResultados.Columns[0].Visible = false;
 
-            dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            foreach (DataGridViewColumn Columna in dgvResultados.Columns)
-            {
-                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
+            //foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+            //{
+            //    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //}
 
             dgvResultados.Columns["CodEstudiante"].HeaderText = "Código";
+            dgvResultados.Columns["CodEstudiante"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvResultados.Columns["CodEstudiante"].MinimumWidth = 70;
+            dgvResultados.Columns["CodEstudiante"].Width = 70;
+
             dgvResultados.Columns["APaterno"].HeaderText = "A. Paterno";
+            dgvResultados.Columns["APaterno"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
             dgvResultados.Columns["AMaterno"].HeaderText = "A. Materno";
+            dgvResultados.Columns["AMaterno"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
             dgvResultados.Columns["Nombre"].HeaderText = "Nombre(s)";
+            dgvResultados.Columns["Nombre"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            dgvResultados.Columns["Asistió"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvResultados.Columns["Asistió"].MinimumWidth = 80;
             dgvResultados.Columns["Asistió"].Width = 80;
+
+            dgvResultados.Columns["Observación"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvResultados.Columns["Observación"].MinimumWidth = 225;
+            dgvResultados.Columns["Observación"].Width = 225;
 
             // Mostrar los resultados de manera responsiva
             MostrarResultadosResponsivo();
