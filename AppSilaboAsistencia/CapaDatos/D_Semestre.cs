@@ -30,6 +30,20 @@ namespace CapaDatos
             return Resultado;
         }
 
+        // Método para mostrar la relación de semestres.
+        public DataTable MostrarSemestres()
+        {
+            DataTable Resultado = new DataTable();
+            SqlCommand Comando = new SqlCommand("spuMostrarSemestres", Conectar)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            SqlDataAdapter Data = new SqlDataAdapter(Comando);
+            Data.Fill(Resultado);
+
+            return Resultado;
+        }
+
         // Método para insertar los datos de un semestre.
         public void InsertarSemestre(E_Semestre Semestre)
         {

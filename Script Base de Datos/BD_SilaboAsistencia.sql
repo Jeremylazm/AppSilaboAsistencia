@@ -596,6 +596,17 @@ BEGIN
 END;
 GO
 
+-- Procedimiento para mostrar la relación de semestres.
+CREATE PROCEDURE spuMostrarSemestres
+AS
+BEGIN
+	-- Mostrar la relación de semestres
+	SELECT Denominacion, FechaInicio = FechaInicio_Formatted 
+	    FROM TSemestre
+		ORDER BY IdSemestre ASC
+END;
+GO
+
 -- Procedimiento para insertar los datos de un semestre.
 CREATE PROCEDURE spuInsertarSemestre @Denominacion VARCHAR(7),
 									 @FechaInicio DATE -- Formato: dd/mm/yyyy o dd-mm-yyyy
