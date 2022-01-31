@@ -31,9 +31,21 @@ namespace CapaPresentaciones
             if (AccesoReporte == "Docente") MostrarAsignaturas();
             else if (AccesoReporte == "Director de Escuela")
             {
-                if (CriterioSeleccion == "Por Fechas") MostrarTodasAsignaturas();
-                if (CriterioSeleccion == "Por Estudiantes") MostrarTodasAsignaturas();
-                if (CriterioSeleccion == "Por Asignaturas") MostrarEstudiantes();
+                if (CriterioSeleccion == "Por Fechas")
+                {
+                    lblTitulo.Text = "Haga doble click para seleccionar una asignatura";
+                    MostrarTodasAsignaturas();
+                }
+                if (CriterioSeleccion == "Por Estudiantes") 
+                {
+                    lblTitulo.Text = "Haga doble click para seleccionar una asignatura";
+                    MostrarTodasAsignaturas();
+                }
+                if (CriterioSeleccion == "Por Asignaturas")
+                {
+                    lblTitulo.Text = "Haga doble click para seleccionar un estudiante";
+                    MostrarEstudiantes();
+                }
             }
         }
 
