@@ -891,18 +891,28 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[1].HeaderText = "Tema";
                 dgvResultados.Columns[2].HeaderText = "Fecha";
                 dgvResultados.Columns[3].HeaderText = "Estado";
-                dgvResultados.Columns[0].Width = 70;
-                dgvResultados.Columns[2].Width = 110;
-                dgvResultados.Columns[3].Width = 160;
+                
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
-                dgvResultados.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                
 
                 foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
                     Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
+                dgvResultados.Columns[0].Width = 70;
+                dgvResultados.Columns[0].MinimumWidth = 70;
+                dgvResultados.Columns[0].Resizable = DataGridViewTriState.False;
 
+                dgvResultados.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                dgvResultados.Columns[2].Width = 110;
+                dgvResultados.Columns[2].MinimumWidth = 110;
+                dgvResultados.Columns[2].Resizable = DataGridViewTriState.False;
+
+                dgvResultados.Columns[3].Width = 160;
+                dgvResultados.Columns[3].MinimumWidth = 160;
+                dgvResultados.Columns[3].Resizable = DataGridViewTriState.False;
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
@@ -993,18 +1003,27 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[1].HeaderText = "Nombre Asignatura";
                 dgvResultados.Columns[2].HeaderText = "Temas Avanzados";
                 dgvResultados.Columns[3].HeaderText = "Temas Faltantes";
-                dgvResultados.Columns[0].Width = 145;
-                dgvResultados.Columns[2].Width = 155;
-                dgvResultados.Columns[3].Width = 175;
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvResultados.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                
 
                 foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
                     Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
+                dgvResultados.Columns[0].Width = 145;
+                dgvResultados.Columns[0].MinimumWidth = 145;
+                dgvResultados.Columns[0].Resizable = DataGridViewTriState.False;
 
+                dgvResultados.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                dgvResultados.Columns[2].Width = 155;
+                dgvResultados.Columns[2].MinimumWidth = 155;
+                dgvResultados.Columns[2].Resizable = DataGridViewTriState.False;
+
+                dgvResultados.Columns[3].Width = 175;
+                dgvResultados.Columns[3].MinimumWidth = 175;
+                dgvResultados.Columns[3].Resizable = DataGridViewTriState.False;
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
@@ -1319,19 +1338,29 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[2].HeaderText = "Docente";
                 dgvResultados.Columns[3].HeaderText = "Avance Completado";
                 dgvResultados.Columns[4].HeaderText = "Avance Faltante";
-                dgvResultados.Columns[0].Width = 155;
-                dgvResultados.Columns[3].Width = 175;
-                dgvResultados.Columns[4].Width = 165;
 
                 dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;//----
-                dgvResultados.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dgvResultados.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                
 
                 foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
                     Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
+                dgvResultados.Columns[0].Width = 155;
+                dgvResultados.Columns[0].MinimumWidth = 155;
+                dgvResultados.Columns[0].Resizable = DataGridViewTriState.False;
 
+                dgvResultados.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                dgvResultados.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                dgvResultados.Columns[3].Width = 180;
+                dgvResultados.Columns[3].MinimumWidth = 180;
+                dgvResultados.Columns[3].Resizable = DataGridViewTriState.False;
+
+                dgvResultados.Columns[4].Width = 165;
+                dgvResultados.Columns[4].MinimumWidth = 165;
+                dgvResultados.Columns[4].Resizable = DataGridViewTriState.False;
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
@@ -1467,10 +1496,14 @@ namespace CapaPresentaciones
                 {
                     Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
-                dgvResultados.Columns["CodAsignatura"].HeaderText = "Cod. Asignatura";
-                dgvResultados.Columns["NombreAsignatura"].HeaderText = "Nombre Asignatura";
+                dgvResultados.Columns["CodAsignatura"].HeaderText = "Código";
+                dgvResultados.Columns["CodAsignatura"].Width = 110;
+                dgvResultados.Columns["NombreAsignatura"].HeaderText = "Asignatura";
                 dgvResultados.Columns["PorcentajeAsistencias"].HeaderText = "Asistencias (%)";
+                dgvResultados.Columns["PorcentajeAsistencias"].Width = 120;
                 dgvResultados.Columns["PorcentajeFaltas"].HeaderText = "Faltas (%)";
+                dgvResultados.Columns["PorcentajeFaltas"].Width = 120;
+                dgvResultados.Columns[0].Width = 140;
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
@@ -1716,9 +1749,12 @@ namespace CapaPresentaciones
                     Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
                 dgvResultados.Columns["CodAsignatura"].HeaderText = "Cod. Asignatura";
-                dgvResultados.Columns["NombreAsignatura"].HeaderText = "Nombre Asignatura";
+                dgvResultados.Columns["CodAsignatura"].Width = 120;
+                dgvResultados.Columns["NombreAsignatura"].HeaderText = "Asignatura";
                 dgvResultados.Columns["PorcentajeAsistencias"].HeaderText = "Asistencias (%)";
-                dgvResultados.Columns["PorcentajeFaltas"].HeaderText = "Faltas (%)";  
+                dgvResultados.Columns["PorcentajeAsistencias"].Width = 120;
+                dgvResultados.Columns["PorcentajeFaltas"].HeaderText = "Faltas (%)";
+                dgvResultados.Columns["PorcentajeFaltas"].Width = 120;
                 MostrarResultadosResponsivo();
                 #endregion ===================== CUADRO DE RESULTADOS =====================
 

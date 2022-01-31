@@ -46,9 +46,9 @@ namespace CapaPresentaciones
             dgvDatos.Columns[9].HeaderText = "Cod Escuela";
             dgvDatos.Columns[8].Visible = false;
             dgvDatos.Columns[9].Visible = false;
-            dgvDatos.Columns[0].Width = 50;
-            dgvDatos.Columns[1].Width = 60;
-            dgvDatos.Columns[2].Width = 65;
+            dgvDatos.Columns[0].Width = 40;
+            dgvDatos.Columns[1].Width = 50;
+            dgvDatos.Columns[2].Width = 80;
             dgvDatos.Columns[5].Width = 50;
             dgvDatos.Columns[6].Width = 110;
             dgvDatos.Columns[8].Width = 70;

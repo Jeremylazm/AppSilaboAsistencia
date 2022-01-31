@@ -126,15 +126,7 @@ namespace CapaPresentaciones
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            lblCodigo.Visible = true;
-            lblNombre.Visible = true;
-            lblEscuelaP.Visible = true;
-            txtCodigo.Visible = true;
-            txtNombre.Visible = true;
-            txtEscuelaP.Visible = true;
-            lnCodigo.Visible = true;
-            lnNombre.Visible = true;
-            lnEscuelaP.Visible = true;
+            
 
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Docentes"))
             {
@@ -145,11 +137,15 @@ namespace CapaPresentaciones
                 if (cxtCriterioSeleccion.SelectedItem.Equals("Por Fechas"))
                 {
                     fnReporte13();
+                    OcultarDatosAvance();
+                    
                 }
 
                 else
                 {
                     fnReporte10();
+                    OcultarDatosAvance();
+                    
                 }
 
             }
@@ -159,7 +155,8 @@ namespace CapaPresentaciones
                 AddOwnedForm(docente);
                 docente.ShowDialog();
                 docente.Dispose();
-
+                ocultarDatosDocente();
+                VerDatosAvance();
                 fnReporte5();
             }
         }
@@ -171,40 +168,27 @@ namespace CapaPresentaciones
                 if (cxtCriterioSeleccion.SelectedItem.Equals("Por Asignaturas"))
                 {
                     fnReporte12();
+                    OcultarDatosAvance();
+                    
                 }
                 else
                 {
                     fnReporte14();
+                    OcultarDatosAvance();
                 }
 
             }
             else if (cxtTipoReporte.SelectedItem.Equals("Avance Asignaturas"))
             {
-                lblCodigo.Visible = false;
-                lblNombre.Visible = false;
-                lblEscuelaP.Visible = false;
-                txtCodigo.Visible = false;
-                txtNombre.Visible = false;
-                txtEscuelaP.Visible = false;
-                lnCodigo.Visible = false;
-                lnNombre.Visible = false;
-                lnEscuelaP.Visible = false;
-
+                ocultarDatosDocente();
+                OcultarDatosAvance();
                 fnReporte9();
             }
         }
 
         private void cxtTipoReporte_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            lblCodigo.Visible = true;
-            lblNombre.Visible = true;
-            lblEscuelaP.Visible = true;
-            txtCodigo.Visible = true;
-            txtNombre.Visible = true;
-            txtEscuelaP.Visible = true;
-            lnCodigo.Visible = true;
-            lnNombre.Visible = true;
-            lnEscuelaP.Visible = true;
+            
 
             if (cxtTipoReporte.SelectedItem.Equals("Asistencia Docentes"))
             {
@@ -229,7 +213,8 @@ namespace CapaPresentaciones
 
                 lblFechaFinal.Visible = false;
                 dpFechaFinal.Visible = false;
-
+                ocultarDatosDocente();
+                VerDatosAvance();
                 fnReporte5();
             }
         }
@@ -244,15 +229,47 @@ namespace CapaPresentaciones
             if (cxtCriterioSeleccion.SelectedItem.Equals("Por Asignaturas"))
             {
                 fnReporte10();
+                OcultarDatosAvance();
+                VerDatosDocente();
             }
             else if (cxtCriterioSeleccion.SelectedItem.Equals("Por Fechas"))
             {
                 fnReporte14();
+                OcultarDatosAvance();
+                VerDatosDocente();
             }
         }
 
+        public void VerDatosAvance()
+        {
+            lblCodigo.Visible = true;
+            lblNombre.Visible = true;
+            lblEscuelaP.Visible = true;
+            txtCodigo.Visible = true;
+            txtNombre.Visible = true;
+            txtEscuelaP.Visible = true;
+            lnCodigo.Visible = true;
+            lnNombre.Visible = true;
+            lnEscuelaP.Visible = true;
+            pnCajas.Visible = true;
+        }
+
+        public void OcultarDatosAvance()
+        {
+            lblCodigo.Visible = false;
+            lblNombre.Visible = false;
+            lblEscuelaP.Visible = false;
+            txtCodigo.Visible = false;
+            txtNombre.Visible = false;
+            txtEscuelaP.Visible = false;
+            lnCodigo.Visible = false;
+            lnNombre.Visible = false;
+            lnEscuelaP.Visible = false;
+            pnCajas.Visible = false;
+        }
         private void fnReporte5()
         {
+            VerDatosAvance();
             pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Avance Asignatura
             // Criterio de selección: Por Docente
@@ -266,7 +283,7 @@ namespace CapaPresentaciones
             int Total = 0;
 
             if (plansesion.Rows.Count >= 1)
-            {
+            { 
                 DataRow Fila = plansesion.Rows[0];
 
                 byte[] archivo = Fila["PlanSesiones"] as byte[];
