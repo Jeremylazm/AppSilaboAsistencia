@@ -44,7 +44,6 @@ namespace CapaPresentaciones
             foreach (DataGridViewColumn Columna in dgvDatos.Columns)
             {
                 Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                Columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
 
             }
             dgvDatos.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;

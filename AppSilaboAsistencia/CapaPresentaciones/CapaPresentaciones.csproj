@@ -281,12 +281,6 @@
     <Compile Include="P_DialogoAgregarAsistenciaDocente.Designer.cs">
       <DependentUpon>P_DialogoAgregarAsistenciaDocente.cs</DependentUpon>
     </Compile>
-    <Compile Include="P_DialogoAsistenciaDocenteAsignatura.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="P_DialogoAsistenciaDocenteAsignatura.Designer.cs">
-      <DependentUpon>P_DialogoAsistenciaDocenteAsignatura.cs</DependentUpon>
-    </Compile>
     <Compile Include="P_DialogoReporte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -508,9 +502,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="P_DialogoAgregarAsistenciaDocente.resx">
       <DependentUpon>P_DialogoAgregarAsistenciaDocente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="P_DialogoAsistenciaDocenteAsignatura.resx">
-      <DependentUpon>P_DialogoAsistenciaDocenteAsignatura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="P_DialogoReporte.resx">
       <DependentUpon>P_DialogoReporte.cs</DependentUpon>
@@ -939,6 +930,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Buscar_Archivo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actualizar_2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.96.0.4664.4500\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.96.0.4664.4500\build\Selenium.WebDriver.ChromeDriver.targets')" />

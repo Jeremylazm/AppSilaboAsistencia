@@ -60,7 +60,6 @@ namespace CapaPresentaciones
             {
                 Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 Columna.SortMode = DataGridViewColumnSortMode.NotSortable;
-                Columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
 
             }
             dgvDatos.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;

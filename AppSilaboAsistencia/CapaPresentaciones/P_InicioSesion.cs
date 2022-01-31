@@ -83,12 +83,13 @@ namespace CapaPresentaciones
         // Metodo para cargar y mostrar el menu principal
         private void MostrarMenu(string pAcceso)
         {
-            if (E_InicioSesion.Acceso != E_Acceso.Administrador)
+            Thread.Sleep(4000);
+
+            this.Invoke((MethodInvoker)delegate
             {
-                Thread.Sleep(4000);
                 Bienvenida.pbProgreso.Value = 28;
-                Bienvenida.lblCarga.Text = "CARGANDO TABLAS, REPORTES...";
-            }
+                Bienvenida.lblCarga.Text = "CARGANDO APLICACIÓN...";
+            });
 
             Thread.Sleep(1000);
 
@@ -106,17 +107,26 @@ namespace CapaPresentaciones
 
             Thread.Sleep(1000);
 
-            Bienvenida.lblCarga.Text = "FINALIZANDO CARGA...";
+            this.Invoke((MethodInvoker)delegate
+            {
+                Bienvenida.lblCarga.Text = "FINALIZANDO CARGA...";
+            });
+            
+            Thread.Sleep(1000); 
 
+            this.Invoke((MethodInvoker)delegate
+            {
+                Bienvenida.pbProgreso.Value = 97;
+                Bienvenida.lblCarga.Text = "ABRIENDO MENÚ PRINCIPAL...";
+            });
+            
             Thread.Sleep(1000);
 
-            Bienvenida.pbProgreso.Value = 97;
-            Bienvenida.lblCarga.Text = "ABRIENDO MENÚ PRINCIPAL...";
-
-            Thread.Sleep(1000);
-
-            Bienvenida.pbProgreso.Value = 100;
-
+            this.Invoke((MethodInvoker)delegate
+            {
+                Bienvenida.pbProgreso.Value = 100;
+            });
+            
             Thread.Sleep(1000);
         }
 

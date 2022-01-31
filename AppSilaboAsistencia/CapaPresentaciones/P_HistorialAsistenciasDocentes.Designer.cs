@@ -283,7 +283,6 @@ namespace CapaPresentaciones
             // gbxHorarioRegistro
             // 
             this.gbxHorarioRegistro.AllowParentOverrides = false;
-            this.gbxHorarioRegistro.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.gbxHorarioRegistro.AutoEllipsis = false;
             this.gbxHorarioRegistro.AutoSize = false;
             this.gbxHorarioRegistro.Cursor = System.Windows.Forms.Cursors.Default;
@@ -301,7 +300,6 @@ namespace CapaPresentaciones
             // 
             // pnHorarioRegistro
             // 
-            this.pnHorarioRegistro.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnHorarioRegistro.BackgroundColor = System.Drawing.Color.White;
             this.pnHorarioRegistro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnHorarioRegistro.BackgroundImage")));
             this.pnHorarioRegistro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -702,7 +700,7 @@ namespace CapaPresentaciones
             this.btnAgregarD.IdleIconLeftImage = global::CapaPresentaciones.Properties.Resources.Agregar;
             this.btnAgregarD.IdleIconRightImage = null;
             this.btnAgregarD.IndicateFocus = false;
-            this.btnAgregarD.Location = new System.Drawing.Point(920, 76);
+            this.btnAgregarD.Location = new System.Drawing.Point(920, 71);
             this.btnAgregarD.Name = "btnAgregarD";
             this.btnAgregarD.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAgregarD.OnDisabledState.BorderRadius = 15;

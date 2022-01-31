@@ -39,6 +39,17 @@ namespace CapaPresentaciones
             dgvDatos.Columns[2].HeaderText = "Código";
             dgvDatos.Columns[3].HeaderText = "Asignatura";
             dgvDatos.Columns[4].HeaderText = "Escuela Profesional";
+
+            dgvDatos.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            foreach (DataGridViewColumn Columna in dgvDatos.Columns)
+            {
+                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            dgvDatos.Columns[0].Width = 70;
+            dgvDatos.Columns[1].Width = 70;
+            dgvDatos.Columns[2].Width = 70;
         }
 
         private void MostrarAsignaturas()

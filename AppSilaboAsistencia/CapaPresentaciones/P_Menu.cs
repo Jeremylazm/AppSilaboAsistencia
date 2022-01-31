@@ -380,10 +380,10 @@ namespace CapaPresentaciones
         {
             CargarDatosUsuario();
             GestionarAcceso();
-            /*
+
             if (E_InicioSesion.Acceso == "Jefe de Departamento")
             {
-                AbrirFormularios<P_DatosDocente>();
+                AbrirFormularios<P_TablaDocentes>();
                 AbrirFormularios<P_TablaCatálogo>();
                 AbrirFormularios<P_ReporteJefe>();
                 AbrirFormularios<P_HistorialAsistenciasDocentes>();
@@ -422,7 +422,7 @@ namespace CapaPresentaciones
                 AbrirFormularios<P_TablaSemestres>();
             }
 
-            ActualizarColor();*/
+            ActualizarColor();
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
