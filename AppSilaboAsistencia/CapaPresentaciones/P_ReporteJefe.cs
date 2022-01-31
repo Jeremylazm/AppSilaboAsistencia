@@ -395,7 +395,31 @@ namespace CapaPresentaciones
 
             pnReporte.AutoScrollPosition = new Point(0, 0);
         }
-
+        private void VerDatosDocente()
+        {
+            txtCodDocente.Visible = true;
+            txtDocente.Visible = true;
+            lblCodDocente.Visible = true;
+            lblDocente.Visible = true;
+            lblCodigo.Visible = false;
+            txtCodigo.Visible = false;
+            lnCodDocente.Visible = true;
+            lnDocente.Visible = true;
+        }
+        private void ocultarDatosDocente()
+        {
+            txtCodDocente.Visible = false;
+            txtDocente.Visible = false;
+            lblCodDocente.Visible = false;
+            lblDocente.Visible = false;
+            lblCodigo.Visible = false;
+            txtCodigo.Visible = false;
+            lnCodDocente.Visible = false;
+            lnDocente.Visible = false;
+            lnEscuelaP.Visible = false;
+            lnNombre.Visible = false;
+            lnCodigo.Visible = false;
+        }
         private void fnReporte10()
         {
             pnReporte.AutoScrollPosition = new Point(0, 0);
@@ -427,10 +451,12 @@ namespace CapaPresentaciones
                 pnReporte.Controls[0].Controls[1].Controls[0].Text = "REPORTE DE ASISTENCIA DOCENTES" + Environment.NewLine + "Desde: " + dpFechaInicial.Value.ToString("dd/MM/yyyy") + " - " + "Hasta: " + dpFechaFinal.Value.ToString("dd/MM/yyyy");
             }
             else pnReporte.AutoScrollPosition = new Point(0, 0);
+            VerDatosDocente();
         }
 
-            private void fnReporte12()
+        private void fnReporte12()
         {
+            
             // Tipo de reporte: Asistencia Docentes
             // Criterio de selección: Por Estudiantes
             DataTable NombreDepar = N_DepartamentoAcademico.BuscarNombreDepartamento(CodDepartamentoA);
@@ -443,6 +469,7 @@ namespace CapaPresentaciones
             Reportes.fnReporte12(Titulo, Titulos, Valores, resultados);
 
             pnReporte.AutoScrollPosition = new Point(0, 0);
+            ocultarDatosDocente();
         }
 
         private void fnReporte13()
@@ -460,10 +487,13 @@ namespace CapaPresentaciones
             Reportes.fnReporte13(Titulo, Titulos, Valores, resultados, cxtCriterioSeleccion.SelectedItem.ToString(), txtCodigo.Text);
             
             pnReporte.AutoScrollPosition = new Point(0, 0);
+            VerDatosDocente();
         }
 
         private void fnReporte14()
         {
+            
+            
             pnReporte.AutoScrollPosition = new Point(0, 0);
             // Tipo de reporte: Asistencia Docentes
             // Criterio de selección: Por Fechas
@@ -493,6 +523,8 @@ namespace CapaPresentaciones
             { 
                 pnReporte.AutoScrollPosition = new Point(0, 0);
             }
+            ocultarDatosDocente();
+
         }
 
         private void dpFechaInicial_CloseUp(object sender, EventArgs e)
