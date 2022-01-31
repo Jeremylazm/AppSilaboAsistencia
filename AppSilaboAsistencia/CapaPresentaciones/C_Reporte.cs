@@ -261,9 +261,21 @@ namespace CapaPresentaciones
                     Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
 
+                dgvResultados.Columns["Fecha"].Width = 100;
+                dgvResultados.Columns["Fecha"].MinimumWidth = 100;
+                dgvResultados.Columns["Fecha"].Resizable = DataGridViewTriState.False;
                 dgvResultados.Columns["SesiónDictada"].HeaderText = "Sesión Dictada";
                 dgvResultados.Columns["TotalAsistieron"].HeaderText = "Asistieron";
+                dgvResultados.Columns["TotalAsistieron"].Width = 100;
+                dgvResultados.Columns["TotalAsistieron"].MinimumWidth = 100;
+                dgvResultados.Columns["TotalAsistieron"].Resizable = DataGridViewTriState.False;
                 dgvResultados.Columns["TotalFaltaron"].HeaderText = "Faltaron";
+                dgvResultados.Columns["TotalFaltaron"].MinimumWidth = 100;
+                dgvResultados.Columns["TotalFaltaron"].Resizable = DataGridViewTriState.False;
+
+                dgvResultados.Columns[0].Width = 115;
+                dgvResultados.Columns[0].MinimumWidth = 115;
+                dgvResultados.Columns[0].Resizable = DataGridViewTriState.False;
 
                 // Mostrar los resultados de manera responsiva
                 MostrarResultadosResponsivo();
@@ -420,18 +432,34 @@ namespace CapaPresentaciones
             dgvResultados.DataSource = Datos;
             dgvResultados.Columns[0].Visible = false;
 
-            dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dgvResultados.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            foreach (DataGridViewColumn Columna in dgvResultados.Columns)
-            {
-                Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
+            //foreach (DataGridViewColumn Columna in dgvResultados.Columns)
+            //{
+            //    Columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //}
 
             dgvResultados.Columns["CodEstudiante"].HeaderText = "Código";
+            dgvResultados.Columns["CodEstudiante"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvResultados.Columns["CodEstudiante"].MinimumWidth = 70;
+            dgvResultados.Columns["CodEstudiante"].Width = 70;
+
             dgvResultados.Columns["APaterno"].HeaderText = "A. Paterno";
+            dgvResultados.Columns["APaterno"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
             dgvResultados.Columns["AMaterno"].HeaderText = "A. Materno";
+            dgvResultados.Columns["AMaterno"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
             dgvResultados.Columns["Nombre"].HeaderText = "Nombre(s)";
+            dgvResultados.Columns["Nombre"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            dgvResultados.Columns["Asistió"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvResultados.Columns["Asistió"].MinimumWidth = 80;
             dgvResultados.Columns["Asistió"].Width = 80;
+
+            dgvResultados.Columns["Observación"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvResultados.Columns["Observación"].MinimumWidth = 225;
+            dgvResultados.Columns["Observación"].Width = 225;
 
             // Mostrar los resultados de manera responsiva
             MostrarResultadosResponsivo();
@@ -602,7 +630,7 @@ namespace CapaPresentaciones
                 dgvResultados.Columns[1].Visible = false;
                 dgvResultados.Columns[0].DisplayIndex = 7;
 
-                dgvResultados.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                /*dgvResultados.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;*/
 
                 foreach (DataGridViewColumn Columna in dgvResultados.Columns)
                 {
@@ -613,8 +641,11 @@ namespace CapaPresentaciones
                 dgvResultados.Columns["CodEstudiante"].Width = 120;
                 dgvResultados.Columns["CodEstudiante"].MinimumWidth = 120;
                 dgvResultados.Columns["APaterno"].HeaderText = "A. Paterno";
+                dgvResultados.Columns["APaterno"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dgvResultados.Columns["AMaterno"].HeaderText = "A. Materno";
+                dgvResultados.Columns["AMaterno"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dgvResultados.Columns["Nombre"].HeaderText = "Nombre(s)";
+                dgvResultados.Columns["Nombre"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dgvResultados.Columns["TotalAsistencias"].HeaderText = "Asistencias";
                 dgvResultados.Columns["TotalAsistencias"].Width = 150;
                 dgvResultados.Columns["TotalAsistencias"].MinimumWidth = 150;
